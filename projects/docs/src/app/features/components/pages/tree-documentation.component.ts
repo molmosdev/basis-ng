@@ -1,16 +1,13 @@
 import { Component } from '@angular/core';
-import { Tree } from '../../../../../../lib/src/core/components/tree/tree.component';
+import { Tree, TreeNode, Badge, Icon, Alert } from '@basis-ng/primitives';
 import { CodeBlockComponent } from '../shared/components/code-block.component';
-import { TreeNode } from '../../../../../../lib/src/core/components/tree/shared/components/tree-node/tree-node.component';
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
-import { Badge, Icon } from '../../../../../../lib/src/public-api';
-import { Alert } from '../../../../../../lib/src/core/components/alert/alert.component';
 
 @Component({
   selector: 'article[app-tree-documentation]',
-  template: `<r-alert type="info" title="Components are in alpha" icon="Rocket">
+  template: `<b-alert type="info" title="Components are in alpha" icon="Rocket">
       Try them out! We'd love to hear your feedback! Expect breaking changes!
-    </r-alert>
+    </b-alert>
     <h1>Tree</h1>
     <span>
       The Tree component is a hierarchical structure that supports drag-and-drop
@@ -60,124 +57,124 @@ import { Alert } from '../../../../../../lib/src/core/components/alert/alert.com
     <h2>Basic Example</h2>
     <code-block [code]="basicUsage" />
     <div class="documentation-playground">
-      <r-tree [maxWidth]="'240px'">
-        <r-tree-node>Node 1</r-tree-node>
-        <r-tree-node>Node 2</r-tree-node>
-      </r-tree>
+      <b-tree [maxWidth]="'240px'">
+        <b-tree-node>Node 1</b-tree-node>
+        <b-tree-node>Node 2</b-tree-node>
+      </b-tree>
     </div>
 
     <h2>With Nested Nodes</h2>
     <code-block [code]="nestedUsage" />
     <div class="documentation-playground">
-      <r-tree [maxWidth]="'240px'">
-        <r-tree-node>
+      <b-tree [maxWidth]="'240px'">
+        <b-tree-node>
           Parent Node
-          <r-tree>
-            <r-tree-node>Child Node 1</r-tree-node>
-            <r-tree-node>Child Node 2</r-tree-node>
-          </r-tree>
-        </r-tree-node>
-      </r-tree>
+          <b-tree>
+            <b-tree-node>Child Node 1</b-tree-node>
+            <b-tree-node>Child Node 2</b-tree-node>
+          </b-tree>
+        </b-tree-node>
+      </b-tree>
     </div>
 
     <h2>With Recursive Closing</h2>
     <code-block [code]="recursiveCloseUsage" />
     <div class="documentation-playground">
-      <r-tree [closeRecursively]="true" [maxWidth]="'240px'">
-        <r-tree-node>
+      <b-tree [closeRecursively]="true" [maxWidth]="'240px'">
+        <b-tree-node>
           Parent Node
-          <r-tree>
-            <r-tree-node>
+          <b-tree>
+            <b-tree-node>
               Child Node 1
-              <r-tree>
-                <r-tree-node>Grandchild Node 1</r-tree-node>
-                <r-tree-node>Grandchild Node 2</r-tree-node>
-              </r-tree>
-            </r-tree-node>
-            <r-tree-node>Child Node 2</r-tree-node>
-          </r-tree>
-        </r-tree-node>
-      </r-tree>
+              <b-tree>
+                <b-tree-node>Grandchild Node 1</b-tree-node>
+                <b-tree-node>Grandchild Node 2</b-tree-node>
+              </b-tree>
+            </b-tree-node>
+            <b-tree-node>Child Node 2</b-tree-node>
+          </b-tree>
+        </b-tree-node>
+      </b-tree>
     </div>
 
     <h2>With Drag-and-Drop</h2>
     <code-block [code]="dragDropUsage" />
     <div class="documentation-playground">
-      <r-tree
+      <b-tree
         [draggable]="true"
         [maxWidth]="'240px'"
         (dropEmitter)="onDrop($event)">
         @for (node of nodes; track node) {
-          <r-tree-node>
+          <b-tree-node>
             {{ node.name }}
             @if (node.children) {
-              <r-tree>
+              <b-tree>
                 @for (child of node.children; track child) {
-                  <r-tree-node>
+                  <b-tree-node>
                     {{ child.name }}
-                  </r-tree-node>
+                  </b-tree-node>
                 }
-              </r-tree>
+              </b-tree>
             }
-          </r-tree-node>
+          </b-tree-node>
         }
-      </r-tree>
+      </b-tree>
     </div>
 
     <h2>Complex Example</h2>
     <code-block [code]="complexUsage" />
     <div class="documentation-playground">
-      <r-tree
+      <b-tree
         [maxWidth]="'320px'"
         [draggable]="true"
         (dropEmitter)="onDrop($event)"
         id="complexTree">
         @for (node of complexNodes; track node) {
-          <r-tree-node>
-            <i r-icon [size]="13" icon="Folder"></i> {{ node.name }}
+          <b-tree-node>
+            <i b-icon [size]="13" icon="Folder"></i> {{ node.name }}
             @if (node.badge) {
-              <span r-badge variant="outlined" size="small">{{
+              <span b-badge variant="outlined" size="small">{{
                 node.badge
               }}</span>
             }
             @if (node.children) {
-              <r-tree
+              <b-tree
                 [draggable]="true"
                 (dropEmitter)="onChildDrop($event)"
                 id="childTree-{{ node.name }}">
                 @for (child of node.children; track child) {
-                  <r-tree-node>
-                    <i r-icon [size]="13" icon="File"></i> {{ child.name }}
+                  <b-tree-node>
+                    <i b-icon [size]="13" icon="File"></i> {{ child.name }}
                     @if (child.badge) {
-                      <span r-badge variant="outlined" size="small">{{
+                      <span b-badge variant="outlined" size="small">{{
                         child.badge
                       }}</span>
                     }
                     @if (child.children) {
-                      <r-tree
+                      <b-tree
                         [draggable]="true"
                         (dropEmitter)="onChildDrop($event)"
                         id="childTree-{{ child.name }}">
                         @for (grandchild of child.children; track grandchild) {
-                          <r-tree-node>
-                            <i r-icon [size]="13" icon="File"></i>
+                          <b-tree-node>
+                            <i b-icon [size]="13" icon="File"></i>
                             {{ grandchild.name }}
                             @if (grandchild.badge) {
-                              <span r-badge variant="outlined" size="small">{{
+                              <span b-badge variant="outlined" size="small">{{
                                 grandchild.badge
                               }}</span>
                             }
-                          </r-tree-node>
+                          </b-tree-node>
                         }
-                      </r-tree>
+                      </b-tree>
                     }
-                  </r-tree-node>
+                  </b-tree-node>
                 }
-              </r-tree>
+              </b-tree>
             }
-          </r-tree-node>
+          </b-tree-node>
         }
-      </r-tree>
+      </b-tree>
     </div>
 
     <h2>Two Trees Example</h2>
@@ -186,31 +183,31 @@ import { Alert } from '../../../../../../lib/src/core/components/alert/alert.com
       <div
         style="display: flex; flex-direction: column; gap: 2rem; width: 100%; align-items: center;">
         <span>Tree 1</span>
-        <r-tree
+        <b-tree
           [maxWidth]="'240px'"
           [draggable]="true"
           id="tree1"
           [connectedTo]="['tree2']"
           (dropEmitter)="onTwoTreesDrop($event)">
           @for (node of tree1Nodes; track node) {
-            <r-tree-node>
+            <b-tree-node>
               {{ node.name }}
-            </r-tree-node>
+            </b-tree-node>
           }
-        </r-tree>
+        </b-tree>
         <span>Tree 2</span>
-        <r-tree
+        <b-tree
           [maxWidth]="'240px'"
           [draggable]="true"
           id="tree2"
           [connectedTo]="['tree1']"
           (dropEmitter)="onTwoTreesDrop($event)">
           @for (node of tree2Nodes; track node) {
-            <r-tree-node>
+            <b-tree-node>
               {{ node.name }}
-            </r-tree-node>
+            </b-tree-node>
           }
-        </r-tree>
+        </b-tree>
       </div>
     </div>
 
@@ -279,90 +276,90 @@ import { Alert } from '../../../../../../lib/src/core/components/alert/alert.com
   imports: [Tree, TreeNode, CodeBlockComponent, Icon, Badge, Alert],
 })
 export default class TreeDocumentationComponent {
-  angularImport = `import { Tree, TreeNode } from 'rem-ui/angular'`;
+  angularImport = `import { Tree, TreeNode } from '@basis-ng/primitives'`;
 
-  basicUsage = `<r-tree [maxWidth]="'240px'">
-  <r-tree-node>Node 1</r-tree-node>
-  <r-tree-node>Node 2</r-tree-node>
-</r-tree>`;
+  basicUsage = `<b-tree [maxWidth]="'240px'">
+  <b-tree-node>Node 1</b-tree-node>
+  <b-tree-node>Node 2</b-tree-node>
+</b-tree>`;
 
-  nestedUsage = `<r-tree [maxWidth]="'240px'">
-  <r-tree-node>
+  nestedUsage = `<b-tree [maxWidth]="'240px'">
+  <b-tree-node>
     Parent Node
-    <r-tree>
-      <r-tree-node>Child Node 1</r-tree-node>
-      <r-tree-node>Child Node 2</r-tree-node>
-    </r-tree>
-  </r-tree-node>
-</r-tree>`;
+    <b-tree>
+      <b-tree-node>Child Node 1</b-tree-node>
+      <b-tree-node>Child Node 2</b-tree-node>
+    </b-tree>
+  </b-tree-node>
+</b-tree>`;
 
-  dragDropUsage = `<r-tree [draggable]="true" [maxWidth]="'240px'" (dropEmitter)="onDrop($event)">
-  <r-tree-node>
+  dragDropUsage = `<b-tree [draggable]="true" [maxWidth]="'240px'" (dropEmitter)="onDrop($event)">
+  <b-tree-node>
     Node 1
-    <r-tree>
-      <r-tree-node>Child Node 1</r-tree-node>
-      <r-tree-node>Child Node 2</r-tree-node>
-    </r-tree>
-  </r-tree-node>
-  <r-tree-node>Node 2</r-tree-node>
-</r-tree>`;
+    <b-tree>
+      <b-tree-node>Child Node 1</b-tree-node>
+      <b-tree-node>Child Node 2</b-tree-node>
+    </b-tree>
+  </b-tree-node>
+  <b-tree-node>Node 2</b-tree-node>
+</b-tree>`;
 
-  recursiveCloseUsage = `<r-tree [closeRecursively]="true" [maxWidth]="'240px'">
-  <r-tree-node>
+  recursiveCloseUsage = `<b-tree [closeRecursively]="true" [maxWidth]="'240px'">
+  <b-tree-node>
     Parent Node
-    <r-tree>
-      <r-tree-node>
+    <b-tree>
+      <b-tree-node>
         Child Node 1
-        <r-tree>
-          <r-tree-node>Grandchild Node 1</r-tree-node>
-          <r-tree-node>Grandchild Node 2</r-tree-node>
-        </r-tree>
-      </r-tree-node>
-      <r-tree-node>Child Node 2</r-tree-node>
-    </r-tree>
-  </r-tree-node>
-</r-tree>`;
+        <b-tree>
+          <b-tree-node>Grandchild Node 1</b-tree-node>
+          <b-tree-node>Grandchild Node 2</b-tree-node>
+        </b-tree>
+      </b-tree-node>
+      <b-tree-node>Child Node 2</b-tree-node>
+    </b-tree>
+  </b-tree-node>
+</b-tree>`;
 
-  complexUsage = `<r-tree [draggable]="true" (dropEmitter)="onDrop($event)" id="complexTree" [maxWidth]="'320px'">
-  <r-tree-node>
-    <i r-icon [size]="13" icon="Folder"></i> Parent Node
-    <span r-badge variant="outlined" size="small">New</span>
-    <r-tree [draggable]="true" (dropEmitter)="onChildDrop($event)" id="childTree-Parent Node">
-      <r-tree-node>
-        <i r-icon [size]="13" icon="File"></i> Child Node 1
-        <span r-badge variant="outlined" size="small">Updated</span>
-      </r-tree-node>
-      <r-tree-node>
-        <i r-icon [size]="13" icon="File"></i> Child Node 2
-        <r-tree [draggable]="true" (dropEmitter)="onChildDrop($event)" id="childTree-Child Node 2">
-          <r-tree-node>
-            <i r-icon [size]="13" icon="File"></i> Grandchild Node 1
-          </r-tree-node>
-          <r-tree-node>
-            <i r-icon [size]="13" icon="File"></i> Grandchild Node 2
-            <span r-badge variant="outlined" size="small">Important</span>
-          </r-tree-node>
-        </r-tree>
-      </r-tree-node>
-    </r-tree>
-  </r-tree-node>
-  <r-tree-node>
-    <i r-icon [size]="13" icon="Folder"></i> Another Parent Node
-    <span r-badge variant="outlined" size="small">Beta</span>
-  </r-tree-node>
-</r-tree>`;
+  complexUsage = `<b-tree [draggable]="true" (dropEmitter)="onDrop($event)" id="complexTree" [maxWidth]="'320px'">
+  <b-tree-node>
+    <i b-icon [size]="13" icon="Folder"></i> Parent Node
+    <span b-badge variant="outlined" size="small">New</span>
+    <b-tree [draggable]="true" (dropEmitter)="onChildDrop($event)" id="childTree-Parent Node">
+      <b-tree-node>
+        <i b-icon [size]="13" icon="File"></i> Child Node 1
+        <span b-badge variant="outlined" size="small">Updated</span>
+      </b-tree-node>
+      <b-tree-node>
+        <i b-icon [size]="13" icon="File"></i> Child Node 2
+        <b-tree [draggable]="true" (dropEmitter)="onChildDrop($event)" id="childTree-Child Node 2">
+          <b-tree-node>
+            <i b-icon [size]="13" icon="File"></i> Grandchild Node 1
+          </b-tree-node>
+          <b-tree-node>
+            <i b-icon [size]="13" icon="File"></i> Grandchild Node 2
+            <span b-badge variant="outlined" size="small">Important</span>
+          </b-tree-node>
+        </b-tree>
+      </b-tree-node>
+    </b-tree>
+  </b-tree-node>
+  <b-tree-node>
+    <i b-icon [size]="13" icon="Folder"></i> Another Parent Node
+    <span b-badge variant="outlined" size="small">Beta</span>
+  </b-tree-node>
+</b-tree>`;
 
   twoTreesUsage = `<div style="display: flex; flex-direction: column; gap: 2rem; width: 100%; align-items: center;">
   <span>Tree 1</span>
-  <r-tree [draggable]="true" id="tree1" [connectedTo]="['tree2']" [maxWidth]="'240px'" (dropEmitter)="onTwoTreesDrop($event)">
-    <r-tree-node>Item 1</r-tree-node>
-    <r-tree-node>Item 2</r-tree-node>
-  </r-tree>
+  <b-tree [draggable]="true" id="tree1" [connectedTo]="['tree2']" [maxWidth]="'240px'" (dropEmitter)="onTwoTreesDrop($event)">
+    <b-tree-node>Item 1</b-tree-node>
+    <b-tree-node>Item 2</b-tree-node>
+  </b-tree>
   <span>Tree 2</span>
-  <r-tree [draggable]="true" id="tree2" [connectedTo]="['tree1']" [maxWidth]="'240px'" (dropEmitter)="onTwoTreesDrop($event)">
-    <r-tree-node>Item A</r-tree-node>
-    <r-tree-node>Item B</r-tree-node>
-  </r-tree>
+  <b-tree [draggable]="true" id="tree2" [connectedTo]="['tree1']" [maxWidth]="'240px'" (dropEmitter)="onTwoTreesDrop($event)">
+    <b-tree-node>Item A</b-tree-node>
+    <b-tree-node>Item B</b-tree-node>
+  </b-tree>
 </div>`;
 
   nodes = [

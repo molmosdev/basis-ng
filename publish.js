@@ -4,32 +4,60 @@ const path = require('path');
 const semver = require('semver');
 const execSync = require('child_process').execSync;
 
-// Path to the lib project's package.json
-const packageJsonPath = path.join(__dirname, 'projects', 'lib', 'package.json');
+const project = process.argv[2]; // "primitives" o "styles"
+const releaseType = process.argv[3] || 'patch';
+const preId = process.argv[4];
 
-// Read and update the version in package.json
-const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, 'utf8'));
-const releaseType = process.argv[2] || 'patch';
-packageJson.version = semver.inc(packageJson.version, releaseType);
-fs.writeFileSync(packageJsonPath, JSON.stringify(packageJson, null, 2), 'utf8');
-
-// Execute npm run build for the lib project
-execSync('npm run build:lib', { stdio: 'inherit' });
-
-// Path to the lib project's output directory (dist)
-const distPath = path.join(__dirname, 'dist', 'lib');
-
-// Check if package.json is in dist, if not, copy it manually
-const distPackageJsonPath = path.join(distPath, 'package.json');
-if (!fs.existsSync(distPackageJsonPath)) {
-  fs.copyFileSync(packageJsonPath, distPackageJsonPath);
+if (!project) {
+  console.error('❌ Specify a project: primitives or styles');
+  process.exit(1);
 }
 
-// Publish to npm
-exec(`cd ${distPath} && npm publish --access public`, (err, stdout, stderr) => {
-  if (err) {
-    console.error(`Error executing npm publish: ${stderr}`);
-    process.exit(1);
-  }
-  console.log(stdout);
-});
+const packageJsonPath = path.join(
+  __dirname,
+  'projects',
+  project,
+  'package.json'
+);
+const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, 'utf8'));
+
+// Bump version
+const newVersion =
+  releaseType === 'prerelease'
+    ? semver.inc(packageJson.version, 'prerelease', preId || 'alpha')
+    : semver.inc(packageJson.version, releaseType);
+
+packageJson.version = newVersion;
+fs.writeFileSync(packageJsonPath, JSON.stringify(packageJson, null, 2), 'utf8');
+
+console.log(`📦 Publishing ${project} v${newVersion}...`);
+
+if (project === 'primitives') {
+  // Build Angular project
+  execSync(`ng build ${project}`, { stdio: 'inherit' });
+  // Publish from dist/primitives
+  const distPath = path.join(__dirname, 'dist', project);
+  exec(
+    `cd ${distPath} && npm publish --access public ${releaseType === 'prerelease' ? '--tag next' : ''}`,
+    (err, stdout, stderr) => {
+      if (err) {
+        console.error(`❌ npm publish failed: ${stderr}`);
+        process.exit(1);
+      }
+      console.log(`✅ Published ${project} v${newVersion}\n${stdout}`);
+    }
+  );
+} else if (project === 'styles') {
+  // Publish directly from projects/styles
+  const stylesPath = path.join(__dirname, 'projects', project);
+  exec(
+    `cd ${stylesPath} && npm publish --access public ${releaseType === 'prerelease' ? '--tag next' : ''}`,
+    (err, stdout, stderr) => {
+      if (err) {
+        console.error(`❌ npm publish failed: ${stderr}`);
+        process.exit(1);
+      }
+      console.log(`✅ Published ${project} v${newVersion}\n${stdout}`);
+    }
+  );
+}

@@ -1,0 +1,14 @@
+b-row-item {
+  &:not(&:last-child) {
+    .row-item-container {
+      border-right: 1px solid var(--border-color, transparent);
+    }
+  }
+  .row-item-container {
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    padding-inline: 10px;
+  }
+}

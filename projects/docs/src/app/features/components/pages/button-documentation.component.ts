@@ -1,17 +1,15 @@
 import { Component } from '@angular/core';
+import { Button, Icon, ButtonGroup, Alert } from '@basis-ng/primitives';
 import { CodeBlockComponent } from '../shared/components/code-block.component';
-import { Button, Icon } from '../../../../../../lib/src/public-api';
-import { ButtonGroup } from '../../../../../../lib/src/core/components/button-group/button-group.component';
-import { Alert } from '../../../../../../lib/src/core/components/alert/alert.component';
 
 @Component({
   selector: 'article[app-button-documentation]',
-  template: ` <r-alert
+  template: ` <b-alert
       type="info"
       title="Components are in alpha"
       icon="Rocket">
       Try them out! We'd love to hear your feedback! Expect breaking changes!
-    </r-alert>
+    </b-alert>
     <h1>Button</h1>
     <span>
       Button is an extension to standard HTML button element with additional
@@ -72,7 +70,7 @@ import { Alert } from '../../../../../../lib/src/core/components/alert/alert.com
     <h2>Basic</h2>
     <code-block [code]="basicUsage" />
     <div class="documentation-playground">
-      <button r-button variant="primary" size="default">
+      <button b-button variant="primary" size="default">
         This is a button
       </button>
     </div>
@@ -80,102 +78,102 @@ import { Alert } from '../../../../../../lib/src/core/components/alert/alert.com
     <h2>Variants</h2>
     <code-block [code]="variantsUsage" />
     <div class="documentation-playground">
-      <button r-button variant="primary">Primary</button>
-      <button r-button variant="secondary">Secondary</button>
-      <button r-button variant="ghost">Ghost</button>
-      <button r-button variant="outlined">Outlined</button>
+      <button b-button variant="primary">Primary</button>
+      <button b-button variant="secondary">Secondary</button>
+      <button b-button variant="ghost">Ghost</button>
+      <button b-button variant="outlined">Outlined</button>
     </div>
 
     <h2>Sizes</h2>
     <code-block [code]="sizesUsage" />
     <div class="documentation-playground">
-      <button r-button size="small">Small</button>
-      <button r-button size="default">Default</button>
+      <button b-button size="small">Small</button>
+      <button b-button size="default">Default</button>
     </div>
 
     <h2>Loading State</h2>
     <code-block [code]="loadingUsage" />
     <div class="documentation-playground">
-      <button r-button [loading]="true">Loading...</button>
+      <button b-button [loading]="true">Loading...</button>
     </div>
 
     <h2>Equal Padding</h2>
     <code-block [code]="equalPaddingUsage" />
     <div class="documentation-playground">
-      <button r-button [equalPadding]="true">
-        <i r-icon icon="House" [size]="16" color="var(--bg-color)"></i>
+      <button b-button [equalPadding]="true">
+        <i b-icon icon="House" [size]="16" color="var(--bg-color)"></i>
       </button>
     </div>
 
     <h2>Button Group</h2>
     <code-block [code]="buttonGroupUsage" />
     <div class="documentation-playground">
-      <r-button-group>
-        <button r-button variant="outlined">Outlined</button>
-        <button r-button variant="outlined">Outlined</button>
-        <button r-button variant="outlined">Outlined</button>
-      </r-button-group>
+      <b-button-group>
+        <button b-button variant="outlined">Outlined</button>
+        <button b-button variant="outlined">Outlined</button>
+        <button b-button variant="outlined">Outlined</button>
+      </b-button-group>
     </div>
 
     <h3>All Primary</h3>
     <code-block [code]="allPrimaryUsage" />
     <div class="documentation-playground">
-      <r-button-group>
-        <button r-button variant="primary">Primary</button>
-        <button r-button variant="primary">Primary</button>
-        <button r-button variant="primary">Primary</button>
-      </r-button-group>
+      <b-button-group>
+        <button b-button variant="primary">Primary</button>
+        <button b-button variant="primary">Primary</button>
+        <button b-button variant="primary">Primary</button>
+      </b-button-group>
     </div>
 
     <h3>Mixed Variants</h3>
     <code-block [code]="mixedVariantsUsage" />
     <div class="documentation-playground">
-      <r-button-group>
-        <button r-button variant="primary">Primary</button>
-        <button r-button variant="secondary">Secondary</button>
-      </r-button-group>
-      <r-button-group>
-        <button r-button variant="ghost">Ghost</button>
-        <button r-button variant="outlined">Outlined</button>
-      </r-button-group>
+      <b-button-group>
+        <button b-button variant="primary">Primary</button>
+        <button b-button variant="secondary">Secondary</button>
+      </b-button-group>
+      <b-button-group>
+        <button b-button variant="ghost">Ghost</button>
+        <button b-button variant="outlined">Outlined</button>
+      </b-button-group>
     </div>
 
     <h3>Small</h3>
     <code-block [code]="outlinedSmallUsage" />
     <div class="documentation-playground">
-      <r-button-group>
-        <button r-button variant="outlined" size="small">Outlined</button>
-        <button r-button variant="outlined" size="small">Outlined</button>
-        <button r-button variant="outlined" size="small">Outlined</button>
-      </r-button-group>
+      <b-button-group>
+        <button b-button variant="outlined" size="small">Outlined</button>
+        <button b-button variant="outlined" size="small">Outlined</button>
+        <button b-button variant="outlined" size="small">Outlined</button>
+      </b-button-group>
     </div>
 
     <h3>Spaced Buttons</h3>
     <code-block [code]="spacedUsage" />
     <div class="documentation-playground">
-      <r-button-group [spaced]="true">
-        <button r-button variant="outlined">Outlined</button>
-        <button r-button variant="outlined">Outlined</button>
-        <button r-button variant="outlined">Outlined</button>
-      </r-button-group>
+      <b-button-group [spaced]="true">
+        <button b-button variant="outlined">Outlined</button>
+        <button b-button variant="outlined">Outlined</button>
+        <button b-button variant="outlined">Outlined</button>
+      </b-button-group>
     </div>
 
     <h3>Spaced and Small Buttons</h3>
     <code-block [code]="spacedSmallUsage" />
     <div class="documentation-playground">
-      <r-button-group [spaced]="true">
-        <button r-button variant="outlined" size="small">Outlined</button>
-        <button r-button variant="outlined" size="small">Outlined</button>
-        <button r-button variant="outlined" size="small">Outlined</button>
-      </r-button-group>
+      <b-button-group [spaced]="true">
+        <button b-button variant="outlined" size="small">Outlined</button>
+        <button b-button variant="outlined" size="small">Outlined</button>
+        <button b-button variant="outlined" size="small">Outlined</button>
+      </b-button-group>
     </div>
 
     <h3>Toggle Buttons</h3>
     <code-block [code]="toggleButtonsClickHandlingUsage" />
     <div class="documentation-playground">
-      <r-button-group>
+      <b-button-group>
         <button
-          r-button
+          b-button
           variant="outlined"
           [toggle]="true"
           [isToggled]="toggleState === 'option1'"
@@ -183,7 +181,7 @@ import { Alert } from '../../../../../../lib/src/core/components/alert/alert.com
           Option 1
         </button>
         <button
-          r-button
+          b-button
           variant="outlined"
           [toggle]="true"
           [isToggled]="toggleState === 'option2'"
@@ -191,22 +189,22 @@ import { Alert } from '../../../../../../lib/src/core/components/alert/alert.com
           Option 2
         </button>
         <button
-          r-button
+          b-button
           variant="outlined"
           [toggle]="true"
           [isToggled]="toggleState === 'option3'"
           (click)="toggleState = 'option3'">
           Option 3
         </button>
-      </r-button-group>
+      </b-button-group>
     </div>
 
     <h3>Multi-Select Toggle Buttons</h3>
     <code-block [code]="multiSelectToggleUsage" />
     <div class="documentation-playground">
-      <r-button-group>
+      <b-button-group>
         <button
-          r-button
+          b-button
           variant="outlined"
           [toggle]="true"
           [isToggled]="isOptionToggled('option1')"
@@ -214,7 +212,7 @@ import { Alert } from '../../../../../../lib/src/core/components/alert/alert.com
           Option 1
         </button>
         <button
-          r-button
+          b-button
           variant="outlined"
           [toggle]="true"
           [isToggled]="isOptionToggled('option2')"
@@ -222,68 +220,69 @@ import { Alert } from '../../../../../../lib/src/core/components/alert/alert.com
           Option 2
         </button>
         <button
-          r-button
+          b-button
           variant="outlined"
           [toggle]="true"
           [isToggled]="isOptionToggled('option3')"
           (click)="toggleOption('option3')">
           Option 3
         </button>
-      </r-button-group>
+      </b-button-group>
     </div>`,
+
   imports: [CodeBlockComponent, Button, Icon, ButtonGroup, Alert],
 })
 export default class ButtonDocumentationComponent {
-  angularImport = `import { Button } from 'rem-ui/angular'`;
-  basicUsage = `<button r-button variant="primary" size="default">This is a button</button>`;
-  variantsUsage = `<button r-button variant="primary">Primary</button>
-<button r-button variant="secondary">Secondary</button>
-<button r-button variant="ghost">Ghost</button>
-<button r-button variant="outlined">Outlined</button>`;
-  sizesUsage = `<button r-button size="small">Small</button>
-<button r-button size="default">Default</button>`;
-  loadingUsage = `<button r-button [loading]="true">Loading...</button>`;
-  equalPaddingUsage = `<button r-button [equalPadding]="true">
-  <i r-icon icon="House" [size]="16" color="var(--bg-color)"></i>
+  angularImport = `import { Button } from '@basis-ng/primitives'`;
+  basicUsage = `<button b-button variant="primary" size="default">This is a button</button>`;
+  variantsUsage = `<button b-button variant="primary">Primary</button>
+<button b-button variant="secondary">Secondary</button>
+<button b-button variant="ghost">Ghost</button>
+<button b-button variant="outlined">Outlined</button>`;
+  sizesUsage = `<button b-button size="small">Small</button>
+<button b-button size="default">Default</button>`;
+  loadingUsage = `<button b-button [loading]="true">Loading...</button>`;
+  equalPaddingUsage = `<button b-button [equalPadding]="true">
+  <i b-icon icon="House" [size]="16" color="var(--bg-color)"></i>
 </button>`;
-  buttonGroupUsage = `<r-button-group>
-  <button r-button variant="outlined"> Outlined </button>
-  <button r-button variant="outlined"> Outlined </button>
-  <button r-button variant="outlined"> Outlined </button>
-</r-button-group>`;
+  buttonGroupUsage = `<b-button-group>
+  <button b-button variant="outlined"> Outlined </button>
+  <button b-button variant="outlined"> Outlined </button>
+  <button b-button variant="outlined"> Outlined </button>
+</b-button-group>`;
 
-  allPrimaryUsage = `<r-button-group>
-  <button r-button variant="primary"> Primary </button>
-  <button r-button variant="primary"> Primary </button>
-  <button r-button variant="primary"> Primary </button>
-</r-button-group>`;
+  allPrimaryUsage = `<b-button-group>
+  <button b-button variant="primary"> Primary </button>
+  <button b-button variant="primary"> Primary </button>
+  <button b-button variant="primary"> Primary </button>
+</b-button-group>`;
 
-  mixedVariantsUsage = `<r-button-group>
-  <button r-button variant="primary"> Primary </button>
-  <button r-button variant="secondary"> Secondary </button>
-</r-button-group>
-<r-button-group>
-  <button r-button variant="ghost"> Ghost </button>
-  <button r-button variant="outlined"> Outlined </button>
-</r-button-group>`;
+  mixedVariantsUsage = `<b-button-group>
+  <button b-button variant="primary"> Primary </button>
+  <button b-button variant="secondary"> Secondary </button>
+</b-button-group>
+<b-button-group>
+  <button b-button variant="ghost"> Ghost </button>
+  <button b-button variant="outlined"> Outlined </button>
+</b-button-group>`;
 
-  outlinedSmallUsage = `<r-button-group>
-  <button r-button variant="outlined" size="small"> Outlined </button>
-  <button r-button variant="outlined" size="small"> Outlined </button>
-  <button r-button variant="outlined" size="small"> Outlined </button>
-</r-button-group>`;
+  outlinedSmallUsage = `<b-button-group>
+  <button b-button variant="outlined" size="small"> Outlined </button>
+  <button b-button variant="outlined" size="small"> Outlined </button>
+  <button b-button variant="outlined" size="small"> Outlined </button>
+</b-button-group>`;
 
-  spacedUsage = `<r-button-group [spaced]="true">
-  <button r-button variant="outlined"> Outlined </button>
-  <button r-button variant="outlined"> Outlined </button>
-  <button r-button variant="outlined"> Outlined </button>
-</r-button-group>`;
+  spacedUsage = `<b-button-group [spaced]="true">
+  <button b-button variant="outlined"> Outlined </button>
+  <button b-button variant="outlined"> Outlined </button>
+  <button b-button variant="outlined"> Outlined </button>
+</b-button-group>`;
 
-  spacedSmallUsage = `<r-button-group [spaced]="true">
-  <button r-button variant="outlined" size="small"> Outlined </button>
-  <button r-button variant="outlined" size="small"> Outlined </button>
-  <button r-button variant="outlined" size="small"> Outlined </button>
-</r-button-group>`;
+  spacedSmallUsage = `<b-button-group [spaced]="true">
+  <button b-button variant="outlined" size="small"> Outlined </button>
+  <button b-button variant="outlined" size="small"> Outlined </button>
+  <button b-button variant="outlined" size="small"> Outlined </button>
+</b-button-group>`;
 
   toggleState = 'option1';
 
@@ -303,9 +302,9 @@ export default class ButtonDocumentationComponent {
     }
   }
 
-  toggleButtonsClickHandlingUsage = `<r-button-group>
+  toggleButtonsClickHandlingUsage = `<b-button-group>
   <button
-    r-button
+    b-button
     variant="outlined"
     [toggle]="true"
     [isToggled]="toggleState === 'option1'"
@@ -313,7 +312,7 @@ export default class ButtonDocumentationComponent {
     Option 1
   </button>
   <button
-    r-button
+    b-button
     variant="outlined"
     [toggle]="true"
     [isToggled]="toggleState === 'option2'"
@@ -321,18 +320,18 @@ export default class ButtonDocumentationComponent {
     Option 2
   </button>
   <button
-    r-button
+    b-button
     variant="outlined"
     [toggle]="true"
     [isToggled]="toggleState === 'option3'"
     (click)="toggleState = 'option3'">
     Option 3
   </button>
-</r-button-group>`;
+</b-button-group>`;
 
-  multiSelectToggleUsage = `<r-button-group>
+  multiSelectToggleUsage = `<b-button-group>
   <button
-    r-button
+    b-button
     variant="outlined"
     [toggle]="true"
     [isToggled]="isOptionToggled('option1')"
@@ -340,7 +339,7 @@ export default class ButtonDocumentationComponent {
     Option 1
   </button>
   <button
-    r-button
+    b-button
     variant="outlined"
     [toggle]="true"
     [isToggled]="isOptionToggled('option2')"
@@ -348,12 +347,12 @@ export default class ButtonDocumentationComponent {
     Option 2
   </button>
   <button
-    r-button
+    b-button
     variant="outlined"
     [toggle]="true"
     [isToggled]="isOptionToggled('option3')"
     (click)="toggleOption('option3')">
     Option 3
   </button>
-</r-button-group>`;
+</b-button-group>`;
 }

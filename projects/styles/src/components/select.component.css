@@ -1,0 +1,120 @@
+select[b-select] {
+  --horizontal-padding: clamp(
+    1rem,
+    calc(0.75rem + var(--radius, 0.5rem) / 2),
+    1.5rem
+  );
+
+  position: relative;
+  -webkit-appearance: none;
+  appearance: base-select;
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 2.8rem;
+  border-radius: var(--radius, 0.5rem);
+  color: var(--input-foreground, #798194);
+  border-width: 1px;
+  border-style: solid;
+  border-color: var(--border-color, transparent);
+  cursor: pointer;
+  transition:
+    opacity 0.2s,
+    padding-top 0.2s,
+    padding-bottom 0.2s,
+    background-color 0.2s,
+    border-color 0.2s;
+  --vertical-padding: calc(0.9rem - 2px);
+  padding: var(--vertical-padding) var(--horizontal-padding);
+  font-size: 1rem;
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+
+  &:focus-visible {
+    outline: 2px solid var(--primary, #0a0a0a);
+    outline-offset: 2px;
+  }
+
+  &::picker(select) {
+    pointer-events: all;
+    max-height: 200px;
+    animation: picker 0.2s ease-in-out;
+    appearance: base-select;
+    left: 0;
+    margin: 0.25rem 0;
+    padding: 0.25rem 0.25rem 0rem 0.25rem;
+    background: var(--background, #ffffff);
+    box-shadow: 0 0 0.25rem 0.125rem rgba(1, 1, 1, 0.01);
+    border-radius: clamp(0rem, var(--radius, 0.5rem), 0.5rem);
+    border: 1px solid
+      color-mix(
+        in srgb,
+        var(--foreground, #798194) 10%,
+        var(--background, #ffffff)
+      );
+  }
+
+  &::picker-icon {
+    font-size: 0.9rem;
+    margin-right: 1px;
+  }
+
+  &.invalid {
+    color: var(--error-foreground, #c40000ab);
+    background-color: var(--error, #fff0f0);
+    border-color: var(--error-border-color, #c40000ab);
+
+    &::picker-icon {
+      color: var(--error-foreground, #c40000ab);
+    }
+
+    &:focus-visible {
+      outline-color: var(--error-foreground, #c40000ab);
+    }
+  }
+
+  &.disabled {
+    pointer-events: none;
+    opacity: 0.5;
+  }
+}
+
+option {
+  margin-bottom: 0.25rem;
+  cursor: pointer;
+  padding: 0.5rem 0.75rem;
+  color: var(--foreground, #798194);
+  transition: 0.1s;
+  border-radius: clamp(0rem, calc(var(--radius, 0.5rem) - 0.2rem), 0.5rem);
+}
+
+option::checkmark {
+  display: none;
+}
+
+option:focus-visible {
+  outline-width: 0;
+}
+
+option:hover,
+option:focus-visible {
+  background-color: color-mix(
+    in srgb,
+    var(--foreground, #798194) 5%,
+    var(--background, #ffffff)
+  );
+}
+
+option:checked {
+  background-color: var(--primary, #0a0a0a);
+  color: var(--primary-foreground, #ffffff);
+}
+
+option:disabled {
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+selectedoption {
+  background-color: green;
+}

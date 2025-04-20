@@ -1,0 +1,65 @@
+{
+  "name": "@basis-ng/styles",
+  "version": "0.0.1-alpha.6",
+  "description": "CSS foundation for @basis-ng/primitives components",
+  "main": "src/index.css",
+  "exports": {
+    ".": "./src/index.css",
+    "./alert": "./src/components/alert.component.css",
+    "./attached-box": "./src/components/attached-box.component.css",
+    "./badge": "./src/components/badge.component.css",
+    "./bottom-sheet": "./src/components/bottom-sheet.component.css",
+    "./button-group": "./src/components/button-group.component.css",
+    "./button": "./src/components/button.component.css",
+    "./checkbox": "./src/components/checkbox.component.css",
+    "./color-picker": "./src/components/color-picker.component.css",
+    "./icon": "./src/components/icon.component.css",
+    "./input-group": "./src/components/input-group.component.css",
+    "./input": "./src/components/input.component.css",
+    "./label": "./src/components/label.component.css",
+    "./menu-group": "./src/components/menu-group.component.css",
+    "./menu-item-checkbox": "./src/components/menu-item-checkbox.component.css",
+    "./menu-item-radio": "./src/components/menu-item-radio.component.css",
+    "./menu-item": "./src/components/menu-item.component.css",
+    "./menu-label": "./src/components/menu-label.component.css",
+    "./menu": "./src/components/menu.component.css",
+    "./option": "./src/components/option.component.css",
+    "./range": "./src/components/range.component.css",
+    "./row-item": "./src/components/row-item.component.css",
+    "./row": "./src/components/row.component.css",
+    "./search": "./src/components/search.component.css",
+    "./select": "./src/components/select.component.css",
+    "./side-sheet": "./src/components/side-sheet.component.css",
+    "./spinner": "./src/components/spinner.component.css",
+    "./switch": "./src/components/switch.component.css",
+    "./tab": "./src/components/tab.component.css",
+    "./table": "./src/components/table.component.css",
+    "./tabs": "./src/components/tabs.component.css",
+    "./textarea": "./src/components/textarea.component.css",
+    "./tooltip": "./src/components/tooltip.component.css",
+    "./tree-node": "./src/components/tree-node.component.css",
+    "./tree": "./src/components/tree.component.css"
+  },
+  "files": [
+    "src/**/*.css"
+  ],
+  "scripts": {
+    "prepare": "echo 'No build step needed for pure CSS'",
+    "prepublishOnly": "echo 'Verifying CSS structure...'"
+  },
+  "keywords": [
+    "css",
+    "design-system",
+    "angular",
+    "basis-ng"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-org/basis-ng.git",
+    "directory": "projects/styles"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

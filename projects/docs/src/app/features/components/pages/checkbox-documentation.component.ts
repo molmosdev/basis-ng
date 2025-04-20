@@ -1,19 +1,18 @@
 import { Component } from '@angular/core';
+import { Checkbox, Label, Alert } from '@basis-ng/primitives';
 import { CodeBlockComponent } from '../shared/components/code-block.component';
-import { Checkbox, Label } from '../../../../../../lib/src/public-api';
 import {
   FormsModule,
   ReactiveFormsModule,
   FormControl,
   FormGroup,
 } from '@angular/forms';
-import { Alert } from '../../../../../../lib/src/core/components/alert/alert.component';
 
 @Component({
   selector: 'article[app-checkbox-documentation]',
-  template: `<r-alert type="info" title="Components are in alpha" icon="Rocket">
+  template: `<b-alert type="info" title="Components are in alpha" icon="Rocket">
       Try them out! We'd love to hear your feedback! Expect breaking changes!
-    </r-alert>
+    </b-alert>
     <h1>Checkbox</h1>
     <span>Checkbox is a custom toggle component.</span>
 
@@ -56,7 +55,7 @@ import { Alert } from '../../../../../../lib/src/core/components/alert/alert.com
     <div class="documentation-playground">
       <input
         type="checkbox"
-        r-checkbox
+        b-checkbox
         [value]="basicValue"
         (valueChange)="onValueChange($event)" />
     </div>
@@ -64,24 +63,24 @@ import { Alert } from '../../../../../../lib/src/core/components/alert/alert.com
     <h2>Angular Binding with ngModel</h2>
     <code-block [code]="ngModelUsage" />
     <div class="documentation-playground">
-      <input type="checkbox" r-checkbox [(ngModel)]="ngModelValue" />
+      <input type="checkbox" b-checkbox [(ngModel)]="ngModelValue" />
     </div>
 
     <h2>Angular Forms with formControlName</h2>
     <code-block [code]="formControlUsage" />
     <form [formGroup]="form">
       <div class="documentation-playground">
-        <input type="checkbox" r-checkbox formControlName="checkboxControl" />
+        <input type="checkbox" b-checkbox formControlName="checkboxControl" />
       </div>
     </form>
 
     <h2>With Label</h2>
     <code-block [code]="withLabelUsage" />
     <div class="documentation-playground">
-      <r-label>
-        <input type="checkbox" r-checkbox id="checkbox-label" />
+      <b-label>
+        <input type="checkbox" b-checkbox id="checkbox-label" />
         <label for="checkbox-label">Checkbox Label</label>
-      </r-label>
+      </b-label>
     </div>`,
   imports: [
     CodeBlockComponent,
@@ -93,14 +92,14 @@ import { Alert } from '../../../../../../lib/src/core/components/alert/alert.com
   ],
 })
 export default class CheckboxDocumentationComponent {
-  angularImport = `import { Checkbox } from 'rem-ui/angular'`;
-  basicUsage = `<input type="checkbox" r-checkbox [value]="basicValue" (valueChange)="onValueChange($event)" />`;
-  ngModelUsage = `<input type="checkbox" r-checkbox [(ngModel)]="ngModelValue" />`;
-  formControlUsage = `<input type="checkbox" r-checkbox formControlName="checkboxControl" />`;
-  withLabelUsage = `<r-label>
-  <input type="checkbox" r-checkbox id="checkbox-label" />
+  angularImport = `import { Checkbox } from '@basis-ng/primitives'`;
+  basicUsage = `<input type="checkbox" b-checkbox [value]="basicValue" (valueChange)="onValueChange($event)" />`;
+  ngModelUsage = `<input type="checkbox" b-checkbox [(ngModel)]="ngModelValue" />`;
+  formControlUsage = `<input type="checkbox" b-checkbox formControlName="checkboxControl" />`;
+  withLabelUsage = `<b-label>
+  <input type="checkbox" b-checkbox id="checkbox-label" />
   <label for="checkbox-label">Checkbox Label</label>
-</r-label>`;
+</b-label>`;
 
   basicValue = false;
   ngModelValue = false;

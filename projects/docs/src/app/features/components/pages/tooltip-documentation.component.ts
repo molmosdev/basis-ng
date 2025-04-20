@@ -1,16 +1,18 @@
 import { Component } from '@angular/core';
-import { TooltipComponent } from '../../../../../../lib/src/core/components/tooltip/tooltip.component';
+import {
+  TooltipComponent,
+  Button,
+  Position,
+  Alert,
+} from '@basis-ng/primitives';
 import { CodeBlockComponent } from '../shared/components/code-block.component';
-import { Button } from '../../../../../../lib/src/public-api';
-import { Position } from '../../../../../../lib/src/core/components/attached-box/types/position.type';
-import { Alert } from '../../../../../../lib/src/core/components/alert/alert.component';
 
 @Component({
   selector: 'article[app-tooltip-documentation]',
   template: `
-    <r-alert type="info" title="Components are in alpha" icon="Rocket">
+    <b-alert type="info" title="Components are in alpha" icon="Rocket">
       Try them out! We'd love to hear your feedback! Expect breaking changes!
-    </r-alert>
+    </b-alert>
 
     <h1>Tooltip</h1>
     <span>
@@ -58,58 +60,58 @@ import { Alert } from '../../../../../../lib/src/core/components/alert/alert.com
     <h2>Basic Example</h2>
     <code-block [code]="basicUsage" />
     <div class="documentation-playground">
-      <r-tooltip position="top-center">
-        <button r-button variant="outlined" r-tooltip-trigger>
+      <b-tooltip position="top-center">
+        <button b-button variant="outlined" b-tooltip-trigger>
           Hover me to see the tooltip
         </button>
-        <span r-tooltip-content>Tooltip content</span>
-      </r-tooltip>
+        <span b-tooltip-content>Tooltip content</span>
+      </b-tooltip>
     </div>
 
     <h2>Variants</h2>
     <code-block [code]="variantsUsage" />
     <div class="documentation-playground">
-      <r-tooltip variant="primary" position="top-center">
-        <button r-button variant="outlined" r-tooltip-trigger>
+      <b-tooltip variant="primary" position="top-center">
+        <button b-button variant="outlined" b-tooltip-trigger>
           Primary Tooltip
         </button>
-        <span r-tooltip-content>Primary Tooltip</span>
-      </r-tooltip>
-      <r-tooltip variant="secondary" position="top-center">
-        <button r-button variant="outlined" r-tooltip-trigger>
+        <span b-tooltip-content>Primary Tooltip</span>
+      </b-tooltip>
+      <b-tooltip variant="secondary" position="top-center">
+        <button b-button variant="outlined" b-tooltip-trigger>
           Secondary Tooltip
         </button>
-        <span r-tooltip-content>Secondary Tooltip</span>
-      </r-tooltip>
-      <r-tooltip variant="ghost" position="top-center">
-        <button r-button variant="outlined" r-tooltip-trigger>
+        <span b-tooltip-content>Secondary Tooltip</span>
+      </b-tooltip>
+      <b-tooltip variant="ghost" position="top-center">
+        <button b-button variant="outlined" b-tooltip-trigger>
           Ghost Tooltip
         </button>
-        <span r-tooltip-content>Ghost Tooltip</span>
-      </r-tooltip>
-      <r-tooltip variant="outlined" position="top-center">
-        <button r-button variant="outlined" r-tooltip-trigger>
+        <span b-tooltip-content>Ghost Tooltip</span>
+      </b-tooltip>
+      <b-tooltip variant="outlined" position="top-center">
+        <button b-button variant="outlined" b-tooltip-trigger>
           Outlined Tooltip
         </button>
-        <span r-tooltip-content>Outlined Tooltip</span>
-      </r-tooltip>
+        <span b-tooltip-content>Outlined Tooltip</span>
+      </b-tooltip>
     </div>
 
     <h2>Sizes</h2>
     <code-block [code]="sizesUsage" />
     <div class="documentation-playground">
-      <r-tooltip size="small" position="top-center">
-        <button r-button variant="outlined" r-tooltip-trigger>
+      <b-tooltip size="small" position="top-center">
+        <button b-button variant="outlined" b-tooltip-trigger>
           Small Tooltip
         </button>
-        <span r-tooltip-content>Small Tooltip</span>
-      </r-tooltip>
-      <r-tooltip size="default" position="top-center">
-        <button r-button variant="outlined" r-tooltip-trigger>
+        <span b-tooltip-content>Small Tooltip</span>
+      </b-tooltip>
+      <b-tooltip size="default" position="top-center">
+        <button b-button variant="outlined" b-tooltip-trigger>
           Default Tooltip
         </button>
-        <span r-tooltip-content>Default Tooltip</span>
-      </r-tooltip>
+        <span b-tooltip-content>Default Tooltip</span>
+      </b-tooltip>
     </div>
 
     <h2>Positions</h2>
@@ -129,175 +131,175 @@ import { Alert } from '../../../../../../lib/src/core/components/alert/alert.com
     <h3>Top</h3>
     <code-block [code]="topPositionsUsage" />
     <div class="documentation-playground">
-      <r-tooltip position="top-left">
-        <button r-button variant="outlined" r-tooltip-trigger>Top Left</button>
-        <span r-tooltip-content>Top Left Tooltip</span>
-      </r-tooltip>
-      <r-tooltip position="top-center">
-        <button r-button variant="outlined" r-tooltip-trigger>
+      <b-tooltip position="top-left">
+        <button b-button variant="outlined" b-tooltip-trigger>Top Left</button>
+        <span b-tooltip-content>Top Left Tooltip</span>
+      </b-tooltip>
+      <b-tooltip position="top-center">
+        <button b-button variant="outlined" b-tooltip-trigger>
           Top Center
         </button>
-        <span r-tooltip-content>Top Center Tooltip</span>
-      </r-tooltip>
-      <r-tooltip position="top-right">
-        <button r-button variant="outlined" r-tooltip-trigger>Top Right</button>
-        <span r-tooltip-content>Top Right Tooltip</span>
-      </r-tooltip>
+        <span b-tooltip-content>Top Center Tooltip</span>
+      </b-tooltip>
+      <b-tooltip position="top-right">
+        <button b-button variant="outlined" b-tooltip-trigger>Top Right</button>
+        <span b-tooltip-content>Top Right Tooltip</span>
+      </b-tooltip>
     </div>
 
     <h3>Bottom</h3>
     <code-block [code]="bottomPositionsUsage" />
     <div class="documentation-playground">
-      <r-tooltip position="bottom-left">
-        <button r-button variant="outlined" r-tooltip-trigger>
+      <b-tooltip position="bottom-left">
+        <button b-button variant="outlined" b-tooltip-trigger>
           Bottom Left
         </button>
-        <span r-tooltip-content>Bottom Left Tooltip</span>
-      </r-tooltip>
-      <r-tooltip position="bottom-center">
-        <button r-button variant="outlined" r-tooltip-trigger>
+        <span b-tooltip-content>Bottom Left Tooltip</span>
+      </b-tooltip>
+      <b-tooltip position="bottom-center">
+        <button b-button variant="outlined" b-tooltip-trigger>
           Bottom Center
         </button>
-        <span r-tooltip-content>Bottom Center Tooltip</span>
-      </r-tooltip>
-      <r-tooltip position="bottom-right">
-        <button r-button variant="outlined" r-tooltip-trigger>
+        <span b-tooltip-content>Bottom Center Tooltip</span>
+      </b-tooltip>
+      <b-tooltip position="bottom-right">
+        <button b-button variant="outlined" b-tooltip-trigger>
           Bottom Right
         </button>
-        <span r-tooltip-content>Bottom Right Tooltip</span>
-      </r-tooltip>
+        <span b-tooltip-content>Bottom Right Tooltip</span>
+      </b-tooltip>
     </div>
 
     <h3>Left</h3>
     <code-block [code]="leftPositionsUsage" />
     <div class="documentation-playground">
-      <r-tooltip position="left-top">
-        <button r-button variant="outlined" r-tooltip-trigger>Left Top</button>
-        <span r-tooltip-content>Left Top Tooltip</span>
-      </r-tooltip>
-      <r-tooltip position="left-center">
-        <button r-button variant="outlined" r-tooltip-trigger>
+      <b-tooltip position="left-top">
+        <button b-button variant="outlined" b-tooltip-trigger>Left Top</button>
+        <span b-tooltip-content>Left Top Tooltip</span>
+      </b-tooltip>
+      <b-tooltip position="left-center">
+        <button b-button variant="outlined" b-tooltip-trigger>
           Left Center
         </button>
-        <span r-tooltip-content>Left Center Tooltip</span>
-      </r-tooltip>
-      <r-tooltip position="left-bottom">
-        <button r-button variant="outlined" r-tooltip-trigger>
+        <span b-tooltip-content>Left Center Tooltip</span>
+      </b-tooltip>
+      <b-tooltip position="left-bottom">
+        <button b-button variant="outlined" b-tooltip-trigger>
           Left Bottom
         </button>
-        <span r-tooltip-content>Left Bottom Tooltip</span>
-      </r-tooltip>
+        <span b-tooltip-content>Left Bottom Tooltip</span>
+      </b-tooltip>
     </div>
 
     <h3>Right</h3>
     <code-block [code]="rightPositionsUsage" />
     <div class="documentation-playground">
-      <r-tooltip position="right-top">
-        <button r-button variant="outlined" r-tooltip-trigger>Right Top</button>
-        <span r-tooltip-content>Right Top Tooltip</span>
-      </r-tooltip>
-      <r-tooltip position="right-center">
-        <button r-button variant="outlined" r-tooltip-trigger>
+      <b-tooltip position="right-top">
+        <button b-button variant="outlined" b-tooltip-trigger>Right Top</button>
+        <span b-tooltip-content>Right Top Tooltip</span>
+      </b-tooltip>
+      <b-tooltip position="right-center">
+        <button b-button variant="outlined" b-tooltip-trigger>
           Right Center
         </button>
-        <span r-tooltip-content>Right Center Tooltip</span>
-      </r-tooltip>
-      <r-tooltip position="right-bottom">
-        <button r-button variant="outlined" r-tooltip-trigger>
+        <span b-tooltip-content>Right Center Tooltip</span>
+      </b-tooltip>
+      <b-tooltip position="right-bottom">
+        <button b-button variant="outlined" b-tooltip-trigger>
           Right Bottom
         </button>
-        <span r-tooltip-content>Right Bottom Tooltip</span>
-      </r-tooltip>
+        <span b-tooltip-content>Right Bottom Tooltip</span>
+      </b-tooltip>
     </div>
   `,
   standalone: true,
   imports: [TooltipComponent, CodeBlockComponent, Button, Alert],
 })
 export default class TooltipDocumentationComponent {
-  angularImport = `import { TooltipComponent } from 'rem-ui/angular'`;
+  angularImport = `import { TooltipComponent } from '@basis-ng/primitives'`;
 
-  basicUsage = `<r-tooltip position="top-center">
-  <button r-button r-tooltip-trigger>Hover me</button>
-  <span r-tooltip-content>Tooltip content</span>
-</r-tooltip>`;
+  basicUsage = `<b-tooltip position="top-center">
+  <button b-button b-tooltip-trigger>Hover me</button>
+  <span b-tooltip-content>Tooltip content</span>
+</b-tooltip>`;
 
-  variantsUsage = `<r-tooltip variant="primary" position="top-center">
-  <button r-button r-tooltip-trigger>Primary Tooltip</button>
-  <span r-tooltip-content>Primary Tooltip</span>
-</r-tooltip>
-<r-tooltip variant="secondary" position="top-center">
-  <button r-button r-tooltip-trigger>Secondary Tooltip</button>
-  <span r-tooltip-content>Secondary Tooltip</span>
-</r-tooltip>
-<r-tooltip variant="ghost" position="top-center">
-  <button r-button r-tooltip-trigger>Ghost Tooltip</button>
-  <span r-tooltip-content>Ghost Tooltip</span>
-</r-tooltip>
-<r-tooltip variant="outlined" position="top-center">
-  <button r-button r-tooltip-trigger>Outlined Tooltip</button>
-  <span r-tooltip-content>Outlined Tooltip</span>
-</r-tooltip>`;
+  variantsUsage = `<b-tooltip variant="primary" position="top-center">
+  <button b-button b-tooltip-trigger>Primary Tooltip</button>
+  <span b-tooltip-content>Primary Tooltip</span>
+</b-tooltip>
+<b-tooltip variant="secondary" position="top-center">
+  <button b-button b-tooltip-trigger>Secondary Tooltip</button>
+  <span b-tooltip-content>Secondary Tooltip</span>
+</b-tooltip>
+<b-tooltip variant="ghost" position="top-center">
+  <button b-button b-tooltip-trigger>Ghost Tooltip</button>
+  <span b-tooltip-content>Ghost Tooltip</span>
+</b-tooltip>
+<b-tooltip variant="outlined" position="top-center">
+  <button b-button b-tooltip-trigger>Outlined Tooltip</button>
+  <span b-tooltip-content>Outlined Tooltip</span>
+</b-tooltip>`;
 
-  sizesUsage = `<r-tooltip size="small" position="top-center">
-  <button r-button r-tooltip-trigger>Small Tooltip</button>
-  <span r-tooltip-content>Small Tooltip</span>
-</r-tooltip>
-<r-tooltip size="default" position="top-center">
-  <button r-button r-tooltip-trigger>Default Tooltip</button>
-  <span r-tooltip-content>Default Tooltip</span>
-</r-tooltip>`;
+  sizesUsage = `<b-tooltip size="small" position="top-center">
+  <button b-button b-tooltip-trigger>Small Tooltip</button>
+  <span b-tooltip-content>Small Tooltip</span>
+</b-tooltip>
+<b-tooltip size="default" position="top-center">
+  <button b-button b-tooltip-trigger>Default Tooltip</button>
+  <span b-tooltip-content>Default Tooltip</span>
+</b-tooltip>`;
 
-  topPositionsUsage = `<r-tooltip position="top-left">
-  <button r-button r-tooltip-trigger>Top Left</button>
-  <span r-tooltip-content>Top Left Tooltip</span>
-</r-tooltip>
-<r-tooltip position="top-center">
-  <button r-button r-tooltip-trigger>Top Center</button>
-  <span r-tooltip-content>Top Center Tooltip</span>
-</r-tooltip>
-<r-tooltip position="top-right">
-  <button r-button r-tooltip-trigger>Top Right</button>
-  <span r-tooltip-content>Top Right Tooltip</span>
-</r-tooltip>`;
+  topPositionsUsage = `<b-tooltip position="top-left">
+  <button b-button b-tooltip-trigger>Top Left</button>
+  <span b-tooltip-content>Top Left Tooltip</span>
+</b-tooltip>
+<b-tooltip position="top-center">
+  <button b-button b-tooltip-trigger>Top Center</button>
+  <span b-tooltip-content>Top Center Tooltip</span>
+</b-tooltip>
+<b-tooltip position="top-right">
+  <button b-button b-tooltip-trigger>Top Right</button>
+  <span b-tooltip-content>Top Right Tooltip</span>
+</b-tooltip>`;
 
-  bottomPositionsUsage = `<r-tooltip position="bottom-left">
-  <button r-button r-tooltip-trigger>Bottom Left</button>
-  <span r-tooltip-content>Bottom Left Tooltip</span>
-</r-tooltip>
-<r-tooltip position="bottom-center">
-  <button r-button r-tooltip-trigger>Bottom Center</button>
-  <span r-tooltip-content>Bottom Center Tooltip</span>
-</r-tooltip>
-<r-tooltip position="bottom-right">
-  <button r-button r-tooltip-trigger>Bottom Right</button>
-  <span r-tooltip-content>Bottom Right Tooltip</span>
-</r-tooltip>`;
+  bottomPositionsUsage = `<b-tooltip position="bottom-left">
+  <button b-button b-tooltip-trigger>Bottom Left</button>
+  <span b-tooltip-content>Bottom Left Tooltip</span>
+</b-tooltip>
+<b-tooltip position="bottom-center">
+  <button b-button b-tooltip-trigger>Bottom Center</button>
+  <span b-tooltip-content>Bottom Center Tooltip</span>
+</b-tooltip>
+<b-tooltip position="bottom-right">
+  <button b-button b-tooltip-trigger>Bottom Right</button>
+  <span b-tooltip-content>Bottom Right Tooltip</span>
+</b-tooltip>`;
 
-  leftPositionsUsage = `<r-tooltip position="left-top">
-  <button r-button r-tooltip-trigger>Left Top</button>
-  <span r-tooltip-content>Left Top Tooltip</span>
-</r-tooltip>
-<r-tooltip position="left-center">
-  <button r-button r-tooltip-trigger>Left Center</button>
-  <span r-tooltip-content>Left Center Tooltip</span>
-</r-tooltip>
-<r-tooltip position="left-bottom">
-  <button r-button r-tooltip-trigger>Left Bottom</button>
-  <span r-tooltip-content>Left Bottom Tooltip</span>
-</r-tooltip>`;
+  leftPositionsUsage = `<b-tooltip position="left-top">
+  <button b-button b-tooltip-trigger>Left Top</button>
+  <span b-tooltip-content>Left Top Tooltip</span>
+</b-tooltip>
+<b-tooltip position="left-center">
+  <button b-button b-tooltip-trigger>Left Center</button>
+  <span b-tooltip-content>Left Center Tooltip</span>
+</b-tooltip>
+<b-tooltip position="left-bottom">
+  <button b-button b-tooltip-trigger>Left Bottom</button>
+  <span b-tooltip-content>Left Bottom Tooltip</span>
+</b-tooltip>`;
 
-  rightPositionsUsage = `<r-tooltip position="right-top">
-  <button r-button r-tooltip-trigger>Right Top</button>
-  <span r-tooltip-content>Right Top Tooltip</span>
-</r-tooltip>
-<r-tooltip position="right-center">
-  <button r-button r-tooltip-trigger>Right Center</button>
-  <span r-tooltip-content>Right Center Tooltip</span>
-</r-tooltip>
-<r-tooltip position="right-bottom">
-  <button r-button r-tooltip-trigger>Right Bottom</button>
-  <span r-tooltip-content>Right Bottom Tooltip</span>
-</r-tooltip>`;
+  rightPositionsUsage = `<b-tooltip position="right-top">
+  <button b-button b-tooltip-trigger>Right Top</button>
+  <span b-tooltip-content>Right Top Tooltip</span>
+</b-tooltip>
+<b-tooltip position="right-center">
+  <button b-button b-tooltip-trigger>Right Center</button>
+  <span b-tooltip-content>Right Center Tooltip</span>
+</b-tooltip>
+<b-tooltip position="right-bottom">
+  <button b-button b-tooltip-trigger>Right Bottom</button>
+  <span b-tooltip-content>Right Bottom Tooltip</span>
+</b-tooltip>`;
 
   positions: Position[] = [
     'top-left',

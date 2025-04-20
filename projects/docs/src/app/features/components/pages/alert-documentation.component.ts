@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
+import { Alert } from '@basis-ng/primitives';
 import { CodeBlockComponent } from '../shared/components/code-block.component';
-import { Alert } from '../../../../../../lib/src/public-api';
 
 @Component({
   selector: 'article[app-alert-documentation]',
-  template: `<r-alert type="info" title="Components are in alpha" icon="Rocket">
+  template: `<b-alert type="info" title="Components are in alpha" icon="Rocket">
       Try them out! We'd love to hear your feedback! Expect breaking changes!
-    </r-alert>
+    </b-alert>
     <h1>Alert</h1>
     <span>
       Alert is a component used to display important messages to the user.
@@ -62,74 +62,74 @@ import { Alert } from '../../../../../../lib/src/public-api';
     <h2>Basic</h2>
     <code-block [code]="basicUsage" />
     <div class="documentation-playground">
-      <r-alert type="info" title="Info Alert" icon="Info">
+      <b-alert type="info" title="Info Alert" icon="Info">
         This is a basic informational alert.
-      </r-alert>
+      </b-alert>
     </div>
 
     <h2>Types</h2>
     <code-block [code]="typesUsage" />
     <div class="documentation-playground">
-      <r-alert type="success" title="Success" icon="CircleCheck">
+      <b-alert type="success" title="Success" icon="CircleCheck">
         This is a success alert.
-      </r-alert>
-      <r-alert type="error" title="Error" icon="CircleX">
+      </b-alert>
+      <b-alert type="error" title="Error" icon="CircleX">
         This is an error alert.
-      </r-alert>
-      <r-alert type="warning" title="Warning" icon="OctagonAlert">
+      </b-alert>
+      <b-alert type="warning" title="Warning" icon="OctagonAlert">
         This is a warning alert.
-      </r-alert>
-      <r-alert type="info" title="Info" icon="Info">
+      </b-alert>
+      <b-alert type="info" title="Info" icon="Info">
         This is an informational alert.
-      </r-alert>
+      </b-alert>
     </div>
 
     <h2>Dismissible</h2>
     <code-block [code]="dismissibleUsage" />
     <div class="documentation-playground">
-      <r-alert type="info" [dismissible]="true" title="Info" icon="Info">
+      <b-alert type="info" [dismissible]="true" title="Info" icon="Info">
         This alert can be dismissed.
-      </r-alert>
+      </b-alert>
     </div>
 
     <h2>Max Width</h2>
     <code-block [code]="maxWidthUsage" />
     <div class="documentation-playground">
-      <r-alert type="info" title="Info Alert" icon="Info" [maxWidth]="'300px'">
+      <b-alert type="info" title="Info Alert" icon="Info" [maxWidth]="'300px'">
         This alert has a maximum width of 300px.
-      </r-alert>
+      </b-alert>
     </div>`,
   imports: [CodeBlockComponent, Alert],
 })
 export default class AlertDocumentationComponent {
-  angularImport = `import { Alert } from 'rem-ui/angular'`;
+  angularImport = `import { Alert } from '@basis-ng/primitives'`;
 
-  basicUsage = `<r-alert type="info" title="Info Alert" icon="Info">
+  basicUsage = `<b-alert type="info" title="Info Alert" icon="Info">
   This is a basic informational alert.
-</r-alert>`;
+</b-alert>`;
 
-  typesUsage = `<r-alert type="success" title="Success" icon="CircleCheck">
+  typesUsage = `<b-alert type="success" title="Success" icon="CircleCheck">
   This is a success alert.
-</r-alert>
-<r-alert type="error" title="Error" icon="CircleX">
+</b-alert>
+<b-alert type="error" title="Error" icon="CircleX">
   This is an error alert.
-</r-alert>
-<r-alert type="warning" title="Warning" icon="OctagonAlert">
+</b-alert>
+<b-alert type="warning" title="Warning" icon="OctagonAlert">
   This is a warning alert.
-</r-alert>
-<r-alert type="info" title="Info" icon="Info">
+</b-alert>
+<b-alert type="info" title="Info" icon="Info">
   This is an informational alert.
-</r-alert>`;
+</b-alert>`;
 
-  dismissibleUsage = `<r-alert type="info" [dismissible]="true" title="Info" icon="Info">
+  dismissibleUsage = `<b-alert type="info" [dismissible]="true" title="Info" icon="Info">
   This alert can be dismissed.
-</r-alert>`;
+</b-alert>`;
 
-  slotsUsage = `<r-alert type="success">
+  slotsUsage = `<b-alert type="success">
   This is a success alert with slots for the main content.
-</r-alert>`;
+</b-alert>`;
 
-  maxWidthUsage = `<r-alert type="info" title="Info Alert" icon="Info" [maxWidth]="'300px'">
+  maxWidthUsage = `<b-alert type="info" title="Info Alert" icon="Info" [maxWidth]="'300px'">
   This alert has a maximum width of 300px.
-</r-alert>`;
+</b-alert>`;
 }

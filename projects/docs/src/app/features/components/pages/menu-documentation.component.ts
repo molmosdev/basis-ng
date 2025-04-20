@@ -1,18 +1,21 @@
 import { Component } from '@angular/core';
-import { Menu } from '../../../../../../lib/src/core/components/menu/menu.component';
-import { MenuItemComponent } from '../../../../../../lib/src/core/components/menu/shared/components/menu-item/menu-item.component';
-import { MenuGroupComponent } from '../../../../../../lib/src/core/components/menu/shared/components/menu-group/menu-group.component';
-import { MenuLabel } from '../../../../../../lib/src/core/components/menu/shared/components/menu-label/menu-label.component';
-import { MenuTrigger } from '../../../../../../lib/src/core/components/menu/shared/directives/menu-trigger.directive';
+import {
+  Menu,
+  MenuItemComponent,
+  MenuLabel,
+  MenuTrigger,
+  Icon,
+  Button,
+  Alert,
+} from '@basis-ng/primitives';
+import { MenuGroupComponent } from '../../../../../../primitives/src/core/components/menu/shared/components/menu-group/menu-group.component';
 import { CodeBlockComponent } from '../shared/components/code-block.component';
-import { Icon, Button } from '../../../../../../lib/src/public-api';
-import { Alert } from '../../../../../../lib/src/core/components/alert/alert.component';
 
 @Component({
   selector: 'article[app-menu-documentation]',
-  template: `<r-alert type="info" title="Components are in alpha" icon="Rocket">
+  template: `<b-alert type="info" title="Components are in alpha" icon="Rocket">
       Try them out! We'd love to hear your feedback! Expect breaking changes!
-    </r-alert>
+    </b-alert>
     <h1>Menu</h1>
     <span>
       The Menu component provides a flexible and accessible way to create
@@ -22,22 +25,6 @@ import { Alert } from '../../../../../../lib/src/core/components/alert/alert.com
     <code-block [code]="angularImport" />
 
     <h2>Properties</h2>
-    <span>This section applies to the <strong>Menu</strong> component.</span>
-    <div class="table-wrapper">
-      <table>
-        <tr>
-          <th>Property</th>
-          <th>Type</th>
-          <th>Description</th>
-        </tr>
-        <tr>
-          <td><strong>floating</strong></td>
-          <td><code>boolean</code></td>
-          <td>Determines if the menu should float above other content.</td>
-        </tr>
-      </table>
-    </div>
-
     <span
       >This section applies to the <strong>Menu Item</strong> component.</span
     >
@@ -84,75 +71,75 @@ import { Alert } from '../../../../../../lib/src/core/components/alert/alert.com
     <h2>Basic Example</h2>
     <code-block [code]="basicUsage" />
     <div class="documentation-playground">
-      <r-menu>
-        <r-menu-label>Basic Menu</r-menu-label>
-        <r-menu-item>Item 1</r-menu-item>
-        <r-menu-item>Item 2</r-menu-item>
-        <r-menu-item>Item 3</r-menu-item>
-      </r-menu>
+      <b-menu>
+        <b-menu-label>Basic Menu</b-menu-label>
+        <b-menu-item>Item 1</b-menu-item>
+        <b-menu-item>Item 2</b-menu-item>
+        <b-menu-item>Item 3</b-menu-item>
+      </b-menu>
     </div>
 
     <h2>With Nested Menus</h2>
     <code-block [code]="nestedUsage" />
     <div class="documentation-playground">
-      <r-menu>
-        <r-menu-label>Main Menu</r-menu-label>
-        <r-menu-item>Item 1</r-menu-item>
-        <r-menu-item [menuTriggerFor]="subMenu" [submenu]="true">
+      <b-menu>
+        <b-menu-label>Main Menu</b-menu-label>
+        <b-menu-item>Item 1</b-menu-item>
+        <b-menu-item [menuTriggerFor]="subMenu" [submenu]="true">
           <div
             style="display: flex; justify-content: space-between; width: 100%">
             Item 2
-            <i r-icon icon="ChevronRight" [size]="16"></i>
+            <i b-icon icon="ChevronRight" [size]="16"></i>
           </div>
-        </r-menu-item>
+        </b-menu-item>
         <ng-template #subMenu>
-          <r-menu [floating]="true">
-            <r-menu-label>Submenu</r-menu-label>
-            <r-menu-group>
-              <r-menu-item>Subitem 1</r-menu-item>
-              <r-menu-item>Subitem 2</r-menu-item>
-            </r-menu-group>
-            <r-menu-group>
-              <r-menu-item>Subitem 3</r-menu-item>
-              <r-menu-item>Subitem 4</r-menu-item>
-            </r-menu-group>
-          </r-menu>
+          <b-menu>
+            <b-menu-label>Submenu</b-menu-label>
+            <b-menu-group>
+              <b-menu-item>Subitem 1</b-menu-item>
+              <b-menu-item>Subitem 2</b-menu-item>
+            </b-menu-group>
+            <b-menu-group>
+              <b-menu-item>Subitem 3</b-menu-item>
+              <b-menu-item>Subitem 4</b-menu-item>
+            </b-menu-group>
+          </b-menu>
         </ng-template>
-      </r-menu>
+      </b-menu>
     </div>
 
-    <h2>With r-button Trigger</h2>
+    <h2>With b-button Trigger</h2>
     <code-block [code]="buttonTriggerUsage" />
     <div class="documentation-playground">
       <button
-        r-button
+        b-button
         variant="outlined"
         [menuTriggerFor]="menu"
         [menuTriggerPosition]="'bottom-left'">
         Open Menu
       </button>
       <ng-template #menu>
-        <r-menu [floating]="true">
-          <r-menu-label>Menu</r-menu-label>
-          <r-menu-item>Item 1</r-menu-item>
-          <r-menu-item>Item 2</r-menu-item>
-          <r-menu-item [menuTriggerFor]="subMenu" [submenu]="true">
+        <b-menu>
+          <b-menu-label>Menu</b-menu-label>
+          <b-menu-item>Item 1</b-menu-item>
+          <b-menu-item>Item 2</b-menu-item>
+          <b-menu-item [menuTriggerFor]="subMenu" [submenu]="true">
             <div
               style="display: flex; justify-content: space-between; width: 100%">
               Item 3
-              <i r-icon icon="ChevronRight" [size]="16"></i>
+              <i b-icon icon="ChevronRight" [size]="16"></i>
             </div>
-          </r-menu-item>
+          </b-menu-item>
           <ng-template #subMenu>
-            <r-menu [floating]="true">
-              <r-menu-label>Submenu</r-menu-label>
-              <r-menu-group>
-                <r-menu-item>Subitem 1</r-menu-item>
-                <r-menu-item>Subitem 2</r-menu-item>
-              </r-menu-group>
-            </r-menu>
+            <b-menu>
+              <b-menu-label>Submenu</b-menu-label>
+              <b-menu-group>
+                <b-menu-item>Subitem 1</b-menu-item>
+                <b-menu-item>Subitem 2</b-menu-item>
+              </b-menu-group>
+            </b-menu>
           </ng-template>
-        </r-menu>
+        </b-menu>
       </ng-template>
     </div>
 
@@ -161,65 +148,65 @@ import { Alert } from '../../../../../../lib/src/core/components/alert/alert.com
     <div class="documentation-playground">
       <div style="display: flex; flex-direction: column; gap: 1rem;">
         <button
-          r-button
+          b-button
           variant="outlined"
           [menuTriggerFor]="menuTopLeft"
           [menuTriggerPosition]="'top-left'">
           Top Left
         </button>
         <ng-template #menuTopLeft>
-          <r-menu [floating]="true">
-            <r-menu-label>Top Left Menu</r-menu-label>
-            <r-menu-item>Item 1</r-menu-item>
-            <r-menu-item>Item 2</r-menu-item>
-          </r-menu>
+          <b-menu>
+            <b-menu-label>Top Left Menu</b-menu-label>
+            <b-menu-item>Item 1</b-menu-item>
+            <b-menu-item>Item 2</b-menu-item>
+          </b-menu>
         </ng-template>
 
         <button
-          r-button
+          b-button
           variant="outlined"
           [menuTriggerFor]="menuBottomCenter"
           [menuTriggerPosition]="'bottom-center'">
           Bottom Center
         </button>
         <ng-template #menuBottomCenter>
-          <r-menu [floating]="true">
-            <r-menu-label>Bottom Center Menu</r-menu-label>
-            <r-menu-item>Item 1</r-menu-item>
-            <r-menu-item>Item 2</r-menu-item>
-          </r-menu>
+          <b-menu>
+            <b-menu-label>Bottom Center Menu</b-menu-label>
+            <b-menu-item>Item 1</b-menu-item>
+            <b-menu-item>Item 2</b-menu-item>
+          </b-menu>
         </ng-template>
 
         <button
-          r-button
+          b-button
           variant="outlined"
           [menuTriggerFor]="menuRightTop"
           [menuTriggerPosition]="'right-top'">
           Right Top
         </button>
         <ng-template #menuRightTop>
-          <r-menu [floating]="true">
-            <r-menu-label>Right Top Menu</r-menu-label>
-            <r-menu-group>
-              <r-menu-item>Item 1</r-menu-item>
-              <r-menu-item>Item 2</r-menu-item>
-            </r-menu-group>
-          </r-menu>
+          <b-menu>
+            <b-menu-label>Right Top Menu</b-menu-label>
+            <b-menu-group>
+              <b-menu-item>Item 1</b-menu-item>
+              <b-menu-item>Item 2</b-menu-item>
+            </b-menu-group>
+          </b-menu>
         </ng-template>
 
         <button
-          r-button
+          b-button
           variant="outlined"
           [menuTriggerFor]="menuLeftCenter"
           [menuTriggerPosition]="'left-center'">
           Left Center
         </button>
         <ng-template #menuLeftCenter>
-          <r-menu [floating]="true">
-            <r-menu-label>Left Center Menu</r-menu-label>
-            <r-menu-item>Item 1</r-menu-item>
-            <r-menu-item>Item 2</r-menu-item>
-          </r-menu>
+          <b-menu>
+            <b-menu-label>Left Center Menu</b-menu-label>
+            <b-menu-item>Item 1</b-menu-item>
+            <b-menu-item>Item 2</b-menu-item>
+          </b-menu>
         </ng-template>
       </div>
     </div>`,
@@ -237,128 +224,128 @@ import { Alert } from '../../../../../../lib/src/core/components/alert/alert.com
   ],
 })
 export default class MenuDocumentationComponent {
-  angularImport = `import { Menu, MenuItemComponent, MenuGroupComponent, MenuTrigger } from 'rem-ui/angular';`;
+  angularImport = `import { Menu, MenuItemComponent, MenuGroupComponent, MenuTrigger } from '@basis-ng/primitives';`;
 
-  basicUsage = `<r-menu>
-  <r-menu-label>Basic Menu</r-menu-label>
-  <r-menu-item>Item 1</r-menu-item>
-  <r-menu-item>Item 2</r-menu-item>
-  <r-menu-item>Item 3</r-menu-item>
-</r-menu>`;
+  basicUsage = `<b-menu>
+  <b-menu-label>Basic Menu</b-menu-label>
+  <b-menu-item>Item 1</b-menu-item>
+  <b-menu-item>Item 2</b-menu-item>
+  <b-menu-item>Item 3</b-menu-item>
+</b-menu>`;
 
-  nestedUsage = `<r-menu>
-  <r-menu-label>Main Menu</r-menu-label>
-  <r-menu-item>Item 1</r-menu-item>
-  <r-menu-item [menuTriggerFor]="subMenu" [submenu]="true">
+  nestedUsage = `<b-menu>
+  <b-menu-label>Main Menu</b-menu-label>
+  <b-menu-item>Item 1</b-menu-item>
+  <b-menu-item [menuTriggerFor]="subMenu" [submenu]="true">
     <div style="display: flex; justify-content: space-between; width: 100%">
       Item 2
-      <i r-icon icon="ChevronRight" [size]="16"></i>
+      <i b-icon icon="ChevronRight" [size]="16"></i>
     </div>
-  </r-menu-item>
+  </b-menu-item>
   <ng-template #subMenu>
-    <r-menu [floating]="true">
-      <r-menu-label>Submenu</r-menu-label>
-      <r-menu-group>
-        <r-menu-item>Subitem 1</r-menu-item>
-        <r-menu-item>Subitem 2</r-menu-item>
-      </r-menu-group>
-      <r-menu-group>
-        <r-menu-item>Subitem 3</r-menu-item>
-        <r-menu-item>Subitem 4</r-menu-item>
-      </r-menu-group>
-    </r-menu>
+    <b-menu>
+      <b-menu-label>Submenu</b-menu-label>
+      <b-menu-group>
+        <b-menu-item>Subitem 1</b-menu-item>
+        <b-menu-item>Subitem 2</b-menu-item>
+      </b-menu-group>
+      <b-menu-group>
+        <b-menu-item>Subitem 3</b-menu-item>
+        <b-menu-item>Subitem 4</b-menu-item>
+      </b-menu-group>
+    </b-menu>
   </ng-template>
-</r-menu>`;
+</b-menu>`;
 
   buttonTriggerUsage = `<button
-  r-button
+  b-button
   variant="outlined"
   [menuTriggerFor]="menu"
   [menuTriggerPosition]="'bottom-left'">
   Open Menu
 </button>
 <ng-template #menu>
-  <r-menu [floating]="true">
-    <r-menu-label>Menu</r-menu-label>
-    <r-menu-item>Item 1</r-menu-item>
-    <r-menu-item>Item 2</r-menu-item>
-    <r-menu-item [menuTriggerFor]="subMenu" [submenu]="true">
+  <b-menu>
+    <b-menu-label>Menu</b-menu-label>
+    <b-menu-item>Item 1</b-menu-item>
+    <b-menu-item>Item 2</b-menu-item>
+    <b-menu-item [menuTriggerFor]="subMenu" [submenu]="true">
       <div style="display: flex; justify-content: space-between; width: 100%">
         Item 3
-        <i r-icon icon="ChevronRight" [size]="16"></i>
+        <i b-icon icon="ChevronRight" [size]="16"></i>
       </div>
-    </r-menu-item>
+    </b-menu-item>
     <ng-template #subMenu>
-      <r-menu [floating]="true">
-        <r-menu-label>Submenu</r-menu-label>
-        <r-menu-group>
-          <r-menu-item>Subitem 1</r-menu-item>
-          <r-menu-item>Subitem 2</r-menu-item>
-        </r-menu-group>
-      </r-menu>
+      <b-menu>
+        <b-menu-label>Submenu</b-menu-label>
+        <b-menu-group>
+          <b-menu-item>Subitem 1</b-menu-item>
+          <b-menu-item>Subitem 2</b-menu-item>
+        </b-menu-group>
+      </b-menu>
     </ng-template>
-  </r-menu>
+  </b-menu>
 </ng-template>`;
 
   triggerPositionExamples = `<button
-  r-button
+  b-button
   variant="outlined"
   [menuTriggerFor]="menuTopLeft"
   [menuTriggerPosition]="'top-left'">
   Top Left
 </button>
 <ng-template #menuTopLeft>
-  <r-menu [floating]="true">
-    <r-menu-label>Top Left Menu</r-menu-label>
-    <r-menu-item>Item 1</r-menu-item>
-    <r-menu-item>Item 2</r-menu-item>
-  </r-menu>
+  <b-menu>
+    <b-menu-label>Top Left Menu</b-menu-label>
+    <b-menu-item>Item 1</b-menu-item>
+    <b-menu-item>Item 2</b-menu-item>
+  </b-menu>
 </ng-template>
 
 <button
-  r-button
+  b-button
   variant="outlined"
   [menuTriggerFor]="menuBottomCenter"
   [menuTriggerPosition]="'bottom-center'">
   Bottom Center
 </button>
 <ng-template #menuBottomCenter>
-  <r-menu [floating]="true">
-    <r-menu-label>Bottom Center Menu</r-menu-label>
-    <r-menu-item>Item 1</r-menu-item>
-    <r-menu-item>Item 2</r-menu-item>
-  </r-menu>
+  <b-menu>
+    <b-menu-label>Bottom Center Menu</b-menu-label>
+    <b-menu-item>Item 1</b-menu-item>
+    <b-menu-item>Item 2</b-menu-item>
+  </b-menu>
 </ng-template>
 
 <button
-  r-button
+  b-button
   variant="outlined"
   [menuTriggerFor]="menuRightTop"
   [menuTriggerPosition]="'right-top'">
   Right Top
 </button>
 <ng-template #menuRightTop>
-  <r-menu [floating]="true">
-    <r-menu-label>Right Top Menu</r-menu-label>
-    <r-menu-group>
-      <r-menu-item>Item 1</r-menu-item>
-      <r-menu-item>Item 2</r-menu-item>
-    </r-menu-group>
-  </r-menu>
+  <b-menu>
+    <b-menu-label>Right Top Menu</b-menu-label>
+    <b-menu-group>
+      <b-menu-item>Item 1</b-menu-item>
+      <b-menu-item>Item 2</b-menu-item>
+    </b-menu-group>
+  </b-menu>
 </ng-template>
 
 <button
-  r-button
+  b-button
   variant="outlined"
   [menuTriggerFor]="menuLeftCenter"
   [menuTriggerPosition]="'left-center'">
   Left Center
 </button>
 <ng-template #menuLeftCenter>
-  <r-menu [floating]="true">
-    <r-menu-label>Left Center Menu</r-menu-label>
-    <r-menu-item>Item 1</r-menu-item>
-    <r-menu-item>Item 2</r-menu-item>
-  </r-menu>
+  <b-menu>
+    <b-menu-label>Left Center Menu</b-menu-label>
+    <b-menu-item>Item 1</b-menu-item>
+    <b-menu-item>Item 2</b-menu-item>
+  </b-menu>
 </ng-template>`;
 }

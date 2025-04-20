@@ -1,13 +1,12 @@
 import { Component } from '@angular/core';
+import { Badge, Alert } from '@basis-ng/primitives';
 import { CodeBlockComponent } from '../shared/components/code-block.component';
-import { Badge } from '../../../../../../lib/src/core/components/badge/badge.component';
-import { Alert } from '../../../../../../lib/src/core/components/alert/alert.component';
 
 @Component({
   selector: 'article[app-badge-documentation]',
-  template: `<r-alert type="info" title="Components are in alpha" icon="Rocket">
+  template: `<b-alert type="info" title="Components are in alpha" icon="Rocket">
       Try them out! We'd love to hear your feedback! Expect breaking changes!
-    </r-alert>
+    </b-alert>
     <h1>Badge</h1>
     <span>
       Badge is a small component used to display additional information or
@@ -42,33 +41,33 @@ import { Alert } from '../../../../../../lib/src/core/components/alert/alert.com
     <h2>Basic</h2>
     <code-block [code]="basicUsage" />
     <div class="documentation-playground">
-      <span r-badge variant="primary" size="default">Primary Badge</span>
+      <span b-badge variant="primary" size="default">Primary Badge</span>
     </div>
 
     <h2>Variants</h2>
     <code-block [code]="variantsUsage" />
     <div class="documentation-playground">
-      <span r-badge variant="primary">Primary</span>
-      <span r-badge variant="secondary">Secondary</span>
-      <span r-badge variant="ghost">Ghost</span>
-      <span r-badge variant="outlined">Outlined</span>
+      <span b-badge variant="primary">Primary</span>
+      <span b-badge variant="secondary">Secondary</span>
+      <span b-badge variant="ghost">Ghost</span>
+      <span b-badge variant="outlined">Outlined</span>
     </div>
 
     <h2>Sizes</h2>
     <code-block [code]="sizesUsage" />
     <div class="documentation-playground">
-      <span r-badge size="small">Small</span>
-      <span r-badge size="default">Default</span>
+      <span b-badge size="small">Small</span>
+      <span b-badge size="default">Default</span>
     </div>`,
   imports: [CodeBlockComponent, Badge, Alert],
 })
 export default class BadgeDocumentationComponent {
-  angularImport = `import { Badge } from 'rem-ui/angular'`;
-  basicUsage = `<span r-badge variant="primary" size="default">Primary Badge</span>`;
-  variantsUsage = `<span r-badge variant="primary">Primary</span>
-<span r-badge variant="secondary">Secondary</span>
-<span r-badge variant="ghost">Ghost</span>
-<span r-badge variant="outlined">Outlined</span>`;
-  sizesUsage = `<span r-badge size="small">Small</span>
-<span r-badge size="default">Default</span>`;
+  angularImport = `import { Badge } from '@basis-ng/primitives'`;
+  basicUsage = `<span b-badge variant="primary" size="default">Primary Badge</span>`;
+  variantsUsage = `<span b-badge variant="primary">Primary</span>
+<span b-badge variant="secondary">Secondary</span>
+<span b-badge variant="ghost">Ghost</span>
+<span b-badge variant="outlined">Outlined</span>`;
+  sizesUsage = `<span b-badge size="small">Small</span>
+<span b-badge size="default">Default</span>`;
 }

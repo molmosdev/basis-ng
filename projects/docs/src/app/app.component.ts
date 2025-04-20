@@ -1,6 +1,6 @@
 import { Component, inject, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { ThemeService } from '../../../lib/src/core/services/theme.service';
+import { ThemeService } from '../../../primitives/src/core/services/theme.service';
 import { HeaderComponent } from './core/components/header/header.component';
 import { NavigationComponent } from './core/components/navigation/navigation.component';
 
@@ -11,7 +11,7 @@ import { NavigationComponent } from './core/components/navigation/navigation.com
   styleUrl: './app.component.css',
 })
 export class AppComponent {
-  title = 'rem-ui';
+  title = 'basis-ng';
   themeService = inject(ThemeService);
   readonly isMenuVisible = signal(false);
   readonly isThemeConfigVisible = signal(false);

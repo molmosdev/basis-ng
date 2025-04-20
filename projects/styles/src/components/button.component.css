@@ -1,0 +1,177 @@
+button[b-button] {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--primary, #0a0a0a);
+  border-radius: var(--radius, 0.5rem);
+  box-sizing: border-box;
+  gap: 0.5rem;
+  position: relative;
+  overflow: hidden;
+  transition:
+    background-color 0.2s,
+    opacity 0.2s;
+  font-size: 100%;
+  border: none;
+  text-decoration: none;
+  font-family: 'Geist', sans-serif;
+  --padding-inline-multiple: 1.5;
+  --border-px: 0px;
+
+  &:focus-visible {
+    outline: 2px solid var(--primary, #0a0a0a);
+    outline-offset: 2px;
+  }
+
+  &.primary,
+  &.outlined {
+    --border-px: 1px;
+  }
+
+  &.primary {
+    background-color: var(--primary, #0a0a0a);
+    color: var(--primary-foreground, #ffffff);
+    border: var(--border-px) solid var(--primary-border-color, #0a0a0a);
+
+    @media (width > 768px) {
+      &:hover {
+        background-color: color-mix(
+          in srgb,
+          var(--primary-foreground, #ffffff) 5%,
+          var(--primary, #0a0a0a)
+        );
+      }
+    }
+
+    &.toggled {
+      background-color: color-mix(
+        in srgb,
+        var(--primary-foreground, #ffffff) 5%,
+        var(--primary, #0a0a0a)
+      );
+    }
+  }
+
+  &.secondary {
+    background-color: var(--secondary);
+
+    @media (width > 768px) {
+      &:hover {
+        background-color: color-mix(
+          in srgb,
+          var(--secondary-foreground, #0a0a0a) 8%,
+          var(--secondary, transparent)
+        );
+      }
+    }
+
+    &.toggled {
+      background-color: color-mix(
+        in srgb,
+        var(--secondary-foreground, #0a0a0a) 8%,
+        var(--secondary, transparent)
+      );
+    }
+  }
+
+  &.ghost {
+    background-color: transparent;
+
+    @media (width > 768px) {
+      &:hover {
+        background-color: color-mix(
+          in srgb,
+          var(--secondary-foreground, #0a0a0a) 5%,
+          var(--secondary, transparent)
+        );
+      }
+    }
+
+    &.toggled {
+      background-color: color-mix(
+        in srgb,
+        var(--secondary-foreground, #0a0a0a) 5%,
+        var(--secondary, transparent)
+      );
+    }
+  }
+
+  &.outlined {
+    background-color: var(--background, #ffffff);
+    border: var(--border-px) solid var(--border-color, #ececec);
+
+    @media (width > 768px) {
+      &:hover {
+        background-color: color-mix(
+          in srgb,
+          var(--secondary-foreground, #0a0a0a) 5%,
+          var(--secondary, transparent)
+        );
+      }
+    }
+
+    &.toggled {
+      background-color: color-mix(
+        in srgb,
+        var(--secondary-foreground, #0a0a0a) 5%,
+        var(--secondary, transparent)
+      );
+    }
+  }
+
+  &.secondary,
+  &.ghost,
+  &.outlined {
+    color: var(--secondary-foreground, #0a0a0a);
+  }
+
+  &:not(:disabled) {
+    @media (width > 768px) {
+      &:hover {
+        cursor: pointer;
+      }
+    }
+
+    @media (width >= 768px) {
+      &:active {
+        transform: scale(0.98);
+      }
+    }
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+
+  &.size-small {
+    --vertical-padding: calc(0.5rem - (var(--border-px) * 2));
+    --horizontal-padding: clamp(
+      0.75rem,
+      calc(0.5rem + var(--radius, 0.5rem) / 2),
+      1.25rem
+    );
+    font-size: 0.875rem;
+    padding: var(--vertical-padding) var(--horizontal-padding);
+
+    &.equal-padding {
+      padding: var(--vertical-padding);
+    }
+  }
+
+  &.size-default {
+    --vertical-padding: calc(0.9rem - (var(--border-px) * 2));
+    --horizontal-padding: clamp(
+      1rem,
+      calc(0.75rem + var(--radius, 0.5rem) / 2),
+      1.5rem
+    );
+    font-size: 1rem;
+    padding: var(--vertical-padding) var(--horizontal-padding);
+
+    &.equal-padding {
+      padding: var(--vertical-padding);
+    }
+  }
+}

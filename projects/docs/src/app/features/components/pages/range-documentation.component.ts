@@ -1,13 +1,12 @@
 import { Component } from '@angular/core';
+import { Range, Alert } from '@basis-ng/primitives';
 import { CodeBlockComponent } from '../shared/components/code-block.component';
-import { Range } from '../../../../../../lib/src/core/components/range/range.component';
-import { Alert } from '../../../../../../lib/src/core/components/alert/alert.component';
 
 @Component({
   selector: 'article[app-range-documentation]',
-  template: `<r-alert type="info" title="Components are in alpha" icon="Rocket">
+  template: `<b-alert type="info" title="Components are in alpha" icon="Rocket">
       Try them out! We'd love to hear your feedback! Expect breaking changes!
-    </r-alert>
+    </b-alert>
     <h1>Range</h1>
     <span>Range is a custom slider component.</span>
 
@@ -65,7 +64,7 @@ import { Alert } from '../../../../../../lib/src/core/components/alert/alert.com
     <div class="documentation-playground">
       <input
         type="range"
-        r-range
+        b-range
         [value]="basicValue"
         [maxWidth]="'240px'"
         (valueChange)="onValueChange($event)" />
@@ -73,8 +72,8 @@ import { Alert } from '../../../../../../lib/src/core/components/alert/alert.com
   imports: [CodeBlockComponent, Range, Alert],
 })
 export default class RangeDocumentationComponent {
-  angularImport = `import { Range } from 'rem-ui/angular'`;
-  basicUsage = `<input type="range" r-range [value]="basicValue" (valueChange)="onValueChange($event)" />`;
+  angularImport = `import { Range } from '@basis-ng/primitives'`;
+  basicUsage = `<input type="range" b-range [value]="basicValue" (valueChange)="onValueChange($event)" />`;
 
   basicValue = '50';
 

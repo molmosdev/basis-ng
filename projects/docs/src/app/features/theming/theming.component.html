@@ -139,12 +139,12 @@
 
 <h2>Theme Switcher</h2>
 <div class="documentation-playground">
-  <button r-button variant="outlined" (click)="switchTheme('light')">
-    <i r-icon [size]="18" icon="Sun"></i>
+  <button b-button variant="outlined" (click)="switchTheme('light')">
+    <i b-icon [size]="18" icon="Sun"></i>
     Light Theme
   </button>
-  <button r-button variant="outlined" (click)="switchTheme('dark')">
-    <i r-icon [size]="18" icon="Moon"></i>
+  <button b-button variant="outlined" (click)="switchTheme('dark')">
+    <i b-icon [size]="18" icon="Moon"></i>
     Dark Theme
   </button>
 </div>
@@ -179,7 +179,7 @@
 <div class="theme-examples">
   @for (theme of exampleThemes; track theme) {
     <button
-      r-button
+      b-button
       variant="outlined"
       (click)="applyExampleTheme(theme.name)"
       [style.background]="theme.variables['--bg-color'].light"
@@ -203,14 +203,14 @@
       <td formGroupName="light">
         <input
           type="color"
-          r-color-picker
+          b-color-picker
           formControlName="--bg-color"
           style="width: 100px" />
       </td>
       <td formGroupName="dark">
         <input
           type="color"
-          r-color-picker
+          b-color-picker
           formControlName="--bg-color"
           style="width: 100px" />
       </td>
@@ -220,14 +220,14 @@
       <td formGroupName="light">
         <input
           type="color"
-          r-color-picker
+          b-color-picker
           formControlName="--text-color"
           style="width: 100px" />
       </td>
       <td formGroupName="dark">
         <input
           type="color"
-          r-color-picker
+          b-color-picker
           formControlName="--text-color"
           style="width: 100px" />
       </td>
@@ -237,14 +237,14 @@
       <td formGroupName="light">
         <input
           type="color"
-          r-color-picker
+          b-color-picker
           formControlName="--background"
           style="width: 100px" />
       </td>
       <td formGroupName="dark">
         <input
           type="color"
-          r-color-picker
+          b-color-picker
           formControlName="--background"
           style="width: 100px" />
       </td>
@@ -254,14 +254,14 @@
       <td formGroupName="light">
         <input
           type="color"
-          r-color-picker
+          b-color-picker
           formControlName="--foreground"
           style="width: 100px" />
       </td>
       <td formGroupName="dark">
         <input
           type="color"
-          r-color-picker
+          b-color-picker
           formControlName="--foreground"
           style="width: 100px" />
       </td>
@@ -271,14 +271,14 @@
       <td formGroupName="light">
         <input
           type="color"
-          r-color-picker
+          b-color-picker
           formControlName="--border-color"
           style="width: 100px" />
       </td>
       <td formGroupName="dark">
         <input
           type="color"
-          r-color-picker
+          b-color-picker
           formControlName="--border-color"
           style="width: 100px" />
       </td>
@@ -299,14 +299,14 @@
       <td formGroupName="light">
         <input
           type="color"
-          r-color-picker
+          b-color-picker
           formControlName="--primary"
           style="width: 100px" />
       </td>
       <td formGroupName="dark">
         <input
           type="color"
-          r-color-picker
+          b-color-picker
           formControlName="--primary"
           style="width: 100px" />
       </td>
@@ -316,14 +316,14 @@
       <td formGroupName="light">
         <input
           type="color"
-          r-color-picker
+          b-color-picker
           formControlName="--primary-foreground"
           style="width: 100px" />
       </td>
       <td formGroupName="dark">
         <input
           type="color"
-          r-color-picker
+          b-color-picker
           formControlName="--primary-foreground"
           style="width: 100px" />
       </td>
@@ -333,14 +333,14 @@
       <td formGroupName="light">
         <input
           type="color"
-          r-color-picker
+          b-color-picker
           formControlName="--primary-border-color"
           style="width: 100px" />
       </td>
       <td formGroupName="dark">
         <input
           type="color"
-          r-color-picker
+          b-color-picker
           formControlName="--primary-border-color"
           style="width: 100px" />
       </td>
@@ -350,14 +350,14 @@
       <td formGroupName="light">
         <input
           type="color"
-          r-color-picker
+          b-color-picker
           formControlName="--secondary"
           style="width: 100px" />
       </td>
       <td formGroupName="dark">
         <input
           type="color"
-          r-color-picker
+          b-color-picker
           formControlName="--secondary"
           style="width: 100px" />
       </td>
@@ -367,14 +367,14 @@
       <td formGroupName="light">
         <input
           type="color"
-          r-color-picker
+          b-color-picker
           formControlName="--secondary-foreground"
           style="width: 100px" />
       </td>
       <td formGroupName="dark">
         <input
           type="color"
-          r-color-picker
+          b-color-picker
           formControlName="--secondary-foreground"
           style="width: 100px" />
       </td>
@@ -384,14 +384,14 @@
       <td formGroupName="light">
         <input
           type="color"
-          r-color-picker
+          b-color-picker
           formControlName="--secondary-border-color"
           style="width: 100px" />
       </td>
       <td formGroupName="dark">
         <input
           type="color"
-          r-color-picker
+          b-color-picker
           formControlName="--secondary-border-color"
           style="width: 100px" />
       </td>
@@ -412,14 +412,14 @@
       <td formGroupName="light">
         <input
           type="color"
-          r-color-picker
+          b-color-picker
           formControlName="--error"
           style="width: 100px" />
       </td>
       <td formGroupName="dark">
         <input
           type="color"
-          r-color-picker
+          b-color-picker
           formControlName="--error"
           style="width: 100px" />
       </td>
@@ -429,14 +429,14 @@
       <td formGroupName="light">
         <input
           type="color"
-          r-color-picker
+          b-color-picker
           formControlName="--error-foreground"
           style="width: 100px" />
       </td>
       <td formGroupName="dark">
         <input
           type="color"
-          r-color-picker
+          b-color-picker
           formControlName="--error-foreground"
           style="width: 100px" />
       </td>
@@ -446,14 +446,14 @@
       <td formGroupName="light">
         <input
           type="color"
-          r-color-picker
+          b-color-picker
           formControlName="--error-border-color"
           style="width: 100px" />
       </td>
       <td formGroupName="dark">
         <input
           type="color"
-          r-color-picker
+          b-color-picker
           formControlName="--error-border-color"
           style="width: 100px" />
       </td>
@@ -474,14 +474,14 @@
       <td formGroupName="light">
         <input
           type="color"
-          r-color-picker
+          b-color-picker
           formControlName="--success"
           style="width: 100px" />
       </td>
       <td formGroupName="dark">
         <input
           type="color"
-          r-color-picker
+          b-color-picker
           formControlName="--success"
           style="width: 100px" />
       </td>
@@ -491,14 +491,14 @@
       <td formGroupName="light">
         <input
           type="color"
-          r-color-picker
+          b-color-picker
           formControlName="--success-foreground"
           style="width: 100px" />
       </td>
       <td formGroupName="dark">
         <input
           type="color"
-          r-color-picker
+          b-color-picker
           formControlName="--success-foreground"
           style="width: 100px" />
       </td>
@@ -508,14 +508,14 @@
       <td formGroupName="light">
         <input
           type="color"
-          r-color-picker
+          b-color-picker
           formControlName="--success-border-color"
           style="width: 100px" />
       </td>
       <td formGroupName="dark">
         <input
           type="color"
-          r-color-picker
+          b-color-picker
           formControlName="--success-border-color"
           style="width: 100px" />
       </td>
@@ -536,14 +536,14 @@
       <td formGroupName="light">
         <input
           type="color"
-          r-color-picker
+          b-color-picker
           formControlName="--warning"
           style="width: 100px" />
       </td>
       <td formGroupName="dark">
         <input
           type="color"
-          r-color-picker
+          b-color-picker
           formControlName="--warning"
           style="width: 100px" />
       </td>
@@ -553,14 +553,14 @@
       <td formGroupName="light">
         <input
           type="color"
-          r-color-picker
+          b-color-picker
           formControlName="--warning-foreground"
           style="width: 100px" />
       </td>
       <td formGroupName="dark">
         <input
           type="color"
-          r-color-picker
+          b-color-picker
           formControlName="--warning-foreground"
           style="width: 100px" />
       </td>
@@ -570,14 +570,14 @@
       <td formGroupName="light">
         <input
           type="color"
-          r-color-picker
+          b-color-picker
           formControlName="--warning-border-color"
           style="width: 100px" />
       </td>
       <td formGroupName="dark">
         <input
           type="color"
-          r-color-picker
+          b-color-picker
           formControlName="--warning-border-color"
           style="width: 100px" />
       </td>
@@ -599,7 +599,7 @@
           <span>0rem</span>
           <input
             type="range"
-            r-range
+            b-range
             formControlName="--radius"
             min="0"
             max="2"

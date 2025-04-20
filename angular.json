@@ -3,45 +3,6 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "lib": {
-      "projectType": "library",
-      "root": "projects/lib",
-      "sourceRoot": "projects/lib/src",
-      "prefix": "r",
-      "architect": {
-        "build": {
-          "builder": "@angular-devkit/build-angular:ng-packagr",
-          "options": {
-            "project": "projects/lib/ng-package.json"
-          },
-          "configurations": {
-            "production": {
-              "tsConfig": "projects/lib/tsconfig.lib.prod.json"
-            },
-            "development": {
-              "tsConfig": "projects/lib/tsconfig.lib.json"
-            }
-          },
-          "defaultConfiguration": "production"
-        },
-        "test": {
-          "builder": "@angular-devkit/build-angular:karma",
-          "options": {
-            "tsConfig": "projects/lib/tsconfig.spec.json"
-          }
-        },
-        "lint": {
-          "builder": "@angular-eslint/builder:lint",
-          "options": {
-            "lintFilePatterns": [
-              "projects/lib/**/*.ts",
-              "projects/lib/**/*.html"
-            ],
-            "eslintConfig": "projects/lib/eslint.config.js"
-          }
-        }
-      }
-    },
     "docs": {
       "projectType": "application",
       "schematics": {},
@@ -128,6 +89,46 @@
               "projects/docs/**/*.html"
             ],
             "eslintConfig": "projects/docs/eslint.config.js"
+          }
+        }
+      }
+    },
+    "primitives": {
+      "projectType": "library",
+      "root": "projects/primitives",
+      "sourceRoot": "projects/primitives/src",
+      "prefix": "b",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/primitives/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/primitives/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/primitives/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "tsConfig": "projects/primitives/tsconfig.spec.json",
+            "polyfills": ["zone.js", "zone.js/testing"]
+          }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "projects/primitives/**/*.ts",
+              "projects/primitives/**/*.html"
+            ],
+            "eslintConfig": "projects/primitives/eslint.config.js"
           }
         }
       }

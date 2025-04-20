@@ -1,6 +1,6 @@
-# rem-ui (Angular Workspace)
+# basis-ng (Workspace)
 
-Welcome to the rem-ui Angular Workspace! This workspace is designed to house the `rem-ui` library of Angular components and the `docs` application that documents these components. The `rem-ui` library is available on npm under the organization [@rem-ui](https://www.npmjs.com/org/rem-ui).
+Welcome to the basis-ng workspace! This workspace is designed to house the `basis-ng` library of Angular components and the `docs` application that documents these components. The `basis-ng` library is available on npm under the organization [@basis-ng](https://www.npmjs.com/org/basis-ng).
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.0.5.
 
@@ -8,7 +8,7 @@ This project was generated using [Angular CLI](https://github.com/angular/angula
 
 This workspace contains two main projects:
 
-- `lib`: The Angular library of components (`@rem-ui/angular` on npm).
+- `primitives`: The Angular library of components (`@basis-ng/primitives` on npm).
 - `docs`: The application that documents the components.
 
 ## Code scaffolding
@@ -27,10 +27,10 @@ ng generate --help
 
 ## Building
 
-To build the `lib` project, run:
+To build the `primitives` project, run:
 
 ```bash
-npm run build:lib
+npm run build:primitives
 ```
 
 To build the `docs` project, run:
@@ -61,7 +61,7 @@ Angular CLI does not come with an end-to-end testing framework by default. You c
 
 ## Versioning
 
-To update the version of the `lib` project, run:
+To update the version of the `primitives` project, run:
 
 ```bash
 npm run patch

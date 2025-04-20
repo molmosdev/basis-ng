@@ -1,14 +1,12 @@
 import { Component, signal } from '@angular/core';
+import { BottomSheet, Button, Alert } from '@basis-ng/primitives';
 import { CodeBlockComponent } from '../shared/components/code-block.component';
-import { BottomSheet } from '../../../../../../lib/src/core/components/bottom-sheet/bottom-sheet.component';
-import { Button } from '../../../../../../lib/src/core/components/button/button.component';
-import { Alert } from '../../../../../../lib/src/core/components/alert/alert.component';
 
 @Component({
   selector: 'article[app-bottom-sheet-documentation]',
-  template: `<r-alert type="info" title="Components are in alpha" icon="Rocket">
+  template: `<b-alert type="info" title="Components are in alpha" icon="Rocket">
       Try them out! We'd love to hear your feedback! Expect breaking changes!
-    </r-alert>
+    </b-alert>
     <h1>Bottom Sheet</h1>
     <span>
       Bottom Sheet is a sliding panel that appears from the bottom of the
@@ -60,7 +58,7 @@ import { Alert } from '../../../../../../lib/src/core/components/alert/alert.com
     <h2>Basic Usage</h2>
     <code-block [code]="basicUsage" />
     <div class="documentation-playground">
-      <button r-button (click)="openBottomSheet('50dvh', 50)">
+      <button b-button (click)="openBottomSheet('50dvh', 50)">
         Open Bottom Sheet
       </button>
     </div>
@@ -68,7 +66,7 @@ import { Alert } from '../../../../../../lib/src/core/components/alert/alert.com
     <h2>Angular Binding with ngModel</h2>
     <code-block [code]="ngModelUsage" />
     <div class="documentation-playground">
-      <button r-button (click)="openBottomSheet('50dvh', 50)">
+      <button b-button (click)="openBottomSheet('50dvh', 50)">
         Open Bottom Sheet
       </button>
     </div>
@@ -76,7 +74,7 @@ import { Alert } from '../../../../../../lib/src/core/components/alert/alert.com
     <h2>Angular Signals</h2>
     <code-block [code]="signalsUsage" />
     <div class="documentation-playground">
-      <button r-button (click)="openBottomSheet('50dvh', 50)">
+      <button b-button (click)="openBottomSheet('50dvh', 50)">
         Open Bottom Sheet
       </button>
     </div>
@@ -84,7 +82,7 @@ import { Alert } from '../../../../../../lib/src/core/components/alert/alert.com
     <h2>Custom Height</h2>
     <code-block [code]="customHeightUsage" />
     <div class="documentation-playground">
-      <button r-button (click)="openBottomSheet('70dvh', 50)">
+      <button b-button (click)="openBottomSheet('70dvh', 50)">
         Open Bottom Sheet
       </button>
     </div>
@@ -92,12 +90,12 @@ import { Alert } from '../../../../../../lib/src/core/components/alert/alert.com
     <h2>Custom Close Threshold</h2>
     <code-block [code]="customCloseThresholdUsage" />
     <div class="documentation-playground">
-      <button r-button (click)="openBottomSheet('50dvh', 70)">
+      <button b-button (click)="openBottomSheet('50dvh', 70)">
         Open Bottom Sheet
       </button>
     </div>
 
-    <r-bottom-sheet
+    <b-bottom-sheet
       [(isOpen)]="isOpen"
       [height]="height()"
       [closeThreshold]="closeThreshold()">
@@ -105,13 +103,13 @@ import { Alert } from '../../../../../../lib/src/core/components/alert/alert.com
         style="display: flex; justify-content: center; align-items: center; height: 100%;">
         This is the content of the bottom sheet.
       </div>
-    </r-bottom-sheet>`,
+    </b-bottom-sheet>`,
   imports: [CodeBlockComponent, BottomSheet, Button, Alert],
 })
 export default class BottomSheetDocumentationComponent {
-  angularImport = `import { BottomSheet } from 'rem-ui/angular'`;
-  basicUsage = `<button r-button (click)="openSheet()">Open Bottom Sheet</button>
-<r-bottom-sheet
+  angularImport = `import { BottomSheet } from '@basis-ng/primitives'`;
+  basicUsage = `<button b-button (click)="openSheet()">Open Bottom Sheet</button>
+<b-bottom-sheet
   [isOpen]="isOpen"
   [height]="'50dvh'"
   (closeSheet)="closeSheet()"
@@ -119,45 +117,45 @@ export default class BottomSheetDocumentationComponent {
   <div style="display: flex; justify-content: center; align-items: center; height: 100%;">
     This is the content of the bottom sheet.
   </div>
-</r-bottom-sheet>`;
+</b-bottom-sheet>`;
 
-  customHeightUsage = `<button r-button (click)="isOpen = true">Open Bottom Sheet</button>
-<r-bottom-sheet
+  customHeightUsage = `<button b-button (click)="isOpen = true">Open Bottom Sheet</button>
+<b-bottom-sheet
   [(isOpen)]="isOpen"
   [height]="'70dvh'">
   <div style="display: flex; justify-content: center; align-items: center; height: 100%;">
     This is a taller bottom sheet.
   </div>
-</r-bottom-sheet>`;
+</b-bottom-sheet>`;
 
-  customCloseThresholdUsage = `<button r-button (click)="isOpen = true">Open Bottom Sheet</button>
-<r-bottom-sheet
+  customCloseThresholdUsage = `<button b-button (click)="isOpen = true">Open Bottom Sheet</button>
+<b-bottom-sheet
   [(isOpen)]="isOpen"
   [closeThreshold]="70">
   <div style="display: flex; justify-content: center; align-items: center; height: 100%;">
     This bottom sheet requires dragging down 70% to close.
   </div>
-</r-bottom-sheet>`;
+</b-bottom-sheet>`;
 
-  ngModelUsage = `<button r-button (click)="ngModelOpen = true">Open Bottom Sheet</button>
-<r-bottom-sheet
+  ngModelUsage = `<button b-button (click)="ngModelOpen = true">Open Bottom Sheet</button>
+<b-bottom-sheet
   [(isOpen)]="ngModelOpen"
   [height]="'50dvh'"
   (closeSheet)="ngModelOpen = false">
   <div style="display: flex; justify-content: center; align-items: center; height: 100%;">
     This is the content of the bottom sheet.
   </div>
-</r-bottom-sheet>`;
+</b-bottom-sheet>`;
 
-  signalsUsage = `<button r-button (click)="signalOpen.set(true)">Open Bottom Sheet</button>
-<r-bottom-sheet
+  signalsUsage = `<button b-button (click)="signalOpen.set(true)">Open Bottom Sheet</button>
+<b-bottom-sheet
   [(isOpen)]="signalOpen"
   [height]="'50dvh'"
   (closeSheet)="signalOpen.set(false)">
   <div style="display: flex; justify-content: center; align-items: center; height: 100%;">
     This is the content of the bottom sheet.
   </div>
-</r-bottom-sheet>`;
+</b-bottom-sheet>`;
 
   readonly isOpen = signal<boolean>(false);
   readonly height = signal<string>('50dvh');

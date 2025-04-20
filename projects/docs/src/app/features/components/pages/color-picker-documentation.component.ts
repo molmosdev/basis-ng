@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ColorPicker, Alert } from '@basis-ng/primitives';
 import { CodeBlockComponent } from '../shared/components/code-block.component';
 import {
   FormsModule,
@@ -6,15 +7,13 @@ import {
   FormControl,
   FormGroup,
 } from '@angular/forms';
-import { ColorPicker } from '../../../../../../lib/src/core/components/color-picker/color-picker.component';
-import { Alert } from '../../../../../../lib/src/core/components/alert/alert.component';
 
 @Component({
   selector: 'article[app-color-picker-documentation]',
   template: `
-    <r-alert type="info" title="Components are in alpha" icon="Rocket">
+    <b-alert type="info" title="Components are in alpha" icon="Rocket">
       Try them out! We'd love to hear your feedback! Expect breaking changes!
-    </r-alert>
+    </b-alert>
     <h1>Color Picker</h1>
     <span>
       The Color Picker is a custom input component that allows users to select a
@@ -78,7 +77,7 @@ import { Alert } from '../../../../../../lib/src/core/components/alert/alert.com
     <code-block [code]="basicUsage" />
     <div class="documentation-playground">
       <input
-        r-color-picker
+        b-color-picker
         type="color"
         [maxWidth]="'240px'"
         [showColor]="true"
@@ -90,7 +89,7 @@ import { Alert } from '../../../../../../lib/src/core/components/alert/alert.com
     <code-block [code]="ngModelUsage" />
     <div class="documentation-playground">
       <input
-        r-color-picker
+        b-color-picker
         type="color"
         [maxWidth]="'240px'"
         [showColor]="true"
@@ -102,7 +101,7 @@ import { Alert } from '../../../../../../lib/src/core/components/alert/alert.com
     <form [formGroup]="form">
       <div class="documentation-playground">
         <input
-          r-color-picker
+          b-color-picker
           type="color"
           [maxWidth]="'240px'"
           [showColor]="true"
@@ -114,7 +113,7 @@ import { Alert } from '../../../../../../lib/src/core/components/alert/alert.com
     <code-block [code]="withoutShowColorUsage" />
     <div class="documentation-playground">
       <input
-        r-color-picker
+        b-color-picker
         type="color"
         [maxWidth]="'240px'"
         [showColor]="false"
@@ -131,12 +130,12 @@ import { Alert } from '../../../../../../lib/src/core/components/alert/alert.com
   ],
 })
 export default class ColorPickerDocumentationComponent {
-  angularImport = `import { ColorPicker2Component } from 'rem-ui/lib';`;
-  basicUsage = `<input r-color-picker type="color" [maxWidth]="'240px'" [showColor]="true" [value]="selectedColor" (input)="onColorChange($event)" />`;
-  withoutShowColorUsage = `<input r-color-picker type="color" [maxWidth]="'240px'" [showColor]="false" [value]="selectedColor" (input)="onColorChange($event)" />`;
-  ngModelUsage = `<input r-color-picker type="color" [maxWidth]="'240px'" [showColor]="true" [(ngModel)]="ngModelColor" />`;
+  angularImport = `import { ColorPicker } from '@basis-ng/primitives';`;
+  basicUsage = `<input b-color-picker type="color" [maxWidth]="'240px'" [showColor]="true" [value]="selectedColor" (input)="onColorChange($event)" />`;
+  withoutShowColorUsage = `<input b-color-picker type="color" [maxWidth]="'240px'" [showColor]="false" [value]="selectedColor" (input)="onColorChange($event)" />`;
+  ngModelUsage = `<input b-color-picker type="color" [maxWidth]="'240px'" [showColor]="true" [(ngModel)]="ngModelColor" />`;
   formControlUsage = `<form [formGroup]="form">
-  <input r-color-picker type="color" [maxWidth]="'240px'" [showColor]="true" formControlName="colorControl" />
+  <input b-color-picker type="color" [maxWidth]="'240px'" [showColor]="true" formControlName="colorControl" />
 </form>`;
 
   selectedColor = '#ff0000';

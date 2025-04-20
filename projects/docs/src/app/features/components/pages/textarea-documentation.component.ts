@@ -1,19 +1,18 @@
 import { Component } from '@angular/core';
+import { Label, Textarea, Alert } from '@basis-ng/primitives';
 import { CodeBlockComponent } from '../shared/components/code-block.component';
-import { Label, Textarea } from '../../../../../../lib/src/public-api';
 import {
   FormsModule,
   ReactiveFormsModule,
   FormControl,
   FormGroup,
 } from '@angular/forms';
-import { Alert } from '../../../../../../lib/src/core/components/alert/alert.component';
 
 @Component({
   selector: 'article[app-textarea-documentation]',
-  template: `<r-alert type="info" title="Components are in alpha" icon="Rocket">
+  template: `<b-alert type="info" title="Components are in alpha" icon="Rocket">
       Try them out! We'd love to hear your feedback! Expect breaking changes!
-    </r-alert>
+    </b-alert>
     <h1>Textarea</h1>
     <span>
       Textarea is a custom textarea component with additional features.
@@ -82,7 +81,7 @@ import { Alert } from '../../../../../../lib/src/core/components/alert/alert.com
     <code-block [code]="basicUsage" />
     <div class="documentation-playground">
       <textarea
-        r-textarea
+        b-textarea
         placeholder="Enter text"
         [value]="basicValue"
         (valueChange)="onValueChange($event)"></textarea>
@@ -92,7 +91,7 @@ import { Alert } from '../../../../../../lib/src/core/components/alert/alert.com
     <code-block [code]="ngModelUsage" />
     <div class="documentation-playground">
       <textarea
-        r-textarea
+        b-textarea
         placeholder="Enter text"
         [(ngModel)]="ngModelValue"></textarea>
     </div>
@@ -102,7 +101,7 @@ import { Alert } from '../../../../../../lib/src/core/components/alert/alert.com
     <form [formGroup]="form">
       <div class="documentation-playground">
         <textarea
-          r-textarea
+          b-textarea
           placeholder="Enter text"
           formControlName="textareaControl"></textarea>
       </div>
@@ -112,7 +111,7 @@ import { Alert } from '../../../../../../lib/src/core/components/alert/alert.com
     <code-block [code]="disabledUsage" />
     <div class="documentation-playground">
       <textarea
-        r-textarea
+        b-textarea
         placeholder="Enter text"
         [disabled]="true"></textarea>
     </div>
@@ -120,16 +119,16 @@ import { Alert } from '../../../../../../lib/src/core/components/alert/alert.com
     <h2>Invalid</h2>
     <code-block [code]="invalidUsage" />
     <div class="documentation-playground">
-      <textarea r-textarea placeholder="Enter text" [invalid]="true"></textarea>
+      <textarea b-textarea placeholder="Enter text" [invalid]="true"></textarea>
     </div>
 
     <h2>With Label</h2>
     <code-block [code]="withLabelUsage" />
     <div class="documentation-playground">
-      <r-label>
+      <b-label>
         <label>Textarea Label</label>
-        <textarea r-textarea [rows]="4" [cols]="50"></textarea>
-      </r-label>
+        <textarea b-textarea [rows]="4" [cols]="50"></textarea>
+      </b-label>
     </div> `,
   imports: [
     CodeBlockComponent,
@@ -141,18 +140,18 @@ import { Alert } from '../../../../../../lib/src/core/components/alert/alert.com
   ],
 })
 export default class TextareaDocumentationComponent {
-  angularImport = `import { Textarea } from 'rem-ui/angular'`;
-  basicUsage = `<textarea r-textarea placeholder="Enter text" [value]="basicValue" (valueChange)="onValueChange($event)"></textarea>`;
-  ngModelUsage = `<textarea r-textarea placeholder="Enter text" [(ngModel)]="ngModelValue"></textarea>`;
+  angularImport = `import { Textarea } from '@basis-ng/primitives'`;
+  basicUsage = `<textarea b-textarea placeholder="Enter text" [value]="basicValue" (valueChange)="onValueChange($event)"></textarea>`;
+  ngModelUsage = `<textarea b-textarea placeholder="Enter text" [(ngModel)]="ngModelValue"></textarea>`;
   formControlUsage = `<form [formGroup]="form">
-  <textarea r-textarea placeholder="Enter text" formControlName="textareaControl"></textarea>
+  <textarea b-textarea placeholder="Enter text" formControlName="textareaControl"></textarea>
 </form>`;
-  disabledUsage = `<textarea r-textarea placeholder="Enter text" [disabled]="true"></textarea>`;
-  invalidUsage = `<textarea r-textarea placeholder="Enter text" [invalid]="true"></textarea>`;
-  withLabelUsage = `<r-label>
+  disabledUsage = `<textarea b-textarea placeholder="Enter text" [disabled]="true"></textarea>`;
+  invalidUsage = `<textarea b-textarea placeholder="Enter text" [invalid]="true"></textarea>`;
+  withLabelUsage = `<b-label>
   <label>Textarea Label</label>
-  <textarea r-textarea rows="4" cols="50"></textarea>
-</r-label>`;
+  <textarea b-textarea rows="4" cols="50"></textarea>
+</b-label>`;
 
   basicValue = '';
   ngModelValue = '';

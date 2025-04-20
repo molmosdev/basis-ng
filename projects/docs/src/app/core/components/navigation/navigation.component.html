@@ -1,49 +1,49 @@
 @if (currentDevice() === 'mobile') {
   <div class="mobile-menu-trigger">
-    <button r-button variant="outlined" (click)="bottomSheetOpen.set(true)">
+    <button b-button variant="outlined" (click)="bottomSheetOpen.set(true)">
       @let data = currentRoute().data;
       @if (data && data['title']) {
         {{ data['title'] }}
       }
       <div class="chevron-wrapper">
-        <i r-icon icon="ChevronUp" [size]="12" class="icon-chevron-up"></i>
-        <i r-icon icon="ChevronDown" [size]="12" class="icon-chevron-down"></i>
+        <i b-icon icon="ChevronUp" [size]="12" class="icon-chevron-up"></i>
+        <i b-icon icon="ChevronDown" [size]="12" class="icon-chevron-down"></i>
       </div>
     </button>
   </div>
-  <r-bottom-sheet [(isOpen)]="bottomSheetOpen" height="65dvh">
+  <b-bottom-sheet [(isOpen)]="bottomSheetOpen" height="65dvh">
     <ng-container *ngTemplateOutlet="menu" />
-  </r-bottom-sheet>
+  </b-bottom-sheet>
 } @else {
   <ng-container *ngTemplateOutlet="menu" />
 }
 
 <ng-template #menu>
   <div class="menu-wrapper">
-    <r-menu>
-      <r-menu-label>Getting started</r-menu-label>
+    <b-menu>
+      <b-menu-label>Getting started</b-menu-label>
       @for (route of topLevelRoutes(); track route) {
-        <r-menu-item-radio
+        <b-menu-item-radio
           [active]="'/' + route.path === path()"
           (triggered)="navigateTo(route.path)">
           {{ route.data?.['title'] }}
           @if (route.data?.['new']) {
-            <span r-badge variant="outlined" size="small"> New </span>
+            <span b-badge variant="outlined" size="small"> New </span>
           }
-        </r-menu-item-radio>
+        </b-menu-item-radio>
       }
-      <r-menu-label>Components</r-menu-label>
+      <b-menu-label>Components</b-menu-label>
       @for (route of componentsRoutes(); track route) {
-        <r-menu-item-radio
+        <b-menu-item-radio
           (triggered)="navigateTo('components/' + route.path)"
           [active]="'/components/' + route.path === path()">
           {{ route.data?.['title'] }}
 
           @if (route.data?.['new']) {
-            <span r-badge variant="outlined" size="small"> New </span>
+            <span b-badge variant="outlined" size="small"> New </span>
           }
-        </r-menu-item-radio>
+        </b-menu-item-radio>
       }
-    </r-menu>
+    </b-menu>
   </div>
 </ng-template>

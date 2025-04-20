@@ -1,17 +1,15 @@
 import { Component, signal } from '@angular/core';
+import { SideSheet, Button, Alert } from '@basis-ng/primitives';
 import { CodeBlockComponent } from '../shared/components/code-block.component';
-import { SideSheet } from '../../../../../../lib/src/core/components/side-sheet/side-sheet.component';
-import { Button } from '../../../../../../lib/src/core/components/button/button.component';
-import { Alert } from '../../../../../../lib/src/core/components/alert/alert.component';
 
 @Component({
   selector: 'article[app-side-sheet-documentation]',
-  template: ` <r-alert
+  template: ` <b-alert
       type="info"
       title="Components are in alpha"
       icon="Rocket">
       Try them out! We'd love to hear your feedback! Expect breaking changes!
-    </r-alert>
+    </b-alert>
     <h1>Side Sheet</h1>
     <span>
       Side Sheet is a sliding panel that appears from the left or right side of
@@ -65,15 +63,15 @@ import { Alert } from '../../../../../../lib/src/core/components/alert/alert.com
     <h2>Basic Usage</h2>
     <code-block [code]="basicUsage" />
     <div class="documentation-playground">
-      <button r-button (click)="openLeftSideSheet()">
+      <button b-button (click)="openLeftSideSheet()">
         Open Left Side Sheet
       </button>
-      <button r-button (click)="openRightSideSheet()">
+      <button b-button (click)="openRightSideSheet()">
         Open Right Side Sheet
       </button>
     </div>
 
-    <r-side-sheet
+    <b-side-sheet
       [(isOpen)]="isLeftOpen"
       [width]="'300px'"
       [side]="'left'"
@@ -82,9 +80,9 @@ import { Alert } from '../../../../../../lib/src/core/components/alert/alert.com
         style="display: flex; justify-content: center; align-items: center; height: 100%;">
         This is the left side sheet.
       </div>
-    </r-side-sheet>
+    </b-side-sheet>
 
-    <r-side-sheet
+    <b-side-sheet
       [(isOpen)]="isRightOpen"
       [width]="'300px'"
       [side]="'right'"
@@ -93,17 +91,17 @@ import { Alert } from '../../../../../../lib/src/core/components/alert/alert.com
         style="display: flex; justify-content: center; align-items: center; height: 100%;">
         This is the right side sheet.
       </div>
-    </r-side-sheet>
+    </b-side-sheet>
 
     <h2>Custom Width</h2>
     <code-block [code]="customWidthUsage" />
     <div class="documentation-playground">
-      <button r-button (click)="openCustomWidthSideSheet()">
+      <button b-button (click)="openCustomWidthSideSheet()">
         Open Custom Width Side Sheet
       </button>
     </div>
 
-    <r-side-sheet
+    <b-side-sheet
       [(isOpen)]="isCustomWidthOpen"
       [width]="'500px'"
       [side]="'right'"
@@ -112,42 +110,42 @@ import { Alert } from '../../../../../../lib/src/core/components/alert/alert.com
         style="display: flex; justify-content: center; align-items: center; height: 100%;">
         This is a custom width side sheet.
       </div>
-    </r-side-sheet>`,
+    </b-side-sheet>`,
   imports: [CodeBlockComponent, SideSheet, Button, Alert],
 })
 export default class SideSheetDocumentationComponent {
-  angularImport = `import { SideSheet } from 'rem-ui/angular'`;
-  basicUsage = `<button r-button (click)="openLeftSideSheet()">Open Left Side Sheet</button>
-<button r-button (click)="openRightSideSheet()">Open Right Side Sheet</button>
+  angularImport = `import { SideSheet } from '@basis-ng/primitives'`;
+  basicUsage = `<button b-button (click)="openLeftSideSheet()">Open Left Side Sheet</button>
+<button b-button (click)="openRightSideSheet()">Open Right Side Sheet</button>
 
-<r-side-sheet
+<b-side-sheet
   [(isOpen)]="isLeftOpen"
   [width]="'300px'"
   [side]="'left'">
   <div style="display: flex; justify-content: center; align-items: center; height: 100%;">
     This is the left side sheet.
   </div>
-</r-side-sheet>
+</b-side-sheet>
 
-<r-side-sheet
+<b-side-sheet
   [(isOpen)]="isRightOpen"
   [width]="'300px'"
   [side]="'right'">
   <div style="display: flex; justify-content: center; align-items: center; height: 100%;">
     This is the right side sheet.
   </div>
-</r-side-sheet>`;
+</b-side-sheet>`;
 
-  customWidthUsage = `<button r-button (click)="openCustomWidthSideSheet()">Open Custom Width Side Sheet</button>
+  customWidthUsage = `<button b-button (click)="openCustomWidthSideSheet()">Open Custom Width Side Sheet</button>
 
-<r-side-sheet
+<b-side-sheet
   [(isOpen)]="isCustomWidthOpen"
   [width]="'500px'"
   [side]="'right'">
   <div style="display: flex; justify-content: center; align-items: center; height: 100%;">
     This is a custom width side sheet.
   </div>
-</r-side-sheet>`;
+</b-side-sheet>`;
 
   readonly isOpen = signal<boolean>(false);
   readonly width = signal<string>('300px');

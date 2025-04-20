@@ -1,20 +1,20 @@
 import { Component } from '@angular/core';
-import { CodeBlockComponent } from '../shared/components/code-block.component';
-import { InputGroup } from '../../../../../../lib/src/core/components/input-group/input-group.component';
 import {
+  InputGroup,
   Input,
   Icon,
   Select,
   Button,
   Label,
-} from '../../../../../../lib/src/public-api';
-import { Alert } from '../../../../../../lib/src/core/components/alert/alert.component';
+  Alert,
+} from '@basis-ng/primitives';
+import { CodeBlockComponent } from '../shared/components/code-block.component';
 
 @Component({
   selector: 'article[app-input-group-documentation]',
-  template: `<r-alert type="info" title="Components are in alpha" icon="Rocket">
+  template: `<b-alert type="info" title="Components are in alpha" icon="Rocket">
       Try them out! We'd love to hear your feedback! Expect breaking changes!
-    </r-alert>
+    </b-alert>
     <h1>Input Group</h1>
     <span>
       Input Group is a container for grouping inputs, icons, buttons, or selects
@@ -47,85 +47,85 @@ import { Alert } from '../../../../../../lib/src/core/components/alert/alert.com
     <h2>With Input</h2>
     <code-block [code]="withInput" />
     <div class="documentation-playground">
-      <r-input-group [bordered]="true" maxWidth="240px">
-        <i r-icon icon="House" [size]="17"></i>
-        <input type="number" r-input numberType="decimal" [value]="0" />
+      <b-input-group [bordered]="true" maxWidth="240px">
+        <i b-icon icon="House" [size]="17"></i>
+        <input type="number" b-input numberType="decimal" [value]="0" />
         <span>€</span>
-      </r-input-group>
+      </b-input-group>
     </div>
 
     <h2>With Select</h2>
     <code-block [code]="withSelectUsage" />
     <div class="documentation-playground">
-      <r-input-group [bordered]="true" maxWidth="240px">
+      <b-input-group [bordered]="true" maxWidth="240px">
         <span>Select</span>
-        <select r-select>
+        <select b-select>
           <option value="1">Option 1</option>
           <option value="2">Option 2</option>
           <option value="3">Option 3</option>
         </select>
-      </r-input-group>
+      </b-input-group>
     </div>
 
     <h2>With Select and Button as Slot</h2>
     <code-block [code]="withButtonUsage" />
     <div class="documentation-playground">
-      <r-input-group [bordered]="false" maxWidth="240px">
-        <select r-select>
+      <b-input-group [bordered]="false" maxWidth="240px">
+        <select b-select>
           <option value="1">Option 1</option>
           <option value="2">Option 2</option>
           <option value="3">Option 3</option>
         </select>
-        <button r-button variant="secondary">
-          <i r-icon icon="ArrowRight" [size]="15"></i>
+        <button b-button variant="secondary">
+          <i b-icon icon="ArrowRight" [size]="15"></i>
         </button>
-      </r-input-group>
+      </b-input-group>
     </div>
 
     <h2>Bordered False Example</h2>
     <code-block [code]="borderedFalseUsage" />
     <div class="documentation-playground">
-      <r-input-group [bordered]="false" maxWidth="240px">
+      <b-input-group [bordered]="false" maxWidth="240px">
         <span>Name:</span>
-        <input type="text" r-input placeholder="Enter your name..." />
-      </r-input-group>
+        <input type="text" b-input placeholder="Enter your name..." />
+      </b-input-group>
     </div>
 
     <h2>Complex Example</h2>
     <code-block [code]="complexUsage" />
     <div class="documentation-playground">
-      <r-input-group [bordered]="true" maxWidth="240px">
-        <i r-icon icon="Search" [size]="17"></i>
-        <input type="text" r-input placeholder="Search here..." />
-        <button r-button variant="primary">Go</button>
-      </r-input-group>
+      <b-input-group [bordered]="true" maxWidth="240px">
+        <i b-icon icon="Search" [size]="17"></i>
+        <input type="text" b-input placeholder="Search here..." />
+        <button b-button variant="primary">Go</button>
+      </b-input-group>
     </div>
 
     <h2>With Label</h2>
     <code-block [code]="withLabelUsage" />
     <div class="documentation-playground">
-      <r-input-group [bordered]="true" maxWidth="240px">
-        <r-label>
+      <b-input-group [bordered]="true" maxWidth="240px">
+        <b-label>
           <label for="name">Name:</label>
           <input
             id="name"
             type="text"
-            r-input
+            b-input
             placeholder="Enter your name..." />
-        </r-label>
-      </r-input-group>
+        </b-label>
+      </b-input-group>
     </div>
 
     <h2>With Label and Icon</h2>
     <code-block [code]="withLabelAndIconUsage" />
     <div class="documentation-playground">
-      <r-input-group [bordered]="true" maxWidth="240px">
-        <i r-icon icon="User" [size]="17"></i>
-        <r-label>
+      <b-input-group [bordered]="true" maxWidth="240px">
+        <i b-icon icon="User" [size]="17"></i>
+        <b-label>
           <label for="username">Username</label>
-          <input id="username" type="text" r-input />
-        </r-label>
-      </r-input-group>
+          <input id="username" type="text" b-input />
+        </b-label>
+      </b-input-group>
     </div>`,
   imports: [
     CodeBlockComponent,
@@ -139,57 +139,57 @@ import { Alert } from '../../../../../../lib/src/core/components/alert/alert.com
   ],
 })
 export default class InputGroupDocumentationComponent {
-  angularImport = `import { InputGroupComponent } from 'rem-ui/angular'`;
+  angularImport = `import { InputGroupComponent } from '@basis-ng/primitives'`;
 
-  withInput = `<r-input-group [bordered]="true" maxWidth="240px">
-  <i r-icon icon="House" [size]="17"></i>
-  <input type="number" r-input numberType="decimal" [value]="0" />
+  withInput = `<b-input-group [bordered]="true" maxWidth="240px">
+  <i b-icon icon="House" [size]="17"></i>
+  <input type="number" b-input numberType="decimal" [value]="0" />
   <span>€</span>
-</r-input-group>`;
+</b-input-group>`;
 
-  withSelectUsage = `<r-input-group [bordered]="true" maxWidth="240px">
+  withSelectUsage = `<b-input-group [bordered]="true" maxWidth="240px">
   <span>Select</span>
-  <select r-select>
+  <select b-select>
     <option value="1">Option 1</option>
     <option value="2">Option 2</option>
     <option value="3">Option 3</option>
   </select>
-</r-input-group>`;
+</b-input-group>`;
 
-  withButtonUsage = `<r-input-group [bordered]="false" maxWidth="240px">
-  <select r-select>
+  withButtonUsage = `<b-input-group [bordered]="false" maxWidth="240px">
+  <select b-select>
     <option value="1">Option 1</option>
     <option value="2">Option 2</option>
     <option value="3">Option 3</option>
   </select>
-  <button r-button variant="secondary">
-    <i r-icon icon="ArrowRight" [size]="15"></i>
+  <button b-button variant="secondary">
+    <i b-icon icon="ArrowRight" [size]="15"></i>
   </button>
-</r-input-group>`;
+</b-input-group>`;
 
-  borderedFalseUsage = `<r-input-group [bordered]="false" maxWidth="240px">
+  borderedFalseUsage = `<b-input-group [bordered]="false" maxWidth="240px">
   <span>Name:</span>
-  <input type="text" r-input placeholder="Enter your name..." />
-</r-input-group>`;
+  <input type="text" b-input placeholder="Enter your name..." />
+</b-input-group>`;
 
-  complexUsage = `<r-input-group [bordered]="true" maxWidth="240px">
-  <i r-icon icon="Search" [size]="17"></i>
-  <input type="text" r-input placeholder="Search here..." />
-  <button r-button variant="primary">Go</button>
-</r-input-group>`;
+  complexUsage = `<b-input-group [bordered]="true" maxWidth="240px">
+  <i b-icon icon="Search" [size]="17"></i>
+  <input type="text" b-input placeholder="Search here..." />
+  <button b-button variant="primary">Go</button>
+</b-input-group>`;
 
-  withLabelUsage = `<r-input-group [bordered]="true" maxWidth="240px">
-  <r-label>
+  withLabelUsage = `<b-input-group [bordered]="true" maxWidth="240px">
+  <b-label>
     <label for="name">Name:</label>
-    <input id="name" type="text" r-input placeholder="Enter your name..." />
-  </r-label>
-</r-input-group>`;
+    <input id="name" type="text" b-input placeholder="Enter your name..." />
+  </b-label>
+</b-input-group>`;
 
-  withLabelAndIconUsage = `<r-input-group [bordered]="true" maxWidth="240px">
-  <i r-icon icon="User" [size]="17"></i>
-  <r-label>
+  withLabelAndIconUsage = `<b-input-group [bordered]="true" maxWidth="240px">
+  <i b-icon icon="User" [size]="17"></i>
+  <b-label>
     <label for="username">Username</label>
-    <input id="username" type="text" r-input />
-  </r-label>
-</r-input-group>`;
+    <input id="username" type="text" b-input />
+  </b-label>
+</b-input-group>`;
 }

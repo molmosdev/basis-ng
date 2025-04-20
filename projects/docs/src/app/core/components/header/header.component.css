@@ -43,19 +43,6 @@
       span {
         font-weight: 600;
       }
-
-      .logo-wrapper {
-        overflow: hidden;
-        border-radius: 0.5rem;
-        box-sizing: border-box;
-
-        .logo {
-          width: 1.8rem;
-          height: 1.8rem;
-          background: var(--text-color);
-          clip-path: polygon(0% 0%, 100% 0%, 0% 100%);
-        }
-      }
     }
 
     .right {

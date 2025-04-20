@@ -1,0 +1,84 @@
+b-attached-box {
+  position: relative;
+  cursor: pointer;
+
+  .b-attached-box-content {
+    position: absolute;
+    display: flex;
+    z-index: 1000;
+    opacity: 0;
+    transform: scale(var(--scale-from, 0.99))
+      var(--translate-from, translateX(-10px));
+    transition:
+      opacity var(--duration, 0.15s) var(--enter-delay, 0s),
+      transform var(--duration, 0.15s) var(--enter-delay, 0s);
+    pointer-events: none;
+
+    &.visible {
+      opacity: 1;
+      transform: scale(var(--scale-to, 1)) var(--translate-to, translateX(0));
+      pointer-events: all;
+    }
+
+    /* Positioning classes */
+    &.top-left {
+      bottom: calc(100% + var(--gap, 0.5rem));
+      left: 0;
+    }
+
+    &.top-center {
+      bottom: calc(100% + var(--gap, 0.5rem));
+      left: 50%;
+    }
+
+    &.top-right {
+      bottom: calc(100% + var(--gap, 0.5rem));
+      right: 0;
+    }
+
+    &.bottom-left {
+      top: calc(100% + var(--gap, 0.5rem));
+      left: 0;
+    }
+
+    &.bottom-center {
+      top: calc(100% + var(--gap, 0.5rem));
+      left: 50%;
+    }
+
+    &.bottom-right {
+      top: calc(100% + var(--gap, 0.5rem));
+      right: 0;
+    }
+
+    &.left-top {
+      right: calc(100% + var(--gap, 0.5rem));
+      top: 0;
+    }
+
+    &.left-center {
+      right: calc(100% + var(--gap, 0.5rem));
+      top: 50%;
+    }
+
+    &.left-bottom {
+      right: calc(100% + var(--gap, 0.5rem));
+      bottom: 0;
+    }
+
+    &.right-top {
+      left: calc(100% + var(--gap, 0.5rem));
+      top: 0;
+    }
+
+    &.right-center {
+      left: calc(100% + var(--gap, 0.5rem));
+      top: 50%;
+    }
+
+    &.right-bottom {
+      left: calc(100% + var(--gap, 0.5rem));
+      bottom: 0;
+    }
+  }
+}

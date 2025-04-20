@@ -1,13 +1,15 @@
 <div class="header-wrapper">
-  <div class="home-nav-link" [routerLink]="['/']">
-    <div class="logo-wrapper">
-      <div class="logo"></div>
-    </div>
-    <span>rem-ng</span>
-  </div>
+  <button
+    b-button
+    variant="ghost"
+    size="small"
+    [equalPadding]="true"
+    [routerLink]="['/']">
+    <i b-icon icon="CircleDotDashed" [size]="22"></i>
+  </button>
   <div class="right">
     <button
-      r-button
+      b-button
       variant="ghost"
       size="small"
       [equalPadding]="true"
@@ -15,39 +17,39 @@
       [menuTriggerPosition]="'bottom-right'">
       @switch (theme()) {
         @case ('auto') {
-          <i r-icon [strokeWidth]="1.5" [size]="22" icon="SunMoon"></i>
+          <i b-icon [strokeWidth]="1.5" [size]="22" icon="SunMoon"></i>
         }
         @case ('light') {
-          <i r-icon [strokeWidth]="1.5" [size]="22" icon="Sun"></i>
+          <i b-icon [strokeWidth]="1.5" [size]="22" icon="Sun"></i>
         }
         @case ('dark') {
-          <i r-icon [strokeWidth]="1.5" [size]="22" icon="Moon"></i>
+          <i b-icon [strokeWidth]="1.5" [size]="22" icon="Moon"></i>
         }
       }
     </button>
     <ng-template #themeMenu>
-      <r-menu [floating]="true">
-        <r-menu-group>
-          <r-menu-item-radio
+      <b-menu>
+        <b-menu-group>
+          <b-menu-item-radio
             [active]="theme() === 'auto'"
             (triggered)="applyTheme('auto')">
-            <i r-icon [strokeWidth]="1.5" [size]="22" icon="SunMoon"></i>
+            <i b-icon [strokeWidth]="1.5" [size]="22" icon="SunMoon"></i>
             Auto
-          </r-menu-item-radio>
-          <r-menu-item-radio
+          </b-menu-item-radio>
+          <b-menu-item-radio
             [active]="theme() === 'light'"
             (triggered)="applyTheme('light')">
-            <i r-icon [strokeWidth]="1.5" [size]="22" icon="Sun"></i>
+            <i b-icon [strokeWidth]="1.5" [size]="22" icon="Sun"></i>
             Light
-          </r-menu-item-radio>
-          <r-menu-item-radio
+          </b-menu-item-radio>
+          <b-menu-item-radio
             [active]="theme() === 'dark'"
             (triggered)="applyTheme('dark')">
-            <i r-icon [strokeWidth]="1.5" [size]="20" icon="Moon"></i>
+            <i b-icon [strokeWidth]="1.5" [size]="20" icon="Moon"></i>
             Dark
-          </r-menu-item-radio>
-        </r-menu-group>
-      </r-menu>
+          </b-menu-item-radio>
+        </b-menu-group>
+      </b-menu>
     </ng-template>
   </div>
 </div>

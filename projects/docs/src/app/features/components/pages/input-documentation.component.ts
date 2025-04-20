@@ -1,19 +1,18 @@
 import { Component } from '@angular/core';
+import { Input, Label, Alert } from '@basis-ng/primitives';
 import { CodeBlockComponent } from '../shared/components/code-block.component';
-import { Input, Label } from '../../../../../../lib/src/public-api';
 import {
   FormsModule,
   ReactiveFormsModule,
   FormControl,
   FormGroup,
 } from '@angular/forms';
-import { Alert } from '../../../../../../lib/src/core/components/alert/alert.component';
 
 @Component({
   selector: 'article[app-input-documentation]',
-  template: `<r-alert type="info" title="Components are in alpha" icon="Rocket">
+  template: `<b-alert type="info" title="Components are in alpha" icon="Rocket">
       Try them out! We'd love to hear your feedback! Expect breaking changes!
-    </r-alert>
+    </b-alert>
     <h1>Input</h1>
     <span> Input is a custom input component with additional features. </span>
 
@@ -90,7 +89,7 @@ import { Alert } from '../../../../../../lib/src/core/components/alert/alert.com
     <code-block [code]="basicUsage" />
     <div class="documentation-playground">
       <input
-        r-input
+        b-input
         type="text"
         placeholder="Enter text"
         [value]="basicValue"
@@ -102,7 +101,7 @@ import { Alert } from '../../../../../../lib/src/core/components/alert/alert.com
     <code-block [code]="ngModelUsage" />
     <div class="documentation-playground">
       <input
-        r-input
+        b-input
         type="text"
         placeholder="Enter text"
         [(ngModel)]="ngModelValue"
@@ -114,7 +113,7 @@ import { Alert } from '../../../../../../lib/src/core/components/alert/alert.com
     <form [formGroup]="form">
       <div class="documentation-playground">
         <input
-          r-input
+          b-input
           type="text"
           placeholder="Enter text"
           formControlName="inputControl"
@@ -126,7 +125,7 @@ import { Alert } from '../../../../../../lib/src/core/components/alert/alert.com
     <code-block [code]="disabledUsage" />
     <div class="documentation-playground">
       <input
-        r-input
+        b-input
         type="text"
         placeholder="Enter text"
         [disabled]="true"
@@ -137,7 +136,7 @@ import { Alert } from '../../../../../../lib/src/core/components/alert/alert.com
     <code-block [code]="invalidUsage" />
     <div class="documentation-playground">
       <input
-        r-input
+        b-input
         type="text"
         placeholder="Enter text"
         [invalid]="true"
@@ -148,7 +147,7 @@ import { Alert } from '../../../../../../lib/src/core/components/alert/alert.com
     <code-block [code]="decimalsUsage" />
     <div class="documentation-playground">
       <input
-        r-input
+        b-input
         type="number"
         placeholder="Enter number"
         numberType="decimal"
@@ -160,7 +159,7 @@ import { Alert } from '../../../../../../lib/src/core/components/alert/alert.com
     <code-block [code]="integerUsage" />
     <div class="documentation-playground">
       <input
-        r-input
+        b-input
         type="number"
         placeholder="Enter integer"
         numberType="integer"
@@ -171,7 +170,7 @@ import { Alert } from '../../../../../../lib/src/core/components/alert/alert.com
     <code-block [code]="passwordUsage" />
     <div class="documentation-playground">
       <input
-        r-input
+        b-input
         type="password"
         placeholder="Enter password"
         maxWidth="240px" />
@@ -180,10 +179,10 @@ import { Alert } from '../../../../../../lib/src/core/components/alert/alert.com
     <h2>With Label</h2>
     <code-block [code]="withInputUsage" />
     <div class="documentation-playground">
-      <r-label>
+      <b-label>
         <label>Input Label</label>
-        <input r-input type="text" maxWidth="240px" />
-      </r-label>
+        <input b-input type="text" maxWidth="240px" />
+      </b-label>
     </div>`,
   imports: [
     CodeBlockComponent,
@@ -195,21 +194,21 @@ import { Alert } from '../../../../../../lib/src/core/components/alert/alert.com
   ],
 })
 export default class InputDocumentationComponent {
-  angularImport = `import { Input } from 'rem-ui/angular'`;
-  basicUsage = `<input r-input type="text" placeholder="Enter text" [value]="basicValue" (valueChange)="onValueChange($event)" maxWidth="240px" />`;
-  ngModelUsage = `<input r-input type="text" placeholder="Enter text" [(ngModel)]="ngModelValue" maxWidth="240px" />`;
+  angularImport = `import { Input } from '@basis-ng/primitives'`;
+  basicUsage = `<input b-input type="text" placeholder="Enter text" [value]="basicValue" (valueChange)="onValueChange($event)" maxWidth="240px" />`;
+  ngModelUsage = `<input b-input type="text" placeholder="Enter text" [(ngModel)]="ngModelValue" maxWidth="240px" />`;
   formControlUsage = `<form [formGroup]="form">
-  <input r-input type="text" placeholder="Enter text" formControlName="inputControl" maxWidth="240px" />
+  <input b-input type="text" placeholder="Enter text" formControlName="inputControl" maxWidth="240px" />
 </form>`;
-  disabledUsage = `<input r-input type="text" placeholder="Enter text" [disabled]="true" maxWidth="240px" />`;
-  invalidUsage = `<input r-input type="text" placeholder="Enter text" [invalid]="true" maxWidth="240px" />`;
-  decimalsUsage = `<input r-input type="number" placeholder="Enter number" numberType="decimal" [decimals]="2" maxWidth="240px" />`;
-  integerUsage = `<input r-input type="number" placeholder="Enter integer" numberType="integer" maxWidth="240px" />`;
-  passwordUsage = `<input r-input type="password" placeholder="Enter password" maxWidth="240px" />`;
-  withInputUsage = `<r-label>
+  disabledUsage = `<input b-input type="text" placeholder="Enter text" [disabled]="true" maxWidth="240px" />`;
+  invalidUsage = `<input b-input type="text" placeholder="Enter text" [invalid]="true" maxWidth="240px" />`;
+  decimalsUsage = `<input b-input type="number" placeholder="Enter number" numberType="decimal" [decimals]="2" maxWidth="240px" />`;
+  integerUsage = `<input b-input type="number" placeholder="Enter integer" numberType="integer" maxWidth="240px" />`;
+  passwordUsage = `<input b-input type="password" placeholder="Enter password" maxWidth="240px" />`;
+  withInputUsage = `<b-label>
   <label>Input Label</label>
-  <input r-input type="text" maxWidth="240px" />
-</r-label>`;
+  <input b-input type="text" maxWidth="240px" />
+</b-label>`;
 
   basicValue = '';
   ngModelValue = '';

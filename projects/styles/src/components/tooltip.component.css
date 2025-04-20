@@ -1,0 +1,45 @@
+b-tooltip {
+  display: flex;
+
+  .b-tooltip-content {
+    padding: 0.5rem;
+    border-radius: var(--border-radius, 0.5rem);
+    white-space: nowrap;
+
+    &.primary {
+      background-color: var(--primary, #0a0a0a);
+      color: var(--primary-foreground, #ffffff);
+      border: var(--border-px, 0px) solid var(--primary-border-color, #0a0a0a);
+    }
+
+    &.secondary {
+      background-color: color-mix(
+        in srgb,
+        var(--secondary-foreground, #0a0a0a) 5%,
+        var(--secondary, transparent)
+      );
+      color: var(--secondary-foreground, #0a0a0a);
+    }
+
+    &.ghost {
+      background-color: transparent;
+      color: var(--secondary-foreground, #0a0a0a);
+    }
+
+    &.outlined {
+      background-color: var(--background, #ffffff);
+      border: 1px solid var(--border-color, #ececec);
+      color: var(--secondary-foreground, #0a0a0a);
+    }
+
+    &.size-small {
+      font-size: 0.75rem;
+      padding: 0.2rem 0.6rem;
+    }
+
+    &.size-default {
+      font-size: 0.875rem;
+      padding: 0.25rem 0.8rem;
+    }
+  }
+}

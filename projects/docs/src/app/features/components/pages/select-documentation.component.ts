@@ -1,19 +1,18 @@
 import { Component } from '@angular/core';
+import { Select, Label, Alert } from '@basis-ng/primitives';
 import { CodeBlockComponent } from '../shared/components/code-block.component';
-import { Select, Label } from '../../../../../../lib/src/public-api';
 import {
   FormsModule,
   ReactiveFormsModule,
   FormControl,
   FormGroup,
 } from '@angular/forms';
-import { Alert } from '../../../../../../lib/src/core/components/alert/alert.component';
 
 @Component({
   selector: 'article[app-select-documentation]',
-  template: `<r-alert type="info" title="Components are in alpha" icon="Rocket">
+  template: `<b-alert type="info" title="Components are in alpha" icon="Rocket">
       Try them out! We'd love to hear your feedback! Expect breaking changes!
-    </r-alert>
+    </b-alert>
     <h1>Select</h1>
     <span>
       Select is a custom dropdown component with additional features.
@@ -67,7 +66,7 @@ import { Alert } from '../../../../../../lib/src/core/components/alert/alert.com
     <code-block [code]="basicUsage" />
     <div class="documentation-playground">
       <select
-        r-select
+        b-select
         [value]="basicValue"
         (valueChange)="onValueChange($event)"
         maxWidth="240px">
@@ -80,7 +79,7 @@ import { Alert } from '../../../../../../lib/src/core/components/alert/alert.com
     <h2>Angular Binding with ngModel</h2>
     <code-block [code]="ngModelUsage" />
     <div class="documentation-playground">
-      <select r-select [(ngModel)]="ngModelValue" maxWidth="240px">
+      <select b-select [(ngModel)]="ngModelValue" maxWidth="240px">
         <option [value]="null">Select an option</option>
         <option value="1">Option 1</option>
         <option value="2">Option 2</option>
@@ -91,7 +90,7 @@ import { Alert } from '../../../../../../lib/src/core/components/alert/alert.com
     <code-block [code]="formControlUsage" />
     <form [formGroup]="form">
       <div class="documentation-playground">
-        <select r-select formControlName="selectControl" maxWidth="240px">
+        <select b-select formControlName="selectControl" maxWidth="240px">
           <option [value]="null">Select an option</option>
           <option value="1">Option 1</option>
           <option value="2">Option 2</option>
@@ -102,7 +101,7 @@ import { Alert } from '../../../../../../lib/src/core/components/alert/alert.com
     <h2>Disabled</h2>
     <code-block [code]="disabledUsage" />
     <div class="documentation-playground">
-      <select r-select [disabled]="true" maxWidth="240px">
+      <select b-select [disabled]="true" maxWidth="240px">
         <option [value]="null">Select an option</option>
         <option value="1">Option 1</option>
         <option value="2">Option 2</option>
@@ -112,7 +111,7 @@ import { Alert } from '../../../../../../lib/src/core/components/alert/alert.com
     <h2>Invalid</h2>
     <code-block [code]="invalidUsage" />
     <div class="documentation-playground">
-      <select r-select [invalid]="true" maxWidth="240px">
+      <select b-select [invalid]="true" maxWidth="240px">
         <option [value]="null">Select an option</option>
         <option value="1">Option 1</option>
         <option value="2">Option 2</option>
@@ -122,14 +121,14 @@ import { Alert } from '../../../../../../lib/src/core/components/alert/alert.com
     <h2>With Label</h2>
     <code-block [code]="withSelectUsage" />
     <div class="documentation-playground">
-      <r-label>
+      <b-label>
         <label>Select Label</label>
-        <select r-select maxWidth="240px">
+        <select b-select maxWidth="240px">
           <option [value]="null">Select an option</option>
           <option value="1">Option 1</option>
           <option value="2">Option 2</option>
         </select>
-      </r-label>
+      </b-label>
     </div>`,
   imports: [
     CodeBlockComponent,
@@ -141,28 +140,28 @@ import { Alert } from '../../../../../../lib/src/core/components/alert/alert.com
   ],
 })
 export default class SelectDocumentationComponent {
-  angularImport = `import { Select } from 'rem-ui/angular'`;
-  basicUsage = `<select r-select [value]="basicValue" (valueChange)="onValueChange($event)" maxWidth="240px">
+  angularImport = `import { Select } from '@basis-ng/primitives'`;
+  basicUsage = `<select b-select [value]="basicValue" (valueChange)="onValueChange($event)" maxWidth="240px">
   <option [value]="null">Select an option</option>
   <option value="1">Option 1</option>
   <option value="2">Option 2</option>
 </select>`;
-  ngModelUsage = `<select r-select [(ngModel)]="ngModelValue" maxWidth="240px">
+  ngModelUsage = `<select b-select [(ngModel)]="ngModelValue" maxWidth="240px">
   <option [value]="null">Select an option</option>
   <option value="1">Option 1</option>
   <option value="2">Option 2</option>
 </select>`;
-  formControlUsage = `<select r-select formControlName="selectControl" maxWidth="240px">
+  formControlUsage = `<select b-select formControlName="selectControl" maxWidth="240px">
   <option [value]="null">Select an option</option>
   <option value="1">Option 1</option>
   <option value="2">Option 2</option>
 </select>`;
-  disabledUsage = `<select r-select [disabled]="true" maxWidth="240px">
+  disabledUsage = `<select b-select [disabled]="true" maxWidth="240px">
   <option [value]="null">Select an option</option>
   <option value="1">Option 1</option>
   <option value="2">Option 2</option>
 </select>`;
-  invalidUsage = `<select r-select [invalid]="true" maxWidth="240px">
+  invalidUsage = `<select b-select [invalid]="true" maxWidth="240px">
   <option [value]="null">Select an option</option>
   <option value="1">Option 1</option>
   <option value="2">Option 2</option>
@@ -184,12 +183,12 @@ export default class SelectDocumentationComponent {
     console.log('Select value changed:', value);
   }
 
-  withSelectUsage = `<r-label>
+  withSelectUsage = `<b-label>
   <label>Select Label</label>
-  <select r-select maxWidth="240px">
+  <select b-select maxWidth="240px">
     <option [value]="null">Select an option</option>
     <option value="1">Option 1</option>
     <option value="2">Option 2</option>
   </select>
-</r-label>`;
+</b-label>`;
 }

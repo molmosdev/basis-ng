@@ -1,15 +1,11 @@
 import { Component, computed, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { ThemeService } from '../../../../../../lib/src/core/services/theme.service';
-import { ResponsiveService } from '../../../../../../lib/src/core/services/responsive.service';
-import {
-  Button,
-  Icon,
-  MenuTrigger,
-} from '../../../../../../lib/src/public-api';
-import { Menu } from '../../../../../../lib/src/core/components/menu/menu.component';
-import { MenuItemRadioComponent } from '../../../../../../lib/src/core/components/menu/shared/components/menu-item-radio/menu-item-radio.component';
-import { MenuGroupComponent } from '../../../../../../lib/src/core/components/menu/shared/components/menu-group/menu-group.component';
+import { ThemeService } from '../../../../../../primitives/src/core/services/theme.service';
+import { ResponsiveService } from '../../../../../../primitives/src/core/services/responsive.service';
+import { Button, Icon, MenuTrigger } from '@basis-ng/primitives';
+import { Menu } from '../../../../../../primitives/src/core/components/menu/menu.component';
+import { MenuItemRadioComponent } from '../../../../../../primitives/src/core/components/menu/shared/components/menu-item-radio/menu-item-radio.component';
+import { MenuGroupComponent } from '../../../../../../primitives/src/core/components/menu/shared/components/menu-group/menu-group.component';
 
 @Component({
   selector: 'header',
@@ -21,6 +17,7 @@ import { MenuGroupComponent } from '../../../../../../lib/src/core/components/me
     Menu,
     MenuItemRadioComponent,
     MenuGroupComponent,
+    Icon,
   ],
   templateUrl: './header.component.html',
   styleUrl: './header.component.css',

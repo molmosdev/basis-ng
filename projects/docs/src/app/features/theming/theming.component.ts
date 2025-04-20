@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { CodeBlockComponent } from '../components/shared/components/code-block.component';
-import { Icon, Button, Range } from '../../../../../lib/src/public-api';
+import { Icon, Button, Range } from '../../../../../primitives/src/public-api';
 import { FormGroup, FormControl, ReactiveFormsModule } from '@angular/forms';
-import { ColorPicker } from '../../../../../lib/src/core/components/color-picker/color-picker.component';
+import { ColorPicker } from '../../../../../primitives/src/core/components/color-picker/color-picker.component';
 
 interface ThemeVariables {
   root: Record<string, string>;
@@ -24,11 +24,11 @@ interface ThemeVariables {
   styleUrl: './theming.component.css',
 })
 export default class ThemingComponent {
-  themeSwitcherCode = `<button r-button variant='outlined' (click)='switchTheme("light")'>
-  <i r-icon [size]='18' icon='Sun'></i> Light Theme
+  themeSwitcherCode = `<button b-button variant='outlined' (click)='switchTheme("light")'>
+  <i b-icon [size]='18' icon='Sun'></i> Light Theme
 </button>
-<button r-button variant='outlined' (click)='switchTheme("dark")'>
-  <i r-icon [size]='18' icon='Moon'></i> Dark Theme
+<button b-button variant='outlined' (click)='switchTheme("dark")'>
+  <i b-icon [size]='18' icon='Moon'></i> Dark Theme
 </button>`;
 
   cssCode = `:root {

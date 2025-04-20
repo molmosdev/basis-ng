@@ -1,0 +1,73 @@
+<!-- Label -->
+@if (label()) {
+  <label>
+    {{ label() }}
+  </label>
+}
+
+@if (!selectedValue()) {
+  <section [class.large]="noOptions() && !searching()">
+    <!-- Input -->
+    <input
+      #input
+      [value]="searchValue()"
+      [placeholder]="placeholder() || ''"
+      [disabled]="disabled()"
+      (focus)="focused.set(true)"
+      (blur)="focused.set(false)"
+      (input)="onInputValueChange($event)" />
+
+    <!-- Clear Button -->
+    @if (searchValue() || selectedValue()) {
+      <i
+        b-icon
+        icon="X"
+        [size]="18"
+        tabindex="0"
+        (click)="searchValue.set('')"
+        (keydown.enter)="searchValue.set('')"
+        (keydown.space)="searchValue.set('')"
+        [color]="
+          invalid()
+            ? 'var(--error-foreground, #c40000ab)'
+            : ' var(--input-foreground, #798194)'
+        "></i>
+    }
+  </section>
+}
+
+<!-- Select -->
+<select
+  #select
+  [value]="selectedValue()"
+  (change)="onSelectValueChange($event)"
+  [class.no-options]="noOptions()"
+  (mousedown)="isOpen.set(true)"
+  [disabled]="disabled()"></select>
+
+nooptions: {{ noOptions() }} searching: {{ searching() }}
+
+@if (!noOptions() || searching()) {
+  <!-- Icon -->
+  <div class="icon-wrapper">
+    <i
+      b-icon
+      [icon]="selectIconName()"
+      [class.open]="isOpen()"
+      [class.select-has-value]="selectedValue()"
+      (click)="handleIconClick()"
+      (keydown.enter)="handleIconClick()"
+      (keydown.space)="handleIconClick()"
+      tabindex="0"
+      [class.searching]="searching()"
+      [size]="selectIconSize()"
+      [color]="
+        invalid()
+          ? 'var(--error-foreground, #c40000ab)'
+          : ' var(--input-foreground, #798194)'
+      "></i>
+  </div>
+}
+
+<!-- Projected Options -->
+<ng-content />

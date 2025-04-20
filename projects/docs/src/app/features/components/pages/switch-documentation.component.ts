@@ -1,19 +1,18 @@
 import { Component } from '@angular/core';
+import { Label, Switch, Alert } from '@basis-ng/primitives';
 import { CodeBlockComponent } from '../shared/components/code-block.component';
-import { Label, Switch } from '../../../../../../lib/src/public-api';
 import {
   FormsModule,
   ReactiveFormsModule,
   FormControl,
   FormGroup,
 } from '@angular/forms';
-import { Alert } from '../../../../../../lib/src/core/components/alert/alert.component';
 
 @Component({
   selector: 'article[app-switch-documentation]',
-  template: `<r-alert type="info" title="Components are in alpha" icon="Rocket">
+  template: `<b-alert type="info" title="Components are in alpha" icon="Rocket">
       Try them out! We'd love to hear your feedback! Expect breaking changes!
-    </r-alert>
+    </b-alert>
     <h1>Switch</h1>
     <span> Switch is a custom toggle component with additional features. </span>
 
@@ -71,7 +70,7 @@ import { Alert } from '../../../../../../lib/src/core/components/alert/alert.com
     <div class="documentation-playground">
       <input
         type="checkbox"
-        r-switch
+        b-switch
         [value]="basicValue"
         (valueChange)="onValueChange($event)" />
     </div>
@@ -79,24 +78,24 @@ import { Alert } from '../../../../../../lib/src/core/components/alert/alert.com
     <h2>Angular Binding with ngModel</h2>
     <code-block [code]="ngModelUsage" />
     <div class="documentation-playground">
-      <input type="checkbox" r-switch [(ngModel)]="ngModelValue" />
+      <input type="checkbox" b-switch [(ngModel)]="ngModelValue" />
     </div>
 
     <h2>Angular Forms with formControlName</h2>
     <code-block [code]="formControlUsage" />
     <form [formGroup]="form">
       <div class="documentation-playground">
-        <input type="checkbox" r-switch formControlName="switchControl" />
+        <input type="checkbox" b-switch formControlName="switchControl" />
       </div>
     </form>
 
     <h2>With Label</h2>
     <code-block [code]="withLabelUsage" />
     <div class="documentation-playground">
-      <r-label>
-        <input type="checkbox" r-switch id="switch-label" />
+      <b-label>
+        <input type="checkbox" b-switch id="switch-label" />
         <label for="switch-label">Switch Label</label>
-      </r-label>
+      </b-label>
     </div>`,
   imports: [
     CodeBlockComponent,
@@ -108,14 +107,14 @@ import { Alert } from '../../../../../../lib/src/core/components/alert/alert.com
   ],
 })
 export default class SwitchDocumentationComponent {
-  angularImport = `import { Switch } from 'rem-ui/angular'`;
-  basicUsage = `<input type="checkbox" r-switch [value]="basicValue" (valueChange)="onValueChange($event)" />`;
-  ngModelUsage = `<input type="checkbox" r-switch [(ngModel)]="ngModelValue" />`;
-  formControlUsage = `<input type="checkbox" r-switch formControlName="switchControl" />`;
-  withLabelUsage = `<r-label>
-  <input type="checkbox" r-switch id="switch-label" />
+  angularImport = `import { Switch } from '@basis-ng/primitives'`;
+  basicUsage = `<input type="checkbox" b-switch [value]="basicValue" (valueChange)="onValueChange($event)" />`;
+  ngModelUsage = `<input type="checkbox" b-switch [(ngModel)]="ngModelValue" />`;
+  formControlUsage = `<input type="checkbox" b-switch formControlName="switchControl" />`;
+  withLabelUsage = `<b-label>
+  <input type="checkbox" b-switch id="switch-label" />
   <label for="switch-label">Switch Label</label>
-</r-label>`;
+</b-label>`;
 
   basicValue = false;
   ngModelValue = false;

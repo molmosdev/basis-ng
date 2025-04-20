@@ -1,0 +1,110 @@
+b-input-group {
+  --exterior-padding: clamp(
+    1rem,
+    calc(0.75rem + var(--radius, 0.5rem) / 2),
+    1.3rem
+  );
+
+  width: 100%;
+  background-color: var(--input-background);
+  border-radius: var(--radius, 0.5rem);
+  box-sizing: border-box;
+  border-width: 1px;
+  border-style: solid;
+  border-color: var(--border-color, transparent);
+  transition:
+    opacity 0.2s,
+    padding-top 0.2s,
+    padding-bottom 0.2s,
+    background-color 0.2s,
+    border-color 0.2s;
+  font-size: 1rem;
+  color: var(--input-foreground, #798194);
+  display: flex;
+  align-items: center;
+
+  &:has(> *.ng-invalid) {
+    color: var(--error-foreground, #c40000ab);
+    background-color: var(--error, #fff0f0);
+    border-color: var(--error-border-color, #c40000ab);
+
+    i svg {
+      stroke: var(--error-foreground, #c40000ab);
+    }
+
+    button {
+      color: var(--error-foreground, #c40000ab);
+      background-color: var(--error, #fff0f0);
+    }
+  }
+
+  select,
+  input,
+  button,
+  b-label input,
+  b-label select {
+    border-radius: 0px !important;
+    border-width: 0px !important;
+  }
+
+  &:not(:has(b-label)) select:not(:first-child),
+  &:not(:has(b-label)) input:not(:first-child),
+  button:not(:first-child),
+  b-label:not(:first-child) input,
+  b-label:not(:first-child) select {
+    padding-left: 0.8rem !important;
+  }
+
+  b-label:not(:first-child) label {
+    left: 0.8rem !important;
+  }
+
+  &:not(:has(b-label)) select:not(:last-child),
+  &:not(:has(b-label)) input:not(:last-child),
+  button:not(:last-child),
+  b-label:not(:last-child) input,
+  b-label:not(:last-child) select {
+    padding-right: 0.8rem !important;
+  }
+
+  input:first-child,
+  button:first-child,
+  b-label:first-child input,
+  b-label:first-child select select:first-child,
+  input:first-child,
+  button:first-child,
+  b-label:first-child input,
+  b-label:first-child select {
+    border-top-left-radius: var(--radius) !important;
+    border-bottom-left-radius: var(--radius) !important;
+  }
+
+  select:last-child,
+  input:last-child,
+  button:last-child,
+  b-label:last-child input,
+  b-label:last-child select {
+    border-top-right-radius: var(--radius) !important;
+    border-bottom-right-radius: var(--radius) !important;
+  }
+
+  span:first-child,
+  & > i:first-child {
+    padding-inline: var(--exterior-padding) 0;
+  }
+
+  span:last-child,
+  & > i:last-child {
+    padding-inline: 0 var(--exterior-padding);
+  }
+
+  button {
+    height: 100%;
+    max-height: 100%;
+    font-size: 0.88rem;
+  }
+
+  button:active {
+    transform: scale(1) !important;
+  }
+}
