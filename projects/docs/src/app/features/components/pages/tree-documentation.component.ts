@@ -282,7 +282,9 @@ import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 })
 export default class TreeDocumentationComponent {
   angularImport = `import { Tree, TreeNode } from '@basis-ng/primitives'`;
-  stylesImport = `@import '@basis-ng/styles/tree';`;
+  stylesImport = `@import '@basis-ng/styles/tree';
+@import '@basis-ng/styles/tree-node';
+`;
 
   basicUsage = `<b-tree [maxWidth]="'240px'">
   <b-tree-node>Node 1</b-tree-node>

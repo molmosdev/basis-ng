@@ -229,9 +229,13 @@ import { CodeBlockComponent } from '../shared/components/code-block.component';
   ],
 })
 export default class MenuDocumentationComponent {
-  angularImport = `import { Menu, MenuItemComponent, MenuGroupComponent, MenuTrigger } from '@basis-ng/primitives';`;
+  angularImport = `import { Menu, MenuItemComponent, MenuGroupComponent, MenuGroupLabel, MenuTrigger } from '@basis-ng/primitives';`;
 
-  stylesImport = `@import '@basis-ng/styles/menu';`;
+  stylesImport = `@import '@basis-ng/styles/menu';
+@import '@basis-ng/styles/menu-item';
+@import '@basis-ng/styles/menu-group';
+@import '@basis-ng/styles/menu-label';
+`;
 
   basicUsage = `<b-menu>
   <b-menu-label>Basic Menu</b-menu-label>
