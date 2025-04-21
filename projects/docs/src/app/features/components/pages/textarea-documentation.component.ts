@@ -19,6 +19,11 @@ import {
     </span>
 
     <code-block [code]="angularImport" />
+    <span
+      >Include this to apply predefined styles. The component is headless
+      without it.</span
+    >
+    <code-block [code]="stylesImport" />
 
     <h2>Properties</h2>
     <div class="table-wrapper">
@@ -141,6 +146,7 @@ import {
 })
 export default class TextareaDocumentationComponent {
   angularImport = `import { Textarea } from '@basis-ng/primitives'`;
+  stylesImport = `@import '@basis-ng/styles/textarea';`;
   basicUsage = `<textarea b-textarea placeholder="Enter text" [value]="basicValue" (valueChange)="onValueChange($event)"></textarea>`;
   ngModelUsage = `<textarea b-textarea placeholder="Enter text" [(ngModel)]="ngModelValue"></textarea>`;
   formControlUsage = `<form [formGroup]="form">

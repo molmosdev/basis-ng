@@ -19,6 +19,11 @@ import {
     </span>
 
     <code-block [code]="angularImport" />
+    <span
+      >Include this to apply predefined styles. The component is headless
+      without it.</span
+    >
+    <code-block [code]="stylesImport" />
 
     <h2>Properties</h2>
     <div class="table-wrapper">
@@ -141,6 +146,7 @@ import {
 })
 export default class SelectDocumentationComponent {
   angularImport = `import { Select } from '@basis-ng/primitives'`;
+  stylesImport = `@import '@basis-ng/styles/select';`;
   basicUsage = `<select b-select [value]="basicValue" (valueChange)="onValueChange($event)" maxWidth="240px">
   <option [value]="null">Select an option</option>
   <option value="1">Option 1</option>

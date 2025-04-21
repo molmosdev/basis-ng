@@ -21,6 +21,11 @@ import {
     </span>
 
     <code-block [code]="angularImport" />
+    <span
+      >Include this to apply predefined styles. The component is headless
+      without it.</span
+    >
+    <code-block [code]="stylesImport" />
 
     <h2>Properties</h2>
     <div class="table-wrapper">
@@ -131,6 +136,7 @@ import {
 })
 export default class ColorPickerDocumentationComponent {
   angularImport = `import { ColorPicker } from '@basis-ng/primitives';`;
+  stylesImport = `@import '@basis-ng/styles/color-picker';`;
   basicUsage = `<input b-color-picker type="color" [maxWidth]="'240px'" [showColor]="true" [value]="selectedColor" (input)="onColorChange($event)" />`;
   withoutShowColorUsage = `<input b-color-picker type="color" [maxWidth]="'240px'" [showColor]="false" [value]="selectedColor" (input)="onColorChange($event)" />`;
   ngModelUsage = `<input b-color-picker type="color" [maxWidth]="'240px'" [showColor]="true" [(ngModel)]="ngModelColor" />`;

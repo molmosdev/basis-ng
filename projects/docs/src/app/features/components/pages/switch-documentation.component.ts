@@ -17,6 +17,11 @@ import {
     <span> Switch is a custom toggle component with additional features. </span>
 
     <code-block [code]="angularImport" />
+    <span
+      >Include this to apply predefined styles. The component is headless
+      without it.</span
+    >
+    <code-block [code]="stylesImport" />
 
     <h2>Properties</h2>
     <div class="table-wrapper">
@@ -108,6 +113,7 @@ import {
 })
 export default class SwitchDocumentationComponent {
   angularImport = `import { Switch } from '@basis-ng/primitives'`;
+  stylesImport = `@import '@basis-ng/styles/switch';`;
   basicUsage = `<input type="checkbox" b-switch [value]="basicValue" (valueChange)="onValueChange($event)" />`;
   ngModelUsage = `<input type="checkbox" b-switch [(ngModel)]="ngModelValue" />`;
   formControlUsage = `<input type="checkbox" b-switch formControlName="switchControl" />`;

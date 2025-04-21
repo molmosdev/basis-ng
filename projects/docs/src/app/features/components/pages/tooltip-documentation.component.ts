@@ -21,6 +21,11 @@ import { CodeBlockComponent } from '../shared/components/code-block.component';
     </span>
 
     <code-block [code]="angularImport" />
+    <span
+      >Include this to apply predefined styles. The component is headless
+      without it.</span
+    >
+    <code-block [code]="stylesImport" />
 
     <h2>Properties</h2>
     <div class="table-wrapper">
@@ -217,6 +222,7 @@ import { CodeBlockComponent } from '../shared/components/code-block.component';
 })
 export default class TooltipDocumentationComponent {
   angularImport = `import { TooltipComponent } from '@basis-ng/primitives'`;
+  stylesImport = `@import '@basis-ng/styles/tooltip';`;
 
   basicUsage = `<b-tooltip position="top-center">
   <button b-button b-tooltip-trigger>Hover me</button>

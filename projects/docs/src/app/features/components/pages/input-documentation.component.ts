@@ -17,6 +17,11 @@ import {
     <span> Input is a custom input component with additional features. </span>
 
     <code-block [code]="angularImport" />
+    <span
+      >Include this to apply predefined styles. The component is headless
+      without it.</span
+    >
+    <code-block [code]="stylesImport" />
 
     <h2>Properties</h2>
     <div class="table-wrapper">
@@ -195,6 +200,7 @@ import {
 })
 export default class InputDocumentationComponent {
   angularImport = `import { Input } from '@basis-ng/primitives'`;
+  stylesImport = `@import '@basis-ng/styles/input';`;
   basicUsage = `<input b-input type="text" placeholder="Enter text" [value]="basicValue" (valueChange)="onValueChange($event)" maxWidth="240px" />`;
   ngModelUsage = `<input b-input type="text" placeholder="Enter text" [(ngModel)]="ngModelValue" maxWidth="240px" />`;
   formControlUsage = `<form [formGroup]="form">

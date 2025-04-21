@@ -22,6 +22,11 @@ import { CodeBlockComponent } from '../shared/components/code-block.component';
     </span>
 
     <code-block [code]="angularImport" />
+    <span
+      >Include this to apply predefined styles. The component is headless
+      without it.</span
+    >
+    <code-block [code]="stylesImport" />
 
     <h2>Properties</h2>
     <div class="table-wrapper">
@@ -140,6 +145,7 @@ import { CodeBlockComponent } from '../shared/components/code-block.component';
 })
 export default class InputGroupDocumentationComponent {
   angularImport = `import { InputGroupComponent } from '@basis-ng/primitives'`;
+  stylesImport = `@import '@basis-ng/styles/input-group';`;
 
   withInput = `<b-input-group [bordered]="true" maxWidth="240px">
   <i b-icon icon="House" [size]="17"></i>

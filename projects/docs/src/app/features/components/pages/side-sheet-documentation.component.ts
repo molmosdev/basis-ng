@@ -17,6 +17,11 @@ import { CodeBlockComponent } from '../shared/components/code-block.component';
     </span>
 
     <code-block [code]="angularImport" />
+    <span
+      >Include this to apply predefined styles. The component is headless
+      without it.</span
+    >
+    <code-block [code]="stylesImport" />
 
     <h2>Properties</h2>
     <div class="table-wrapper">
@@ -115,6 +120,7 @@ import { CodeBlockComponent } from '../shared/components/code-block.component';
 })
 export default class SideSheetDocumentationComponent {
   angularImport = `import { SideSheet } from '@basis-ng/primitives'`;
+  stylesImport = `@import '@basis-ng/styles/side-sheet';`;
   basicUsage = `<button b-button (click)="openLeftSideSheet()">Open Left Side Sheet</button>
 <button b-button (click)="openRightSideSheet()">Open Right Side Sheet</button>
 

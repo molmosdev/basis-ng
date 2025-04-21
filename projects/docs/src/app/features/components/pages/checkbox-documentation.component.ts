@@ -17,6 +17,11 @@ import {
     <span>Checkbox is a custom toggle component.</span>
 
     <code-block [code]="angularImport" />
+    <span
+      >Include this to apply predefined styles. The component is headless
+      without it.</span
+    >
+    <code-block [code]="stylesImport" />
 
     <h2>Properties</h2>
     <div class="table-wrapper">
@@ -93,6 +98,7 @@ import {
 })
 export default class CheckboxDocumentationComponent {
   angularImport = `import { Checkbox } from '@basis-ng/primitives'`;
+  stylesImport = `@import '@basis-ng/styles/checkbox';`;
   basicUsage = `<input type="checkbox" b-checkbox [value]="basicValue" (valueChange)="onValueChange($event)" />`;
   ngModelUsage = `<input type="checkbox" b-checkbox [(ngModel)]="ngModelValue" />`;
   formControlUsage = `<input type="checkbox" b-checkbox formControlName="checkboxControl" />`;

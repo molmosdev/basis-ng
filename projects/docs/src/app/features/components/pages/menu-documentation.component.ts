@@ -23,6 +23,11 @@ import { CodeBlockComponent } from '../shared/components/code-block.component';
     </span>
 
     <code-block [code]="angularImport" />
+    <span
+      >Include this to apply predefined styles. The component is headless
+      without it.</span
+    >
+    <code-block [code]="stylesImport" />
 
     <h2>Properties</h2>
     <span
@@ -225,6 +230,8 @@ import { CodeBlockComponent } from '../shared/components/code-block.component';
 })
 export default class MenuDocumentationComponent {
   angularImport = `import { Menu, MenuItemComponent, MenuGroupComponent, MenuTrigger } from '@basis-ng/primitives';`;
+
+  stylesImport = `@import '@basis-ng/styles/menu';`;
 
   basicUsage = `<b-menu>
   <b-menu-label>Basic Menu</b-menu-label>

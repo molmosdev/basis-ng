@@ -15,6 +15,11 @@ import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
     </span>
 
     <code-block [code]="angularImport" />
+    <span
+      >Include this to apply predefined styles. The component is headless
+      without it.</span
+    >
+    <code-block [code]="stylesImport" />
 
     <h2>Properties</h2>
     <span
@@ -277,6 +282,7 @@ import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 })
 export default class TreeDocumentationComponent {
   angularImport = `import { Tree, TreeNode } from '@basis-ng/primitives'`;
+  stylesImport = `@import '@basis-ng/styles/tree';`;
 
   basicUsage = `<b-tree [maxWidth]="'240px'">
   <b-tree-node>Node 1</b-tree-node>

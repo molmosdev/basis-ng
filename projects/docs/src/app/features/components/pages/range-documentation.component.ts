@@ -11,6 +11,11 @@ import { CodeBlockComponent } from '../shared/components/code-block.component';
     <span>Range is a custom slider component.</span>
 
     <code-block [code]="angularImport" />
+    <span
+      >Include this to apply predefined styles. The component is headless
+      without it.</span
+    >
+    <code-block [code]="stylesImport" />
 
     <h2>Properties</h2>
     <div class="table-wrapper">
@@ -73,6 +78,7 @@ import { CodeBlockComponent } from '../shared/components/code-block.component';
 })
 export default class RangeDocumentationComponent {
   angularImport = `import { Range } from '@basis-ng/primitives'`;
+  stylesImport = `@import '@basis-ng/styles/range';`;
   basicUsage = `<input type="range" b-range [value]="basicValue" (valueChange)="onValueChange($event)" />`;
 
   basicValue = '50';

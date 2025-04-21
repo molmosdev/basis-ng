@@ -17,6 +17,11 @@ import { CodeBlockComponent } from '../shared/components/code-block.component';
     </span>
 
     <code-block [code]="angularImport" />
+    <span
+      >Include this to apply predefined styles. The component is headless
+      without it.</span
+    >
+    <code-block [code]="stylesImport" />
 
     <h2>Properties</h2>
     <div class="table-wrapper">
@@ -234,6 +239,7 @@ import { CodeBlockComponent } from '../shared/components/code-block.component';
 })
 export default class ButtonDocumentationComponent {
   angularImport = `import { Button } from '@basis-ng/primitives'`;
+  stylesImport = `@import '@basis-ng/styles/button';`;
   basicUsage = `<button b-button variant="primary" size="default">This is a button</button>`;
   variantsUsage = `<button b-button variant="primary">Primary</button>
 <button b-button variant="secondary">Secondary</button>
