@@ -11,7 +11,7 @@ import { NavigationComponent } from './core/components/navigation/navigation.com
   styleUrl: './app.component.css',
 })
 export class AppComponent {
-  title = 'basis-ng';
+  title = 'Basis';
   themeService = inject(ThemeService);
   readonly isMenuVisible = signal(false);
   readonly isThemeConfigVisible = signal(false);
