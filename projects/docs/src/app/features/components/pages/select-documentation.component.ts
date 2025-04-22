@@ -5,6 +5,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SelectContentComponent } from '../../../../../../primitives/src/core/components/select/select-content.component';
 import { SelectOptionComponent } from '../../../../../../primitives/src/core/components/select/select-option.component';
 import { SelectComponent } from '../../../../../../primitives/src/core/components/select/select.component';
+import { FormGroup, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'article[app-select-documentation]',
@@ -23,45 +24,10 @@ import { SelectComponent } from '../../../../../../primitives/src/core/component
     >
     <code-block [code]="stylesImport" />
 
-    <h2>Properties</h2>
-    <div class="table-wrapper">
-      <table>
-        <tr>
-          <th>Property</th>
-          <th>Type</th>
-          <th>Description</th>
-        </tr>
-        <tr>
-          <td><strong>placeholder</strong></td>
-          <td><code>string</code></td>
-          <td>Text displayed when no option is selected.</td>
-        </tr>
-        <tr>
-          <td><strong>maxWidth</strong></td>
-          <td><code>string</code></td>
-          <td>Maximum width of the dropdown.</td>
-        </tr>
-      </table>
-    </div>
-
-    <h2>Events</h2>
-    <div class="table-wrapper">
-      <table>
-        <tr>
-          <th>Event</th>
-          <th>Description</th>
-        </tr>
-        <tr>
-          <td><strong>close</strong></td>
-          <td>Emitted when the dropdown is closed.</td>
-        </tr>
-      </table>
-    </div>
-
     <h2>Basic Usage</h2>
-    <code-block [code]="basicUsage" />
+    <code-block [code]="formsModuleUsage" />
     <div class="documentation-playground">
-      <b-select placeholder="Select an option">
+      <b-select [(ngModel)]="selectedOption">
         <ul b-select-content>
           <li b-select-option value="option1">Option 1</li>
           <li b-select-option value="option2">Option 2</li>
@@ -70,10 +36,26 @@ import { SelectComponent } from '../../../../../../primitives/src/core/component
       </b-select>
     </div>
 
+    <h2>ReactiveFormsModule with formControlName</h2>
+    <code-block [code]="reactiveFormsUsage" />
+    <div class="documentation-playground">
+      <form
+        [formGroup]="formGroup"
+        style="display: flex; flex-direction: column; width: 100%">
+        <b-select formControlName="selectControl">
+          <ul b-select-content>
+            <li b-select-option value="option1">Option 1</li>
+            <li b-select-option value="option2">Option 2</li>
+            <li b-select-option value="option3">Option 3</li>
+          </ul>
+        </b-select>
+      </form>
+    </div>
+
     <h2>Custom Max Width</h2>
     <code-block [code]="customMaxWidthUsage" />
     <div class="documentation-playground">
-      <b-select placeholder="Select an option" maxWidth="300px">
+      <b-select placeholder="Select an option" maxWidth="240px">
         <ul b-select-content>
           <li b-select-option value="option1">Option 1</li>
           <li b-select-option value="option2">Option 2</li>
@@ -96,14 +78,31 @@ export default class SelectDocumentationComponent {
   stylesImport = `@import '@basis-ng/styles/select';
 @import '@basis-ng/styles/select-content';
 @import '@basis-ng/styles/select-option';`;
-  basicUsage = `<b-select placeholder="Select an option">
+
+  selectedOption = ['option2'];
+  formGroup = new FormGroup({
+    selectControl: new FormControl(['option3']),
+  });
+
+  formsModuleUsage = `<b-select [(ngModel)]="selectedOption">
   <ul b-select-content>
     <li b-select-option value="option1">Option 1</li>
     <li b-select-option value="option2">Option 2</li>
     <li b-select-option value="option3">Option 3</li>
   </ul>
 </b-select>`;
-  customMaxWidthUsage = `<b-select placeholder="Select an option" maxWidth="300px">
+
+  reactiveFormsUsage = `<form [formGroup]="formGroup">
+  <b-select formControlName="selectControl">
+    <ul b-select-content>
+      <li b-select-option value="option1">Option 1</li>
+      <li b-select-option value="option2">Option 2</li>
+      <li b-select-option value="option3">Option 3</li>
+    </ul>
+  </b-select>
+</form>`;
+
+  customMaxWidthUsage = `<b-select placeholder="Select an option" maxWidth="240px">
   <ul b-select-content>
     <li b-select-option value="option1">Option 1</li>
     <li b-select-option value="option2">Option 2</li>
