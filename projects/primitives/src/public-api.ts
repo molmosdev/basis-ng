@@ -20,6 +20,8 @@ export * from './core/components/input/input.component';
 
 /* Select */
 export * from './core/components/select/select.component';
+export * from './core/components/select/select-content.component';
+export * from './core/components/select/select-option.component';
 
 /* Option */
 export * from './shared/components/option/option.component';
