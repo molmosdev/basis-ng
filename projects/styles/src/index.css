@@ -23,6 +23,8 @@
 @import './components/row.component.css';
 @import './components/search.component.css';
 @import './components/select.component.css';
+@import './components/select-content.component.css';
+@import './components/select-option.component.css';
 @import './components/side-sheet.component.css';
 @import './components/spinner.component.css';
 @import './components/switch.component.css';
