@@ -1,5 +1,5 @@
 import { Component, computed, contentChild } from '@angular/core';
-import { Select, Input, Switch, Checkbox, Textarea } from '../../../public-api';
+import { Input, Switch, Checkbox, Textarea } from '../../../public-api';
 
 @Component({
   selector: 'b-label',
@@ -18,11 +18,6 @@ export class Label {
    * The input element.
    */
   readonly input = contentChild(Input);
-
-  /**
-   * The select element.
-   */
-  readonly select = contentChild(Select);
 
   /**
    * The switch element.
@@ -44,14 +39,12 @@ export class Label {
    */
   readonly labelUp = computed(() => {
     const input = this.input();
-    const select = this.select();
     const textarea = this.textarea();
 
     return (
       input?.focused() ||
       input?.value() ||
       input?.placeholder() ||
-      select?.value() ||
       textarea?.focused() ||
       textarea?.value() ||
       textarea?.placeholder()
@@ -64,6 +57,6 @@ export class Label {
   readonly maxWidth = computed(() => {
     const input = this.input();
     const textarea = this.textarea();
-    return input?.maxWidth() || this.select()?.maxWidth() || textarea?.cols();
+    return input?.maxWidth() || textarea?.cols();
   });
 }
