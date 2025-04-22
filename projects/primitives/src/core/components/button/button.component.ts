@@ -1,4 +1,4 @@
-import { Component, input } from '@angular/core';
+import { Component, ElementRef, inject, input } from '@angular/core';
 import { Spinner } from '../spinner/spinner.component';
 
 @Component({
@@ -10,6 +10,7 @@ import { Spinner } from '../spinner/spinner.component';
     '[class.equal-padding]': 'equalPadding()',
     '[class.loading]': 'loading()',
     '[class.toggled]': 'isToggled()',
+    '[class.active]': 'activeEnabled()',
   },
 })
 export class Button {
@@ -32,4 +33,10 @@ export class Button {
 
   /** The value of the button when it is toggled. */
   readonly isToggled = input(false);
+
+  /**  Whether the button active animation is enabled. */
+  readonly activeEnabled = input(true);
+
+  /** The element reference of the button. */
+  el = inject(ElementRef);
 }

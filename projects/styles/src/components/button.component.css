@@ -133,8 +133,10 @@ button[b-button] {
     }
 
     @media (width >= 768px) {
-      &:active {
-        transform: scale(0.98);
+      &.active {
+        &:active {
+          transform: scale(0.98);
+        }
       }
     }
   }
