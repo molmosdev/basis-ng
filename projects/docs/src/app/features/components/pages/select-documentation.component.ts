@@ -94,8 +94,8 @@ import { SelectComponent } from '../../../../../../primitives/src/core/component
 export default class SelectDocumentationComponent {
   angularImport = `import { SelectComponent, SelectContentComponent, SelectOptionComponent } from '@basis-ng/primitives'`;
   stylesImport = `@import '@basis-ng/styles/select';
-  @import '@basis-ng/styles/select-content';
-  @import '@basis-ng/styles/select-option';`;
+@import '@basis-ng/styles/select-content';
+@import '@basis-ng/styles/select-option';`;
   basicUsage = `<b-select placeholder="Select an option">
   <ul b-select-content>
     <li b-select-option value="option1">Option 1</li>
