@@ -3,19 +3,22 @@ import {
   Component,
   computed,
   contentChild,
-  effect,
   input,
+  linkedSignal,
   model,
+  OnInit,
   signal,
   viewChild,
 } from '@angular/core';
 import { SelectContentComponent } from './select-content.component';
 import { Button } from '../button/button.component';
 import { Icon } from '../icon/icon.component';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { forwardRef } from '@angular/core';
 
 /**
  * Component representing a custom select dropdown.
- * It provides a button to toggle the dropdown and displays the selected option.
+ * This component provides a button to toggle the dropdown and displays the selected option(s).
  */
 @Component({
   selector: 'b-select',
@@ -29,7 +32,7 @@ import { Icon } from '../icon/icon.component';
       cdkOverlayOrigin
       [activeEnabled]="false"
       #trigger="cdkOverlayOrigin">
-      {{ value() && value()!.length === 0 ? placeholder() : content() }}
+      {{ content() }}
       <i b-icon icon="ChevronDown" [size]="20"></i>
     </button>
     <ng-template
@@ -61,11 +64,17 @@ import { Icon } from '../icon/icon.component';
     </ng-template>`,
   host: {
     '[style.max-width]': 'maxWidth()',
-    '[class.ng-invalid]': 'invalid()',
     '[class.disabled]': 'disabled()',
   },
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => SelectComponent),
+      multi: true,
+    },
+  ],
 })
-export class SelectComponent {
+export class SelectComponent implements OnInit, ControlValueAccessor {
   /**
    * Placeholder text displayed when no option is selected.
    * Defaults to 'Select an option'.
@@ -73,29 +82,27 @@ export class SelectComponent {
   readonly placeholder = input<string>('Select an option');
 
   /**
-   * Signal indicating whether the dropdown is open.
+   * Signal indicating whether the dropdown is currently open.
    */
   readonly isOpen = signal(false);
 
   /**
    * Reference to the button element used to toggle the dropdown.
+   * This is used for managing focus and interactions.
    */
   readonly button = viewChild(Button);
 
   /**
    * Reference to the content component of the dropdown.
+   * This contains the list of selectable options.
    */
-  readonly listBox = contentChild(SelectContentComponent);
+  readonly selectContent = contentChild(SelectContentComponent);
 
   /**
    * Computed signal representing the selected values from the dropdown.
+   * This is linked to the value of the `SelectContentComponent`.
    */
-  readonly value = computed(() => this.listBox()?.value());
-
-  /**
-   * Computed signal representing the content of the selected option.
-   */
-  readonly content = computed(() => this.listBox()?.content());
+  readonly value = linkedSignal(() => this.selectContent()?.value());
 
   /**
    * Input for setting the maximum width of the dropdown.
@@ -105,48 +112,133 @@ export class SelectComponent {
 
   /**
    * Computed signal for the width of the button element.
+   * This is used to set the width of the dropdown overlay.
    */
   readonly buttonWidth = computed(
     () => this.button()?.el.nativeElement.offsetWidth
   );
 
   /**
-   * Model indicating whether the select component is invalid.
-   */
-  readonly invalid = model(false);
-
-  /**
    * Model indicating whether the select component is disabled.
+   * When disabled, the dropdown cannot be opened or interacted with.
    */
   readonly disabled = model(false);
 
-  constructor() {
-    /**
-     * Effect to handle changes in the selected value.
-     */
-    effect(() => this.handleSelectedValueChange());
+  /**
+   * Computed signal representing the options available in the dropdown.
+   * This retrieves the options from the `SelectContentComponent`.
+   */
+  readonly options = computed(() => this.selectContent()?.options());
+
+  /**
+   * Computed signal representing the content of the selected option(s).
+   * If no option is selected, it returns the placeholder text.
+   */
+  readonly content = computed(() => {
+    const selected = this.value();
+    if (selected && selected.length > 0) {
+      return this.options()?.reduce((acc, option) => {
+        if (selected.includes(option.option.value)) {
+          return acc
+            ? acc + ', ' + option.el.nativeElement.innerText
+            : option.el.nativeElement.innerText;
+        }
+        return acc;
+      }, '');
+    } else {
+      return this.placeholder();
+    }
+  });
+
+  /**
+   * Lifecycle hook that is called after the component is initialized.
+   * It sets up the necessary subscriptions for handling value changes.
+   */
+  ngOnInit(): void {
+    this.handleSelectedValueChange();
   }
 
   /**
-   * Handles changes to the selected value by subscribing to the close event of the listbox.
+   * Subscribes to the `closeEmitter` of the `SelectContentComponent` to handle
+   * changes to the selected value. This ensures the dropdown closes and the
+   * value is propagated to Angular Forms.
    */
   handleSelectedValueChange() {
-    this.listBox()?.closeEmitter.subscribe(() => this.close());
+    this.selectContent()?.closeEmitter.subscribe(() => {
+      this.onChange(this.value()!); // Notify Angular Forms about the change
+      this.onTouched(); // Mark the component as touched
+      this.close(); // Close the dropdown
+    });
   }
 
   /**
    * Opens the dropdown and focuses the listbox.
+   * This method sets the `isOpen` signal to `true` and ensures the listbox gains focus.
    */
   open() {
     this.isOpen.set(true);
-    setTimeout(() => this.listBox()?.el.nativeElement.focus(), 0);
+    setTimeout(() => this.selectContent()?.el.nativeElement.focus(), 0);
   }
 
   /**
    * Closes the dropdown and focuses the button.
+   * This method sets the `isOpen` signal to `false` and ensures the button regains focus.
    */
   close() {
     setTimeout(() => this.button()?.el.nativeElement.focus(), 0);
     this.isOpen.set(false);
+  }
+
+  // Control Value Accessor methods
+
+  /**
+   * Callback function to propagate changes to the model.
+   * This is called whenever the value changes.
+   */
+  private onChange: (value: string[]) => void = () => undefined;
+
+  /**
+   * Callback function to mark the component as touched.
+   * This is called when the component loses focus.
+   */
+  private onTouched: () => void = () => undefined;
+
+  /**
+   * Writes a new value to the component.
+   * This method is called by Angular Forms to update the value of the select component.
+   * @param value - The new value to set.
+   */
+  writeValue(value: string[]): void {
+    if (value) {
+      value.forEach(value => {
+        this.selectContent()?.listBox?.selectValue(value);
+      });
+      this.value.set(value);
+    }
+  }
+
+  /**
+   * Registers a callback function to be called when the value changes.
+   * @param fn - The callback function.
+   */
+  registerOnChange(fn: (value: string[]) => void): void {
+    this.onChange = fn;
+  }
+
+  /**
+   * Registers a callback function to be called when the component is touched.
+   * @param fn - The callback function.
+   */
+  registerOnTouched(fn: () => void): void {
+    this.onTouched = fn;
+  }
+
+  /**
+   * Sets the disabled state of the component.
+   * This method is called by Angular Forms to enable or disable the component.
+   * @param isDisabled - A boolean indicating whether the component should be disabled.
+   */
+  setDisabledState(isDisabled: boolean): void {
+    this.disabled.set(isDisabled);
   }
 }

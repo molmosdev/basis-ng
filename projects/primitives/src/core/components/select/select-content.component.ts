@@ -1,16 +1,18 @@
 import { CdkListbox } from '@angular/cdk/listbox';
 import {
   Component,
+  contentChildren,
   ElementRef,
   inject,
   input,
   output,
   signal,
 } from '@angular/core';
+import { SelectOptionComponent } from './select-option.component';
 
 /**
  * Component representing the content of a select dropdown.
- * It integrates with Angular CDK Listbox for managing options and their selection.
+ * This component integrates with Angular CDK Listbox to manage options and their selection.
  */
 @Component({
   selector: 'ul[b-select-content]',
@@ -25,49 +27,62 @@ import {
   ],
   host: {
     '[cdkListboxValue]': 'value()',
-    '(cdkListboxValueChange)': 'handleValueChange($event)',
+    '(cdkListboxValueChange)': 'handleValueChange($event.value)',
     '[style.max-height]': 'maxHeight()',
   },
 })
 export class SelectContentComponent {
   /**
    * Signal representing the selected values in the listbox.
+   * This is an array of strings corresponding to the selected option values.
    */
   readonly value = signal<string[]>([]);
 
   /**
-   * Signal representing the content of the selected option.
+   * Signal representing the content of the selected option(s).
+   * This is a string that can be used to display the selected option(s).
    */
   readonly content = signal<string>('');
 
   /**
    * Event emitter triggered when the dropdown should close.
+   * This is used to notify the parent component to close the dropdown.
    */
   closeEmitter = output();
 
   /**
    * Reference to the host element of the component.
+   * This provides access to the DOM element of the dropdown content.
    */
   el = inject(ElementRef);
 
   /**
    * Input for setting the maximum height of the dropdown.
-   * Defaults to '300px'.
+   * Defaults to '300px'. This controls the vertical size of the dropdown.
    */
   readonly maxHeight = input<string>('300px');
 
   /**
-   * Handles changes to the selected value in the listbox.
-   * Updates the `value` and `content` signals and emits the `closeEmitter` event.
-   *
-   * @param $event - The event object containing the new value and option details.
+   * Reference to the CDK Listbox directive.
+   * This is used to manage the options and their selection state.
    */
-  handleValueChange($event: any) {
-    const value = $event.value;
-    this.content.set($event.option.element.innerText);
-    this.value.set(
-      value.length === 0 || (value.length === 1 && value[0] === '') ? [] : value
-    );
+  listBox = inject(CdkListbox);
+
+  /**
+   * Reference to the list of options in the dropdown.
+   * This is a collection of `SelectOptionComponent` instances representing the available options.
+   */
+  readonly options = contentChildren(SelectOptionComponent);
+
+  /**
+   * Handles changes to the selected value in the listbox.
+   * This method updates the `value` signal, emits the `closeEmitter` event,
+   * and ensures the parent component is notified of the selection change.
+   *
+   * @param value - The new array of selected values.
+   */
+  handleValueChange(value: string[]) {
+    this.value.set(value);
     this.closeEmitter.emit();
   }
 }
