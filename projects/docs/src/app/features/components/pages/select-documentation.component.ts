@@ -1,10 +1,12 @@
 import { Component } from '@angular/core';
-import { Alert } from '@basis-ng/primitives';
+import {
+  Alert,
+  SelectComponent,
+  SelectContentComponent,
+  SelectOptionComponent,
+} from '@basis-ng/primitives';
 import { CodeBlockComponent } from '../shared/components/code-block.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { SelectContentComponent } from '../../../../../../primitives/src/core/components/select/select-content.component';
-import { SelectOptionComponent } from '../../../../../../primitives/src/core/components/select/select-option.component';
-import { SelectComponent } from '../../../../../../primitives/src/core/components/select/select.component';
 import { FormGroup, FormControl } from '@angular/forms';
 
 @Component({
