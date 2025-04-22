@@ -11,7 +11,7 @@ import {
 } from '@angular/core';
 import { SelectContentComponent } from './select-content.component';
 import { Button } from '../button/button.component';
-import { Icon } from '@basis-ng/primitives';
+import { Icon } from '../icon/icon.component';
 
 /**
  * Component representing a custom select dropdown.
