@@ -38,7 +38,7 @@ import { FormGroup, FormControl } from '@angular/forms';
       </b-select>
     </div>
 
-    <h2>ReactiveFormsModule with formControlName</h2>
+    <h2>Reactive Forms</h2>
     <code-block [code]="reactiveFormsUsage" />
     <div class="documentation-playground">
       <form
