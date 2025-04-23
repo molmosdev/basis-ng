@@ -10,7 +10,7 @@ import {
   signal,
   viewChild,
 } from '@angular/core';
-import { SelectContentComponent } from './select-content.component';
+import { OptionsListComponent } from './options-list.component';
 import { Button } from '../button/button.component';
 import { Icon } from '../icon/icon.component';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
@@ -96,13 +96,13 @@ export class SelectComponent implements OnInit, ControlValueAccessor {
    * Reference to the content component of the dropdown.
    * This contains the list of selectable options.
    */
-  readonly selectContent = contentChild(SelectContentComponent);
+  readonly optionsList = contentChild(OptionsListComponent);
 
   /**
    * Computed signal representing the selected values from the dropdown.
-   * This is linked to the value of the `SelectContentComponent`.
+   * This is linked to the value of the `OptionsListComponent`.
    */
-  readonly value = linkedSignal(() => this.selectContent()?.value());
+  readonly value = linkedSignal(() => this.optionsList()?.value());
 
   /**
    * Input for setting the maximum width of the dropdown.
@@ -126,9 +126,9 @@ export class SelectComponent implements OnInit, ControlValueAccessor {
 
   /**
    * Computed signal representing the options available in the dropdown.
-   * This retrieves the options from the `SelectContentComponent`.
+   * This retrieves the options from the `OptionsListComponent`.
    */
-  readonly options = computed(() => this.selectContent()?.options());
+  readonly options = computed(() => this.optionsList()?.options());
 
   /**
    * Computed signal representing the content of the selected option(s).
@@ -138,7 +138,7 @@ export class SelectComponent implements OnInit, ControlValueAccessor {
     const selected = this.value();
     if (selected && selected.length > 0) {
       return this.options()?.reduce((acc, option) => {
-        if (selected.includes(option.option.value)) {
+        if (selected.includes(option.cdkOption.value)) {
           return acc
             ? acc + ', ' + option.el.nativeElement.innerText
             : option.el.nativeElement.innerText;
@@ -171,12 +171,12 @@ export class SelectComponent implements OnInit, ControlValueAccessor {
   }
 
   /**
-   * Subscribes to the `closeEmitter` of the `SelectContentComponent` to handle
+   * Subscribes to the `closeEmitter` of the `OptionsListComponent` to handle
    * changes to the selected value. This ensures the dropdown closes and the
    * value is propagated to Angular Forms.
    */
   handleSelectedValueChange() {
-    this.selectContent()?.closeEmitter.subscribe(() => {
+    this.optionsList()?.closeEmitter.subscribe(() => {
       this.onChange(this.value()!); // Notify Angular Forms about the change
       this.onTouched(); // Mark the component as touched
       this.close(); // Close the dropdown
@@ -189,7 +189,7 @@ export class SelectComponent implements OnInit, ControlValueAccessor {
    */
   open() {
     this.isOpen.set(true);
-    setTimeout(() => this.selectContent()?.el.nativeElement.focus(), 0);
+    setTimeout(() => this.optionsList()?.el.nativeElement.focus(), 0);
   }
 
   /**
@@ -233,7 +233,7 @@ export class SelectComponent implements OnInit, ControlValueAccessor {
   writeValue(value: string[]): void {
     if (value) {
       value.forEach(value => {
-        this.selectContent()?.listBox?.selectValue(value);
+        this.optionsList()?.listBox?.selectValue(value);
       });
       this.value.set(value);
     }

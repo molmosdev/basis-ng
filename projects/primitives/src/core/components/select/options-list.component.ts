@@ -8,14 +8,14 @@ import {
   output,
   signal,
 } from '@angular/core';
-import { SelectOptionComponent } from './select-option.component';
+import { OptionComponent } from './option.component';
 
 /**
- * Component representing the content of a select dropdown.
+ * Component representing the list of options in a select or combobox.
  * This component integrates with Angular CDK Listbox to manage options and their selection.
  */
 @Component({
-  selector: 'ul[b-select-content]',
+  selector: 'ul[b-options-list]',
   imports: [],
   template: `<ng-content />`,
   hostDirectives: [
@@ -31,18 +31,12 @@ import { SelectOptionComponent } from './select-option.component';
     '[style.max-height]': 'maxHeight()',
   },
 })
-export class SelectContentComponent {
+export class OptionsListComponent {
   /**
    * Signal representing the selected values in the listbox.
    * This is an array of strings corresponding to the selected option values.
    */
   readonly value = signal<string[]>([]);
-
-  /**
-   * Signal representing the content of the selected option(s).
-   * This is a string that can be used to display the selected option(s).
-   */
-  readonly content = signal<string>('');
 
   /**
    * Event emitter triggered when the dropdown should close.
@@ -52,7 +46,7 @@ export class SelectContentComponent {
 
   /**
    * Reference to the host element of the component.
-   * This provides access to the DOM element of the dropdown content.
+   * This provides access to the DOM element of the options list.
    */
   el = inject(ElementRef);
 
@@ -70,9 +64,9 @@ export class SelectContentComponent {
 
   /**
    * Reference to the list of options in the dropdown.
-   * This is a collection of `SelectOptionComponent` instances representing the available options.
+   * This is a collection of `OptionComponent` instances representing the available options.
    */
-  readonly options = contentChildren(SelectOptionComponent);
+  readonly options = contentChildren(OptionComponent);
 
   /**
    * Handles changes to the selected value in the listbox.
