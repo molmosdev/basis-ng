@@ -10,7 +10,7 @@ import {
   signal,
   viewChild,
 } from '@angular/core';
-import { OptionsListComponent } from '../../../shared/components/options-list.component';
+import { SelectOptionsComponent } from './select-options.component';
 import { Button } from '../button/button.component';
 import { Icon } from '../icon/icon.component';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
@@ -96,7 +96,7 @@ export class SelectComponent implements OnInit, ControlValueAccessor {
    * Reference to the content component of the dropdown.
    * This contains the list of selectable options.
    */
-  readonly optionsList = contentChild(OptionsListComponent);
+  readonly optionsList = contentChild(SelectOptionsComponent);
 
   /**
    * Computed signal representing the selected values from the dropdown.
