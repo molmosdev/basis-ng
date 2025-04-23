@@ -64,10 +64,10 @@ import { CodeBlockComponent } from '../shared/components/code-block.component';
       <b-input-group [bordered]="true" maxWidth="240px">
         <span>Select</span>
         <b-select placeholder="Choose an option">
-          <ul b-select-content>
-            <li b-select-option value="1">Option 1</li>
-            <li b-select-option value="2">Option 2</li>
-            <li b-select-option value="3">Option 3</li>
+          <ul b-options-list>
+            <li b-option value="1">Option 1</li>
+            <li b-option value="2">Option 2</li>
+            <li b-option value="3">Option 3</li>
           </ul>
         </b-select>
       </b-input-group>
@@ -78,10 +78,10 @@ import { CodeBlockComponent } from '../shared/components/code-block.component';
     <div class="documentation-playground">
       <b-input-group [bordered]="false" maxWidth="240px">
         <b-select placeholder="Choose an option">
-          <ul b-select-content>
-            <li b-select-option value="1">Option 1</li>
-            <li b-select-option value="2">Option 2</li>
-            <li b-select-option value="3">Option 3</li>
+          <ul b-options-list>
+            <li b-option value="1">Option 1</li>
+            <li b-option value="2">Option 2</li>
+            <li b-option value="3">Option 3</li>
           </ul>
         </b-select>
         <button b-button variant="secondary">
@@ -150,20 +150,20 @@ export default class InputGroupDocumentationComponent {
   withSelectUsage = `<b-input-group [bordered]="true" maxWidth="240px">
   <span>Select</span>
   <b-select placeholder="Choose an option">
-    <ul b-select-content>
-      <li b-select-option value="1">Option 1</li>
-      <li b-select-option value="2">Option 2</li>
-      <li b-select-option value="3">Option 3</li>
+    <ul b-options-list>
+      <li b-option value="1">Option 1</li>
+      <li b-option value="2">Option 2</li>
+      <li b-option value="3">Option 3</li>
     </ul>
   </b-select>
 </b-input-group>`;
 
   withButtonUsage = `<b-input-group [bordered]="false" maxWidth="240px">
   <b-select placeholder="Choose an option">
-    <ul b-select-content>
-      <li b-select-option value="1">Option 1</li>
-      <li b-select-option value="2">Option 2</li>
-      <li b-select-option value="3">Option 3</li>
+    <ul b-options-list>
+      <li b-option value="1">Option 1</li>
+      <li b-option value="2">Option 2</li>
+      <li b-option value="3">Option 3</li>
     </ul>
   </b-select>
   <button b-button variant="secondary">
