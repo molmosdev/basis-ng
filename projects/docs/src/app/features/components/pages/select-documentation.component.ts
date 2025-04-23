@@ -78,8 +78,8 @@ import { FormGroup, FormControl } from '@angular/forms';
 export default class SelectDocumentationComponent {
   angularImport = `import { SelectComponent, SelectContentComponent, SelectOptionComponent } from '@basis-ng/primitives'`;
   stylesImport = `@import '@basis-ng/styles/select';
-@import '@basis-ng/styles/select-content';
-@import '@basis-ng/styles/select-option';`;
+@import '@basis-ng/styles/options-list';
+@import '@basis-ng/styles/option';`;
 
   selectedOption = ['option2'];
   formGroup = new FormGroup({
