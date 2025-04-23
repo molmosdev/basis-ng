@@ -8,14 +8,14 @@ import {
   output,
   signal,
 } from '@angular/core';
-import { OptionComponent } from './option.component';
+import { OptionComponent } from '../../../shared/components/option.component';
 
 /**
- * Component representing the list of options in a select or combobox.
+ * Component representing the list of options in a select.
  * This component integrates with Angular CDK Listbox to manage options and their selection.
  */
 @Component({
-  selector: 'ul[b-options-list]',
+  selector: 'ul[b-select-options]',
   imports: [],
   template: `<ng-content />`,
   hostDirectives: [
@@ -31,7 +31,7 @@ import { OptionComponent } from './option.component';
     '[style.max-height]': 'maxHeight()',
   },
 })
-export class OptionsListComponent {
+export class SelectOptionsComponent {
   /**
    * Signal representing the selected values in the listbox.
    * This is an array of strings corresponding to the selected option values.
