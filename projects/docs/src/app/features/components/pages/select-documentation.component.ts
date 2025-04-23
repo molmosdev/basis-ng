@@ -2,8 +2,8 @@ import { Component } from '@angular/core';
 import {
   Alert,
   SelectComponent,
-  OptionsListComponent,
   OptionComponent,
+  SelectOptionsComponent,
 } from '@basis-ng/primitives';
 import { CodeBlockComponent } from '../shared/components/code-block.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -30,7 +30,7 @@ import { FormGroup, FormControl } from '@angular/forms';
     <code-block [code]="formsModuleUsage" />
     <div class="documentation-playground">
       <b-select [(ngModel)]="selectedOption">
-        <ul b-options-list>
+        <ul b-select-options>
           <li b-option value="option1">Option 1</li>
           <li b-option value="option2">Option 2</li>
           <li b-option value="option3">Option 3</li>
@@ -45,7 +45,7 @@ import { FormGroup, FormControl } from '@angular/forms';
         [formGroup]="formGroup"
         style="display: flex; flex-direction: column; width: 100%">
         <b-select formControlName="selectControl">
-          <ul b-options-list>
+          <ul b-select-options>
             <li b-option value="option1">Option 1</li>
             <li b-option value="option2">Option 2</li>
             <li b-option value="option3">Option 3</li>
@@ -58,7 +58,7 @@ import { FormGroup, FormControl } from '@angular/forms';
     <code-block [code]="customMaxWidthUsage" />
     <div class="documentation-playground">
       <b-select placeholder="Select an option" maxWidth="240px">
-        <ul b-options-list>
+        <ul b-select-options>
           <li b-option value="option1">Option 1</li>
           <li b-option value="option2">Option 2</li>
           <li b-option value="option3">Option 3</li>
@@ -71,7 +71,7 @@ import { FormGroup, FormControl } from '@angular/forms';
     ReactiveFormsModule,
     Alert,
     SelectComponent,
-    OptionsListComponent,
+    SelectOptionsComponent,
     OptionComponent,
   ],
 })
@@ -87,7 +87,7 @@ export default class SelectDocumentationComponent {
   });
 
   formsModuleUsage = `<b-select [(ngModel)]="selectedOption">
-  <ul b-options-list>
+  <ul b-select-options>
     <li b-option value="option1">Option 1</li>
     <li b-option value="option2">Option 2</li>
     <li b-option value="option3">Option 3</li>
@@ -96,7 +96,7 @@ export default class SelectDocumentationComponent {
 
   reactiveFormsUsage = `<form [formGroup]="formGroup">
   <b-select formControlName="selectControl">
-    <ul b-options-list>
+    <ul b-select-options>
       <li b-option value="option1">Option 1</li>
       <li b-option value="option2">Option 2</li>
       <li b-option value="option3">Option 3</li>
@@ -105,7 +105,7 @@ export default class SelectDocumentationComponent {
 </form>`;
 
   customMaxWidthUsage = `<b-select placeholder="Select an option" maxWidth="240px">
-  <ul b-options-list>
+  <ul b-select-options>
     <li b-option value="option1">Option 1</li>
     <li b-option value="option2">Option 2</li>
     <li b-option value="option3">Option 3</li>

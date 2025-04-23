@@ -17,7 +17,7 @@ export * from './core/components/input/input.component';
 
 /* Select */
 export * from './core/components/select/select.component';
-export * from './shared/components/options-list.component';
+export * from './core/components/select/select-options.component';
 export * from './shared/components/option.component';
 
 /* Spinner */
