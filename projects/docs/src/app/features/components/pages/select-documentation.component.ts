@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
-import {
-  Alert,
-  SelectComponent,
-  SelectContentComponent,
-  SelectOptionComponent,
-} from '@basis-ng/primitives';
+import { Alert } from '@basis-ng/primitives';
 import { CodeBlockComponent } from '../shared/components/code-block.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FormGroup, FormControl } from '@angular/forms';
+import {
+  SelectComponent,
+  OptionComponent,
+  OptionsListComponent,
+} from '../../../../../../primitives/src/public-api';
 
 @Component({
   selector: 'article[app-select-documentation]',
@@ -30,10 +30,10 @@ import { FormGroup, FormControl } from '@angular/forms';
     <code-block [code]="formsModuleUsage" />
     <div class="documentation-playground">
       <b-select [(ngModel)]="selectedOption">
-        <ul b-select-content>
-          <li b-select-option value="option1">Option 1</li>
-          <li b-select-option value="option2">Option 2</li>
-          <li b-select-option value="option3">Option 3</li>
+        <ul b-options-list>
+          <li b-option value="option1">Option 1</li>
+          <li b-option value="option2">Option 2</li>
+          <li b-option value="option3">Option 3</li>
         </ul>
       </b-select>
     </div>
@@ -45,10 +45,10 @@ import { FormGroup, FormControl } from '@angular/forms';
         [formGroup]="formGroup"
         style="display: flex; flex-direction: column; width: 100%">
         <b-select formControlName="selectControl">
-          <ul b-select-content>
-            <li b-select-option value="option1">Option 1</li>
-            <li b-select-option value="option2">Option 2</li>
-            <li b-select-option value="option3">Option 3</li>
+          <ul b-options-list>
+            <li b-option value="option1">Option 1</li>
+            <li b-option value="option2">Option 2</li>
+            <li b-option value="option3">Option 3</li>
           </ul>
         </b-select>
       </form>
@@ -58,10 +58,10 @@ import { FormGroup, FormControl } from '@angular/forms';
     <code-block [code]="customMaxWidthUsage" />
     <div class="documentation-playground">
       <b-select placeholder="Select an option" maxWidth="240px">
-        <ul b-select-content>
-          <li b-select-option value="option1">Option 1</li>
-          <li b-select-option value="option2">Option 2</li>
-          <li b-select-option value="option3">Option 3</li>
+        <ul b-options-list>
+          <li b-option value="option1">Option 1</li>
+          <li b-option value="option2">Option 2</li>
+          <li b-option value="option3">Option 3</li>
         </ul>
       </b-select>
     </div>`,
@@ -71,8 +71,8 @@ import { FormGroup, FormControl } from '@angular/forms';
     ReactiveFormsModule,
     Alert,
     SelectComponent,
-    SelectContentComponent,
-    SelectOptionComponent,
+    OptionsListComponent,
+    OptionComponent,
   ],
 })
 export default class SelectDocumentationComponent {
@@ -87,28 +87,28 @@ export default class SelectDocumentationComponent {
   });
 
   formsModuleUsage = `<b-select [(ngModel)]="selectedOption">
-  <ul b-select-content>
-    <li b-select-option value="option1">Option 1</li>
-    <li b-select-option value="option2">Option 2</li>
-    <li b-select-option value="option3">Option 3</li>
+  <ul b-options-list>
+    <li b-option value="option1">Option 1</li>
+    <li b-option value="option2">Option 2</li>
+    <li b-option value="option3">Option 3</li>
   </ul>
 </b-select>`;
 
   reactiveFormsUsage = `<form [formGroup]="formGroup">
   <b-select formControlName="selectControl">
-    <ul b-select-content>
-      <li b-select-option value="option1">Option 1</li>
-      <li b-select-option value="option2">Option 2</li>
-      <li b-select-option value="option3">Option 3</li>
+    <ul b-options-list>
+      <li b-option value="option1">Option 1</li>
+      <li b-option value="option2">Option 2</li>
+      <li b-option value="option3">Option 3</li>
     </ul>
   </b-select>
 </form>`;
 
   customMaxWidthUsage = `<b-select placeholder="Select an option" maxWidth="240px">
-  <ul b-select-content>
-    <li b-select-option value="option1">Option 1</li>
-    <li b-select-option value="option2">Option 2</li>
-    <li b-select-option value="option3">Option 3</li>
+  <ul b-options-list>
+    <li b-option value="option1">Option 1</li>
+    <li b-option value="option2">Option 2</li>
+    <li b-option value="option3">Option 3</li>
   </ul>
 </b-select>`;
 }
