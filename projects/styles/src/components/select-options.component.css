@@ -1,4 +1,4 @@
-ul[b-options-list] {
+ul[b-select-options] {
   list-style: none;
   padding: 0.2rem;
   box-sizing: border-box;
@@ -20,7 +20,7 @@ ul[b-options-list] {
   overflow-y: auto;
 }
 
-.cdk-overlay-pane:has(ul[b-options-list]) {
+.cdk-overlay-pane:has(ul[b-select-options]) {
   opacity: 1;
   transition: transform 150ms ease;
   animation: fadeIn 150ms ease;
