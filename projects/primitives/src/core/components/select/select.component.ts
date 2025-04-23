@@ -151,6 +151,18 @@ export class SelectComponent implements OnInit, ControlValueAccessor {
   });
 
   /**
+   * Signal representing the delay before closing the dropdown.
+   * This is used to provide a smooth transition when closing the dropdown.
+   */
+  readonly closeDelay = signal(150);
+
+  /**
+   * Reference to the CdkConnectedOverlay directive.
+   * This is used to manage the positioning and visibility of the dropdown overlay.
+   */
+  readonly cdkConnectedOverlay = viewChild(CdkConnectedOverlay);
+
+  /**
    * Lifecycle hook that is called after the component is initialized.
    * It sets up the necessary subscriptions for handling value changes.
    */
@@ -181,12 +193,22 @@ export class SelectComponent implements OnInit, ControlValueAccessor {
   }
 
   /**
-   * Closes the dropdown and focuses the button.
-   * This method sets the `isOpen` signal to `false` and ensures the button regains focus.
+   * Closes the dropdown with a transition effect and refocuses the button.
+   * This method sets the `isOpen` signal to `false` after a delay and removes
+   * the transition class from the overlay panel.
    */
   close() {
-    setTimeout(() => this.button()?.el.nativeElement.focus(), 0);
-    this.isOpen.set(false);
+    this.cdkConnectedOverlay()?.overlayRef.addPanelClass(
+      'cdk-overlay-pane-closing'
+    );
+
+    setTimeout(() => {
+      this.isOpen.set(false);
+      this.cdkConnectedOverlay()?.overlayRef.removePanelClass(
+        'cdk-overlay-pane-closing'
+      );
+      this.button()?.el.nativeElement.focus();
+    }, this.closeDelay());
   }
 
   // Control Value Accessor methods
