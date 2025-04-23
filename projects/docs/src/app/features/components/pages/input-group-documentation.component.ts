@@ -58,38 +58,6 @@ import { CodeBlockComponent } from '../shared/components/code-block.component';
       </b-input-group>
     </div>
 
-    <!--     <h2>With Select</h2>
-    <code-block [code]="withSelectUsage" />
-    <div class="documentation-playground">
-      <b-input-group [bordered]="true" maxWidth="240px">
-        <span>Select</span>
-        <b-select placeholder="Choose an option">
-          <ul b-options-list>
-            <li b-option value="1">Option 1</li>
-            <li b-option value="2">Option 2</li>
-            <li b-option value="3">Option 3</li>
-          </ul>
-        </b-select>
-      </b-input-group>
-    </div>
-
-    <h2>With Select and Button as Slot</h2>
-    <code-block [code]="withButtonUsage" />
-    <div class="documentation-playground">
-      <b-input-group [bordered]="false" maxWidth="240px">
-        <b-select placeholder="Choose an option">
-          <ul b-options-list>
-            <li b-option value="1">Option 1</li>
-            <li b-option value="2">Option 2</li>
-            <li b-option value="3">Option 3</li>
-          </ul>
-        </b-select>
-        <button b-button variant="secondary">
-          <i b-icon icon="ArrowRight" [size]="15"></i>
-        </button>
-      </b-input-group>
-    </div> -->
-
     <h2>Bordered False Example</h2>
     <code-block [code]="borderedFalseUsage" />
     <div class="documentation-playground">
@@ -145,30 +113,6 @@ export default class InputGroupDocumentationComponent {
   <i b-icon icon="House" [size]="17"></i>
   <input type="number" b-input numberType="decimal" [value]="0" />
   <span>€</span>
-</b-input-group>`;
-
-  withSelectUsage = `<b-input-group [bordered]="true" maxWidth="240px">
-  <span>Select</span>
-  <b-select placeholder="Choose an option">
-    <ul b-options-list>
-      <li b-option value="1">Option 1</li>
-      <li b-option value="2">Option 2</li>
-      <li b-option value="3">Option 3</li>
-    </ul>
-  </b-select>
-</b-input-group>`;
-
-  withButtonUsage = `<b-input-group [bordered]="false" maxWidth="240px">
-  <b-select placeholder="Choose an option">
-    <ul b-options-list>
-      <li b-option value="1">Option 1</li>
-      <li b-option value="2">Option 2</li>
-      <li b-option value="3">Option 3</li>
-    </ul>
-  </b-select>
-  <button b-button variant="secondary">
-    <i b-icon icon="ArrowRight" [size]="15"></i>
-  </button>
 </b-input-group>`;
 
   borderedFalseUsage = `<b-input-group [bordered]="false" maxWidth="240px">
