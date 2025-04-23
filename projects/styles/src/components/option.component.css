@@ -1,21 +1,16 @@
-b-option {
-  margin-bottom: 0.25rem;
-  cursor: pointer;
+li[b-option] {
+  display: flex;
+  gap: 0.5rem;
   padding: 0.5rem 0.75rem;
   color: var(--foreground, #798194);
-  transition: 0.1s;
-  border-radius: calc(var(--radius, 0.5rem) - 0.2rem);
+  box-sizing: border-box;
+  cursor: pointer;
+  min-width: 100%;
+  align-items: center;
+  border-radius: clamp(0rem, calc(var(--radius, 0.5rem) - 0.2rem), 0.5rem);
 
-  &::checkmark {
-    display: none;
-  }
-
-  &:focus-visible {
-    outline-width: 0;
-  }
-
-  &:hover,
-  &:focus-visible {
+  &:focus,
+  &:hover {
     background-color: color-mix(
       in srgb,
       var(--foreground, #798194) 5%,
@@ -23,13 +18,8 @@ b-option {
     );
   }
 
-  &:checked {
+  &[aria-selected='true'] {
     background-color: var(--primary, #0a0a0a);
     color: var(--primary-foreground, #ffffff);
-  }
-
-  &:disabled {
-    pointer-events: none;
-    opacity: 0.5;
   }
 }
