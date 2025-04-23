@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
-import { Alert } from '@basis-ng/primitives';
+import {
+  Alert,
+  SelectComponent,
+  OptionsListComponent,
+  OptionComponent,
+} from '@basis-ng/primitives';
 import { CodeBlockComponent } from '../shared/components/code-block.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FormGroup, FormControl } from '@angular/forms';
-import {
-  SelectComponent,
-  OptionComponent,
-  OptionsListComponent,
-} from '../../../../../../primitives/src/public-api';
 
 @Component({
   selector: 'article[app-select-documentation]',
