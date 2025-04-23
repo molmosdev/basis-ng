@@ -10,7 +10,7 @@ import {
   signal,
   viewChild,
 } from '@angular/core';
-import { OptionsListComponent } from './options-list.component';
+import { OptionsListComponent } from '../../../shared/components/options-list.component';
 import { Button } from '../button/button.component';
 import { Icon } from '../icon/icon.component';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';

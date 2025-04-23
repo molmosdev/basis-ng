@@ -12,19 +12,13 @@ export * from './core/components/button-group/button-group.component';
 /* Directives */
 export * from './shared/directives/lazy-content.directive';
 
-/* Search */
-export * from './core/components/search/search.component';
-
 /* Input */
 export * from './core/components/input/input.component';
 
 /* Select */
 export * from './core/components/select/select.component';
-export * from './core/components/select/options-list.component';
-export * from './core/components/select/option.component';
-
-/* Option */
-export * from './shared/components/option/option.component';
+export * from './shared/components/options-list.component';
+export * from './shared/components/option.component';
 
 /* Spinner */
 export * from './core/components/spinner/spinner.component';
@@ -61,7 +55,7 @@ export * from './core/components/attached-box/attached-box.component';
 export * from './core/components/icon/icon.component';
 
 /* Label */
-export * from './shared/components/label/label.component';
+export * from './shared/components/label.component';
 
 /* Badge */
 export * from './core/components/badge/badge.component';

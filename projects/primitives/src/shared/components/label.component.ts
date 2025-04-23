@@ -1,5 +1,5 @@
 import { Component, computed, contentChild } from '@angular/core';
-import { Input, Switch, Checkbox, Textarea } from '../../../public-api';
+import { Checkbox, Input, Switch, Textarea } from '../../public-api';
 
 @Component({
   selector: 'b-label',
