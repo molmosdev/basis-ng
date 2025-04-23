@@ -20,9 +20,10 @@
 @import './components/range.component.css';
 @import './components/row-item.component.css';
 @import './components/row.component.css';
-@import './components/search.component.css';
 @import './components/select.component.css';
-@import './components/options-list.component.css';
+@import './components/select-options.component.css';
+@import './components/combobox.component.css';
+@import './components/combobox-options.component.css';
 @import './components/option.component.css';
 @import './components/side-sheet.component.css';
 @import './components/spinner.component.css';
