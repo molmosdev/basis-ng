@@ -18,7 +18,15 @@ import {
   selector: 'ul[b-command-options]',
   imports: [],
   template: `<ng-content />`,
-  hostDirectives: [CdkListbox],
+  hostDirectives: [
+    {
+      directive: CdkListbox,
+      outputs: ['cdkListboxValueChange'],
+    },
+  ],
+  host: {
+    '(cdkListboxValueChange)': 'selectOption($event.value)',
+  },
 })
 export class CommandOptionsComponent implements OnInit {
   /**
@@ -66,8 +74,11 @@ export class CommandOptionsComponent implements OnInit {
   /**
    * Selects the currently active option and updates the listbox value.
    */
-  selectOption(): void {
-    this.value.set(this.listKeyManager().activeItem?.value ?? []);
+  selectOption(value?: string[]): void {
+    const selectValue = value
+      ? value
+      : (this.listKeyManager().activeItem?.value ?? []);
+    this.value.set(selectValue);
     this.cdkListbox.value = this.value();
     this.closeEmitter.emit();
   }
