@@ -32,6 +32,7 @@ export const componentsRoutes: Routes = [
     loadComponent: () => import('./pages/combobox-documentation.component'),
     data: {
       title: 'Combobox',
+      new: true,
     },
   },
   {
