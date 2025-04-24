@@ -7,10 +7,11 @@ li[b-option] {
   cursor: pointer;
   min-width: 100%;
   align-items: center;
-  border-radius: clamp(0rem, calc(var(--radius, 0.5rem) - 0.2rem), 0.5rem);
+  border-radius: clamp(0rem, calc(var(--radius, 0.5rem) - 0.25rem), 0.5rem);
 
   &:focus,
-  &:hover {
+  &:hover,
+  &.cdk-option-highlighted {
     background-color: color-mix(
       in srgb,
       var(--foreground, #798194) 5%,
