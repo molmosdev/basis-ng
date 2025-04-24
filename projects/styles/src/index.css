@@ -24,6 +24,8 @@
 @import './components/select-options.component.css';
 @import './components/combobox.component.css';
 @import './components/combobox-options.component.css';
+@import './components/command.component.css';
+@import './components/command-options.component.css';
 @import './components/option.component.css';
 @import './components/side-sheet.component.css';
 @import './components/spinner.component.css';
