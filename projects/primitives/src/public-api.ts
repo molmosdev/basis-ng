@@ -104,3 +104,6 @@ export * from './shared/types/position.type';
 /* Command */
 export * from './core/components/command/command.component';
 export * from './core/components/command/command-options.component';
+
+/* Combobox */
+export * from './core/components/combobox/combobox.component';
