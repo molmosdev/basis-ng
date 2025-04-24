@@ -1,4 +1,4 @@
-import { Component, contentChild, signal } from '@angular/core';
+import { Component, contentChild, input } from '@angular/core';
 import { Input } from '../input/input.component';
 import { CdkTrapFocus } from '@angular/cdk/a11y';
 import { CommandOptionsComponent } from './command-options.component';
@@ -22,6 +22,7 @@ import { CommandOptionsComponent } from './command-options.component';
       (blur)="trappedInput.el.nativeElement.focus()" />
     <ng-content />`,
   host: {
+    '[style.maxWidth]': 'maxWidth()',
     '[style.maxHeight]': 'maxHeight()',
   },
 })
@@ -33,8 +34,14 @@ export class CommandComponent {
   readonly commandOptions = contentChild(CommandOptionsComponent);
 
   /**
-   * Signal representing the maximum height of the component.
+   * Input representing the maximum width of the component.
    * This can be used to control the visual appearance of the command component.
    */
-  readonly maxHeight = signal('300px');
+  readonly maxWidth = input('100%');
+
+  /**
+   * Input representing the maximum height of the component.
+   * This can be used to control the visual appearance of the command component.
+   */
+  readonly maxHeight = input('300px');
 }
