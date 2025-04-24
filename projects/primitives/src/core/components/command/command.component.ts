@@ -1,4 +1,11 @@
-import { Component, contentChild, input } from '@angular/core';
+import {
+  Component,
+  computed,
+  contentChild,
+  ElementRef,
+  inject,
+  input,
+} from '@angular/core';
 import { Input } from '../input/input.component';
 import { CdkTrapFocus } from '@angular/cdk/a11y';
 import { CommandOptionsComponent } from './command-options.component';
@@ -44,4 +51,22 @@ export class CommandComponent {
    * This can be used to control the visual appearance of the command component.
    */
   readonly maxHeight = input('300px');
+
+  /**
+   * Computed signal representing the selected value from the command options.
+   * This is linked to the value of the `CommandOptionsComponent`.
+   */
+  readonly value = computed(() => this.commandOptions()?.value());
+
+  /**
+   * Computed signal representing the options available in the command options.
+   * This is linked to the options of the `CommandOptionsComponent`.
+   */
+  readonly options = computed(() => this.commandOptions()?.options());
+
+  /**
+   * Reference to the host element of the component.
+   * This provides access to the DOM element of the command component.
+   */
+  el = inject(ElementRef);
 }

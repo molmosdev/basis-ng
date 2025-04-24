@@ -6,6 +6,7 @@ import {
   contentChildren,
   inject,
   OnInit,
+  output,
   signal,
 } from '@angular/core';
 
@@ -50,6 +51,11 @@ export class CommandOptionsComponent implements OnInit {
   cdkListbox = inject(CdkListbox);
 
   /**
+   * Emitter for closing the command options.
+   */
+  closeEmitter = output();
+
+  /**
    * Lifecycle hook that initializes the component.
    * Enables the use of active descendant for the listbox.
    */
@@ -63,6 +69,7 @@ export class CommandOptionsComponent implements OnInit {
   selectOption(): void {
     this.value.set(this.listKeyManager().activeItem?.value ?? []);
     this.cdkListbox.value = this.value();
+    this.closeEmitter.emit();
   }
 
   /**
