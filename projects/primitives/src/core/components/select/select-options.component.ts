@@ -9,7 +9,6 @@ import {
   signal,
 } from '@angular/core';
 import { OptionComponent } from '../../../shared/components/option.component';
-import { CdkTrapFocus } from '@angular/cdk/a11y';
 
 /**
  * Component representing the list of options in a select.
@@ -25,16 +24,11 @@ import { CdkTrapFocus } from '@angular/cdk/a11y';
       inputs: ['cdkListboxValue'],
       outputs: ['cdkListboxValueChange'],
     },
-    {
-      directive: CdkTrapFocus,
-      inputs: ['cdkTrapFocusAutoCapture'],
-    },
   ],
   host: {
     '[cdkListboxValue]': 'value()',
     '(cdkListboxValueChange)': 'handleValueChange($event.value)',
     '[style.max-height]': 'maxHeight()',
-    '[cdkTrapFocusAutoCapture]': 'true',
   },
 })
 export class SelectOptionsComponent {

@@ -26,9 +26,9 @@ import { forwardRef } from '@angular/core';
   template: ` <button
       b-button
       variant="outlined"
-      (click)="isOpen() ? close() : this.isOpen.set(true)"
-      (keydown.arrowUp)="!isOpen() && this.isOpen.set(true)"
-      (keydown.arrowDown)="!isOpen() && this.isOpen.set(true)"
+      (click)="isOpen() ? close() : open()"
+      (keydown.arrowUp)="!isOpen() && open()"
+      (keydown.arrowDown)="!isOpen() && open()"
       cdkOverlayOrigin
       [activeEnabled]="false"
       #trigger="cdkOverlayOrigin">
@@ -181,6 +181,15 @@ export class SelectComponent implements OnInit, ControlValueAccessor {
       this.onTouched(); // Mark the component as touched
       this.close(); // Close the dropdown
     });
+  }
+
+  /**
+   * Opens the dropdown and focuses the listbox.
+   * This method sets the `isOpen` signal to `true` and ensures the listbox gains focus.
+   */
+  open() {
+    this.isOpen.set(true);
+    setTimeout(() => this.optionsList()?.el.nativeElement.focus(), 0);
   }
 
   /**
