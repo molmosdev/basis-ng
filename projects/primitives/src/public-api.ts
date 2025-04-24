@@ -100,3 +100,7 @@ export * from './core/components/alert/alert.component';
 
 /* Position */
 export * from './shared/types/position.type';
+
+/* Command */
+export * from './core/components/command/command.component';
+export * from './core/components/command/command-options.component';
