@@ -28,6 +28,13 @@ export const componentsRoutes: Routes = [
     },
   },
   {
+    path: 'combobox',
+    loadComponent: () => import('./pages/combobox-documentation.component'),
+    data: {
+      title: 'Combobox',
+    },
+  },
+  {
     path: 'switch',
     loadComponent: () => import('./pages/switch-documentation.component'),
     data: {
