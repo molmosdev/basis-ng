@@ -14,7 +14,7 @@ import { Button } from '../button/button.component';
 import { Icon } from '../icon/icon.component';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { forwardRef } from '@angular/core';
-import { ComboboxOptionsComponent } from './combobox-options.component';
+import { CommandComponent } from '../command/command.component';
 
 /**
  * Component representing a combobox dropdown.
@@ -27,8 +27,6 @@ import { ComboboxOptionsComponent } from './combobox-options.component';
       b-button
       variant="outlined"
       (click)="isOpen() ? close() : open()"
-      (keydown.arrowUp)="!isOpen() && open()"
-      (keydown.arrowDown)="!isOpen() && open()"
       cdkOverlayOrigin
       [activeEnabled]="false"
       #trigger="cdkOverlayOrigin">
@@ -96,13 +94,13 @@ export class ComboboxComponent implements OnInit, ControlValueAccessor {
    * Reference to the content component of the dropdown.
    * This contains the list of selectable options.
    */
-  readonly comboboxOptions = contentChild(ComboboxOptionsComponent);
+  readonly command = contentChild(CommandComponent);
 
   /**
    * Computed signal representing the selected values from the dropdown.
-   * This is linked to the value of the `ComboboxOptionsComponent`.
+   * This is linked to the value of the `CommandComponent`.
    */
-  readonly value = linkedSignal(() => this.comboboxOptions()?.value());
+  readonly value = linkedSignal(() => this.command()?.value());
 
   /**
    * Input for setting the maximum width of the dropdown.
@@ -126,9 +124,9 @@ export class ComboboxComponent implements OnInit, ControlValueAccessor {
 
   /**
    * Computed signal representing the options available in the dropdown.
-   * This retrieves the options from the `ComboboxOptionsComponent`.
+   * This retrieves the options from the `CommandComponent`.
    */
-  readonly options = computed(() => this.comboboxOptions()?.options());
+  readonly options = computed(() => this.command()?.options());
 
   /**
    * Computed signal representing the content of the selected option(s).
@@ -138,10 +136,8 @@ export class ComboboxComponent implements OnInit, ControlValueAccessor {
     const selected = this.value();
     if (selected && selected.length > 0) {
       return this.options()?.reduce((acc, option) => {
-        if (selected.includes(option.cdkOption.value)) {
-          return acc
-            ? acc + ', ' + option.el.nativeElement.innerText
-            : option.el.nativeElement.innerText;
+        if (selected.includes(option.value)) {
+          return acc ? acc + ', ' + option.getLabel() : option.getLabel();
         }
         return acc;
       }, '');
@@ -171,16 +167,18 @@ export class ComboboxComponent implements OnInit, ControlValueAccessor {
   }
 
   /**
-   * Subscribes to the `closeEmitter` of the `ComboboxOptionsComponent` to handle
+   * Subscribes to the `closeEmitter` of the `CommandComponent` to handle
    * changes to the selected value. This ensures the dropdown closes and the
    * value is propagated to Angular Forms.
    */
   handleSelectedValueChange() {
-    this.comboboxOptions()?.closeEmitter.subscribe(() => {
-      this.onChange(this.value()!); // Notify Angular Forms about the change
-      this.onTouched(); // Mark the component as touched
-      this.close(); // Close the dropdown
-    });
+    this.command()
+      ?.commandOptions()
+      ?.closeEmitter.subscribe(() => {
+        this.onChange(this.value()!); // Notify Angular Forms about the change
+        this.onTouched(); // Mark the component as touched
+        this.close(); // Close the dropdown
+      });
   }
 
   /**
@@ -189,7 +187,6 @@ export class ComboboxComponent implements OnInit, ControlValueAccessor {
    */
   open() {
     this.isOpen.set(true);
-    setTimeout(() => this.comboboxOptions()?.el.nativeElement.focus(), 0);
   }
 
   /**
@@ -233,7 +230,7 @@ export class ComboboxComponent implements OnInit, ControlValueAccessor {
   writeValue(value: string[]): void {
     if (value) {
       value.forEach(value => {
-        this.comboboxOptions()?.listBox?.selectValue(value);
+        this.command()?.commandOptions()?.cdkListbox?.selectValue(value);
       });
       this.value.set(value);
     }
