@@ -124,6 +124,14 @@ export const componentsRoutes: Routes = [
     },
   },
   {
+    path: 'command',
+    loadComponent: () => import('./pages/command-documentation.component'),
+    data: {
+      title: 'Command',
+      new: true,
+    },
+  },
+  {
     path: '**',
     redirectTo: '',
   },
