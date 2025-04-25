@@ -106,7 +106,7 @@ import {
     <code-block [code]="sizeUsage" />
     <div class="documentation-playground">
       <input b-input type="text" size="1" placeholder="Size 1" />
-      <input b-input type="text" size="2" placeholder="Size 2 (default)" />
+      <input b-input type="text" size="2" placeholder="Size 2" />
       <input b-input type="text" size="3" placeholder="Size 3" />
     </div>
 
@@ -192,7 +192,7 @@ export default class InputDocumentationComponent {
   numberIntegerUsage = `<input b-input type="number" numberType="integer" placeholder="Enter an integer" [(ngModel)]="integerValue" />`;
   numberDecimalUsage = `<input b-input type="number" numberType="decimal" [decimals]="2" placeholder="Enter a decimal number" [(ngModel)]="decimalValue" />`;
   sizeUsage = `<input b-input type="text" size="1" placeholder="Size 1" />
-<input b-input type="text" size="2" placeholder="Size 2 (default)" />
+<input b-input type="text" size="2" placeholder="Size 2" />
 <input b-input type="text" size="3" placeholder="Size 3" />`;
   disabledUsage = `<input b-input type="text" placeholder="Disabled input" [disabled]="true" />`;
   invalidUsage = `<form [formGroup]="form">
