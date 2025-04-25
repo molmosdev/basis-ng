@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Input, Alert } from '../../../../../../primitives/src/public-api';
+import { Input, Alert } from '@basis-ng/primitives';
 import { CodeBlockComponent } from '../shared/components/code-block.component';
 import {
   FormsModule,
