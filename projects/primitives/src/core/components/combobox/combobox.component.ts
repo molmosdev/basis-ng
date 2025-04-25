@@ -27,6 +27,8 @@ import { CommandComponent } from '../command/command.component';
       b-button
       variant="outlined"
       (click)="isOpen() ? close() : open()"
+      (keydown.arrowDown)="!isOpen() && open()"
+      (keydown.arrowUp)="!isOpen() && open()"
       cdkOverlayOrigin
       [activeEnabled]="false"
       #trigger="cdkOverlayOrigin">
@@ -57,6 +59,7 @@ import { CommandComponent } from '../command/command.component';
         },
       ]"
       (backdropClick)="close()"
+      (attach)="onOverlayAttached()"
       (detach)="close()">
       <ng-content />
     </ng-template>`,
@@ -259,5 +262,12 @@ export class ComboboxComponent implements OnInit, ControlValueAccessor {
    */
   setDisabledState(isDisabled: boolean): void {
     this.disabled.set(isDisabled);
+  }
+
+  /**
+   * Focuses the input element within the command component when the overlay is attached.
+   */
+  onOverlayAttached() {
+    this.command()?.el.nativeElement.querySelector('input')?.focus();
   }
 }

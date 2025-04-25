@@ -59,6 +59,7 @@ import { forwardRef } from '@angular/core';
         },
       ]"
       (backdropClick)="close()"
+      (attach)="onOverlayAttached()"
       (detach)="close()">
       <ng-content />
     </ng-template>`,
@@ -184,12 +185,11 @@ export class SelectComponent implements OnInit, ControlValueAccessor {
   }
 
   /**
-   * Opens the dropdown and focuses the listbox.
-   * This method sets the `isOpen` signal to `true` and ensures the listbox gains focus.
+   * Opens the dropdown.
+   * This method sets the `isOpen` signal to `true`.
    */
   open() {
     this.isOpen.set(true);
-    setTimeout(() => this.optionsList()?.el.nativeElement.focus(), 0);
   }
 
   /**
@@ -262,5 +262,12 @@ export class SelectComponent implements OnInit, ControlValueAccessor {
    */
   setDisabledState(isDisabled: boolean): void {
     this.disabled.set(isDisabled);
+  }
+
+  /**
+   * Focuses the options list when the overlay is attached.
+   */
+  onOverlayAttached() {
+    this.optionsList()?.el.nativeElement.focus();
   }
 }
