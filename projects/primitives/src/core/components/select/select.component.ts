@@ -3,6 +3,7 @@ import {
   Component,
   computed,
   contentChild,
+  HostListener,
   input,
   linkedSignal,
   model,
@@ -112,10 +113,10 @@ export class SelectComponent implements OnInit, ControlValueAccessor {
   readonly maxWidth = input('100%');
 
   /**
-   * Computed signal for the width of the button element.
+   * Linked signal for the width of the button element.
    * This is used to set the width of the dropdown overlay.
    */
-  readonly buttonWidth = computed(
+  readonly buttonWidth = linkedSignal(
     () => this.button()?.el.nativeElement.offsetWidth
   );
 
@@ -211,6 +212,22 @@ export class SelectComponent implements OnInit, ControlValueAccessor {
     }, this.closeDelay());
   }
 
+  /**
+   * Focuses the options list when the overlay is attached.
+   */
+  onOverlayAttached() {
+    this.optionsList()?.el.nativeElement.focus();
+  }
+
+  /**
+   * Sets the width of the dropdown overlay based on the button's width.
+   * This ensures that the dropdown aligns properly with the button.
+   */
+  @HostListener('window:resize')
+  setButtonWidth() {
+    this.buttonWidth.set(this.button()?.el.nativeElement.offsetWidth);
+  }
+
   // Control Value Accessor methods
 
   /**
@@ -262,12 +279,5 @@ export class SelectComponent implements OnInit, ControlValueAccessor {
    */
   setDisabledState(isDisabled: boolean): void {
     this.disabled.set(isDisabled);
-  }
-
-  /**
-   * Focuses the options list when the overlay is attached.
-   */
-  onOverlayAttached() {
-    this.optionsList()?.el.nativeElement.focus();
   }
 }
