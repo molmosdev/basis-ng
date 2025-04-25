@@ -11,11 +11,9 @@ button[b-button] {
   transition:
     background-color 0.2s,
     opacity 0.2s;
-  font-size: 100%;
   border: none;
   text-decoration: none;
   font-family: 'Geist', sans-serif;
-  --padding-inline-multiple: 1.5;
   --border-px: 0px;
 
   &:focus-visible {
@@ -147,33 +145,21 @@ button[b-button] {
     pointer-events: none;
   }
 
-  &.size-small {
-    --vertical-padding: calc(0.5rem - (var(--border-px) * 2));
-    --horizontal-padding: clamp(
-      0.75rem,
-      calc(0.5rem + var(--radius, 0.5rem) / 2),
-      1.25rem
-    );
-    font-size: 0.875rem;
-    padding: var(--vertical-padding) var(--horizontal-padding);
-
-    &.equal-padding {
-      padding: var(--vertical-padding);
-    }
+  &.size-1 {
+    padding-inline: 0.571rem;
+    height: 1.714rem;
+    font-size: 0.857rem;
   }
 
-  &.size-default {
-    --vertical-padding: calc(0.9rem - (var(--border-px) * 2));
-    --horizontal-padding: clamp(
-      1rem,
-      calc(0.75rem + var(--radius, 0.5rem) / 2),
-      1.5rem
-    );
+  &.size-2 {
+    padding-inline: 0.857rem;
+    height: 2.286rem;
     font-size: 1rem;
-    padding: var(--vertical-padding) var(--horizontal-padding);
+  }
 
-    &.equal-padding {
-      padding: var(--vertical-padding);
-    }
+  &.size-3 {
+    padding-inline: 1.143rem;
+    height: 2.857rem;
+    font-size: 1.143rem;
   }
 }

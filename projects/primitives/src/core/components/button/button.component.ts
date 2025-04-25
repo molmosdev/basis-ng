@@ -1,15 +1,10 @@
 import { Component, ElementRef, inject, input } from '@angular/core';
-import { Spinner } from '../spinner/spinner.component';
 
 @Component({
   selector: 'button[b-button]',
-  imports: [Spinner],
-  templateUrl: './button.component.html',
+  template: ` <ng-content />`,
   host: {
     '[class]': 'variant() + " size-" + size()',
-    '[class.equal-padding]': 'equalPadding()',
-    '[class.loading]': 'loading()',
-    '[class.toggled]': 'isToggled()',
     '[class.active]': 'activeEnabled()',
   },
 })
@@ -20,19 +15,7 @@ export class Button {
   );
 
   /** The size of the button. */
-  readonly size = input<'small' | 'default'>('default');
-
-  /** Whether is loading. */
-  readonly loading = input(false);
-
-  /** Whether the padding should be equal vertically and horizontally. */
-  readonly equalPadding = input(false);
-
-  /** Whether the button is toggleable. */
-  readonly toggle = input(false);
-
-  /** The value of the button when it is toggled. */
-  readonly isToggled = input(false);
+  readonly size = input<'1' | '2' | '3'>('2');
 
   /**  Whether the button active animation is enabled. */
   readonly activeEnabled = input(true);
