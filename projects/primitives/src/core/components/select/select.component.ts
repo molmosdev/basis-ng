@@ -40,7 +40,7 @@ import { forwardRef } from '@angular/core';
       cdkConnectedOverlay
       [cdkConnectedOverlayOrigin]="trigger"
       [cdkConnectedOverlayOpen]="isOpen()"
-      [cdkConnectedOverlayWidth]="buttonWidth()"
+      [cdkConnectedOverlayMinWidth]="buttonWidth()"
       [cdkConnectedOverlayHasBackdrop]="true"
       cdkConnectedOverlayBackdropClass="cdk-overlay-transparent-backdrop"
       [cdkConnectedOverlayPositions]="[
