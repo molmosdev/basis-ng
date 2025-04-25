@@ -1,23 +1,13 @@
 input[b-input] {
-  --horizontal-padding: clamp(
-    1rem,
-    calc(0.75rem + var(--radius, 0.5rem) / 2),
-    1.5rem
-  );
-
   width: 100%;
-  min-height: 2.8rem;
   background-color: var(--input-background, #e0e0e0);
   border-radius: var(--radius, 0.5rem);
   box-sizing: border-box;
-  padding: calc(0.9rem - 2px) var(--horizontal-padding);
   border-width: 1px;
   border-style: solid;
   border-color: var(--border-color, transparent);
   transition:
     opacity 0.2s,
-    padding-top 0.2s,
-    padding-bottom 0.2s,
     background-color 0.2s,
     border-color 0.2s;
   font-size: 1rem;
@@ -58,13 +48,23 @@ input[b-input] {
     }
   }
 
-  &.label-up {
-    padding-top: 1.1rem;
-    padding-bottom: 0.3rem;
-  }
-
-  &.disabled {
+  &:disabled {
     opacity: 0.5;
     pointer-events: none;
+  }
+
+  &.size-1 {
+    padding: 0.357rem 0.5rem;
+    font-size: 0.857rem;
+  }
+
+  &.size-2 {
+    padding: 0.5rem 0.75rem;
+    font-size: 1rem;
+  }
+
+  &.size-3 {
+    padding: 0.786rem 1rem;
+    font-size: 1.143rem;
   }
 }
