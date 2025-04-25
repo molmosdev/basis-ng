@@ -5,9 +5,6 @@ import {
   ElementRef,
   inject,
   input,
-  model,
-  output,
-  signal,
 } from '@angular/core';
 import { NgModel } from '@angular/forms';
 
@@ -16,13 +13,10 @@ import { NgModel } from '@angular/forms';
   template: ``,
   host: {
     '[type]': 'type()',
-    '[placeholder]': 'placeholder() || ""',
-    '[class.ng-invalid]': 'invalid()',
-    '[class.disabled]': 'disabled()',
     '[style.max-width]': 'maxWidth()',
     '(input)': 'onInput($event)',
-    '(focus)': 'focused.set(true)',
     '(blur)': 'onBlur($event)',
+    '[class]': ' "size-" + size() ',
   },
 })
 export class Input implements AfterViewInit {
@@ -30,26 +24,6 @@ export class Input implements AfterViewInit {
    * The type of the input.
    */
   readonly type = input<'text' | 'number' | 'password' | 'email'>('text');
-
-  /**
-   * The placeholder text for the input.
-   */
-  readonly placeholder = input<string>('');
-
-  /**
-   * The value of the input.
-   */
-  readonly value = signal<string | number | null>(null);
-
-  /**
-   * Whether the input is invalid.
-   */
-  readonly invalid = model<boolean>(false);
-
-  /**
-   * Whether the input is disabled.
-   */
-  readonly disabled = model<boolean>(false);
 
   /**
    * The maximum width of the input.
@@ -72,16 +46,6 @@ export class Input implements AfterViewInit {
   readonly isNumberType = computed(() => this.type() === 'number');
 
   /**
-   * Whether the input is focused.
-   */
-  readonly focused = signal<boolean>(false);
-
-  /**
-   * Event emitted when the value changes.
-   */
-  valueChange = output<string | number | null>();
-
-  /**
    * Reference to the input element.
    */
   readonly el = inject<ElementRef<HTMLInputElement>>(ElementRef);
@@ -92,11 +56,27 @@ export class Input implements AfterViewInit {
   private ngModel = inject(NgModel, { optional: true });
 
   /**
+   * The size of the input.
+   */
+  readonly size = input<'1' | '2' | '3'>('2');
+
+  /**
    * After the view has been initialized, set the value of the select.
    */
   ngAfterViewInit(): void {
     const value = this.el.nativeElement.value || this.ngModel?.model;
-    this.value.set(this.isNumberType() ? this.formatNumber(value) : value);
+    if (this.isNumberType()) {
+      const formattedValue = this.formatNumber(value) || '';
+      this.setValue(formattedValue);
+    }
+  }
+
+  /**
+   * Sets the value of the input element.
+   * @param value The value to set.
+   */
+  setValue(value: string): void {
+    this.el.nativeElement.value = value;
   }
 
   /**
@@ -108,8 +88,7 @@ export class Input implements AfterViewInit {
 
     // If the input is not of number type, update the value and emit the value change event.
     if (!this.isNumberType()) {
-      this.value.set(target.value);
-      this.valueChange.emit(target.value);
+      this.setValue(target.value);
     }
   }
 
@@ -118,14 +97,10 @@ export class Input implements AfterViewInit {
    * @param event - The blur event.
    */
   onBlur(event: any): void {
-    this.focused.set(false);
-
     // If the input is of number type, format the value and emit the value change event.
     if (this.isNumberType()) {
       const formattedValue = this.formatNumber(event.target.value);
-      this.el.nativeElement.value = formattedValue || '';
-      this.value.set(formattedValue);
-      this.valueChange.emit(formattedValue);
+      this.setValue(formattedValue || '');
     }
   }
 
