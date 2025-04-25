@@ -146,21 +146,18 @@ button[b-button] {
 
   &.size-1 {
     padding-inline: 0.571rem;
-    height: 1.714rem;
     min-height: 1.714rem;
     font-size: 0.857rem;
   }
 
   &.size-2 {
     padding-inline: 0.857rem;
-    height: 2.286rem;
     min-height: 2.286rem;
     font-size: 1rem;
   }
 
   &.size-3 {
     padding-inline: 1.143rem;
-    height: 2.857rem;
     min-height: 2.857rem;
     font-size: 1.143rem;
   }
