@@ -1,10 +1,5 @@
 <div class="header-wrapper">
-  <button
-    b-button
-    variant="ghost"
-    size="small"
-    [equalPadding]="true"
-    [routerLink]="['/']">
+  <button b-button variant="ghost" size="1" [routerLink]="['/']">
     <i b-icon icon="CircleDotDashed" [size]="22"></i>
   </button>
   <div class="right">
@@ -12,7 +7,7 @@
       href="https://github.com/molmosdev/basis-ng"
       target="_blank"
       rel="noopener">
-      <button b-button variant="ghost" size="small" [equalPadding]="true">
+      <button b-button variant="ghost" size="2">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="22"
@@ -27,15 +22,14 @@
       </button>
     </a>
     <a href="https://www.npmjs.com/org/basis-ng" target="_blank" rel="noopener">
-      <button b-button variant="ghost" size="small" [equalPadding]="true">
+      <button b-button variant="ghost" size="2">
         <i b-icon icon="Package" [size]="22" [strokeWidth]="1.6"></i>
       </button>
     </a>
     <button
       b-button
       variant="ghost"
-      size="small"
-      [equalPadding]="true"
+      size="2"
       [menuTriggerFor]="themeMenu"
       [menuTriggerPosition]="'bottom-right'">
       @switch (theme()) {
