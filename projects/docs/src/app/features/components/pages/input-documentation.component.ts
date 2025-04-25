@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Input, Label, Alert } from '@basis-ng/primitives';
+import { Input, Alert } from '../../../../../../primitives/src/public-api';
 import { CodeBlockComponent } from '../shared/components/code-block.component';
 import {
   FormsModule,
@@ -32,6 +32,11 @@ import {
           <th>Description</th>
         </tr>
         <tr>
+          <td><strong>size</strong></td>
+          <td><code>'1' | '2' | '3'</code></td>
+          <td>The size of the input. Default is <code>'2'</code>.</td>
+        </tr>
+        <tr>
           <td><strong>type</strong></td>
           <td><code>'text' | 'number' | 'password' | 'email'</code></td>
           <td>The type of the input.</td>
@@ -47,73 +52,65 @@ import {
           <td>The value of the input.</td>
         </tr>
         <tr>
-          <td><strong>invalid</strong></td>
-          <td><code>boolean</code></td>
-          <td>Whether the input is invalid.</td>
+          <td><strong>numberType</strong></td>
+          <td><code>'integer' | 'decimal'</code></td>
+          <td>The type of number input.</td>
         </tr>
         <tr>
-          <td><strong>disabled</strong></td>
-          <td><code>boolean</code></td>
-          <td>Whether the input is disabled.</td>
+          <td><strong>decimals</strong></td>
+          <td><code>number</code></td>
+          <td>The number of decimal places for decimal inputs.</td>
         </tr>
         <tr>
           <td><strong>maxWidth</strong></td>
           <td><code>string</code></td>
           <td>The maximum width of the input.</td>
         </tr>
-        <tr>
-          <td><strong>decimals</strong></td>
-          <td><code>number</code></td>
-          <td>The number of decimal places for number input.</td>
-        </tr>
-        <tr>
-          <td><strong>numberType</strong></td>
-          <td><code>'integer' | 'decimal'</code></td>
-          <td>The type of number input (integer or decimal).</td>
-        </tr>
-      </table>
-    </div>
-
-    <h2>Events</h2>
-    <div class="table-wrapper">
-      <table>
-        <tr>
-          <th>Event</th>
-          <th>Type</th>
-          <th>Description</th>
-        </tr>
-        <tr>
-          <td><strong>valueChange</strong></td>
-          <td><code>string | number | null</code></td>
-          <td>Emitted when the value of the input changes.</td>
-        </tr>
       </table>
     </div>
 
     <h2>Basic</h2>
-    <code-block [code]="basicUsage" />
-    <div class="documentation-playground">
-      <input
-        b-input
-        type="text"
-        placeholder="Enter text"
-        [value]="basicValue"
-        (valueChange)="onValueChange($event)"
-        maxWidth="240px" />
-    </div>
-
-    <h2>Angular Binding with ngModel</h2>
     <code-block [code]="ngModelUsage" />
     <div class="documentation-playground">
       <input
         b-input
         type="text"
         placeholder="Enter text"
-        [(ngModel)]="ngModelValue"
-        maxWidth="240px" />
+        [(ngModel)]="ngModelValue" />
     </div>
 
-    <h2>Angular Forms with formControlName</h2>
+    <h2>Number Input (Integer)</h2>
+    <code-block [code]="numberIntegerUsage" />
+    <div class="documentation-playground">
+      <input
+        b-input
+        type="number"
+        numberType="integer"
+        placeholder="Enter an integer"
+        [(ngModel)]="integerValue" />
+    </div>
+
+    <h2>Number Input (Decimal)</h2>
+    <code-block [code]="numberDecimalUsage" />
+    <div class="documentation-playground">
+      <input
+        b-input
+        type="number"
+        numberType="decimal"
+        [decimals]="2"
+        placeholder="Enter a decimal number"
+        [(ngModel)]="decimalValue" />
+    </div>
+
+    <h2>Input Sizes</h2>
+    <code-block [code]="sizeUsage" />
+    <div class="documentation-playground">
+      <input b-input type="text" size="1" placeholder="Size 1" />
+      <input b-input type="text" size="2" placeholder="Size 2 (default)" />
+      <input b-input type="text" size="3" placeholder="Size 3" />
+    </div>
+
+    <h2>Reactive Forms</h2>
     <code-block [code]="formControlUsage" />
     <form [formGroup]="form">
       <div class="documentation-playground">
@@ -121,55 +118,9 @@ import {
           b-input
           type="text"
           placeholder="Enter text"
-          formControlName="inputControl"
-          maxWidth="240px" />
+          formControlName="inputControl" />
       </div>
     </form>
-
-    <h2>Disabled</h2>
-    <code-block [code]="disabledUsage" />
-    <div class="documentation-playground">
-      <input
-        b-input
-        type="text"
-        placeholder="Enter text"
-        [disabled]="true"
-        maxWidth="240px" />
-    </div>
-
-    <h2>Invalid</h2>
-    <code-block [code]="invalidUsage" />
-    <div class="documentation-playground">
-      <input
-        b-input
-        type="text"
-        placeholder="Enter text"
-        [invalid]="true"
-        maxWidth="240px" />
-    </div>
-
-    <h2>Number Input with Decimals</h2>
-    <code-block [code]="decimalsUsage" />
-    <div class="documentation-playground">
-      <input
-        b-input
-        type="number"
-        placeholder="Enter number"
-        numberType="decimal"
-        [decimals]="2"
-        maxWidth="240px" />
-    </div>
-
-    <h2>Number Input with Integer Type</h2>
-    <code-block [code]="integerUsage" />
-    <div class="documentation-playground">
-      <input
-        b-input
-        type="number"
-        placeholder="Enter integer"
-        numberType="integer"
-        maxWidth="240px" />
-    </div>
 
     <h2>Password Input</h2>
     <code-block [code]="passwordUsage" />
@@ -178,51 +129,85 @@ import {
         b-input
         type="password"
         placeholder="Enter password"
-        maxWidth="240px" />
+        [(ngModel)]="passwordValue" />
     </div>
 
-    <h2>With Label</h2>
-    <code-block [code]="withInputUsage" />
+    <h2>Disabled Input</h2>
+    <span
+      >The <code>disabled</code> state is applied by Angular's
+      <code>NgModel</code> or Reactive Forms.</span
+    >
+    <code-block [code]="disabledUsage" />
     <div class="documentation-playground">
-      <b-label>
-        <label>Input Label</label>
-        <input b-input type="text" maxWidth="240px" />
-      </b-label>
+      <input
+        b-input
+        type="text"
+        placeholder="Disabled input"
+        [disabled]="true" />
+    </div>
+
+    <h2>Invalid Input</h2>
+    <span
+      >The <code>invalid</code> state is applied by Angular's
+      <code>NgModel</code> or Reactive Forms when validation fails.</span
+    >
+    <code-block [code]="invalidUsage" />
+    <form [formGroup]="form">
+      <div class="documentation-playground">
+        <input
+          b-input
+          type="text"
+          placeholder="Invalid input"
+          formControlName="invalidControl" />
+      </div>
+    </form>
+
+    <h2>Max Width</h2>
+    <span
+      >The <code>maxWidth</code> property allows you to set a maximum width for
+      the input.</span
+    >
+    <code-block [code]="maxWidthUsage" />
+    <div class="documentation-playground">
+      <input
+        b-input
+        type="text"
+        placeholder="Input with max width"
+        [maxWidth]="'200px'" />
     </div>`,
-  imports: [
-    CodeBlockComponent,
-    Input,
-    FormsModule,
-    ReactiveFormsModule,
-    Label,
-    Alert,
-  ],
+  imports: [CodeBlockComponent, Input, FormsModule, ReactiveFormsModule, Alert],
 })
 export default class InputDocumentationComponent {
   angularImport = `import { Input } from '@basis-ng/primitives'`;
   stylesImport = `@import '@basis-ng/styles/input';`;
-  basicUsage = `<input b-input type="text" placeholder="Enter text" [value]="basicValue" (valueChange)="onValueChange($event)" maxWidth="240px" />`;
-  ngModelUsage = `<input b-input type="text" placeholder="Enter text" [(ngModel)]="ngModelValue" maxWidth="240px" />`;
+  ngModelUsage = `<input b-input type="text" placeholder="Enter text" [(ngModel)]="ngModelValue" />`;
   formControlUsage = `<form [formGroup]="form">
-  <input b-input type="text" placeholder="Enter text" formControlName="inputControl" maxWidth="240px" />
+  <input b-input type="text" placeholder="Enter text" formControlName="inputControl" />
 </form>`;
-  disabledUsage = `<input b-input type="text" placeholder="Enter text" [disabled]="true" maxWidth="240px" />`;
-  invalidUsage = `<input b-input type="text" placeholder="Enter text" [invalid]="true" maxWidth="240px" />`;
-  decimalsUsage = `<input b-input type="number" placeholder="Enter number" numberType="decimal" [decimals]="2" maxWidth="240px" />`;
-  integerUsage = `<input b-input type="number" placeholder="Enter integer" numberType="integer" maxWidth="240px" />`;
-  passwordUsage = `<input b-input type="password" placeholder="Enter password" maxWidth="240px" />`;
+  passwordUsage = `<input b-input type="password" placeholder="Enter password" [(ngModel)]="passwordValue" />`;
   withInputUsage = `<b-label>
   <label>Input Label</label>
-  <input b-input type="text" maxWidth="240px" />
+  <input b-input type="text" />
 </b-label>`;
+  numberIntegerUsage = `<input b-input type="number" numberType="integer" placeholder="Enter an integer" [(ngModel)]="integerValue" />`;
+  numberDecimalUsage = `<input b-input type="number" numberType="decimal" [decimals]="2" placeholder="Enter a decimal number" [(ngModel)]="decimalValue" />`;
+  sizeUsage = `<input b-input type="text" size="1" placeholder="Size 1" />
+<input b-input type="text" size="2" placeholder="Size 2 (default)" />
+<input b-input type="text" size="3" placeholder="Size 3" />`;
+  disabledUsage = `<input b-input type="text" placeholder="Disabled input" [disabled]="true" />`;
+  invalidUsage = `<form [formGroup]="form">
+  <input b-input type="text" placeholder="Invalid input" formControlName="invalidControl" />
+</form>`;
+  maxWidthUsage = `<input b-input type="text" placeholder="Input with max width" [maxWidth]="'200px'" />`;
 
-  basicValue = '';
-  ngModelValue = '';
+  ngModelValue = 'Hello World!';
+  passwordValue = 'kñl23jkjf2i';
+  integerValue = 42;
+  decimalValue = 3.14;
   form = new FormGroup({
-    inputControl: new FormControl(''),
+    inputControl: new FormControl('Hello World from FormControl!'),
+    invalidControl: new FormControl('', {
+      validators: () => ({ invalid: true }),
+    }),
   });
-
-  onValueChange(value: string | number | null) {
-    console.log('Input value changed:', value);
-  }
 }
