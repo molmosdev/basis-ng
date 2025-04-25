@@ -1,12 +1,5 @@
 import { Component } from '@angular/core';
-import {
-  InputGroup,
-  Input,
-  Icon,
-  Button,
-  Label,
-  Alert,
-} from '@basis-ng/primitives';
+import { InputGroup, Input, Icon, Button, Alert } from '@basis-ng/primitives';
 import { CodeBlockComponent } from '../shared/components/code-block.component';
 
 @Component({
@@ -75,35 +68,8 @@ import { CodeBlockComponent } from '../shared/components/code-block.component';
         <input type="text" b-input placeholder="Search here..." />
         <button b-button variant="primary">Go</button>
       </b-input-group>
-    </div>
-
-    <h2>With Label</h2>
-    <code-block [code]="withLabelUsage" />
-    <div class="documentation-playground">
-      <b-input-group [bordered]="true" maxWidth="240px">
-        <b-label>
-          <label for="name">Name:</label>
-          <input
-            id="name"
-            type="text"
-            b-input
-            placeholder="Enter your name..." />
-        </b-label>
-      </b-input-group>
-    </div>
-
-    <h2>With Label and Icon</h2>
-    <code-block [code]="withLabelAndIconUsage" />
-    <div class="documentation-playground">
-      <b-input-group [bordered]="true" maxWidth="240px">
-        <i b-icon icon="User" [size]="17"></i>
-        <b-label>
-          <label for="username">Username</label>
-          <input id="username" type="text" b-input />
-        </b-label>
-      </b-input-group>
     </div>`,
-  imports: [CodeBlockComponent, InputGroup, Input, Icon, Button, Label, Alert],
+  imports: [CodeBlockComponent, InputGroup, Input, Icon, Button, Alert],
 })
 export default class InputGroupDocumentationComponent {
   angularImport = `import { InputGroupComponent } from '@basis-ng/primitives'`;
@@ -124,20 +90,5 @@ export default class InputGroupDocumentationComponent {
   <i b-icon icon="Search" [size]="17"></i>
   <input type="text" b-input placeholder="Search here..." />
   <button b-button variant="primary">Go</button>
-</b-input-group>`;
-
-  withLabelUsage = `<b-input-group [bordered]="true" maxWidth="240px">
-  <b-label>
-    <label for="name">Name:</label>
-    <input id="name" type="text" b-input placeholder="Enter your name..." />
-  </b-label>
-</b-input-group>`;
-
-  withLabelAndIconUsage = `<b-input-group [bordered]="true" maxWidth="240px">
-  <i b-icon icon="User" [size]="17"></i>
-  <b-label>
-    <label for="username">Username</label>
-    <input id="username" type="text" b-input />
-  </b-label>
 </b-input-group>`;
 }

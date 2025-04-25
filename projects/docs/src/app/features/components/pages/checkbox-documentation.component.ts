@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Checkbox, Label, Alert } from '@basis-ng/primitives';
+import { Checkbox, Alert } from '@basis-ng/primitives';
 import { CodeBlockComponent } from '../shared/components/code-block.component';
 import {
   FormsModule,
@@ -77,22 +77,12 @@ import {
       <div class="documentation-playground">
         <input type="checkbox" b-checkbox formControlName="checkboxControl" />
       </div>
-    </form>
-
-    <h2>With Label</h2>
-    <code-block [code]="withLabelUsage" />
-    <div class="documentation-playground">
-      <b-label>
-        <input type="checkbox" b-checkbox id="checkbox-label" />
-        <label for="checkbox-label">Checkbox Label</label>
-      </b-label>
-    </div>`,
+    </form> `,
   imports: [
     CodeBlockComponent,
     Checkbox,
     FormsModule,
     ReactiveFormsModule,
-    Label,
     Alert,
   ],
 })
@@ -102,10 +92,6 @@ export default class CheckboxDocumentationComponent {
   basicUsage = `<input type="checkbox" b-checkbox [value]="basicValue" (valueChange)="onValueChange($event)" />`;
   ngModelUsage = `<input type="checkbox" b-checkbox [(ngModel)]="ngModelValue" />`;
   formControlUsage = `<input type="checkbox" b-checkbox formControlName="checkboxControl" />`;
-  withLabelUsage = `<b-label>
-  <input type="checkbox" b-checkbox id="checkbox-label" />
-  <label for="checkbox-label">Checkbox Label</label>
-</b-label>`;
 
   basicValue = false;
   ngModelValue = false;

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Label, Switch, Alert } from '@basis-ng/primitives';
+import { Switch, Alert } from '@basis-ng/primitives';
 import { CodeBlockComponent } from '../shared/components/code-block.component';
 import {
   FormsModule,
@@ -92,22 +92,12 @@ import {
       <div class="documentation-playground">
         <input type="checkbox" b-switch formControlName="switchControl" />
       </div>
-    </form>
-
-    <h2>With Label</h2>
-    <code-block [code]="withLabelUsage" />
-    <div class="documentation-playground">
-      <b-label>
-        <input type="checkbox" b-switch id="switch-label" />
-        <label for="switch-label">Switch Label</label>
-      </b-label>
-    </div>`,
+    </form> `,
   imports: [
     CodeBlockComponent,
     Switch,
     FormsModule,
     ReactiveFormsModule,
-    Label,
     Alert,
   ],
 })
@@ -117,10 +107,6 @@ export default class SwitchDocumentationComponent {
   basicUsage = `<input type="checkbox" b-switch [value]="basicValue" (valueChange)="onValueChange($event)" />`;
   ngModelUsage = `<input type="checkbox" b-switch [(ngModel)]="ngModelValue" />`;
   formControlUsage = `<input type="checkbox" b-switch formControlName="switchControl" />`;
-  withLabelUsage = `<b-label>
-  <input type="checkbox" b-switch id="switch-label" />
-  <label for="switch-label">Switch Label</label>
-</b-label>`;
 
   basicValue = false;
   ngModelValue = false;

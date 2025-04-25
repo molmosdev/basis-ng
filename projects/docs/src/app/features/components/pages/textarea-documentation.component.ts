@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Label, Textarea, Alert } from '@basis-ng/primitives';
+import { Textarea, Alert } from '@basis-ng/primitives';
 import { CodeBlockComponent } from '../shared/components/code-block.component';
 import {
   FormsModule,
@@ -125,22 +125,12 @@ import {
     <code-block [code]="invalidUsage" />
     <div class="documentation-playground">
       <textarea b-textarea placeholder="Enter text" [invalid]="true"></textarea>
-    </div>
-
-    <h2>With Label</h2>
-    <code-block [code]="withLabelUsage" />
-    <div class="documentation-playground">
-      <b-label>
-        <label>Textarea Label</label>
-        <textarea b-textarea [rows]="4" [cols]="50"></textarea>
-      </b-label>
     </div> `,
   imports: [
     CodeBlockComponent,
     Textarea,
     FormsModule,
     ReactiveFormsModule,
-    Label,
     Alert,
   ],
 })
@@ -154,10 +144,6 @@ export default class TextareaDocumentationComponent {
 </form>`;
   disabledUsage = `<textarea b-textarea placeholder="Enter text" [disabled]="true"></textarea>`;
   invalidUsage = `<textarea b-textarea placeholder="Enter text" [invalid]="true"></textarea>`;
-  withLabelUsage = `<b-label>
-  <label>Textarea Label</label>
-  <textarea b-textarea rows="4" cols="50"></textarea>
-</b-label>`;
 
   basicValue = '';
   ngModelValue = '';
