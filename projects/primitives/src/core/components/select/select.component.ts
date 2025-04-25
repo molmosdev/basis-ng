@@ -65,7 +65,6 @@ import { forwardRef } from '@angular/core';
       <ng-content />
     </ng-template>`,
   host: {
-    '[style.max-width]': 'maxWidth()',
     '[class.disabled]': 'disabled()',
   },
   providers: [
@@ -105,12 +104,6 @@ export class SelectComponent implements OnInit, ControlValueAccessor {
    * This is linked to the value of the `OptionsListComponent`.
    */
   readonly value = linkedSignal(() => this.optionsList()?.value());
-
-  /**
-   * Input for setting the maximum width of the dropdown.
-   * Defaults to '100%'.
-   */
-  readonly maxWidth = input('100%');
 
   /**
    * Linked signal for the width of the button element.
@@ -216,6 +209,7 @@ export class SelectComponent implements OnInit, ControlValueAccessor {
    * Focuses the options list when the overlay is attached.
    */
   onOverlayAttached() {
+    this.buttonWidth.set(this.button()?.el.nativeElement.offsetWidth);
     this.optionsList()?.el.nativeElement.focus();
   }
 

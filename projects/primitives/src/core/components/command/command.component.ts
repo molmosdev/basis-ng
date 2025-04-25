@@ -31,7 +31,6 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
       (blur)="isDesktop() && trappedInput.el.nativeElement.focus()" />
     <ng-content />`,
   host: {
-    '[style.maxWidth]': 'maxWidth()',
     '[style.maxHeight]': 'maxHeight()',
   },
 })
@@ -41,12 +40,6 @@ export class CommandComponent {
    * Used to interact with the options for navigation and selection.
    */
   readonly commandOptions = contentChild(CommandOptionsComponent);
-
-  /**
-   * Input representing the maximum width of the component.
-   * This can be used to control the visual appearance of the command component.
-   */
-  readonly maxWidth = input('100%');
 
   /**
    * Input representing the maximum height of the component.

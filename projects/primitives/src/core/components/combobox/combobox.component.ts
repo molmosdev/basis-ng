@@ -65,7 +65,6 @@ import { CommandComponent } from '../command/command.component';
       <ng-content />
     </ng-template>`,
   host: {
-    '[style.max-width]': 'maxWidth()',
     '[class.disabled]': 'disabled()',
   },
   providers: [
@@ -105,12 +104,6 @@ export class ComboboxComponent implements OnInit, ControlValueAccessor {
    * This is linked to the value of the `CommandComponent`.
    */
   readonly value = linkedSignal(() => this.command()?.value());
-
-  /**
-   * Input for setting the maximum width of the dropdown.
-   * Defaults to '100%'.
-   */
-  readonly maxWidth = input('100%');
 
   /**
    * Linked signal for the width of the button element.
@@ -216,6 +209,7 @@ export class ComboboxComponent implements OnInit, ControlValueAccessor {
    * Focuses the input element within the command component when the overlay is attached.
    */
   onOverlayAttached() {
+    this.buttonWidth.set(this.button()?.el.nativeElement.offsetWidth);
     this.command()?.el.nativeElement.querySelector('input')?.focus();
   }
 
