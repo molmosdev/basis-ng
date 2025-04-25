@@ -50,7 +50,7 @@ import { CodeBlockComponent } from '../shared/components/code-block.component';
     </span>
     <code-block [code]="basicUsage" />
     <div class="documentation-playground">
-      <b-command [maxWidth]="'350px'" [maxHeight]="'200px'">
+      <b-command [style.max-width.px]="'200'" [maxHeight]="'200px'">
         <ul b-command-options>
           <li b-option value="option1">Option 1</li>
           <li b-option value="option2">Option 2</li>

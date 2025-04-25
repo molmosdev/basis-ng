@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Button, Icon, ButtonGroup, Alert } from '@basis-ng/primitives';
+import { Button, ButtonGroup, Alert, Spinner } from '@basis-ng/primitives';
 import { CodeBlockComponent } from '../shared/components/code-block.component';
 
 @Component({
@@ -40,20 +40,8 @@ import { CodeBlockComponent } from '../shared/components/code-block.component';
         </tr>
         <tr>
           <td><strong>size</strong></td>
-          <td><code>'small' | 'default'</code></td>
-          <td>The size of the button.</td>
-        </tr>
-        <tr>
-          <td><strong>loading</strong></td>
-          <td><code>boolean</code></td>
-          <td>Whether the button is in a loading state.</td>
-        </tr>
-        <tr>
-          <td><strong>equalPadding</strong></td>
-          <td><code>boolean</code></td>
-          <td>
-            Whether the padding should be equal vertically and horizontally.
-          </td>
+          <td><code>'1' | '2' | '3'</code></td>
+          <td>The size of the button. Default is <code>'2'</code>.</td>
         </tr>
       </table>
     </div>
@@ -75,9 +63,7 @@ import { CodeBlockComponent } from '../shared/components/code-block.component';
     <h2>Basic</h2>
     <code-block [code]="basicUsage" />
     <div class="documentation-playground">
-      <button b-button variant="primary" size="default">
-        This is a button
-      </button>
+      <button b-button variant="primary" size="2">This is a button</button>
     </div>
 
     <h2>Variants</h2>
@@ -92,21 +78,17 @@ import { CodeBlockComponent } from '../shared/components/code-block.component';
     <h2>Sizes</h2>
     <code-block [code]="sizesUsage" />
     <div class="documentation-playground">
-      <button b-button size="small">Small</button>
-      <button b-button size="default">Default</button>
+      <button b-button size="1">Size 1</button>
+      <button b-button size="2">Size 2 (default)</button>
+      <button b-button size="3">Size 3</button>
     </div>
 
     <h2>Loading State</h2>
     <code-block [code]="loadingUsage" />
     <div class="documentation-playground">
-      <button b-button [loading]="true">Loading...</button>
-    </div>
-
-    <h2>Equal Padding</h2>
-    <code-block [code]="equalPaddingUsage" />
-    <div class="documentation-playground">
-      <button b-button [equalPadding]="true">
-        <i b-icon icon="House" [size]="16" color="var(--bg-color)"></i>
+      <button b-button>
+        <b-spinner color="var(--primary-foreground)" [size]="18" />
+        Loading...
       </button>
     </div>
 
@@ -147,9 +129,9 @@ import { CodeBlockComponent } from '../shared/components/code-block.component';
     <code-block [code]="outlinedSmallUsage" />
     <div class="documentation-playground">
       <b-button-group>
-        <button b-button variant="outlined" size="small">Outlined</button>
-        <button b-button variant="outlined" size="small">Outlined</button>
-        <button b-button variant="outlined" size="small">Outlined</button>
+        <button b-button variant="outlined" size="1">Outlined</button>
+        <button b-button variant="outlined" size="1">Outlined</button>
+        <button b-button variant="outlined" size="1">Outlined</button>
       </b-button-group>
     </div>
 
@@ -167,89 +149,28 @@ import { CodeBlockComponent } from '../shared/components/code-block.component';
     <code-block [code]="spacedSmallUsage" />
     <div class="documentation-playground">
       <b-button-group [spaced]="true">
-        <button b-button variant="outlined" size="small">Outlined</button>
-        <button b-button variant="outlined" size="small">Outlined</button>
-        <button b-button variant="outlined" size="small">Outlined</button>
-      </b-button-group>
-    </div>
-
-    <h3>Toggle Buttons</h3>
-    <code-block [code]="toggleButtonsClickHandlingUsage" />
-    <div class="documentation-playground">
-      <b-button-group>
-        <button
-          b-button
-          variant="outlined"
-          [toggle]="true"
-          [isToggled]="toggleState === 'option1'"
-          (click)="toggleState = 'option1'">
-          Option 1
-        </button>
-        <button
-          b-button
-          variant="outlined"
-          [toggle]="true"
-          [isToggled]="toggleState === 'option2'"
-          (click)="toggleState = 'option2'">
-          Option 2
-        </button>
-        <button
-          b-button
-          variant="outlined"
-          [toggle]="true"
-          [isToggled]="toggleState === 'option3'"
-          (click)="toggleState = 'option3'">
-          Option 3
-        </button>
-      </b-button-group>
-    </div>
-
-    <h3>Multi-Select Toggle Buttons</h3>
-    <code-block [code]="multiSelectToggleUsage" />
-    <div class="documentation-playground">
-      <b-button-group>
-        <button
-          b-button
-          variant="outlined"
-          [toggle]="true"
-          [isToggled]="isOptionToggled('option1')"
-          (click)="toggleOption('option1')">
-          Option 1
-        </button>
-        <button
-          b-button
-          variant="outlined"
-          [toggle]="true"
-          [isToggled]="isOptionToggled('option2')"
-          (click)="toggleOption('option2')">
-          Option 2
-        </button>
-        <button
-          b-button
-          variant="outlined"
-          [toggle]="true"
-          [isToggled]="isOptionToggled('option3')"
-          (click)="toggleOption('option3')">
-          Option 3
-        </button>
+        <button b-button variant="outlined" size="1">Outlined</button>
+        <button b-button variant="outlined" size="1">Outlined</button>
+        <button b-button variant="outlined" size="1">Outlined</button>
       </b-button-group>
     </div>`,
 
-  imports: [CodeBlockComponent, Button, Icon, ButtonGroup, Alert],
+  imports: [CodeBlockComponent, Button, ButtonGroup, Alert, Spinner],
 })
 export default class ButtonDocumentationComponent {
   angularImport = `import { Button } from '@basis-ng/primitives'`;
   stylesImport = `@import '@basis-ng/styles/button';`;
-  basicUsage = `<button b-button variant="primary" size="default">This is a button</button>`;
+  basicUsage = `<button b-button variant="primary" size="2">This is a button</button>`;
   variantsUsage = `<button b-button variant="primary">Primary</button>
 <button b-button variant="secondary">Secondary</button>
 <button b-button variant="ghost">Ghost</button>
 <button b-button variant="outlined">Outlined</button>`;
-  sizesUsage = `<button b-button size="small">Small</button>
-<button b-button size="default">Default</button>`;
-  loadingUsage = `<button b-button [loading]="true">Loading...</button>`;
-  equalPaddingUsage = `<button b-button [equalPadding]="true">
-  <i b-icon icon="House" [size]="16" color="var(--bg-color)"></i>
+  sizesUsage = `<button b-button size="1">Size 1</button>
+<button b-button size="2">Size 2 (default)</button>
+<button b-button size="3">Size 3</button>`;
+  loadingUsage = `<button b-button>
+  <b-spinner color="var(--primary-foreground)" [size]="18" />
+  Loading...
 </button>`;
   buttonGroupUsage = `<b-button-group>
   <button b-button variant="outlined"> Outlined </button>
@@ -273,9 +194,9 @@ export default class ButtonDocumentationComponent {
 </b-button-group>`;
 
   outlinedSmallUsage = `<b-button-group>
-  <button b-button variant="outlined" size="small"> Outlined </button>
-  <button b-button variant="outlined" size="small"> Outlined </button>
-  <button b-button variant="outlined" size="small"> Outlined </button>
+  <button b-button variant="outlined" size="1">Outlined</button>
+  <button b-button variant="outlined" size="1">Outlined</button>
+  <button b-button variant="outlined" size="1">Outlined</button>
 </b-button-group>`;
 
   spacedUsage = `<b-button-group [spaced]="true">
@@ -285,80 +206,8 @@ export default class ButtonDocumentationComponent {
 </b-button-group>`;
 
   spacedSmallUsage = `<b-button-group [spaced]="true">
-  <button b-button variant="outlined" size="small"> Outlined </button>
-  <button b-button variant="outlined" size="small"> Outlined </button>
-  <button b-button variant="outlined" size="small"> Outlined </button>
-</b-button-group>`;
-
-  toggleState = 'option1';
-
-  multiSelectToggled: string[] = ['option1'];
-
-  isOptionToggled(option: string): boolean {
-    return this.multiSelectToggled.includes(option);
-  }
-
-  toggleOption(option: string): void {
-    if (this.isOptionToggled(option)) {
-      this.multiSelectToggled = this.multiSelectToggled.filter(
-        o => o !== option
-      );
-    } else {
-      this.multiSelectToggled.push(option);
-    }
-  }
-
-  toggleButtonsClickHandlingUsage = `<b-button-group>
-  <button
-    b-button
-    variant="outlined"
-    [toggle]="true"
-    [isToggled]="toggleState === 'option1'"
-    (click)="toggleState = 'option1'">
-    Option 1
-  </button>
-  <button
-    b-button
-    variant="outlined"
-    [toggle]="true"
-    [isToggled]="toggleState === 'option2'"
-    (click)="toggleState = 'option2'">
-    Option 2
-  </button>
-  <button
-    b-button
-    variant="outlined"
-    [toggle]="true"
-    [isToggled]="toggleState === 'option3'"
-    (click)="toggleState = 'option3'">
-    Option 3
-  </button>
-</b-button-group>`;
-
-  multiSelectToggleUsage = `<b-button-group>
-  <button
-    b-button
-    variant="outlined"
-    [toggle]="true"
-    [isToggled]="isOptionToggled('option1')"
-    (click)="toggleOption('option1')">
-    Option 1
-  </button>
-  <button
-    b-button
-    variant="outlined"
-    [toggle]="true"
-    [isToggled]="isOptionToggled('option2')"
-    (click)="toggleOption('option2')">
-    Option 2
-  </button>
-  <button
-    b-button
-    variant="outlined"
-    [toggle]="true"
-    [isToggled]="isOptionToggled('option3')"
-    (click)="toggleOption('option3')">
-    Option 3
-  </button>
+  <button b-button variant="outlined" size="1"> Outlined </button>
+  <button b-button variant="outlined" size="1"> Outlined </button>
+  <button b-button variant="outlined" size="1"> Outlined </button>
 </b-button-group>`;
 }

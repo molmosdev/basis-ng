@@ -5,7 +5,7 @@ import {
   CommandComponent,
   CommandOptionsComponent,
   OptionComponent,
-} from '@basis-ng/primitives';
+} from '../../../../../../primitives/src/public-api';
 import { CodeBlockComponent } from '../shared/components/code-block.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FormGroup, FormControl } from '@angular/forms';
@@ -45,9 +45,7 @@ import { FormGroup, FormControl } from '@angular/forms';
     <h2>Reactive Forms</h2>
     <code-block [code]="reactiveFormsUsage" />
     <div class="documentation-playground">
-      <form
-        [formGroup]="formGroup"
-        style="display: flex; flex-direction: column; width: 100%">
+      <form [formGroup]="formGroup">
         <b-combobox formControlName="comboboxControl">
           <b-command>
             <ul b-command-options>

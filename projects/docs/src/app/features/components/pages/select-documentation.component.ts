@@ -41,9 +41,7 @@ import { FormGroup, FormControl } from '@angular/forms';
     <h2>Reactive Forms</h2>
     <code-block [code]="reactiveFormsUsage" />
     <div class="documentation-playground">
-      <form
-        [formGroup]="formGroup"
-        style="display: flex; flex-direction: column; width: 100%">
+      <form [formGroup]="formGroup">
         <b-select formControlName="selectControl">
           <ul b-select-options>
             <li b-option value="option1">Option 1</li>
