@@ -54,9 +54,6 @@ export * from './core/components/attached-box/attached-box.component';
 /* Icon */
 export * from './core/components/icon/icon.component';
 
-/* Label */
-export * from './shared/components/label.component';
-
 /* Badge */
 export * from './core/components/badge/badge.component';
 
