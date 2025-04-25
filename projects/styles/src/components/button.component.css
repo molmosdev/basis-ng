@@ -7,7 +7,6 @@ button[b-button] {
   box-sizing: border-box;
   gap: 0.5rem;
   position: relative;
-  overflow: hidden;
   transition:
     background-color 0.2s,
     opacity 0.2s;
