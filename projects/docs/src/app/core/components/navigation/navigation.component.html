@@ -1,6 +1,10 @@
 @if (currentDevice() === 'mobile') {
   <div class="mobile-menu-trigger">
-    <button b-button variant="outlined" size="3" (click)="bottomSheetOpen.set(true)">
+    <button
+      b-button
+      variant="outlined"
+      size="3"
+      (click)="bottomSheetOpen.set(true)">
       @let data = currentRoute().data;
       @if (data && data['title']) {
         {{ data['title'] }}
