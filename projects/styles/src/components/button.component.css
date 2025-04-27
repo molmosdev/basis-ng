@@ -25,6 +25,11 @@ button[b-button] {
     --border-px: 1px;
   }
 
+  &.primary,
+  &.secondary {
+    box-shadow: rgba(0, 0, 0, 0.04) 0px 2px 2px 0px;
+  }
+
   &.primary {
     background-color: var(--primary, #0a0a0a);
     color: var(--primary-foreground, #ffffff);
