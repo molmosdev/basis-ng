@@ -1,8 +1,4 @@
 :host {
   display: flex;
   width: 100%;
-
-  @media (width <= 576px) {
-    padding-bottom: 4.5rem;
-  }
 }

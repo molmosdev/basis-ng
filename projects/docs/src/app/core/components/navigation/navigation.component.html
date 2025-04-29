@@ -1,21 +1,5 @@
 @if (currentDevice() === 'mobile') {
-  <div class="mobile-menu-trigger">
-    <button
-      b-button
-      variant="outlined"
-      size="3"
-      (click)="bottomSheetOpen.set(true)">
-      @let data = currentRoute().data;
-      @if (data && data['title']) {
-        {{ data['title'] }}
-      }
-      <div class="chevron-wrapper">
-        <i b-icon icon="ChevronUp" [size]="12" class="icon-chevron-up"></i>
-        <i b-icon icon="ChevronDown" [size]="12" class="icon-chevron-down"></i>
-      </div>
-    </button>
-  </div>
-  <b-bottom-sheet [(isOpen)]="bottomSheetOpen" height="65dvh">
+  <b-bottom-sheet [(isOpen)]="navigationService.bottomSheetOpen" height="65dvh">
     <ng-container *ngTemplateOutlet="menu" />
   </b-bottom-sheet>
 } @else {
@@ -32,7 +16,7 @@
             b-menu-item-radio
             [routerLink]="route.path"
             [routerLinkActive]="['active']"
-            (click)="this.bottomSheetOpen.set(false)">
+            (click)="navigationService.bottomSheetOpen.set(false)">
             {{ route.data['title'] }}
             @if (route.data['new']) {
               <span b-badge variant="outlined" size="small"> New </span>
@@ -48,7 +32,7 @@
             b-menu-item-radio
             [routerLink]="path"
             [routerLinkActive]="['active']"
-            (click)="this.bottomSheetOpen.set(false)">
+            (click)="navigationService.bottomSheetOpen.set(false)">
             {{ route.data['title'] }}
             @if (route.data['new']) {
               <span b-badge variant="outlined" size="small"> New </span>

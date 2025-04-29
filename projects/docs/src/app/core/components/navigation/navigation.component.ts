@@ -14,12 +14,11 @@ import { BottomSheet } from '../../../../../../primitives/src/core/components/bo
 import { NgTemplateOutlet } from '@angular/common';
 import {
   Badge,
-  Button,
-  Icon,
   ResponsiveService,
 } from '../../../../../../primitives/src/public-api';
 import { documentationRoutes } from '../../../features/documentation/documentation.routes';
 import { componentsRoutes } from '../../../features/documentation/pages/components/components.routes';
+import { NavigationService } from './navigation.service';
 
 @Component({
   selector: 'aside[app-navigation]',
@@ -31,8 +30,6 @@ import { componentsRoutes } from '../../../features/documentation/pages/componen
     MenuLabel,
     BottomSheet,
     NgTemplateOutlet,
-    Button,
-    Icon,
     Badge,
   ],
   templateUrl: './navigation.component.html',
@@ -60,9 +57,9 @@ export class NavigationComponent implements OnInit {
   readonly path = signal(this.router.url);
 
   /**
-   * Signal to manage the visibility of the bottom sheet.
+   * Service to handle navigation logic.
    */
-  readonly bottomSheetOpen = signal(false);
+  navigationService = inject(NavigationService);
 
   /**
    * Computed property to get the current device type.

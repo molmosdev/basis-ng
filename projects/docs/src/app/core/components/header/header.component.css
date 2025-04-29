@@ -29,6 +29,13 @@
     .right {
       display: flex;
       align-items: center;
+      gap: 0.3rem;
+
+      .bottom-sheet-trigger {
+        @media (width >= 576px) {
+          display: none;
+        }
+      }
     }
 
     .logo {

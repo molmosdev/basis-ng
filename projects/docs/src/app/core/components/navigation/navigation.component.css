@@ -13,41 +13,4 @@
       top: 4rem;
     }
   }
-
-  @media (width <= 576px) {
-    .mobile-menu-trigger {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      width: 100vw;
-      background-color: color-mix(in srgb, var(--bg-color), transparent 60%);
-      backdrop-filter: blur(10px);
-      padding: 0.75rem;
-      box-sizing: border-box;
-      border-top: 1px dashed var(--border-color);
-      display: flex;
-      flex-direction: column;
-      z-index: 10;
-
-      button[b-button] {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-      }
-
-      .chevron-wrapper {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        position: absolute;
-        right: 1rem;
-
-        i {
-          font-size: 1rem;
-          margin: 0;
-        }
-      }
-    }
-  }
 }
