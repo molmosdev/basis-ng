@@ -26,10 +26,14 @@
       border-right: 1px dashed var(--border-color);
     }
 
-    .left,
     .right {
       display: flex;
       align-items: center;
+    }
+
+    .logo {
+      height: 1.8rem;
+      cursor: pointer;
     }
 
     .home-nav-link {
