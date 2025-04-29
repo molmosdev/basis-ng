@@ -105,5 +105,6 @@ export class NavigationComponent implements OnInit {
         this.path.set(event.urlAfterRedirects);
       }
     });
+    this.navigationService.isHomePath.set(false);
   }
 }

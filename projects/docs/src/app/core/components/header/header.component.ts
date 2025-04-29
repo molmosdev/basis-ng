@@ -30,6 +30,9 @@ export class HeaderComponent {
     () => this.responsiveService.currentDevice() === 'desktop'
   );
   navigationService = inject(NavigationService);
+  readonly isBottomSheetTriggerVisible = computed(
+    () => !this.navigationService.isHomePath()
+  );
 
   readonly theme = computed(() => this.themeService.theme());
 

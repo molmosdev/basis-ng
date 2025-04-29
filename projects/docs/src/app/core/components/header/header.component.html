@@ -83,14 +83,16 @@
         </b-menu-group>
       </b-menu>
     </ng-template>
-    <button
-      b-button
-      variant="ghost"
-      class="bottom-sheet-trigger"
-      (click)="navigationService.bottomSheetOpen.set(true)"
-      [style.paddingInline.px]="0"
-      [style.width]="'2.5rem'">
-      <i b-icon icon="Menu"></i>
-    </button>
+    @if (isBottomSheetTriggerVisible()) {
+      <button
+        b-button
+        variant="ghost"
+        class="bottom-sheet-trigger"
+        (click)="navigationService.bottomSheetOpen.set(true)"
+        [style.paddingInline.px]="0"
+        [style.width]="'2.5rem'">
+        <i b-icon icon="Menu"></i>
+      </button>
+    }
   </div>
 </div>
