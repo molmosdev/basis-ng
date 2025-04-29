@@ -86,6 +86,7 @@ export * from './core/components/tree/shared/components/tree-node/tree-node.comp
 export * from './core/components/menu/menu.component';
 export * from './core/components/menu/shared/components/menu-label/menu-label.component';
 export * from './core/components/menu/shared/components/menu-item/menu-item.component';
+export * from './core/components/menu/shared/components/menu-group/menu-group.component';
 export * from './core/components/menu/shared/components/menu-item-checkbox/menu-item-checkbox.component';
 export * from './core/components/menu/shared/components/menu-item-radio/menu-item-radio.component';
 export * from './core/components/menu/shared/directives/menu-trigger.directive';
