@@ -5,7 +5,7 @@ import { Component } from '@angular/core';
  * Represents a menu item with support for typeahead and disabled states.
  */
 @Component({
-  selector: 'b-menu-item',
+  selector: 'button[b-menu-item]',
   imports: [],
   template: `<ng-content />`,
   hostDirectives: [

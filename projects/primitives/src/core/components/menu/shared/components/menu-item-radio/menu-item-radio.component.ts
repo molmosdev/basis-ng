@@ -5,7 +5,7 @@ import { Component } from '@angular/core';
  * Represents a radio menu item.
  */
 @Component({
-  selector: 'b-menu-item-radio',
+  selector: 'button[b-menu-item-radio]',
   imports: [],
   template: `<ng-content />`,
   hostDirectives: [

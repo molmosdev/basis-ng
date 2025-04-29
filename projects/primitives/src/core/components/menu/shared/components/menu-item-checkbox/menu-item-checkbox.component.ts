@@ -5,7 +5,7 @@ import { Component } from '@angular/core';
  * Represents a checkbox menu item.
  */
 @Component({
-  selector: 'b-menu-item-checkbox',
+  selector: 'button[b-menu-item-checkbox]',
   imports: [],
   template: `<ng-content />`,
   hostDirectives: [
