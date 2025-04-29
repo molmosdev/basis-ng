@@ -1,35 +1,22 @@
 import { Routes } from '@angular/router';
-import { componentsRoutes } from './features/components/components.routes';
+import { documentationRoutes } from './features/documentation/documentation.routes';
 
 export const routes: Routes = [
   {
     path: '',
-    redirectTo: 'introduction',
+    redirectTo: 'home',
     pathMatch: 'full',
   },
   {
-    path: 'introduction',
+    path: 'home',
+    loadComponent: () => import('./features/home/home.component'),
+    title: 'Basis UI',
+  },
+  {
+    path: 'documentation',
     loadComponent: () =>
-      import('./features/introduction/introduction.component'),
-    data: {
-      title: 'Introduction',
-    },
-  },
-  {
-    path: 'theming',
-    loadComponent: () => import('./features/theming/theming.component'),
-    data: {
-      title: 'Theming',
-      new: true,
-    },
-  },
-  {
-    path: 'components',
-    children: componentsRoutes,
-    data: {
-      title: 'Components',
-      type: 'section',
-    },
+      import('./features/documentation/documentation.component'),
+    children: documentationRoutes,
   },
   {
     path: '**',

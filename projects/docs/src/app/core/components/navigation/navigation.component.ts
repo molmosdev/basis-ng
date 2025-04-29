@@ -1,5 +1,12 @@
 import { Component, computed, inject, OnInit, signal } from '@angular/core';
-import { ActivatedRoute, NavigationEnd, Route, Router } from '@angular/router';
+import {
+  ActivatedRoute,
+  NavigationEnd,
+  Route,
+  Router,
+  RouterLink,
+  RouterLinkActive,
+} from '@angular/router';
 import { Menu } from '../../../../../../primitives/src/core/components/menu/menu.component';
 import { MenuItemRadioComponent } from '../../../../../../primitives/src/core/components/menu/shared/components/menu-item-radio/menu-item-radio.component';
 import { MenuLabel } from '../../../../../../primitives/src/core/components/menu/shared/components/menu-label/menu-label.component';
@@ -11,12 +18,16 @@ import {
   Icon,
   ResponsiveService,
 } from '../../../../../../primitives/src/public-api';
+import { documentationRoutes } from '../../../features/documentation/documentation.routes';
+import { componentsRoutes } from '../../../features/documentation/pages/components/components.routes';
 
 @Component({
   selector: 'aside[app-navigation]',
   imports: [
     Menu,
     MenuItemRadioComponent,
+    RouterLink,
+    RouterLinkActive,
     MenuLabel,
     BottomSheet,
     NgTemplateOutlet,
@@ -46,13 +57,7 @@ export class NavigationComponent implements OnInit {
   /**
    * Signal to store the current path as a string.
    */
-  readonly path = signal('');
-
-  /**
-   * Signal to store the routes configuration.
-   * This is a reactive signal that updates when the router configuration changes.
-   */
-  readonly routes = signal(this.router.config);
+  readonly path = signal(this.router.url);
 
   /**
    * Signal to manage the visibility of the bottom sheet.
@@ -72,56 +77,26 @@ export class NavigationComponent implements OnInit {
    */
   readonly currentRoute = computed<Route>(() => {
     const path = this.path().split('/').pop() || '';
-    const findRoute = (routes: Route[]): Route | undefined => {
-      for (const route of routes) {
-        if (route.path === path) {
-          return route;
-        }
-        if (route.children) {
-          const childRoute = findRoute(route.children);
-          if (childRoute) {
-            return childRoute;
-          }
-        }
-      }
-      return undefined;
-    };
-    return findRoute(this.filteredRoutes()) || ({} as Route);
+    const route = this.documentationRoutes().find(route => route.path === path);
+    if (route) {
+      return route;
+    }
+    const route2 = this.componentsRoutes().find(route => route.path === path);
+    if (route2) {
+      return route2;
+    }
+    return { path: '', component: undefined } as Route;
   });
 
   /**
-   * Computed property to filter and format the routes for display.
-   * Removes routes with empty paths or wildcard paths and excludes `loadComponent`.
+   * The routes for the documentation section of the application.
    */
-  readonly filteredRoutes = computed(() => {
-    const filterRoutes = (routes: any[]): any[] => {
-      return routes
-        .filter(route => route.path !== '' && route.path !== '**')
-        .map(route => ({
-          ...route,
-          children: route.children ? filterRoutes(route.children) : [],
-        }));
-    };
-    return filterRoutes(this.routes());
-  });
+  readonly documentationRoutes = signal(documentationRoutes);
 
   /**
-   * Computed property to get the top-level routes.
-   * Filters out the 'components' route from the list of routes.
+   * The routes for the components section of the application.
    */
-  readonly topLevelRoutes = computed(() => {
-    return this.filteredRoutes().filter(route => route.path !== 'components');
-  });
-
-  /**
-   * Computed property to get the child routes under the 'components' route.
-   */
-  readonly componentsRoutes = computed(() => {
-    return (
-      this.filteredRoutes().find(route => route.path === 'components')
-        ?.children || []
-    );
-  });
+  readonly componentsRoutes = signal(componentsRoutes);
 
   /**
    * Lifecycle hook that initializes the component.
@@ -133,14 +108,5 @@ export class NavigationComponent implements OnInit {
         this.path.set(event.urlAfterRedirects);
       }
     });
-  }
-
-  /**
-   * Method to navigate to a specific route.
-   * @param route - The route to navigate to.
-   */
-  navigateTo(route: string): void {
-    this.router.navigate([route]);
-    this.bottomSheetOpen.set(false);
   }
 }

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {
   Menu,
+  MenuGroupComponent,
   MenuItemComponent,
   MenuLabel,
   MenuTrigger,
@@ -8,7 +9,6 @@ import {
   Button,
   Alert,
 } from '@basis-ng/primitives';
-import { MenuGroupComponent } from '../../../../../../primitives/src/core/components/menu/shared/components/menu-group/menu-group.component';
 import { CodeBlockComponent } from '../shared/components/code-block.component';
 
 @Component({
@@ -78,9 +78,9 @@ import { CodeBlockComponent } from '../shared/components/code-block.component';
     <div class="documentation-playground">
       <b-menu>
         <b-menu-label>Basic Menu</b-menu-label>
-        <b-menu-item>Item 1</b-menu-item>
-        <b-menu-item>Item 2</b-menu-item>
-        <b-menu-item>Item 3</b-menu-item>
+        <button b-menu-item>Item 1</button>
+        <button b-menu-item>Item 2</button>
+        <button b-menu-item>Item 3</button>
       </b-menu>
     </div>
 
@@ -89,24 +89,24 @@ import { CodeBlockComponent } from '../shared/components/code-block.component';
     <div class="documentation-playground">
       <b-menu>
         <b-menu-label>Main Menu</b-menu-label>
-        <b-menu-item>Item 1</b-menu-item>
-        <b-menu-item [menuTriggerFor]="subMenu" [submenu]="true">
+        <button b-menu-item>Item 1</button>
+        <button b-menu-item [menuTriggerFor]="subMenu" [submenu]="true">
           <div
             style="display: flex; justify-content: space-between; width: 100%">
             Item 2
             <i b-icon icon="ChevronRight" [size]="16"></i>
           </div>
-        </b-menu-item>
+        </button>
         <ng-template #subMenu>
           <b-menu>
             <b-menu-label>Submenu</b-menu-label>
             <b-menu-group>
-              <b-menu-item>Subitem 1</b-menu-item>
-              <b-menu-item>Subitem 2</b-menu-item>
+              <button b-menu-item>Subitem 1</button>
+              <button b-menu-item>Subitem 2</button>
             </b-menu-group>
             <b-menu-group>
-              <b-menu-item>Subitem 3</b-menu-item>
-              <b-menu-item>Subitem 4</b-menu-item>
+              <button b-menu-item>Subitem 3</button>
+              <button b-menu-item>Subitem 4</button>
             </b-menu-group>
           </b-menu>
         </ng-template>
@@ -126,21 +126,21 @@ import { CodeBlockComponent } from '../shared/components/code-block.component';
       <ng-template #menu>
         <b-menu>
           <b-menu-label>Menu</b-menu-label>
-          <b-menu-item>Item 1</b-menu-item>
-          <b-menu-item>Item 2</b-menu-item>
-          <b-menu-item [menuTriggerFor]="subMenu" [submenu]="true">
+          <button b-menu-item>Item 1</button>
+          <button b-menu-item>Item 2</button>
+          <button b-menu-item [menuTriggerFor]="subMenu" [submenu]="true">
             <div
               style="display: flex; justify-content: space-between; width: 100%">
               Item 3
               <i b-icon icon="ChevronRight" [size]="16"></i>
             </div>
-          </b-menu-item>
+          </button>
           <ng-template #subMenu>
             <b-menu>
               <b-menu-label>Submenu</b-menu-label>
               <b-menu-group>
-                <b-menu-item>Subitem 1</b-menu-item>
-                <b-menu-item>Subitem 2</b-menu-item>
+                <button b-menu-item>Subitem 1</button>
+                <button b-menu-item>Subitem 2</button>
               </b-menu-group>
             </b-menu>
           </ng-template>
@@ -162,8 +162,8 @@ import { CodeBlockComponent } from '../shared/components/code-block.component';
         <ng-template #menuTopLeft>
           <b-menu>
             <b-menu-label>Top Left Menu</b-menu-label>
-            <b-menu-item>Item 1</b-menu-item>
-            <b-menu-item>Item 2</b-menu-item>
+            <button b-menu-item>Item 1</button>
+            <button b-menu-item>Item 2</button>
           </b-menu>
         </ng-template>
 
@@ -177,8 +177,8 @@ import { CodeBlockComponent } from '../shared/components/code-block.component';
         <ng-template #menuBottomCenter>
           <b-menu>
             <b-menu-label>Bottom Center Menu</b-menu-label>
-            <b-menu-item>Item 1</b-menu-item>
-            <b-menu-item>Item 2</b-menu-item>
+            <button b-menu-item>Item 1</button>
+            <button b-menu-item>Item 2</button>
           </b-menu>
         </ng-template>
 
@@ -193,8 +193,8 @@ import { CodeBlockComponent } from '../shared/components/code-block.component';
           <b-menu>
             <b-menu-label>Right Top Menu</b-menu-label>
             <b-menu-group>
-              <b-menu-item>Item 1</b-menu-item>
-              <b-menu-item>Item 2</b-menu-item>
+              <button b-menu-item>Item 1</button>
+              <button b-menu-item>Item 2</button>
             </b-menu-group>
           </b-menu>
         </ng-template>
@@ -209,8 +209,8 @@ import { CodeBlockComponent } from '../shared/components/code-block.component';
         <ng-template #menuLeftCenter>
           <b-menu>
             <b-menu-label>Left Center Menu</b-menu-label>
-            <b-menu-item>Item 1</b-menu-item>
-            <b-menu-item>Item 2</b-menu-item>
+            <button b-menu-item>Item 1</button>
+            <button b-menu-item>Item 2</button>
           </b-menu>
         </ng-template>
       </div>
@@ -239,30 +239,30 @@ export default class MenuDocumentationComponent {
 
   basicUsage = `<b-menu>
   <b-menu-label>Basic Menu</b-menu-label>
-  <b-menu-item>Item 1</b-menu-item>
-  <b-menu-item>Item 2</b-menu-item>
-  <b-menu-item>Item 3</b-menu-item>
+  <button b-menu-item>Item 1</button>
+  <button b-menu-item>Item 2</button>
+  <button b-menu-item>Item 3</button>
 </b-menu>`;
 
   nestedUsage = `<b-menu>
   <b-menu-label>Main Menu</b-menu-label>
-  <b-menu-item>Item 1</b-menu-item>
-  <b-menu-item [menuTriggerFor]="subMenu" [submenu]="true">
+  <button b-menu-item>Item 1</button>
+  <button b-menu-item [menuTriggerFor]="subMenu" [submenu]="true">
     <div style="display: flex; justify-content: space-between; width: 100%">
       Item 2
       <i b-icon icon="ChevronRight" [size]="16"></i>
     </div>
-  </b-menu-item>
+  </button>
   <ng-template #subMenu>
     <b-menu>
       <b-menu-label>Submenu</b-menu-label>
       <b-menu-group>
-        <b-menu-item>Subitem 1</b-menu-item>
-        <b-menu-item>Subitem 2</b-menu-item>
+        <button b-menu-item>Subitem 1</button>
+        <button b-menu-item>Subitem 2</button>
       </b-menu-group>
       <b-menu-group>
-        <b-menu-item>Subitem 3</b-menu-item>
-        <b-menu-item>Subitem 4</b-menu-item>
+        <button b-menu-item>Subitem 3</button>
+        <button b-menu-item>Subitem 4</button>
       </b-menu-group>
     </b-menu>
   </ng-template>
@@ -278,20 +278,20 @@ export default class MenuDocumentationComponent {
 <ng-template #menu>
   <b-menu>
     <b-menu-label>Menu</b-menu-label>
-    <b-menu-item>Item 1</b-menu-item>
-    <b-menu-item>Item 2</b-menu-item>
-    <b-menu-item [menuTriggerFor]="subMenu" [submenu]="true">
+    <button b-menu-item>Item 1</button>
+    <button b-menu-item>Item 2</button>
+    <button b-menu-item [menuTriggerFor]="subMenu" [submenu]="true">
       <div style="display: flex; justify-content: space-between; width: 100%">
         Item 3
         <i b-icon icon="ChevronRight" [size]="16"></i>
       </div>
-    </b-menu-item>
+    </button>
     <ng-template #subMenu>
       <b-menu>
         <b-menu-label>Submenu</b-menu-label>
         <b-menu-group>
-          <b-menu-item>Subitem 1</b-menu-item>
-          <b-menu-item>Subitem 2</b-menu-item>
+          <button b-menu-item>Subitem 1</button>
+          <button b-menu-item>Subitem 2</button>
         </b-menu-group>
       </b-menu>
     </ng-template>
@@ -308,8 +308,8 @@ export default class MenuDocumentationComponent {
 <ng-template #menuTopLeft>
   <b-menu>
     <b-menu-label>Top Left Menu</b-menu-label>
-    <b-menu-item>Item 1</b-menu-item>
-    <b-menu-item>Item 2</b-menu-item>
+    <button b-menu-item>Item 1</button>
+    <button b-menu-item>Item 2</button>
   </b-menu>
 </ng-template>
 
@@ -323,8 +323,8 @@ export default class MenuDocumentationComponent {
 <ng-template #menuBottomCenter>
   <b-menu>
     <b-menu-label>Bottom Center Menu</b-menu-label>
-    <b-menu-item>Item 1</b-menu-item>
-    <b-menu-item>Item 2</b-menu-item>
+    <button b-menu-item>Item 1</button>
+    <button b-menu-item>Item 2</button>
   </b-menu>
 </ng-template>
 
@@ -339,8 +339,8 @@ export default class MenuDocumentationComponent {
   <b-menu>
     <b-menu-label>Right Top Menu</b-menu-label>
     <b-menu-group>
-      <b-menu-item>Item 1</b-menu-item>
-      <b-menu-item>Item 2</b-menu-item>
+      <button b-menu-item>Item 1</button>
+      <button b-menu-item>Item 2</button>
     </b-menu-group>
   </b-menu>
 </ng-template>
@@ -355,8 +355,8 @@ export default class MenuDocumentationComponent {
 <ng-template #menuLeftCenter>
   <b-menu>
     <b-menu-label>Left Center Menu</b-menu-label>
-    <b-menu-item>Item 1</b-menu-item>
-    <b-menu-item>Item 2</b-menu-item>
+    <button b-menu-item>Item 1</button>
+    <button b-menu-item>Item 2</button>
   </b-menu>
 </ng-template>`;
 }

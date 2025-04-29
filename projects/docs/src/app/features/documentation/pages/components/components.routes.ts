@@ -9,6 +9,7 @@ export const componentsRoutes: Routes = [
   {
     path: 'button',
     loadComponent: () => import('./pages/button-documentation.component'),
+    title: 'Button - Basis UI',
     data: {
       title: 'Button',
     },
@@ -16,6 +17,7 @@ export const componentsRoutes: Routes = [
   {
     path: 'input',
     loadComponent: () => import('./pages/input-documentation.component'),
+    title: 'Input - Basis UI',
     data: {
       title: 'Input',
     },
@@ -23,6 +25,7 @@ export const componentsRoutes: Routes = [
   {
     path: 'select',
     loadComponent: () => import('./pages/select-documentation.component'),
+    title: 'Select - Basis UI',
     data: {
       title: 'Select',
     },
@@ -30,6 +33,7 @@ export const componentsRoutes: Routes = [
   {
     path: 'combobox',
     loadComponent: () => import('./pages/combobox-documentation.component'),
+    title: 'Combobox - Basis UI',
     data: {
       title: 'Combobox',
       new: true,
@@ -38,6 +42,7 @@ export const componentsRoutes: Routes = [
   {
     path: 'switch',
     loadComponent: () => import('./pages/switch-documentation.component'),
+    title: 'Switch - Basis UI',
     data: {
       title: 'Switch',
     },
@@ -45,6 +50,7 @@ export const componentsRoutes: Routes = [
   {
     path: 'badge',
     loadComponent: () => import('./pages/badge-documentation.component'),
+    title: 'Badge - Basis UI',
     data: {
       title: 'Badge',
     },
@@ -52,6 +58,7 @@ export const componentsRoutes: Routes = [
   {
     path: 'checkbox',
     loadComponent: () => import('./pages/checkbox-documentation.component'),
+    title: 'Checkbox - Basis UI',
     data: {
       title: 'Checkbox',
     },
@@ -59,6 +66,7 @@ export const componentsRoutes: Routes = [
   {
     path: 'textarea',
     loadComponent: () => import('./pages/textarea-documentation.component'),
+    title: 'Textarea - Basis UI',
     data: {
       title: 'Textarea',
     },
@@ -66,6 +74,7 @@ export const componentsRoutes: Routes = [
   {
     path: 'tooltip',
     loadComponent: () => import('./pages/tooltip-documentation.component'),
+    title: 'Tooltip - Basis UI',
     data: {
       title: 'Tooltip',
     },
@@ -73,6 +82,7 @@ export const componentsRoutes: Routes = [
   {
     path: 'bottom-sheet',
     loadComponent: () => import('./pages/bottom-sheet-documentation.component'),
+    title: 'Bottom Sheet - Basis UI',
     data: {
       title: 'Bottom Sheet',
     },
@@ -80,6 +90,7 @@ export const componentsRoutes: Routes = [
   {
     path: 'side-sheet',
     loadComponent: () => import('./pages/side-sheet-documentation.component'),
+    title: 'Side Sheet - Basis UI',
     data: {
       title: 'Side Sheet',
     },
@@ -87,6 +98,7 @@ export const componentsRoutes: Routes = [
   {
     path: 'color-picker',
     loadComponent: () => import('./pages/color-picker-documentation.component'),
+    title: 'Color Picker - Basis UI',
     data: {
       title: 'Color Picker',
     },
@@ -94,6 +106,7 @@ export const componentsRoutes: Routes = [
   {
     path: 'input-group',
     loadComponent: () => import('./pages/input-group-documentation.component'),
+    title: 'Input Group - Basis UI',
     data: {
       title: 'Input Group',
       new: true,
@@ -102,6 +115,7 @@ export const componentsRoutes: Routes = [
   {
     path: 'range',
     loadComponent: () => import('./pages/range-documentation.component'),
+    title: 'Range - Basis UI',
     data: {
       title: 'Range',
       new: true,
@@ -110,6 +124,7 @@ export const componentsRoutes: Routes = [
   {
     path: 'tree',
     loadComponent: () => import('./pages/tree-documentation.component'),
+    title: 'Tree - Basis UI',
     data: {
       title: 'Tree',
       new: true,
@@ -118,6 +133,7 @@ export const componentsRoutes: Routes = [
   {
     path: 'menu',
     loadComponent: () => import('./pages/menu-documentation.component'),
+    title: 'Menu - Basis UI',
     data: {
       title: 'Menu',
       new: true,
@@ -126,6 +142,7 @@ export const componentsRoutes: Routes = [
   {
     path: 'alert',
     loadComponent: () => import('./pages/alert-documentation.component'),
+    title: 'Alert - Basis UI',
     data: {
       title: 'Alert',
       new: true,
@@ -134,6 +151,7 @@ export const componentsRoutes: Routes = [
   {
     path: 'command',
     loadComponent: () => import('./pages/command-documentation.component'),
+    title: 'Command - Basis UI',
     data: {
       title: 'Command',
       new: true,

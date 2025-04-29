@@ -5,7 +5,7 @@ import {
   CommandComponent,
   CommandOptionsComponent,
   OptionComponent,
-} from '../../../../../../primitives/src/public-api';
+} from '@basis-ng/primitives';
 import { CodeBlockComponent } from '../shared/components/code-block.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FormGroup, FormControl } from '@angular/forms';

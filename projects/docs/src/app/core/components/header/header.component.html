@@ -13,7 +13,7 @@
       fill="var(--text-color)" />
   </svg>
   <div class="right">
-    <a
+    <!--     <a
       href="https://github.com/molmosdev/basis-ng"
       target="_blank"
       rel="noopener">
@@ -30,12 +30,12 @@
           </g>
         </svg>
       </button>
-    </a>
-    <a href="https://www.npmjs.com/org/basis-ng" target="_blank" rel="noopener">
+    </a> -->
+    <!--     <a href="https://www.npmjs.com/org/basis-ng" target="_blank" rel="noopener">
       <button b-button variant="ghost" size="2">
         <i b-icon icon="Package" [size]="22" [strokeWidth]="1.6"></i>
       </button>
-    </a>
+    </a> -->
     <button
       b-button
       variant="ghost"
@@ -57,24 +57,27 @@
     <ng-template #themeMenu>
       <b-menu>
         <b-menu-group>
-          <b-menu-item-radio
+          <button
+            b-menu-item-radio
             [active]="theme() === 'auto'"
             (triggered)="applyTheme('auto')">
             <i b-icon [strokeWidth]="1.5" [size]="22" icon="SunMoon"></i>
             Auto
-          </b-menu-item-radio>
-          <b-menu-item-radio
+          </button>
+          <button
+            b-menu-item-radio
             [active]="theme() === 'light'"
             (triggered)="applyTheme('light')">
             <i b-icon [strokeWidth]="1.5" [size]="22" icon="Sun"></i>
             Light
-          </b-menu-item-radio>
-          <b-menu-item-radio
+          </button>
+          <button
+            b-menu-item-radio
             [active]="theme() === 'dark'"
             (triggered)="applyTheme('dark')">
             <i b-icon [strokeWidth]="1.5" [size]="20" icon="Moon"></i>
             Dark
-          </b-menu-item-radio>
+          </button>
         </b-menu-group>
       </b-menu>
     </ng-template>

@@ -26,27 +26,35 @@
   <div class="menu-wrapper">
     <b-menu>
       <b-menu-label>Getting started</b-menu-label>
-      @for (route of topLevelRoutes(); track route) {
-        <b-menu-item-radio
-          [active]="'/' + route.path === path()"
-          (triggered)="navigateTo(route.path)">
-          {{ route.data?.['title'] }}
-          @if (route.data?.['new']) {
-            <span b-badge variant="outlined" size="small"> New </span>
-          }
-        </b-menu-item-radio>
+      @for (route of documentationRoutes(); track route) {
+        @if (route.data) {
+          <button
+            b-menu-item-radio
+            [routerLink]="route.path"
+            [routerLinkActive]="['active']"
+            (click)="this.bottomSheetOpen.set(false)">
+            {{ route.data['title'] }}
+            @if (route.data['new']) {
+              <span b-badge variant="outlined" size="small"> New </span>
+            }
+          </button>
+        }
       }
       <b-menu-label>Components</b-menu-label>
       @for (route of componentsRoutes(); track route) {
-        <b-menu-item-radio
-          (triggered)="navigateTo('components/' + route.path)"
-          [active]="'/components/' + route.path === path()">
-          {{ route.data?.['title'] }}
-
-          @if (route.data?.['new']) {
-            <span b-badge variant="outlined" size="small"> New </span>
-          }
-        </b-menu-item-radio>
+        @if (route.data) {
+          @let path = '/documentation/components/' + route.path;
+          <button
+            b-menu-item-radio
+            [routerLink]="path"
+            [routerLinkActive]="['active']"
+            (click)="this.bottomSheetOpen.set(false)">
+            {{ route.data['title'] }}
+            @if (route.data['new']) {
+              <span b-badge variant="outlined" size="small"> New </span>
+            }
+          </button>
+        }
       }
     </b-menu>
   </div>

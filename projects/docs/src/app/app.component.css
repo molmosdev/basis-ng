@@ -2,8 +2,4 @@
   display: flex;
   flex-direction: row;
   padding-top: calc(3.8rem + 1px);
-
-  @media (width <= 576px) {
-    padding-bottom: 5rem;
-  }
 }

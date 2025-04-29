@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
 import { CodeBlockComponent } from '../components/shared/components/code-block.component';
-import { Icon, Button, Range } from '../../../../../primitives/src/public-api';
 import { FormGroup, FormControl, ReactiveFormsModule } from '@angular/forms';
-import { ColorPicker } from '../../../../../primitives/src/core/components/color-picker/color-picker.component';
+import { Button, ColorPicker, Icon, Range } from '@basis-ng/primitives';
 
 interface ThemeVariables {
   root: Record<string, string>;
