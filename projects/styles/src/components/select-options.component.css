@@ -20,20 +20,6 @@ ul[b-select-options] {
   overflow-y: auto;
 }
 
-.cdk-overlay-pane:has(ul[b-select-options]) {
-  opacity: 1;
-  transition: transform 150ms ease;
-  animation: fadeIn 150ms ease;
-
-  &.cdk-overlay-pane-closing {
-    transform: translateY(0) !important;
-    opacity: 0;
-    transition:
-      opacity 150ms ease,
-      transform 150ms ease;
-  }
-}
-
 @keyframes fadeIn {
   from {
     opacity: 0;
