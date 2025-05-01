@@ -105,3 +105,7 @@ export * from './core/components/command/command-options.component';
 
 /* Combobox */
 export * from './core/components/combobox/combobox.component';
+
+/* Overlay */
+export * from './core/directives/overlay-trigger.directive';
+export * from './core/directives/overlay.directive';
