@@ -222,20 +222,21 @@ export class OverlayDirective {
 
     if (this.open()) {
       this.cdkConnectedOverlay.attachOverlay();
+      this.cdkConnectedOverlay.overlayRef.addPanelClass('b-overlay-panel');
 
       const direction = this.direction();
       if (direction) {
         overlayRef.removePanelClass([
-          'cdk-overlay-top',
-          'cdk-overlay-bottom',
-          'cdk-overlay-left',
-          'cdk-overlay-right',
+          'b-overlay-top',
+          'b-overlay-bottom',
+          'b-overlay-left',
+          'b-overlay-right',
         ]);
-        overlayRef.addPanelClass(`cdk-overlay-${direction}`);
+        overlayRef.addPanelClass(`b-overlay-${direction}`);
       }
     } else {
       if (!this.firstLoad) {
-        overlayRef.addPanelClass('cdk-overlay-leave');
+        overlayRef.addPanelClass('b-overlay-leave');
       }
 
       setTimeout(() => {
@@ -245,8 +246,8 @@ export class OverlayDirective {
           const direction = this.direction();
           overlayRef.removePanelClass(
             [
-              direction ? `cdk-overlay-${direction}` : '',
-              'cdk-overlay-leave',
+              direction ? `b-overlay-${direction}` : '',
+              'b-overlay-leave',
             ].filter(Boolean)
           );
 
