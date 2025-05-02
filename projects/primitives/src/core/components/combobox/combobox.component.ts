@@ -44,7 +44,6 @@ import { OverlayDirective } from '../../directives/overlay.directive';
       [minWidth]="buttonWidth()"
       [positions]="['bottom-left', 'bottom-right', 'top-left', 'top-right']"
       [closeDelay]="closeDelay()"
-      [offset]="offset()"
       (attach)="onOverlayAttached()"
       (outsideClick)="isOpen.set(false)"
       (detach)="isOpen.set(false)">
@@ -67,11 +66,6 @@ export class ComboboxComponent implements OnInit, ControlValueAccessor {
    * Defaults to 'Select an option'.
    */
   readonly placeholder = input<string>('Select an option');
-
-  /**
-   * Input for the offset value between the button and the dropdown.
-   */
-  readonly offset = input(5);
 
   /**
    * Signal indicating whether the dropdown is currently open.
