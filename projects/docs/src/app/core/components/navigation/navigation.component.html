@@ -4,10 +4,9 @@
     b-button
     size="3"
     variant="primary"
-    color="var(--primary-foreground)"
     [squared]="true"
     (click)="bottomSheetOpen.set(true)">
-    <i b-icon icon="Menu" [size]="20"></i>
+    <i b-icon icon="Menu" [size]="20" color="var(--primary-foreground)"></i>
   </button>
   <b-bottom-sheet [(isOpen)]="bottomSheetOpen" height="65dvh">
     <ng-container *ngTemplateOutlet="menu" />
