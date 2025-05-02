@@ -23,23 +23,3 @@ b-command {
     }
   }
 }
-
-.cdk-overlay-pane:has(b-command) {
-  opacity: 1;
-  transition: transform 150ms ease;
-  animation: fadeIn 150ms ease;
-
-  &.cdk-overlay-pane-closing {
-    transform: translateY(0) !important;
-    opacity: 0;
-    transition:
-      opacity 150ms ease,
-      transform 150ms ease;
-  }
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-}

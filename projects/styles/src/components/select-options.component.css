@@ -19,9 +19,3 @@ ul[b-select-options] {
   width: 100%;
   overflow-y: auto;
 }
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-}
