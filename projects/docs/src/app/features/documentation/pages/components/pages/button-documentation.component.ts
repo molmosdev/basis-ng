@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Button, ButtonGroup, Alert, Spinner } from '@basis-ng/primitives';
 import { CodeBlockComponent } from '../shared/components/code-block.component';
+import { Icon } from '../../../../../../../../primitives/src/public-api';
 
 @Component({
   selector: 'article[app-button-documentation]',
