@@ -43,6 +43,14 @@ import { CodeBlockComponent } from '../shared/components/code-block.component';
           <td><code>'1' | '2' | '3'</code></td>
           <td>The size of the button. Default is <code>'2'</code>.</td>
         </tr>
+        <tr>
+          <td><strong>squared</strong></td>
+          <td><code>boolean</code></td>
+          <td>
+            If <code>true</code>, the button will be a square (equal height and
+            width), suitable for icons. Default is <code>false</code>.
+          </td>
+        </tr>
       </table>
     </div>
 
@@ -153,9 +161,35 @@ import { CodeBlockComponent } from '../shared/components/code-block.component';
         <button b-button variant="outlined" size="1">Outlined</button>
         <button b-button variant="outlined" size="1">Outlined</button>
       </b-button-group>
+    </div>
+
+    <h2>Squared Buttons</h2>
+    <code-block [code]="squaredUsage" />
+    <div class="documentation-playground">
+      <button b-button [squared]="true" size="1">
+        <i
+          b-icon
+          icon="ZoomIn"
+          [size]="13"
+          color="var(--primary-foreground)"></i>
+      </button>
+      <button b-button [squared]="true" size="2">
+        <i
+          b-icon
+          icon="ZoomOut"
+          [size]="16"
+          color="var(--primary-foreground)"></i>
+      </button>
+      <button b-button [squared]="true" size="3">
+        <i
+          b-icon
+          icon="Search"
+          [size]="20"
+          color="var(--primary-foreground)"></i>
+      </button>
     </div>`,
 
-  imports: [CodeBlockComponent, Button, ButtonGroup, Alert, Spinner],
+  imports: [CodeBlockComponent, Button, ButtonGroup, Alert, Spinner, Icon],
 })
 export default class ButtonDocumentationComponent {
   angularImport = `import { Button } from '@basis-ng/primitives'`;
@@ -210,4 +244,14 @@ export default class ButtonDocumentationComponent {
   <button b-button variant="outlined" size="1"> Outlined </button>
   <button b-button variant="outlined" size="1"> Outlined </button>
 </b-button-group>`;
+
+  squaredUsage = `<button b-button [squared]="true" size="1">
+  <i b-icon icon="ZoomIn" [size]="13" color="var(--primary-foreground)"></i>
+</button>
+<button b-button [squared]="true" size="2">
+  <i b-icon icon="ZoomOut" [size]="16" color="var(--primary-foreground)"></i>
+</button>
+<button b-button [squared]="true" size="3">
+  <i b-icon icon="Search" [size]="20" color="var(--primary-foreground)"></i>
+</button>`;
 }

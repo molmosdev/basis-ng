@@ -153,17 +153,32 @@ button[b-button] {
     padding-inline: 0.571rem;
     min-height: 1.714rem;
     font-size: 0.857rem;
+
+    &.squared {
+      padding-inline: 0;
+      width: 1.714rem;
+    }
   }
 
   &.size-2 {
     padding-inline: 0.857rem;
     min-height: 2.286rem;
     font-size: 1rem;
+
+    &.squared {
+      padding-inline: 0;
+      width: 2.286rem;
+    }
   }
 
   &.size-3 {
     padding-inline: 1.143rem;
     min-height: 2.857rem;
     font-size: 1.143rem;
+
+    &.squared {
+      padding-inline: 0;
+      width: 2.857rem;
+    }
   }
 }
