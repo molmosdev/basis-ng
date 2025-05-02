@@ -1,4 +1,3 @@
-import { CdkConnectedOverlay, CdkOverlayOrigin } from '@angular/cdk/overlay';
 import {
   Component,
   computed,
@@ -16,6 +15,8 @@ import { Button } from '../button/button.component';
 import { Icon } from '../icon/icon.component';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { forwardRef } from '@angular/core';
+import { OverlayTriggerDirective } from '../../directives/overlay-trigger.directive';
+import { OverlayDirective } from '../../directives/overlay.directive';
 
 /**
  * Component representing a custom select dropdown.
@@ -23,45 +24,30 @@ import { forwardRef } from '@angular/core';
  */
 @Component({
   selector: 'b-select',
-  imports: [Button, Icon, CdkConnectedOverlay, CdkOverlayOrigin],
+  imports: [Button, Icon, OverlayTriggerDirective, OverlayDirective],
   template: ` <button
       b-button
       variant="outlined"
-      (click)="isOpen() ? close() : open()"
-      (keydown.arrowUp)="!isOpen() && open()"
-      (keydown.arrowDown)="!isOpen() && open()"
-      cdkOverlayOrigin
+      (click)="isOpen.set(!isOpen())"
+      (keydown.arrowUp)="!isOpen() && isOpen.set(true)"
+      (keydown.arrowDown)="!isOpen() && isOpen.set(true)"
       [activeEnabled]="false"
-      #trigger="cdkOverlayOrigin">
+      bOverlayTrigger
+      #trigger="bOverlayTrigger">
       {{ content() }}
       <i b-icon icon="ChevronDown" [size]="20"></i>
     </button>
     <ng-template
-      cdkConnectedOverlay
-      [cdkConnectedOverlayOrigin]="trigger"
-      [cdkConnectedOverlayOpen]="isOpen()"
-      [cdkConnectedOverlayMinWidth]="buttonWidth()"
-      [cdkConnectedOverlayHasBackdrop]="true"
-      cdkConnectedOverlayBackdropClass="cdk-overlay-transparent-backdrop"
-      [cdkConnectedOverlayPositions]="[
-        {
-          originX: 'start',
-          originY: 'bottom',
-          overlayX: 'start',
-          overlayY: 'top',
-          offsetY: 5,
-        },
-        {
-          originX: 'start',
-          originY: 'top',
-          overlayX: 'start',
-          overlayY: 'bottom',
-          offsetY: -5,
-        },
-      ]"
-      (backdropClick)="close()"
+      bOverlay
+      [trigger]="trigger"
+      [open]="isOpen()"
+      [minWidth]="buttonWidth()"
+      [positions]="['bottom-left', 'bottom-right', 'top-left', 'top-right']"
+      [closeDelay]="closeDelay()"
+      [offset]="offset()"
       (attach)="onOverlayAttached()"
-      (detach)="close()">
+      (outsideClick)="isOpen.set(false)"
+      (detach)="isOpen.set(false)">
       <ng-content />
     </ng-template>`,
   host: {
@@ -81,6 +67,11 @@ export class SelectComponent implements OnInit, ControlValueAccessor {
    * Defaults to 'Select an option'.
    */
   readonly placeholder = input<string>('Select an option');
+
+  /**
+   * Input for the offset value between the button and the dropdown.
+   */
+  readonly offset = input(5);
 
   /**
    * Signal indicating whether the dropdown is currently open.
@@ -152,12 +143,6 @@ export class SelectComponent implements OnInit, ControlValueAccessor {
   readonly closeDelay = signal(150);
 
   /**
-   * Reference to the CdkConnectedOverlay directive.
-   * This is used to manage the positioning and visibility of the dropdown overlay.
-   */
-  readonly cdkConnectedOverlay = viewChild(CdkConnectedOverlay);
-
-  /**
    * Lifecycle hook that is called after the component is initialized.
    * It sets up the necessary subscriptions for handling value changes.
    */
@@ -172,37 +157,10 @@ export class SelectComponent implements OnInit, ControlValueAccessor {
    */
   handleSelectedValueChange() {
     this.optionsList()?.closeEmitter.subscribe(() => {
-      this.onChange(this.value()!); // Notify Angular Forms about the change
-      this.onTouched(); // Mark the component as touched
-      this.close(); // Close the dropdown
-    });
-  }
-
-  /**
-   * Opens the dropdown.
-   * This method sets the `isOpen` signal to `true`.
-   */
-  open() {
-    this.isOpen.set(true);
-  }
-
-  /**
-   * Closes the dropdown with a transition effect and refocuses the button.
-   * This method sets the `isOpen` signal to `false` after a delay and removes
-   * the transition class from the overlay panel.
-   */
-  close() {
-    this.cdkConnectedOverlay()?.overlayRef.addPanelClass(
-      'cdk-overlay-pane-closing'
-    );
-
-    setTimeout(() => {
+      this.onChange(this.value()!);
+      this.onTouched();
       this.isOpen.set(false);
-      this.cdkConnectedOverlay()?.overlayRef.removePanelClass(
-        'cdk-overlay-pane-closing'
-      );
-      this.button()?.el.nativeElement.focus();
-    }, this.closeDelay());
+    });
   }
 
   /**
