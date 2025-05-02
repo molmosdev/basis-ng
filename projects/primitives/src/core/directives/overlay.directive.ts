@@ -11,8 +11,8 @@ import {
   input,
   signal,
 } from '@angular/core';
-import { Position } from '@basis-ng/primitives';
 import { OverlayTriggerDirective } from './overlay-trigger.directive';
+import { Position } from '../../shared/types/position.type';
 
 /**
  * Directive to manage overlay behavior and positioning.
