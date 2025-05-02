@@ -1,8 +1,8 @@
 :host {
   button.menu-trigger {
     position: fixed;
-    bottom: 1rem;
-    right: 1rem;
+    bottom: 2rem;
+    right: 2rem;
   }
 
   .menu-wrapper {
