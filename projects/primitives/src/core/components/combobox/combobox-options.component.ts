@@ -8,8 +8,7 @@ import {
   output,
   signal,
 } from '@angular/core';
-import { OptionComponent } from '../../../shared/components/option.component';
-import { Input } from '@basis-ng/primitives';
+import { Input, OptionComponent } from '../../../public-api';
 
 /**
  * Component representing the list of options in a combobox.
