@@ -56,12 +56,6 @@ export class OverlayDirective {
   readonly trigger = input.required<OverlayTriggerDirective>();
 
   /**
-   * Offset value for overlay positioning.
-   * @default 0
-   */
-  readonly offset = input(0);
-
-  /**
    * Delay in milliseconds before closing the overlay.
    * @default 0
    */
@@ -76,84 +70,72 @@ export class OverlayDirective {
       originY: 'top',
       overlayX: 'start',
       overlayY: 'bottom',
-      offsetY: -this.offset(),
     },
     'top-center': {
       originX: 'center',
       originY: 'top',
       overlayX: 'center',
       overlayY: 'bottom',
-      offsetY: -this.offset(),
     },
     'top-right': {
       originX: 'end',
       originY: 'top',
       overlayX: 'end',
       overlayY: 'bottom',
-      offsetY: -this.offset(),
     },
     'bottom-left': {
       originX: 'start',
       originY: 'bottom',
       overlayX: 'start',
       overlayY: 'top',
-      offsetY: this.offset(),
     },
     'bottom-center': {
       originX: 'center',
       originY: 'bottom',
       overlayX: 'center',
       overlayY: 'top',
-      offsetY: this.offset(),
     },
     'bottom-right': {
       originX: 'end',
       originY: 'bottom',
       overlayX: 'end',
       overlayY: 'top',
-      offsetY: this.offset(),
     },
     'left-top': {
       originX: 'start',
       originY: 'top',
       overlayX: 'end',
       overlayY: 'top',
-      offsetX: -this.offset(),
     },
     'left-center': {
       originX: 'start',
       originY: 'center',
       overlayX: 'end',
       overlayY: 'center',
-      offsetX: -this.offset(),
     },
     'left-bottom': {
       originX: 'start',
       originY: 'bottom',
       overlayX: 'end',
       overlayY: 'bottom',
-      offsetX: -this.offset(),
     },
     'right-top': {
       originX: 'end',
       originY: 'top',
       overlayX: 'start',
       overlayY: 'top',
-      offsetX: this.offset(),
     },
     'right-center': {
       originX: 'end',
       originY: 'center',
       overlayX: 'start',
       overlayY: 'center',
-      offsetX: this.offset(),
     },
     'right-bottom': {
       originX: 'end',
       originY: 'bottom',
       overlayX: 'start',
       overlayY: 'bottom',
-      offsetX: this.offset(),
     },
   }));
 
@@ -201,6 +183,11 @@ export class OverlayDirective {
   });
 
   /**
+   * Flag to indicate if this is the first load of the overlay.
+   */
+  firstLoad = true;
+
+  /**
    * Constructor to initialize the directive and set up reactive effects.
    */
   constructor() {
@@ -231,18 +218,43 @@ export class OverlayDirective {
    * Handles the opening and closing of the overlay based on the `open` input.
    */
   handleOpen(): void {
+    const overlayRef = this.cdkConnectedOverlay.overlayRef;
+
     if (this.open()) {
       this.cdkConnectedOverlay.attachOverlay();
+
+      const direction = this.direction();
+      if (direction) {
+        overlayRef.removePanelClass([
+          'cdk-overlay-top',
+          'cdk-overlay-bottom',
+          'cdk-overlay-left',
+          'cdk-overlay-right',
+        ]);
+        overlayRef.addPanelClass(`cdk-overlay-${direction}`);
+      }
     } else {
+      if (!this.firstLoad) {
+        overlayRef.addPanelClass('cdk-overlay-leave');
+      }
+
       setTimeout(() => {
-        this.cdkConnectedOverlay.detachOverlay();
         if (!this.firstLoad) {
+          this.cdkConnectedOverlay.detachOverlay();
+
+          const direction = this.direction();
+          overlayRef.removePanelClass(
+            [
+              direction ? `cdk-overlay-${direction}` : '',
+              'cdk-overlay-leave',
+            ].filter(Boolean)
+          );
+
           this.trigger().el.nativeElement.focus();
         }
+
         this.firstLoad = false;
       }, this.closeDelay());
     }
   }
-
-  firstLoad = true;
 }
