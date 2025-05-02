@@ -7,18 +7,20 @@ import {
   RouterLink,
   RouterLinkActive,
 } from '@angular/router';
-import { Menu } from '../../../../../../primitives/src/core/components/menu/menu.component';
-import { MenuItemRadioComponent } from '../../../../../../primitives/src/core/components/menu/shared/components/menu-item-radio/menu-item-radio.component';
-import { MenuLabel } from '../../../../../../primitives/src/core/components/menu/shared/components/menu-label/menu-label.component';
-import { BottomSheet } from '../../../../../../primitives/src/core/components/bottom-sheet/bottom-sheet.component';
 import { NgTemplateOutlet } from '@angular/common';
-import {
-  Badge,
-  ResponsiveService,
-} from '../../../../../../primitives/src/public-api';
 import { documentationRoutes } from '../../../features/documentation/documentation.routes';
 import { componentsRoutes } from '../../../features/documentation/pages/components/components.routes';
 import { NavigationService } from './navigation.service';
+import {
+  Badge,
+  BottomSheet,
+  Button,
+  Icon,
+  Menu,
+  MenuItemRadioComponent,
+  MenuLabel,
+  ResponsiveService,
+} from '@basis-ng/primitives';
 
 @Component({
   selector: 'aside[app-navigation]',
@@ -31,6 +33,8 @@ import { NavigationService } from './navigation.service';
     BottomSheet,
     NgTemplateOutlet,
     Badge,
+    Button,
+    Icon,
   ],
   templateUrl: './navigation.component.html',
   styleUrl: './navigation.component.css',
@@ -40,6 +44,11 @@ export class NavigationComponent implements OnInit {
    * Service to handle responsive design logic.
    */
   responsiveService = inject(ResponsiveService);
+
+  /**
+   * Signal to track the state of the bottom sheet.
+   */
+  readonly bottomSheetOpen = signal(false);
 
   /**
    * Router instance to handle navigation.

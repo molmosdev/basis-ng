@@ -1,16 +1,28 @@
 :host {
+  button.menu-trigger {
+    position: fixed;
+    bottom: 1rem;
+    right: 1rem;
+  }
+
   .menu-wrapper {
     padding: 1rem;
     box-sizing: border-box;
     overflow-y: auto;
     scrollbar-width: thin;
+  }
 
-    @media (width > 576px) {
+  @media (width > 576px) {
+    .menu-wrapper {
       min-width: 290px;
       border-right: 1px dashed var(--border-color);
       height: calc(100dvh - 4rem);
       position: sticky;
       top: 4rem;
+    }
+
+    button.menu-trigger {
+      display: none;
     }
   }
 }

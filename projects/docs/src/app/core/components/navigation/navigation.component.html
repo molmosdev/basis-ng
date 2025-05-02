@@ -1,5 +1,14 @@
 @if (currentDevice() === 'mobile') {
-  <b-bottom-sheet [(isOpen)]="navigationService.bottomSheetOpen" height="65dvh">
+  <button
+    class="menu-trigger"
+    b-button
+    size="3"
+    variant="secondary"
+    [squared]="true"
+    (click)="bottomSheetOpen.set(true)">
+    <i b-icon icon="Menu" [size]="20"></i>
+  </button>
+  <b-bottom-sheet [(isOpen)]="bottomSheetOpen" height="65dvh">
     <ng-container *ngTemplateOutlet="menu" />
   </b-bottom-sheet>
 } @else {
@@ -16,7 +25,7 @@
             b-menu-item-radio
             [routerLink]="route.path"
             [routerLinkActive]="['active']"
-            (click)="navigationService.bottomSheetOpen.set(false)">
+            (click)="bottomSheetOpen.set(false)">
             {{ route.data['title'] }}
             @if (route.data['new']) {
               <span b-badge variant="outlined" size="small"> New </span>
@@ -32,7 +41,7 @@
             b-menu-item-radio
             [routerLink]="path"
             [routerLinkActive]="['active']"
-            (click)="navigationService.bottomSheetOpen.set(false)">
+            (click)="bottomSheetOpen.set(false)">
             {{ route.data['title'] }}
             @if (route.data['new']) {
               <span b-badge variant="outlined" size="small"> New </span>
