@@ -40,10 +40,9 @@
       b-button
       variant="ghost"
       size="2"
+      [squared]="true"
       [menuTriggerFor]="themeMenu"
-      [menuTriggerPosition]="'bottom-right'"
-      [style.paddingInline.px]="0"
-      [style.width]="'2.5rem'">
+      [menuTriggerPosition]="'bottom-right'">
       @switch (theme()) {
         @case ('auto') {
           <i b-icon [strokeWidth]="1.5" [size]="22" icon="SunMoon"></i>
