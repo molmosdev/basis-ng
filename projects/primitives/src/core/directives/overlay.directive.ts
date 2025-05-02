@@ -11,8 +11,7 @@ import {
   input,
   signal,
 } from '@angular/core';
-import { OverlayTriggerDirective } from './overlay-trigger.directive';
-import { Position } from '../../shared/types/position.type';
+import { OverlayTriggerDirective, Position } from '../../public-api';
 
 /**
  * Directive to manage overlay behavior and positioning.
