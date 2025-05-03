@@ -158,6 +158,15 @@ export const componentsRoutes: Routes = [
     },
   },
   {
+    path: 'tabs',
+    loadComponent: () => import('./pages/tabs-documentation.component'),
+    title: 'Tabs - Basis UI',
+    data: {
+      title: 'Tabs',
+      new: true,
+    },
+  },
+  {
     path: '**',
     redirectTo: '',
   },
