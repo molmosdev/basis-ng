@@ -1,32 +1,29 @@
 b-tab {
   padding-inline: 0.857rem;
-  height: 2.286rem;
+  height: 100%;
   font-size: 1rem;
   display: flex;
   align-items: center;
   box-sizing: border-box;
-  border-bottom-width: 2px;
-  border-bottom-style: solid;
-  border-bottom-color: transparent;
   cursor: pointer;
+  border-radius: calc(var(--radius) - 0.2rem);
+  transition:
+    background-color 0.2s ease-in-out,
+    color 0.2s ease-in-out;
 
   &.cdk-option-active {
-    border-bottom-color: var(--text-color);
+    background-color: var(--primary);
+    color: var(--primary-foreground);
   }
 
   &:hover:not(.cdk-option-active) {
-    border-bottom-color: color-mix(
-      in srgb,
-      var(--bg-color),
-      var(--text-color) 50%
-    );
+    background-color: color-mix(in srgb, var(--bg-color), var(--text-color) 5%);
   }
 }
 
 b-tabs:focus-visible {
   b-tab.cdk-option-active {
     outline: 2px solid var(--text-color);
-    border-radius: var(--radius);
-    border-bottom-color: transparent;
+    outline-offset: 2px;
   }
 }

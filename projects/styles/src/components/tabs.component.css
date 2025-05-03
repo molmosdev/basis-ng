@@ -3,4 +3,9 @@ b-tabs {
   gap: 0.2rem;
   border-radius: var(--radius);
   outline-width: 0;
+  border: 1px solid var(--border-color);
+  padding: 0.2rem;
+  box-sizing: border-box;
+  position: relative;
+  height: 2.286rem;
 }
