@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { TabsComponent, TabComponent } from '@basis-ng/primitives';
 import { CodeBlockComponent } from '../shared/components/code-block.component';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'article[app-tabs-documentation]',
@@ -20,7 +21,7 @@ import { CodeBlockComponent } from '../shared/components/code-block.component';
     <h2>Basic Usage</h2>
     <code-block [code]="basicUsage" />
     <div class="documentation-playground">
-      <b-tabs [value]="['tab1']">
+      <b-tabs [(ngModel)]="selectedTab">
         <b-tab value="tab1">Tab 1</b-tab>
         <b-tab value="tab2">Tab 2</b-tab>
         <b-tab value="tab3">Tab 3</b-tab>
@@ -33,7 +34,7 @@ import { CodeBlockComponent } from '../shared/components/code-block.component';
       horizontal navigation.
     </span>`,
   standalone: true,
-  imports: [TabsComponent, TabComponent, CodeBlockComponent],
+  imports: [TabsComponent, TabComponent, CodeBlockComponent, FormsModule],
 })
 export default class TabsDocumentationComponent {
   angularImport = `import { TabsComponent, TabComponent } from '@basis-ng/primitives';`;
@@ -41,9 +42,11 @@ export default class TabsDocumentationComponent {
   stylesImport = `@import '@basis-ng/styles/tabs';
 @import '@basis-ng/styles/tab';`;
 
-  basicUsage = `<b-tabs [value]="['tab1']">
+  basicUsage = `<b-tabs [(ngModel)]="selectedTab">
   <b-tab value="tab1">Tab 1</b-tab>
   <b-tab value="tab2">Tab 2</b-tab>
   <b-tab value="tab3">Tab 3</b-tab>
 </b-tabs>`;
+
+  selectedTab = 'tab1';
 }
