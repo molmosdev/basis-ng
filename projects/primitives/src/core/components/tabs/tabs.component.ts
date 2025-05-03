@@ -13,13 +13,7 @@ import { TabComponent } from './tab.component';
   selector: 'b-tabs',
   imports: [],
   template: `<ng-content />`,
-  hostDirectives: [
-    {
-      directive: CdkListbox,
-      inputs: ['cdkListboxValue: value'],
-      outputs: ['cdkListboxValueChange'],
-    },
-  ],
+  hostDirectives: [CdkListbox],
   host: {
     '(keydown.arrowLeft)': 'previousTab()',
     '(keydown.arrowUp)': 'previousTab()',
@@ -53,12 +47,10 @@ export class TabsComponent implements OnInit {
 
   previousTab() {
     this.listKeyManager().setPreviousItemActive();
-    this.cdkListbox.value = this.listKeyManager().activeItem?.value;
   }
 
   nextTab() {
     this.listKeyManager().setNextItemActive();
-    this.cdkListbox.value = this.listKeyManager().activeItem?.value;
   }
 
   ngOnInit(): void {
