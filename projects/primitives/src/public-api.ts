@@ -33,7 +33,7 @@ export * from './core/components/table/components/row/components/row-item/row-it
 
 /* Tabs */
 export * from './core/components/tabs/tabs.component';
-export * from './core/components/tabs/components/tab/tab.component';
+export * from './core/components/tabs/tab.component';
 
 /* InViewport */
 export * from './core/directives/in-viewport.directive';

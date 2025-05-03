@@ -1,41 +1,32 @@
 b-tab {
-  height: 100%;
+  padding-inline: 0.857rem;
+  height: 2.286rem;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  border-bottom-width: 2px;
+  border-bottom-style: solid;
+  border-bottom-color: transparent;
+  cursor: pointer;
 
-  span {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-    padding-inline: var(--button-padding-inline, 1.9rem);
-    border-radius: var(--radius, 0.5rem);
-    box-sizing: border-box;
-    gap: 0.5rem;
-    position: relative;
-    overflow: hidden;
-    transition: 0.2s;
-    width: 100%;
-    font-size: 100%;
-    border: none;
-    user-select: none;
-    border: 1px solid transparent;
+  &.cdk-option-active {
+    border-bottom-color: var(--text-color);
+  }
 
-    &:hover {
-      cursor: pointer;
-    }
+  &:hover:not(.cdk-option-active) {
+    border-bottom-color: color-mix(
+      in srgb,
+      var(--bg-color),
+      var(--text-color) 50%
+    );
+  }
+}
 
-    &.selected {
-      background-color: var(--background, #ffffff);
-      border-color: var(--border-color, transparent);
-    }
-
-    &:not(.selected) {
-      &.highlighted {
-        background: color-mix(
-          in srgb,
-          var(--foreground, #798194) 10%,
-          var(--background, #ffffff)
-        );
-      }
-    }
+b-tabs:focus-visible {
+  b-tab.cdk-option-active {
+    outline: 2px solid var(--text-color);
+    border-radius: var(--radius);
+    border-bottom-color: transparent;
   }
 }
