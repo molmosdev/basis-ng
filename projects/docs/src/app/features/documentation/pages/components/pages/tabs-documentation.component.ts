@@ -17,10 +17,10 @@ import { CodeBlockComponent } from '../shared/components/code-block.component';
     >
     <code-block [code]="stylesImport" />
 
-    <h2>Basic Example</h2>
+    <h2>Basic Usage</h2>
     <code-block [code]="basicUsage" />
     <div class="documentation-playground">
-      <b-tabs>
+      <b-tabs [value]="['tab1']">
         <b-tab value="tab1">Tab 1</b-tab>
         <b-tab value="tab2">Tab 2</b-tab>
         <b-tab value="tab3">Tab 3</b-tab>
@@ -41,7 +41,7 @@ export default class TabsDocumentationComponent {
   stylesImport = `@import '@basis-ng/styles/tabs';
 @import '@basis-ng/styles/tab';`;
 
-  basicUsage = `<b-tabs>
+  basicUsage = `<b-tabs [value]="['tab1']">
   <b-tab value="tab1">Tab 1</b-tab>
   <b-tab value="tab2">Tab 2</b-tab>
   <b-tab value="tab3">Tab 3</b-tab>
