@@ -60,6 +60,7 @@ export default class TabsDocumentationComponent {
   <b-tab value="tab2">Tab 2</b-tab>
   <b-tab value="tab3">Tab 3</b-tab>
 </b-tabs>
+
 @switch (selectedTab[0]) {
   @case ('tab1') {
     <p>Tab 1 content</p>
