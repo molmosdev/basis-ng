@@ -21,9 +21,10 @@ import { TabComponent } from './tab.component';
     },
   ],
   host: {
-    '(cdkListboxValueChange)': 'selectOption($event.value)',
     '(keydown.arrowLeft)': 'previousTab()',
+    '(keydown.arrowUp)': 'previousTab()',
     '(keydown.arrowRight)': 'nextTab()',
+    '(keydown.arrowDown)': 'nextTab()',
   },
 })
 export class TabsComponent implements OnInit {
