@@ -20,12 +20,25 @@ import { FormsModule } from '@angular/forms';
 
     <h2>Basic Usage</h2>
     <code-block [code]="basicUsage" />
-    <div class="documentation-playground">
+    <div
+      class="documentation-playground"
+      style="flex-direction: column; align-items: center;">
       <b-tabs [(ngModel)]="selectedTab">
         <b-tab value="tab1">Tab 1</b-tab>
         <b-tab value="tab2">Tab 2</b-tab>
         <b-tab value="tab3">Tab 3</b-tab>
       </b-tabs>
+      @switch (selectedTab[0]) {
+        @case ('tab1') {
+          <p>Tab 1 content</p>
+        }
+        @case ('tab2') {
+          <p>Tab 2 content</p>
+        }
+        @case ('tab3') {
+          <p>Tab 3 content</p>
+        }
+      }
     </div>
 
     <h2>Keyboard Navigation</h2>
@@ -48,5 +61,5 @@ export default class TabsDocumentationComponent {
   <b-tab value="tab3">Tab 3</b-tab>
 </b-tabs>`;
 
-  selectedTab = 'tab1';
+  selectedTab = ['tab2'];
 }
