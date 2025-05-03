@@ -7,9 +7,6 @@ b-tab {
   box-sizing: border-box;
   cursor: pointer;
   border-radius: calc(var(--radius) - 0.2rem);
-  transition:
-    background-color 0.2s ease-in-out,
-    color 0.2s ease-in-out;
 
   &[aria-selected='true'] {
     background-color: var(--primary);
