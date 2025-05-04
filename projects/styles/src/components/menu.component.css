@@ -8,18 +8,8 @@ b-menu {
   }
 }
 
-@keyframes fadeIn {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-
 .cdk-overlay-container b-menu {
   border: 1px solid var(--border-color);
-  animation: fadeIn 0.2s ease-in;
   background-color: var(--background);
 
   b-menu-item {
