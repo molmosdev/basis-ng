@@ -2,6 +2,7 @@ import {
   CdkConnectedOverlay,
   ConnectedPosition,
   ConnectionPositionPair,
+  Overlay,
 } from '@angular/cdk/overlay';
 import {
   computed,
@@ -165,6 +166,11 @@ export class OverlayDirective {
   cdkConnectedOverlay = inject(CdkConnectedOverlay);
 
   /**
+   * Injected instance of `Overlay`.
+   */
+  overlay = inject(Overlay);
+
+  /**
    * Computed direction of the overlay based on the active position pair.
    */
   readonly direction = computed(() => {
@@ -216,46 +222,104 @@ export class OverlayDirective {
 
   /**
    * Handles the opening and closing of the overlay based on the `open` input.
+   * Determines whether to open or close the overlay and invokes the appropriate method.
    */
   handleOpen(): void {
-    const overlayRef = this.cdkConnectedOverlay.overlayRef;
-
     if (this.open()) {
-      this.cdkConnectedOverlay.attachOverlay();
-      this.cdkConnectedOverlay.overlayRef.addPanelClass('b-overlay-panel');
-
-      const direction = this.direction();
-      if (direction) {
-        overlayRef.removePanelClass([
-          'b-overlay-top',
-          'b-overlay-bottom',
-          'b-overlay-left',
-          'b-overlay-right',
-        ]);
-        overlayRef.addPanelClass(`b-overlay-${direction}`);
-      }
+      this.handleOverlayOpen();
+      this.cdkConnectedOverlay.overlayRef?.updateScrollStrategy(
+        this.overlay.scrollStrategies.block()
+      );
     } else {
-      if (!this.firstLoad) {
-        overlayRef.addPanelClass('b-overlay-leave');
-      }
-
-      setTimeout(() => {
-        if (!this.firstLoad) {
-          this.cdkConnectedOverlay.detachOverlay();
-
-          const direction = this.direction();
-          overlayRef.removePanelClass(
-            [
-              direction ? `b-overlay-${direction}` : '',
-              'b-overlay-leave',
-            ].filter(Boolean)
-          );
-
-          this.trigger().el.nativeElement.focus();
-        }
-
-        this.firstLoad = false;
-      }, this.closeDelay());
+      this.handleOverlayClose();
     }
+  }
+
+  /**
+   * Opens the overlay and applies the appropriate direction class.
+   * Ensures the overlay is attached and styled correctly.
+   */
+  private handleOverlayOpen(): void {
+    this.cdkConnectedOverlay.attachOverlay();
+    this.applyDirectionClass();
+  }
+
+  /**
+   * Closes the overlay with optional animation and cleanup.
+   * If it's the first load, detaches the overlay immediately without animation.
+   */
+  private handleOverlayClose(): void {
+    if (this.firstLoad) {
+      this.detachOverlayWithCleanup();
+      this.firstLoad = false;
+      return;
+    }
+
+    const firstChild = this.getFirstChild();
+    if (!firstChild) return;
+
+    firstChild.classList.add('b-overlay-leave');
+    setTimeout(
+      () => this.detachOverlayWithCleanup(firstChild),
+      this.closeDelay()
+    );
+  }
+
+  /**
+   * Retrieves the first child element of the overlay pane.
+   * @returns The first child element or `null` if not found.
+   */
+  private getFirstChild(): Element | null {
+    return (
+      this.cdkConnectedOverlay.overlayRef?.overlayElement.querySelector(
+        '.cdk-overlay-pane > *'
+      ) || null
+    );
+  }
+
+  /**
+   * Applies the direction class to the overlay's first child element.
+   * Cleans up any existing direction-related classes before applying the new one.
+   */
+  private applyDirectionClass(): void {
+    const firstChild = this.getFirstChild();
+    if (!firstChild) return;
+
+    this.cleanOverlayClasses(firstChild);
+    const direction = this.direction();
+    if (direction) {
+      firstChild.classList.add(`b-overlay-${direction}`);
+    }
+  }
+
+  /**
+   * Detaches the overlay and performs cleanup operations.
+   * Optionally cleans up classes from a provided element.
+   * @param element The element to clean up classes from (optional).
+   */
+  private detachOverlayWithCleanup(element?: Element): void {
+    this.cdkConnectedOverlay.detachOverlay();
+
+    if (element) {
+      this.cleanOverlayClasses(element);
+    }
+
+    this.trigger().el.nativeElement.focus();
+  }
+
+  /**
+   * Removes overlay-related classes from the specified element.
+   * @param element The element to remove classes from.
+   */
+  private cleanOverlayClasses(element: Element): void {
+    const classesToRemove = [
+      'b-overlay-leave',
+      'b-overlay-top',
+      'b-overlay-bottom',
+      'b-overlay-left',
+      'b-overlay-right',
+    ];
+
+    element.classList.remove(...classesToRemove);
   }
 }
