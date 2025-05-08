@@ -51,6 +51,20 @@ import { CodeBlockComponent } from '../shared/components/code-block.component';
           <td><code>number</code></td>
           <td>Delay in milliseconds before hiding the tooltip.</td>
         </tr>
+        <tr>
+          <td><strong>hover</strong></td>
+          <td><code>boolean</code></td>
+          <td>
+            Whether the tooltip appears on hover. Default is <code>true</code>.
+          </td>
+        </tr>
+        <tr>
+          <td><strong>focus</strong></td>
+          <td><code>boolean</code></td>
+          <td>
+            Whether the tooltip appears on focus. Default is <code>false</code>.
+          </td>
+        </tr>
       </table>
     </div>
 
@@ -96,6 +110,53 @@ import { CodeBlockComponent } from '../shared/components/code-block.component';
         Bottom Center
       </button>
     </div>
+
+    <h2>Hover Example</h2>
+    <code-block [code]="hoverExample" />
+    <div class="documentation-playground">
+      <button
+        b-button
+        variant="outlined"
+        [bTooltip]="'Hover Tooltip'"
+        [hover]="true">
+        Hover me
+      </button>
+    </div>
+
+    <h2>Focus Example</h2>
+    <code-block [code]="focusExample" />
+    <div class="documentation-playground">
+      <button
+        b-button
+        variant="outlined"
+        [bTooltip]="'Focus Tooltip'"
+        [focus]="true"
+        [hover]="false">
+        Focus me
+      </button>
+    </div>
+
+    <h2>Sizes</h2>
+    <span>
+      The size property allows you to control the size of the tooltip. Below are
+      examples of different sizes.
+    </span>
+    <code-block [code]="sizesExample" />
+    <div class="documentation-playground">
+      <button b-button variant="outlined" [bTooltip]="'Small Tooltip'" size="1">
+        Small
+      </button>
+      <button
+        b-button
+        variant="outlined"
+        [bTooltip]="'Default Tooltip'"
+        size="2">
+        Default
+      </button>
+      <button b-button variant="outlined" [bTooltip]="'Large Tooltip'" size="3">
+        Large
+      </button>
+    </div>
   `,
   standalone: true,
   imports: [CodeBlockComponent, Button, Alert, TooltipDirective],
@@ -119,5 +180,23 @@ export default class TooltipDocumentationComponent {
 </button>
 <button b-button [bTooltip]="'Bottom Center'" [positions]="['bottom-center']">
   Bottom Center
+</button>`;
+
+  hoverExample = `<button b-button [bTooltip]="'Hover Tooltip'" [hover]="true">
+  Hover me
+</button>`;
+
+  focusExample = `<button b-button [bTooltip]="'Focus Tooltip'" [focus]="true" [hover]="false">
+  Focus me
+</button>`;
+
+  sizesExample = `<button b-button [bTooltip]="'Small Tooltip'" size="1">
+  Small
+</button>
+<button b-button [bTooltip]="'Default Tooltip'" size="2">
+  Default
+</button>
+<button b-button [bTooltip]="'Large Tooltip'" size="3">
+  Large
 </button>`;
 }
