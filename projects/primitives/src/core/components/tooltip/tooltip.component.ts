@@ -1,57 +1,61 @@
-import { Component, input } from '@angular/core';
-import { AttachedBox } from '../attached-box/attached-box.component';
-import { Position } from '../../../shared/types/position.type';
+import { NgTemplateOutlet } from '@angular/common';
+import { Component, computed, signal, TemplateRef } from '@angular/core';
+import { Direction } from '../../../shared/types/direction.type';
 
 /**
- * TooltipComponent is a reusable UI component that displays a tooltip
- * with customizable position, gap, variant, and size.
+ * Tooltip component used to display content or templates in a tooltip overlay.
  */
 @Component({
   selector: 'b-tooltip',
-  template: `
-    <b-attached-box [type]="'hover'" [position]="position()" [gap]="gap()">
-      <ng-content b-attached-box-trigger />
-      <div
-        b-attached-box-content
-        class="b-tooltip-content"
-        [class]="variant() + ' size-' + size()">
-        <ng-content select="[b-tooltip-content]" />
-      </div>
-    </b-attached-box>
-  `,
   standalone: true,
-  imports: [AttachedBox],
+  template: `
+    @if (isString()) {
+      {{ content() }}
+    } @else {
+      <ng-container *ngTemplateOutlet="template()" />
+    }
+  `,
+  imports: [NgTemplateOutlet],
+  host: {
+    '[class]': '"b-tooltip-" + direction() + " size-" + size()',
+    '[class.b-tooltip-leave]': 'leaving()',
+  },
 })
 export class TooltipComponent {
   /**
-   * The position of the tooltip relative to its trigger element.
-   * Defaults to 'top-center'.
+   * Specifies the size of the tooltip.
+   *
+   * @defaultValue '2'
    */
-  readonly position = input<Position>('top-center');
+  readonly size = signal<'1' | '2' | '3'>('2');
 
   /**
-   * The gap (in pixels) between the tooltip and its trigger element.
-   * Defaults to 8.
+   * Direction of the tooltip (e.g., top, bottom, left, right).
    */
-  readonly gap = input(8);
+  readonly direction = signal<Direction | undefined>(undefined);
 
   /**
-   * The visual variant of the tooltip. Options include:
-   * - 'primary'
-   * - 'secondary'
-   * - 'ghost'
-   * - 'outlined'
-   * Defaults to 'primary'.
+   * Indicates whether the tooltip is leaving (for animation purposes).
    */
-  readonly variant = input<'primary' | 'secondary' | 'ghost' | 'outlined'>(
-    'primary'
-  );
+  readonly leaving = signal(false);
 
   /**
-   * The size of the tooltip. Options include:
-   * - 'small'
-   * - 'default'
-   * Defaults to 'default'.
+   * Content of the tooltip, which can be a string or a template.
    */
-  readonly size = input<'small' | 'default'>('default');
+  readonly content = signal<string | TemplateRef<any>>('');
+
+  /**
+   * Determines if the content is a string.
+   */
+  readonly isString = computed(() => typeof this.content() === 'string');
+
+  /**
+   * Returns the template if the content is not a string.
+   */
+  readonly template = computed(() => {
+    if (this.isString()) {
+      return null;
+    }
+    return this.content() as TemplateRef<any>;
+  });
 }

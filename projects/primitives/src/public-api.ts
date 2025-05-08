@@ -48,9 +48,6 @@ export * from './core/components/bottom-sheet/bottom-sheet.component';
 /* Responsive */
 export * from './core/services/responsive.service';
 
-/* Attached Box */
-export * from './core/components/attached-box/attached-box.component';
-
 /* Icon */
 export * from './core/components/icon/icon.component';
 
@@ -73,7 +70,7 @@ export * from './core/components/range/range.component';
 export * from './core/components/badge/badge.component';
 
 /* Tooltip */
-export * from './core/components/tooltip/tooltip.component';
+export * from './core/components/tooltip/tooltip.directive';
 
 /* Color Picker */
 export * from './core/components/color-picker/color-picker.component';
