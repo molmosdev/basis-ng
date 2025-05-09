@@ -2,6 +2,8 @@ b-tooltip {
   white-space: nowrap;
   background: var(--input-background);
   border-radius: var(--radius);
+  border: 1px solid var(--border-color);
+  box-shadow: 0 0 0.25rem 0.125rem rgba(1, 1, 1, 0.01);
 
   &.size-1 {
     padding: 0.357rem 0.5rem;
@@ -33,7 +35,7 @@ b-tooltip {
   }
 
   &.b-tooltip-bottom {
-    transform: translateY(5px);
+    transform: translateY(0.5rem);
 
     &.b-tooltip-leave {
       transform: translateY(0);
@@ -42,7 +44,7 @@ b-tooltip {
   }
 
   &.b-tooltip-top {
-    transform: translateY(-5px);
+    transform: translateY(-0.5rem);
 
     &.b-tooltip-leave {
       transform: translateY(0);
@@ -51,7 +53,7 @@ b-tooltip {
   }
 
   &.b-tooltip-left {
-    transform: translateX(-5px);
+    transform: translateX(-0.5rem);
 
     &.b-tooltip-leave {
       transform: translateX(0);
@@ -60,7 +62,7 @@ b-tooltip {
   }
 
   &.b-tooltip-right {
-    transform: translateX(5px);
+    transform: translateX(0.5rem);
 
     &.b-tooltip-leave {
       transform: translateX(0);
