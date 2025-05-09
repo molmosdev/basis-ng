@@ -7,7 +7,7 @@ b-combobox {
   }
 }
 
-b-command {
+.cdk-overlay-pane b-command {
   /* Overlay Animations */
   opacity: 0;
 
