@@ -3,7 +3,9 @@ b-combobox {
     display: flex;
     justify-content: space-between !important;
     align-items: center;
-    padding-inline: 0.857rem 0.5rem !important;
+    text-align: start;
+    padding-right: 0.5rem !important;
+    width: 100%;
     gap: 0.3rem !important;
   }
 }
