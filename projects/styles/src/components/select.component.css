@@ -3,7 +3,9 @@ b-select {
     display: flex;
     justify-content: space-between !important;
     align-items: center;
-    padding-inline: 0.857rem 0.5rem !important;
+    padding-right: 0.5rem !important;
+    text-align: start;
     gap: 0.3rem !important;
+    width: 100% !important;
   }
 }
