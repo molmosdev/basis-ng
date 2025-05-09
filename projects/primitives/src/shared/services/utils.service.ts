@@ -1,25 +1,33 @@
 import { Injectable } from '@angular/core';
 
+/**
+ * Utility service for common operations.
+ */
 @Injectable({
   providedIn: 'root',
 })
 export class UtilsService {
-  debounceTimer: any;
+  private debounceTimers = new Map<string, any>();
 
   /**
-   * Debounce with optional delay
-   * @param {any} func - The function to debounce
-   * @param {any} delay - The delay in milliseconds
+   * Executes a function after a delay, canceling any previous calls with the same key.
+   *
+   * @param key - Unique key to identify the debounce timer.
+   * @param func - The function to debounce.
+   * @param delay - The delay in milliseconds before executing the function.
    */
-  debounce(func: any, delay: any): void {
-    clearTimeout(this.debounceTimer);
-    this.debounceTimer = setTimeout(func, delay);
+  debounce(key: string, func: () => void, delay: number): void {
+    clearTimeout(this.debounceTimers.get(key));
+    this.debounceTimers.set(key, setTimeout(func, delay));
   }
 
   /**
-   * Stop debounce
+   * Cancels the debounce timer for a specific key.
+   *
+   * @param key - Unique key to identify the debounce timer.
    */
-  stopDebounce(): void {
-    clearTimeout(this.debounceTimer);
+  stopDebounce(key: string): void {
+    clearTimeout(this.debounceTimers.get(key));
+    this.debounceTimers.delete(key);
   }
 }
