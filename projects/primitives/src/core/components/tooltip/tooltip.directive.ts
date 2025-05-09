@@ -168,9 +168,9 @@ export class TooltipDirective implements OnDestroy {
   /**
    * List of positions for the tooltip.
    *
-   * @defaultValue ['bottom-left']
+   * @defaultValue ['bottom-center']
    */
-  readonly positions = input<Position[]>(['bottom-left']);
+  readonly positions = input<Position[]>(['bottom-center']);
 
   /**
    * Computed connected positions based on the positions input.
