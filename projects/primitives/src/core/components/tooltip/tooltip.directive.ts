@@ -234,41 +234,45 @@ export class TooltipDirective implements OnDestroy {
       return;
     }
 
-    this.utils.debounce(() => {
-      const positionStrategy = this.overlay
-        .position()
-        .flexibleConnectedTo(this.origin.elementRef)
-        .withPositions(this.connectedPositions())
-        .withPush(true);
+    this.utils.debounce(
+      'tooltip-show',
+      () => {
+        const positionStrategy = this.overlay
+          .position()
+          .flexibleConnectedTo(this.origin.elementRef)
+          .withPositions(this.connectedPositions())
+          .withPush(true);
 
-      // Subscribe to position change events
-      this.positionChangeSubscription =
-        positionStrategy.positionChanges.subscribe(change => {
-          this.connectedPosition.set(change.connectionPair);
+        // Subscribe to position change events
+        this.positionChangeSubscription =
+          positionStrategy.positionChanges.subscribe(change => {
+            this.connectedPosition.set(change.connectionPair);
+          });
+
+        const overlayConfig = new OverlayConfig({
+          positionStrategy,
+          scrollStrategy: this.overlay.scrollStrategies.reposition(),
         });
 
-      const overlayConfig = new OverlayConfig({
-        positionStrategy,
-        scrollStrategy: this.overlay.scrollStrategies.reposition(),
-      });
+        if (!this.overlayRef()) {
+          this.overlayRef.set(this.overlay.create(overlayConfig));
+        }
 
-      if (!this.overlayRef()) {
-        this.overlayRef.set(this.overlay.create(overlayConfig));
-      }
+        const componentPortal = new ComponentPortal(TooltipComponent);
+        this.componentRef.set(this.overlayRef()?.attach(componentPortal));
 
-      const componentPortal = new ComponentPortal(TooltipComponent);
-      this.componentRef.set(this.overlayRef()?.attach(componentPortal));
+        // Reset the leaving state and direction to ensure animations play
+        const instance = this.componentRef()?.instance;
+        instance?.leaving.set(false);
+        instance?.direction.set(this.direction());
+        instance?.content.set(this.content());
+        instance?.size.set(this.size());
 
-      // Reset the leaving state and direction to ensure animations play
-      const instance = this.componentRef()?.instance;
-      instance?.leaving.set(false);
-      instance?.direction.set(this.direction());
-      instance?.content.set(this.content());
-      instance?.size.set(this.size());
-
-      // Trigger reflow to ensure CSS animations are applied
-      void this.overlayRef()?.overlayElement.offsetHeight;
-    }, this.showDelay());
+        // Trigger reflow to ensure CSS animations are applied
+        void this.overlayRef()?.overlayElement.offsetHeight;
+      },
+      this.showDelay()
+    );
   }
 
   /**
@@ -281,7 +285,11 @@ export class TooltipDirective implements OnDestroy {
 
     this.componentRef()?.instance.leaving.set(true);
 
-    this.utils.debounce(() => this.overlayRef()?.detach(), this.hideDelay());
+    this.utils.debounce(
+      'tooltip-hide',
+      () => this.overlayRef()?.detach(),
+      this.hideDelay()
+    );
   }
 
   /**
