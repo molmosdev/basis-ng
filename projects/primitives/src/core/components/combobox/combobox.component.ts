@@ -35,7 +35,7 @@ import { OverlayDirective } from '../../directives/overlay.directive';
       bOverlayTrigger
       #trigger="bOverlayTrigger">
       {{ content() }}
-      <i b-icon icon="ChevronDown" [size]="20"></i>
+      <i b-icon icon="ChevronDown" [size]="16"></i>
     </button>
     <ng-template
       bOverlay

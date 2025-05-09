@@ -4,5 +4,6 @@ b-select {
     justify-content: space-between !important;
     align-items: center;
     padding-inline: 0.857rem 0.5rem !important;
+    gap: 0.3rem !important;
   }
 }
