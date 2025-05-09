@@ -251,7 +251,7 @@ export class TooltipDirective implements OnDestroy {
 
         const overlayConfig = new OverlayConfig({
           positionStrategy,
-          scrollStrategy: this.overlay.scrollStrategies.reposition(),
+          scrollStrategy: this.overlay.scrollStrategies.close(),
         });
 
         if (!this.overlayRef()) {
