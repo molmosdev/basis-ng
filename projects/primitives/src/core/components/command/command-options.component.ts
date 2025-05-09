@@ -26,6 +26,7 @@ import {
   ],
   host: {
     '(cdkListboxValueChange)': 'selectOption($event.value)',
+    '(keydown.enter)': 'closeEmitter.emit()',
   },
 })
 export class CommandOptionsComponent implements OnInit {

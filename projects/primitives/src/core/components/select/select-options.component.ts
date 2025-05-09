@@ -29,6 +29,7 @@ import { OptionComponent } from '../../../shared/components/option.component';
     '[cdkListboxValue]': 'value()',
     '(cdkListboxValueChange)': 'handleValueChange($event.value)',
     '[style.max-height]': 'maxHeight()',
+    '(keydown.enter)': 'closeEmitter.emit()',
   },
 })
 export class SelectOptionsComponent {

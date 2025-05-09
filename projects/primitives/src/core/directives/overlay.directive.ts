@@ -227,9 +227,6 @@ export class OverlayDirective {
   handleOpen(): void {
     if (this.open()) {
       this.handleOverlayOpen();
-      this.cdkConnectedOverlay.overlayRef?.updateScrollStrategy(
-        this.overlay.scrollStrategies.block()
-      );
     } else {
       this.handleOverlayClose();
     }
@@ -256,7 +253,11 @@ export class OverlayDirective {
     }
 
     const firstChild = this.getFirstChild();
-    if (!firstChild) return;
+
+    if (!firstChild) {
+      this.detachOverlayWithCleanup();
+      return;
+    }
 
     firstChild.classList.add('b-overlay-leave');
     setTimeout(
