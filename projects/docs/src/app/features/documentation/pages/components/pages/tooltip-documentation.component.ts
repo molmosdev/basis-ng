@@ -39,7 +39,10 @@ import { CodeBlockComponent } from '../shared/components/code-block.component';
         <tr>
           <td><strong>positions</strong></td>
           <td><code>Position[]</code></td>
-          <td>The possible positions of the tooltip.</td>
+          <td>
+            The possible positions of the tooltip. Default is
+            <code>['bottom-center']</code>.
+          </td>
         </tr>
         <tr>
           <td><strong>showDelay</strong></td>
@@ -98,14 +101,14 @@ import { CodeBlockComponent } from '../shared/components/code-block.component';
       <button
         b-button
         variant="outlined"
-        [bTooltip]="'Top Left'"
+        [bTooltip]="'Tooltip positioned at top left'"
         [positions]="['top-left']">
         Top Left
       </button>
       <button
         b-button
         variant="outlined"
-        [bTooltip]="'Bottom Center'"
+        [bTooltip]="'Tooltip positioned at bottom center'"
         [positions]="['bottom-center']">
         Bottom Center
       </button>
@@ -175,10 +178,10 @@ export default class TooltipDocumentationComponent {
   Hover me
 </button>`;
 
-  positionsUsage = `<button b-button [bTooltip]="'Top Left'" [positions]="['top-left']">
+  positionsUsage = `<button b-button [bTooltip]="'Tooltip positioned at top left'" [positions]="['top-left']">
   Top Left
 </button>
-<button b-button [bTooltip]="'Bottom Center'" [positions]="['bottom-center']">
+<button b-button [bTooltip]="'Tooltip positioned at bottom center'" [positions]="['bottom-center']">
   Bottom Center
 </button>`;
 
