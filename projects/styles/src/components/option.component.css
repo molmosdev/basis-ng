@@ -14,13 +14,13 @@ li[b-option] {
   &.cdk-option-highlighted {
     background-color: color-mix(
       in srgb,
-      var(--foreground, #798194) 5%,
-      var(--background, #ffffff)
+      var(--secondary) 50%,
+      var(--background)
     );
   }
 
   &[aria-selected='true'] {
-    background-color: var(--primary, #0a0a0a);
-    color: var(--primary-foreground, #ffffff);
+    background-color: var(--secondary);
+    color: var(--secondary-foreground);
   }
 }
