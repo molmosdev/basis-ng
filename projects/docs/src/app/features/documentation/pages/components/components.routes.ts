@@ -77,6 +77,7 @@ export const componentsRoutes: Routes = [
     title: 'Tooltip - Basis UI',
     data: {
       title: 'Tooltip',
+      new: true,
     },
   },
   {
@@ -103,7 +104,7 @@ export const componentsRoutes: Routes = [
       title: 'Color Picker',
     },
   },
-  {
+  /*   {
     path: 'input-group',
     loadComponent: () => import('./pages/input-group-documentation.component'),
     title: 'Input Group - Basis UI',
@@ -111,14 +112,13 @@ export const componentsRoutes: Routes = [
       title: 'Input Group',
       new: true,
     },
-  },
+  }, */
   {
     path: 'range',
     loadComponent: () => import('./pages/range-documentation.component'),
     title: 'Range - Basis UI',
     data: {
       title: 'Range',
-      new: true,
     },
   },
   {
@@ -145,7 +145,6 @@ export const componentsRoutes: Routes = [
     title: 'Alert - Basis UI',
     data: {
       title: 'Alert',
-      new: true,
     },
   },
   {
