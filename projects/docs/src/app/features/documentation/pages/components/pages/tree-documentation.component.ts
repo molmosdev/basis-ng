@@ -294,7 +294,7 @@ import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
   ],
 })
 export default class TreeDocumentationComponent {
-  angularImport = `import { Tree, TreeNode } from '@basis-ng/primitives'`;
+  angularImport = `import { TreeComponent, TreeNodeComponent } from '@basis-ng/primitives'`;
   stylesImport = `@import '@basis-ng/styles/tree';
 @import '@basis-ng/styles/tree-node';
 `;

@@ -122,7 +122,7 @@ import {
   standalone: true,
 })
 export default class InputGroupDocumentationComponent {
-  angularImport = `import { InputGroup, Input } from '@basis-ng/primitives'`;
+  angularImport = `import { InputGroupComponent, InputComponent } from '@basis-ng/primitives'`;
   stylesImport = `@import '@basis-ng/styles/input-group';`;
 
   prependTextUsage = `<b-input-group maxWidth="240px">

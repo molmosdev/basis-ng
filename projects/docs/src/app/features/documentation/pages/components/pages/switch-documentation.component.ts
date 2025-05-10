@@ -102,7 +102,7 @@ import {
   ],
 })
 export default class SwitchDocumentationComponent {
-  angularImport = `import { Switch } from '@basis-ng/primitives'`;
+  angularImport = `import { SwitchComponent } from '@basis-ng/primitives'`;
   stylesImport = `@import '@basis-ng/styles/switch';`;
   basicUsage = `<input type="checkbox" b-switch [value]="basicValue" (valueChange)="onValueChange($event)" />`;
   ngModelUsage = `<input type="checkbox" b-switch [(ngModel)]="ngModelValue" />`;

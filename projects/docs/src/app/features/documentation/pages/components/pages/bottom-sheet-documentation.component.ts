@@ -118,7 +118,7 @@ import { DrawerComponent } from '../../../../../../../../primitives/src/public-a
   ],
 })
 export default class DrawerDocumentationComponent {
-  angularImport = `import { DrawerComponent } from '@basis-ng/primitives'`;
+  angularImport = `import { DrawerComponent } from '@basis-ng/primitives';`;
   stylesImport = `@import '@basis-ng/styles/bottom-sheet';`;
   basicUsage = `<button b-button (click)="openSheet()">Open Bottom Sheet</button>
 <b-drawer

@@ -184,7 +184,7 @@ import {
   ],
 })
 export default class InputDocumentationComponent {
-  angularImport = `import { Input } from '@basis-ng/primitives'`;
+  angularImport = `import { InputComponent } from '@basis-ng/primitives'`;
   stylesImport = `@import '@basis-ng/styles/input';`;
   ngModelUsage = `<input b-input type="text" placeholder="Enter text" [(ngModel)]="ngModelValue" />`;
   formControlUsage = `<form [formGroup]="form">

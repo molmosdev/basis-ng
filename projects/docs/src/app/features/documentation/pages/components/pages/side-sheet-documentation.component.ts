@@ -128,7 +128,7 @@ import { CodeBlockComponent } from '../shared/components/code-block.component';
   ],
 })
 export default class SideSheetDocumentationComponent {
-  angularImport = `import { SideSheet } from '@basis-ng/primitives'`;
+  angularImport = `import { SheetComponent } from '@basis-ng/primitives'`;
   stylesImport = `@import '@basis-ng/styles/side-sheet';`;
   basicUsage = `<button b-button (click)="openLeftSideSheet()">Open Left Side Sheet</button>
 <button b-button (click)="openRightSideSheet()">Open Right Side Sheet</button>

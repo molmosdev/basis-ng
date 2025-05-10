@@ -94,7 +94,7 @@ import { NgTemplateOutlet } from '@angular/common';
   ],
 })
 export default class TabsDocumentationComponent {
-  angularImport = `import { TabsComponent, TabComponent } from '@basis-ng/primitives';`;
+  angularImport = `import { TabsComponent, TabComponent, CodeBlockComponent } from '@basis-ng/primitives';`;
 
   stylesImport = `@import '@basis-ng/styles/tabs';
 @import '@basis-ng/styles/tab';`;

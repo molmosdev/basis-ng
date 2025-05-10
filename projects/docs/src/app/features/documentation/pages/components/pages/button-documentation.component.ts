@@ -205,7 +205,7 @@ import { IconComponent } from '../../../../../../../../primitives/src/public-api
   ],
 })
 export default class ButtonDocumentationComponent {
-  angularImport = `import { Button } from '@basis-ng/primitives'`;
+  angularImport = `import { ButtonComponent } from '@basis-ng/primitives'`;
   stylesImport = `@import '@basis-ng/styles/button';`;
   basicUsage = `<button b-button variant="primary" size="2">This is a button</button>`;
   variantsUsage = `<button b-button variant="primary">Primary</button>

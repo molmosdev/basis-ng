@@ -83,7 +83,7 @@ import { FormGroup, FormControl } from '@angular/forms';
   ],
 })
 export default class ComboboxDocumentationComponent {
-  angularImport = `import { ComboboxComponent, CommandComponent, CommandOptionsComponent, OptionComponent } from '@basis-ng/primitives'`;
+  angularImport = `import { ComboboxComponent, CommandComponent, CommandOptionsComponent, OptionComponent } from '@basis-ng/primitives';`;
   stylesImport = `@import '@basis-ng/styles/combobox';
 @import '@basis-ng/styles/command';
 @import '@basis-ng/styles/command-options';

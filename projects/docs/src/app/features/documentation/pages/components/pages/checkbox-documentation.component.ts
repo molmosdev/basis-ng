@@ -87,7 +87,7 @@ import {
   ],
 })
 export default class CheckboxDocumentationComponent {
-  angularImport = `import { Checkbox } from '@basis-ng/primitives'`;
+  angularImport = `import { CheckboxComponent } from '@basis-ng/primitives'`;
   stylesImport = `@import '@basis-ng/styles/checkbox';`;
   basicUsage = `<input type="checkbox" b-checkbox [value]="basicValue" (valueChange)="onValueChange($event)" />`;
   ngModelUsage = `<input type="checkbox" b-checkbox [(ngModel)]="ngModelValue" />`;

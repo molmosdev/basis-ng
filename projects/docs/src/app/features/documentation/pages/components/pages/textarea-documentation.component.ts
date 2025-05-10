@@ -135,7 +135,7 @@ import {
   ],
 })
 export default class TextareaDocumentationComponent {
-  angularImport = `import { Textarea } from '@basis-ng/primitives'`;
+  angularImport = `import { TextareaComponent } from '@basis-ng/primitives'`;
   stylesImport = `@import '@basis-ng/styles/textarea';`;
   basicUsage = `<textarea b-textarea placeholder="Enter text" [value]="basicValue" (valueChange)="onValueChange($event)"></textarea>`;
   ngModelUsage = `<textarea b-textarea placeholder="Enter text" [(ngModel)]="ngModelValue"></textarea>`;

@@ -107,7 +107,7 @@ import { CodeBlockComponent } from '../shared/components/code-block.component';
   imports: [CodeBlockComponent, AlertComponent],
 })
 export default class AlertDocumentationComponent {
-  angularImport = `import { Alert } from '@basis-ng/primitives'`;
+  angularImport = `import { AlertComponent } from '@basis-ng/primitives'`;
 
   stylesImport = `@import '@basis-ng/styles/alert';`;
 

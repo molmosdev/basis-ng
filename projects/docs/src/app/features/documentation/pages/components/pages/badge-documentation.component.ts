@@ -67,7 +67,7 @@ import { CodeBlockComponent } from '../shared/components/code-block.component';
   imports: [CodeBlockComponent, BadgeComponent, AlertComponent],
 })
 export default class BadgeDocumentationComponent {
-  angularImport = `import { Badge } from '@basis-ng/primitives'`;
+  angularImport = `import { BadgeComponent } from '@basis-ng/primitives'`;
   stylesImport = `@import '@basis-ng/styles/badge';`;
   basicUsage = `<span b-badge variant="primary" size="default">Primary Badge</span>`;
   variantsUsage = `<span b-badge variant="primary">Primary</span>

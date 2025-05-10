@@ -77,7 +77,7 @@ import { CodeBlockComponent } from '../shared/components/code-block.component';
   imports: [CodeBlockComponent, RangeComponent, AlertComponent],
 })
 export default class RangeDocumentationComponent {
-  angularImport = `import { Range } from '@basis-ng/primitives'`;
+  angularImport = `import { RangeComponent } from '@basis-ng/primitives'`;
   stylesImport = `@import '@basis-ng/styles/range';`;
   basicUsage = `<input type="range" b-range [value]="basicValue" (valueChange)="onValueChange($event)" />`;
 
