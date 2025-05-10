@@ -166,6 +166,15 @@ export const componentsRoutes: Routes = [
     },
   },
   {
+    path: 'dialog',
+    loadComponent: () => import('./pages/dialog-documentation.component'),
+    title: 'Dialog - Basis UI',
+    data: {
+      title: 'Dialog',
+      new: true,
+    },
+  },
+  {
     path: '**',
     redirectTo: '',
   },
