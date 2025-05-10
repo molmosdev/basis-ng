@@ -1,4 +1,4 @@
-b-bottom-sheet {
+b-drawer {
   position: fixed;
   bottom: 0;
   left: 0;
@@ -44,6 +44,6 @@ b-bottom-sheet {
   }
 }
 
-html:has(b-bottom-sheet.open) {
+html:has(b-drawer.open) {
   overflow: hidden;
 }

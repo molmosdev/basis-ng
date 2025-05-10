@@ -2,7 +2,7 @@
 @import './components/badge.component.css';
 @import './components/attached-box.component.css';
 @import './components/badge.component.css';
-@import './components/bottom-sheet.component.css';
+@import './components/drawer.component.css';
 @import './components/button-group.component.css';
 @import './components/button.component.css';
 @import './components/checkbox.component.css';
@@ -27,7 +27,7 @@
 @import './components/command.component.css';
 @import './components/command-options.component.css';
 @import './components/option.component.css';
-@import './components/side-sheet.component.css';
+@import './components/sheet.component.css';
 @import './components/spinner.component.css';
 @import './components/switch.component.css';
 @import './components/tab.component.css';

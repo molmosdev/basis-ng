@@ -1,4 +1,4 @@
-b-side-sheet {
+b-sheet {
   position: fixed;
   top: 0;
   height: 100dvh;
@@ -54,6 +54,6 @@ b-side-sheet {
   }
 }
 
-html:has(b-side-sheet.open) {
+html:has(b-sheet.open) {
   overflow: hidden;
 }
