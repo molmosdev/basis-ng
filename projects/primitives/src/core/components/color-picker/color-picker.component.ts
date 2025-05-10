@@ -25,7 +25,7 @@ import { ControlContainer, NgModel } from '@angular/forms';
     '(input)': 'value.set($event.target.value)',
   },
 })
-export class ColorPicker implements AfterViewInit {
+export class ColorPickerComponent implements AfterViewInit {
   /**
    * Specifies the maximum width of the input.
    */

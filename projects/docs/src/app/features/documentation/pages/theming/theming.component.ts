@@ -3,7 +3,7 @@ import { CodeBlockComponent } from '../components/shared/components/code-block.c
 import { FormGroup, FormControl, ReactiveFormsModule } from '@angular/forms';
 import {
   ButtonComponent,
-  ColorPicker,
+  ColorPickerComponent,
   IconComponent,
   RangeComponent,
 } from '@basis-ng/primitives';
@@ -22,7 +22,7 @@ interface ThemeVariables {
     IconComponent,
     RangeComponent,
     ReactiveFormsModule,
-    ColorPicker,
+    ColorPickerComponent,
   ],
   templateUrl: './theming.component.html',
   styleUrl: './theming.component.css',
