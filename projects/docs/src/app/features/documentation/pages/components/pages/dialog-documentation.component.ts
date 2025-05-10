@@ -151,6 +151,18 @@ import { CodeBlockComponent } from '../shared/components/code-block.component';
     AlertComponent,
     DialogDirective,
   ],
+  styles: [
+    `
+      p {
+        margin-top: 0.5rem;
+      }
+
+      h1 {
+        margin-top: 0;
+        margin-bottom: 0;
+      }
+    `,
+  ],
 })
 export default class DialogDocumentationComponent {
   angularImport = `import { DialogDirective } from '@basis-ng/primitives'`;
