@@ -104,15 +104,6 @@ export const componentsRoutes: Routes = [
       title: 'Color Picker',
     },
   },
-  /*   {
-    path: 'input-group',
-    loadComponent: () => import('./pages/input-group-documentation.component'),
-    title: 'Input Group - Basis UI',
-    data: {
-      title: 'Input Group',
-      new: true,
-    },
-  }, */
   {
     path: 'range',
     loadComponent: () => import('./pages/range-documentation.component'),

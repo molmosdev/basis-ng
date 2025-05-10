@@ -4,7 +4,7 @@ import {
   SelectComponent,
   OptionComponent,
   SelectOptionsComponent,
-} from '@basis-ng/primitives';
+} from '../../../../../../../../primitives/src/public-api';
 import { CodeBlockComponent } from '../shared/components/code-block.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FormGroup, FormControl } from '@angular/forms';

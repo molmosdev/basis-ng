@@ -60,9 +60,6 @@ export * from './core/components/checkbox/checkbox.component';
 /* Textarea */
 export * from './core/components/textarea/textarea.component';
 
-/* Input Group */
-export * from './core/components/input-group/input-group.component';
-
 /* Range */
 export * from './core/components/range/range.component';
 
