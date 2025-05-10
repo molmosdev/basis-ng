@@ -153,6 +153,7 @@ button[b-button] {
 
     &.squared {
       width: 1.714rem;
+      min-width: 1.714rem;
     }
   }
 
@@ -163,6 +164,7 @@ button[b-button] {
 
     &.squared {
       width: 2.286rem;
+      min-width: 2.286rem;
     }
   }
 
@@ -173,6 +175,7 @@ button[b-button] {
 
     &.squared {
       width: 2.857rem;
+      min-width: 2.857rem;
     }
   }
 }
