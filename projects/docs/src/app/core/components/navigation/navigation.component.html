@@ -5,10 +5,10 @@
     size="3"
     variant="primary"
     [squared]="true"
-    (click)="bottomSheetOpen.set(true)">
+    (click)="drawerOpen.set(true)">
     <i b-icon icon="Menu" [size]="20" color="var(--primary-foreground)"></i>
   </button>
-  <b-drawer [(isOpen)]="bottomSheetOpen" height="65dvh">
+  <b-drawer [(isOpen)]="drawerOpen" height="65dvh">
     <ng-container *ngTemplateOutlet="menu" />
   </b-drawer>
 } @else {
@@ -25,7 +25,7 @@
             b-menu-item-radio
             [routerLink]="route.path"
             [routerLinkActive]="['active']"
-            (click)="bottomSheetOpen.set(false)">
+            (click)="drawerOpen.set(false)">
             {{ route.data['title'] }}
             @if (route.data['new']) {
               <span b-badge variant="outlined" size="small"> New </span>
@@ -41,7 +41,7 @@
             b-menu-item-radio
             [routerLink]="path"
             [routerLinkActive]="['active']"
-            (click)="bottomSheetOpen.set(false)">
+            (click)="drawerOpen.set(false)">
             {{ route.data['title'] }}
             @if (route.data['new']) {
               <span b-badge variant="outlined" size="small"> New </span>

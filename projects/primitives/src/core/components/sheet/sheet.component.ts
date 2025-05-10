@@ -20,7 +20,7 @@ import { CommonModule } from '@angular/common';
   selector: 'b-sheet',
   standalone: true,
   imports: [CommonModule],
-  templateUrl: './side-sheet.component.html',
+  templateUrl: './sheet.component.html',
   host: {
     '[class.left]': 'isLeft()',
     '[class.right]': '!isLeft()',

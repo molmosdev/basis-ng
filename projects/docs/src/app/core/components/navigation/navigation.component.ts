@@ -46,9 +46,9 @@ export class NavigationComponent implements OnInit {
   responsiveService = inject(ResponsiveService);
 
   /**
-   * Signal to track the state of the bottom sheet.
+   * Signal to track the state of the drawer.
    */
-  readonly bottomSheetOpen = signal(false);
+  readonly drawerOpen = signal(false);
 
   /**
    * Router instance to handle navigation.

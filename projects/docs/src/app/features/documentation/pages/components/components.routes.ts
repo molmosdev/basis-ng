@@ -81,19 +81,19 @@ export const componentsRoutes: Routes = [
     },
   },
   {
-    path: 'bottom-sheet',
-    loadComponent: () => import('./pages/bottom-sheet-documentation.component'),
-    title: 'Bottom Sheet - Basis UI',
+    path: 'drawer',
+    loadComponent: () => import('./pages/drawer-documentation.component'),
+    title: 'Drawer - Basis UI',
     data: {
-      title: 'Bottom Sheet',
+      title: 'Drawer',
     },
   },
   {
-    path: 'side-sheet',
-    loadComponent: () => import('./pages/side-sheet-documentation.component'),
-    title: 'Side Sheet - Basis UI',
+    path: 'sheet',
+    loadComponent: () => import('./pages/sheet-documentation.component'),
+    title: 'Sheet - Basis UI',
     data: {
-      title: 'Side Sheet',
+      title: 'Sheet',
     },
   },
   {

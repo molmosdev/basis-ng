@@ -7,17 +7,17 @@ import {
 import { CodeBlockComponent } from '../shared/components/code-block.component';
 
 @Component({
-  selector: 'article[app-side-sheet-documentation]',
+  selector: 'article[app-sheet-documentation]',
   template: ` <b-alert
       type="info"
       title="Components are in alpha"
       icon="Rocket">
       Try them out! We'd love to hear your feedback! Expect breaking changes!
     </b-alert>
-    <h1>Side Sheet</h1>
+    <h1>Sheet</h1>
     <span>
-      Side Sheet is a sliding panel that appears from the left or right side of
-      the screen.
+      Sheet is a sliding panel that appears from the left or right side of the
+      screen.
     </span>
 
     <code-block [code]="angularImport" />
@@ -38,7 +38,7 @@ import { CodeBlockComponent } from '../shared/components/code-block.component';
         <tr>
           <td><strong>isOpen</strong></td>
           <td><code>boolean</code></td>
-          <td>Indicates whether the side sheet is open.</td>
+          <td>Indicates whether the sheet is open.</td>
         </tr>
         <tr>
           <td><strong>side</strong></td>
@@ -50,7 +50,7 @@ import { CodeBlockComponent } from '../shared/components/code-block.component';
         <tr>
           <td><strong>width</strong></td>
           <td><code>string</code></td>
-          <td>The width of the side sheet.</td>
+          <td>The width of the sheet.</td>
         </tr>
       </table>
     </div>
@@ -64,7 +64,7 @@ import { CodeBlockComponent } from '../shared/components/code-block.component';
         </tr>
         <tr>
           <td><strong>closeSheet</strong></td>
-          <td>Emitted when the side sheet is closed.</td>
+          <td>Emitted when the sheet is closed.</td>
         </tr>
       </table>
     </div>
@@ -72,12 +72,8 @@ import { CodeBlockComponent } from '../shared/components/code-block.component';
     <h2>Basic Usage</h2>
     <code-block [code]="basicUsage" />
     <div class="documentation-playground">
-      <button b-button (click)="openLeftSideSheet()">
-        Open Left Side Sheet
-      </button>
-      <button b-button (click)="openRightSideSheet()">
-        Open Right Side Sheet
-      </button>
+      <button b-button (click)="openLeftSheet()">Open Left Sheet</button>
+      <button b-button (click)="openRightSheet()">Open Right Sheet</button>
     </div>
 
     <b-sheet
@@ -87,7 +83,7 @@ import { CodeBlockComponent } from '../shared/components/code-block.component';
       (closeSheet)="isLeftOpen.set(false)">
       <div
         style="display: flex; justify-content: center; align-items: center; height: 100%;">
-        This is the left side sheet.
+        This is the left sheet.
       </div>
     </b-sheet>
 
@@ -98,15 +94,15 @@ import { CodeBlockComponent } from '../shared/components/code-block.component';
       (closeSheet)="isRightOpen.set(false)">
       <div
         style="display: flex; justify-content: center; align-items: center; height: 100%;">
-        This is the right side sheet.
+        This is the right sheet.
       </div>
     </b-sheet>
 
     <h2>Custom Width</h2>
     <code-block [code]="customWidthUsage" />
     <div class="documentation-playground">
-      <button b-button (click)="openCustomWidthSideSheet()">
-        Open Custom Width Side Sheet
+      <button b-button (click)="openCustomWidthSheet()">
+        Open Custom Width Sheet
       </button>
     </div>
 
@@ -117,7 +113,7 @@ import { CodeBlockComponent } from '../shared/components/code-block.component';
       (closeSheet)="isCustomWidthOpen.set(false)">
       <div
         style="display: flex; justify-content: center; align-items: center; height: 100%;">
-        This is a custom width side sheet.
+        This is a custom width sheet.
       </div>
     </b-sheet>`,
   imports: [
@@ -129,16 +125,16 @@ import { CodeBlockComponent } from '../shared/components/code-block.component';
 })
 export default class SideSheetDocumentationComponent {
   angularImport = `import { SheetComponent } from '@basis-ng/primitives'`;
-  stylesImport = `@import '@basis-ng/styles/side-sheet';`;
-  basicUsage = `<button b-button (click)="openLeftSideSheet()">Open Left Side Sheet</button>
-<button b-button (click)="openRightSideSheet()">Open Right Side Sheet</button>
+  stylesImport = `@import '@basis-ng/styles/sheet';`;
+  basicUsage = `<button b-button (click)="openLeftSheet()">Open Left Sheet</button>
+<button b-button (click)="openRightSheet()">Open Right Sheet</button>
 
 <b-sheet
   [(isOpen)]="isLeftOpen"
   [width]="'300px'"
   [side]="'left'">
   <div style="display: flex; justify-content: center; align-items: center; height: 100%;">
-    This is the left side sheet.
+    This is the left sheet.
   </div>
 </b-sheet>
 
@@ -147,18 +143,18 @@ export default class SideSheetDocumentationComponent {
   [width]="'300px'"
   [side]="'right'">
   <div style="display: flex; justify-content: center; align-items: center; height: 100%;">
-    This is the right side sheet.
+    This is the right sheet.
   </div>
 </b-sheet>`;
 
-  customWidthUsage = `<button b-button (click)="openCustomWidthSideSheet()">Open Custom Width Side Sheet</button>
+  customWidthUsage = `<button b-button (click)="openCustomWidthSheet()">Open Custom Width Sheet</button>
 
 <b-sheet
   [(isOpen)]="isCustomWidthOpen"
   [width]="'500px'"
   [side]="'right'">
   <div style="display: flex; justify-content: center; align-items: center; height: 100%;">
-    This is a custom width side sheet.
+    This is a custom width sheet.
   </div>
 </b-sheet>`;
 
@@ -175,15 +171,15 @@ export default class SideSheetDocumentationComponent {
     this.isOpen.set(true);
   }
 
-  openLeftSideSheet() {
+  openLeftSheet() {
     this.isLeftOpen.set(true);
   }
 
-  openRightSideSheet() {
+  openRightSheet() {
     this.isRightOpen.set(true);
   }
 
-  openCustomWidthSideSheet() {
+  openCustomWidthSheet() {
     this.isCustomWidthOpen.set(true);
   }
 }

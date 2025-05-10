@@ -39,10 +39,10 @@ export * from './core/components/tabs/tab.component';
 export * from './core/directives/in-viewport.directive';
 export * from './core/services/in-viewport.service';
 
-/* Side Sheet */
-export * from './core/components/side-sheet/side-sheet.component';
+/* Sheet */
+export * from './core/components/sheet/sheet.component';
 
-/* Bottom Sheet */
+/* Drawer */
 export * from './core/components/drawer/drawer.component';
 
 /* Responsive */
