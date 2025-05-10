@@ -1,10 +1,19 @@
 import { Component } from '@angular/core';
 import { CodeBlockComponent } from '../shared/components/code-block.component';
-import { Button, Input, Icon, InputGroupComponent } from '@basis-ng/primitives';
+import {
+  Button,
+  Input,
+  Icon,
+  InputGroupComponent,
+  Alert,
+} from '@basis-ng/primitives';
 
 @Component({
   selector: 'article[app-input-group-documentation]',
   template: `
+    <b-alert type="info" title="Components are in alpha" icon="Rocket">
+      Try them out! We'd love to hear your feedback! Expect breaking changes!
+    </b-alert>
     <h1>Input Group</h1>
     <span>
       Input Group allows you to group one or more <code>b-input</code> elements
@@ -102,7 +111,14 @@ import { Button, Input, Icon, InputGroupComponent } from '@basis-ng/primitives';
       </b-input-group>
     </div>
   `,
-  imports: [CodeBlockComponent, InputGroupComponent, Button, Input, Icon],
+  imports: [
+    Alert,
+    CodeBlockComponent,
+    InputGroupComponent,
+    Button,
+    Input,
+    Icon,
+  ],
   standalone: true,
 })
 export default class InputGroupDocumentationComponent {
