@@ -2,12 +2,12 @@ import { Component } from '@angular/core';
 import {
   MenuGroupComponent,
   MenuItemComponent,
-  MenuTrigger,
   AlertComponent,
   IconComponent,
   MenuLabelComponent,
   MenuComponent,
   ButtonComponent,
+  MenuTriggerDirective,
 } from '@basis-ng/primitives';
 import { CodeBlockComponent } from '../shared/components/code-block.component';
 
@@ -221,7 +221,7 @@ import { CodeBlockComponent } from '../shared/components/code-block.component';
     MenuItemComponent,
     MenuGroupComponent,
     MenuLabelComponent,
-    MenuTrigger,
+    MenuTriggerDirective,
     CodeBlockComponent,
     IconComponent,
     ButtonComponent,

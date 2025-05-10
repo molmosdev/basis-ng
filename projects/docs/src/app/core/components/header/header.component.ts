@@ -6,7 +6,7 @@ import {
   ButtonComponent,
   IconComponent,
   MenuComponent,
-  MenuTrigger,
+  MenuTriggerDirective,
 } from '@basis-ng/primitives';
 import { MenuItemRadioComponent } from '../../../../../../primitives/src/core/components/menu/shared/components/menu-item-radio/menu-item-radio.component';
 import { MenuGroupComponent } from '../../../../../../primitives/src/core/components/menu/shared/components/menu-group/menu-group.component';
@@ -16,7 +16,7 @@ import { MenuGroupComponent } from '../../../../../../primitives/src/core/compon
   imports: [
     RouterLink,
     ButtonComponent,
-    MenuTrigger,
+    MenuTriggerDirective,
     MenuComponent,
     MenuItemRadioComponent,
     MenuGroupComponent,

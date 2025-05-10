@@ -12,7 +12,7 @@ import { Position } from '../../../../../shared/types/position.type';
     },
   ],
 })
-export class MenuTrigger implements OnInit {
+export class MenuTriggerDirective implements OnInit {
   trigger = inject(CdkMenuTrigger);
   readonly menuTriggerPosition = input<Position>('right-top');
   readonly submenu = input(false);
