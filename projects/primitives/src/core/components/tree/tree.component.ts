@@ -12,7 +12,7 @@ import {
   OnInit,
   output,
 } from '@angular/core';
-import { TreeNode } from './shared/components/tree-node/tree-node.component';
+import { TreeNodeComponent } from '../../../public-api';
 
 /**
  * Represents a tree component that supports drag-and-drop functionality
@@ -34,7 +34,7 @@ import { TreeNode } from './shared/components/tree-node/tree-node.component';
     CdkDropListGroup,
   ],
 })
-export class Tree implements OnInit {
+export class TreeComponent implements OnInit {
   /**
    * The ID of the tree component.
    */
@@ -52,7 +52,7 @@ export class Tree implements OnInit {
   /**
    * Collection of nested `TreeNode` components.
    */
-  private readonly nestedNodes = contentChildren(TreeNode);
+  private readonly nestedNodes = contentChildren(TreeNodeComponent);
 
   /**
    * Determines whether to close nodes recursively.

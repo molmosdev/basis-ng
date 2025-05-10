@@ -8,7 +8,7 @@ import { Component, input } from '@angular/core';
     '[class.spaced]': 'spaced()',
   },
 })
-export class ButtonGroup {
+export class ButtonGroupComponent {
   /**
    * Whether the buttons should be spaced.
    */

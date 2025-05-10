@@ -7,8 +7,8 @@ import {
   OnInit,
   output,
 } from '@angular/core';
-import { Tree } from '../../../tree.component';
-import { Icon } from '../../../../icon/icon.component';
+import { IconComponent } from '../../../../icon/icon.component';
+import { TreeComponent } from '../../../tree.component';
 
 /**
  * Represents a tree node component that can be extended, collapsed,
@@ -16,7 +16,7 @@ import { Icon } from '../../../../icon/icon.component';
  */
 @Component({
   selector: 'b-tree-node',
-  imports: [Icon, CdkDragHandle],
+  imports: [IconComponent, CdkDragHandle],
   templateUrl: './tree-node.component.html',
   hostDirectives: [
     {
@@ -25,7 +25,7 @@ import { Icon } from '../../../../icon/icon.component';
     },
   ],
 })
-export class TreeNode implements OnInit {
+export class TreeNodeComponent implements OnInit {
   /**
    * Indicates whether the node is extended (expanded).
    */
@@ -39,7 +39,7 @@ export class TreeNode implements OnInit {
   /**
    * Reference to a nested `Tree` component, if present.
    */
-  readonly nestedTree = contentChild(Tree);
+  readonly nestedTree = contentChild(TreeComponent);
 
   /**
    * Emits an event when the node is closed.

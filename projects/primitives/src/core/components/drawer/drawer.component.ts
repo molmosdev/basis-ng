@@ -12,10 +12,10 @@ import {
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'b-bottom-sheet',
+  selector: 'b-drawer',
   standalone: true,
   imports: [CommonModule],
-  templateUrl: './bottom-sheet.component.html',
+  templateUrl: './drawer.component.html',
   host: {
     '[style.height]': 'height()',
     '[class.dragging]': 'isDragging()',
@@ -23,19 +23,19 @@ import { CommonModule } from '@angular/common';
     '[class.open]': 'isOpen()',
   },
 })
-export class BottomSheet {
+export class DrawerComponent {
   /**
-   * Indicates whether the bottom sheet is open.
+   * Indicates whether the drawer is open.
    */
   readonly isOpen = model(false);
 
   /**
-   * The height of the bottom sheet.
+   * The height of the drawer.
    */
   readonly height = input('30dvh');
 
   /**
-   * Event emitted when the bottom sheet is closed.
+   * Event emitted when the drawer is closed.
    */
   closeSheet = output<void>();
 
@@ -50,17 +50,17 @@ export class BottomSheet {
   readonly startY = signal(0);
 
   /**
-   * The current Y translation of the bottom sheet in percentage.
+   * The current Y translation of the drawer in percentage.
    */
   private readonly translateY = signal(100);
 
   /**
-   * The threshold for closing the bottom sheet, in percentage.
+   * The threshold for closing the drawer, in percentage.
    */
   readonly closeThreshold = input(30);
 
   /**
-   * The computed transform property for the bottom sheet.
+   * The computed transform property for the drawer.
    */
   readonly transform = computed(() =>
     this.isDragging()
@@ -71,12 +71,12 @@ export class BottomSheet {
   );
 
   /**
-   * The reference to the Bottom Sheet DOM element.
+   * The reference to the drawer DOM element.
    */
   private readonly el = inject(ElementRef);
 
   /**
-   * Closes the bottom sheet when clicking outside of it.
+   * Closes the drawer when clicking outside of it.
    * @param event The click event.
    */
   @HostListener('document:click', ['$event'])
@@ -88,7 +88,7 @@ export class BottomSheet {
   }
 
   /**
-   * Starts the drag event for the bottom sheet.
+   * Starts the drag event for the drawer.
    * @param event The pointer event that starts the drag.
    */
   startDrag(event: PointerEvent) {
@@ -116,7 +116,7 @@ export class BottomSheet {
   }
 
   /**
-   * Updates the drag position of the bottom sheet.
+   * Updates the drag position of the drawer.
    * @param clientY The current Y position of the pointer.
    */
   updateDrag(clientY: number) {
@@ -133,7 +133,7 @@ export class BottomSheet {
   }
 
   /**
-   * Snaps the bottom sheet to either open or closed state based on the drag position.
+   * Snaps the drawer to either open or closed state based on the drag position.
    */
   snapToOpenOrClose() {
     if (this.translateY() > this.closeThreshold()) {

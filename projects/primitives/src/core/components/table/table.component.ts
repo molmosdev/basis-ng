@@ -4,4 +4,4 @@ import { Component } from '@angular/core';
   selector: 'b-table',
   templateUrl: './table.component.html',
 })
-export class Table {}
+export class TableComponent {}

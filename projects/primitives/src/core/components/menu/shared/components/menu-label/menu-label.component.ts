@@ -8,4 +8,4 @@ import { Component } from '@angular/core';
   imports: [],
   template: `<ng-content />`,
 })
-export class MenuLabel {}
+export class MenuLabelComponent {}

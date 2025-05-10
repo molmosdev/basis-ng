@@ -7,7 +7,7 @@ import { Component, input } from '@angular/core';
     '[class]': 'variant() + " size-" + size()',
   },
 })
-export class Badge {
+export class BadgeComponent {
   /** The variant of the badge. */
   readonly variant = input<'primary' | 'secondary' | 'ghost' | 'outlined'>(
     'primary'

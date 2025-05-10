@@ -16,7 +16,7 @@ import {
     '(input)': 'onInput($event)',
   },
 })
-export class Range implements AfterViewInit {
+export class RangeComponent implements AfterViewInit {
   /**
    * Current value of the range.
    */

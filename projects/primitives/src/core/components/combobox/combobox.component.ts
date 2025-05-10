@@ -10,8 +10,8 @@ import {
   signal,
   viewChild,
 } from '@angular/core';
-import { Button } from '../button/button.component';
-import { Icon } from '../icon/icon.component';
+import { ButtonComponent } from '../button/button.component';
+import { IconComponent } from '../icon/icon.component';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { forwardRef } from '@angular/core';
 import { CommandComponent } from '../command/command.component';
@@ -24,7 +24,12 @@ import { OverlayDirective } from '../../directives/overlay.directive';
  */
 @Component({
   selector: 'b-combobox',
-  imports: [Button, Icon, OverlayTriggerDirective, OverlayDirective],
+  imports: [
+    ButtonComponent,
+    IconComponent,
+    OverlayTriggerDirective,
+    OverlayDirective,
+  ],
   template: ` <button
       b-button
       variant="outlined"
@@ -76,7 +81,7 @@ export class ComboboxComponent implements OnInit, ControlValueAccessor {
    * Reference to the button element used to toggle the dropdown.
    * This is used for managing focus and interactions.
    */
-  readonly button = viewChild(Button);
+  readonly button = viewChild(ButtonComponent);
 
   /**
    * Reference to the content component of the dropdown.

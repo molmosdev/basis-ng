@@ -14,10 +14,10 @@ import { CommonModule } from '@angular/common';
  * A sliding sheet component that can be positioned on either side of the screen.
  * The sheet slides in from the left or right edge and includes an overlay backdrop.
  *
- * @selector b-side-sheet
+ * @selector b-sheet
  */
 @Component({
-  selector: 'b-side-sheet',
+  selector: 'b-sheet',
   standalone: true,
   imports: [CommonModule],
   templateUrl: './side-sheet.component.html',
@@ -28,9 +28,9 @@ import { CommonModule } from '@angular/common';
     '[style.width]': 'width()',
   },
 })
-export class SideSheet {
+export class SheetComponent {
   /**
-   * Indicates whether the side sheet is open.
+   * Indicates whether the sheet is open.
    */
   readonly isOpen = model(false);
 
@@ -41,32 +41,32 @@ export class SideSheet {
   readonly side = input<'left' | 'right'>('right');
 
   /**
-   * Specifies the width of the side sheet.
+   * Specifies the width of the sheet.
    */
   readonly width = input('300px');
 
   /**
-   * Computes whether the side sheet is positioned on the left side.
+   * Computes whether the sheet is positioned on the left side.
    */
   readonly isLeft = computed(() => this.side() === 'left');
 
   /**
-   * Computes whether the side sheet is positioned on the right side.
+   * Computes whether the sheet is positioned on the right side.
    */
   readonly isRight = computed(() => this.side() === 'right');
 
   /**
-   * Event emitted when the side sheet is closed.
+   * Event emitted when the sheet is closed.
    */
   closeSheet = output<void>();
 
   /**
-   * Reference to the host element of the side sheet.
+   * Reference to the host element of the sheet.
    */
   private readonly el = inject(ElementRef);
 
   /**
-   * Closes the side sheet when clicking outside of it.
+   * Closes the sheet when clicking outside of it.
    *
    * @param event - The click event.
    */

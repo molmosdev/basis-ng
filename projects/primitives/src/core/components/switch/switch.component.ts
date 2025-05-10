@@ -22,7 +22,7 @@ import {
     '(keydown.arrowright)': 'setValue(true)',
   },
 })
-export class Switch implements AfterViewInit {
+export class SwitchComponent implements AfterViewInit {
   /**
    * Value of the switch.
    */

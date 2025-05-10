@@ -10,7 +10,7 @@ import { createElement, icons } from 'lucide';
     '[innerHTML]': 'iconSvg()',
   },
 })
-export class Icon {
+export class IconComponent {
   /**
    * The sanitizer service.
    */

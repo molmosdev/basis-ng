@@ -19,7 +19,7 @@ import { NgModel } from '@angular/forms';
     '[class]': ' "size-" + size() ',
   },
 })
-export class Input implements AfterViewInit {
+export class InputComponent implements AfterViewInit {
   /**
    * The type of the input.
    */

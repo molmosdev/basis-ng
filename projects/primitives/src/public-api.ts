@@ -43,7 +43,7 @@ export * from './core/services/in-viewport.service';
 export * from './core/components/side-sheet/side-sheet.component';
 
 /* Bottom Sheet */
-export * from './core/components/bottom-sheet/bottom-sheet.component';
+export * from './core/components/drawer/drawer.component';
 
 /* Responsive */
 export * from './core/services/responsive.service';

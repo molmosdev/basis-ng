@@ -11,8 +11,8 @@ import {
   viewChild,
 } from '@angular/core';
 import { SelectOptionsComponent } from './select-options.component';
-import { Button } from '../button/button.component';
-import { Icon } from '../icon/icon.component';
+import { ButtonComponent } from '../button/button.component';
+import { IconComponent } from '../icon/icon.component';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { forwardRef } from '@angular/core';
 import { OverlayTriggerDirective } from '../../directives/overlay-trigger.directive';
@@ -24,7 +24,12 @@ import { OverlayDirective } from '../../directives/overlay.directive';
  */
 @Component({
   selector: 'b-select',
-  imports: [Button, Icon, OverlayTriggerDirective, OverlayDirective],
+  imports: [
+    ButtonComponent,
+    IconComponent,
+    OverlayTriggerDirective,
+    OverlayDirective,
+  ],
   template: ` <button
       b-button
       variant="outlined"
@@ -76,7 +81,7 @@ export class SelectComponent implements OnInit, ControlValueAccessor {
    * Reference to the button element used to toggle the dropdown.
    * This is used for managing focus and interactions.
    */
-  readonly button = viewChild(Button);
+  readonly button = viewChild(ButtonComponent);
 
   /**
    * Reference to the content component of the dropdown.

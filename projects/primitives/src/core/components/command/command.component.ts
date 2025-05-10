@@ -7,10 +7,10 @@ import {
   input,
   signal,
 } from '@angular/core';
-import { Input } from '../input/input.component';
 import { CdkTrapFocus } from '@angular/cdk/a11y';
 import { CommandOptionsComponent } from './command-options.component';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
+import { InputComponent } from '../input/input.component';
 
 /**
  * Component representing a command input with associated options.
@@ -18,7 +18,7 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
  */
 @Component({
   selector: 'b-command',
-  imports: [Input, CdkTrapFocus],
+  imports: [InputComponent, CdkTrapFocus],
   template: `<input
       type="text"
       b-input

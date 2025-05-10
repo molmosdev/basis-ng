@@ -6,7 +6,7 @@ import { NgStyle } from '@angular/common';
   imports: [NgStyle],
   templateUrl: './spinner.component.html',
 })
-export class Spinner {
+export class SpinnerComponent {
   readonly active = input<boolean>(true);
   readonly color = input<string>('var(--foreground)');
   readonly backgroundColor = input<string>('transparent');

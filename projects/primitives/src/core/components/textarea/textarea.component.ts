@@ -22,7 +22,7 @@ import {
     '(blur)': 'focused.set(false)',
   },
 })
-export class Textarea {
+export class TextareaComponent {
   /**
    * The placeholder text for the textarea.
    */

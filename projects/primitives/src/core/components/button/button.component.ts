@@ -12,7 +12,7 @@ import { Component, ElementRef, inject, input } from '@angular/core';
     '[class.squared]': 'squared()',
   },
 })
-export class Button {
+export class ButtonComponent {
   /**
    * Defines the visual style of the button.
    *

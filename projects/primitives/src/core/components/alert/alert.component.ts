@@ -1,16 +1,16 @@
 import { Component, computed, input, output } from '@angular/core';
-import { Icon } from '../icon/icon.component';
+import { IconComponent } from '../icon/icon.component';
 
 @Component({
   selector: 'b-alert',
   templateUrl: './alert.component.html',
-  imports: [Icon],
+  imports: [IconComponent],
   host: {
     '[class]': 'type()',
     '[style.max-width]': 'maxWidth()',
   },
 })
-export class Alert {
+export class AlertComponent {
   /** The type of the alert. */
   readonly type = input<'success' | 'error' | 'warning' | 'info'>('info');
 

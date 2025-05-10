@@ -6,7 +6,7 @@ import { NgClass } from '@angular/common';
   imports: [NgClass],
   templateUrl: './row.component.html',
 })
-export class Row {
+export class RowComponent {
   readonly header = input<boolean>(false);
   readonly subheader = input<boolean>(false);
   readonly clickable = input<boolean>(false);

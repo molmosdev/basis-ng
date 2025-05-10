@@ -6,7 +6,7 @@ import { NgStyle } from '@angular/common';
   imports: [NgStyle],
   templateUrl: './row-item.component.html',
 })
-export class RowItem {
+export class RowItemComponent {
   readonly widthPx = input<number>();
   readonly alignedLeft = input<boolean>(false);
   readonly isHeader = input<boolean>(false);
