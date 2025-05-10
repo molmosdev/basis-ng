@@ -104,9 +104,10 @@ import {
           variant="ghost"
           size="1"
           type="button"
+          [squared]="true"
           (click)="showPassword = !showPassword"
           [attr.aria-label]="showPassword ? 'Hide password' : 'Show password'">
-          <i b-icon [icon]="showPassword ? 'EyeOff' : 'Eye'" [size]="16"></i>
+          <i b-icon [icon]="showPassword ? 'EyeOff' : 'Eye'" [size]="15"></i>
         </button>
       </b-input-group>
     </div>
@@ -164,9 +165,10 @@ export default class InputGroupDocumentationComponent {
     variant="ghost"
     size="1"
     type="button"
+    [squared]="true"
     (click)="showPassword = !showPassword"
     [attr.aria-label]="showPassword ? 'Hide password' : 'Show password'">
-    <i b-icon [icon]="showPassword ? 'EyeOff' : 'Eye'" [size]="16"></i>
+    <i b-icon [icon]="showPassword ? 'EyeOff' : 'Eye'" [size]="15"></i>
   </button>
 </b-input-group>`;
 }
