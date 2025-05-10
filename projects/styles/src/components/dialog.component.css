@@ -4,6 +4,7 @@ b-dialog {
   border-radius: calc(var(--radius) + 0.5rem);
   padding: 1rem;
   animation: b-dialog-enter 150ms ease-in-out;
+  max-width: 90vw;
 
   &.leaving {
     transform: scale(0.9);
