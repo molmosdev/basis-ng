@@ -8,9 +8,9 @@ import {
   CardFooterComponent,
   ButtonComponent,
   AlertComponent,
+  InputComponent,
 } from '@basis-ng/primitives';
 import { CodeBlockComponent } from '../shared/components/code-block.component';
-import { InputComponent } from 'primitives';
 
 @Component({
   selector: 'article[app-card-documentation]',
