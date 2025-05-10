@@ -103,3 +103,6 @@ export * from './core/components/combobox/combobox.component';
 /* Overlay */
 export * from './core/directives/overlay-trigger.directive';
 export * from './core/directives/overlay.directive';
+
+/* Input Group */
+export * from './core/components/input-group/input-group.component';
