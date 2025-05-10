@@ -1,6 +1,6 @@
 {
   "name": "@basis-ng/styles",
-  "version": "0.0.1-alpha.42",
+  "version": "0.0.1-alpha.43",
   "description": "CSS foundation for @basis-ng/primitives components",
   "main": "src/index.css",
   "exports": {
@@ -40,7 +40,8 @@
     "./textarea": "./src/components/textarea.component.css",
     "./tooltip": "./src/components/tooltip.component.css",
     "./tree-node": "./src/components/tree-node.component.css",
-    "./tree": "./src/components/tree.component.css"
+    "./tree": "./src/components/tree.component.css",
+    "./dialog": "./src/components/dialog.component.css"
   },
   "files": [
     "src/**/*.css"
