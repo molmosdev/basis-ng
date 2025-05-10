@@ -152,7 +152,6 @@ button[b-button] {
     font-size: 0.857rem;
 
     &.squared {
-      padding-inline: 0;
       width: 1.714rem;
     }
   }
@@ -163,7 +162,6 @@ button[b-button] {
     font-size: 1rem;
 
     &.squared {
-      padding-inline: 0;
       width: 2.286rem;
     }
   }
@@ -174,7 +172,6 @@ button[b-button] {
     font-size: 1.143rem;
 
     &.squared {
-      padding-inline: 0;
       width: 2.857rem;
     }
   }
