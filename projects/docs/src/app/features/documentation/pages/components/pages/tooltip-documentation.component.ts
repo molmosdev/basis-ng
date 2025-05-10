@@ -1,5 +1,9 @@
 import { Component } from '@angular/core';
-import { Alert, Button, TooltipDirective } from '@basis-ng/primitives';
+import {
+  AlertComponent,
+  ButtonComponent,
+  TooltipDirective,
+} from '@basis-ng/primitives';
 import { CodeBlockComponent } from '../shared/components/code-block.component';
 
 @Component({
@@ -162,7 +166,12 @@ import { CodeBlockComponent } from '../shared/components/code-block.component';
     </div>
   `,
   standalone: true,
-  imports: [CodeBlockComponent, Button, Alert, TooltipDirective],
+  imports: [
+    CodeBlockComponent,
+    ButtonComponent,
+    AlertComponent,
+    TooltipDirective,
+  ],
 })
 export default class TooltipDocumentationComponent {
   angularImport = `import { TooltipDirective } from '@basis-ng/primitives'`;

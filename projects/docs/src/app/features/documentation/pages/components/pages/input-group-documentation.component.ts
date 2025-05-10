@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 import { CodeBlockComponent } from '../shared/components/code-block.component';
 import {
-  Button,
-  Input,
-  Icon,
   InputGroupComponent,
-  Alert,
+  AlertComponent,
+  InputComponent,
+  IconComponent,
+  ButtonComponent,
 } from '@basis-ng/primitives';
 
 @Component({
@@ -112,12 +112,12 @@ import {
     </div>
   `,
   imports: [
-    Alert,
+    AlertComponent,
     CodeBlockComponent,
     InputGroupComponent,
-    Button,
-    Input,
-    Icon,
+    ButtonComponent,
+    InputComponent,
+    IconComponent,
   ],
   standalone: true,
 })

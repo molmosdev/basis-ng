@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Badge, Alert } from '@basis-ng/primitives';
+import { AlertComponent, BadgeComponent } from '@basis-ng/primitives';
 import { CodeBlockComponent } from '../shared/components/code-block.component';
 
 @Component({
@@ -64,7 +64,7 @@ import { CodeBlockComponent } from '../shared/components/code-block.component';
       <span b-badge size="small">Small</span>
       <span b-badge size="default">Default</span>
     </div>`,
-  imports: [CodeBlockComponent, Badge, Alert],
+  imports: [CodeBlockComponent, BadgeComponent, AlertComponent],
 })
 export default class BadgeDocumentationComponent {
   angularImport = `import { Badge } from '@basis-ng/primitives'`;

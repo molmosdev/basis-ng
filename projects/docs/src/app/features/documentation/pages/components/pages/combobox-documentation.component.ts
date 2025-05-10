@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import {
-  Alert,
+  AlertComponent,
   ComboboxComponent,
   CommandComponent,
   CommandOptionsComponent,
@@ -75,7 +75,7 @@ import { FormGroup, FormControl } from '@angular/forms';
     CodeBlockComponent,
     FormsModule,
     ReactiveFormsModule,
-    Alert,
+    AlertComponent,
     ComboboxComponent,
     CommandComponent,
     CommandOptionsComponent,

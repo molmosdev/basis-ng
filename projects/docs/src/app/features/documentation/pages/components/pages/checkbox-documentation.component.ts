@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Checkbox, Alert } from '@basis-ng/primitives';
+import { Checkbox, AlertComponent } from '@basis-ng/primitives';
 import { CodeBlockComponent } from '../shared/components/code-block.component';
 import {
   FormsModule,
@@ -83,7 +83,7 @@ import {
     Checkbox,
     FormsModule,
     ReactiveFormsModule,
-    Alert,
+    AlertComponent,
   ],
 })
 export default class CheckboxDocumentationComponent {

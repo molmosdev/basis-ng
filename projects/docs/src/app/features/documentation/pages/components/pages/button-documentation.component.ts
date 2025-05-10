@@ -1,7 +1,12 @@
 import { Component } from '@angular/core';
-import { Button, ButtonGroup, Alert, Spinner } from '@basis-ng/primitives';
+import {
+  AlertComponent,
+  SpinnerComponent,
+  ButtonComponent,
+  ButtonGroupComponent,
+} from '@basis-ng/primitives';
 import { CodeBlockComponent } from '../shared/components/code-block.component';
-import { Icon } from '../../../../../../../../primitives/src/public-api';
+import { IconComponent } from '../../../../../../../../primitives/src/public-api';
 
 @Component({
   selector: 'article[app-button-documentation]',
@@ -190,7 +195,14 @@ import { Icon } from '../../../../../../../../primitives/src/public-api';
       </button>
     </div>`,
 
-  imports: [CodeBlockComponent, Button, ButtonGroup, Alert, Spinner, Icon],
+  imports: [
+    CodeBlockComponent,
+    ButtonComponent,
+    ButtonGroupComponent,
+    AlertComponent,
+    SpinnerComponent,
+    IconComponent,
+  ],
 })
 export default class ButtonDocumentationComponent {
   angularImport = `import { Button } from '@basis-ng/primitives'`;

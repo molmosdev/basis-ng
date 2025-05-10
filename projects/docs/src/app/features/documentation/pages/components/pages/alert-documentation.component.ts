@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Alert } from '@basis-ng/primitives';
+import { AlertComponent } from '@basis-ng/primitives';
 import { CodeBlockComponent } from '../shared/components/code-block.component';
 
 @Component({
@@ -104,7 +104,7 @@ import { CodeBlockComponent } from '../shared/components/code-block.component';
         This alert has a maximum width of 300px.
       </b-alert>
     </div>`,
-  imports: [CodeBlockComponent, Alert],
+  imports: [CodeBlockComponent, AlertComponent],
 })
 export default class AlertDocumentationComponent {
   angularImport = `import { Alert } from '@basis-ng/primitives'`;

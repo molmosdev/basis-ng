@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Switch, Alert } from '@basis-ng/primitives';
+import { AlertComponent, SwitchComponent } from '@basis-ng/primitives';
 import { CodeBlockComponent } from '../shared/components/code-block.component';
 import {
   FormsModule,
@@ -95,10 +95,10 @@ import {
     </form> `,
   imports: [
     CodeBlockComponent,
-    Switch,
+    SwitchComponent,
     FormsModule,
     ReactiveFormsModule,
-    Alert,
+    AlertComponent,
   ],
 })
 export default class SwitchDocumentationComponent {

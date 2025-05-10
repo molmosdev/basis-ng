@@ -1,6 +1,7 @@
 import { Component, signal } from '@angular/core';
-import { BottomSheet, Button, Alert } from '@basis-ng/primitives';
+import { AlertComponent, ButtonComponent } from '@basis-ng/primitives';
 import { CodeBlockComponent } from '../shared/components/code-block.component';
+import { DrawerComponent } from '../../../../../../../../primitives/src/public-api';
 
 @Component({
   selector: 'article[app-bottom-sheet-documentation]',
@@ -63,7 +64,7 @@ import { CodeBlockComponent } from '../shared/components/code-block.component';
     <h2>Basic Usage</h2>
     <code-block [code]="basicUsage" />
     <div class="documentation-playground">
-      <button b-button (click)="openBottomSheet('50dvh', 50)">
+      <button b-button (click)="openDrawer('50dvh', 50)">
         Open Bottom Sheet
       </button>
     </div>
@@ -71,7 +72,7 @@ import { CodeBlockComponent } from '../shared/components/code-block.component';
     <h2>Angular Binding with ngModel</h2>
     <code-block [code]="ngModelUsage" />
     <div class="documentation-playground">
-      <button b-button (click)="openBottomSheet('50dvh', 50)">
+      <button b-button (click)="openDrawer('50dvh', 50)">
         Open Bottom Sheet
       </button>
     </div>
@@ -79,7 +80,7 @@ import { CodeBlockComponent } from '../shared/components/code-block.component';
     <h2>Angular Signals</h2>
     <code-block [code]="signalsUsage" />
     <div class="documentation-playground">
-      <button b-button (click)="openBottomSheet('50dvh', 50)">
+      <button b-button (click)="openDrawer('50dvh', 50)">
         Open Bottom Sheet
       </button>
     </div>
@@ -87,7 +88,7 @@ import { CodeBlockComponent } from '../shared/components/code-block.component';
     <h2>Custom Height</h2>
     <code-block [code]="customHeightUsage" />
     <div class="documentation-playground">
-      <button b-button (click)="openBottomSheet('70dvh', 50)">
+      <button b-button (click)="openDrawer('70dvh', 50)">
         Open Bottom Sheet
       </button>
     </div>
@@ -95,12 +96,12 @@ import { CodeBlockComponent } from '../shared/components/code-block.component';
     <h2>Custom Close Threshold</h2>
     <code-block [code]="customCloseThresholdUsage" />
     <div class="documentation-playground">
-      <button b-button (click)="openBottomSheet('50dvh', 70)">
+      <button b-button (click)="openDrawer('50dvh', 70)">
         Open Bottom Sheet
       </button>
     </div>
 
-    <b-bottom-sheet
+    <b-drawer
       [(isOpen)]="isOpen"
       [height]="height()"
       [closeThreshold]="closeThreshold()">
@@ -108,14 +109,19 @@ import { CodeBlockComponent } from '../shared/components/code-block.component';
         style="display: flex; justify-content: center; align-items: center; height: 100%;">
         This is the content of the bottom sheet.
       </div>
-    </b-bottom-sheet>`,
-  imports: [CodeBlockComponent, BottomSheet, Button, Alert],
+    </b-drawer>`,
+  imports: [
+    CodeBlockComponent,
+    DrawerComponent,
+    ButtonComponent,
+    AlertComponent,
+  ],
 })
-export default class BottomSheetDocumentationComponent {
-  angularImport = `import { BottomSheet } from '@basis-ng/primitives'`;
+export default class DrawerDocumentationComponent {
+  angularImport = `import { DrawerComponent } from '@basis-ng/primitives'`;
   stylesImport = `@import '@basis-ng/styles/bottom-sheet';`;
   basicUsage = `<button b-button (click)="openSheet()">Open Bottom Sheet</button>
-<b-bottom-sheet
+<b-drawer
   [isOpen]="isOpen"
   [height]="'50dvh'"
   (closeSheet)="closeSheet()"
@@ -123,51 +129,51 @@ export default class BottomSheetDocumentationComponent {
   <div style="display: flex; justify-content: center; align-items: center; height: 100%;">
     This is the content of the bottom sheet.
   </div>
-</b-bottom-sheet>`;
+</b-drawer>`;
 
   customHeightUsage = `<button b-button (click)="isOpen = true">Open Bottom Sheet</button>
-<b-bottom-sheet
+<b-drawer
   [(isOpen)]="isOpen"
   [height]="'70dvh'">
   <div style="display: flex; justify-content: center; align-items: center; height: 100%;">
     This is a taller bottom sheet.
   </div>
-</b-bottom-sheet>`;
+</b-drawer>`;
 
   customCloseThresholdUsage = `<button b-button (click)="isOpen = true">Open Bottom Sheet</button>
-<b-bottom-sheet
+<b-drawer
   [(isOpen)]="isOpen"
   [closeThreshold]="70">
   <div style="display: flex; justify-content: center; align-items: center; height: 100%;">
     This bottom sheet requires dragging down 70% to close.
   </div>
-</b-bottom-sheet>`;
+</b-drawer>`;
 
   ngModelUsage = `<button b-button (click)="ngModelOpen = true">Open Bottom Sheet</button>
-<b-bottom-sheet
+<b-drawer
   [(isOpen)]="ngModelOpen"
   [height]="'50dvh'"
   (closeSheet)="ngModelOpen = false">
   <div style="display: flex; justify-content: center; align-items: center; height: 100%;">
     This is the content of the bottom sheet.
   </div>
-</b-bottom-sheet>`;
+</b-drawer>`;
 
   signalsUsage = `<button b-button (click)="signalOpen.set(true)">Open Bottom Sheet</button>
-<b-bottom-sheet
+<b-drawer
   [(isOpen)]="signalOpen"
   [height]="'50dvh'"
   (closeSheet)="signalOpen.set(false)">
   <div style="display: flex; justify-content: center; align-items: center; height: 100%;">
     This is the content of the bottom sheet.
   </div>
-</b-bottom-sheet>`;
+</b-drawer>`;
 
   readonly isOpen = signal<boolean>(false);
   readonly height = signal<string>('50dvh');
   readonly closeThreshold = signal<number>(50);
 
-  openBottomSheet(height: string, closeThreshold: number) {
+  openDrawer(height: string, closeThreshold: number) {
     this.height.set(height);
     this.closeThreshold.set(closeThreshold);
     this.isOpen.set(true);

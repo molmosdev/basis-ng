@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ColorPicker, Alert } from '@basis-ng/primitives';
+import { ColorPicker, AlertComponent } from '@basis-ng/primitives';
 import { CodeBlockComponent } from '../shared/components/code-block.component';
 import {
   FormsModule,
@@ -131,7 +131,7 @@ import {
     FormsModule,
     ReactiveFormsModule,
     ColorPicker,
-    Alert,
+    AlertComponent,
   ],
 })
 export default class ColorPickerDocumentationComponent {

@@ -1,5 +1,11 @@
 import { Component } from '@angular/core';
-import { Tree, TreeNode, Badge, Icon, Alert } from '@basis-ng/primitives';
+import {
+  TreeComponent,
+  TreeNodeComponent,
+  IconComponent,
+  BadgeComponent,
+  AlertComponent,
+} from '@basis-ng/primitives';
 import { CodeBlockComponent } from '../shared/components/code-block.component';
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 
@@ -278,7 +284,14 @@ import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
       </table>
     </div>`,
   standalone: true,
-  imports: [Tree, TreeNode, CodeBlockComponent, Icon, Badge, Alert],
+  imports: [
+    TreeComponent,
+    TreeNodeComponent,
+    CodeBlockComponent,
+    IconComponent,
+    BadgeComponent,
+    AlertComponent,
+  ],
 })
 export default class TreeDocumentationComponent {
   angularImport = `import { Tree, TreeNode } from '@basis-ng/primitives'`;

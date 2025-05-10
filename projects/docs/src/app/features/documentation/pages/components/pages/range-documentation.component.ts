@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Range, Alert } from '@basis-ng/primitives';
+import { AlertComponent, RangeComponent } from '@basis-ng/primitives';
 import { CodeBlockComponent } from '../shared/components/code-block.component';
 
 @Component({
@@ -74,7 +74,7 @@ import { CodeBlockComponent } from '../shared/components/code-block.component';
         [maxWidth]="'240px'"
         (valueChange)="onValueChange($event)" />
     </div>`,
-  imports: [CodeBlockComponent, Range, Alert],
+  imports: [CodeBlockComponent, RangeComponent, AlertComponent],
 })
 export default class RangeDocumentationComponent {
   angularImport = `import { Range } from '@basis-ng/primitives'`;

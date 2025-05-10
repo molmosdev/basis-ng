@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Textarea, Alert } from '@basis-ng/primitives';
+import { AlertComponent, TextareaComponent } from '@basis-ng/primitives';
 import { CodeBlockComponent } from '../shared/components/code-block.component';
 import {
   FormsModule,
@@ -128,10 +128,10 @@ import {
     </div> `,
   imports: [
     CodeBlockComponent,
-    Textarea,
+    TextareaComponent,
     FormsModule,
     ReactiveFormsModule,
-    Alert,
+    AlertComponent,
   ],
 })
 export default class TextareaDocumentationComponent {

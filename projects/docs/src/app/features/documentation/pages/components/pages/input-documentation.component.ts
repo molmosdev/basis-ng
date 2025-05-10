@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Input, Alert } from '@basis-ng/primitives';
+import { AlertComponent, InputComponent } from '@basis-ng/primitives';
 import { CodeBlockComponent } from '../shared/components/code-block.component';
 import {
   FormsModule,
@@ -175,7 +175,13 @@ import {
         placeholder="Input with max width"
         [maxWidth]="'200px'" />
     </div>`,
-  imports: [CodeBlockComponent, Input, FormsModule, ReactiveFormsModule, Alert],
+  imports: [
+    CodeBlockComponent,
+    InputComponent,
+    FormsModule,
+    ReactiveFormsModule,
+    AlertComponent,
+  ],
 })
 export default class InputDocumentationComponent {
   angularImport = `import { Input } from '@basis-ng/primitives'`;

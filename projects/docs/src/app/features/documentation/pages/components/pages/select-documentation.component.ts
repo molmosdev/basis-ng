@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import {
-  Alert,
+  AlertComponent,
   SelectComponent,
   OptionComponent,
   SelectOptionsComponent,
@@ -67,7 +67,7 @@ import { FormGroup, FormControl } from '@angular/forms';
     CodeBlockComponent,
     FormsModule,
     ReactiveFormsModule,
-    Alert,
+    AlertComponent,
     SelectComponent,
     SelectOptionsComponent,
     OptionComponent,

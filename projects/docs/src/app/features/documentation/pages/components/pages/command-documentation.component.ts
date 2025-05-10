@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import {
-  Alert,
+  AlertComponent,
   CommandComponent,
   CommandOptionsComponent,
   OptionComponent,
@@ -63,7 +63,7 @@ import { CodeBlockComponent } from '../shared/components/code-block.component';
     </div>`,
   imports: [
     CodeBlockComponent,
-    Alert,
+    AlertComponent,
     CommandComponent,
     CommandOptionsComponent,
     OptionComponent,

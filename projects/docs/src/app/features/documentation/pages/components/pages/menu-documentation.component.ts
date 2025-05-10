@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
 import {
-  Menu,
   MenuGroupComponent,
   MenuItemComponent,
-  MenuLabel,
   MenuTrigger,
-  Icon,
-  Button,
-  Alert,
+  AlertComponent,
+  IconComponent,
+  MenuLabelComponent,
+  MenuComponent,
+  ButtonComponent,
 } from '@basis-ng/primitives';
 import { CodeBlockComponent } from '../shared/components/code-block.component';
 
@@ -217,15 +217,15 @@ import { CodeBlockComponent } from '../shared/components/code-block.component';
     </div>`,
   standalone: true,
   imports: [
-    Menu,
+    MenuComponent,
     MenuItemComponent,
     MenuGroupComponent,
-    MenuLabel,
+    MenuLabelComponent,
     MenuTrigger,
     CodeBlockComponent,
-    Icon,
-    Button,
-    Alert,
+    IconComponent,
+    ButtonComponent,
+    AlertComponent,
   ],
 })
 export default class MenuDocumentationComponent {
