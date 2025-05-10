@@ -88,11 +88,6 @@ export * from './core/components/menu/shared/directives/menu-trigger.directive';
 /* Alert */
 export * from './core/components/alert/alert.component';
 
-/* Types */
-
-/* Position */
-export * from './shared/types/position.type';
-
 /* Command */
 export * from './core/components/command/command.component';
 export * from './core/components/command/command-options.component';
@@ -106,3 +101,12 @@ export * from './core/directives/overlay.directive';
 
 /* Input Group */
 export * from './core/components/input-group/input-group.component';
+
+/* Dialog */
+export * from './core/services/dialog.service';
+export * from './core/directives/dialog.directive';
+
+/* Types */
+
+/* Position */
+export * from './shared/types/position.type';

@@ -1,8 +1,11 @@
 import { Component, inject } from '@angular/core';
-import { AlertComponent, ButtonComponent } from '@basis-ng/primitives';
+import {
+  AlertComponent,
+  ButtonComponent,
+  DialogService,
+  DialogDirective,
+} from '@basis-ng/primitives';
 import { CodeBlockComponent } from '../shared/components/code-block.component';
-import { DialogDirective } from '../../../../../../../../primitives/src/core/directives/dialog.directive';
-import { DialogService } from '../../../../../../../../primitives/src/core/services/dialog.service';
 
 @Component({
   selector: 'article[app-dialog-documentation]',
