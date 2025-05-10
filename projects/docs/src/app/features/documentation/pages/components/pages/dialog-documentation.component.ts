@@ -4,6 +4,12 @@ import {
   ButtonComponent,
   DialogService,
   DialogDirective,
+  CardComponent,
+  CardHeaderComponent,
+  CardTitleComponent,
+  CardDescriptionComponent,
+  CardContentComponent,
+  CardFooterComponent,
 } from '@basis-ng/primitives';
 import { CodeBlockComponent } from '../shared/components/code-block.component';
 
@@ -71,12 +77,18 @@ import { CodeBlockComponent } from '../shared/components/code-block.component';
       </button>
     </div>
     <ng-template bDialog="exampleDialog">
-      <h1>Dialog</h1>
-      <p>
-        This is a dialog component. You can use it to display important
-        information to the user.
-      </p>
-      <button b-button (click)="closeDialogService()">close dialog</button>
+      <b-card>
+        <b-card-header>
+          <b-card-title>Dialog</b-card-title>
+          <b-card-description>
+            This is a dialog component. You can use it to display important
+            information to the user.
+          </b-card-description>
+        </b-card-header>
+        <b-card-footer>
+          <button b-button (click)="closeDialogService()">Close</button>
+        </b-card-footer>
+      </b-card>
     </ng-template>
 
     <h2>Basic Usage (Directive Reference)</h2>
@@ -87,12 +99,18 @@ import { CodeBlockComponent } from '../shared/components/code-block.component';
       </button>
     </div>
     <ng-template bDialog="exampleDialog2" #dialogRef="bDialog">
-      <h1>Dialog</h1>
-      <p>
-        This is a dialog component. You can use it to display important
-        information to the user.
-      </p>
-      <button b-button (click)="dialogRef.close()">close dialog</button>
+      <b-card>
+        <b-card-header>
+          <b-card-title>Dialog</b-card-title>
+          <b-card-description>
+            This is a dialog component. You can use it to display important
+            information to the user.
+          </b-card-description>
+        </b-card-header>
+        <b-card-footer>
+          <button b-button (click)="dialogRef.close()">Close</button>
+        </b-card-footer>
+      </b-card>
     </ng-template>
 
     <h2>hasBackdrop = false</h2>
@@ -106,9 +124,17 @@ import { CodeBlockComponent } from '../shared/components/code-block.component';
       bDialog="dialogNoBackdrop"
       [hasBackdrop]="false"
       #dialogNoBackdrop="bDialog">
-      <h1>Dialog</h1>
-      <p>No backdrop is rendered behind this dialog.</p>
-      <button b-button (click)="dialogNoBackdrop.close()">close dialog</button>
+      <b-card>
+        <b-card-header>
+          <b-card-title>Dialog</b-card-title>
+          <b-card-description>
+            No backdrop is rendered behind this dialog.
+          </b-card-description>
+        </b-card-header>
+        <b-card-footer>
+          <button b-button (click)="dialogNoBackdrop.close()">Close</button>
+        </b-card-footer>
+      </b-card>
     </ng-template>
 
     <h2>closeOnBackdropClick = false</h2>
@@ -122,11 +148,19 @@ import { CodeBlockComponent } from '../shared/components/code-block.component';
       bDialog="dialogNoBackdropClose"
       [closeOnBackdropClick]="false"
       #dialogNoBackdropClose="bDialog">
-      <h1>Dialog</h1>
-      <p>Clicking the backdrop will not close this dialog.</p>
-      <button b-button (click)="dialogNoBackdropClose.close()">
-        close dialog
-      </button>
+      <b-card>
+        <b-card-header>
+          <b-card-title>Dialog</b-card-title>
+          <b-card-description>
+            Clicking the backdrop will not close this dialog.
+          </b-card-description>
+        </b-card-header>
+        <b-card-footer>
+          <button b-button (click)="dialogNoBackdropClose.close()">
+            Close
+          </button>
+        </b-card-footer>
+      </b-card>
     </ng-template>
 
     <h2>closeOnEscapeKey = false</h2>
@@ -140,9 +174,17 @@ import { CodeBlockComponent } from '../shared/components/code-block.component';
       bDialog="dialogNoEscape"
       [closeOnEscapeKey]="false"
       #dialogNoEscape="bDialog">
-      <h1>Dialog</h1>
-      <p>Pressing Escape will not close this dialog.</p>
-      <button b-button (click)="dialogNoEscape.close()">close dialog</button>
+      <b-card>
+        <b-card-header>
+          <b-card-title>Dialog</b-card-title>
+          <b-card-description>
+            Pressing Escape will not close this dialog.
+          </b-card-description>
+        </b-card-header>
+        <b-card-footer>
+          <button b-button (click)="dialogNoEscape.close()">Close</button>
+        </b-card-footer>
+      </b-card>
     </ng-template>
   `,
   imports: [
@@ -150,16 +192,17 @@ import { CodeBlockComponent } from '../shared/components/code-block.component';
     ButtonComponent,
     AlertComponent,
     DialogDirective,
+    CardComponent,
+    CardHeaderComponent,
+    CardTitleComponent,
+    CardDescriptionComponent,
+    CardContentComponent,
+    CardFooterComponent,
   ],
   styles: [
     `
-      p {
-        margin-top: 0.5rem;
-      }
-
-      h1 {
-        margin-top: 0;
-        margin-bottom: 0;
+      b-card button[b-button] {
+        flex: 1;
       }
     `,
   ],
@@ -170,41 +213,77 @@ export default class DialogDocumentationComponent {
 
   basicUsageService = `<button b-button (click)="openDialogService()">Open Dialog (Service)</button>
 <ng-template bDialog="exampleDialog">
-  <h1>Dialog</h1>
-  <p>
-    This is a dialog component. You can use it to display important information to the user.
-  </p>
-  <button b-button (click)="closeDialogService()">close dialog</button>
+  <b-card>
+    <b-card-header>
+      <b-card-title>Dialog</b-card-title>
+      <b-card-description>
+        This is a dialog component. You can use it to display important information to the user.
+      </b-card-description>
+    </b-card-header>
+    <b-card-footer>
+      <button b-button (click)="closeDialogService()">Close</button>
+    </b-card-footer>
+  </b-card>
 </ng-template>`;
 
   basicUsageDirective = `<button b-button (click)="dialogRef.open()">Open Dialog (Directive Ref)</button>
 <ng-template bDialog="exampleDialog2" #dialogRef="bDialog">
-  <h1>Dialog</h1>
-  <p>
-    This is a dialog component. You can use it to display important information to the user.
-  </p>
-  <button b-button (click)="dialogRef.close()">close dialog</button>
+  <b-card>
+    <b-card-header>
+      <b-card-title>Dialog</b-card-title>
+      <b-card-description>
+        This is a dialog component. You can use it to display important information to the user.
+      </b-card-description>
+    </b-card-header>
+    <b-card-footer>
+      <button b-button (click)="dialogRef.close()">Close</button>
+    </b-card-footer>
+  </b-card>
 </ng-template>`;
 
   hasBackdropFalseExample = `<button b-button (click)="dialogNoBackdrop.open()">Open Dialog (No Backdrop)</button>
 <ng-template bDialog="dialogNoBackdrop" [hasBackdrop]="false" #dialogNoBackdrop="bDialog">
-  <h1>Dialog</h1>
-  <p>No backdrop is rendered behind this dialog.</p>
-  <button b-button (click)="dialogNoBackdrop.close()">close dialog</button>
+  <b-card>
+    <b-card-header>
+      <b-card-title>Dialog</b-card-title>
+      <b-card-description>
+        No backdrop is rendered behind this dialog.
+      </b-card-description>
+    </b-card-header>
+    <b-card-footer>
+      <button b-button (click)="dialogNoBackdrop.close()">Close</button>
+    </b-card-footer>
+  </b-card>
 </ng-template>`;
 
   noBackdropCloseExample = `<button b-button (click)="dialogNoBackdropClose.open()">Open Dialog (Backdrop can't close)</button>
 <ng-template bDialog="dialogNoBackdropClose" [closeOnBackdropClick]="false" #dialogNoBackdropClose="bDialog">
-  <h1>Dialog</h1>
-  <p>Clicking the backdrop will not close this dialog.</p>
-  <button b-button (click)="dialogNoBackdropClose.close()">close dialog</button>
+  <b-card>
+    <b-card-header>
+      <b-card-title>Dialog</b-card-title>
+      <b-card-description>
+        Clicking the backdrop will not close this dialog.
+      </b-card-description>
+    </b-card-header>
+    <b-card-footer>
+      <button b-button (click)="dialogNoBackdropClose.close()">Close</button>
+    </b-card-footer>
+  </b-card>
 </ng-template>`;
 
   noEscapeCloseExample = `<button b-button (click)="dialogNoEscape.open()">Open Dialog (Escape can't close)</button>
 <ng-template bDialog="dialogNoEscape" [closeOnEscapeKey]="false" #dialogNoEscape="bDialog">
-  <h1>Dialog</h1>
-  <p>Pressing Escape will not close this dialog.</p>
-  <button b-button (click)="dialogNoEscape.close()">close dialog</button>
+  <b-card>
+    <b-card-header>
+      <b-card-title>Dialog</b-card-title>
+      <b-card-description>
+        Pressing Escape will not close this dialog.
+      </b-card-description>
+    </b-card-header>
+    <b-card-footer>
+      <button b-button (click)="dialogNoEscape.close()">Close</button>
+    </b-card-footer>
+  </b-card>
 </ng-template>`;
 
   dialogService = inject(DialogService);
