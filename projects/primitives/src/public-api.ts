@@ -106,6 +106,14 @@ export * from './core/components/input-group/input-group.component';
 export * from './core/services/dialog.service';
 export * from './core/directives/dialog.directive';
 
+/* Card */
+export * from './core/components/card/card.component';
+export * from './core/components/card/card-header.component';
+export * from './core/components/card/card-title.component';
+export * from './core/components/card/card-description.component';
+export * from './core/components/card/card-content.component';
+export * from './core/components/card/card-footer.component';
+
 /* Types */
 
 /* Position */

@@ -175,6 +175,15 @@ export const componentsRoutes: Routes = [
     },
   },
   {
+    path: 'card',
+    loadComponent: () => import('./pages/card-documentation.component'),
+    title: 'Card - Basis UI',
+    data: {
+      title: 'Card',
+      new: true,
+    },
+  },
+  {
     path: '**',
     redirectTo: '',
   },
