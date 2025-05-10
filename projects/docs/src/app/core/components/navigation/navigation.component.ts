@@ -12,29 +12,29 @@ import { documentationRoutes } from '../../../features/documentation/documentati
 import { componentsRoutes } from '../../../features/documentation/pages/components/components.routes';
 import { NavigationService } from './navigation.service';
 import {
-  Badge,
-  BottomSheet,
-  Button,
-  Icon,
-  Menu,
+  DrawerComponent,
   MenuItemRadioComponent,
-  MenuLabel,
   ResponsiveService,
+  IconComponent,
+  BadgeComponent,
+  MenuLabelComponent,
+  MenuComponent,
+  ButtonComponent,
 } from '@basis-ng/primitives';
 
 @Component({
   selector: 'aside[app-navigation]',
   imports: [
-    Menu,
+    MenuComponent,
     MenuItemRadioComponent,
     RouterLink,
     RouterLinkActive,
-    MenuLabel,
-    BottomSheet,
+    MenuLabelComponent,
+    DrawerComponent,
     NgTemplateOutlet,
-    Badge,
-    Button,
-    Icon,
+    BadgeComponent,
+    ButtonComponent,
+    IconComponent,
   ],
   templateUrl: './navigation.component.html',
   styleUrl: './navigation.component.css',

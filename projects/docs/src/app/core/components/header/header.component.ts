@@ -2,8 +2,12 @@ import { Component, computed, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { ThemeService } from '../../../../../../primitives/src/core/services/theme.service';
 import { ResponsiveService } from '../../../../../../primitives/src/core/services/responsive.service';
-import { Button, Icon, MenuTrigger } from '@basis-ng/primitives';
-import { Menu } from '../../../../../../primitives/src/core/components/menu/menu.component';
+import {
+  ButtonComponent,
+  IconComponent,
+  MenuComponent,
+  MenuTrigger,
+} from '@basis-ng/primitives';
 import { MenuItemRadioComponent } from '../../../../../../primitives/src/core/components/menu/shared/components/menu-item-radio/menu-item-radio.component';
 import { MenuGroupComponent } from '../../../../../../primitives/src/core/components/menu/shared/components/menu-group/menu-group.component';
 
@@ -11,13 +15,12 @@ import { MenuGroupComponent } from '../../../../../../primitives/src/core/compon
   selector: 'header',
   imports: [
     RouterLink,
-    Icon,
-    Button,
+    ButtonComponent,
     MenuTrigger,
-    Menu,
+    MenuComponent,
     MenuItemRadioComponent,
     MenuGroupComponent,
-    Icon,
+    IconComponent,
   ],
   templateUrl: './header.component.html',
   styleUrl: './header.component.css',

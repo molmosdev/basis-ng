@@ -8,9 +8,9 @@
     (click)="bottomSheetOpen.set(true)">
     <i b-icon icon="Menu" [size]="20" color="var(--primary-foreground)"></i>
   </button>
-  <b-bottom-sheet [(isOpen)]="bottomSheetOpen" height="65dvh">
+  <b-drawer [(isOpen)]="bottomSheetOpen" height="65dvh">
     <ng-container *ngTemplateOutlet="menu" />
-  </b-bottom-sheet>
+  </b-drawer>
 } @else {
   <ng-container *ngTemplateOutlet="menu" />
 }
