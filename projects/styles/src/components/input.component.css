@@ -12,6 +12,7 @@ input[b-input] {
     border-color 0.2s;
   font-size: 1rem;
   color: var(--input-foreground, #798194);
+  font-family: 'Geist', sans-serif;
 
   &::-webkit-outer-spin-button,
   &::-webkit-inner-spin-button {
@@ -34,7 +35,7 @@ input[b-input] {
     opacity: 0.5;
   }
 
-  &.ng-invalid {
+  &.ng-invalid.ng-touched {
     color: var(--error-foreground, #c40000ab);
     background-color: var(--error, #fff0f0);
     border-color: var(--error-border-color, #c40000ab);
