@@ -10,16 +10,12 @@ button[b-button] {
   border: none;
   text-decoration: none;
   font-family: 'Geist', sans-serif;
-  --border-px: 0px;
+  border-style: solid;
+  border-width: 1px;
 
   &:focus-visible {
     outline: 2px solid var(--primary, #0a0a0a);
     outline-offset: 2px;
-  }
-
-  &.primary,
-  &.outlined {
-    --border-px: 1px;
   }
 
   &.primary,
@@ -30,7 +26,7 @@ button[b-button] {
   &.primary {
     background-color: var(--primary, #0a0a0a);
     color: var(--primary-foreground, #ffffff);
-    border: var(--border-px) solid var(--primary-border-color, #0a0a0a);
+    border-color: var(--primary-border-color, #0a0a0a);
 
     @media (width > 768px) {
       &:hover {
@@ -53,6 +49,8 @@ button[b-button] {
 
   &.secondary {
     background-color: var(--secondary);
+    color: var(--secondary-foreground, #0a0a0a);
+    border-color: var(--secondary-border-color, #ececec);
 
     @media (width > 768px) {
       &:hover {
@@ -75,6 +73,7 @@ button[b-button] {
 
   &.ghost {
     background-color: transparent;
+    border-color: transparent;
 
     @media (width > 768px) {
       &:hover {
@@ -97,7 +96,7 @@ button[b-button] {
 
   &.outlined {
     background-color: var(--background, #ffffff);
-    border: var(--border-px) solid var(--border-color, #ececec);
+    border-color: var(--border-color, #ececec);
 
     @media (width > 768px) {
       &:hover {
