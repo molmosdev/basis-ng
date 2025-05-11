@@ -36,10 +36,10 @@ b-input-group {
       color: var(--error-foreground);
       background-color: var(--error);
       border: 1px solid var(--error-border-color);
+    }
 
-      i svg {
-        stroke: var(--error-foreground);
-      }
+    i svg {
+      stroke: var(--error-foreground);
     }
   }
 
