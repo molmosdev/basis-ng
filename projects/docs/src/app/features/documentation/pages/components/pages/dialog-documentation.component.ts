@@ -8,7 +8,6 @@ import {
   CardHeaderComponent,
   CardTitleComponent,
   CardDescriptionComponent,
-  CardContentComponent,
   CardFooterComponent,
 } from '@basis-ng/primitives';
 import { CodeBlockComponent } from '../shared/components/code-block.component';
@@ -196,7 +195,6 @@ import { CodeBlockComponent } from '../shared/components/code-block.component';
     CardHeaderComponent,
     CardTitleComponent,
     CardDescriptionComponent,
-    CardContentComponent,
     CardFooterComponent,
   ],
   styles: [
