@@ -13,9 +13,34 @@ b-input-group {
     border-radius: 0 !important;
   }
 
-  &:has(:focus-visible) {
+  input[b-input]:focus-visible {
     outline: 2px solid var(--primary, #0a0a0a);
     outline-offset: 2px;
+
+    &.ng-invalid {
+      outline-color: var(--error-foreground, #c40000ab);
+    }
+  }
+
+  input[b-input]:disabled {
+    opacity: 0.5;
+    pointer-events: none;
+  }
+
+  &:has(input[b-input].ng-invalid) {
+    color: var(--error-foreground);
+    background-color: var(--error);
+    border-color: var(--error-border-color);
+
+    button[b-button] {
+      color: var(--error-foreground);
+      background-color: var(--error);
+      border: 1px solid var(--error-border-color);
+
+      i svg {
+        stroke: var(--error-foreground);
+      }
+    }
   }
 
   &:has(.size-1) {
@@ -40,7 +65,7 @@ b-input-group {
   }
 
   &:has(button[b-button]:last-child) {
-    padding-right: 0.285rem;
+    padding-right: 0.22rem;
   }
 
   &:has(button[b-button]:first-child) {
