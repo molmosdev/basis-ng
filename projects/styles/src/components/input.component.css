@@ -1,5 +1,4 @@
 input[b-input] {
-  width: 100%;
   background-color: var(--input-background, #e0e0e0);
   border-radius: var(--radius, 0.5rem);
   box-sizing: border-box;
@@ -60,7 +59,7 @@ input[b-input] {
   }
 
   &.size-2 {
-    padding: 0.5rem 0.75rem;
+    padding: 0.429rem 0.75rem;
     font-size: 1rem;
   }
 
