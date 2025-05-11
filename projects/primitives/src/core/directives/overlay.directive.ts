@@ -228,7 +228,8 @@ export class OverlayDirective {
     if (this.open()) {
       this.handleOverlayOpen();
     } else {
-      this.handleOverlayClose();
+      if (!this.firstLoad) this.handleOverlayClose();
+      this.firstLoad = false;
     }
   }
 
@@ -246,12 +247,6 @@ export class OverlayDirective {
    * If it's the first load, detaches the overlay immediately without animation.
    */
   private handleOverlayClose(): void {
-    if (this.firstLoad) {
-      this.detachOverlayWithCleanup();
-      this.firstLoad = false;
-      return;
-    }
-
     const firstChild = this.getFirstChild();
 
     if (!firstChild) {
