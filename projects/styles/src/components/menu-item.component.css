@@ -18,7 +18,6 @@ button[b-menu-item] {
   height: 2.5rem;
   border-radius: var(--radius);
   cursor: pointer;
-  min-width: 100px;
   align-items: center;
 
   &:active,
