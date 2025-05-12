@@ -4,7 +4,7 @@ b-input-group {
   border-radius: var(--radius);
   box-sizing: border-box;
   background-color: var(--input-background);
-  border: 1px solid var(--border-color, transparent);
+  border: 1px solid var(--border-color);
 
   input[b-input] {
     border-left: 0;
@@ -15,12 +15,12 @@ b-input-group {
     width: 100%;
   }
 
-  :has(input[b-input]:focus-visible) {
-    outline: 2px solid var(--primary, #0a0a0a);
+  &:has(input[b-input]:focus-visible) {
+    outline: 2px solid var(--primary);
     outline-offset: 2px;
 
     &:has(.ng-invalid) {
-      outline-color: var(--error-foreground, #c40000ab);
+      outline-color: var(--error-foreground);
     }
   }
 
