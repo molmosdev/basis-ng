@@ -7,11 +7,13 @@ b-tab {
   box-sizing: border-box;
   cursor: pointer;
   border-radius: calc(var(--radius) - 0.2rem);
-  border: 1px solid var(--primary-border-color);
+  border-width: 1px;
+  border-style: solid;
 
   &[aria-selected='true'] {
     background-color: var(--primary);
     color: var(--primary-foreground);
+    border-color: var(--primary-border-color);
   }
 
   &:hover:not(.cdk-option-active) {
