@@ -9,7 +9,7 @@ b-tab {
   border-radius: calc(var(--radius) - 0.2rem);
 
   &[aria-selected='true'] {
-    background-color: var(--background-color);
+    background-color: var(--background);
     border: 1px solid var(--border-color);
   }
 
