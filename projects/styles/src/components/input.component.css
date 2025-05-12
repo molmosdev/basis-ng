@@ -1,5 +1,5 @@
 input[b-input] {
-  background-color: var(--input-background, #e0e0e0);
+  background-color: var(--input-background);
   border-radius: var(--radius, 0.5rem);
   box-sizing: border-box;
   border-width: 1px;
@@ -10,7 +10,7 @@ input[b-input] {
     background-color 0.2s,
     border-color 0.2s;
   font-size: 1rem;
-  color: var(--input-foreground, #798194);
+  color: var(--input-foreground);
   font-family: 'Geist', sans-serif;
 
   &::-webkit-outer-spin-button,
@@ -26,7 +26,7 @@ input[b-input] {
   }
 
   &:focus-visible {
-    outline: 2px solid var(--primary, #0a0a0a);
+    outline: 2px solid var(--primary);
     outline-offset: 2px;
   }
 
@@ -35,16 +35,16 @@ input[b-input] {
   }
 
   &.ng-invalid.ng-touched {
-    color: var(--error-foreground, #c40000ab);
-    background-color: var(--error, #fff0f0);
-    border-color: var(--error-border-color, #c40000ab);
+    color: var(--error-foreground);
+    background-color: var(--error);
+    border-color: var(--error-border-color);
 
     &:focus-visible {
-      outline-color: var(--error-foreground, #c40000ab);
+      outline-color: var(--error-foreground);
     }
 
     &::placeholder {
-      color: var(--error-foreground, #c40000ab);
+      color: var(--error-foreground);
     }
   }
 
