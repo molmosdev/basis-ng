@@ -6,7 +6,7 @@ b-tab {
   align-items: center;
   box-sizing: border-box;
   cursor: pointer;
-  border-radius: calc(var(--radius) - 0.2rem);
+  border-radius: var(--radius);
   border-width: 1px;
   border-style: solid;
   border-color: transparent;
