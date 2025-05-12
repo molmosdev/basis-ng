@@ -10,6 +10,7 @@ b-tab {
   border-width: 1px;
   border-color: transparent;
   border-radius: calc(var(--radius) - 0.2rem);
+  box-shadow: rgba(0, 0, 0, 0.04) 0px 2px 2px 0px;
 
   &[aria-selected='true'] {
     background-color: var(--background);
@@ -24,7 +25,7 @@ b-tab {
 
 b-tabs:focus-visible {
   b-tab.cdk-option-active {
-    outline: 2px solid var(--text-color);
+    outline: 2px solid var(--primary);
     outline-offset: 2px;
     z-index: 1;
   }
