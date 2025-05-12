@@ -6,15 +6,10 @@ b-tab {
   align-items: center;
   box-sizing: border-box;
   cursor: pointer;
-  border-radius: var(--radius);
-  border-width: 1px;
-  border-style: solid;
-  border-color: transparent;
+  border-radius: calc(var(--radius) - 0.2rem);
 
   &[aria-selected='true'] {
-    background-color: var(--primary);
-    color: var(--primary-foreground);
-    border-color: var(--primary-border-color);
+    background-color: color-mix(in srgb, var(--bg-color), var(--text-color) 8%);
   }
 
   &:hover:not(.cdk-option-active) {
