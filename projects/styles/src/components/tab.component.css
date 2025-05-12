@@ -7,6 +7,7 @@ b-tab {
   box-sizing: border-box;
   cursor: pointer;
   border-radius: calc(var(--radius) - 0.2rem);
+  border: 1px solid var(--primary-border-color);
 
   &[aria-selected='true'] {
     background-color: var(--primary);
