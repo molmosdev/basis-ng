@@ -8,6 +8,7 @@ b-tab {
   cursor: pointer;
   border-style: solid;
   border-width: 1px;
+  border-color: transparent;
   border-radius: calc(var(--radius) - 0.2rem);
 
   &[aria-selected='true'] {
