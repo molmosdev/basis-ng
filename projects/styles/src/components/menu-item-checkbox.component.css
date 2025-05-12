@@ -36,4 +36,10 @@ button[b-menu-item-checkbox] {
     cursor: auto;
     opacity: 0.5;
   }
+
+  &.squared {
+    padding-inline: 0;
+    justify-content: center;
+    width: 2.5rem;
+  }
 }

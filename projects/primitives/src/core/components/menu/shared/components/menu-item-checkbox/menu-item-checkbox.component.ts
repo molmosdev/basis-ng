@@ -1,5 +1,5 @@
 import { CdkMenuItemCheckbox } from '@angular/cdk/menu';
-import { Component } from '@angular/core';
+import { Component, input } from '@angular/core';
 
 /**
  * Represents a checkbox menu item.
@@ -19,5 +19,13 @@ import { Component } from '@angular/core';
       outputs: ['cdkMenuItemTriggered: triggered'],
     },
   ],
+  host: {
+    '[class.squared]': 'squared()',
+  },
 })
-export class MenuItemCheckboxComponent {}
+export class MenuItemCheckboxComponent {
+  /**
+   * Input to set the squared state of the menu item.
+   */
+  readonly squared = input(false);
+}
