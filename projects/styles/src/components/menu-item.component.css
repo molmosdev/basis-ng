@@ -21,6 +21,7 @@ button[b-menu-item] {
   align-items: center;
 
   &:active,
+  &.active,
   &:hover {
     background-color: var(--input-background);
   }
