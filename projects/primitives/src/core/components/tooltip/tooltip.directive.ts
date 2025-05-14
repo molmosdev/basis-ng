@@ -88,6 +88,11 @@ export class TooltipDirective implements OnDestroy {
   readonly overlayRef = signal<OverlayRef | null>(null);
 
   /**
+   * Unique identifier for the tooltip instance.
+   */
+  readonly id = signal<number>(Math.random() * 10);
+
+  /**
    * Map of positions for the tooltip.
    */
   readonly positionsMap = signal<Record<Position, ConnectedPosition>>({
@@ -235,7 +240,7 @@ export class TooltipDirective implements OnDestroy {
     }
 
     this.utils.debounce(
-      'tooltip-show',
+      'tooltip-show ' + this.id(),
       () => {
         const positionStrategy = this.overlay
           .position()
@@ -286,7 +291,7 @@ export class TooltipDirective implements OnDestroy {
     this.componentRef()?.instance.leaving.set(true);
 
     this.utils.debounce(
-      'tooltip-hide',
+      'tooltip-hide' + this.id(),
       () => this.overlayRef()?.detach(),
       this.hideDelay()
     );
