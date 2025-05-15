@@ -121,7 +121,11 @@ export class ComboboxComponent implements OnInit, ControlValueAccessor {
    */
   readonly content = computed(() => {
     const selected = this.value();
-    if (selected && selected.length > 0) {
+    if (
+      selected &&
+      selected.length > 0 &&
+      !(selected.length === 1 && selected[0] === '')
+    ) {
       return this.options()?.reduce((acc, option) => {
         if (selected.includes(option.value)) {
           return acc ? acc + ', ' + option.getLabel() : option.getLabel();
