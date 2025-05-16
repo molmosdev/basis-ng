@@ -6,11 +6,14 @@ import {
   inject,
   input,
   signal,
+  output,
+  OnDestroy,
 } from '@angular/core';
 import { CdkTrapFocus } from '@angular/cdk/a11y';
 import { CommandOptionsComponent } from './command-options.component';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { InputComponent } from '../input/input.component';
+import { UtilsService } from '../../../shared/services/utils.service';
 
 /**
  * Component representing a command input with associated options.
@@ -28,13 +31,14 @@ import { InputComponent } from '../input/input.component';
       (keydown.arrowDown)="commandOptions()?.nextOption()"
       (keydown.arrowUp)="commandOptions()?.previousOption()"
       (keydown.enter)="commandOptions()?.selectOption()"
-      (blur)="isDesktop() && trappedInput.el.nativeElement.focus()" />
+      (blur)="isDesktop() && trappedInput.el.nativeElement.focus()"
+      (input)="onInput($event)" />
     <ng-content />`,
   host: {
     '[style.maxHeight]': 'maxHeight()',
   },
 })
-export class CommandComponent {
+export class CommandComponent implements OnDestroy {
   /**
    * Reference to the child `CommandOptionsComponent` if present.
    * Used to interact with the options for navigation and selection.
@@ -77,4 +81,45 @@ export class CommandComponent {
    * This provides access to the DOM element of the command component.
    */
   el = inject(ElementRef);
+
+  /**
+   * Output that emits the current input value.
+   */
+  readonly inputValueChange = output<string>();
+
+  /**
+   * Input to control debounce time (ms) for valueChange emission.
+   */
+  readonly debounce = input(0);
+
+  /**
+   * Reference to the UtilsService for debounce logic.
+   */
+  private utils = inject(UtilsService);
+
+  /**
+   * Unique key for debounce timer.
+   */
+  private readonly debounceKey = 'command-input';
+
+  /**
+   * Handler for input event, emits value with debounce if set.
+   */
+  onInput(event: Event) {
+    const value = (event.target as HTMLInputElement).value;
+    const debounceMs = this.debounce();
+    if (debounceMs && debounceMs > 0) {
+      this.utils.debounce(
+        this.debounceKey,
+        () => this.inputValueChange.emit(value),
+        debounceMs
+      );
+    } else {
+      this.inputValueChange.emit(value);
+    }
+  }
+
+  ngOnDestroy() {
+    this.utils.stopDebounce(this.debounceKey);
+  }
 }
