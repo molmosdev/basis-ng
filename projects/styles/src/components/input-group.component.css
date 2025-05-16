@@ -19,7 +19,8 @@ b-input-group {
     outline: 2px solid var(--primary);
     outline-offset: 2px;
 
-    &:has(.ng-invalid) {
+    &:has(.ng-invalid.ng-touched),
+    &:has(.ng-invalid.ng-dirty) {
       outline-color: var(--error-foreground);
     }
   }
