@@ -34,7 +34,8 @@ input[b-input] {
     opacity: 0.5;
   }
 
-  &.ng-invalid.ng-touched {
+  &.ng-invalid.ng-touched,
+  &.ng-invalid.ng-dirty {
     color: var(--error-foreground);
     background-color: var(--error);
     border-color: var(--error-border-color);

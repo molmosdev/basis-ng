@@ -29,7 +29,8 @@ b-input-group {
     pointer-events: none;
   }
 
-  &:has(input[b-input].ng-invalid.ng-touched) {
+  &:has(input[b-input].ng-invalid.ng-touched),
+  &:has(input[b-input].ng-invalid.ng-dirty) {
     color: var(--error-foreground);
     background-color: var(--error);
     border-color: var(--error-border-color);
