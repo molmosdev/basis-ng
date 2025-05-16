@@ -65,6 +65,13 @@ import { CodeBlockComponent } from '../shared/components/code-block.component';
           <td><code>number</code></td>
           <td>Delay before closing (ms). Default: <code>150</code></td>
         </tr>
+        <tr>
+          <td><strong>closed</strong></td>
+          <td><code>EventEmitter&lt;void&gt;</code></td>
+          <td>
+            Emits when the dialog is closed (only with directive reference).
+          </td>
+        </tr>
       </table>
     </div>
 
@@ -97,7 +104,10 @@ import { CodeBlockComponent } from '../shared/components/code-block.component';
         Open Dialog (Directive Ref)
       </button>
     </div>
-    <ng-template bDialog="exampleDialog2" #dialogRef="bDialog">
+    <ng-template
+      bDialog="exampleDialog2"
+      #dialogRef="bDialog"
+      (closed)="onDialogClosed()">
       <b-card>
         <b-card-header>
           <b-card-title>Dialog</b-card-title>
@@ -225,7 +235,7 @@ export default class DialogDocumentationComponent {
 </ng-template>`;
 
   basicUsageDirective = `<button b-button (click)="dialogRef.open()">Open Dialog (Directive Ref)</button>
-<ng-template bDialog="exampleDialog2" #dialogRef="bDialog">
+<ng-template bDialog="exampleDialog2" #dialogRef="bDialog" (closed)="onDialogClosed()">
   <b-card>
     <b-card-header>
       <b-card-title>Dialog</b-card-title>
@@ -292,5 +302,9 @@ export default class DialogDocumentationComponent {
 
   closeDialogService() {
     this.dialogService.closeDialog('exampleDialog');
+  }
+
+  onDialogClosed() {
+    alert('Dialog closed!');
   }
 }

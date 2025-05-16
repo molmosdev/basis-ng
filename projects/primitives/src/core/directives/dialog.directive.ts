@@ -7,6 +7,7 @@ import {
   OnDestroy,
   OnInit,
   TemplateRef,
+  output,
 } from '@angular/core';
 import { DialogData, DialogService } from '../services/dialog.service';
 
@@ -86,6 +87,11 @@ export class DialogDirective implements OnInit, OnDestroy {
   readonly closeDelay = input<number>(150);
 
   /**
+   * Emits when the dialog is closed.
+   */
+  readonly closed = output<void>();
+
+  /**
    * Injected instance of the `DialogService`.
    * @internal
    */
@@ -119,6 +125,7 @@ export class DialogDirective implements OnInit, OnDestroy {
    */
   close() {
     this.dialogService.closeDialog(this.id(), 'closeButton');
+    this.closed.emit();
   }
 
   /**
