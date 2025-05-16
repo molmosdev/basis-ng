@@ -20,6 +20,10 @@ b-tree-node {
     gap: 0.75rem;
     user-select: none;
 
+    &:has(button[b-button]:last-child) {
+      padding-right: 0.285rem;
+    }
+
     i {
       cursor: move;
     }
@@ -59,6 +63,10 @@ b-tree-node {
       box-sizing: border-box;
       gap: 0.8rem;
       user-select: none;
+
+      &:has(button[b-button]:last-child) {
+        padding-right: 0.285rem;
+      }
 
       .projected-content {
         display: flex;
