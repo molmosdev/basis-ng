@@ -1,8 +1,6 @@
 input[b-color-picker] {
   width: 100%;
   position: relative;
-  width: 100%;
-  height: 2.8rem;
   background: none;
   padding: 0;
   border: 0;
@@ -10,7 +8,7 @@ input[b-color-picker] {
 
   &::-webkit-color-swatch-wrapper {
     width: 100%;
-    height: 2.8rem;
+    height: 100%;
     padding: 0;
   }
 
@@ -30,5 +28,20 @@ input[b-color-picker] {
       transform: translate(-50%, -50%);
       font-family: 'Geist', sans-serif;
     }
+  }
+
+  &.size-1 {
+    height: 1.714rem;
+    font-size: 0.857rem;
+  }
+
+  &.size-2 {
+    height: 2.286rem;
+    font-size: 1rem;
+  }
+
+  &.size-3 {
+    height: 2.857rem;
+    font-size: 1.143rem;
   }
 }

@@ -23,6 +23,7 @@ import { ControlContainer, NgModel } from '@angular/forms';
     '(focus)': 'focused.set(true)',
     '(blur)': 'focused.set(false)',
     '(input)': 'value.set($event.target.value)',
+    '[class]': '"size-" + size()',
   },
 })
 export class ColorPickerComponent implements AfterViewInit {
@@ -71,6 +72,11 @@ export class ColorPickerComponent implements AfterViewInit {
    * Indicates whether to show the color value.
    */
   readonly showColor = input<boolean>(true);
+
+  /**
+   * The size of the color picker input.
+   */
+  readonly size = input<'1' | '2' | '3'>('2');
 
   /**
    * A reference to the native element.

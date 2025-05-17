@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
-import { AlertComponent, ColorPickerComponent } from '@basis-ng/primitives';
+import {
+  AlertComponent,
+  ColorPickerComponent,
+} from '../../../../../../../../primitives/src/public-api';
 import { CodeBlockComponent } from '../shared/components/code-block.component';
 import {
   FormsModule,
@@ -34,6 +37,11 @@ import {
           <th>Property</th>
           <th>Type</th>
           <th>Description</th>
+        </tr>
+        <tr>
+          <td><strong>size</strong></td>
+          <td><code>'1' | '2' | '3'</code></td>
+          <td>The size of the color picker. Default is <code>'2'</code>.</td>
         </tr>
         <tr>
           <td><strong>value</strong></td>
@@ -125,6 +133,14 @@ import {
         [value]="selectedColor"
         (input)="onColorChange($event)" />
     </div>
+
+    <h2>Input Sizes</h2>
+    <code-block [code]="sizeUsage" />
+    <div class="documentation-playground">
+      <input b-color-picker type="color" size="1" [maxWidth]="'120px'" />
+      <input b-color-picker type="color" size="2" [maxWidth]="'120px'" />
+      <input b-color-picker type="color" size="3" [maxWidth]="'120px'" />
+    </div>
   `,
   imports: [
     CodeBlockComponent,
@@ -143,6 +159,9 @@ export default class ColorPickerDocumentationComponent {
   formControlUsage = `<form [formGroup]="form">
   <input b-color-picker type="color" [maxWidth]="'240px'" [showColor]="true" formControlName="colorControl" />
 </form>`;
+  sizeUsage = `<input b-color-picker type="color" size="1" [maxWidth]="'120px'" />
+<input b-color-picker type="color" size="2" [maxWidth]="'120px'" />
+<input b-color-picker type="color" size="3" [maxWidth]="'120px'" />`;
 
   selectedColor = '#ff0000';
   ngModelColor = '#00ff00';
