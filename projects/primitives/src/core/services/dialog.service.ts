@@ -1,6 +1,6 @@
 // dialog.service.ts
 import { Dialog } from '@angular/cdk/dialog';
-import { inject, Injectable, TemplateRef } from '@angular/core';
+import { inject, Injectable, TemplateRef, EventEmitter } from '@angular/core';
 import { UtilsService } from '../../shared/services/utils.service';
 import { DialogComponent } from '../components/dialog/dialog.component';
 
@@ -62,6 +62,11 @@ export class DialogService {
    * @internal
    */
   private readonly dialogs = new Map<string, DialogData>();
+
+  /**
+   * Emits the ID of a dialog when it is closed.
+   */
+  readonly dialogClosed = new EventEmitter<string>();
 
   /**
    * Registers a dialog template and its data with the service.
@@ -156,6 +161,8 @@ export class DialogService {
           if (container && container.leaving) {
             container.leaving.set(false);
           }
+          // Emit the closed dialog ID
+          this.dialogClosed.emit(id);
         },
         config.closeDelay
       );
