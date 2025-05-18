@@ -110,6 +110,7 @@ export * from './core/directives/dialog.directive';
 export * from './core/components/card/card.component';
 export * from './core/components/card/card-header.component';
 export * from './core/components/card/card-title.component';
+export * from './core/components/card/card-subtitle.component';
 export * from './core/components/card/card-description.component';
 export * from './core/components/card/card-content.component';
 export * from './core/components/card/card-footer.component';

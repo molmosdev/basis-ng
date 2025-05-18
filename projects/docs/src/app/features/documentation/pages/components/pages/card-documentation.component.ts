@@ -3,6 +3,7 @@ import {
   CardComponent,
   CardHeaderComponent,
   CardTitleComponent,
+  CardSubtitleComponent,
   CardDescriptionComponent,
   CardContentComponent,
   CardFooterComponent,
@@ -52,6 +53,7 @@ import { CodeBlockComponent } from '../shared/components/code-block.component';
       <b-card [maxWidth]="'400px'">
         <b-card-header>
           <b-card-title>Card Title</b-card-title>
+          <b-card-subtitle>Card Subtitle</b-card-subtitle>
           <b-card-description
             >This is a description for the card.</b-card-description
           >
@@ -104,6 +106,7 @@ import { CodeBlockComponent } from '../shared/components/code-block.component';
       <b-card [maxWidth]="'350px'">
         <b-card-header>
           <b-card-title>Login</b-card-title>
+          <b-card-subtitle />
           <b-card-description>
             Enter your credentials to continue.
           </b-card-description>
@@ -125,6 +128,7 @@ import { CodeBlockComponent } from '../shared/components/code-block.component';
     CardComponent,
     CardHeaderComponent,
     CardTitleComponent,
+    CardSubtitleComponent,
     CardDescriptionComponent,
     CardContentComponent,
     CardFooterComponent,
@@ -139,6 +143,7 @@ export default class CardDocumentationComponent {
   inputsCardUsage = `<b-card [maxWidth]="'350px'">
   <b-card-header>
     <b-card-title>Login</b-card-title>
+    <b-card-subtitle></b-card-subtitle>
     <b-card-description>
       Enter your credentials to continue.
     </b-card-description>
@@ -157,6 +162,7 @@ export default class CardDocumentationComponent {
   basicUsage = `<b-card [maxWidth]="'400px'">
   <b-card-header>
     <b-card-title>Card Title</b-card-title>
+    <b-card-subtitle>Card Subtitle</b-card-subtitle>
     <b-card-description>This is a description for the card.</b-card-description>
   </b-card-header>
   <b-card-content>
