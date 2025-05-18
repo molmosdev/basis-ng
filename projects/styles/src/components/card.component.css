@@ -19,8 +19,8 @@ b-card {
 
     b-card-subtitle {
       font-size: 1.1rem;
-      font-weight: 500;
-      opacity: 0.85;
+      font-weight: 600;
+      opacity: 1;
     }
 
     b-card-description {
