@@ -10,6 +10,9 @@ b-combobox {
     span {
       flex: 1;
       text-align: start;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
   }
 }
