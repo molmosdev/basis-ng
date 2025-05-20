@@ -39,7 +39,7 @@ import { OverlayDirective } from '../../directives/overlay.directive';
       [activeEnabled]="false"
       bOverlayTrigger
       #trigger="bOverlayTrigger">
-      {{ content() }}
+      <span>{{ content() }}</span>
       <i b-icon icon="ChevronDown" [size]="16"></i>
     </button>
     <ng-template

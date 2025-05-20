@@ -1,12 +1,16 @@
 b-combobox {
   button {
     display: flex;
-    justify-content: space-between !important;
     align-items: center;
     text-align: start;
     padding-right: 0.5rem !important;
     width: 100%;
     gap: 0.3rem !important;
+
+    span {
+      flex: 1;
+      text-align: start;
+    }
   }
 }
 
