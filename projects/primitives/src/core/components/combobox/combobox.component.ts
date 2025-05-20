@@ -68,9 +68,8 @@ import { OverlayDirective } from '../../directives/overlay.directive';
 export class ComboboxComponent implements OnInit, ControlValueAccessor {
   /**
    * Placeholder text displayed when no option is selected.
-   * Defaults to 'Select an option'.
    */
-  readonly placeholder = input<string>('Select an option');
+  readonly placeholder = input<string>('');
 
   /**
    * Signal indicating whether the dropdown is currently open.
