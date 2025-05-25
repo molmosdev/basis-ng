@@ -19,6 +19,10 @@ ul[b-select-options] {
   width: 100%;
   overflow-y: auto;
 
+  .no-options-message {
+    padding: 0.5rem 0.75rem;
+  }
+
   /* Overlay Animations */
   opacity: 0;
 

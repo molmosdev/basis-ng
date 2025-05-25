@@ -17,7 +17,12 @@ import { OptionComponent } from '../../../shared/components/option.component';
 @Component({
   selector: 'ul[b-select-options]',
   imports: [],
-  template: `<ng-content />`,
+  template: `<ng-content />
+    @if (options().length === 0) {
+      <div class="no-options-message">
+        {{ noOptionsMessage() }}
+      </div>
+    }`,
   hostDirectives: [
     {
       directive: CdkListbox,
@@ -56,6 +61,12 @@ export class SelectOptionsComponent {
    * Defaults to '300px'. This controls the vertical size of the dropdown.
    */
   readonly maxHeight = input<string>('300px');
+
+  /**
+   * Input for setting the width of the dropdown.
+   * This can be used to control the horizontal size of the dropdown.
+   */
+  readonly noOptionsMessage = input<string>('');
 
   /**
    * Reference to the CDK Listbox directive.

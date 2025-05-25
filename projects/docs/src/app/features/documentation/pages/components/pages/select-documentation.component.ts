@@ -62,6 +62,16 @@ import { FormGroup, FormControl } from '@angular/forms';
           <li b-option value="option3">Option 3</li>
         </ul>
       </b-select>
+    </div>
+
+    <h2>With no options message</h2>
+    <code-block [code]="noOptionsMessageUsage" />
+    <div class="documentation-playground">
+      <b-select placeholder="Select an option">
+        <ul b-select-options noOptionsMessage="No options available">
+          <!-- No options -->
+        </ul>
+      </b-select>
     </div>`,
   imports: [
     CodeBlockComponent,
@@ -107,6 +117,12 @@ export default class SelectDocumentationComponent {
     <li b-option value="option1">Option 1</li>
     <li b-option value="option2">Option 2</li>
     <li b-option value="option3">Option 3</li>
+  </ul>
+</b-select>`;
+
+  noOptionsMessageUsage = `<b-select placeholder="Select an option">
+  <ul b-select-options noOptionsMessage="No options available">
+    <!-- No options -->
   </ul>
 </b-select>`;
 }
