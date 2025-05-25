@@ -70,7 +70,19 @@ import { FormGroup, FormControl } from '@angular/forms';
           </ul>
         </b-command>
       </b-combobox>
-    </div>`,
+    </div>
+
+    <h2>With no options message</h2>
+    <code-block [code]="noOptionsMessageUsage" />
+    <div class="documentation-playground">
+      <b-combobox placeholder="Select an option">
+        <b-command>
+          <ul b-command-options noOptionsMessage="No options available">
+            <!-- No options -->
+          </ul>
+        </b-command>
+      </b-combobox>
+    </div> `,
   imports: [
     CodeBlockComponent,
     FormsModule,
@@ -122,6 +134,14 @@ export default class ComboboxDocumentationComponent {
       <li b-option value="option1">Option 1</li>
       <li b-option value="option2">Option 2</li>
       <li b-option value="option3">Option 3</li>
+    </ul>
+  </b-command>
+</b-combobox>`;
+
+  noOptionsMessageUsage = `<b-combobox placeholder="Select an option">
+  <b-command>
+    <ul b-command-options noOptionsMessage="No options available">
+      <!-- No options -->
     </ul>
   </b-command>
 </b-combobox>`;

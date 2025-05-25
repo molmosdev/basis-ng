@@ -5,6 +5,7 @@ import {
   computed,
   contentChildren,
   inject,
+  input,
   OnInit,
   output,
   signal,
@@ -17,7 +18,12 @@ import {
 @Component({
   selector: 'ul[b-command-options]',
   imports: [],
-  template: `<ng-content />`,
+  template: `<ng-content />
+    @if (options().length === 0) {
+      <div class="no-options-message">
+        {{ noOptionsMessage() }}
+      </div>
+    }`,
   hostDirectives: [
     {
       directive: CdkListbox,
@@ -53,6 +59,11 @@ export class CommandOptionsComponent implements OnInit {
    * Signal representing the currently highlighted option.
    */
   readonly highlightedOption = signal('1');
+
+  /**
+   * No options message displayed when there are no available options in the dropdown.
+   */
+  readonly noOptionsMessage = input<string>('');
 
   /**
    * Reference to the injected CDK Listbox instance.

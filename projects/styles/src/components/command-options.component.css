@@ -10,4 +10,8 @@ ul[b-command-options] {
   overflow-y: auto;
   padding: 0;
   scrollbar-width: thin;
+
+  .no-options-message {
+    padding: 0.5rem 0.75rem;
+  }
 }
