@@ -63,8 +63,7 @@ export class SelectOptionsComponent {
   readonly maxHeight = input<string>('300px');
 
   /**
-   * Input for setting the width of the dropdown.
-   * This can be used to control the horizontal size of the dropdown.
+   * No options message displayed when there are no available options in the dropdown.
    */
   readonly noOptionsMessage = input<string>('');
 
