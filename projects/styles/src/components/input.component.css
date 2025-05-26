@@ -2,7 +2,6 @@ input[b-input] {
   background-color: var(--input-background);
   border-radius: var(--radius, 0.5rem);
   box-sizing: border-box;
-  border-width: 1px;
   border-style: solid;
   border-color: var(--border-color, transparent);
   transition:
@@ -12,6 +11,10 @@ input[b-input] {
   font-size: 1rem;
   color: var(--input-foreground);
   font-family: 'Geist', sans-serif;
+
+  &:not(:read-only) {
+    border-width: 1px;
+  }
 
   &::-webkit-outer-spin-button,
   &::-webkit-inner-spin-button {
