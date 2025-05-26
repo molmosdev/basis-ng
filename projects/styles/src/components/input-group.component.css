@@ -15,7 +15,7 @@ b-input-group {
     width: 100%;
   }
 
-  &:has(input[b-input]:focus-visible) {
+  &:has(input[b-input]:focus-visible:not(:read-only)) {
     outline: 2px solid var(--primary);
     outline-offset: 2px;
 
