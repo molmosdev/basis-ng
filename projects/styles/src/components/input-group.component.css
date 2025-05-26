@@ -4,9 +4,12 @@ b-input-group {
   border-radius: var(--radius);
   box-sizing: border-box;
   background-color: var(--input-background);
+  border-width: 1px;
+  border-style: solid;
+  border-color: var(--border-color);
 
-  &:not(:read-only) {
-    border: 1px solid var(--border-color);
+  &:has(input[b-input]:read-only) {
+    border-width: 0px;
   }
 
   input[b-input] {
