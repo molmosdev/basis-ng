@@ -18,6 +18,7 @@ import { NgModel } from '@angular/forms';
     '(blur)': 'onBlur($event)',
     '[class]': ' "size-" + size() ',
   },
+  exportAs: 'bInput',
 })
 export class InputComponent implements AfterViewInit {
   /**
