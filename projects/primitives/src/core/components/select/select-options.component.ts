@@ -87,6 +87,12 @@ export class SelectOptionsComponent {
    * @param value - The new array of selected values.
    */
   handleValueChange(value: string[]) {
+    // If the value is an empty array or contains a single empty string, clear the selection.
+    if (value.length === 1 && value[0] === '') {
+      this.value.set([]);
+      this.closeEmitter.emit();
+      return;
+    }
     this.value.set(value);
     this.closeEmitter.emit();
   }

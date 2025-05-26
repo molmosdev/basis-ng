@@ -90,6 +90,13 @@ export class CommandOptionsComponent implements OnInit {
     const selectValue = value
       ? value
       : (this.listKeyManager().activeItem?.value ?? []);
+    //  If the selectValue is an empty array or contains only an empty string, clear the selection
+    if (selectValue.length === 1 && selectValue[0] === '') {
+      this.value.set([]);
+      this.cdkListbox.value = [];
+      this.closeEmitter.emit();
+      return;
+    }
     this.value.set(selectValue);
     this.cdkListbox.value = this.value();
     this.closeEmitter.emit();
