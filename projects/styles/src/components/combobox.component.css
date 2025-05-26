@@ -26,6 +26,10 @@ b-combobox {
         color: var(--error-foreground);
       }
 
+      svg {
+        stroke: var(--error-foreground);
+      }
+
       &:focus-visible {
         outline-color: var(--error-foreground);
       }
