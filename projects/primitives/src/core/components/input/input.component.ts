@@ -119,4 +119,15 @@ export class InputComponent implements AfterViewInit {
       return null;
     }
   }
+
+  /**
+   * Método público para disparar el formateo como si se hiciera blur.
+   */
+  blur(): void {
+    if (this.isNumberType()) {
+      const value = this.el.nativeElement.value;
+      const formattedValue = this.formatNumber(value);
+      this.setValue(formattedValue || '');
+    }
+  }
 }
