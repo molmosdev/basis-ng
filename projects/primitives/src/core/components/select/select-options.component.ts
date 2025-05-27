@@ -26,7 +26,7 @@ import { OptionComponent } from '../../../shared/components/option.component';
   hostDirectives: [
     {
       directive: CdkListbox,
-      inputs: ['cdkListboxValue'],
+      inputs: ['cdkListboxValue', 'cdkListboxMultiple: multiple'],
       outputs: ['cdkListboxValueChange'],
     },
   ],
@@ -34,7 +34,7 @@ import { OptionComponent } from '../../../shared/components/option.component';
     '[cdkListboxValue]': 'value()',
     '(cdkListboxValueChange)': 'handleValueChange($event.value)',
     '[style.max-height]': 'maxHeight()',
-    '(keydown.enter)': 'closeEmitter.emit()',
+    '(keydown.enter)': 'onEnter()',
   },
 })
 export class SelectOptionsComponent {
@@ -68,6 +68,12 @@ export class SelectOptionsComponent {
   readonly noOptionsMessage = input<string>('');
 
   /**
+   * Signal indicating whether multiple selections are allowed.
+   * If true, the select component allows selecting multiple options.
+   */
+  readonly multiple = input<boolean>(false);
+
+  /**
    * Reference to the CDK Listbox directive.
    * This is used to manage the options and their selection state.
    */
@@ -90,10 +96,20 @@ export class SelectOptionsComponent {
     // If the value is an empty array or contains a single empty string, clear the selection.
     if (value.length === 1 && value[0] === '') {
       this.value.set([]);
-      this.closeEmitter.emit();
+      if (!this.multiple()) {
+        this.closeEmitter.emit();
+      }
       return;
     }
     this.value.set(value);
-    this.closeEmitter.emit();
+    if (!this.multiple()) {
+      this.closeEmitter.emit();
+    }
+  }
+
+  onEnter() {
+    if (!this.multiple()) {
+      this.closeEmitter.emit();
+    }
   }
 }

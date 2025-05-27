@@ -182,6 +182,14 @@ export class ComboboxComponent implements OnInit, ControlValueAccessor {
     this.buttonWidth.set(this.button()?.el.nativeElement.offsetWidth);
   }
 
+  /**
+   * Computed signal indicando si se permite selección múltiple.
+   * Se obtiene de CommandOptionsComponent.
+   */
+  readonly multiple = computed(
+    () => this.command()?.commandOptions()?.multiple() ?? false
+  );
+
   // Control Value Accessor methods
 
   /**
@@ -198,24 +206,37 @@ export class ComboboxComponent implements OnInit, ControlValueAccessor {
 
   /**
    * Writes a new value to the component.
-   * This method is called by Angular Forms to update the value of the combobox component.
-   * @param value - The new value to set.
+   * Este método ahora soporta selección múltiple.
    */
-  writeValue(value: string[]): void {
-    if (value) {
-      value.forEach(value => {
-        this.command()?.commandOptions()?.cdkListbox?.selectValue(value);
+  writeValue(value: string | string[]): void {
+    if (!value) {
+      return;
+    }
+    const values = this.multiple()
+      ? Array.isArray(value)
+        ? value
+        : [value]
+      : [typeof value === 'string' ? value : value?.[0]];
+    if (values) {
+      values.forEach(val => {
+        this.command()?.commandOptions()?.cdkListbox?.selectValue(val);
       });
-      this.value.set(value);
+      this.value.set(values);
     }
   }
 
   /**
    * Registers a callback function to be called when the value changes.
-   * @param fn - The callback function.
+   * Ahora soporta selección múltiple.
    */
-  registerOnChange(fn: (value: string[]) => void): void {
-    this.onChange = fn;
+  registerOnChange(fn: (value: string | string[]) => void): void {
+    this.onChange = (val: string[]) => {
+      if (this.multiple()) {
+        fn(val);
+      } else {
+        fn(val?.[0] ?? '');
+      }
+    };
   }
 
   /**

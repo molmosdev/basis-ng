@@ -109,6 +109,12 @@ export class SelectComponent implements OnInit, ControlValueAccessor {
   readonly disabled = model(false);
 
   /**
+   * Computed signal indicating whether multiple selections are allowed.
+   * This retrieves the `multiple` property from the `OptionsListComponent`.
+   */
+  readonly multiple = computed(() => this.optionsList()?.multiple() ?? false);
+
+  /**
    * Computed signal representing the options available in the dropdown.
    * This retrieves the options from the `OptionsListComponent`.
    */
@@ -201,12 +207,20 @@ export class SelectComponent implements OnInit, ControlValueAccessor {
    * This method is called by Angular Forms to update the value of the select component.
    * @param value - The new value to set.
    */
-  writeValue(value: string[]): void {
-    if (value) {
-      value.forEach(value => {
-        this.optionsList()?.listBox?.selectValue(value);
+  writeValue(value: string | string[]): void {
+    if (!value) {
+      return;
+    }
+    const values = this.multiple()
+      ? Array.isArray(value)
+        ? value
+        : [value]
+      : [typeof value === 'string' ? value : value?.[0]];
+    if (values) {
+      values.forEach(val => {
+        this.optionsList()?.listBox?.selectValue(val);
       });
-      this.value.set(value);
+      this.value.set(values);
     }
   }
 
@@ -214,8 +228,14 @@ export class SelectComponent implements OnInit, ControlValueAccessor {
    * Registers a callback function to be called when the value changes.
    * @param fn - The callback function.
    */
-  registerOnChange(fn: (value: string[]) => void): void {
-    this.onChange = fn;
+  registerOnChange(fn: (value: string | string[]) => void): void {
+    this.onChange = (val: string[]) => {
+      if (this.multiple()) {
+        fn(val);
+      } else {
+        fn(val?.[0] ?? '');
+      }
+    };
   }
 
   /**

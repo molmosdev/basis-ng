@@ -5,7 +5,7 @@ import {
   CommandComponent,
   CommandOptionsComponent,
   OptionComponent,
-} from '@basis-ng/primitives';
+} from '../../../../../../../../primitives/src/public-api';
 import { CodeBlockComponent } from '../shared/components/code-block.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FormGroup, FormControl } from '@angular/forms';
@@ -82,6 +82,20 @@ import { FormGroup, FormControl } from '@angular/forms';
           </ul>
         </b-command>
       </b-combobox>
+    </div>
+
+    <h2>Multiple Selection</h2>
+    <code-block [code]="multipleUsage" />
+    <div class="documentation-playground">
+      <b-combobox [(ngModel)]="selectedMultiple">
+        <b-command>
+          <ul b-command-options [multiple]="true">
+            <li b-option value="option1">Option 1</li>
+            <li b-option value="option2">Option 2</li>
+            <li b-option value="option3">Option 3</li>
+          </ul>
+        </b-command>
+      </b-combobox>
     </div> `,
   imports: [
     CodeBlockComponent,
@@ -102,6 +116,7 @@ export default class ComboboxDocumentationComponent {
 @import '@basis-ng/styles/option';`;
 
   selectedOption = ['option2'];
+  selectedMultiple = ['option1', 'option3'];
   formGroup = new FormGroup({
     comboboxControl: new FormControl(['option3']),
   });
@@ -142,6 +157,16 @@ export default class ComboboxDocumentationComponent {
   <b-command>
     <ul b-command-options noOptionsMessage="No options available">
       <!-- No options -->
+    </ul>
+  </b-command>
+</b-combobox>`;
+
+  multipleUsage = `<b-combobox [(ngModel)]="selectedMultiple">
+  <b-command>
+    <ul b-command-options [multiple]="true">
+      <li b-option value="option1">Option 1</li>
+      <li b-option value="option2">Option 2</li>
+      <li b-option value="option3">Option 3</li>
     </ul>
   </b-command>
 </b-combobox>`;

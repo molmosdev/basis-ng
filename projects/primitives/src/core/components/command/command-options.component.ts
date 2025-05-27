@@ -27,12 +27,15 @@ import {
   hostDirectives: [
     {
       directive: CdkListbox,
+      inputs: ['cdkListboxValue', 'cdkListboxMultiple: multiple'],
       outputs: ['cdkListboxValueChange'],
     },
   ],
   host: {
-    '(cdkListboxValueChange)': 'selectOption($event.value)',
-    '(keydown.enter)': 'closeEmitter.emit()',
+    '[cdkListboxValue]': 'value()',
+    '[cdkListboxMultiple]': 'multiple()',
+    '(cdkListboxValueChange)': 'handleValueChange($event.value)',
+    '(keydown.enter)': 'onEnter()',
   },
 })
 export class CommandOptionsComponent implements OnInit {
@@ -74,6 +77,11 @@ export class CommandOptionsComponent implements OnInit {
    * Emitter for closing the command options.
    */
   closeEmitter = output();
+
+  /**
+   * Signal indicando si se permite selección múltiple.
+   */
+  readonly multiple = input<boolean>(false);
 
   /**
    * Lifecycle hook that initializes the component.
@@ -131,5 +139,26 @@ export class CommandOptionsComponent implements OnInit {
         option.element.classList.remove('cdk-option-highlighted');
       }
     });
+  }
+
+  handleValueChange(value: string[]) {
+    // If the value is an empty array or contains a single empty string, clear the selection.
+    if (value.length === 1 && value[0] === '') {
+      this.value.set([]);
+      if (!this.multiple()) {
+        this.closeEmitter.emit();
+      }
+      return;
+    }
+    this.value.set(value);
+    if (!this.multiple()) {
+      this.closeEmitter.emit();
+    }
+  }
+
+  onEnter() {
+    if (!this.multiple()) {
+      this.closeEmitter.emit();
+    }
   }
 }

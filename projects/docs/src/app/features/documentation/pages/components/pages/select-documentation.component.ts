@@ -4,7 +4,7 @@ import {
   SelectComponent,
   OptionComponent,
   SelectOptionsComponent,
-} from '@basis-ng/primitives';
+} from '../../../../../../../../primitives/src/public-api';
 import { CodeBlockComponent } from '../shared/components/code-block.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FormGroup, FormControl } from '@angular/forms';
@@ -30,7 +30,19 @@ import { FormGroup, FormControl } from '@angular/forms';
     <code-block [code]="formsModuleUsage" />
     <div class="documentation-playground">
       <b-select [(ngModel)]="selectedOption">
-        <ul b-select-options>
+        <ul b-select-options [multiple]="false">
+          <li b-option value="option1">Option 1</li>
+          <li b-option value="option2">Option 2</li>
+          <li b-option value="option3">Option 3</li>
+        </ul>
+      </b-select>
+    </div>
+
+    <h2>Multiple Selection</h2>
+    <code-block [code]="multipleUsage" />
+    <div class="documentation-playground">
+      <b-select [(ngModel)]="selectedMultiple">
+        <ul b-select-options [multiple]="true">
           <li b-option value="option1">Option 1</li>
           <li b-option value="option2">Option 2</li>
           <li b-option value="option3">Option 3</li>
@@ -43,7 +55,7 @@ import { FormGroup, FormControl } from '@angular/forms';
     <div class="documentation-playground">
       <form [formGroup]="formGroup">
         <b-select formControlName="selectControl">
-          <ul b-select-options>
+          <ul b-select-options [multiple]="false">
             <li b-option value="option1">Option 1</li>
             <li b-option value="option2">Option 2</li>
             <li b-option value="option3">Option 3</li>
@@ -56,7 +68,7 @@ import { FormGroup, FormControl } from '@angular/forms';
     <code-block [code]="customMaxWidthUsage" />
     <div class="documentation-playground">
       <b-select placeholder="Select an option" maxWidth="240px">
-        <ul b-select-options>
+        <ul b-select-options [multiple]="false">
           <li b-option value="option1">Option 1</li>
           <li b-option value="option2">Option 2</li>
           <li b-option value="option3">Option 3</li>
@@ -90,12 +102,21 @@ export default class SelectDocumentationComponent {
 @import '@basis-ng/styles/option';`;
 
   selectedOption = ['option2'];
+  selectedMultiple = ['option1', 'option3'];
   formGroup = new FormGroup({
     selectControl: new FormControl(['option3']),
   });
 
   formsModuleUsage = `<b-select [(ngModel)]="selectedOption">
-  <ul b-select-options>
+  <ul b-select-options [multiple]="false">
+    <li b-option value="option1">Option 1</li>
+    <li b-option value="option2">Option 2</li>
+    <li b-option value="option3">Option 3</li>
+  </ul>
+</b-select>`;
+
+  multipleUsage = `<b-select [(ngModel)]="selectedMultiple">
+  <ul b-select-options [multiple]="true">
     <li b-option value="option1">Option 1</li>
     <li b-option value="option2">Option 2</li>
     <li b-option value="option3">Option 3</li>
@@ -104,7 +125,7 @@ export default class SelectDocumentationComponent {
 
   reactiveFormsUsage = `<form [formGroup]="formGroup">
   <b-select formControlName="selectControl">
-    <ul b-select-options>
+    <ul b-select-options [multiple]="false">
       <li b-option value="option1">Option 1</li>
       <li b-option value="option2">Option 2</li>
       <li b-option value="option3">Option 3</li>
@@ -113,7 +134,7 @@ export default class SelectDocumentationComponent {
 </form>`;
 
   customMaxWidthUsage = `<b-select placeholder="Select an option" maxWidth="240px">
-  <ul b-select-options>
+  <ul b-select-options [multiple]="false">
     <li b-option value="option1">Option 1</li>
     <li b-option value="option2">Option 2</li>
     <li b-option value="option3">Option 3</li>
