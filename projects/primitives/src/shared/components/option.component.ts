@@ -12,7 +12,7 @@ import { Component, ElementRef, inject } from '@angular/core';
   hostDirectives: [
     {
       directive: CdkOption,
-      inputs: ['cdkOption: value'],
+      inputs: ['cdkOption: value', 'cdkOptionDisabled: disabled'],
     },
   ],
 })

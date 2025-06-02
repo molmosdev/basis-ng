@@ -23,4 +23,10 @@ li[b-option] {
     background-color: var(--secondary);
     color: var(--secondary-foreground);
   }
+
+  &[aria-disabled='true'] {
+    opacity: 0.6;
+    pointer-events: none;
+    background: none;
+  }
 }
