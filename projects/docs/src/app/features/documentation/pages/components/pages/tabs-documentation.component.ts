@@ -6,6 +6,7 @@ import {
 import { CodeBlockComponent } from '../shared/components/code-block.component';
 import { FormsModule } from '@angular/forms';
 import { NgTemplateOutlet } from '@angular/common';
+import { ReactiveFormsModule, FormGroup, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'article[app-tabs-documentation]',
@@ -83,20 +84,47 @@ import { NgTemplateOutlet } from '@angular/common';
     </ng-template>
     <ng-template #tab3Content>
       <p>Lazy-loaded content for Tab 3</p>
-    </ng-template> `,
+    </ng-template>
+
+    <h2>Reactive Forms Usage</h2>
+    <span> Use with Angular's Reactive Forms to manage tab state. </span>
+    <code-block [code]="reactiveFormsUsage" />
+    <div
+      class="documentation-playground"
+      style="flex-direction: column; align-items: center;">
+      <form [formGroup]="tabsForm">
+        <b-tabs formControlName="tabControl">
+          <b-tab value="tab1">Tab 1</b-tab>
+          <b-tab value="tab2">Tab 2</b-tab>
+          <b-tab value="tab3">Tab 3</b-tab>
+        </b-tabs>
+      </form>
+      @switch (tabsForm.value.tabControl![0]) {
+        @case ('tab1') {
+          <p>Tab 1 content</p>
+        }
+        @case ('tab2') {
+          <p>Tab 2 content</p>
+        }
+        @case ('tab3') {
+          <p>Tab 3 content</p>
+        }
+      }
+    </div>`,
   standalone: true,
   imports: [
     TabsComponent,
     TabComponent,
     CodeBlockComponent,
     FormsModule,
+    ReactiveFormsModule,
     NgTemplateOutlet,
   ],
 })
 export default class TabsDocumentationComponent {
   angularImport = `import { TabsComponent, TabComponent, CodeBlockComponent } from '@basis-ng/primitives';`;
 
-  stylesImport = `@import '@basis-ng/styles/tabs';
+  stylesImport = `@import '@basis-ng/styles/tabs'
 @import '@basis-ng/styles/tab';`;
 
   basicUsage = `<b-tabs [(ngModel)]="selectedTab">
@@ -148,4 +176,28 @@ export default class TabsDocumentationComponent {
 </ng-template>`;
 
   lazySelectedTab = ['tab1'];
+
+  reactiveFormsUsage = `<form [formGroup]="tabsForm">
+  <b-tabs formControlName="tabControl">
+    <b-tab value="tab1">Tab 1</b-tab>
+    <b-tab value="tab2">Tab 2</b-tab>
+    <b-tab value="tab3">Tab 3</b-tab>
+  </b-tabs>
+</form>
+
+@switch (tabsForm.value.tabControl[0]) {
+  @case ('tab1') {
+    <p>Tab 1 content</p>
+  }
+  @case ('tab2') {
+    <p>Tab 2 content</p>
+  }
+  @case ('tab3') {
+    <p>Tab 3 content</p>
+  }
+}`;
+
+  tabsForm = new FormGroup({
+    tabControl: new FormControl({ value: ['tab1'], disabled: true }),
+  });
 }
