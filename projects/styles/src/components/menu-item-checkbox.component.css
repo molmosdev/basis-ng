@@ -33,7 +33,7 @@ button[b-menu-item-checkbox] {
   /* aria disabled true */
   &[aria-disabled='true'] {
     cursor: auto;
-    opacity: 0.5;
+    opacity: 0.6;
   }
 
   &.squared {
