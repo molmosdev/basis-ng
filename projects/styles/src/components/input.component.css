@@ -13,7 +13,7 @@ input[b-input] {
   color: var(--input-foreground);
   font-family: 'Geist', sans-serif;
 
-  &:read-only {
+  &:read-only:not(:disabled) {
     border-width: 0px;
   }
 
