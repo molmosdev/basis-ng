@@ -38,7 +38,8 @@ import { OverlayDirective } from '../../directives/overlay.directive';
       (keydown.arrowDown)="!isOpen() && isOpen.set(true)"
       [activeEnabled]="false"
       bOverlayTrigger
-      #trigger="bOverlayTrigger">
+      #trigger="bOverlayTrigger"
+      [disabled]="disabled()">
       <span>{{ content() }}</span>
       <i b-icon icon="ChevronDown" [size]="16"></i>
     </button>
@@ -54,9 +55,6 @@ import { OverlayDirective } from '../../directives/overlay.directive';
       (detach)="isOpen.set(false)">
       <ng-content />
     </ng-template>`,
-  host: {
-    '[class.disabled]': 'disabled()',
-  },
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
