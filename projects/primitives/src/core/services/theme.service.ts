@@ -1,5 +1,12 @@
-import { Injectable, Renderer2, RendererFactory2, inject } from '@angular/core';
+import {
+  Injectable,
+  Renderer2,
+  RendererFactory2,
+  inject,
+  PLATFORM_ID,
+} from '@angular/core';
 import { signal } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 
 @Injectable({
   providedIn: 'root',
@@ -27,6 +34,16 @@ export class ThemeService {
    */
   private rendererFactory = inject(RendererFactory2);
 
+  /**
+   * PLATFORM_ID token to identify the platform.
+   */
+  private platformId = inject(PLATFORM_ID);
+
+  /**
+   * Flag indicating whether the application is running in a browser.
+   */
+  private isBrowser = isPlatformBrowser(this.platformId);
+
   constructor() {
     this.renderer = this.rendererFactory.createRenderer(null, null);
   }
@@ -45,7 +62,10 @@ export class ThemeService {
       this.removeTheme();
       return;
     }
-    this.renderer.setAttribute(document.documentElement, 'data-theme', theme);
+    if (this.isBrowser) {
+      // Safe DOM access only in browser
+      this.renderer.setAttribute(document.documentElement, 'data-theme', theme);
+    }
   }
 
   /**
@@ -61,6 +81,8 @@ export class ThemeService {
    * This is used when the theme is set to `'auto'`.
    */
   removeTheme(): void {
-    this.renderer.removeAttribute(document.documentElement, 'data-theme');
+    if (this.isBrowser) {
+      this.renderer.removeAttribute(document.documentElement, 'data-theme');
+    }
   }
 }
