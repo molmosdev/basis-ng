@@ -1,6 +1,6 @@
 import {
   ApplicationConfig,
-  provideExperimentalZonelessChangeDetection,
+  provideZonelessChangeDetection,
 } from '@angular/core';
 import { provideRouter, withInMemoryScrolling } from '@angular/router';
 import { routes } from './app.routes';
@@ -8,7 +8,7 @@ import { provideHighlightOptions } from 'ngx-highlightjs';
 
 export const appConfig: ApplicationConfig = {
   providers: [
-    provideExperimentalZonelessChangeDetection(),
+    provideZonelessChangeDetection(),
     provideRouter(
       routes,
       withInMemoryScrolling({
