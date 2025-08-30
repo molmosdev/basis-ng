@@ -1,16 +1,16 @@
 import { Component } from '@angular/core';
 import { CodeBlockComponent } from '../shared/components/code-block.component';
-import { AlertComponent } from '@basis-ng/primitives';
+import {
+  AlertComponent,
+  OtpComponent,
+  OtpDigitDirective,
+} from '@basis-ng/primitives';
 import {
   FormsModule,
   ReactiveFormsModule,
   FormControl,
   FormGroup,
 } from '@angular/forms';
-import {
-  OtpComponent,
-  OtpDigitDirective,
-} from 'projects/primitives/src/core/components/otp/otp.component';
 
 @Component({
   selector: 'article[app-otp-documentation]',
