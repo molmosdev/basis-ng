@@ -184,6 +184,15 @@ export const componentsRoutes: Routes = [
     },
   },
   {
+    path: 'otp',
+    loadComponent: () => import('./pages/otp-documentation.component'),
+    title: 'OTP - Basis UI',
+    data: {
+      title: 'OTP',
+      new: true,
+    },
+  },
+  {
     path: '**',
     redirectTo: '',
   },
