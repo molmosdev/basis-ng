@@ -266,7 +266,7 @@ export class OtpComponent implements AfterContentInit, ControlValueAccessor {
 import { Directive, inject } from '@angular/core';
 
 @Directive({
-  selector: 'input[b-b-otp-digit]',
+  selector: 'input[b-otp-digit]',
   host: {
     maxlength: '1',
   },
