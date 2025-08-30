@@ -18,10 +18,10 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
  *
  * @example
  * <b-otp>
- *   <input otp-digit />
- *   <input otp-digit />
- *   <input otp-digit />
- *   <input otp-digit />
+ *   <input b-otp-digit />
+ *   <input b-otp-digit />
+ *   <input b-otp-digit />
+ *   <input b-otp-digit />
  * </b-otp>
  */
 @Component({
@@ -266,7 +266,7 @@ export class OtpComponent implements AfterContentInit, ControlValueAccessor {
 import { Directive, inject } from '@angular/core';
 
 @Directive({
-  selector: 'input[otp-digit]',
+  selector: 'input[b-b-otp-digit]',
   host: {
     maxlength: '1',
   },

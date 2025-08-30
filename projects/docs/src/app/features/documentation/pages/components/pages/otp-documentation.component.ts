@@ -50,7 +50,7 @@ import {
           <td>Disables the OTP component.</td>
         </tr>
         <tr>
-          <td><strong>otp-digit</strong></td>
+          <td><strong>b-otp-digit</strong></td>
           <td><code>directive</code></td>
           <td>Allows any character, limited to one character per input.</td>
         </tr>
@@ -61,12 +61,12 @@ import {
     <code-block [code]="ngModelUsage" />
     <div class="documentation-playground">
       <b-otp [(ngModel)]="otpValue">
-        <input otp-digit />
-        <input otp-digit />
-        <input otp-digit />
-        <input otp-digit />
-        <input otp-digit />
-        <input otp-digit />
+        <input b-otp-digit />
+        <input b-otp-digit />
+        <input b-otp-digit />
+        <input b-otp-digit />
+        <input b-otp-digit />
+        <input b-otp-digit />
       </b-otp>
     </div>
 
@@ -77,28 +77,28 @@ import {
       [style.flex-direction]="'column'"
       [style.align-items]="'center'">
       <b-otp size="1">
-        <input otp-digit />
-        <input otp-digit />
-        <input otp-digit />
-        <input otp-digit />
-        <input otp-digit />
-        <input otp-digit />
+        <input b-otp-digit />
+        <input b-otp-digit />
+        <input b-otp-digit />
+        <input b-otp-digit />
+        <input b-otp-digit />
+        <input b-otp-digit />
       </b-otp>
       <b-otp size="2">
-        <input otp-digit />
-        <input otp-digit />
-        <input otp-digit />
-        <input otp-digit />
-        <input otp-digit />
-        <input otp-digit />
+        <input b-otp-digit />
+        <input b-otp-digit />
+        <input b-otp-digit />
+        <input b-otp-digit />
+        <input b-otp-digit />
+        <input b-otp-digit />
       </b-otp>
       <b-otp size="3">
-        <input otp-digit />
-        <input otp-digit />
-        <input otp-digit />
-        <input otp-digit />
-        <input otp-digit />
-        <input otp-digit />
+        <input b-otp-digit />
+        <input b-otp-digit />
+        <input b-otp-digit />
+        <input b-otp-digit />
+        <input b-otp-digit />
+        <input b-otp-digit />
       </b-otp>
     </div>
 
@@ -106,12 +106,12 @@ import {
     <code-block [code]="disabledUsage" />
     <div class="documentation-playground">
       <b-otp [disabled]="true">
-        <input otp-digit />
-        <input otp-digit />
-        <input otp-digit />
-        <input otp-digit />
-        <input otp-digit />
-        <input otp-digit />
+        <input b-otp-digit />
+        <input b-otp-digit />
+        <input b-otp-digit />
+        <input b-otp-digit />
+        <input b-otp-digit />
+        <input b-otp-digit />
       </b-otp>
     </div>
 
@@ -120,12 +120,12 @@ import {
     <form [formGroup]="form">
       <div class="documentation-playground">
         <b-otp formControlName="invalidControl">
-          <input otp-digit />
-          <input otp-digit />
-          <input otp-digit />
-          <input otp-digit />
-          <input otp-digit />
-          <input otp-digit />
+          <input b-otp-digit />
+          <input b-otp-digit />
+          <input b-otp-digit />
+          <input b-otp-digit />
+          <input b-otp-digit />
+          <input b-otp-digit />
         </b-otp>
       </div>
     </form>
@@ -142,10 +142,10 @@ import {
 export default class OtpDocumentationComponent {
   angularImport = `import { OtpComponent, OtpDigitDirective } from '@basis-ng/primitives';`;
   stylesImport = `@import '@basis-ng/styles/components/otp.component.css';`;
-  ngModelUsage = `<b-otp [(ngModel)]='otpValue'>\n  <input otp-digit />\n  <input otp-digit />\n  <input otp-digit />\n  <input otp-digit />\n  <input otp-digit />\n  <input otp-digit />\n</b-otp>`;
-  sizeUsage = `<b-otp size='1'>\n  <input otp-digit />\n  <input otp-digit />\n  <input otp-digit />\n  <input otp-digit />\n  <input otp-digit />\n  <input otp-digit />\n</b-otp>\n\n<b-otp size='2'>\n  <input otp-digit />\n  <input otp-digit />\n  <input otp-digit />\n  <input otp-digit />\n  <input otp-digit />\n  <input otp-digit />\n</b-otp>\n\n<b-otp size='3'>\n  <input otp-digit />\n  <input otp-digit />\n  <input otp-digit />\n  <input otp-digit />\n  <input otp-digit />\n  <input otp-digit />\n</b-otp>`;
-  disabledUsage = `<b-otp [disabled]='true'>\n  <input otp-digit />\n  <input otp-digit />\n  <input otp-digit />\n  <input otp-digit />\n  <input otp-digit />\n  <input otp-digit />\n</b-otp>`;
-  invalidUsage = `<form [formGroup]='form'>\n  <b-otp formControlName='invalidControl'>\n    <input otp-digit />\n    <input otp-digit />\n    <input otp-digit />\n    <input otp-digit />\n    <input otp-digit />\n    <input otp-digit />\n  </b-otp>\n</form>`;
+  ngModelUsage = `<b-otp [(ngModel)]='otpValue'>\n  <input b-otp-digit />\n  <input b-otp-digit />\n  <input b-otp-digit />\n  <input b-otp-digit />\n  <input b-otp-digit />\n  <input b-otp-digit />\n</b-otp>`;
+  sizeUsage = `<b-otp size='1'>\n  <input b-otp-digit />\n  <input b-otp-digit />\n  <input b-otp-digit />\n  <input b-otp-digit />\n  <input b-otp-digit />\n  <input b-otp-digit />\n</b-otp>\n\n<b-otp size='2'>\n  <input b-otp-digit />\n  <input b-otp-digit />\n  <input b-otp-digit />\n  <input b-otp-digit />\n  <input b-otp-digit />\n  <input b-otp-digit />\n</b-otp>\n\n<b-otp size='3'>\n  <input b-otp-digit />\n  <input b-otp-digit />\n  <input b-otp-digit />\n  <input b-otp-digit />\n  <input b-otp-digit />\n  <input b-otp-digit />\n</b-otp>`;
+  disabledUsage = `<b-otp [disabled]='true'>\n  <input b-otp-digit />\n  <input b-otp-digit />\n  <input b-otp-digit />\n  <input b-otp-digit />\n  <input b-otp-digit />\n  <input b-otp-digit />\n</b-otp>`;
+  invalidUsage = `<form [formGroup]='form'>\n  <b-otp formControlName='invalidControl'>\n    <input b-otp-digit />\n    <input b-otp-digit />\n    <input b-otp-digit />\n    <input b-otp-digit />\n    <input b-otp-digit />\n    <input b-otp-digit />\n  </b-otp>\n</form>`;
   maxWidthUsage = ``;
 
   otpValue = '';

@@ -4,7 +4,7 @@ b-otp {
   justify-content: center;
 }
 
-input[otp-digit] {
+input[b-otp-digit] {
   background-color: var(--input-background);
   border-radius: var(--radius, 0.5rem);
   box-sizing: border-box;
@@ -87,8 +87,8 @@ input[otp-digit] {
   }
 }
 
-b-otp.ng-invalid.ng-touched input[otp-digit],
-b-otp.ng-invalid.ng-dirty input[otp-digit] {
+b-otp.ng-invalid.ng-touched input[b-b-otp-digit],
+b-otp.ng-invalid.ng-dirty input[b-b-otp-digit] {
   color: var(--error-foreground);
   background-color: var(--error);
   border-color: var(--error-border-color);
@@ -96,13 +96,13 @@ b-otp.ng-invalid.ng-dirty input[otp-digit] {
   outline-offset: 2px;
 }
 
-b-otp.ng-invalid.ng-touched input[otp-digit]:focus-visible,
-b-otp.ng-invalid.ng-dirty input[otp-digit]:focus-visible {
+b-otp.ng-invalid.ng-touched input[b-b-otp-digit]:focus-visible,
+b-otp.ng-invalid.ng-dirty input[b-b-otp-digit]:focus-visible {
   outline: 2px solid var(--error-foreground);
   outline-offset: 2px;
 }
 
-b-otp.ng-invalid.ng-touched input[otp-digit]::placeholder,
-b-otp.ng-invalid.ng-dirty input[otp-digit]::placeholder {
+b-otp.ng-invalid.ng-touched input[b-b-otp-digit]::placeholder,
+b-otp.ng-invalid.ng-dirty input[b-b-otp-digit]::placeholder {
   color: var(--error-foreground);
 }
