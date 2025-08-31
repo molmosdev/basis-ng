@@ -118,6 +118,12 @@ export * from './core/components/card/card-description.component';
 export * from './core/components/card/card-content.component';
 export * from './core/components/card/card-footer.component';
 
+/* Translation Service */
+export * from './core/services/translation.service';
+
+// pipe
+export * from './core/pipes/translate.pipe';
+
 /* Types */
 
 /* Position */
