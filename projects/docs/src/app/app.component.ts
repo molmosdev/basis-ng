@@ -3,21 +3,18 @@ import { RouterOutlet } from '@angular/router';
 import { ThemeService } from '../../../primitives/src/core/services/theme.service';
 import { HeaderComponent } from './core/components/header/header.component';
 import { OverlayTriggerDirective } from 'projects/primitives/src/core/directives/overlay-trigger.directive';
-import { OverlayDirective } from 'projects/primitives/src/core/directives/overlay.directive';
-import { SelectTrigger } from 'projects/primitives/src/core/components/select-v2/select/components/select-trigger/select-trigger';
-import { SelectContent } from 'projects/primitives/src/core/components/select-v2/select/components/select-content/select-content';
+import { SelectTrigger } from 'projects/primitives/src/core/components/select-v2/select/components/select-trigger';
+import { SelectContent } from 'projects/primitives/src/core/components/select-v2/select/components/select-content';
 import { Select } from 'projects/primitives/src/core/components/select-v2/select/select';
-import { SelectValue } from 'projects/primitives/src/core/components/select-v2/select/components/select-value/select-value';
+import { SelectValue } from 'projects/primitives/src/core/components/select-v2/select/components/select-value';
 import { Option } from 'projects/primitives/src/shared/components/option.component';
 import { FormsModule } from '@angular/forms';
-import { JsonPipe } from '@angular/common';
 
 @Component({
   selector: 'app-root',
   imports: [
     RouterOutlet,
     HeaderComponent,
-    OverlayDirective,
     OverlayTriggerDirective,
     Select,
     SelectTrigger,
@@ -25,7 +22,6 @@ import { JsonPipe } from '@angular/common';
     SelectContent,
     Option,
     FormsModule,
-    JsonPipe,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',

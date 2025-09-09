@@ -13,7 +13,6 @@ import { Option } from '@basis-ng/primitives';
   selector: 'ul[b-select-content]',
   imports: [],
   template: `<ng-content />`,
-  styleUrl: './select-content.css',
   hostDirectives: [
     {
       directive: CdkListbox,

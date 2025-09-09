@@ -1,8 +1,7 @@
 li[b-option] {
   @apply flex gap-2 py-1.5 px-3 text-sm box-border cursor-pointer min-w-full items-center rounded-sm;
+  @apply hover:bg-secondary/60 focus:bg-secondary/60;
 
-  &:focus,
-  &:hover,
   &.cdk-option-highlighted {
     @apply bg-secondary/10;
   }

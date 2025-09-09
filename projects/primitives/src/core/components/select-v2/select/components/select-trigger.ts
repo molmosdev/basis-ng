@@ -17,7 +17,6 @@ import { OverlayTriggerDirective } from 'projects/primitives/src/core/directives
       class="lucide lucide-chevron-down-icon lucide-chevron-down">
       <path d="m6 9 6 6 6-6" />
     </svg> `,
-  styleUrl: './select-trigger.css',
   host: {
     '(keydown.arrowUp)': 'buttonClicked.emit()',
     '(keydown.arrowDown)': 'buttonClicked.emit()',

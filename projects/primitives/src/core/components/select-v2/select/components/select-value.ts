@@ -9,7 +9,6 @@ import { Component, ElementRef, inject, input, signal } from '@angular/core';
       {{ placeholder() }}
     }
   `,
-  styleUrl: './select-value.css',
 })
 export class SelectValue {
   el = inject(ElementRef);

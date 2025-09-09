@@ -6,12 +6,13 @@ import {
   signal,
   computed,
   viewChild,
+  input,
 } from '@angular/core';
-import { SelectContent } from './components/select-content/select-content';
+import { SelectContent } from './components/select-content';
 import { OverlayDirective } from '../../../directives/overlay.directive';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { SelectTrigger } from './components/select-trigger/select-trigger';
-import { SelectValue } from './components/select-value/select-value';
+import { SelectTrigger } from './components/select-trigger';
+import { SelectValue } from './components/select-value';
 
 @Component({
   selector: 'b-select',
@@ -28,7 +29,6 @@ import { SelectValue } from './components/select-value/select-value';
       [positions]="['bottom-left', 'bottom-right', 'top-left', 'top-right']">
       <ng-content select="[b-select-content]" />
     </ng-template>`,
-  styleUrl: './select.css',
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
@@ -36,6 +36,11 @@ import { SelectValue } from './components/select-value/select-value';
       multi: true,
     },
   ],
+  host: {
+    '[class.b-size-1]': 'size() === "1"',
+    '[class.b-size-2]': 'size() === "2"',
+    '[class.b-size-3]': 'size() === "3"',
+  },
 })
 export class Select implements ControlValueAccessor {
   readonly overlay = viewChild(OverlayDirective);
@@ -45,6 +50,7 @@ export class Select implements ControlValueAccessor {
   readonly options = computed(() => this.selectContent()?.options());
   readonly open = signal(false);
   readonly value = signal<string[]>([]);
+  readonly size = input<'1' | '2' | '3'>('2');
 
   constructor() {
     effect(() => {
@@ -65,7 +71,7 @@ export class Select implements ControlValueAccessor {
 
   handleTriggerClicks() {
     this.selectTrigger()!.buttonClicked.subscribe(() => {
-      this.open.set(!this.open());
+      this.open.set(true);
     });
   }
 
