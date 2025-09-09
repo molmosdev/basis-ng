@@ -4,7 +4,6 @@ import { ThemeService } from '../../../../../../primitives/src/core/services/the
 import { ResponsiveService } from '../../../../../../primitives/src/core/services/responsive.service';
 import {
   ButtonComponent,
-  IconComponent,
   MenuComponent,
   MenuTriggerDirective,
 } from '@basis-ng/primitives';
@@ -20,7 +19,6 @@ import { MenuGroupComponent } from '../../../../../../primitives/src/core/compon
     MenuComponent,
     MenuItemRadioComponent,
     MenuGroupComponent,
-    IconComponent,
   ],
   templateUrl: './header.component.html',
   styleUrl: './header.component.css',

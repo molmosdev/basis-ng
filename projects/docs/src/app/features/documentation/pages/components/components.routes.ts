@@ -15,6 +15,14 @@ export const componentsRoutes: Routes = [
     },
   },
   {
+    path: 'spinner',
+    loadComponent: () => import('./pages/spinner-documentation.component'),
+    title: 'Spinner - Basis UI',
+    data: {
+      title: 'Spinner',
+    },
+  },
+  {
     path: 'input',
     loadComponent: () => import('./pages/input-documentation.component'),
     title: 'Input - Basis UI',

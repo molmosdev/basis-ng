@@ -3,7 +3,7 @@ import {
   AlertComponent,
   CommandComponent,
   CommandOptionsComponent,
-  OptionComponent,
+  Option,
 } from '@basis-ng/primitives';
 import { CodeBlockComponent } from '../shared/components/code-block.component';
 
@@ -66,7 +66,7 @@ import { CodeBlockComponent } from '../shared/components/code-block.component';
     AlertComponent,
     CommandComponent,
     CommandOptionsComponent,
-    OptionComponent,
+    Option,
   ],
 })
 export default class CommandDocumentationComponent {

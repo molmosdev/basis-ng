@@ -3,7 +3,6 @@ import {
   MenuGroupComponent,
   MenuItemComponent,
   AlertComponent,
-  IconComponent,
   MenuLabelComponent,
   MenuComponent,
   ButtonComponent,
@@ -94,7 +93,7 @@ import { CodeBlockComponent } from '../shared/components/code-block.component';
           <div
             style="display: flex; justify-content: space-between; width: 100%">
             Item 2
-            <i b-icon icon="ChevronRight" [size]="16"></i>
+            <!-- <i b-icon icon="ChevronRight" [size]="16"></i> -->
           </div>
         </button>
         <ng-template #subMenu>
@@ -132,7 +131,7 @@ import { CodeBlockComponent } from '../shared/components/code-block.component';
             <div
               style="display: flex; justify-content: space-between; width: 100%">
               Item 3
-              <i b-icon icon="ChevronRight" [size]="16"></i>
+              <!-- <i b-icon icon="ChevronRight" [size]="16"></i> -->
             </div>
           </button>
           <ng-template #subMenu>
@@ -223,7 +222,7 @@ import { CodeBlockComponent } from '../shared/components/code-block.component';
     MenuLabelComponent,
     MenuTriggerDirective,
     CodeBlockComponent,
-    IconComponent,
+    // IconComponent,
     ButtonComponent,
     AlertComponent,
   ],

@@ -6,25 +6,14 @@ import {
   inject,
   input,
   output,
-  signal,
 } from '@angular/core';
-import { Option } from '../../../shared/components/option.component';
-import { JsonPipe } from '@angular/common';
+import { Option } from '@basis-ng/primitives';
 
-/**
- * Component representing the list of options in a select.
- * This component integrates with Angular CDK Listbox to manage options and their selection.
- */
 @Component({
-  selector: 'ul[b-select-options]',
-  imports: [JsonPipe],
-  template: `<ng-content />
-    {{ value() | json }}
-    @if (options().length === 0) {
-      <div class="no-options-message">
-        {{ noOptionsMessage() }}
-      </div>
-    }`,
+  selector: 'ul[b-select-content]',
+  imports: [],
+  template: `<ng-content />`,
+  styleUrl: './select-content.css',
   hostDirectives: [
     {
       directive: CdkListbox,
@@ -33,25 +22,10 @@ import { JsonPipe } from '@angular/common';
     },
   ],
   host: {
-    '[cdkListboxValue]': 'value()',
     '(cdkListboxValueChange)': 'handleValueChange($event.value)',
-    '[style.max-height]': 'maxHeight()',
-    '(keydown.enter)': 'onEnter()',
   },
 })
-export class SelectOptionsComponent {
-  /**
-   * Signal representing the selected values in the listbox.
-   * This is an array of strings corresponding to the selected option values.
-   */
-  readonly value = signal<string[]>([]);
-
-  /**
-   * Event emitter triggered when the dropdown should close.
-   * This is used to notify the parent component to close the dropdown.
-   */
-  closeEmitter = output();
-
+export class SelectContent {
   /**
    * Reference to the host element of the component.
    * This provides access to the DOM element of the options list.
@@ -59,15 +33,10 @@ export class SelectOptionsComponent {
   el = inject(ElementRef);
 
   /**
-   * Input for setting the maximum height of the dropdown.
-   * Defaults to '300px'. This controls the vertical size of the dropdown.
+   * Reference to the CDK Listbox directive.
+   * This is used to manage the options and their selection state.
    */
-  readonly maxHeight = input<string>('300px');
-
-  /**
-   * No options message displayed when there are no available options in the dropdown.
-   */
-  readonly noOptionsMessage = input<string>('');
+  listBox = inject(CdkListbox);
 
   /**
    * Signal indicating whether multiple selections are allowed.
@@ -76,10 +45,15 @@ export class SelectOptionsComponent {
   readonly multiple = input<boolean>(false);
 
   /**
-   * Reference to the CDK Listbox directive.
-   * This is used to manage the options and their selection state.
+   * Event emitter that emits when the value changes.
    */
-  listBox = inject(CdkListbox);
+  changeValueEmitter = output<string[]>();
+
+  /**
+   * Event emitter that emits when the options list should be closed.
+   * This is typically triggered after a selection is made in single-select mode.
+   */
+  closeEmitter = output<void>();
 
   /**
    * Reference to the list of options in the dropdown.
@@ -98,19 +72,13 @@ export class SelectOptionsComponent {
     console.log(value);
     // If the value is an empty array or contains a single empty string, clear the selection.
     if (value.length === 1 && value[0] === '') {
-      this.value.set([]);
+      this.changeValueEmitter.emit([]);
       if (!this.multiple()) {
         this.closeEmitter.emit();
       }
       return;
     }
-    this.value.set(value);
-    if (!this.multiple()) {
-      this.closeEmitter.emit();
-    }
-  }
-
-  onEnter() {
+    this.changeValueEmitter.emit(value);
     if (!this.multiple()) {
       this.closeEmitter.emit();
     }

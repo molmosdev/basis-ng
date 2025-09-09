@@ -1,20 +1,16 @@
 b-button-group {
-  display: flex;
+  @apply flex;
 
   &:not(.spaced) {
     button:not(:last-child) {
-      border-right: none !important;
-      border-top-right-radius: 0 !important;
-      border-bottom-right-radius: 0 !important;
+      @apply rounded-tr-none rounded-br-none -mr-[1px];
     }
-
     button:not(:first-child) {
-      border-top-left-radius: 0 !important;
-      border-bottom-left-radius: 0 !important;
+      @apply rounded-tl-none rounded-bl-none;
     }
   }
 
   &.spaced {
-    gap: 0.5rem;
+    @apply gap-2;
   }
 }

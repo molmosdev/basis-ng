@@ -1,10 +1,5 @@
-/* Imports */
-/* @import url('lucide-static/font/lucide.css'); */
-@import url('./app/styles/animations.css');
-@import url('./app/styles/fonts.css');
-@import url('./app/styles/theme.css');
+@import url('../../styles/src/index.css');
 @import 'highlight.js/styles/github-dark.css';
-@import '@basis-ng/styles';
 
 html {
   min-height: 100dvh;
@@ -17,7 +12,7 @@ html {
   background-color: var(--bg-color);
   color: var(--text-color);
   font-family: 'Geist', sans-serif;
-  font-size: 14px;
+  font-size: 16px;
   scrollbar-width: thin;
   scrollbar-color: lightgrey transparent;
   overflow-y: scroll;

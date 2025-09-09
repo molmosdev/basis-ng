@@ -7,9 +7,16 @@ import { Component, ElementRef, inject, input } from '@angular/core';
   selector: 'button[b-button]',
   template: ` <ng-content />`,
   host: {
-    '[class]': 'variant() + " size-" + size()',
-    '[class.active]': 'activeEnabled()',
-    '[class.squared]': 'squared()',
+    '[class.b-variant-primary]': 'variant() === "primary"',
+    '[class.b-variant-secondary]': 'variant() === "secondary"',
+    '[class.b-variant-ghost]': 'variant() === "ghost"',
+    '[class.b-variant-outlined]': 'variant() === "outlined"',
+    '[class.b-variant-destructive]': 'variant() === "destructive"',
+    '[class.b-size-1]': 'size() === "1"',
+    '[class.b-size-2]': 'size() === "2"',
+    '[class.b-size-3]': 'size() === "3"',
+    '[class.b-active]': 'active()',
+    '[class.b-squared]': 'squared()',
   },
 })
 export class ButtonComponent {
@@ -18,9 +25,9 @@ export class ButtonComponent {
    *
    * @defaultValue 'primary'
    */
-  readonly variant = input<'primary' | 'secondary' | 'ghost' | 'outlined'>(
-    'primary'
-  );
+  readonly variant = input<
+    'primary' | 'secondary' | 'ghost' | 'outlined' | 'destructive'
+  >('primary');
 
   /**
    * Specifies the size of the button.
@@ -32,9 +39,9 @@ export class ButtonComponent {
   /**
    * Determines whether the button has an active state enabled.
    *
-   * @defaultValue true
+   * @defaultValue false
    */
-  readonly activeEnabled = input(true);
+  readonly active = input(false);
 
   /**
    * Indicates whether the button should have squared corners.

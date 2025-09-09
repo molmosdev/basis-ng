@@ -1,13 +1,15 @@
 b-spinner {
-  z-index: 9999;
-  pointer-events: none;
+  @apply animate-spin;
 
-  section {
-    pointer-events: all;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-    width: 100%;
+  svg {
+    &.b-size-1 {
+      @apply w-3.5 h-3.5 min-w-3.5 min-h-3.5;
+    }
+    &.b-size-2 {
+      @apply w-4 h-4 min-w-4 min-h-4;
+    }
+    &.b-size-3 {
+      @apply w-5 h-5 min-w-5 min-h-5;
+    }
   }
 }

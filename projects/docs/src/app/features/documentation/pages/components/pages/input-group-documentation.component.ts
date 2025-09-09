@@ -4,7 +4,6 @@ import {
   InputGroupComponent,
   AlertComponent,
   InputComponent,
-  IconComponent,
   ButtonComponent,
 } from '@basis-ng/primitives';
 
@@ -107,7 +106,7 @@ import {
           [squared]="true"
           (click)="showPassword = !showPassword"
           [attr.aria-label]="showPassword ? 'Hide password' : 'Show password'">
-          <i b-icon [icon]="showPassword ? 'EyeOff' : 'Eye'" [size]="15"></i>
+          <!-- <i b-icon [icon]="showPassword ? 'EyeOff' : 'Eye'" [size]="15"></i> -->
         </button>
       </b-input-group>
     </div>
@@ -118,7 +117,7 @@ import {
     InputGroupComponent,
     ButtonComponent,
     InputComponent,
-    IconComponent,
+    // IconComponent,
   ],
   standalone: true,
 })

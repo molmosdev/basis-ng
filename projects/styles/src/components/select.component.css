@@ -1,37 +1,36 @@
 b-select {
+  @apply flex items-center;
+
   button {
-    display: flex;
-    align-items: center;
-    padding-right: 0.5rem !important;
-    text-align: start;
-    gap: 0.3rem !important;
-    width: 100% !important;
+    @apply flex items-center pr-2 text-start gap-[0.3rem] w-full shadow-xs;
+    @apply text-base;
+
+    &.b-size-1 {
+      @apply text-xs !px-2;
+    }
+    &.b-size-2 {
+      @apply text-base !px-3;
+    }
+    &.b-size-3 {
+      @apply text-lg !px-4;
+    }
 
     span {
-      flex: 1;
-      text-align: start;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
+      @apply flex-1 text-start whitespace-nowrap overflow-hidden text-ellipsis;
     }
   }
 
   &.ng-invalid.ng-touched,
   &.ng-invalid.ng-dirty {
     button {
-      background-color: var(--error);
-      border-color: var(--error-border-color);
+      @apply text-destructive inset-ring-destructive/20 bg-destructive/10 hover:bg-destructive/20;
 
       span {
-        color: var(--error-foreground);
-      }
-
-      svg {
-        stroke: var(--error-foreground);
+        @apply text-destructive;
       }
 
       &:focus-visible {
-        outline-color: var(--error-foreground);
+        @apply outline-destructive;
       }
     }
   }

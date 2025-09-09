@@ -1,32 +1,17 @@
 li[b-option] {
-  display: flex;
-  gap: 0.5rem;
-  padding: 0.5rem 0.75rem;
-  color: var(--foreground, #798194);
-  box-sizing: border-box;
-  cursor: pointer;
-  min-width: 100%;
-  align-items: center;
-  border-radius: clamp(0rem, calc(var(--radius, 0.5rem) - 0.25rem), 0.5rem);
+  @apply flex gap-2 py-1.5 px-3 text-sm box-border cursor-pointer min-w-full items-center rounded-sm;
 
   &:focus,
   &:hover,
   &.cdk-option-highlighted {
-    background-color: color-mix(
-      in srgb,
-      var(--secondary) 50%,
-      var(--background)
-    );
+    @apply bg-secondary/10;
   }
 
   &[aria-selected='true'] {
-    background-color: var(--secondary);
-    color: var(--secondary-foreground);
+    @apply bg-secondary text-secondary-foreground;
   }
 
   &[aria-disabled='true'] {
-    opacity: 0.6;
-    pointer-events: none;
-    background: none;
+    @apply opacity-60 pointer-events-none bg-none;
   }
 }

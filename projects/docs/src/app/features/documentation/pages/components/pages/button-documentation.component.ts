@@ -6,7 +6,6 @@ import {
   ButtonGroupComponent,
 } from '@basis-ng/primitives';
 import { CodeBlockComponent } from '../shared/components/code-block.component';
-import { IconComponent } from '../../../../../../../../primitives/src/public-api';
 
 @Component({
   selector: 'article[app-button-documentation]',
@@ -40,14 +39,28 @@ import { IconComponent } from '../../../../../../../../primitives/src/public-api
         <tr>
           <td><strong>variant</strong></td>
           <td>
-            <code>'primary' | 'secondary' | 'ghost' | 'outlined'</code>
+            <code
+              >'primary' | 'secondary' | 'ghost' | 'outlined' |
+              'destructive'</code
+            >
           </td>
-          <td>The variant of the button.</td>
+          <td>
+            The variant of the button. <code>destructive</code> is used for
+            actions that are potentially dangerous (e.g., delete).
+          </td>
         </tr>
         <tr>
           <td><strong>size</strong></td>
           <td><code>'1' | '2' | '3'</code></td>
           <td>The size of the button. Default is <code>'2'</code>.</td>
+        </tr>
+        <tr>
+          <td><strong>active</strong></td>
+          <td><code>boolean</code></td>
+          <td>
+            If <code>true</code>, the button will have an active state
+            (highlighted ring). Default is <code>false</code>.
+          </td>
         </tr>
         <tr>
           <td><strong>squared</strong></td>
@@ -87,6 +100,7 @@ import { IconComponent } from '../../../../../../../../primitives/src/public-api
       <button b-button variant="secondary">Secondary</button>
       <button b-button variant="ghost">Ghost</button>
       <button b-button variant="outlined">Outlined</button>
+      <button b-button variant="destructive">Destructive</button>
     </div>
 
     <h2>Sizes</h2>
@@ -101,8 +115,8 @@ import { IconComponent } from '../../../../../../../../primitives/src/public-api
     <code-block [code]="loadingUsage" />
     <div class="documentation-playground">
       <button b-button>
-        <b-spinner color="var(--primary-foreground)" [size]="18" />
-        Loading...
+        <b-spinner size="1" type="bars" />
+        Saving
       </button>
     </div>
 
@@ -173,25 +187,55 @@ import { IconComponent } from '../../../../../../../../primitives/src/public-api
     <code-block [code]="squaredUsage" />
     <div class="documentation-playground">
       <button b-button [squared]="true" size="1">
-        <i
-          b-icon
-          icon="ZoomIn"
-          [size]="13"
-          color="var(--primary-foreground)"></i>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="14"
+          height="14"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="lucide lucide-zoom-in-icon lucide-zoom-in">
+          <circle cx="11" cy="11" r="8" />
+          <line x1="21" x2="16.65" y1="21" y2="16.65" />
+          <line x1="11" x2="11" y1="8" y2="14" />
+          <line x1="8" x2="14" y1="11" y2="11" />
+        </svg>
       </button>
       <button b-button [squared]="true" size="2">
-        <i
-          b-icon
-          icon="ZoomOut"
-          [size]="16"
-          color="var(--primary-foreground)"></i>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="16"
+          height="16"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="lucide lucide-zoom-out-icon lucide-zoom-out">
+          <circle cx="11" cy="11" r="8" />
+          <line x1="21" x2="16.65" y1="21" y2="16.65" />
+          <line x1="8" x2="14" y1="11" y2="11" />
+        </svg>
       </button>
       <button b-button [squared]="true" size="3">
-        <i
-          b-icon
-          icon="Search"
-          [size]="20"
-          color="var(--primary-foreground)"></i>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="28"
+          height="28"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="lucide lucide-search-icon lucide-search">
+          <path d="m21 21-4.34-4.34" />
+          <circle cx="11" cy="11" r="8" />
+        </svg>
       </button>
     </div>`,
 
@@ -201,7 +245,6 @@ import { IconComponent } from '../../../../../../../../primitives/src/public-api
     ButtonGroupComponent,
     AlertComponent,
     SpinnerComponent,
-    IconComponent,
   ],
 })
 export default class ButtonDocumentationComponent {
@@ -211,33 +254,34 @@ export default class ButtonDocumentationComponent {
   variantsUsage = `<button b-button variant="primary">Primary</button>
 <button b-button variant="secondary">Secondary</button>
 <button b-button variant="ghost">Ghost</button>
-<button b-button variant="outlined">Outlined</button>`;
+<button b-button variant="outlined">Outlined</button>
+<button b-button variant="destructive">Destructive</button>`;
   sizesUsage = `<button b-button size="1">Size 1</button>
 <button b-button size="2">Size 2 (default)</button>
 <button b-button size="3">Size 3</button>`;
   loadingUsage = `<button b-button>
-  <b-spinner color="var(--primary-foreground)" [size]="18" />
-  Loading...
+  <b-spinner size="1" type="bars" />
+  Saving
 </button>`;
   buttonGroupUsage = `<b-button-group>
-  <button b-button variant="outlined"> Outlined </button>
-  <button b-button variant="outlined"> Outlined </button>
-  <button b-button variant="outlined"> Outlined </button>
+  <button b-button variant="outlined">Outlined</button>
+  <button b-button variant="outlined">Outlined</button>
+  <button b-button variant="outlined">Outlined</button>
 </b-button-group>`;
 
   allPrimaryUsage = `<b-button-group>
-  <button b-button variant="primary"> Primary </button>
-  <button b-button variant="primary"> Primary </button>
-  <button b-button variant="primary"> Primary </button>
+  <button b-button variant="primary">Primary</button>
+  <button b-button variant="primary">Primary</button>
+  <button b-button variant="primary">Primary</button>
 </b-button-group>`;
 
   mixedVariantsUsage = `<b-button-group>
-  <button b-button variant="primary"> Primary </button>
-  <button b-button variant="secondary"> Secondary </button>
+  <button b-button variant="primary">Primary</button>
+  <button b-button variant="secondary">Secondary</button>
 </b-button-group>
 <b-button-group>
-  <button b-button variant="ghost"> Ghost </button>
-  <button b-button variant="outlined"> Outlined </button>
+  <button b-button variant="ghost">Ghost</button>
+  <button b-button variant="outlined">Outlined</button>
 </b-button-group>`;
 
   outlinedSmallUsage = `<b-button-group>
@@ -247,24 +291,24 @@ export default class ButtonDocumentationComponent {
 </b-button-group>`;
 
   spacedUsage = `<b-button-group [spaced]="true">
-  <button b-button variant="outlined"> Outlined </button>
-  <button b-button variant="outlined"> Outlined </button>
-  <button b-button variant="outlined"> Outlined </button>
+  <button b-button variant="outlined">Outlined</button>
+  <button b-button variant="outlined">Outlined</button>
+  <button b-button variant="outlined">Outlined</button>
 </b-button-group>`;
 
   spacedSmallUsage = `<b-button-group [spaced]="true">
-  <button b-button variant="outlined" size="1"> Outlined </button>
-  <button b-button variant="outlined" size="1"> Outlined </button>
-  <button b-button variant="outlined" size="1"> Outlined </button>
+  <button b-button variant="outlined" size="1">Outlined</button>
+  <button b-button variant="outlined" size="1">Outlined</button>
+  <button b-button variant="outlined" size="1">Outlined</button>
 </b-button-group>`;
 
   squaredUsage = `<button b-button [squared]="true" size="1">
-  <i b-icon icon="ZoomIn" [size]="13" color="var(--primary-foreground)"></i>
+ <svg ... />
 </button>
 <button b-button [squared]="true" size="2">
-  <i b-icon icon="ZoomOut" [size]="16" color="var(--primary-foreground)"></i>
+ <svg ... />
 </button>
 <button b-button [squared]="true" size="3">
-  <i b-icon icon="Search" [size]="20" color="var(--primary-foreground)"></i>
+  <svg ... />
 </button>`;
 }

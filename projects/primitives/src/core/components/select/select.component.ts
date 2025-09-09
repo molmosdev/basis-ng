@@ -12,7 +12,6 @@ import {
 } from '@angular/core';
 import { SelectOptionsComponent } from './select-options.component';
 import { ButtonComponent } from '../button/button.component';
-import { IconComponent } from '../icon/icon.component';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { forwardRef } from '@angular/core';
 import { OverlayTriggerDirective } from '../../directives/overlay-trigger.directive';
@@ -24,24 +23,34 @@ import { OverlayDirective } from '../../directives/overlay.directive';
  */
 @Component({
   selector: 'b-select',
-  imports: [
-    ButtonComponent,
-    IconComponent,
-    OverlayTriggerDirective,
-    OverlayDirective,
-  ],
+  imports: [ButtonComponent, OverlayTriggerDirective, OverlayDirective],
   template: ` <button
       b-button
       variant="outlined"
+      [class.b-size-1]="size() === '1'"
+      [class.b-size-2]="size() === '2'"
+      [class.b-size-3]="size() === '3'"
       (click)="isOpen.set(!isOpen())"
       (keydown.arrowUp)="!isOpen() && isOpen.set(true)"
       (keydown.arrowDown)="!isOpen() && isOpen.set(true)"
-      [activeEnabled]="false"
+      [active]="false"
       bOverlayTrigger
       #trigger="bOverlayTrigger"
       [disabled]="disabled()">
       <span>{{ content() }}</span>
-      <i b-icon icon="ChevronDown" [size]="16"></i>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="16"
+        height="16"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="lucide lucide-chevron-down-icon lucide-chevron-down">
+        <path d="m6 9 6 6 6-6" />
+      </svg>
     </button>
     <ng-template
       bOverlay
@@ -64,6 +73,11 @@ import { OverlayDirective } from '../../directives/overlay.directive';
   ],
 })
 export class SelectComponent implements OnInit, ControlValueAccessor {
+  /**
+   * Size of the select: '1' | '2' | '3'. Default is '2'.
+   */
+  readonly size = input<'1' | '2' | '3'>('2');
+
   /**
    * Placeholder text displayed when no option is selected.
    */

@@ -1,67 +1,37 @@
 input[b-switch] {
-  appearance: none;
-  -webkit-appearance: none;
-  border: 1px solid var(--border, #d9d9d9);
-  display: flex;
-  align-items: center;
-  cursor: pointer;
-  border-radius: 9999px;
-  background-color: color-mix(
-    in srgb,
-    var(--foreground, #798194) 5%,
-    var(--background, #ffffff)
-  );
-  border: 0;
+  @apply flex items-center cursor-pointer rounded-full border-0 transition-colors duration-200 appearance-none bg-secondary;
 
   &:focus-visible {
-    outline: 2px solid var(--primary, #0a0a0a);
-    outline-offset: 2px;
+    @apply outline-2 outline-primary outline-offset-2;
   }
 
   &::after {
-    content: '';
-    display: flex;
-    background-color: var(--foreground, #798194);
-    border-radius: 50%;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    will-change: transform;
-    justify-content: center;
-    align-items: center;
-    transition: transform 0.2s;
+    @apply flex rounded-full shadow-md transition-transform duration-200 justify-center items-center bg-secondary-foreground will-change-transform content-[''];
   }
 
   &.default {
-    height: 1.5rem;
-    width: 2.5rem;
-
+    @apply h-6 w-10;
     &::after {
-      height: 1rem;
-      width: 1rem;
-      margin: 0.25rem;
+      @apply h-4 w-4 m-1;
     }
   }
 
   &.large {
-    height: 2.1rem;
-    width: 3.7rem;
-
+    @apply h-[2.1rem] w-[3.7rem];
     &::after {
-      height: 1.6rem;
-      width: 1.6rem;
-      margin: 0.25rem;
+      @apply h-[1.6rem] w-[1.6rem] m-1;
     }
   }
 
   &:checked {
     &.default {
       &::after {
-        transform: translateX(0.9rem);
+        @apply transform translate-x-[0.9rem];
       }
     }
-
     &.large {
       &::after {
-        transform: translateX(1.45rem);
+        @apply transform translate-x-[1.45rem];
       }
     }
   }

@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import {
   TreeComponent,
   TreeNodeComponent,
-  IconComponent,
   BadgeComponent,
   AlertComponent,
 } from '@basis-ng/primitives';
@@ -142,7 +141,7 @@ import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
         id="complexTree">
         @for (node of complexNodes; track node) {
           <b-tree-node>
-            <i b-icon [size]="13" icon="Folder"></i> {{ node.name }}
+            <!-- <i b-icon [size]="13" icon="Folder"></i> {{ node.name }} -->
             @if (node.badge) {
               <span b-badge variant="outlined" size="small">{{
                 node.badge
@@ -155,7 +154,7 @@ import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
                 id="childTree-{{ node.name }}">
                 @for (child of node.children; track child) {
                   <b-tree-node>
-                    <i b-icon [size]="13" icon="File"></i> {{ child.name }}
+                    <!-- <i b-icon [size]="13" icon="File"></i> {{ child.name }} -->
                     @if (child.badge) {
                       <span b-badge variant="outlined" size="small">{{
                         child.badge
@@ -168,7 +167,7 @@ import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
                         id="childTree-{{ child.name }}">
                         @for (grandchild of child.children; track grandchild) {
                           <b-tree-node>
-                            <i b-icon [size]="13" icon="File"></i>
+                            <!-- <i b-icon [size]="13" icon="File"></i> -->
                             {{ grandchild.name }}
                             @if (grandchild.badge) {
                               <span b-badge variant="outlined" size="small">{{
@@ -288,7 +287,7 @@ import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
     TreeComponent,
     TreeNodeComponent,
     CodeBlockComponent,
-    IconComponent,
+    // IconComponent,
     BadgeComponent,
     AlertComponent,
   ],

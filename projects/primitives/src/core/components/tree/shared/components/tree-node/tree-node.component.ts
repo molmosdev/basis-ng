@@ -1,4 +1,4 @@
-import { CdkDrag, CdkDragHandle } from '@angular/cdk/drag-drop';
+import { CdkDrag } from '@angular/cdk/drag-drop';
 import {
   Component,
   contentChild,
@@ -7,7 +7,6 @@ import {
   OnInit,
   output,
 } from '@angular/core';
-import { IconComponent } from '../../../../icon/icon.component';
 import { TreeComponent } from '../../../tree.component';
 
 /**
@@ -16,7 +15,7 @@ import { TreeComponent } from '../../../tree.component';
  */
 @Component({
   selector: 'b-tree-node',
-  imports: [IconComponent, CdkDragHandle],
+  // imports: [CdkDragHandle],
   templateUrl: './tree-node.component.html',
   hostDirectives: [
     {

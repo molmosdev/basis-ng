@@ -45,13 +45,13 @@
       [menuTriggerPosition]="'bottom-right'">
       @switch (theme()) {
         @case ('auto') {
-          <i b-icon [strokeWidth]="1.5" [size]="22" icon="SunMoon"></i>
+          <!-- <i b-icon [strokeWidth]="1.5" [size]="22" icon="SunMoon"></i> -->
         }
         @case ('light') {
-          <i b-icon [strokeWidth]="1.5" [size]="22" icon="Sun"></i>
+          <!-- <i b-icon [strokeWidth]="1.5" [size]="22" icon="Sun"></i> -->
         }
         @case ('dark') {
-          <i b-icon [strokeWidth]="1.5" [size]="22" icon="Moon"></i>
+          <!-- <i b-icon [strokeWidth]="1.5" [size]="22" icon="Moon"></i> -->
         }
       }
     </button>
@@ -62,21 +62,21 @@
             b-menu-item-radio
             [active]="theme() === 'auto'"
             (triggered)="applyTheme('auto')">
-            <i b-icon [strokeWidth]="1.5" [size]="22" icon="SunMoon"></i>
+            <!-- <i b-icon [strokeWidth]="1.5" [size]="22" icon="SunMoon"></i> -->
             Auto
           </button>
           <button
             b-menu-item-radio
             [active]="theme() === 'light'"
             (triggered)="applyTheme('light')">
-            <i b-icon [strokeWidth]="1.5" [size]="22" icon="Sun"></i>
+            <!-- <i b-icon [strokeWidth]="1.5" [size]="22" icon="Sun"></i> -->
             Light
           </button>
           <button
             b-menu-item-radio
             [active]="theme() === 'dark'"
             (triggered)="applyTheme('dark')">
-            <i b-icon [strokeWidth]="1.5" [size]="20" icon="Moon"></i>
+            <!-- <i b-icon [strokeWidth]="1.5" [size]="20" icon="Moon"></i> -->
             Dark
           </button>
         </b-menu-group>

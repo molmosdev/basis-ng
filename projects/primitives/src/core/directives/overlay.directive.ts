@@ -10,6 +10,8 @@ import {
   effect,
   inject,
   input,
+  model,
+  output,
   signal,
 } from '@angular/core';
 import { OverlayTriggerDirective, Position } from '../../public-api';
@@ -31,16 +33,20 @@ import { OverlayTriggerDirective, Position } from '../../public-api';
         'cdkConnectedOverlayBackdropClass: customBackdropClass',
       ],
       outputs: [
-        'backdropClick: backdropClick',
         'detach: detach',
         'attach: attach',
         'overlayOutsideClick: outsideClick',
+        'backdropClick: backdropClick',
         'positionChange: positionChange',
       ],
     },
   ],
   host: {
     '(positionChange)': 'connectedPositionPair.set($event.connectionPair)',
+    '(detach)': 'detachEmitter.emit()',
+    '(attach)': 'attachEmitter.emit()',
+    '(outsideClick)': 'outsideClickEmitter.emit()',
+    '(backdropClick)': 'backdropClickEmitter.emit()',
   },
 })
 export class OverlayDirective {
@@ -48,7 +54,7 @@ export class OverlayDirective {
    * Controls whether the overlay is open.
    * @default false
    */
-  readonly open = input(false);
+  readonly open = model(false);
 
   /**
    * The trigger directive that activates the overlay.
@@ -189,6 +195,26 @@ export class OverlayDirective {
   });
 
   /**
+   * Event emitter for overlay detach events.
+   */
+  detachEmitter = output<void>();
+
+  /**
+   * Event emitter for overlay attach events.
+   */
+  attachEmitter = output<void>();
+
+  /**
+   * Event emitter for overlay outside click events.
+   */
+  outsideClickEmitter = output<void>();
+
+  /**
+   * Event emitter for overlay backdrop click events.
+   */
+  backdropClickEmitter = output<void>();
+
+  /**
    * Flag to indicate if this is the first load of the overlay.
    */
   firstLoad = true;
@@ -255,10 +281,11 @@ export class OverlayDirective {
     }
 
     firstChild.classList.add('b-overlay-leave');
-    setTimeout(
-      () => this.detachOverlayWithCleanup(firstChild),
-      this.closeDelay()
-    );
+    const onAnimationEnd = () => {
+      this.detachOverlayWithCleanup(firstChild);
+      firstChild.removeEventListener('animationend', onAnimationEnd);
+    };
+    firstChild.addEventListener('animationend', onAnimationEnd);
   }
 
   /**

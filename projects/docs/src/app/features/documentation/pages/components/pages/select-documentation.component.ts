@@ -1,13 +1,11 @@
 import { Component } from '@angular/core';
-import {
-  AlertComponent,
-  SelectComponent,
-  OptionComponent,
-  SelectOptionsComponent,
-} from '../../../../../../../../primitives/src/public-api';
 import { CodeBlockComponent } from '../shared/components/code-block.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FormGroup, FormControl } from '@angular/forms';
+import { AlertComponent } from 'projects/primitives/src/core/components/alert/alert.component';
+import { SelectComponent } from 'projects/primitives/src/core/components/select/select.component';
+import { SelectOptionsComponent } from 'projects/primitives/src/core/components/select/select-options.component';
+import { Option } from 'projects/primitives/src/shared/components/option.component';
 
 @Component({
   selector: 'article[app-select-documentation]',
@@ -30,6 +28,32 @@ import { FormGroup, FormControl } from '@angular/forms';
     <code-block [code]="formsModuleUsage" />
     <div class="documentation-playground">
       <b-select [(ngModel)]="selectedOption">
+        <ul b-select-options [multiple]="false">
+          <li b-option value="option1">Option 1</li>
+          <li b-option value="option2">Option 2</li>
+          <li b-option value="option3">Option 3</li>
+        </ul>
+      </b-select>
+    </div>
+
+    <h2>Sizes</h2>
+    <code-block [code]="sizesUsage" />
+    <div class="documentation-playground">
+      <b-select [(ngModel)]="selectedOption" size="1" placeholder="Size 1">
+        <ul b-select-options [multiple]="false">
+          <li b-option value="option1">Option 1</li>
+          <li b-option value="option2">Option 2</li>
+          <li b-option value="option3">Option 3</li>
+        </ul>
+      </b-select>
+      <b-select [(ngModel)]="selectedOption" size="2" placeholder="Size 2">
+        <ul b-select-options [multiple]="false">
+          <li b-option value="option1">Option 1</li>
+          <li b-option value="option2">Option 2</li>
+          <li b-option value="option3">Option 3</li>
+        </ul>
+      </b-select>
+      <b-select [(ngModel)]="selectedOption" size="3" placeholder="Size 3">
         <ul b-select-options [multiple]="false">
           <li b-option value="option1">Option 1</li>
           <li b-option value="option2">Option 2</li>
@@ -98,6 +122,20 @@ import { FormGroup, FormControl } from '@angular/forms';
           <li b-option value="option3">Option 3</li>
         </ul>
       </b-select>
+    </div>
+
+    <h2>Invalid Option (Reactive Form)</h2>
+    <code-block [code]="invalidReactiveUsage" />
+    <div class="documentation-playground">
+      <form [formGroup]="invalidForm">
+        <b-select formControlName="invalidSelect">
+          <ul b-select-options [multiple]="false">
+            <li b-option value="invalid-option">Invalid option</li>
+            <li b-option value="option1">Valid option 1</li>
+            <li b-option value="option2">Valid option 2</li>
+          </ul>
+        </b-select>
+      </form>
     </div>`,
   imports: [
     CodeBlockComponent,
@@ -106,7 +144,7 @@ import { FormGroup, FormControl } from '@angular/forms';
     AlertComponent,
     SelectComponent,
     SelectOptionsComponent,
-    OptionComponent,
+    Option,
   ],
 })
 export default class SelectDocumentationComponent {
@@ -165,6 +203,45 @@ export default class SelectDocumentationComponent {
   <ul b-select-options [multiple]="false">
     <li b-option value="option1">Option 1</li>
     <li b-option value="option2" [disabled]="true">Option 2 (Disabled)</li>
+    <li b-option value="option3">Option 3</li>
+  </ul>
+</b-select>`;
+
+  invalidForm = new FormGroup({
+    invalidSelect: new FormControl('option1', [
+      control =>
+        control.value === 'invalid-option' ? { invalidOption: true } : null,
+    ]),
+  });
+
+  invalidReactiveUsage = `<form [formGroup]="invalidForm">
+  <b-select formControlName="invalidSelect">
+    <ul b-select-options [multiple]="false">
+      <li b-option value="invalid-option">Invalid option</li>
+      <li b-option value="option1">Valid option 1</li>
+      <li b-option value="option2">Valid option 2</li>
+    </ul>
+  </b-select>
+</form>`;
+
+  sizesUsage = `<b-select [(ngModel)]="selectedSize1" size="1" placeholder="Size 1">
+  <ul b-select-options [multiple]="false">
+    <li b-option value="option1">Option 1</li>
+    <li b-option value="option2">Option 2</li>
+    <li b-option value="option3">Option 3</li>
+  </ul>
+</b-select>
+<b-select [(ngModel)]="selectedSize2" size="2" placeholder="Size 2">
+  <ul b-select-options [multiple]="false">
+    <li b-option value="option1">Option 1</li>
+    <li b-option value="option2">Option 2</li>
+    <li b-option value="option3">Option 3</li>
+  </ul>
+</b-select>
+<b-select [(ngModel)]="selectedSize3" size="3" placeholder="Size 3">
+  <ul b-select-options [multiple]="false">
+    <li b-option value="option1">Option 1</li>
+    <li b-option value="option2">Option 2</li>
     <li b-option value="option3">Option 3</li>
   </ul>
 </b-select>`;

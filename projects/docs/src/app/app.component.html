@@ -1,2 +1,39 @@
-<header></header>
-<router-outlet />
+<!-- <header></header>
+<router-outlet /> -->
+
+<!-- Elementos para probar OverlayDirective y OverlayTriggerDirective personalizados -->
+<!-- <button
+  bOverlayTrigger
+  #trigger1="bOverlayTrigger"
+  (click)="isOverlayOpen.set(true)">
+  Abrir Overlay
+</button>
+
+<ng-template
+  bOverlay
+  [trigger]="trigger1"
+  [open]="isOverlayOpen()"
+  [positions]="['bottom-left', 'bottom-right', 'top-left', 'top-right']"
+  (outsideClick)="isOverlayOpen.set(false)"
+  (detach)="isOverlayOpen.set(false)">
+  <div
+    class="overlay-content"
+    animate.enter="enter-animation"
+    animate.leave="leave-animation"
+    style="background: white; border: 1px solid #ccc; padding: 1rem">
+    ¡Este es el overlay conectado!
+    <button (click)="isOverlayOpen.set(false)">Cerrar</button>
+  </div>
+</ng-template> -->
+<!-- {{ example | json }} <br /><br /> -->
+
+<b-select [(ngModel)]="example">
+  <button b-select-trigger>
+    <b-select-value placeholder="Select an option" />
+  </button>
+  <ul b-select-content [multiple]="false">
+    <li b-option value="option1">Option 1</li>
+    <li b-option value="option2">Option 2</li>
+    <li b-option value="option3">Option 3</li>
+  </ul>
+</b-select>

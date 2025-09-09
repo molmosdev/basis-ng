@@ -1,10 +1,9 @@
 import { Component, computed, input, output } from '@angular/core';
-import { IconComponent } from '../icon/icon.component';
 
 @Component({
   selector: 'b-alert',
   templateUrl: './alert.component.html',
-  imports: [IconComponent],
+  imports: [],
   host: {
     '[class]': 'type()',
     '[style.max-width]': 'maxWidth()',

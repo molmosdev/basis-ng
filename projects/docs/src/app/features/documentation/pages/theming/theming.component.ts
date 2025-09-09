@@ -4,7 +4,6 @@ import { FormGroup, FormControl, ReactiveFormsModule } from '@angular/forms';
 import {
   ButtonComponent,
   ColorPickerComponent,
-  IconComponent,
   RangeComponent,
 } from '@basis-ng/primitives';
 
@@ -19,7 +18,7 @@ interface ThemeVariables {
   imports: [
     CodeBlockComponent,
     ButtonComponent,
-    IconComponent,
+    // IconComponent,
     RangeComponent,
     ReactiveFormsModule,
     ColorPickerComponent,

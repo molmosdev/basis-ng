@@ -6,7 +6,7 @@
     variant="primary"
     [squared]="true"
     (click)="drawerOpen.set(true)">
-    <i b-icon icon="Menu" [size]="20" color="var(--primary-foreground)"></i>
+    <!-- <i b-icon icon="Menu" [size]="20" color="var(--primary-foreground)"></i> -->
   </button>
   <b-drawer [(isOpen)]="drawerOpen" height="65dvh">
     <ng-container *ngTemplateOutlet="menu" />

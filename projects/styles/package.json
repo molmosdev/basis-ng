@@ -13,7 +13,6 @@
     "./button": "./src/components/button.component.css",
     "./checkbox": "./src/components/checkbox.component.css",
     "./color-picker": "./src/components/color-picker.component.css",
-    "./icon": "./src/components/icon.component.css",
     "./input-group": "./src/components/input-group.component.css",
     "./input": "./src/components/input.component.css",
     "./label": "./src/components/label.component.css",

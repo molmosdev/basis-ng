@@ -4,7 +4,7 @@ import {
   ComboboxComponent,
   CommandComponent,
   CommandOptionsComponent,
-  OptionComponent,
+  Option,
 } from '../../../../../../../../primitives/src/public-api';
 import { CodeBlockComponent } from '../shared/components/code-block.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -105,7 +105,7 @@ import { FormGroup, FormControl } from '@angular/forms';
     ComboboxComponent,
     CommandComponent,
     CommandOptionsComponent,
-    OptionComponent,
+    Option,
   ],
 })
 export default class ComboboxDocumentationComponent {

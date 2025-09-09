@@ -1,78 +1,36 @@
 input[b-input] {
-  background-color: var(--input-background);
-  border-radius: var(--radius, 0.5rem);
-  box-sizing: border-box;
-  border-width: 1px;
-  border-style: solid;
-  border-color: var(--border-color, transparent);
-  transition:
-    opacity 0.2s,
-    background-color 0.2s,
-    border-color 0.2s;
-  font-size: 1rem;
-  color: var(--input-foreground);
-  font-family: 'Geist', sans-serif;
-
-  &:read-only:not(:disabled) {
-    border-width: 0px;
-  }
-
-  &::-webkit-outer-spin-button,
-  &::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-  }
-
-  &[type='text'],
-  &[type='number'] {
-    appearance: textfield;
-    -moz-appearance: textfield;
-  }
+  @apply box-border border transition-colors text-base font-sans rounded-lg bg-background border-secondary text-font min-w-1/2;
 
   &:focus-visible:not(:read-only) {
-    outline: 2px solid var(--primary);
-    outline-offset: 2px;
+    @apply outline-2 outline-offset-2 outline-primary;
   }
 
   &::placeholder {
-    opacity: 0.5;
+    @apply opacity-50;
   }
 
   &.ng-invalid.ng-touched,
   &.ng-invalid.ng-dirty {
-    color: var(--error-foreground);
-    background-color: var(--error);
-    border-color: var(--error-border-color);
-
+    @apply text-destructive-foreground bg-destructive border-destructive;
     &:focus-visible {
-      outline-color: var(--error-foreground);
+      @apply outline-destructive-foreground;
     }
-
     &::placeholder {
-      color: var(--error-foreground);
+      @apply text-destructive-foreground;
     }
   }
 
   &:disabled {
-    opacity: 0.6;
-    pointer-events: none;
+    @apply opacity-60 pointer-events-none;
   }
 
   &.size-1 {
-    padding: 0.357rem 0.5rem;
-    height: 1.714rem;
-    font-size: 0.857rem;
+    @apply px-2 py-1 h-7 text-xs;
   }
-
   &.size-2 {
-    padding: 0.429rem 0.75rem;
-    height: 2.286rem;
-    font-size: 1rem;
+    @apply px-3 py-2 h-9 text-base;
   }
-
   &.size-3 {
-    padding: 0.786rem 1rem;
-    height: 2.857rem;
-    font-size: 1.143rem;
+    @apply px-4 py-3 h-11 text-lg;
   }
 }
