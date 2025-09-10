@@ -17,8 +17,7 @@ import { Button } from '@basis-ng/primitives';
     <button b-button [routerLink]="'/components'">Get started</button>
   `,
   host: {
-    class:
-      'h-dvh flex flex-col justify-center items-center gap-5 max-w-[1400px] mx-auto px-8',
+    class: 'h-dvh flex flex-col justify-center items-center gap-5 px-8 pt-15',
   },
 })
 export class Home {}

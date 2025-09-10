@@ -1,10 +1,9 @@
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { ThemeSelector } from './header/components/theme-selector/theme-selector';
 
 @Component({
   selector: 'header',
-  imports: [RouterLink, ThemeSelector],
+  imports: [RouterLink],
   template: `
     <svg
       [routerLink]="['/']"
@@ -19,7 +18,9 @@ import { ThemeSelector } from './header/components/theme-selector/theme-selector
         d="M67 101C67 98.2386 69.2386 96 72 96H125C157.033 96 183 121.967 183 154V154C183 186.033 157.033 212 125 212H72C69.2386 212 67 209.761 67 207V101Z"
         fill="currentColor" />
     </svg>
-    <app-theme-selector />
   `,
+  host: {
+    class: 'h-15 px-8 flex items-center absolute top-0 left-0 right-0',
+  },
 })
 export class Header {}
