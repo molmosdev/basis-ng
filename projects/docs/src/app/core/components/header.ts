@@ -20,7 +20,7 @@ import { RouterLink } from '@angular/router';
     </svg>
   `,
   host: {
-    class: 'h-20 px-8 flex items-center absolute top-0 left-0 right-0',
+    class: 'h-20 px-8 flex items-center sticky top-0 z-10',
   },
 })
 export class Header {}
