@@ -1,0 +1,192 @@
+b-select {
+  @apply flex gap-1;
+
+  button[b-select-trigger] {
+    @apply font-medium shadow-xs rounded-lg transition-colors duration-150 flex items-center justify-center gap-x-2 disabled:opacity-50 disabled:cursor-not-allowed;
+    @apply bg-transparent text-primary inset-ring-1 inset-ring-secondary hover:bg-primary/5 flex-1;
+
+    b-select-value {
+      @apply flex-1 text-start whitespace-nowrap overflow-hidden text-ellipsis;
+    }
+
+    svg {
+      @apply -mx-0.5;
+    }
+  }
+
+  &.b-size-1 button[b-select-trigger] {
+    @apply text-xs px-2 py-1 rounded-size-1;
+
+    svg {
+      @apply size-4;
+    }
+  }
+
+  &.b-size-2 button[b-select-trigger] {
+    @apply text-base px-3 py-2 rounded-size-2;
+    svg {
+      @apply size-5;
+    }
+  }
+
+  &.b-size-3 button[b-select-trigger] {
+    @apply text-lg  px-4 py-3 rounded-size-3;
+
+    svg {
+      @apply size-6;
+    }
+  }
+
+  &.ng-invalid.ng-touched,
+  &.ng-invalid.ng-dirty {
+    button {
+      @apply text-destructive inset-ring-destructive/20 bg-destructive/10 hover:bg-destructive/20;
+
+      span {
+        @apply text-destructive;
+      }
+
+      &:focus-visible {
+        @apply outline-destructive;
+      }
+    }
+  }
+}
+
+ul[b-select-content] {
+  @apply list-none box-border m-0 relative bg-background shadow-xs inset-ring-1 inset-ring-secondary flex flex-col w-full overflow-y-auto;
+
+  .no-options-message {
+    @apply py-1 px-2 text-sm;
+  }
+
+  &.b-select-content-entering-top {
+    animation: overlay-entering-top 0.1s ease forwards;
+  }
+
+  &.b-select-content-leaving-top {
+    animation: overlay-leaving-top 0.1s ease forwards;
+  }
+
+  &.b-select-content-entering-bottom {
+    animation: overlay-entering-down 0.1s ease forwards;
+  }
+
+  &.b-select-content-leaving-bottom {
+    animation: overlay-leaving-down 0.1s ease forwards;
+  }
+
+  &.b-select-content-entering-left {
+    animation: overlay-entering-left 0.1s ease forwards;
+  }
+
+  &.b-select-content-leaving-left {
+    animation: overlay-leaving-left 0.1s ease forwards;
+  }
+
+  &.b-select-content-entering-right {
+    animation: overlay-entering-right 0.1s ease forwards;
+  }
+
+  &.b-select-content-leaving-right {
+    animation: overlay-leaving-right 0.1s ease forwards;
+  }
+}
+
+.b-size-1 ul[b-select-content] {
+  @apply text-xs p-0.5 gap-0.5 rounded-size-1;
+}
+.b-size-2 ul[b-select-content] {
+  @apply text-base p-1 gap-1 rounded-size-2;
+}
+.b-size-3 ul[b-select-content] {
+  @apply text-lg p-1.5 gap-1.5 rounded-size-3;
+}
+
+@keyframes overlay-entering-top {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes overlay-leaving-top {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+}
+
+@keyframes overlay-entering-down {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes overlay-leaving-down {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes overlay-entering-left {
+  from {
+    opacity: 0;
+    transform: translateX(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes overlay-leaving-left {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(10px);
+  }
+}
+
+@keyframes overlay-entering-right {
+  from {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes overlay-leaving-right {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+}
