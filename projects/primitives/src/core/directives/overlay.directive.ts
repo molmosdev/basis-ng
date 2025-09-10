@@ -14,7 +14,7 @@ import {
   model,
   output,
 } from '@angular/core';
-import { OverlayTriggerDirective, Position } from '@basis-ng/primitives';
+import { OverlayTriggerDirective, Position } from '../../public-api';
 
 /**
  * Directive to manage overlay behavior and positioning.
