@@ -23,14 +23,14 @@ b-select {
   }
 
   &.b-size-2 button[b-select-trigger] {
-    @apply text-base px-3 py-2 rounded-size-2;
+    @apply text-base px-3 py-1.5 rounded-size-2;
     svg {
       @apply size-5;
     }
   }
 
   &.b-size-3 button[b-select-trigger] {
-    @apply text-lg  px-4 py-3 rounded-size-3;
+    @apply text-lg  px-4 py-2.5 rounded-size-3;
 
     svg {
       @apply size-6;
