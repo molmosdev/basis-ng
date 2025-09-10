@@ -10,16 +10,15 @@ import { Button } from '@basis-ng/primitives';
       A minimal UI toolkit for Angular
     </h1>
     <span
-      class="font-display-mono md:max-w-2/3 lg:max-w-1/2 xl:max-w-2/5 text-center"
-      >Headless by design. Style it your way or plug in our optional themes with
-      fully customizable CSS variables. Build fast, accessible, and
-      design-system-friendly apps — without the bloat.
+      class="font-display-mono md:max-w-2/3 lg:max-w-1/2 xl:max-w-3/5 text-center">
+      Headless by design. Style it your way or use our pre-defined Tailwind styles for each component, 
+      with easy customization via <code>@theme</code>. Build fast, accessible, and design-system-friendly apps — without the bloat.
     </span>
-    <button b-button [routerLink]="'/documentation'">Get started</button>
+    <button b-button [routerLink]="'/components'">Get started</button>
   `,
   host: {
     class:
       'h-dvh flex flex-col justify-center items-center gap-5 max-w-[1400px] mx-auto px-8',
   },
 })
-export default class HomeComponent {}
+export class Home {}

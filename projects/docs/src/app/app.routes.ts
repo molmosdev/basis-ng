@@ -9,8 +9,13 @@ export const routes: Routes = [
   },
   {
     path: 'home',
-    loadComponent: () => import('./features/home.component'),
+    loadComponent: () => import('./features/home').then(c => c.Home),
     title: 'Basis UI',
+  },
+  {
+    path: 'components',
+    loadComponent: () =>
+      import('./features/components').then(c => c.Components),
   },
   {
     path: 'documentation',
