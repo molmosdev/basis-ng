@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { CodeBlockComponent } from '../components/shared/components/code-block.component';
 import { FormGroup, FormControl, ReactiveFormsModule } from '@angular/forms';
 import {
-  ButtonComponent,
+  Button,
   ColorPickerComponent,
   RangeComponent,
 } from '@basis-ng/primitives';
@@ -17,7 +17,7 @@ interface ThemeVariables {
   selector: 'article[app-theming]',
   imports: [
     CodeBlockComponent,
-    ButtonComponent,
+    Button,
     // IconComponent,
     RangeComponent,
     ReactiveFormsModule,
