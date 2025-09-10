@@ -10,12 +10,12 @@ import {
   signal,
   viewChild,
 } from '@angular/core';
-import { ButtonComponent } from '../button/button.component';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { forwardRef } from '@angular/core';
 import { CommandComponent } from '../command/command.component';
 import { OverlayTriggerDirective } from '../../directives/overlay-trigger.directive';
 import { OverlayDirective } from '../../directives/overlay.directive';
+import { Button } from '../button/button';
 
 /**
  * Component representing a combobox dropdown.
@@ -23,14 +23,13 @@ import { OverlayDirective } from '../../directives/overlay.directive';
  */
 @Component({
   selector: 'b-combobox',
-  imports: [ButtonComponent, OverlayTriggerDirective, OverlayDirective],
+  imports: [Button, OverlayTriggerDirective, OverlayDirective],
   template: ` <button
       b-button
       variant="outlined"
       (click)="isOpen.set(!isOpen())"
       (keydown.arrowUp)="!isOpen() && isOpen.set(true)"
       (keydown.arrowDown)="!isOpen() && isOpen.set(true)"
-      [active]="false"
       bOverlayTrigger
       #trigger="bOverlayTrigger"
       [disabled]="disabled()">
@@ -72,7 +71,7 @@ export class ComboboxComponent implements OnInit, ControlValueAccessor {
    * Reference to the button element used to toggle the dropdown.
    * This is used for managing focus and interactions.
    */
-  readonly button = viewChild(ButtonComponent);
+  readonly button = viewChild(Button);
 
   /**
    * Reference to the content component of the dropdown.
