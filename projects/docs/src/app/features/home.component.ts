@@ -1,0 +1,25 @@
+import { Component } from '@angular/core';
+import { RouterLink } from '@angular/router';
+import { Button } from '@basis-ng/primitives';
+
+@Component({
+  selector: 'app-home',
+  imports: [Button, RouterLink],
+  template: `
+    <h1 class="font-medium text-4xl md:text-5xl xl:text-6xl text-center">
+      A minimal UI toolkit for Angular
+    </h1>
+    <span
+      class="font-display-mono md:max-w-2/3 lg:max-w-1/2 xl:max-w-2/5 text-center"
+      >Headless by design. Style it your way or plug in our optional themes with
+      fully customizable CSS variables. Build fast, accessible, and
+      design-system-friendly apps — without the bloat.
+    </span>
+    <button b-button [routerLink]="'/documentation'">Get started</button>
+  `,
+  host: {
+    class:
+      'h-dvh flex flex-col justify-center items-center gap-5 max-w-[1400px] mx-auto px-8',
+  },
+})
+export default class HomeComponent {}
