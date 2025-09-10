@@ -2,14 +2,16 @@ import { Component, signal } from '@angular/core';
 import { CodeBlockComponent } from '../shared/components/code-block.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FormGroup, FormControl } from '@angular/forms';
-import { AlertComponent } from 'projects/primitives/src/core/components/alert/alert.component';
-import { Option } from 'projects/primitives/src/shared/components/option.component';
-import { Select } from 'projects/primitives/src/core/components/select/select';
-import { SelectTrigger } from 'projects/primitives/src/core/components/select/components/select-trigger';
-import { SelectValue } from 'projects/primitives/src/core/components/select/components/select-value';
-import { SelectContent } from 'projects/primitives/src/core/components/select/components/select-content';
-import { OverlayTriggerDirective } from 'projects/primitives/src/core/directives/overlay-trigger.directive';
-import { OverlayDirective } from 'projects/primitives/src/core/directives/overlay.directive';
+import {
+  AlertComponent,
+  Option,
+  OverlayDirective,
+  OverlayTriggerDirective,
+  Select,
+  SelectContent,
+  SelectTrigger,
+  SelectValue,
+} from '@basis-ng/primitives';
 
 @Component({
   selector: 'article[app-select-documentation]',
