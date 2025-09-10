@@ -10,9 +10,9 @@ import {
   effect,
   inject,
   input,
+  linkedSignal,
   model,
   output,
-  signal,
 } from '@angular/core';
 import { OverlayTriggerDirective, Position } from '../../public-api';
 
@@ -31,6 +31,7 @@ import { OverlayTriggerDirective, Position } from '../../public-api';
         'cdkConnectedOverlayMinWidth: minWidth',
         'cdkConnectedOverlayHasBackdrop: hasBackdrop',
         'cdkConnectedOverlayBackdropClass: customBackdropClass',
+        'cdkConnectedOverlayPanelClass: panelClass',
       ],
       outputs: [
         'detach: detach',
@@ -63,12 +64,6 @@ export class OverlayDirective {
   readonly trigger = input.required<OverlayTriggerDirective>();
 
   /**
-   * Delay in milliseconds before closing the overlay.
-   * @default 0
-   */
-  readonly closeDelay = input(0);
-
-  /**
    * A computed map of positions to their corresponding `ConnectedPosition` configurations.
    */
   readonly positionsMap = computed<Record<Position, ConnectedPosition>>(() => ({
@@ -77,72 +72,96 @@ export class OverlayDirective {
       originY: 'top',
       overlayX: 'start',
       overlayY: 'bottom',
+      offsetX: 0,
+      offsetY: -4,
     },
     'top-center': {
       originX: 'center',
       originY: 'top',
       overlayX: 'center',
       overlayY: 'bottom',
+      offsetX: 0,
+      offsetY: -4,
     },
     'top-right': {
       originX: 'end',
       originY: 'top',
       overlayX: 'end',
       overlayY: 'bottom',
+      offsetX: 0,
+      offsetY: -4,
     },
     'bottom-left': {
       originX: 'start',
       originY: 'bottom',
       overlayX: 'start',
       overlayY: 'top',
+      offsetX: 0,
+      offsetY: 4,
     },
     'bottom-center': {
       originX: 'center',
       originY: 'bottom',
       overlayX: 'center',
       overlayY: 'top',
+      offsetX: 0,
+      offsetY: 4,
     },
     'bottom-right': {
       originX: 'end',
       originY: 'bottom',
       overlayX: 'end',
       overlayY: 'top',
+      offsetX: 0,
+      offsetY: 4,
     },
     'left-top': {
       originX: 'start',
       originY: 'top',
       overlayX: 'end',
       overlayY: 'top',
+      offsetX: -4,
+      offsetY: 0,
     },
     'left-center': {
       originX: 'start',
       originY: 'center',
       overlayX: 'end',
       overlayY: 'center',
+      offsetX: -4,
+      offsetY: 0,
     },
     'left-bottom': {
       originX: 'start',
       originY: 'bottom',
       overlayX: 'end',
       overlayY: 'bottom',
+      offsetX: -4,
+      offsetY: 0,
     },
     'right-top': {
       originX: 'end',
       originY: 'top',
       overlayX: 'start',
       overlayY: 'top',
+      offsetX: 4,
+      offsetY: 0,
     },
     'right-center': {
       originX: 'end',
       originY: 'center',
       overlayX: 'start',
       overlayY: 'center',
+      offsetX: 4,
+      offsetY: 0,
     },
     'right-bottom': {
       originX: 'end',
       originY: 'bottom',
       overlayX: 'start',
       overlayY: 'bottom',
+      offsetX: 4,
+      offsetY: 0,
     },
   }));
 
@@ -162,8 +181,8 @@ export class OverlayDirective {
   /**
    * Signal to track the currently active `ConnectionPositionPair`.
    */
-  readonly connectedPositionPair = signal<ConnectionPositionPair | undefined>(
-    undefined
+  readonly connectedPositionPair = linkedSignal<ConnectionPositionPair>(
+    () => this.connectedPositions()[0]
   );
 
   /**
@@ -181,7 +200,6 @@ export class OverlayDirective {
    */
   readonly direction = computed(() => {
     const pair = this.connectedPositionPair();
-    if (!pair) return undefined;
 
     return Object.entries(this.positionsMap())
       .find(
@@ -252,97 +270,32 @@ export class OverlayDirective {
    */
   handleOpen(): void {
     if (this.open()) {
-      this.handleOverlayOpen();
+      this.cdkConnectedOverlay.attachOverlay();
     } else {
-      if (!this.firstLoad) this.handleOverlayClose();
-      this.firstLoad = false;
+      this.cdkConnectedOverlay.detachOverlay();
+      this.trigger().el.nativeElement.focus();
     }
   }
 
   /**
-   * Opens the overlay and applies the appropriate direction class.
-   * Ensures the overlay is attached and styled correctly.
+   * Toggles the open state of the overlay.
+   * If the overlay is open, it will be closed, and vice versa.
    */
-  private handleOverlayOpen(): void {
-    this.cdkConnectedOverlay.attachOverlay();
-    this.applyDirectionClass();
+  toggleOverlay(): void {
+    this.open.set(!this.open());
   }
 
   /**
-   * Closes the overlay with optional animation and cleanup.
-   * If it's the first load, detaches the overlay immediately without animation.
+   * Closes the overlay by setting the `open` state to false.
    */
-  private handleOverlayClose(): void {
-    const firstChild = this.getFirstChild();
-
-    if (!firstChild) {
-      this.detachOverlayWithCleanup();
-      return;
-    }
-
-    firstChild.classList.add('b-overlay-leave');
-    const onAnimationEnd = () => {
-      this.detachOverlayWithCleanup(firstChild);
-      firstChild.removeEventListener('animationend', onAnimationEnd);
-    };
-    firstChild.addEventListener('animationend', onAnimationEnd);
+  closeOverlay(): void {
+    this.open.set(false);
   }
 
   /**
-   * Retrieves the first child element of the overlay pane.
-   * @returns The first child element or `null` if not found.
+   * Opens the overlay by setting the `open` state to true.
    */
-  private getFirstChild(): Element | null {
-    return (
-      this.cdkConnectedOverlay.overlayRef?.overlayElement.querySelector(
-        '.cdk-overlay-pane > *'
-      ) || null
-    );
-  }
-
-  /**
-   * Applies the direction class to the overlay's first child element.
-   * Cleans up any existing direction-related classes before applying the new one.
-   */
-  private applyDirectionClass(): void {
-    const firstChild = this.getFirstChild();
-    if (!firstChild) return;
-
-    this.cleanOverlayClasses(firstChild);
-    const direction = this.direction();
-    if (direction) {
-      firstChild.classList.add(`b-overlay-${direction}`);
-    }
-  }
-
-  /**
-   * Detaches the overlay and performs cleanup operations.
-   * Optionally cleans up classes from a provided element.
-   * @param element The element to clean up classes from (optional).
-   */
-  private detachOverlayWithCleanup(element?: Element): void {
-    this.cdkConnectedOverlay.detachOverlay();
-
-    if (element) {
-      this.cleanOverlayClasses(element);
-    }
-
-    this.trigger().el.nativeElement.focus();
-  }
-
-  /**
-   * Removes overlay-related classes from the specified element.
-   * @param element The element to remove classes from.
-   */
-  private cleanOverlayClasses(element: Element): void {
-    const classesToRemove = [
-      'b-overlay-leave',
-      'b-overlay-top',
-      'b-overlay-bottom',
-      'b-overlay-left',
-      'b-overlay-right',
-    ];
-
-    element.classList.remove(...classesToRemove);
+  openOverlay(): void {
+    this.open.set(true);
   }
 }
