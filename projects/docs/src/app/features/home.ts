@@ -14,7 +14,7 @@ import { Button } from '@basis-ng/primitives';
       Headless by design. Style it your way or use our pre-defined Tailwind styles for each component, 
       with easy customization via <code>@theme</code>. Build fast, accessible, and design-system-friendly apps — without the bloat.
     </span>
-    <button b-button [routerLink]="'/components'">Get started</button>
+    <button b-button [routerLink]="'/get-started'">Get started</button>
   `,
   host: {
     class: 'h-dvh flex flex-col justify-center items-center gap-5 px-8 h-20',

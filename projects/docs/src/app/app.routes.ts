@@ -13,9 +13,10 @@ export const routes: Routes = [
     title: 'Basis UI',
   },
   {
-    path: 'components',
+    path: 'get-started',
     loadComponent: () =>
-      import('./features/components').then(c => c.Components),
+      import('./features/get-started').then(c => c.GetStarted),
+    title: 'Get Started - Basis UI',
   },
   {
     path: 'documentation',
