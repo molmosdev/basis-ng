@@ -10,7 +10,7 @@
     "./badge": "./src/components/badge.component.css",
     "./drawer": "./src/components/drawer.component.css",
     "./button-group": "./src/components/button-group.component.css",
-    "./button": "./src/components/button.component.css",
+    "./button": "./src/components/button.css",
     "./checkbox": "./src/components/checkbox.component.css",
     "./color-picker": "./src/components/color-picker.component.css",
     "./input-group": "./src/components/input-group.component.css",
