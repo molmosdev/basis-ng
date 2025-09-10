@@ -16,8 +16,10 @@ export * from './shared/directives/lazy-content.directive';
 export * from './core/components/input/input.component';
 
 /* Select */
-export * from './core/components/select/select.component';
-export * from './core/components/select/select-options.component';
+export * from './core/components/select/select';
+export * from './core/components/select/components/select-trigger';
+export * from './core/components/select/components/select-value';
+export * from './core/components/select/components/select-content';
 export * from './shared/components/option.component';
 
 /* Spinner */
