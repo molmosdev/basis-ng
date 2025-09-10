@@ -10,7 +10,6 @@ import {
 import { NgTemplateOutlet } from '@angular/common';
 import { documentationRoutes } from '../../../features/documentation/documentation.routes';
 import { componentsRoutes } from '../../../features/documentation/pages/components/components.routes';
-import { NavigationService } from './navigation.service';
 import {
   DrawerComponent,
   MenuItemRadioComponent,
@@ -64,11 +63,6 @@ export class NavigationComponent implements OnInit {
   readonly path = signal(this.router.url);
 
   /**
-   * Service to handle navigation logic.
-   */
-  navigationService = inject(NavigationService);
-
-  /**
    * Computed property to get the current device type.
    */
   readonly currentDevice = computed(() =>
@@ -112,6 +106,5 @@ export class NavigationComponent implements OnInit {
         this.path.set(event.urlAfterRedirects);
       }
     });
-    this.navigationService.isHomePath.set(false);
   }
 }
