@@ -106,87 +106,87 @@ ul[b-select-content] {
 @keyframes overlay-entering-top {
   from {
     opacity: 0;
-    transform: translateY(10px);
+    transform: translateY(5px) scale(0.95);
   }
   to {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateY(0) scale(1);
   }
 }
 
 @keyframes overlay-leaving-top {
   from {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateY(0) scale(1);
   }
   to {
     opacity: 0;
-    transform: translateY(10px);
+    transform: translateY(5px) scale(0.95);
   }
 }
 
 @keyframes overlay-entering-down {
   from {
     opacity: 0;
-    transform: translateY(-10px);
+    transform: translateY(-5px) scale(0.95);
   }
   to {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateY(0) scale(1);
   }
 }
 
 @keyframes overlay-leaving-down {
   from {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateY(0) scale(1);
   }
   to {
     opacity: 0;
-    transform: translateY(-10px);
+    transform: translateY(-5px) scale(0.95);
   }
 }
 
 @keyframes overlay-entering-left {
   from {
     opacity: 0;
-    transform: translateX(10px);
+    transform: translateX(5px) scale(0.95);
   }
   to {
     opacity: 1;
-    transform: translateX(0);
+    transform: translateX(0) scale(1);
   }
 }
 
 @keyframes overlay-leaving-left {
   from {
     opacity: 1;
-    transform: translateX(0);
+    transform: translateX(0) scale(1);
   }
   to {
     opacity: 0;
-    transform: translateX(10px);
+    transform: translateX(5px) scale(0.95);
   }
 }
 
 @keyframes overlay-entering-right {
   from {
     opacity: 0;
-    transform: translateX(-10px);
+    transform: translateX(-5px) scale(0.95);
   }
   to {
     opacity: 1;
-    transform: translateX(0);
+    transform: translateX(0) scale(1);
   }
 }
 
 @keyframes overlay-leaving-right {
   from {
     opacity: 1;
-    transform: translateX(0);
+    transform: translateX(0) scale(1);
   }
   to {
     opacity: 0;
-    transform: translateX(-10px);
+    transform: translateX(-5px) scale(0.95);
   }
 }
