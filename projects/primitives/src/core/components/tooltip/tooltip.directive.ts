@@ -21,7 +21,7 @@ import { Subscription } from 'rxjs';
 import { Direction } from '../../../shared/types/direction.type';
 import { UtilsService } from '../../../shared/services/utils.service';
 import { TooltipComponent } from './tooltip.component';
-import { Position } from 'projects/primitives/src/public-api';
+import { Position } from '@basis-ng/primitives';
 
 /**
  * Size options for the tooltip.

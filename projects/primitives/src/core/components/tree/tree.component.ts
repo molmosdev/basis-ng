@@ -12,7 +12,7 @@ import {
   OnInit,
   output,
 } from '@angular/core';
-import { TreeNodeComponent } from 'projects/primitives/src/public-api';
+import { TreeNodeComponent } from '@basis-ng/primitives';
 
 /**
  * Represents a tree component that supports drag-and-drop functionality
