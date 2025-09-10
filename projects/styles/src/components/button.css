@@ -19,8 +19,8 @@ button[b-button] {
     @apply dark:text-primary-dark dark:inset-ring-secondary-dark dark:hover:bg-primary-dark/5;
   }
   &.b-variant-destructive {
-    @apply border border-destructive bg-destructive text-destructive-foreground hover:bg-destructive/90 hover:border-destructive/80;
-    @apply dark:border-destructive-dark dark:bg-destructive-dark dark:text-destructive-foreground-dark dark:hover:bg-destructive-dark/90 dark:hover:border-destructive-dark/80;
+    @apply bg-destructive text-destructive-foreground inset-ring-1 inset-ring-destructive hover:bg-destructive/90 hover:inset-ring-destructive/80;
+    @apply dark:bg-destructive-dark dark:text-destructive-foreground-dark dark:inset-ring-destructive-dark dark:hover:bg-destructive-dark/90 dark:hover:inset-ring-destructive-dark/80;
   }
 
   /* Sizes */
@@ -37,13 +37,13 @@ button[b-button] {
   /* Active state */
   &.b-active,
   &:focus-visible {
-    @apply outline-offset-4 outline-primary;
-    @apply dark:outline-offset-4 dark:outline-primary;
+    @apply outline-2 outline-offset-4 outline-primary;
+    @apply dark:outline-primary-dark;
   }
   &.b-variant-destructive.b-active,
   &.b-variant-destructive:focus-visible {
-    @apply outline-offset-4 outline-destructive;
-    @apply dark:outline-offset-4 dark:outline-destructive-dark;
+    @apply outline-2 outline-offset-4 outline-destructive;
+    @apply dark:outline-destructive-dark;
   }
 
   /* Squared (square button, useful for icons) */
