@@ -1,6 +1,6 @@
 @import 'tailwindcss';
 
-@custom-variant dark (&:where(.dark, .dark *));
+@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
 
 @theme {
   /* Rounded sizes */
@@ -37,7 +37,7 @@
 @import './components/badge.component.css';
 @import './components/drawer.component.css';
 @import './components/button-group.component.css';
-@import './components/button.component.css';
+@import './components/button.css';
 @import './components/checkbox.component.css';
 @import './components/color-picker.component.css';
 @import './components/input-group.component.css';
