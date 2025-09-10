@@ -10,7 +10,7 @@ import { Button } from '@basis-ng/primitives';
       A minimal UI toolkit for Angular
     </h1>
     <span
-      class="font-display-mono md:max-w-2/3 lg:max-w-1/2 xl:max-w-3/5 text-center">
+      class="font-display-mono md:max-w-2/3 lg:max-w-1/2 xl:max-w-3/6 text-center">
       Headless by design. Style it your way or use our pre-defined Tailwind styles for each component, 
       with easy customization via <code>@theme</code>. Build fast, accessible, and design-system-friendly apps — without the bloat.
     </span>
