@@ -20,8 +20,13 @@ import {
 import { Subscription } from 'rxjs';
 import { Direction } from '../../../shared/types/direction.type';
 import { UtilsService } from '../../../shared/services/utils.service';
-import { Position } from '../../../public-api';
 import { TooltipComponent } from './tooltip.component';
+import { Position } from 'projects/primitives/src/public-api';
+
+/**
+ * Size options for the tooltip.
+ */
+type TooltipSize = 'sm' | 'md' | 'lg';
 
 /**
  * Directive to attach a tooltip to an element.
@@ -49,9 +54,9 @@ export class TooltipDirective implements OnDestroy {
   /**
    * Specifies the size of the tooltip.
    *
-   * @defaultValue '2'
+   * @defaultValue 'md'
    */
-  readonly size = input<'1' | '2' | '3'>('2');
+  readonly size = input<TooltipSize>('md');
 
   /**
    * Overlay origin for positioning the tooltip.

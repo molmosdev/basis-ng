@@ -3,6 +3,11 @@ import { Component, computed, signal, TemplateRef } from '@angular/core';
 import { Direction } from '../../../shared/types/direction.type';
 
 /**
+ * Size options for the tooltip.
+ */
+type TooltipSize = 'sm' | 'md' | 'lg';
+
+/**
  * Tooltip component used to display content or templates in a tooltip overlay.
  */
 @Component({
@@ -27,7 +32,7 @@ export class TooltipComponent {
    *
    * @defaultValue '2'
    */
-  readonly size = signal<'1' | '2' | '3'>('2');
+  readonly size = signal<TooltipSize>('md');
 
   /**
    * Direction of the tooltip (e.g., top, bottom, left, right).
