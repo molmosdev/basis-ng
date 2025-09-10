@@ -6,8 +6,8 @@
 export * from './core/services/theme.service';
 
 /* Button */
-export * from './core/components/button/button.component';
-export * from './core/components/button-group/button-group.component';
+export * from './core/components/button/button';
+export * from './core/components/button-group/button-group';
 
 /* Directives */
 export * from './shared/directives/lazy-content.directive';
