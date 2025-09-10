@@ -18,7 +18,7 @@ import {
   BadgeComponent,
   MenuLabelComponent,
   MenuComponent,
-  ButtonComponent,
+  Button,
 } from '@basis-ng/primitives';
 
 @Component({
@@ -32,7 +32,7 @@ import {
     DrawerComponent,
     NgTemplateOutlet,
     BadgeComponent,
-    ButtonComponent,
+    Button,
   ],
   templateUrl: './navigation.component.html',
   styleUrl: './navigation.component.css',
