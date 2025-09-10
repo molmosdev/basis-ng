@@ -7,7 +7,7 @@ import { RouterLink } from '@angular/router';
   template: `
     <svg
       [routerLink]="['/']"
-      class="logo h-7 cursor-pointer outline-none"
+      class="logo h-7 cursor-pointer outline-none -ml-1.5"
       viewBox="0 0 235 235"
       fill="none"
       xmlns="http://www.w3.org/2000/svg">
