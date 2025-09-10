@@ -1,7 +1,6 @@
 import { Component, signal } from '@angular/core';
-import { AlertComponent, ButtonComponent } from '@basis-ng/primitives';
+import { AlertComponent, Button, DrawerComponent } from '@basis-ng/primitives';
 import { CodeBlockComponent } from '../shared/components/code-block.component';
-import { DrawerComponent } from '../../../../../../../../primitives/src/public-api';
 
 @Component({
   selector: 'article[app-drawer-documentation]',
@@ -99,12 +98,7 @@ import { DrawerComponent } from '../../../../../../../../primitives/src/public-a
         This is the content of the drawer.
       </div>
     </b-drawer>`,
-  imports: [
-    CodeBlockComponent,
-    DrawerComponent,
-    ButtonComponent,
-    AlertComponent,
-  ],
+  imports: [CodeBlockComponent, DrawerComponent, Button, AlertComponent],
 })
 export default class DrawerDocumentationComponent {
   angularImport = `import { DrawerComponent } from '@basis-ng/primitives';`;

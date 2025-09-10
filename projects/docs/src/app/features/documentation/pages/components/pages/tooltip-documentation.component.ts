@@ -1,9 +1,5 @@
 import { Component } from '@angular/core';
-import {
-  AlertComponent,
-  ButtonComponent,
-  TooltipDirective,
-} from '@basis-ng/primitives';
+import { AlertComponent, Button, TooltipDirective } from '@basis-ng/primitives';
 import { CodeBlockComponent } from '../shared/components/code-block.component';
 
 @Component({
@@ -37,7 +33,7 @@ import { CodeBlockComponent } from '../shared/components/code-block.component';
         </tr>
         <tr>
           <td><strong>size</strong></td>
-          <td><code>'1' | '2' | '3'</code></td>
+          <td><code>'sm' | 'md' | 'lg'</code></td>
           <td>The size of the tooltip.</td>
         </tr>
         <tr>
@@ -150,28 +146,31 @@ import { CodeBlockComponent } from '../shared/components/code-block.component';
     </span>
     <code-block [code]="sizesExample" />
     <div class="documentation-playground">
-      <button b-button variant="outlined" [bTooltip]="'Small Tooltip'" size="1">
+      <button
+        b-button
+        variant="outlined"
+        [bTooltip]="'Small Tooltip'"
+        size="sm">
         Small
       </button>
       <button
         b-button
         variant="outlined"
         [bTooltip]="'Default Tooltip'"
-        size="2">
+        size="md">
         Default
       </button>
-      <button b-button variant="outlined" [bTooltip]="'Large Tooltip'" size="3">
+      <button
+        b-button
+        variant="outlined"
+        [bTooltip]="'Large Tooltip'"
+        size="lg">
         Large
       </button>
     </div>
   `,
   standalone: true,
-  imports: [
-    CodeBlockComponent,
-    ButtonComponent,
-    AlertComponent,
-    TooltipDirective,
-  ],
+  imports: [CodeBlockComponent, Button, AlertComponent, TooltipDirective],
 })
 export default class TooltipDocumentationComponent {
   angularImport = `import { TooltipDirective } from '@basis-ng/primitives'`;
@@ -202,13 +201,13 @@ export default class TooltipDocumentationComponent {
   Focus me
 </button>`;
 
-  sizesExample = `<button b-button [bTooltip]="'Small Tooltip'" size="1">
+  sizesExample = `<button b-button [bTooltip]="'Small Tooltip'" size="sm">
   Small
 </button>
-<button b-button [bTooltip]="'Default Tooltip'" size="2">
+<button b-button [bTooltip]="'Default Tooltip'" size="md">
   Default
 </button>
-<button b-button [bTooltip]="'Large Tooltip'" size="3">
+<button b-button [bTooltip]="'Large Tooltip'" size="lg">
   Large
 </button>`;
 }

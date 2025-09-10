@@ -1,9 +1,5 @@
 import { Component, signal } from '@angular/core';
-import {
-  AlertComponent,
-  SheetComponent,
-  ButtonComponent,
-} from '@basis-ng/primitives';
+import { AlertComponent, SheetComponent, Button } from '@basis-ng/primitives';
 import { CodeBlockComponent } from '../shared/components/code-block.component';
 
 @Component({
@@ -116,12 +112,7 @@ import { CodeBlockComponent } from '../shared/components/code-block.component';
         This is a custom width sheet.
       </div>
     </b-sheet>`,
-  imports: [
-    CodeBlockComponent,
-    SheetComponent,
-    ButtonComponent,
-    AlertComponent,
-  ],
+  imports: [CodeBlockComponent, SheetComponent, Button, AlertComponent],
 })
 export default class SideSheetDocumentationComponent {
   angularImport = `import { SheetComponent } from '@basis-ng/primitives'`;

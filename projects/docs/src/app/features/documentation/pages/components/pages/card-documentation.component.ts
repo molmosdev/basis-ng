@@ -1,17 +1,17 @@
 import { Component } from '@angular/core';
+import { CodeBlockComponent } from '../shared/components/code-block.component';
 import {
   CardComponent,
   CardHeaderComponent,
-  CardTitleComponent,
   CardSubtitleComponent,
+  CardTitleComponent,
   CardDescriptionComponent,
   CardContentComponent,
   CardFooterComponent,
-  ButtonComponent,
+  Button,
   AlertComponent,
   InputComponent,
 } from '@basis-ng/primitives';
-import { CodeBlockComponent } from '../shared/components/code-block.component';
 
 @Component({
   selector: 'article[app-card-documentation]',
@@ -132,7 +132,7 @@ import { CodeBlockComponent } from '../shared/components/code-block.component';
     CardDescriptionComponent,
     CardContentComponent,
     CardFooterComponent,
-    ButtonComponent,
+    Button,
     AlertComponent,
     InputComponent,
   ],

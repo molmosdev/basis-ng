@@ -4,7 +4,7 @@ import {
   InputGroupComponent,
   AlertComponent,
   InputComponent,
-  ButtonComponent,
+  Button,
 } from '@basis-ng/primitives';
 
 @Component({
@@ -65,7 +65,7 @@ import {
     <code-block [code]="prependButtonUsage" />
     <div class="documentation-playground">
       <b-input-group maxWidth="240px">
-        <button b-button variant="primary" size="1">Search</button>
+        <button b-button variant="primary" size="sm">Search</button>
         <input b-input type="text" placeholder="Search..." />
       </b-input-group>
     </div>
@@ -75,7 +75,7 @@ import {
     <div class="documentation-playground">
       <b-input-group maxWidth="240px">
         <input b-input type="email" placeholder="Email address" />
-        <button b-button variant="primary" size="1">Send</button>
+        <button b-button variant="primary" size="sm">Send</button>
       </b-input-group>
     </div>
 
@@ -85,7 +85,7 @@ import {
       <b-input-group maxWidth="240px">
         <span>+52</span>
         <input b-input type="number" placeholder="Phone" />
-        <button b-button variant="primary" size="1">Verify</button>
+        <button b-button variant="primary" size="sm">Verify</button>
       </b-input-group>
     </div>
 
@@ -101,7 +101,7 @@ import {
         <button
           b-button
           variant="ghost"
-          size="1"
+          size="sm"
           type="button"
           [squared]="true"
           (click)="showPassword = !showPassword"
@@ -115,7 +115,7 @@ import {
     AlertComponent,
     CodeBlockComponent,
     InputGroupComponent,
-    ButtonComponent,
+    Button,
     InputComponent,
     // IconComponent,
   ],
@@ -136,19 +136,19 @@ export default class InputGroupDocumentationComponent {
 </b-input-group>`;
 
   prependButtonUsage = `<b-input-group maxWidth="240px">
-  <button b-button variant="primary" size="1">Search</button>
+  <button b-button variant="primary" size="sm">Search</button>
   <input b-input type="text" placeholder="Search..." />
 </b-input-group>`;
 
   appendButtonUsage = `<b-input-group maxWidth="240px">
   <input b-input type="email" placeholder="Email address" />
-  <button b-button variant="primary" size="1">Send</button>
+  <button b-button variant="primary" size="sm">Send</button>
 </b-input-group>`;
 
   combinedUsage = `<b-input-group maxWidth="240px">
   <span>+52</span>
   <input b-input type="number" placeholder="Phone" />
-  <button b-button variant="primary" size="1">Verify</button>
+  <button b-button variant="primary" size="sm">Verify</button>
 </b-input-group>`;
 
   showPassword = false;
@@ -162,7 +162,7 @@ export default class InputGroupDocumentationComponent {
   <button
     b-button
     variant="ghost"
-    size="1"
+    size="sm"
     type="button"
     [squared]="true"
     (click)="showPassword = !showPassword"

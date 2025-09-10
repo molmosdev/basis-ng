@@ -1,8 +1,5 @@
 import { Component } from '@angular/core';
-import {
-  TabsComponent,
-  TabComponent,
-} from '../../../../../../../../primitives/src/public-api';
+import { TabsComponent, TabComponent } from '@basis-ng/primitives';
 import { CodeBlockComponent } from '../shared/components/code-block.component';
 import { FormsModule } from '@angular/forms';
 import { NgTemplateOutlet } from '@angular/common';

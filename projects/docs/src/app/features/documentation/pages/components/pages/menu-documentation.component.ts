@@ -5,7 +5,7 @@ import {
   AlertComponent,
   MenuLabelComponent,
   MenuComponent,
-  ButtonComponent,
+  Button,
   MenuTriggerDirective,
 } from '@basis-ng/primitives';
 import { CodeBlockComponent } from '../shared/components/code-block.component';
@@ -223,7 +223,7 @@ import { CodeBlockComponent } from '../shared/components/code-block.component';
     MenuTriggerDirective,
     CodeBlockComponent,
     // IconComponent,
-    ButtonComponent,
+    Button,
     AlertComponent,
   ],
 })

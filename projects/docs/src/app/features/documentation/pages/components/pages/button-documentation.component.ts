@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
-import {
-  AlertComponent,
-  SpinnerComponent,
-  ButtonComponent,
-  ButtonGroupComponent,
-} from '@basis-ng/primitives';
 import { CodeBlockComponent } from '../shared/components/code-block.component';
+import {
+  Button,
+  AlertComponent,
+  ButtonGroup,
+  SpinnerComponent,
+} from '@basis-ng/primitives';
 
 @Component({
   selector: 'article[app-button-documentation]',
@@ -51,8 +51,8 @@ import { CodeBlockComponent } from '../shared/components/code-block.component';
         </tr>
         <tr>
           <td><strong>size</strong></td>
-          <td><code>'1' | '2' | '3'</code></td>
-          <td>The size of the button. Default is <code>'2'</code>.</td>
+          <td><code>'sm' | 'md' | 'lg'</code></td>
+          <td>The size of the button. Default is <code>'md'</code>.</td>
         </tr>
         <tr>
           <td><strong>active</strong></td>
@@ -90,7 +90,7 @@ import { CodeBlockComponent } from '../shared/components/code-block.component';
     <h2>Basic</h2>
     <code-block [code]="basicUsage" />
     <div class="documentation-playground">
-      <button b-button variant="primary" size="2">This is a button</button>
+      <button b-button variant="primary" size="md">This is a button</button>
     </div>
 
     <h2>Variants</h2>
@@ -106,9 +106,9 @@ import { CodeBlockComponent } from '../shared/components/code-block.component';
     <h2>Sizes</h2>
     <code-block [code]="sizesUsage" />
     <div class="documentation-playground">
-      <button b-button size="1">Size 1</button>
-      <button b-button size="2">Size 2 (default)</button>
-      <button b-button size="3">Size 3</button>
+      <button b-button size="sm">Small</button>
+      <button b-button size="md">Medium (default)</button>
+      <button b-button size="lg">Large</button>
     </div>
 
     <h2>Loading State</h2>
@@ -157,9 +157,9 @@ import { CodeBlockComponent } from '../shared/components/code-block.component';
     <code-block [code]="outlinedSmallUsage" />
     <div class="documentation-playground">
       <b-button-group>
-        <button b-button variant="outlined" size="1">Outlined</button>
-        <button b-button variant="outlined" size="1">Outlined</button>
-        <button b-button variant="outlined" size="1">Outlined</button>
+        <button b-button variant="outlined" size="sm">Outlined</button>
+        <button b-button variant="outlined" size="sm">Outlined</button>
+        <button b-button variant="outlined" size="sm">Outlined</button>
       </b-button-group>
     </div>
 
@@ -177,16 +177,16 @@ import { CodeBlockComponent } from '../shared/components/code-block.component';
     <code-block [code]="spacedSmallUsage" />
     <div class="documentation-playground">
       <b-button-group [spaced]="true">
-        <button b-button variant="outlined" size="1">Outlined</button>
-        <button b-button variant="outlined" size="1">Outlined</button>
-        <button b-button variant="outlined" size="1">Outlined</button>
+        <button b-button variant="outlined" size="sm">Outlined</button>
+        <button b-button variant="outlined" size="sm">Outlined</button>
+        <button b-button variant="outlined" size="sm">Outlined</button>
       </b-button-group>
     </div>
 
     <h2>Squared Buttons</h2>
     <code-block [code]="squaredUsage" />
     <div class="documentation-playground">
-      <button b-button [squared]="true" size="1">
+      <button b-button [squared]="true" size="sm">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="14"
@@ -204,7 +204,7 @@ import { CodeBlockComponent } from '../shared/components/code-block.component';
           <line x1="8" x2="14" y1="11" y2="11" />
         </svg>
       </button>
-      <button b-button [squared]="true" size="2">
+      <button b-button [squared]="true" size="md">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="16"
@@ -221,7 +221,7 @@ import { CodeBlockComponent } from '../shared/components/code-block.component';
           <line x1="8" x2="14" y1="11" y2="11" />
         </svg>
       </button>
-      <button b-button [squared]="true" size="3">
+      <button b-button [squared]="true" size="lg">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="28"
@@ -241,8 +241,8 @@ import { CodeBlockComponent } from '../shared/components/code-block.component';
 
   imports: [
     CodeBlockComponent,
-    ButtonComponent,
-    ButtonGroupComponent,
+    Button,
+    ButtonGroup,
     AlertComponent,
     SpinnerComponent,
   ],
@@ -250,15 +250,15 @@ import { CodeBlockComponent } from '../shared/components/code-block.component';
 export default class ButtonDocumentationComponent {
   angularImport = `import { ButtonComponent } from '@basis-ng/primitives'`;
   stylesImport = `@import '@basis-ng/styles/button';`;
-  basicUsage = `<button b-button variant="primary" size="2">This is a button</button>`;
+  basicUsage = `<button b-button variant="primary" size="md">This is a button</button>`;
   variantsUsage = `<button b-button variant="primary">Primary</button>
 <button b-button variant="secondary">Secondary</button>
 <button b-button variant="ghost">Ghost</button>
 <button b-button variant="outlined">Outlined</button>
 <button b-button variant="destructive">Destructive</button>`;
-  sizesUsage = `<button b-button size="1">Size 1</button>
-<button b-button size="2">Size 2 (default)</button>
-<button b-button size="3">Size 3</button>`;
+  sizesUsage = `<button b-button size="sm">Small</button>
+<button b-button size="md">Medium (default)</button>
+<button b-button size="lg">Large</button>`;
   loadingUsage = `<button b-button>
   <b-spinner size="1" type="bars" />
   Saving
@@ -285,9 +285,9 @@ export default class ButtonDocumentationComponent {
 </b-button-group>`;
 
   outlinedSmallUsage = `<b-button-group>
-  <button b-button variant="outlined" size="1">Outlined</button>
-  <button b-button variant="outlined" size="1">Outlined</button>
-  <button b-button variant="outlined" size="1">Outlined</button>
+  <button b-button variant="outlined" size="sm">Outlined</button>
+  <button b-button variant="outlined" size="sm">Outlined</button>
+  <button b-button variant="outlined" size="sm">Outlined</button>
 </b-button-group>`;
 
   spacedUsage = `<b-button-group [spaced]="true">
@@ -297,18 +297,18 @@ export default class ButtonDocumentationComponent {
 </b-button-group>`;
 
   spacedSmallUsage = `<b-button-group [spaced]="true">
-  <button b-button variant="outlined" size="1">Outlined</button>
-  <button b-button variant="outlined" size="1">Outlined</button>
-  <button b-button variant="outlined" size="1">Outlined</button>
+  <button b-button variant="outlined" size="sm">Outlined</button>
+  <button b-button variant="outlined" size="sm">Outlined</button>
+  <button b-button variant="outlined" size="sm">Outlined</button>
 </b-button-group>`;
 
-  squaredUsage = `<button b-button [squared]="true" size="1">
+  squaredUsage = `<button b-button [squared]="true" size="sm">
  <svg ... />
 </button>
-<button b-button [squared]="true" size="2">
+<button b-button [squared]="true" size="md">
  <svg ... />
 </button>
-<button b-button [squared]="true" size="3">
+<button b-button [squared]="true" size="lg">
   <svg ... />
 </button>`;
 }

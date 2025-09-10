@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ButtonComponent, SpinnerComponent } from '@basis-ng/primitives';
+import { Button, SpinnerComponent } from '@basis-ng/primitives';
 import { CodeBlockComponent } from '../shared/components/code-block.component';
 
 @Component({
@@ -64,7 +64,7 @@ import { CodeBlockComponent } from '../shared/components/code-block.component';
       </button>
     </div>
   `,
-  imports: [CodeBlockComponent, ButtonComponent, SpinnerComponent],
+  imports: [CodeBlockComponent, Button, SpinnerComponent],
 })
 export default class SpinnerDocumentationComponent {
   basicUsage = `<b-spinner size="1"></b-spinner>\n<b-spinner size="2"></b-spinner>\n<b-spinner size="3"></b-spinner>\n\n<b-spinner type="bars" size="2"></b-spinner>\n<b-spinner type="circle" size="2"></b-spinner>`;

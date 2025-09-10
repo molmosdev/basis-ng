@@ -1,8 +1,5 @@
 import { Component } from '@angular/core';
-import {
-  AlertComponent,
-  ColorPickerComponent,
-} from '../../../../../../../../primitives/src/public-api';
+import { AlertComponent, ColorPickerComponent } from '@basis-ng/primitives';
 import { CodeBlockComponent } from '../shared/components/code-block.component';
 import {
   FormsModule,
