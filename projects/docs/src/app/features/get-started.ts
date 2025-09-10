@@ -9,7 +9,7 @@ import { CodeBlockComponent } from './documentation/pages/components/shared/comp
   template: `
     <article class="flex flex-col gap-2 max-w-3xl">
       <h1 class="font-bold text-2xl">Introduction</h1>
-      <span class="font-display-mono">
+      <span>
         Basis is an Angular component library designed for speed, flexibility, and design consistency. Use primitives library for headless, logic-driven components, and styles library for ready-to-use Tailwind-based styles, fully configurable with @theme.
       </span>
     </article>
@@ -19,19 +19,19 @@ import { CodeBlockComponent } from './documentation/pages/components/shared/comp
     </article>
     <article class="flex flex-col gap-2 max-w-3xl">
       <h1 class="font-bold text-2xl">Theming</h1>
-      <span class="mb-3 font-display-mono">
-        Easily customize your application's look and feel using <strong>@thema</strong> and Tailwind tokens. Define your own fonts, radii, and color palettes for both light and dark modes. Example:
+      <span class="mb-3">
+        Easily customize your application's look and feel using theme and Tailwind tokens. Define your own fonts, radius, and color palettes for both light and dark modes. Example:
       </span>
       <code-block [code]="themingExample" />
     </article>
     <article class="flex flex-col gap-5">
       <h1 class="font-bold text-2xl">Components</h1>
-      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
         @for (route of routes(); track route.title) {
           @if (route.data?.['title']) {
             <div
               class="p-4 relative h-30 inset-ring-1 inset-ring-secondary bg-primary/5 hover:bg-primary/10 dark:inset-ring-secondary-dark dark:bg-primary-dark/5 dark:hover:bg-primary-dark/10 rounded-lg transition-all duration-150 cursor-pointer">
-              <h2 class="font-display-mono">{{ route.data?.['title'] }}</h2>
+              <h2>{{ route.data?.['title'] }}</h2>
               @if (route.data?.['new']) {
                 <span
                   class="absolute top-2 right-2 bg-primary/5 dark:bg-primary-dark/5 text-xs font-semibold px-2 py-1 rounded-md"
