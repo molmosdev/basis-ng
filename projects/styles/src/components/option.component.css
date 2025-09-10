@@ -1,13 +1,16 @@
 li[b-option] {
   @apply flex gap-2 py-1.5 px-3 text-sm box-border cursor-pointer min-w-full items-center rounded-sm;
   @apply hover:bg-secondary/30;
+  @apply dark:hover:bg-secondary-dark/30;
 
   &.cdk-option-highlighted {
     @apply bg-secondary/10;
+    @apply dark:bg-secondary-dark/10;
   }
 
   &[aria-selected='true'] {
     @apply bg-secondary text-secondary-foreground;
+    @apply dark:bg-secondary-dark dark:text-secondary-foreground-dark;
   }
 
   &[aria-disabled='true'] {

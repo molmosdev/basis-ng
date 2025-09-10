@@ -4,13 +4,15 @@ b-select {
   button[b-select-trigger] {
     @apply font-medium shadow-xs rounded-lg transition-colors duration-150 flex items-center justify-center gap-x-2 disabled:opacity-50 disabled:cursor-not-allowed;
     @apply bg-transparent text-primary inset-ring-1 inset-ring-secondary hover:bg-primary/5 flex-1;
+    @apply dark:text-primary-dark dark:inset-ring-secondary-dark dark:hover:bg-primary-dark/5;
 
     b-select-value {
       @apply flex-1 text-start whitespace-nowrap overflow-hidden text-ellipsis;
+      @apply dark:text-primary-dark;
     }
 
     svg {
-      @apply -mx-0.5;
+      @apply -mx-1;
     }
   }
 
@@ -41,13 +43,16 @@ b-select {
   &.ng-invalid.ng-dirty {
     button {
       @apply text-destructive inset-ring-destructive/20 bg-destructive/10 hover:bg-destructive/20;
+      @apply dark:text-destructive-dark dark:inset-ring-destructive-dark/20 dark:bg-destructive-dark/10 dark:hover:bg-destructive-dark/20;
 
-      span {
+      b-select-value {
         @apply text-destructive;
+        @apply dark:text-destructive-dark;
       }
 
       &:focus-visible {
         @apply outline-destructive;
+        @apply dark:outline-destructive-dark;
       }
     }
   }
@@ -55,9 +60,11 @@ b-select {
 
 ul[b-select-content] {
   @apply list-none box-border m-0 relative bg-background shadow-xs inset-ring-1 inset-ring-secondary flex flex-col w-full overflow-y-auto;
+  @apply dark:bg-background-dark dark:shadow-xs dark:inset-ring-secondary-dark;
 
   .no-options-message {
     @apply py-1 px-2 text-sm;
+    @apply dark:text-primary-dark;
   }
 
   &.b-select-content-entering-top {
