@@ -1,0 +1,48 @@
+input[b-switch] {
+  @apply flex items-center cursor-pointer rounded-full border-0 transition-colors duration-200 appearance-none bg-secondary dark:bg-secondary-dark;
+
+  &:focus-visible {
+    @apply outline-2 outline-primary outline-offset-2 dark:outline-primary-dark;
+  }
+
+  &::after {
+    @apply flex rounded-full shadow-md transition-transform duration-200 justify-center items-center bg-primary-foreground will-change-transform content-[''];
+  }
+
+  &.b-size-sm {
+    @apply h-5 w-8;
+    &::after {
+      @apply h-3 w-3 m-1;
+    }
+  }
+  &.b-size-md {
+    @apply h-6 w-10;
+    &::after {
+      @apply h-4 w-4 m-1;
+    }
+  }
+  &.b-size-lg {
+    @apply h-8 w-14;
+    &::after {
+      @apply h-6 w-6 m-1;
+    }
+  }
+
+  &:checked {
+    &.b-size-sm {
+      &::after {
+        @apply transform translate-x-[0.7rem];
+      }
+    }
+    &.b-size-md {
+      &::after {
+        @apply transform translate-x-[1rem];
+      }
+    }
+    &.b-size-lg {
+      &::after {
+        @apply transform translate-x-[1.5rem];
+      }
+    }
+  }
+}

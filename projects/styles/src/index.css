@@ -1,5 +1,15 @@
 @import 'tailwindcss';
 
+@layer utilities {
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+
 @theme {
   /* Rounded sizes */
   --radius-size-xs: 0.25rem; /* similar a rounded-sm */
@@ -30,9 +40,9 @@
 }
 
 @import './components/alert.component.css';
-@import './components/badge.component.css';
+@import './components/badge.css';
 @import './components/attached-box.component.css';
-@import './components/badge.component.css';
+@import './components/badge.css';
 @import './components/drawer.component.css';
 @import './components/button-group.component.css';
 @import './components/button.css';
@@ -41,12 +51,7 @@
 @import './components/input-group.component.css';
 @import './components/input.component.css';
 @import './components/label.component.css';
-@import './components/menu-group.component.css';
-@import './components/menu-item-checkbox.component.css';
-@import './components/menu-item-radio.component.css';
-@import './components/menu-item.component.css';
-@import './components/menu-label.component.css';
-@import './components/menu.component.css';
+@import './components/menu.css';
 @import './components/range.component.css';
 @import './components/row-item.component.css';
 @import './components/row.component.css';
@@ -56,8 +61,8 @@
 @import './components/command-options.component.css';
 @import './components/option.component.css';
 @import './components/sheet.component.css';
-@import './components/spinner.component.css';
-@import './components/switch.component.css';
+@import './components/spinner.css';
+@import './components/switch.css';
 @import './components/tab.component.css';
 @import './components/table.component.css';
 @import './components/tabs.component.css';

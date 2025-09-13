@@ -1,0 +1,115 @@
+b-menu {
+  @apply flex flex-col;
+
+  &.b-size-sm {
+    @apply text-sm rounded-size-sm;
+
+    &:not(:has(b-menu-group)) {
+      @apply p-0.5 gap-0.5;
+    }
+
+    b-menu-group {
+      @apply p-0.5 gap-0.5;
+    }
+
+    b-menu-label {
+      @apply !py-0.5 !px-2;
+    }
+
+    button[b-menu-item],
+    button[b-menu-item-radio],
+    button[b-menu-item-checkbox] {
+      @apply !py-1 !px-2 rounded-size-xs;
+    }
+  }
+
+  &.b-size-md {
+    @apply text-base rounded-size-md;
+
+    &:not(:has(b-menu-group)) {
+      @apply p-1 gap-1;
+    }
+
+    b-menu-group {
+      @apply p-1 gap-1;
+    }
+
+    b-menu-label {
+      @apply !py-1 !px-3;
+    }
+
+    button[b-menu-item],
+    button[b-menu-item-radio],
+    button[b-menu-item-checkbox] {
+      @apply !py-1.5 !px-3 rounded-size-sm;
+    }
+  }
+
+  &.b-size-lg {
+    @apply text-lg rounded-size-lg;
+
+    &:not(:has(b-menu-group)) {
+      @apply p-1.5 gap-1.5;
+    }
+
+    b-menu-group {
+      @apply p-1.5 gap-1.5;
+    }
+
+    b-menu-label {
+      @apply !py-1.5 !px-4;
+    }
+
+    button[b-menu-item],
+    button[b-menu-item-radio],
+    button[b-menu-item-checkbox] {
+      @apply !py-2 !px-4 rounded-size-md;
+    }
+  }
+
+  button[b-menu-item],
+  button[b-menu-item-radio],
+  button[b-menu-item-checkbox] {
+    @apply flex gap-2 cursor-pointer;
+    @apply hover:bg-secondary/50;
+    @apply dark:hover:bg-secondary-dark/50;
+
+    &:focus-visible {
+      @apply outline-2 outline-offset-4 outline-primary;
+      @apply dark:outline-primary-dark;
+    }
+
+    &[aria-selected='true'],
+    &.active {
+      @apply bg-secondary text-secondary-foreground;
+      @apply dark:bg-secondary-dark dark:text-secondary-foreground-dark;
+    }
+
+    &[aria-disabled='true'] {
+      @apply opacity-60 pointer-events-none bg-none cursor-auto;
+    }
+  }
+
+  b-menu-group {
+    @apply flex flex-col;
+
+    &:not(:first-child) {
+      @apply border-t-1 border-secondary;
+      @apply dark:border-secondary-dark;
+    }
+
+    &:not(:last-child) {
+      @apply border-b-1 border-secondary;
+      @apply dark:border-secondary-dark;
+    }
+  }
+
+  b-menu-label {
+    @apply font-medium;
+  }
+}
+
+.cdk-overlay-container b-menu {
+  @apply inset-ring-1 inset-ring-secondary bg-background;
+  @apply dark:inset-ring-secondary-dark dark:bg-background-dark;
+}

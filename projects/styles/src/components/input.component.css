@@ -1,22 +1,28 @@
 input[b-input] {
   @apply box-border border transition-colors text-base font-sans rounded-lg bg-background border-secondary text-font min-w-1/2;
+  @apply dark:bg-background-dark dark:text-font-dark dark:border-secondary-dark;
 
   &:focus-visible:not(:read-only) {
-    @apply outline-2 outline-offset-2 outline-primary;
+    @apply outline-2 outline-offset-4 outline-primary;
+    @apply dark:outline-primary-dark;
   }
 
   &::placeholder {
     @apply opacity-50;
+    @apply dark:opacity-70 dark:text-font-dark;
   }
 
   &.ng-invalid.ng-touched,
   &.ng-invalid.ng-dirty {
-    @apply text-destructive-foreground bg-destructive border-destructive;
+    @apply text-destructive placeholder:text-destructive bg-destructive/20 border-destructive;
+    @apply dark:text-destructive-dark dark:placeholder:text-destructive-dark dark:bg-destructive-dark/20 dark:border-destructive-dark;
     &:focus-visible {
-      @apply outline-destructive-foreground;
+      @apply outline-2 outline-offset-4 outline-destructive;
+      @apply dark:outline-destructive-dark;
     }
     &::placeholder {
-      @apply text-destructive-foreground;
+      @apply text-destructive;
+      @apply dark:text-destructive-foreground;
     }
   }
 
@@ -24,13 +30,13 @@ input[b-input] {
     @apply opacity-60 pointer-events-none;
   }
 
-  &.size-1 {
+  &.b-size-sm {
     @apply px-2 py-1 h-7 text-xs;
   }
-  &.size-2 {
+  &.b-size-md {
     @apply px-3 py-2 h-9 text-base;
   }
-  &.size-3 {
+  &.b-size-lg {
     @apply px-4 py-3 h-11 text-lg;
   }
 }

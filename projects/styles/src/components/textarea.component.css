@@ -1,60 +1,37 @@
 textarea[b-textarea] {
-  resize: none;
-  background-color: var(--input-background, #e0e0e0);
-  border-radius: var(--radius, 0.5rem);
-  box-sizing: border-box;
-  border-width: 1px;
-  border-style: solid;
-  border-color: var(--border-color, transparent);
-  transition:
-    opacity 0.2s,
-    background-color 0.2s,
-    border-color 0.2s;
-  font-size: 1rem;
-  color: var(--input-foreground);
-  font-family: 'Geist', sans-serif;
+  @apply box-border border transition-colors text-base font-sans rounded-lg bg-background border-secondary text-font min-w-1/2;
+  @apply dark:bg-background-dark dark:text-font-dark dark:border-secondary-dark;
 
-  &:focus-visible {
-    outline: 2px solid var(--primary);
-    outline-offset: 2px;
+  &:focus-visible:not(:read-only) {
+    @apply outline-2 outline-offset-4 outline-primary dark:outline-primary-dark;
   }
 
   &::placeholder {
-    opacity: 0.5;
+    @apply opacity-50 dark:opacity-70 dark:text-font-dark;
   }
 
   &.ng-invalid.ng-touched,
   &.ng-invalid.ng-dirty {
-    color: var(--error-foreground);
-    background-color: var(--error);
-    border-color: var(--error-border-color);
-
+    @apply text-destructive placeholder:text-destructive bg-destructive/20 border-destructive dark:text-destructive-dark dark:placeholder:text-destructive-dark dark:bg-destructive-dark/20 dark:border-destructive-dark;
     &:focus-visible {
-      outline-color: var(--error-foreground);
+      @apply outline-2 outline-offset-4 outline-destructive dark:outline-destructive-dark;
     }
-
     &::placeholder {
-      color: var(--error-foreground);
+      @apply text-destructive dark:text-destructive-foreground;
     }
   }
 
   &:disabled {
-    opacity: 0.6;
-    pointer-events: none;
+    @apply opacity-60 pointer-events-none;
   }
 
-  &.size-1 {
-    padding: 0.357rem 0.5rem;
-    font-size: 0.857rem;
+  &.b-size-sm {
+    @apply px-2 py-1 text-xs;
   }
-
-  &.size-2 {
-    padding: 0.429rem 0.75rem;
-    font-size: 1rem;
+  &.b-size-md {
+    @apply px-3 py-2 text-base;
   }
-
-  &.size-3 {
-    padding: 0.786rem 1rem;
-    font-size: 1.143rem;
+  &.b-size-lg {
+    @apply px-4 py-3 text-lg;
   }
 }

@@ -18,12 +18,12 @@ li[b-option] {
   }
 }
 
-.b-size-1 li[b-option] {
+.b-size-sm li[b-option] {
   @apply text-xs !py-1 !px-2 rounded-size-xs;
 }
-.b-size-2 li[b-option] {
+.b-size-md li[b-option] {
   @apply text-base !py-1.5 !px-3 rounded-size-sm;
 }
-.b-size-3 li[b-option] {
+.b-size-lg li[b-option] {
   @apply text-lg !py-2 !px-4 rounded-size-md;
 }
