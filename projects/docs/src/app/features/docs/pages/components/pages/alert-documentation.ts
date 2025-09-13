@@ -1,8 +1,16 @@
 import { Component } from '@angular/core';
-import { Alert } from '@basis-ng/primitives';
+import {
+  Alert,
+  Button,
+  OverlayDirective,
+  OverlayTriggerDirective,
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from '@basis-ng/primitives';
 import { CodeBlock } from '../shared/components/code-block';
 import { StepsButtons } from '../../shared/components/steps-buttons';
-import { provideIcons } from '@ng-icons/core';
+import { NgIcon, provideIcons } from '@ng-icons/core';
 import {
   lucideInfo,
   lucideCircleCheck,
@@ -12,7 +20,18 @@ import {
 
 @Component({
   selector: 'article[app-alert-documentation]',
-  imports: [Alert, CodeBlock, StepsButtons],
+  imports: [
+    Alert,
+    CodeBlock,
+    StepsButtons,
+    Tooltip,
+    TooltipTrigger,
+    TooltipContent,
+    OverlayDirective,
+    OverlayTriggerDirective,
+    Button,
+    NgIcon,
+  ],
   providers: [
     provideIcons({
       lucideInfo,
@@ -80,13 +99,39 @@ import {
               </td>
               <td
                 class="border-t border-gray-200 dark:border-zinc-700 px-4 py-2 font-display-mono">
-                string | null <strong>null</strong><br />
-                <span class="text-xs text-gray-500"
-                  >El icono debe estar registrado en
-                  <code>provideIcons</code> en el módulo donde se use el
-                  alert.<br />Ejemplo:
-                  <code>{{ iconProvideExample }}</code></span
-                >
+                <span class="group cursor-pointer inline-flex items-center">
+                  string | null
+                  <b-tooltip size="sm" variant="secondary">
+                    <button
+                      b-button
+                      [squared]="true"
+                      variant="ghost"
+                      size="sm"
+                      class="ml-1 flex items-center justify-center"
+                      tabindex="0"
+                      aria-label="Show Position[] values"
+                      bTooltipTrigger
+                      bOverlayTrigger
+                      #tooltipInfo="bOverlayTrigger"
+                      type="button">
+                      <ng-icon
+                        name="lucideInfo"
+                        size="14"
+                        color="currentColor" />
+                    </button>
+                    <ng-template
+                      bOverlay
+                      [trigger]="tooltipInfo"
+                      [focusTriggerOnClose]="false">
+                      <b-tooltip-content>
+                        The icon should be provided using the provideIcons
+                        method from ng-icons.
+                        <br />
+                        {{ iconProvideExample }}
+                      </b-tooltip-content>
+                    </ng-template>
+                  </b-tooltip>
+                </span>
               </td>
             </tr>
             <tr>
@@ -208,5 +253,5 @@ export class AlertDocumentation {
   typesUsage = `<b-alert type="success" title="Success" icon="CircleCheck">\n  This is a success alert.\n</b-alert>\n<b-alert type="error" title="Error" icon="CircleX">\n  This is an error alert.\n</b-alert>\n<b-alert type="warning" title="Warning" icon="OctagonAlert">\n  This is a warning alert.\n</b-alert>\n<b-alert type="info" title="Info" icon="Info">\n  This is an informational alert.\n</b-alert>`;
   dismissibleUsage = `<b-alert type="info" [dismissible]="true" title="Info" icon="Info">\n  This alert can be dismissed.\n</b-alert>`;
   maxWidthUsage = `<b-alert type="info" title="Info Alert" icon="Info" [maxWidth]="'300px'">\n  This alert has a maximum width of 300px.\n</b-alert>`;
-  iconProvideExample = `providers: [provideIcons(&#123; lucideSearch &#125;)]`;
+  iconProvideExample = `providers: [provideIcons({ lucideSearch })]`;
 }

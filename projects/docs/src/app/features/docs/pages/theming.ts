@@ -9,7 +9,7 @@ import { Badge } from '@basis-ng/primitives';
   template: `
     <app-steps-buttons
       [previous]="{ label: 'Installation', path: '/docs/installation' }"
-      [next]="{ label: 'Button', path: '/docs/components/button' }" />
+      [next]="{ label: 'Alert', path: '/docs/components/alert' }" />
     <h1 class="font-bold text-2xl flex gap-2 items-start">
       Theming
       <span b-badge variant="outlined" size="sm"> New </span>
@@ -24,7 +24,7 @@ import { Badge } from '@basis-ng/primitives';
     </div>
     <app-steps-buttons
       [previous]="{ label: 'Installation', path: '/docs/installation' }"
-      [next]="{ label: 'Button', path: '/docs/components/button' }" />
+      [next]="{ label: 'Alert', path: '/docs/components/alert' }" />
   `,
   host: {
     class:
