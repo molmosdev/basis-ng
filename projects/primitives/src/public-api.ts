@@ -37,10 +37,6 @@ export * from './core/components/table/components/row/components/row-item/row-it
 export * from './core/components/tabs/tabs.component';
 export * from './core/components/tabs/tab.component';
 
-/* InViewport */
-export * from './core/directives/in-viewport.directive';
-export * from './core/services/in-viewport.service';
-
 /* Sheet */
 export * from './core/components/sheet/sheet.component';
 
