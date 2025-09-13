@@ -51,7 +51,7 @@
   --color-info-foreground-dark: #fff;
 }
 
-@import './components/alert.component.css';
+@import './components/alert.css';
 @import './components/badge.css';
 @import './components/attached-box.component.css';
 @import './components/badge.css';

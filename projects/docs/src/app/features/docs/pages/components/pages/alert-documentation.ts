@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AlertComponent } from '@basis-ng/primitives';
+import { Alert } from '@basis-ng/primitives';
 import { CodeBlock } from '../shared/components/code-block';
 import { StepsButtons } from '../../shared/components/steps-buttons';
 import { provideIcons } from '@ng-icons/core';
@@ -12,7 +12,7 @@ import {
 
 @Component({
   selector: 'article[app-alert-documentation]',
-  imports: [AlertComponent, CodeBlock, StepsButtons],
+  imports: [Alert, CodeBlock, StepsButtons],
   providers: [
     provideIcons({
       lucideInfo,

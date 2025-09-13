@@ -31,7 +31,7 @@ import { lucideX } from '@ng-icons/lucide';
   },
   providers: [provideIcons({ lucideX })],
 })
-export class AlertComponent {
+export class Alert {
   /** The type of the alert. */
   readonly type = input<'success' | 'error' | 'warning' | 'info'>('info');
 

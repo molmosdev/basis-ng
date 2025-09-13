@@ -5,7 +5,7 @@
   "main": "src/index.css",
   "exports": {
     ".": "./src/index.css",
-    "./alert": "./src/components/alert.component.css",
+    "./alert": "./src/components/alert.css",
     "./attached-box": "./src/components/attached-box.component.css",
     "./badge": "./src/components/badge.css",
     "./drawer": "./src/components/drawer.component.css",

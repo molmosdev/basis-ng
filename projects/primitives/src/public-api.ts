@@ -90,7 +90,7 @@ export * from './core/components/menu/shared/components/menu-item-radio';
 export * from './core/components/menu/shared/directives/menu-trigger.directive';
 
 /* Alert */
-export * from './core/components/alert/alert.component';
+export * from './core/components/alert/alert';
 
 /* Command */
 export * from './core/components/command/command.component';
