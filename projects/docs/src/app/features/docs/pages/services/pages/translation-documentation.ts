@@ -92,7 +92,7 @@ export class TranslationDocumentation {
   serviceUsage = `translation = inject(TranslationService);
 
 ngOnInit() {
-  this.translation.setLanguage('es'); // Loads /lang/es.json
+  this.translation.setLanguage('es'); // Loads public/lang/es.json
   const text = this.translation.translate('home.title'); // Returns translated string
 }`;
   signalsUsage = `this.translation.language(); // Current language code`;
