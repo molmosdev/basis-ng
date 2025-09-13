@@ -11,9 +11,9 @@ import { HighlightAuto } from 'ngx-highlightjs';
     <pre
       class="flex relative rounded-lg overflow-auto inset-ring-1 inset-ring-secondary dark:inset-ring-secondary-dark">
       @if (highlight()) {
-        <code class="text-sm !bg-neutral-900 !dark:bg-neutral-900 p-2 min-w-full" [highlightAuto]="code()"></code>
+        <code class="text-sm !bg-neutral-900 !dark:bg-neutral-900 p-2 min-w-full no-scrollbar" [highlightAuto]="code()"></code>
       } @else {
-        <code class="text-sm bg-neutral-900 dark:bg-neutral-900 text-white/90 p-3.5 min-w-full">{{ code() }}</code>
+        <code class="text-sm bg-neutral-900 dark:bg-neutral-900 text-white/90 p-3.5 min-w-full no-scrollbar">{{ code() }}</code>
       }
       <button
       b-button

@@ -1,5 +1,6 @@
 import { Routes } from '@angular/router';
 import { componentsRoutes } from './pages/components/components.routes';
+import { servicesRoutes } from './pages/services/services.routes';
 
 export const docsRoutes: Routes = [
   {
@@ -34,10 +35,13 @@ export const docsRoutes: Routes = [
       new: true,
     },
   },
-
   {
     path: 'components',
     children: componentsRoutes,
+  },
+  {
+    path: 'services',
+    children: servicesRoutes,
   },
   {
     path: '**',
