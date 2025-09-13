@@ -1,5 +1,5 @@
 import { Routes } from '@angular/router';
-import { documentationRoutes } from './features/documentation/documentation.routes';
+import { docsRoutes } from './features/docs/docs.routes';
 
 export const routes: Routes = [
   {
@@ -13,16 +13,10 @@ export const routes: Routes = [
     title: 'Basis UI',
   },
   {
-    path: 'get-started',
+    path: 'docs',
     loadComponent: () =>
-      import('./features/get-started').then(c => c.GetStarted),
-    title: 'Get Started - Basis UI',
-  },
-  {
-    path: 'documentation',
-    loadComponent: () =>
-      import('./features/documentation/documentation.component'),
-    children: documentationRoutes,
+      import('./features/docs/docs').then(c => c.Documentation),
+    children: docsRoutes,
   },
   {
     path: '**',

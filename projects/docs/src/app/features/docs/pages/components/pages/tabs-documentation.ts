@@ -1,0 +1,248 @@
+import { Component } from '@angular/core';
+import { TabsComponent, TabComponent, Badge } from '@basis-ng/primitives';
+import { CodeBlock } from '../shared/components/code-block';
+import {
+  FormsModule,
+  ReactiveFormsModule,
+  FormGroup,
+  FormControl,
+} from '@angular/forms';
+import { NgTemplateOutlet } from '@angular/common';
+import { StepsButtons } from '../../shared/components/steps-buttons';
+import { CommonModule } from '@angular/common';
+
+@Component({
+  selector: 'article[app-tabs-documentation]',
+  imports: [
+    CommonModule,
+    TabsComponent,
+    TabComponent,
+    CodeBlock,
+    FormsModule,
+    ReactiveFormsModule,
+    NgTemplateOutlet,
+    StepsButtons,
+    Badge,
+  ],
+  template: `
+    <app-steps-buttons
+      [previous]="{ label: 'Switch', path: '/docs/components/switch' }"
+      [next]="{ label: 'Textarea', path: '/docs/components/textarea' }" />
+    <h1 class="font-bold text-2xl flex gap-2 items-start">
+      Tabs
+      <span b-badge variant="outlined" size="sm"> New </span>
+    </h1>
+    <div class="flex flex-col gap-4">
+      <span>
+        The Tabs component provides a way to organize content into multiple
+        views that can be switched between.
+      </span>
+      <code-block [code]="angularImport" />
+      <span>
+        Include this to apply predefined styles. The component is headless
+        without it.
+      </span>
+      <code-block [code]="stylesImport" />
+      <h2 class="font-semibold text-xl">Properties</h2>
+      <div
+        class="overflow-x-auto overflow-hidden rounded-lg border border-gray-200 dark:border-zinc-700 dark:bg-zinc-900 mb-6">
+        <table class="table-auto w-full text-left text-sm">
+          <thead class="bg-gray-50 dark:bg-zinc-800">
+            <tr>
+              <th
+                class="border-b border-gray-200 dark:border-zinc-700 px-4 py-2 font-semibold">
+                Prop
+              </th>
+              <th
+                class="border-b border-gray-200 dark:border-zinc-700 px-4 py-2 font-semibold">
+                Type
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td
+                class="border-t border-gray-200 dark:border-zinc-700 px-4 py-2 font-display-mono">
+                value
+              </td>
+              <td
+                class="border-t border-gray-200 dark:border-zinc-700 px-4 py-2 font-display-mono">
+                string
+              </td>
+            </tr>
+            <tr>
+              <td
+                class="border-t border-gray-200 dark:border-zinc-700 px-4 py-2 font-display-mono">
+                ngModel
+              </td>
+              <td
+                class="border-t border-gray-200 dark:border-zinc-700 px-4 py-2 font-display-mono">
+                string[] <strong>['tab1']</strong>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <h2 class="font-semibold text-xl">Keyboard Navigation</h2>
+      <span>
+        Use the arrow keys to navigate between tabs. The component supports
+        horizontal navigation.
+      </span>
+      <h2 class="font-semibold text-xl">Basic Usage</h2>
+      <code-block [code]="basicUsage" />
+      <div
+        class="border border-gray-200 dark:border-zinc-700 rounded-lg p-6 mb-6 bg-white dark:bg-zinc-900 documentation-playground flex flex-col gap-4 items-center">
+        <b-tabs [(ngModel)]="selectedTab">
+          <b-tab value="tab1">Tab 1</b-tab>
+          <b-tab value="tab2">Tab 2</b-tab>
+          <b-tab value="tab3">Tab 3</b-tab>
+        </b-tabs>
+        @if (selectedTab[0] === 'tab1') {
+          <p>Tab 1 content</p>
+        }
+        @if (selectedTab[0] === 'tab2') {
+          <p>Tab 2 content</p>
+        }
+        @if (selectedTab[0] === 'tab3') {
+          <p>Tab 3 content</p>
+        }
+      </div>
+      <h2 class="font-semibold text-xl">Lazy Loading Usage</h2>
+      <span>Use <code>ng-template</code> to lazily load tab content.</span>
+      <code-block [code]="lazyLoadingUsage" />
+      <div
+        class="border border-gray-200 dark:border-zinc-700 rounded-lg p-6 mb-6 bg-white dark:bg-zinc-900 documentation-playground flex flex-col gap-4 items-center">
+        <b-tabs [(ngModel)]="lazySelectedTab">
+          <b-tab value="tab1">Tab 1</b-tab>
+          <b-tab value="tab2">Tab 2</b-tab>
+          <b-tab value="tab3">Tab 3</b-tab>
+        </b-tabs>
+        @if (lazySelectedTab[0] === 'tab1') {
+          <ng-container *ngTemplateOutlet="tab1Content" />
+        }
+        @if (lazySelectedTab[0] === 'tab2') {
+          <ng-container *ngTemplateOutlet="tab2Content" />
+        }
+        @if (lazySelectedTab[0] === 'tab3') {
+          <ng-container *ngTemplateOutlet="tab3Content" />
+        }
+        <ng-template #tab1Content>
+          <p>Lazy-loaded content for Tab 1</p>
+        </ng-template>
+        <ng-template #tab2Content>
+          <p>Lazy-loaded content for Tab 2</p>
+        </ng-template>
+        <ng-template #tab3Content>
+          <p>Lazy-loaded content for Tab 3</p>
+        </ng-template>
+      </div>
+      <h2 class="font-semibold text-xl">Reactive Forms Usage</h2>
+      <span>Use with Angular's Reactive Forms to manage tab state.</span>
+      <code-block [code]="reactiveFormsUsage" />
+      <div
+        class="border border-gray-200 dark:border-zinc-700 rounded-lg p-6 mb-6 bg-white dark:bg-zinc-900 documentation-playground flex flex-col gap-4 items-center">
+        <form [formGroup]="tabsForm">
+          <b-tabs formControlName="tabControl">
+            <b-tab value="tab1">Tab 1</b-tab>
+            <b-tab value="tab2">Tab 2</b-tab>
+            <b-tab value="tab3">Tab 3</b-tab>
+          </b-tabs>
+        </form>
+        @if (
+          tabsForm.value.tabControl && tabsForm.value.tabControl[0] === 'tab1'
+        ) {
+          <p>Tab 1 content</p>
+        }
+        @if (
+          tabsForm.value.tabControl && tabsForm.value.tabControl[0] === 'tab2'
+        ) {
+          <p>Tab 2 content</p>
+        }
+        @if (
+          tabsForm.value.tabControl && tabsForm.value.tabControl[0] === 'tab3'
+        ) {
+          <p>Tab 3 content</p>
+        }
+      </div>
+    </div>
+    <app-steps-buttons
+      [previous]="{ label: 'Switch', path: '/docs/components/switch' }"
+      [next]="{ label: 'Textarea', path: '/docs/components/textarea' }" />
+  `,
+  host: {
+    class:
+      'mx-auto flex w-full max-w-3xl min-w-0 flex-1 flex-col gap-6 px-4 pb-20',
+  },
+})
+export class TabsDocumentation {
+  angularImport = `import { TabsComponent, TabComponent } from '@basis-ng/primitives'`;
+  stylesImport = `@import '@basis-ng/styles/tabs';\n@import '@basis-ng/styles/tab';`;
+  basicUsage = `<b-tabs [(ngModel)]='selectedTab'>
+  <b-tab value='tab1'>Tab 1</b-tab>
+  <b-tab value='tab2'>Tab 2</b-tab>
+  <b-tab value='tab3'>Tab 3</b-tab>
+</b-tabs>
+
+@switch (selectedTab[0]) {
+  @case ('tab1') {
+    <p>Tab 1 content</p>
+  }
+  @case ('tab2') {
+    <p>Tab 2 content</p>
+  }
+  @case ('tab3') {
+    <p>Tab 3 content</p>
+  }
+}`;
+  selectedTab = ['tab2'];
+  lazySelectedTab = ['tab1'];
+  lazyLoadingUsage = `<b-tabs [(ngModel)]='lazySelectedTab'>
+  <b-tab value='tab1'>Tab 1</b-tab>
+  <b-tab value='tab2'>Tab 2</b-tab>
+  <b-tab value='tab3'>Tab 3</b-tab>
+</b-tabs>
+
+@switch (lazySelectedTab[0]) {
+  @case ('tab1') {
+    <ng-container *ngTemplateOutlet='tab1Content'></ng-container>
+  }
+  @case ('tab2') {
+    <ng-container *ngTemplateOutlet='tab2Content'></ng-container>
+  }
+  @case ('tab3') {
+    <ng-container *ngTemplateOutlet='tab3Content'></ng-container>
+  }
+}
+
+<ng-template #tab1Content>
+  <p>Lazy-loaded content for Tab 1</p>
+</ng-template>
+<ng-template #tab2Content>
+  <p>Lazy-loaded content for Tab 2</p>
+</ng-template>
+<ng-template #tab3Content>
+  <p>Lazy-loaded content for Tab 3</p>
+</ng-template>`;
+  reactiveFormsUsage = `<form [formGroup]='tabsForm'>
+  <b-tabs formControlName='tabControl'>
+    <b-tab value='tab1'>Tab 1</b-tab>
+    <b-tab value='tab2'>Tab 2</b-tab>
+    <b-tab value='tab3'>Tab 3</b-tab>
+  </b-tabs>
+</form>
+
+@switch (tabsForm.value.tabControl[0]) {
+  @case ('tab1') {
+    <p>Tab 1 content</p>
+  }
+  @case ('tab2') {
+    <p>Tab 2 content</p>
+  }
+  @case ('tab3') {
+    <p>Tab 3 content</p>
+  }
+}`;
+  tabsForm = new FormGroup({
+    tabControl: new FormControl(['tab1']),
+  });
+}
