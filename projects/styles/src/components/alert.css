@@ -18,23 +18,23 @@ b-alert {
   }
 
   &.success {
-    @apply bg-success/20 text-success border border-success;
-    @apply dark:bg-success-dark/20 dark:text-success-dark dark:border-success-dark;
+    @apply bg-success/20 text-success-foreground;
+    @apply dark:bg-success-dark/20 dark:text-success-foreground-dark;
   }
 
   &.error {
-    @apply bg-destructive/20 text-destructive border border-destructive;
-    @apply dark:bg-destructive-dark/20 dark:text-destructive-dark dark:border-destructive-dark;
+    @apply bg-destructive/20 text-destructive;
+    @apply dark:bg-destructive-dark/20 dark:text-destructive-dark;
   }
 
   &.warning {
-    @apply bg-warning/20 text-warning border border-warning;
-    @apply dark:bg-warning-dark/20 dark:text-warning-dark dark:border-warning-dark;
+    @apply bg-warning/20 text-warning-foreground;
+    @apply dark:bg-warning-dark/20 dark:text-warning-foreground-dark;
   }
 
   &.info {
-    @apply bg-info/20 text-info border border-info;
-    @apply dark:bg-info-dark/20 dark:text-info-dark dark:border-info-dark;
+    @apply bg-info/20 text-info-foreground;
+    @apply dark:bg-info-dark/20 dark:text-info-foreground-dark;
   }
 
   .close-btn {

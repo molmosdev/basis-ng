@@ -16,6 +16,7 @@ import {
   lucideCircleCheck,
   lucideCircleX,
   lucideOctagonAlert,
+  lucideRocket,
 } from '@ng-icons/lucide';
 
 @Component({
@@ -31,6 +32,7 @@ import {
     OverlayOrigin,
     Button,
     NgIcon,
+    Alert,
   ],
   providers: [
     provideIcons({
@@ -38,12 +40,17 @@ import {
       lucideCircleCheck,
       lucideCircleX,
       lucideOctagonAlert,
+      lucideRocket,
     }),
   ],
   template: `
     <app-steps-buttons
       [previous]="{ label: 'Badge', path: '/docs/components/badge' }"
       [next]="{ label: 'Badge', path: '/docs/components/badge' }" />
+    <b-alert icon="lucideRocket" title="Components are in alpha">
+      Components are in alpha Try them out! We'd love to hear your feedback!
+      Expect breaking changes!
+    </b-alert>
     <h1 class="font-bold text-2xl">Alert</h1>
     <div class="flex flex-col gap-4">
       <span>
