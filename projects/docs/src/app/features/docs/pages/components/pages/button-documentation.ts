@@ -197,7 +197,7 @@ import { lucideZoomIn, lucideZoomOut, lucideSearch } from '@ng-icons/lucide';
   },
 })
 export class ButtonDocumentation {
-  angularImport = `import { ButtonComponent } from '@basis-ng/primitives'`;
+  angularImport = `import { Button } from '@basis-ng/primitives'`;
   stylesImport = `@import '@basis-ng/styles/button';`;
   basicUsage = `<button b-button variant="primary" size="md">This is a button</button>`;
   variantsUsage = `<button b-button variant="primary">Primary</button>\n<button b-button variant="secondary">Secondary</button>\n<button b-button variant="ghost">Ghost</button>\n<button b-button variant="outlined">Outlined</button>\n<button b-button variant="destructive">Destructive</button>`;

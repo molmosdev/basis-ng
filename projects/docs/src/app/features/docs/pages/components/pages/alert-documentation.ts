@@ -202,7 +202,7 @@ import {
   },
 })
 export class AlertDocumentation {
-  angularImport = `import { AlertComponent } from '@basis-ng/primitives'`;
+  angularImport = `import { Alert } from '@basis-ng/primitives'`;
   stylesImport = `@import '@basis-ng/styles/alert';`;
   basicUsage = `<b-alert type="info" title="Info Alert" icon="Info">\n  This is a basic informational alert.\n</b-alert>`;
   typesUsage = `<b-alert type="success" title="Success" icon="CircleCheck">\n  This is a success alert.\n</b-alert>\n<b-alert type="error" title="Error" icon="CircleX">\n  This is an error alert.\n</b-alert>\n<b-alert type="warning" title="Warning" icon="OctagonAlert">\n  This is a warning alert.\n</b-alert>\n<b-alert type="info" title="Info" icon="Info">\n  This is an informational alert.\n</b-alert>`;
