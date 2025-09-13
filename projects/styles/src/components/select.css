@@ -2,7 +2,7 @@ b-select {
   @apply flex gap-1;
 
   button[b-select-trigger] {
-    @apply font-medium shadow-xs rounded-lg transition-colors duration-150 flex items-center justify-center gap-x-2 disabled:opacity-50 disabled:cursor-not-allowed;
+    @apply font-medium shadow-xs transition-colors duration-150 flex items-center justify-center gap-x-2 disabled:opacity-50 disabled:cursor-not-allowed;
     @apply bg-transparent text-primary inset-ring-1 inset-ring-secondary hover:bg-primary/5 flex-1;
     @apply dark:text-primary-dark dark:inset-ring-secondary-dark dark:hover:bg-primary-dark/5;
 
