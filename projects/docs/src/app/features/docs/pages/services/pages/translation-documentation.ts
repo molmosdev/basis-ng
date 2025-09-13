@@ -113,7 +113,7 @@ import { CodeBlock } from '../../components/shared/components/code-block';
       <h2 class="font-semibold text-xl">Reactive Signals</h2>
       <code-block [code]="signalsUsage" />
       <h2 class="font-semibold text-xl">TranslatePipe</h2>
-      <code-block [code]="pipeUsage" />
+      <code-block [code]="pipeUsage" [highlight]="false" />
       <h2 class="font-semibold text-xl">Advanced Features</h2>
       <ul class="list-disc ml-6">
         <li>Load dictionaries dynamically via HTTP</li>
