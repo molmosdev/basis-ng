@@ -4,7 +4,7 @@ import {
   contentChild,
   input,
 } from '@angular/core';
-import { OverlayDirective } from '@basis-ng/primitives';
+import { ConnectedOverlay } from '@basis-ng/primitives';
 import { TooltipTrigger } from './shared/directives/tooltip-trigger';
 import { TooltipContent } from './shared/components/tooltip-content';
 
@@ -41,7 +41,7 @@ export class Tooltip implements AfterContentInit {
    *
    * @readonly
    */
-  readonly overlay = contentChild(OverlayDirective);
+  readonly overlay = contentChild(ConnectedOverlay);
 
   /**
    * Reference to the tooltip trigger directive.

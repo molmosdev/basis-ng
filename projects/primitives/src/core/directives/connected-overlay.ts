@@ -14,7 +14,7 @@ import {
   model,
   output,
 } from '@angular/core';
-import { OverlayTriggerDirective, Position } from '../../public-api';
+import { OverlayOrigin, Position } from '../../public-api';
 
 /**
  * Directive to manage overlay behavior and positioning.
@@ -22,7 +22,7 @@ import { OverlayTriggerDirective, Position } from '../../public-api';
  * flexible overlay positioning and triggering mechanisms.
  */
 @Directive({
-  selector: '[bOverlay]',
+  selector: '[bConnectedOverlay]',
   hostDirectives: [
     {
       directive: CdkConnectedOverlay,
@@ -50,7 +50,7 @@ import { OverlayTriggerDirective, Position } from '../../public-api';
     '(backdropClick)': 'backdropClickEmitter.emit()',
   },
 })
-export class OverlayDirective {
+export class ConnectedOverlay {
   /**
    * Controls whether the overlay is open.
    * @default false
@@ -61,7 +61,7 @@ export class OverlayDirective {
    * The trigger directive that activates the overlay.
    * This input is required.
    */
-  readonly trigger = input.required<OverlayTriggerDirective>();
+  readonly trigger = input.required<OverlayOrigin>();
 
   /**
    * A computed map of positions to their corresponding `ConnectedPosition` configurations.

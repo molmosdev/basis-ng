@@ -4,8 +4,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FormGroup, FormControl } from '@angular/forms';
 import {
   Option,
-  OverlayDirective,
-  OverlayTriggerDirective,
+  ConnectedOverlay,
+  OverlayOrigin,
   Select,
   SelectContent,
   SelectTrigger,
@@ -140,11 +140,11 @@ import { StepsButtons } from '../../shared/components/steps-buttons';
           [(ngModel)]="selectedOptions"
           size="md"
           [displayWith]="displayFn">
-          <button b-select-trigger bOverlayTrigger #trigger="bOverlayTrigger">
+          <button b-select-trigger bOverlayOrigin #trigger="bOverlayOrigin">
             <b-select-value placeholder="Select an option" />
           </button>
           <ng-template
-            bOverlay
+            bConnectedOverlay
             [trigger]="trigger"
             [positions]="[
               'bottom-left',
@@ -168,11 +168,11 @@ import { StepsButtons } from '../../shared/components/steps-buttons';
           [(ngModel)]="selectedOptions"
           size="sm"
           [displayWith]="displayFn">
-          <button b-select-trigger bOverlayTrigger #trigger1="bOverlayTrigger">
+          <button b-select-trigger bOverlayOrigin #trigger1="bOverlayOrigin">
             <b-select-value placeholder="Size sm" />
           </button>
           <ng-template
-            bOverlay
+            bConnectedOverlay
             [trigger]="trigger1"
             [positions]="[
               'bottom-left',
@@ -191,11 +191,11 @@ import { StepsButtons } from '../../shared/components/steps-buttons';
           [(ngModel)]="selectedOptions"
           size="md"
           [displayWith]="displayFn">
-          <button b-select-trigger bOverlayTrigger #trigger2="bOverlayTrigger">
+          <button b-select-trigger bOverlayOrigin #trigger2="bOverlayOrigin">
             <b-select-value placeholder="Size md" />
           </button>
           <ng-template
-            bOverlay
+            bConnectedOverlay
             [trigger]="trigger2"
             [positions]="[
               'bottom-left',
@@ -214,11 +214,11 @@ import { StepsButtons } from '../../shared/components/steps-buttons';
           [(ngModel)]="selectedOptions"
           size="lg"
           [displayWith]="displayFn">
-          <button b-select-trigger bOverlayTrigger #trigger3="bOverlayTrigger">
+          <button b-select-trigger bOverlayOrigin #trigger3="bOverlayOrigin">
             <b-select-value placeholder="Size lg" />
           </button>
           <ng-template
-            bOverlay
+            bConnectedOverlay
             [trigger]="trigger3"
             [positions]="[
               'bottom-left',
@@ -241,12 +241,12 @@ import { StepsButtons } from '../../shared/components/steps-buttons';
         <b-select [(ngModel)]="selectedMultiple" [displayWith]="displayFn">
           <button
             b-select-trigger
-            bOverlayTrigger
-            #triggerMulti="bOverlayTrigger">
+            bOverlayOrigin
+            #triggerMulti="bOverlayOrigin">
             <b-select-value placeholder="Select options" />
           </button>
           <ng-template
-            bOverlay
+            bConnectedOverlay
             [trigger]="triggerMulti"
             [positions]="[
               'bottom-left',
@@ -270,12 +270,12 @@ import { StepsButtons } from '../../shared/components/steps-buttons';
         <b-select formControlName="selectControl" [displayWith]="displayFn">
           <button
             b-select-trigger
-            bOverlayTrigger
-            #triggerReactive="bOverlayTrigger">
+            bOverlayOrigin
+            #triggerReactive="bOverlayOrigin">
             <b-select-value placeholder="Select an option" />
           </button>
           <ng-template
-            bOverlay
+            bConnectedOverlay
             [trigger]="triggerReactive"
             [positions]="[
               'bottom-left',
@@ -298,12 +298,12 @@ import { StepsButtons } from '../../shared/components/steps-buttons';
         <b-select [(ngModel)]="selectedOptions" [displayWith]="displayFn">
           <button
             b-select-trigger
-            bOverlayTrigger
-            #triggerDisabled="bOverlayTrigger">
+            bOverlayOrigin
+            #triggerDisabled="bOverlayOrigin">
             <b-select-value placeholder="Select an option" />
           </button>
           <ng-template
-            bOverlay
+            bConnectedOverlay
             [trigger]="triggerDisabled"
             [positions]="[
               'bottom-left',
@@ -339,13 +339,13 @@ import { StepsButtons } from '../../shared/components/steps-buttons';
     SelectValue,
     SelectContent,
     Option,
-    OverlayTriggerDirective,
-    OverlayDirective,
+    OverlayOrigin,
+    ConnectedOverlay,
     StepsButtons,
   ],
 })
 export class SelectDocumentation {
-  angularImport = `import { Select, SelectTrigger, SelectValue, SelectContent, Option, OverlayDirective, OverlayTriggerDirective } from '@basis-ng/primitives';`;
+  angularImport = `import { Select, SelectTrigger, SelectValue, SelectContent, Option, ConnectedOverlay, OverlayOrigin } from '@basis-ng/primitives';`;
   stylesImport = `@import '@basis-ng/styles/select';`;
 
   selectedOptions: string[] = ['option3'];
@@ -368,10 +368,10 @@ export class SelectDocumentation {
   });
 
   basicUsage = `<b-select [(ngModel)]='selectedOptions' size='md' [displayWith]='displayFn'>
-  <button b-select-trigger bOverlayTrigger #trigger='bOverlayTrigger'>
+  <button b-select-trigger bOverlayOrigin #trigger='bOverlayOrigin'>
     <b-select-value placeholder='Selecciona una opción' />
   </button>
-  <ng-template bOverlay [trigger]='trigger' [positions]="['bottom-left', 'bottom-right', 'top-left', 'top-right']">
+  <ng-template bConnectedOverlay [trigger]='trigger' [positions]="['bottom-left', 'bottom-right', 'top-left', 'top-right']">
     <ul b-select-content [multiple]='false'>
       @for (option of options(); track option) {
         <li b-option [value]='option.value'>{{ option.label }}</li>
@@ -381,10 +381,10 @@ export class SelectDocumentation {
 </b-select>`;
 
   sizesUsage = `<b-select [(ngModel)]='selectedOptions' size='sm' [displayWith]='displayFn'>
-  <button b-select-trigger bOverlayTrigger #trigger1='bOverlayTrigger'>
+  <button b-select-trigger bOverlayOrigin #trigger1='bOverlayOrigin'>
     <b-select-value placeholder='Tamaño sm' />
   </button>
-  <ng-template bOverlay [trigger]='trigger1' [positions]="['bottom-left', 'bottom-right', 'top-left', 'top-right']">
+  <ng-template bConnectedOverlay [trigger]='trigger1' [positions]="['bottom-left', 'bottom-right', 'top-left', 'top-right']">
     <ul b-select-content [multiple]='false'>
       @for (option of options(); track option) {
         <li b-option [value]='option.value'>{{ option.label }}</li>
@@ -393,10 +393,10 @@ export class SelectDocumentation {
   </ng-template>
 </b-select>
 <b-select [(ngModel)]='selectedOptions' size='md' [displayWith]='displayFn'>
-  <button b-select-trigger bOverlayTrigger #trigger2='bOverlayTrigger'>
+  <button b-select-trigger bOverlayOrigin #trigger2='bOverlayOrigin'>
     <b-select-value placeholder='Tamaño md' />
   </button>
-  <ng-template bOverlay [trigger]='trigger2' [positions]="['bottom-left', 'bottom-right', 'top-left', 'top-right']">
+  <ng-template bConnectedOverlay [trigger]='trigger2' [positions]="['bottom-left', 'bottom-right', 'top-left', 'top-right']">
     <ul b-select-content [multiple]='false'>
       @for (option of options(); track option) {
         <li b-option [value]='option.value'>{{ option.label }}</li>
@@ -405,10 +405,10 @@ export class SelectDocumentation {
   </ng-template>
 </b-select>
 <b-select [(ngModel)]='selectedOptions' size='lg' [displayWith]='displayFn'>
-  <button b-select-trigger bOverlayTrigger #trigger3='bOverlayTrigger'>
+  <button b-select-trigger bOverlayOrigin #trigger3='bOverlayOrigin'>
     <b-select-value placeholder='Tamaño lg' />
   </button>
-  <ng-template bOverlay [trigger]='trigger3' [positions]="['bottom-left', 'bottom-right', 'top-left', 'top-right']">
+  <ng-template bConnectedOverlay [trigger]='trigger3' [positions]="['bottom-left', 'bottom-right', 'top-left', 'top-right']">
     <ul b-select-content [multiple]='false'>
       @for (option of options(); track option) {
         <li b-option [value]='option.value'>{{ option.label }}</li>
@@ -418,10 +418,10 @@ export class SelectDocumentation {
 </b-select>`;
 
   multipleUsage = `<b-select [(ngModel)]='selectedMultiple' [displayWith]='displayFn'>
-  <button b-select-trigger bOverlayTrigger #triggerMulti='bOverlayTrigger'>
+  <button b-select-trigger bOverlayOrigin #triggerMulti='bOverlayOrigin'>
     <b-select-value placeholder='Selecciona opciones' />
   </button>
-  <ng-template bOverlay [trigger]='triggerMulti' [positions]="['bottom-left', 'bottom-right', 'top-left', 'top-right']">
+  <ng-template bConnectedOverlay [trigger]='triggerMulti' [positions]="['bottom-left', 'bottom-right', 'top-left', 'top-right']">
     <ul b-select-content [multiple]='true'>
       @for (option of options(); track option) {
         <li b-option [value]='option.value'>{{ option.label }}</li>
@@ -432,10 +432,10 @@ export class SelectDocumentation {
 
   reactiveFormsUsage = `<form [formGroup]='formGroup'>
   <b-select formControlName='selectControl' [displayWith]='displayFn'>
-    <button b-select-trigger bOverlayTrigger #triggerReactive='bOverlayTrigger'>
+    <button b-select-trigger bOverlayOrigin #triggerReactive='bOverlayOrigin'>
       <b-select-value placeholder='Selecciona una opción' />
     </button>
-    <ng-template bOverlay [trigger]='triggerReactive' [positions]="['bottom-left', 'bottom-right', 'top-left', 'top-right']">
+    <ng-template bConnectedOverlay [trigger]='triggerReactive' [positions]="['bottom-left', 'bottom-right', 'top-left', 'top-right']">
       <ul b-select-content [multiple]='false'>
         @for (option of options(); track option) {
           <li b-option [value]='option.value'>{{ option.label }}</li>
@@ -446,10 +446,10 @@ export class SelectDocumentation {
 </form>`;
 
   disabledOptionUsage = `<b-select [(ngModel)]='selectedOptions' [displayWith]='displayFn'>
-  <button b-select-trigger bOverlayTrigger #triggerDisabled='bOverlayTrigger'>
+  <button b-select-trigger bOverlayOrigin #triggerDisabled='bOverlayOrigin'>
     <b-select-value placeholder='Selecciona una opción' />
   </button>
-  <ng-template bOverlay [trigger]='triggerDisabled' [positions]="['bottom-left', 'bottom-right', 'top-left', 'top-right']">
+  <ng-template bConnectedOverlay [trigger]='triggerDisabled' [positions]="['bottom-left', 'bottom-right', 'top-left', 'top-right']">
     <ul b-select-content [multiple]='false'>
       <li b-option [value]='option1'>Opción 1</li>
       <li b-option [value]='option2' [disabled]='true'>Opción 2 (Deshabilitada)</li>

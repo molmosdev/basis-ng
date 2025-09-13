@@ -1,5 +1,5 @@
 import { Component, computed, effect, inject } from '@angular/core';
-import { OverlayDirective } from '@basis-ng/primitives';
+import { ConnectedOverlay } from '@basis-ng/primitives';
 
 @Component({
   selector: 'b-tooltip-content',
@@ -12,9 +12,9 @@ import { OverlayDirective } from '@basis-ng/primitives';
 })
 export class TooltipContent {
   /**
-   * Reference to the OverlayDirective to determine the direction of the overlay.
+   * Reference to the ConnectedOverlay to determine the direction of the overlay.
    */
-  overlay = inject(OverlayDirective);
+  overlay = inject(ConnectedOverlay);
 
   /**
    * Computed signal representing the direction of the overlay.

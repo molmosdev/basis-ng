@@ -7,7 +7,7 @@ import {
   OnInit,
   effect,
 } from '@angular/core';
-import { OverlayDirective } from '../../directives/overlay.directive';
+import { ConnectedOverlay } from '../../directives/connected-overlay';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { SelectTrigger } from './shared/components/select-trigger';
 import { SelectValue } from './shared/components/select-value';
@@ -38,7 +38,7 @@ export class Select implements ControlValueAccessor, OnInit {
    * Reference to the overlay directive instance.
    * Used to control the dropdown overlay for the select component.
    */
-  readonly overlay = contentChild(OverlayDirective);
+  readonly overlay = contentChild(ConnectedOverlay);
 
   /**
    * Reference to the select trigger component.

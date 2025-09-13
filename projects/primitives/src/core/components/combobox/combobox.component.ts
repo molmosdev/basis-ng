@@ -13,8 +13,8 @@ import {
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { forwardRef } from '@angular/core';
 import { CommandComponent } from '../command/command.component';
-import { OverlayTriggerDirective } from '../../directives/overlay-trigger.directive';
-import { OverlayDirective } from '../../directives/overlay.directive';
+import { OverlayOrigin } from '../../directives/overlay-origin';
+import { ConnectedOverlay } from '../../directives/connected-overlay';
 import { Button } from '../button/button';
 
 /**
@@ -23,21 +23,21 @@ import { Button } from '../button/button';
  */
 @Component({
   selector: 'b-combobox',
-  imports: [Button, OverlayTriggerDirective, OverlayDirective],
+  imports: [Button, OverlayOrigin, ConnectedOverlay],
   template: ` <button
       b-button
       variant="outlined"
       (click)="isOpen.set(!isOpen())"
       (keydown.arrowUp)="!isOpen() && isOpen.set(true)"
       (keydown.arrowDown)="!isOpen() && isOpen.set(true)"
-      bOverlayTrigger
-      #trigger="bOverlayTrigger"
+      bOverlayOrigin
+      #trigger="bOverlayOrigin"
       [disabled]="disabled()">
       <span>{{ content() }}</span>
       <!-- <i b-icon icon="ChevronDown" [size]="16"></i> -->
     </button>
     <ng-template
-      bOverlay
+      bConnectedOverlay
       [trigger]="trigger"
       [open]="isOpen()"
       [minWidth]="buttonWidth()"

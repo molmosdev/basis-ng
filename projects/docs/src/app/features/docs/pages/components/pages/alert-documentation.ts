@@ -2,8 +2,8 @@ import { Component } from '@angular/core';
 import {
   Alert,
   Button,
-  OverlayDirective,
-  OverlayTriggerDirective,
+  ConnectedOverlay,
+  OverlayOrigin,
   Tooltip,
   TooltipContent,
   TooltipTrigger,
@@ -27,8 +27,8 @@ import {
     Tooltip,
     TooltipTrigger,
     TooltipContent,
-    OverlayDirective,
-    OverlayTriggerDirective,
+    ConnectedOverlay,
+    OverlayOrigin,
     Button,
     NgIcon,
   ],
@@ -111,8 +111,8 @@ import {
                       tabindex="0"
                       aria-label="Show Position[] values"
                       bTooltipTrigger
-                      bOverlayTrigger
-                      #tooltipInfo="bOverlayTrigger"
+                      bOverlayOrigin
+                      #tooltipInfo="bOverlayOrigin"
                       type="button">
                       <ng-icon
                         name="lucideInfo"
@@ -120,7 +120,7 @@ import {
                         color="currentColor" />
                     </button>
                     <ng-template
-                      bOverlay
+                      bConnectedOverlay
                       [trigger]="tooltipInfo"
                       [focusTriggerOnClose]="false">
                       <b-tooltip-content>

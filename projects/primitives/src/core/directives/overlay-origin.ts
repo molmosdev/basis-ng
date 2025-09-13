@@ -7,11 +7,11 @@ import { Directive, ElementRef, inject } from '@angular/core';
  * a reference point for overlay positioning.
  */
 @Directive({
-  selector: '[bOverlayTrigger]',
+  selector: '[bOverlayOrigin]',
   hostDirectives: [CdkOverlayOrigin],
-  exportAs: 'bOverlayTrigger',
+  exportAs: 'bOverlayOrigin',
 })
-export class OverlayTriggerDirective {
+export class OverlayOrigin {
   /**
    * Reference to the `CdkOverlayOrigin` instance.
    * Used as the origin point for overlay positioning.

@@ -100,8 +100,8 @@ export * from './core/components/command/command-options.component';
 export * from './core/components/combobox/combobox.component';
 
 /* Overlay */
-export * from './core/directives/overlay-trigger.directive';
-export * from './core/directives/overlay.directive';
+export * from './core/directives/overlay-origin';
+export * from './core/directives/connected-overlay';
 
 /* Input Group */
 export * from './core/components/input-group/input-group.component';

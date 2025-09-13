@@ -2,8 +2,8 @@ import { Component } from '@angular/core';
 import { CodeBlock } from '../shared/components/code-block';
 import {
   Button,
-  OverlayDirective,
-  OverlayTriggerDirective,
+  ConnectedOverlay,
+  OverlayOrigin,
   Tooltip,
   TooltipContent,
   TooltipTrigger,
@@ -82,12 +82,12 @@ import { lucideInfo } from '@ng-icons/lucide';
         <b-tooltip>
           <span
             bTooltipTrigger
-            bOverlayTrigger
-            #triggerBasic="bOverlayTrigger"
+            bOverlayOrigin
+            #triggerBasic="bOverlayOrigin"
             class="cursor-pointer">
             Hover me
           </span>
-          <ng-template bOverlay [trigger]="triggerBasic">
+          <ng-template bConnectedOverlay [trigger]="triggerBasic">
             <b-tooltip-content>Tooltip text</b-tooltip-content>
           </ng-template>
         </b-tooltip>
@@ -99,60 +99,60 @@ import { lucideInfo } from '@ng-icons/lucide';
         <b-tooltip variant="primary">
           <span
             bTooltipTrigger
-            bOverlayTrigger
-            #triggerPrimary="bOverlayTrigger"
+            bOverlayOrigin
+            #triggerPrimary="bOverlayOrigin"
             class="cursor-pointer">
             Primary
           </span>
-          <ng-template bOverlay [trigger]="triggerPrimary">
+          <ng-template bConnectedOverlay [trigger]="triggerPrimary">
             <b-tooltip-content>Primary tooltip</b-tooltip-content>
           </ng-template>
         </b-tooltip>
         <b-tooltip variant="secondary">
           <span
             bTooltipTrigger
-            bOverlayTrigger
-            #triggerSecondary="bOverlayTrigger"
+            bOverlayOrigin
+            #triggerSecondary="bOverlayOrigin"
             class="cursor-pointer">
             Secondary
           </span>
-          <ng-template bOverlay [trigger]="triggerSecondary">
+          <ng-template bConnectedOverlay [trigger]="triggerSecondary">
             <b-tooltip-content>Secondary tooltip</b-tooltip-content>
           </ng-template>
         </b-tooltip>
         <b-tooltip variant="ghost">
           <span
             bTooltipTrigger
-            bOverlayTrigger
-            #triggerGhost="bOverlayTrigger"
+            bOverlayOrigin
+            #triggerGhost="bOverlayOrigin"
             class="cursor-pointer">
             Ghost
           </span>
-          <ng-template bOverlay [trigger]="triggerGhost">
+          <ng-template bConnectedOverlay [trigger]="triggerGhost">
             <b-tooltip-content>Ghost tooltip</b-tooltip-content>
           </ng-template>
         </b-tooltip>
         <b-tooltip variant="outlined">
           <span
             bTooltipTrigger
-            bOverlayTrigger
-            #triggerOutlined="bOverlayTrigger"
+            bOverlayOrigin
+            #triggerOutlined="bOverlayOrigin"
             class="cursor-pointer">
             Outlined
           </span>
-          <ng-template bOverlay [trigger]="triggerOutlined">
+          <ng-template bConnectedOverlay [trigger]="triggerOutlined">
             <b-tooltip-content>Outlined tooltip</b-tooltip-content>
           </ng-template>
         </b-tooltip>
         <b-tooltip variant="destructive">
           <span
             bTooltipTrigger
-            bOverlayTrigger
-            #triggerDestructive="bOverlayTrigger"
+            bOverlayOrigin
+            #triggerDestructive="bOverlayOrigin"
             class="cursor-pointer">
             Destructive
           </span>
-          <ng-template bOverlay [trigger]="triggerDestructive">
+          <ng-template bConnectedOverlay [trigger]="triggerDestructive">
             <b-tooltip-content>Destructive tooltip</b-tooltip-content>
           </ng-template>
         </b-tooltip>
@@ -164,36 +164,36 @@ import { lucideInfo } from '@ng-icons/lucide';
         <b-tooltip size="sm">
           <span
             bTooltipTrigger
-            bOverlayTrigger
-            #triggerSm="bOverlayTrigger"
+            bOverlayOrigin
+            #triggerSm="bOverlayOrigin"
             class="cursor-pointer">
             Small
           </span>
-          <ng-template bOverlay [trigger]="triggerSm">
+          <ng-template bConnectedOverlay [trigger]="triggerSm">
             <b-tooltip-content>Small tooltip</b-tooltip-content>
           </ng-template>
         </b-tooltip>
         <b-tooltip size="md">
           <span
             bTooltipTrigger
-            bOverlayTrigger
-            #triggerMd="bOverlayTrigger"
+            bOverlayOrigin
+            #triggerMd="bOverlayOrigin"
             class="cursor-pointer">
             Medium
           </span>
-          <ng-template bOverlay [trigger]="triggerMd">
+          <ng-template bConnectedOverlay [trigger]="triggerMd">
             <b-tooltip-content>Medium tooltip</b-tooltip-content>
           </ng-template>
         </b-tooltip>
         <b-tooltip size="lg">
           <span
             bTooltipTrigger
-            bOverlayTrigger
-            #triggerLg="bOverlayTrigger"
+            bOverlayOrigin
+            #triggerLg="bOverlayOrigin"
             class="cursor-pointer">
             Large
           </span>
-          <ng-template bOverlay [trigger]="triggerLg">
+          <ng-template bConnectedOverlay [trigger]="triggerLg">
             <b-tooltip-content>Large tooltip</b-tooltip-content>
           </ng-template>
         </b-tooltip>
@@ -206,12 +206,12 @@ import { lucideInfo } from '@ng-icons/lucide';
           <button
             b-button
             bTooltipTrigger
-            bOverlayTrigger
-            #triggerButton="bOverlayTrigger">
+            bOverlayOrigin
+            #triggerButton="bOverlayOrigin">
             Get started
           </button>
           <ng-template
-            bOverlay
+            bConnectedOverlay
             [trigger]="triggerButton"
             [positions]="[
               'bottom-left',
@@ -260,8 +260,8 @@ import { lucideInfo } from '@ng-icons/lucide';
                       tabindex="0"
                       aria-label="Show Position[] values"
                       bTooltipTrigger
-                      bOverlayTrigger
-                      #tooltipInfo="bOverlayTrigger"
+                      bOverlayOrigin
+                      #tooltipInfo="bOverlayOrigin"
                       type="button">
                       <ng-icon
                         name="lucideInfo"
@@ -269,7 +269,7 @@ import { lucideInfo } from '@ng-icons/lucide';
                         color="currentColor" />
                     </button>
                     <ng-template
-                      bOverlay
+                      bConnectedOverlay
                       [trigger]="tooltipInfo"
                       [focusTriggerOnClose]="false">
                       <b-tooltip-content>
@@ -303,13 +303,13 @@ import { lucideInfo } from '@ng-icons/lucide';
         <b-tooltip>
           <span
             bTooltipTrigger
-            bOverlayTrigger
-            #triggerBottomLeft="bOverlayTrigger"
+            bOverlayOrigin
+            #triggerBottomLeft="bOverlayOrigin"
             class="cursor-pointer">
             Bottom left
           </span>
           <ng-template
-            bOverlay
+            bConnectedOverlay
             [trigger]="triggerBottomLeft"
             [positions]="['bottom-left']">
             <b-tooltip-content>Bottom left</b-tooltip-content>
@@ -318,13 +318,13 @@ import { lucideInfo } from '@ng-icons/lucide';
         <b-tooltip>
           <span
             bTooltipTrigger
-            bOverlayTrigger
-            #triggerBottomRight="bOverlayTrigger"
+            bOverlayOrigin
+            #triggerBottomRight="bOverlayOrigin"
             class="cursor-pointer">
             Bottom right
           </span>
           <ng-template
-            bOverlay
+            bConnectedOverlay
             [trigger]="triggerBottomRight"
             [positions]="['bottom-right']">
             <b-tooltip-content>Bottom right</b-tooltip-content>
@@ -333,13 +333,13 @@ import { lucideInfo } from '@ng-icons/lucide';
         <b-tooltip>
           <span
             bTooltipTrigger
-            bOverlayTrigger
-            #triggerTopLeft="bOverlayTrigger"
+            bOverlayOrigin
+            #triggerTopLeft="bOverlayOrigin"
             class="cursor-pointer">
             Top left
           </span>
           <ng-template
-            bOverlay
+            bConnectedOverlay
             [trigger]="triggerTopLeft"
             [positions]="['top-left']">
             <b-tooltip-content>Top left</b-tooltip-content>
@@ -348,13 +348,13 @@ import { lucideInfo } from '@ng-icons/lucide';
         <b-tooltip>
           <span
             bTooltipTrigger
-            bOverlayTrigger
-            #triggerTopRight="bOverlayTrigger"
+            bOverlayOrigin
+            #triggerTopRight="bOverlayOrigin"
             class="cursor-pointer">
             Top right
           </span>
           <ng-template
-            bOverlay
+            bConnectedOverlay
             [trigger]="triggerTopRight"
             [positions]="['top-right']">
             <b-tooltip-content>Top right</b-tooltip-content>
@@ -373,8 +373,8 @@ import { lucideInfo } from '@ng-icons/lucide';
   imports: [
     CodeBlock,
     Button,
-    OverlayDirective,
-    OverlayTriggerDirective,
+    ConnectedOverlay,
+    OverlayOrigin,
     Tooltip,
     TooltipContent,
     TooltipTrigger,
@@ -389,61 +389,61 @@ export class TooltipDocumentation {
   stylesImport = `@import '@basis-ng/styles/index.css';`;
   basicUsage = `<b-tooltip>
   <span bTooltipTrigger>Hover me</span>
-  <ng-template bOverlay>
+  <ng-template bConnectedOverlay>
     <b-tooltip-content>Tooltip text</b-tooltip-content>
   </ng-template>
 </b-tooltip>`;
   variantsUsage = `<b-tooltip variant="primary">
   <span bTooltipTrigger>Primary</span>
-  <ng-template bOverlay>
+  <ng-template bConnectedOverlay>
     <b-tooltip-content>Primary tooltip</b-tooltip-content>
   </ng-template>
 </b-tooltip>
 <b-tooltip variant="secondary">
   <span bTooltipTrigger>Secondary</span>
-  <ng-template bOverlay>
+  <ng-template bConnectedOverlay>
     <b-tooltip-content>Secondary tooltip</b-tooltip-content>
   </ng-template>
 </b-tooltip>
 <b-tooltip variant="ghost">
   <span bTooltipTrigger>Ghost</span>
-  <ng-template bOverlay>
+  <ng-template bConnectedOverlay>
     <b-tooltip-content>Ghost tooltip</b-tooltip-content>
   </ng-template>
 </b-tooltip>
 <b-tooltip variant="outlined">
   <span bTooltipTrigger>Outlined</span>
-  <ng-template bOverlay>
+  <ng-template bConnectedOverlay>
     <b-tooltip-content>Outlined tooltip</b-tooltip-content>
   </ng-template>
 </b-tooltip>
 <b-tooltip variant="destructive">
   <span bTooltipTrigger>Destructive</span>
-  <ng-template bOverlay>
+  <ng-template bConnectedOverlay>
     <b-tooltip-content>Destructive tooltip</b-tooltip-content>
   </ng-template>
 </b-tooltip>`;
   sizesUsage = `<b-tooltip size="sm">
   <span bTooltipTrigger>Small</span>
-  <ng-template bOverlay>
+  <ng-template bConnectedOverlay>
     <b-tooltip-content>Small tooltip</b-tooltip-content>
   </ng-template>
 </b-tooltip>
 <b-tooltip size="md">
   <span bTooltipTrigger>Medium</span>
-  <ng-template bOverlay>
+  <ng-template bConnectedOverlay>
     <b-tooltip-content>Medium tooltip</b-tooltip-content>
   </ng-template>
 </b-tooltip>
 <b-tooltip size="lg">
   <span bTooltipTrigger>Large</span>
-  <ng-template bOverlay>
+  <ng-template bConnectedOverlay>
     <b-tooltip-content>Large tooltip</b-tooltip-content>
   </ng-template>
 </b-tooltip>`;
   buttonOverlayUsage = `<b-tooltip size="sm" variant="outlined">
-  <button b-button bTooltipTrigger bOverlayTrigger #trigger="bOverlayTrigger">Get started</button>
-  <ng-template bOverlay [trigger]="trigger" [positions]="[
+  <button b-button bTooltipTrigger bOverlayOrigin #trigger="bOverlayOrigin">Get started</button>
+  <ng-template bConnectedOverlay [trigger]="trigger" [positions]="[
     'bottom-left',
     'bottom-right',
     'top-left',
@@ -453,26 +453,26 @@ export class TooltipDocumentation {
   </ng-template>
 </b-tooltip>`;
   positionsUsage = `<b-tooltip>
-  <span bTooltipTrigger bOverlayTrigger #triggerBottomLeft="bOverlayTrigger">Bottom left</span>
-  <ng-template bOverlay [trigger]="triggerBottomLeft" [positions]="['bottom-left']">
+  <span bTooltipTrigger bOverlayOrigin #triggerBottomLeft="bOverlayOrigin">Bottom left</span>
+  <ng-template bConnectedOverlay [trigger]="triggerBottomLeft" [positions]="['bottom-left']">
     <b-tooltip-content>Bottom left</b-tooltip-content>
   </ng-template>
 </b-tooltip>
 <b-tooltip>
-  <span bTooltipTrigger bOverlayTrigger #triggerBottomRight="bOverlayTrigger">Bottom right</span>
-  <ng-template bOverlay [trigger]="triggerBottomRight" [positions]="['bottom-right']">
+  <span bTooltipTrigger bOverlayOrigin #triggerBottomRight="bOverlayOrigin">Bottom right</span>
+  <ng-template bConnectedOverlay [trigger]="triggerBottomRight" [positions]="['bottom-right']">
     <b-tooltip-content>Bottom right</b-tooltip-content>
   </ng-template>
 </b-tooltip>
 <b-tooltip>
-  <span bTooltipTrigger bOverlayTrigger #triggerTopLeft="bOverlayTrigger">Top left</span>
-  <ng-template bOverlay [trigger]="triggerTopLeft" [positions]="['top-left']">
+  <span bTooltipTrigger bOverlayOrigin #triggerTopLeft="bOverlayOrigin">Top left</span>
+  <ng-template bConnectedOverlay [trigger]="triggerTopLeft" [positions]="['top-left']">
     <b-tooltip-content>Top left</b-tooltip-content>
   </ng-template>
 </b-tooltip>
 <b-tooltip>
-  <span bTooltipTrigger bOverlayTrigger #triggerTopRight="bOverlayTrigger">Top right</span>
-  <ng-template bOverlay [trigger]="triggerTopRight" [positions]="['top-right']">
+  <span bTooltipTrigger bOverlayOrigin #triggerTopRight="bOverlayOrigin">Top right</span>
+  <ng-template bConnectedOverlay [trigger]="triggerTopRight" [positions]="['top-right']">
     <b-tooltip-content>Top right</b-tooltip-content>
   </ng-template>
 </b-tooltip>`;
