@@ -130,8 +130,6 @@ import { StepsButtons } from '../../shared/components/steps-buttons';
       <h3 class="font-semibold text-lg">Custom Dictionary</h3>
       <code-block [code]="customDictionary" />
       <h2 class="font-semibold text-xl">Best Practices</h2>
-      <app-steps-buttons
-        [previous]="{ label: 'Tree', path: '/docs/components/tree' }" />
       <ul class="list-disc ml-6">
         <li>
           <b>Always</b> store your language JSON files in <b>public/lang</b> so
@@ -144,6 +142,8 @@ import { StepsButtons } from '../../shared/components/steps-buttons';
         </li>
       </ul>
     </div>
+    <app-steps-buttons
+      [previous]="{ label: 'Tree', path: '/docs/components/tree' }" />
   `,
   host: {
     class:
