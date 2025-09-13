@@ -3,10 +3,13 @@ import {
   InputComponent,
   Button,
   Badge,
+  Alert,
 } from '@basis-ng/primitives';
 import { Component } from '@angular/core';
 import { CodeBlock } from '../shared/components/code-block';
 import { StepsButtons } from '../../shared/components/steps-buttons';
+import { provideIcons } from '@ng-icons/core';
+import { lucideRocket } from '@ng-icons/lucide';
 
 @Component({
   selector: 'article[app-input-group-documentation]',
@@ -17,11 +20,17 @@ import { StepsButtons } from '../../shared/components/steps-buttons';
     Button,
     StepsButtons,
     Badge,
+    Alert,
   ],
+  providers: [provideIcons({ lucideRocket })],
   template: `
     <app-steps-buttons
       [previous]="{ label: 'Input', path: '/docs/components/input' }"
       [next]="{ label: 'Menu', path: '/docs/components/menu' }" />
+    <b-alert icon="lucideRocket" title="Components are in alpha">
+      Components are in alpha Try them out! We'd love to hear your feedback!
+      Expect breaking changes!
+    </b-alert>
     <h1 class="font-bold text-2xl flex gap-2 items-start">
       Input Group
       <span b-badge variant="outlined" size="sm"> New </span>

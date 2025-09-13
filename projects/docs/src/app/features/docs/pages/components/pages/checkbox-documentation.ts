@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-import { Checkbox } from '@basis-ng/primitives';
+import { Checkbox, Alert } from '@basis-ng/primitives';
+import { provideIcons } from '@ng-icons/core';
+import { lucideRocket } from '@ng-icons/lucide';
 import { CodeBlock } from '../shared/components/code-block';
 import {
   FormsModule,
@@ -17,7 +19,9 @@ import { StepsButtons } from '../../shared/components/steps-buttons';
     FormsModule,
     ReactiveFormsModule,
     StepsButtons,
+    Alert,
   ],
+  providers: [provideIcons({ lucideRocket })],
   template: `
     <app-steps-buttons
       [previous]="{ label: 'Card', path: '/docs/components/card' }"
@@ -25,6 +29,10 @@ import { StepsButtons } from '../../shared/components/steps-buttons';
         label: 'Color Picker',
         path: '/docs/components/color-picker',
       }" />
+    <b-alert icon="lucideRocket" title="Components are in alpha">
+      Components are in alpha Try them out! We'd love to hear your feedback!
+      Expect breaking changes!
+    </b-alert>
     <h1 class="font-bold text-2xl">Checkbox</h1>
     <div class="flex flex-col gap-4">
       <span> Checkbox is a custom toggle component. </span>
@@ -42,7 +50,7 @@ import { StepsButtons } from '../../shared/components/steps-buttons';
             <tr>
               <th
                 class="border-b border-gray-200 dark:border-zinc-700 px-4 py-2 font-semibold">
-                Property
+                Prop
               </th>
               <th
                 class="border-b border-gray-200 dark:border-zinc-700 px-4 py-2 font-semibold">

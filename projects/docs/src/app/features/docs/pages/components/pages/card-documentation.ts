@@ -10,7 +10,10 @@ import {
   Button,
   InputComponent,
   Badge,
+  Alert,
 } from '@basis-ng/primitives';
+import { provideIcons } from '@ng-icons/core';
+import { lucideRocket } from '@ng-icons/lucide';
 import { StepsButtons } from '../../shared/components/steps-buttons';
 
 @Component({
@@ -27,11 +30,17 @@ import { StepsButtons } from '../../shared/components/steps-buttons';
     InputComponent,
     StepsButtons,
     Badge,
+    Alert,
   ],
+  providers: [provideIcons({ lucideRocket })],
   template: `
     <app-steps-buttons
       [previous]="{ label: 'Button', path: '/docs/components/button' }"
       [next]="{ label: 'Checkbox', path: '/docs/components/checkbox' }" />
+    <b-alert icon="lucideRocket" title="Components are in alpha">
+      Components are in alpha Try them out! We'd love to hear your feedback!
+      Expect breaking changes!
+    </b-alert>
     <h1 class="font-bold text-2xl flex gap-2 items-start">
       Card
       <span b-badge variant="outlined" size="sm"> New </span>

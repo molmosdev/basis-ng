@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-import { TextareaComponent } from '@basis-ng/primitives';
+import { TextareaComponent, Alert } from '@basis-ng/primitives';
+import { provideIcons } from '@ng-icons/core';
+import { lucideRocket } from '@ng-icons/lucide';
 import { CodeBlock } from '../shared/components/code-block';
 import {
   FormsModule,
@@ -17,11 +19,17 @@ import { StepsButtons } from '../../shared/components/steps-buttons';
     FormsModule,
     ReactiveFormsModule,
     StepsButtons,
+    Alert,
   ],
+  providers: [provideIcons({ lucideRocket })],
   template: `
     <app-steps-buttons
       [previous]="{ label: 'Tabs', path: '/docs/components/tabs' }"
       [next]="{ label: 'Tooltip', path: '/docs/components/tooltip' }" />
+    <b-alert icon="lucideRocket" title="Components are in alpha">
+      Components are in alpha Try them out! We'd love to hear your feedback!
+      Expect breaking changes!
+    </b-alert>
     <h1 class="font-bold text-2xl">Textarea</h1>
     <div class="flex flex-col gap-4">
       <span>

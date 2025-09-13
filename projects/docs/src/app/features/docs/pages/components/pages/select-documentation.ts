@@ -10,8 +10,11 @@ import {
   SelectContent,
   SelectTrigger,
   SelectValue,
+  Alert,
 } from '@basis-ng/primitives';
 import { StepsButtons } from '../../shared/components/steps-buttons';
+import { provideIcons } from '@ng-icons/core';
+import { lucideRocket } from '@ng-icons/lucide';
 
 @Component({
   selector: 'article[app-select-documentation]',
@@ -19,6 +22,10 @@ import { StepsButtons } from '../../shared/components/steps-buttons';
     <app-steps-buttons
       [previous]="{ label: 'Range', path: '/docs/components/range' }"
       [next]="{ label: 'Sheet', path: '/docs/components/sheet' }" />
+    <b-alert icon="lucideRocket" title="Components are in alpha">
+      Components are in alpha Try them out! We'd love to hear your feedback!
+      Expect breaking changes!
+    </b-alert>
     <h1 class="font-bold text-2xl">Select</h1>
     <div class="flex flex-col gap-4">
       <span>
@@ -342,7 +349,9 @@ import { StepsButtons } from '../../shared/components/steps-buttons';
     OverlayOrigin,
     ConnectedOverlay,
     StepsButtons,
+    Alert,
   ],
+  providers: [provideIcons({ lucideRocket })],
 })
 export class SelectDocumentation {
   angularImport = `import { Select, SelectTrigger, SelectValue, SelectContent, Option, ConnectedOverlay, OverlayOrigin } from '@basis-ng/primitives';`;

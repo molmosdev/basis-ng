@@ -8,6 +8,7 @@ import {
   TooltipContent,
   TooltipTrigger,
   Badge,
+  Alert,
 } from '@basis-ng/primitives';
 import { StepsButtons } from '../../shared/components/steps-buttons';
 import { NgIcon, provideIcons } from '@ng-icons/core';
@@ -19,6 +20,10 @@ import { lucideInfo } from '@ng-icons/lucide';
     <app-steps-buttons
       [previous]="{ label: 'Textarea', path: '/docs/components/textarea' }"
       [next]="{ label: 'Tree', path: '/docs/components/tree' }" />
+    <b-alert icon="lucideRocket" title="Components are in alpha">
+      Components are in alpha Try them out! We'd love to hear your feedback!
+      Expect breaking changes!
+    </b-alert>
     <h1 class="font-bold text-2xl flex gap-2 items-start">
       Tooltip
       <span b-badge variant="outlined" size="sm"> New </span>
@@ -381,6 +386,7 @@ import { lucideInfo } from '@ng-icons/lucide';
     StepsButtons,
     NgIcon,
     Badge,
+    Alert,
   ],
   providers: [provideIcons({ lucideInfo })],
 })

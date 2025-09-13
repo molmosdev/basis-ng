@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { CodeBlock } from '../shared/components/code-block';
-import { SwitchComponent } from '@basis-ng/primitives';
+import { SwitchComponent, Alert } from '@basis-ng/primitives';
+import { provideIcons } from '@ng-icons/core';
+import { lucideRocket } from '@ng-icons/lucide';
 import { StepsButtons } from '../../shared/components/steps-buttons';
 import {
   FormsModule,
@@ -17,11 +19,17 @@ import {
     StepsButtons,
     FormsModule,
     ReactiveFormsModule,
+    Alert,
   ],
+  providers: [provideIcons({ lucideRocket })],
   template: `
     <app-steps-buttons
       [previous]="{ label: 'Spinner', path: '/docs/components/spinner' }"
       [next]="{ label: 'Tabs', path: '/docs/components/tabs' }" />
+    <b-alert icon="lucideRocket" title="Components are in alpha">
+      Components are in alpha Try them out! We'd love to hear your feedback!
+      Expect breaking changes!
+    </b-alert>
     <h1 class="font-bold text-2xl">Switch</h1>
     <div class="flex flex-col gap-4">
       <span>

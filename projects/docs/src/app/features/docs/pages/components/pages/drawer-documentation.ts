@@ -1,15 +1,22 @@
 import { Component, signal } from '@angular/core';
 import { CodeBlock } from '../shared/components/code-block';
-import { Button, DrawerComponent } from '@basis-ng/primitives';
+import { Button, DrawerComponent, Alert } from '@basis-ng/primitives';
+import { provideIcons } from '@ng-icons/core';
+import { lucideRocket } from '@ng-icons/lucide';
 import { StepsButtons } from '../../shared/components/steps-buttons';
 
 @Component({
   selector: 'article[app-drawer-documentation]',
-  imports: [CodeBlock, DrawerComponent, Button, StepsButtons],
+  imports: [CodeBlock, DrawerComponent, Button, StepsButtons, Alert],
+  providers: [provideIcons({ lucideRocket })],
   template: `
     <app-steps-buttons
       [previous]="{ label: 'Dialog', path: '/docs/components/dialog' }"
       [next]="{ label: 'Input', path: '/docs/components/input' }" />
+    <b-alert icon="lucideRocket" title="Components are in alpha">
+      Components are in alpha Try them out! We'd love to hear your feedback!
+      Expect breaking changes!
+    </b-alert>
     <h1 class="font-bold text-2xl">Drawer</h1>
     <div class="flex flex-col gap-4">
       <span>Drawer is a sliding panel for navigation or content.</span>

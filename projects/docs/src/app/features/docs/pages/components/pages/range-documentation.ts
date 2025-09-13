@@ -1,15 +1,22 @@
 import { Component } from '@angular/core';
 import { CodeBlock } from '../shared/components/code-block';
-import { RangeComponent } from '@basis-ng/primitives';
+import { Alert, RangeComponent } from '@basis-ng/primitives';
 import { StepsButtons } from '../../shared/components/steps-buttons';
+import { provideIcons } from '@ng-icons/core';
+import { lucideRocket } from '@ng-icons/lucide';
 
 @Component({
   selector: 'article[app-range-documentation]',
-  imports: [CodeBlock, RangeComponent, StepsButtons],
+  imports: [CodeBlock, RangeComponent, StepsButtons, Alert],
+  providers: [provideIcons({ lucideRocket })],
   template: `
     <app-steps-buttons
       [previous]="{ label: 'OTP', path: '/docs/components/otp' }"
       [next]="{ label: 'Select', path: '/docs/components/select' }" />
+    <b-alert icon="lucideRocket" title="Components are in alpha">
+      Components are in alpha Try them out! We'd love to hear your feedback!
+      Expect breaking changes!
+    </b-alert>
     <h1 class="font-bold text-2xl">Range</h1>
     <div class="flex flex-col gap-4">
       <span> Range is a custom slider component. </span>

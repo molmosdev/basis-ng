@@ -1,15 +1,22 @@
 import { Component } from '@angular/core';
 import { CodeBlock } from '../shared/components/code-block';
-import { Badge } from '@basis-ng/primitives';
+import { Badge, Alert } from '@basis-ng/primitives';
 import { StepsButtons } from '../../shared/components/steps-buttons';
+import { provideIcons } from '@ng-icons/core';
+import { lucideRocket } from '@ng-icons/lucide';
 
 @Component({
   selector: 'article[app-badge-documentation]',
-  imports: [CodeBlock, Badge, StepsButtons],
+  imports: [CodeBlock, Badge, StepsButtons, Alert],
+  providers: [provideIcons({ lucideRocket })],
   template: `
     <app-steps-buttons
       [previous]="{ label: 'Alert', path: '/docs/components/alert' }"
       [next]="{ label: 'Button', path: '/docs/components/button' }" />
+    <b-alert icon="lucideRocket" title="Components are in alpha">
+      Components are in alpha Try them out! We'd love to hear your feedback!
+      Expect breaking changes!
+    </b-alert>
     <h1 class="font-bold text-2xl">Badge</h1>
     <div class="flex flex-col gap-4">
       <span>

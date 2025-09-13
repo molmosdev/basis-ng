@@ -1,15 +1,22 @@
 import { Component } from '@angular/core';
 import { CodeBlock } from '../shared/components/code-block';
-import { CommandComponent } from '@basis-ng/primitives';
+import { CommandComponent, Alert } from '@basis-ng/primitives';
+import { provideIcons } from '@ng-icons/core';
+import { lucideRocket } from '@ng-icons/lucide';
 import { StepsButtons } from '../../shared/components/steps-buttons';
 
 @Component({
   selector: 'article[app-command-documentation]',
-  imports: [CodeBlock, CommandComponent, StepsButtons],
+  imports: [CodeBlock, CommandComponent, StepsButtons, Alert],
+  providers: [provideIcons({ lucideRocket })],
   template: `
     <app-steps-buttons
       [previous]="{ label: 'Combobox', path: '/docs/components/combobox' }"
       [next]="{ label: 'Dialog', path: '/docs/components/dialog' }" />
+    <b-alert icon="lucideRocket" title="Components are in alpha">
+      Components are in alpha Try them out! We'd love to hear your feedback!
+      Expect breaking changes!
+    </b-alert>
     <h1 class="font-bold text-2xl">Command</h1>
     <div class="flex flex-col gap-4">
       <span>Command is a custom command palette component.</span>

@@ -1,5 +1,12 @@
 import { Component } from '@angular/core';
-import { TabsComponent, TabComponent, Badge } from '@basis-ng/primitives';
+import {
+  TabsComponent,
+  TabComponent,
+  Badge,
+  Alert,
+} from '@basis-ng/primitives';
+import { provideIcons } from '@ng-icons/core';
+import { lucideRocket } from '@ng-icons/lucide';
 import { CodeBlock } from '../shared/components/code-block';
 import {
   FormsModule,
@@ -23,11 +30,17 @@ import { CommonModule } from '@angular/common';
     NgTemplateOutlet,
     StepsButtons,
     Badge,
+    Alert,
   ],
+  providers: [provideIcons({ lucideRocket })],
   template: `
     <app-steps-buttons
       [previous]="{ label: 'Switch', path: '/docs/components/switch' }"
       [next]="{ label: 'Textarea', path: '/docs/components/textarea' }" />
+    <b-alert icon="lucideRocket" title="Components are in alpha">
+      Components are in alpha Try them out! We'd love to hear your feedback!
+      Expect breaking changes!
+    </b-alert>
     <h1 class="font-bold text-2xl flex gap-2 items-start">
       Tabs
       <span b-badge variant="outlined" size="sm"> New </span>

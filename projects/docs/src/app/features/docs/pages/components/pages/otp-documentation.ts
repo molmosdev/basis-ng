@@ -1,6 +1,11 @@
 import { Component } from '@angular/core';
 import { CodeBlock } from '../shared/components/code-block';
-import { OtpComponent, OtpDigitDirective, Badge } from '@basis-ng/primitives';
+import {
+  OtpComponent,
+  OtpDigitDirective,
+  Badge,
+  Alert,
+} from '@basis-ng/primitives';
 import { StepsButtons } from '../../shared/components/steps-buttons';
 import {
   FormsModule,
@@ -8,6 +13,8 @@ import {
   FormControl,
   FormGroup,
 } from '@angular/forms';
+import { provideIcons } from '@ng-icons/core';
+import { lucideRocket } from '@ng-icons/lucide';
 
 @Component({
   selector: 'article[app-otp-documentation]',
@@ -19,11 +26,17 @@ import {
     FormsModule,
     ReactiveFormsModule,
     Badge,
+    Alert,
   ],
+  providers: [provideIcons({ lucideRocket })],
   template: `
     <app-steps-buttons
       [previous]="{ label: 'Menu', path: '/docs/components/menu' }"
       [next]="{ label: 'Range', path: '/docs/components/range' }" />
+    <b-alert icon="lucideRocket" title="Components are in alpha">
+      Components are in alpha Try them out! We'd love to hear your feedback!
+      Expect breaking changes!
+    </b-alert>
     <h1 class="font-bold text-2xl flex gap-2 items-start">
       OTP
       <span b-badge variant="outlined" size="sm"> New </span>

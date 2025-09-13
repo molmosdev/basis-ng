@@ -1,15 +1,34 @@
 import { Component } from '@angular/core';
-import { TreeComponent, TreeNodeComponent, Badge } from '@basis-ng/primitives';
+import {
+  TreeComponent,
+  TreeNodeComponent,
+  Badge,
+  Alert,
+} from '@basis-ng/primitives';
+import { provideIcons } from '@ng-icons/core';
+import { lucideRocket } from '@ng-icons/lucide';
 import { CodeBlock } from '../shared/components/code-block';
 import { StepsButtons } from '../../shared/components/steps-buttons';
 
 @Component({
   selector: 'article[app-tree-documentation]',
-  imports: [TreeComponent, TreeNodeComponent, CodeBlock, StepsButtons, Badge],
+  imports: [
+    TreeComponent,
+    TreeNodeComponent,
+    CodeBlock,
+    StepsButtons,
+    Badge,
+    Alert,
+  ],
+  providers: [provideIcons({ lucideRocket })],
   template: `
     <app-steps-buttons
       [previous]="{ label: 'Tooltip', path: '/docs/components/tooltip' }"
       [next]="{ label: 'Translation', path: '/docs/utilities/translation' }" />
+    <b-alert icon="lucideRocket" title="Components are in alpha">
+      Components are in alpha Try them out! We'd love to hear your feedback!
+      Expect breaking changes!
+    </b-alert>
     <h1 class="font-bold text-2xl flex gap-2 items-start">
       Tree
       <span b-badge variant="outlined" size="sm"> New </span>

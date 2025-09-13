@@ -1,18 +1,37 @@
 import { Component } from '@angular/core';
 import { CodeBlock } from '../shared/components/code-block';
-import { Button, ButtonGroup, Spinner } from '@basis-ng/primitives';
+import { Alert, Button, ButtonGroup, Spinner } from '@basis-ng/primitives';
 import { StepsButtons } from '../../shared/components/steps-buttons';
 import { NgIcon, provideIcons } from '@ng-icons/core';
-import { lucideZoomIn, lucideZoomOut, lucideSearch } from '@ng-icons/lucide';
+import {
+  lucideZoomIn,
+  lucideZoomOut,
+  lucideSearch,
+  lucideRocket,
+} from '@ng-icons/lucide';
 
 @Component({
   selector: 'article[app-button-documentation]',
-  imports: [CodeBlock, Button, ButtonGroup, Spinner, StepsButtons, NgIcon],
-  providers: [provideIcons({ lucideZoomIn, lucideZoomOut, lucideSearch })],
+  imports: [
+    CodeBlock,
+    Button,
+    ButtonGroup,
+    Spinner,
+    StepsButtons,
+    NgIcon,
+    Alert,
+  ],
+  providers: [
+    provideIcons({ lucideZoomIn, lucideZoomOut, lucideSearch, lucideRocket }),
+  ],
   template: `
     <app-steps-buttons
       [previous]="{ label: 'Badge', path: '/docs/components/badge' }"
       [next]="{ label: 'Card', path: '/docs/components/card' }" />
+    <b-alert icon="lucideRocket" title="Components are in alpha">
+      Components are in alpha Try them out! We'd love to hear your feedback!
+      Expect breaking changes!
+    </b-alert>
     <h1 class="font-bold text-2xl">Button</h1>
     <div class="flex flex-col gap-4">
       <span>

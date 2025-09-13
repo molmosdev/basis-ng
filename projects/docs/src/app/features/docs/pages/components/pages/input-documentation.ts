@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-import { InputComponent } from '@basis-ng/primitives';
+import { InputComponent, Alert } from '@basis-ng/primitives';
+import { provideIcons } from '@ng-icons/core';
+import { lucideRocket } from '@ng-icons/lucide';
 import { CodeBlock } from '../shared/components/code-block';
 import {
   FormsModule,
@@ -11,12 +13,26 @@ import { StepsButtons } from '../../shared/components/steps-buttons';
 
 @Component({
   selector: 'article[app-input-documentation]',
-  template: ` <app-steps-buttons
+  imports: [
+    InputComponent,
+    CodeBlock,
+    FormsModule,
+    ReactiveFormsModule,
+    StepsButtons,
+    Alert,
+  ],
+  providers: [provideIcons({ lucideRocket })],
+  template: `
+    <app-steps-buttons
       [previous]="{ label: 'Drawer', path: '/docs/components/drawer' }"
       [next]="{
         label: 'Input Group',
         path: '/docs/components/input-group',
       }" />
+    <b-alert icon="lucideRocket" title="Components are in alpha">
+      Components are in alpha Try them out! We'd love to hear your feedback!
+      Expect breaking changes!
+    </b-alert>
     <h1 class="font-bold text-2xl">Input</h1>
     <div class="flex flex-col gap-4">
       <span> Input is a custom input component with additional features. </span>
@@ -176,14 +192,8 @@ import { StepsButtons } from '../../shared/components/steps-buttons';
       [next]="{
         label: 'Input Group',
         path: '/docs/components/input-group',
-      }" />`,
-  imports: [
-    CodeBlock,
-    InputComponent,
-    FormsModule,
-    ReactiveFormsModule,
-    StepsButtons,
-  ],
+      }" />
+  `,
   host: {
     class:
       'mx-auto flex w-full max-w-3xl min-w-0 flex-1 flex-col gap-6 px-4 pb-20',

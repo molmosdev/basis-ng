@@ -1,15 +1,22 @@
 import { Component, signal } from '@angular/core';
 import { CodeBlock } from '../shared/components/code-block';
-import { SheetComponent, Button } from '@basis-ng/primitives';
+import { SheetComponent, Button, Alert } from '@basis-ng/primitives';
 import { StepsButtons } from '../../shared/components/steps-buttons';
+import { provideIcons } from '@ng-icons/core';
+import { lucideRocket } from '@ng-icons/lucide';
 
 @Component({
   selector: 'article[app-sheet-documentation]',
-  imports: [CodeBlock, SheetComponent, Button, StepsButtons],
+  imports: [CodeBlock, SheetComponent, Button, StepsButtons, Alert],
+  providers: [provideIcons({ lucideRocket })],
   template: `
     <app-steps-buttons
       [previous]="{ label: 'Select', path: '/docs/components/select' }"
       [next]="{ label: 'Spinner', path: '/docs/components/spinner' }" />
+    <b-alert icon="lucideRocket" title="Components are in alpha">
+      Components are in alpha Try them out! We'd love to hear your feedback!
+      Expect breaking changes!
+    </b-alert>
     <h1 class="font-bold text-2xl">Sheet</h1>
     <div class="flex flex-col gap-4">
       <span>

@@ -1,15 +1,22 @@
 import { Component } from '@angular/core';
 import { CodeBlock } from '../shared/components/code-block';
-import { Spinner, Button } from '@basis-ng/primitives';
+import { Spinner, Button, Alert } from '@basis-ng/primitives';
 import { StepsButtons } from '../../shared/components/steps-buttons';
+import { provideIcons } from '@ng-icons/core';
+import { lucideRocket } from '@ng-icons/lucide';
 
 @Component({
   selector: 'article[app-spinner-documentation]',
-  imports: [CodeBlock, Spinner, Button, StepsButtons],
+  imports: [CodeBlock, Spinner, Button, StepsButtons, Alert],
+  providers: [provideIcons({ lucideRocket })],
   template: `
     <app-steps-buttons
       [previous]="{ label: 'Sheet', path: '/docs/components/sheet' }"
       [next]="{ label: 'Switch', path: '/docs/components/switch' }" />
+    <b-alert icon="lucideRocket" title="Components are in alpha">
+      Components are in alpha Try them out! We'd love to hear your feedback!
+      Expect breaking changes!
+    </b-alert>
     <h1 class="font-bold text-2xl">Spinner</h1>
     <div class="flex flex-col gap-4">
       <span>
