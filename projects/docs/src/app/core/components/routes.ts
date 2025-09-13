@@ -10,7 +10,7 @@ import {
 import { Badge, Menu, MenuItemRadio } from '@basis-ng/primitives';
 import { docsRoutes } from '../../features/docs/docs.routes';
 import { componentsRoutes } from '../../features/docs/pages/components/components.routes';
-import { servicesRoutes } from '../../features/docs/pages/services/services.routes';
+import { utilitiesRoutes } from '../../features/docs/pages/utilities/utilities.routes';
 
 @Component({
   selector: 'app-routes',
@@ -51,11 +51,11 @@ import { servicesRoutes } from '../../features/docs/pages/services/services.rout
         }
       }
       <span class="opacity-70 text-xs mb-1 pl-1 font-display-mono mt-5">
-        Services
+        Utilities
       </span>
-      @for (route of servicesRoutes(); track route) {
+      @for (route of utilitiesRoutes(); track route) {
         @if (route.data) {
-          @let path = '/docs/services/' + route.path;
+          @let path = '/docs/utilities/' + route.path;
           <button
             b-menu-item-radio
             [routerLink]="path"
@@ -76,7 +76,7 @@ export class Routes implements OnInit {
   readonly path = signal(this.router.url);
   readonly documentationRoutes = signal(docsRoutes);
   readonly componentsRoutes = signal(componentsRoutes);
-  readonly servicesRoutes = signal(servicesRoutes);
+  readonly utilitiesRoutes = signal(utilitiesRoutes);
   readonly currentRoute = computed<Route>(() => {
     const path = this.path().split('/').pop() || '';
     const route = this.documentationRoutes().find(route => route.path === path);
@@ -87,7 +87,7 @@ export class Routes implements OnInit {
     if (route2) {
       return route2;
     }
-    const route3 = this.servicesRoutes().find(route => route.path === path);
+    const route3 = this.utilitiesRoutes().find(route => route.path === path);
     if (route3) {
       return route3;
     }

@@ -1,12 +1,15 @@
 import { Component } from '@angular/core';
 import { CodeBlock } from '../../components/shared/components/code-block';
+import { StepsButtons } from '../../shared/components/steps-buttons';
 
 @Component({
   selector: 'article[app-translation-documentation]',
   standalone: true,
-  imports: [CodeBlock],
+  imports: [CodeBlock, StepsButtons],
   template: `
-    <h1 class="font-bold text-2xl">Translation Service</h1>
+    <app-steps-buttons
+      [previous]="{ label: 'Tree', path: '/docs/components/tree' }" />
+    <h1 class="font-bold text-2xl">Translation</h1>
     <div class="flex flex-col gap-4">
       <span>
         This service provides a highly efficient, reactive way to manage
@@ -127,6 +130,8 @@ import { CodeBlock } from '../../components/shared/components/code-block';
       <h3 class="font-semibold text-lg">Custom Dictionary</h3>
       <code-block [code]="customDictionary" />
       <h2 class="font-semibold text-xl">Best Practices</h2>
+      <app-steps-buttons
+        [previous]="{ label: 'Tree', path: '/docs/components/tree' }" />
       <ul class="list-disc ml-6">
         <li>
           <b>Always</b> store your language JSON files in <b>public/lang</b> so

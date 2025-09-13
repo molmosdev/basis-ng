@@ -8,7 +8,8 @@ import { StepsButtons } from '../../shared/components/steps-buttons';
   imports: [TreeComponent, TreeNodeComponent, CodeBlock, StepsButtons, Badge],
   template: `
     <app-steps-buttons
-      [previous]="{ label: 'Tooltip', path: '/docs/components/tooltip' }" />
+      [previous]="{ label: 'Tooltip', path: '/docs/components/tooltip' }"
+      [next]="{ label: 'Translation', path: '/docs/utilities/translation' }" />
     <h1 class="font-bold text-2xl flex gap-2 items-start">
       Tree
       <span b-badge variant="outlined" size="sm"> New </span>
@@ -138,7 +139,8 @@ import { StepsButtons } from '../../shared/components/steps-buttons';
       </div>
     </div>
     <app-steps-buttons
-      [previous]="{ label: 'Tooltip', path: '/docs/components/tooltip' }" />
+      [previous]="{ label: 'Tooltip', path: '/docs/components/tooltip' }"
+      [next]="{ label: 'Translation', path: '/docs/utilities/translation' }" />
   `,
   host: {
     class:

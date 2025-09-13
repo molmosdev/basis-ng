@@ -1,6 +1,6 @@
 import { Routes } from '@angular/router';
 import { componentsRoutes } from './pages/components/components.routes';
-import { servicesRoutes } from './pages/services/services.routes';
+import { utilitiesRoutes } from './pages/utilities/utilities.routes';
 
 export const docsRoutes: Routes = [
   {
@@ -40,8 +40,8 @@ export const docsRoutes: Routes = [
     children: componentsRoutes,
   },
   {
-    path: 'services',
-    children: servicesRoutes,
+    path: 'utilities',
+    children: utilitiesRoutes,
   },
   {
     path: '**',
