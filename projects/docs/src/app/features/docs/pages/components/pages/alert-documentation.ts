@@ -89,7 +89,7 @@ import {
               </td>
               <td
                 class="border-t border-gray-200 dark:border-zinc-700 px-4 py-2 font-display-mono">
-                string | null <strong>null</strong>
+                string | <strong>null</strong>
               </td>
             </tr>
             <tr>
@@ -141,7 +141,7 @@ import {
               </td>
               <td
                 class="border-t border-gray-200 dark:border-zinc-700 px-4 py-2 font-display-mono">
-                boolean <strong>false</strong>
+                boolean | <strong>false</strong>
               </td>
             </tr>
             <tr>
@@ -151,7 +151,7 @@ import {
               </td>
               <td
                 class="border-t border-gray-200 dark:border-zinc-700 px-4 py-2 font-display-mono">
-                string | null <strong>null</strong>
+                string | <strong>null</strong>
               </td>
             </tr>
           </tbody>
