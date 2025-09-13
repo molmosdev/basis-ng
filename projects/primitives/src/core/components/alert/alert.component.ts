@@ -1,13 +1,35 @@
-import { Component, computed, input, output } from '@angular/core';
+import { Component, input, output } from '@angular/core';
+import { NgIcon, provideIcons } from '@ng-icons/core';
+import { lucideX } from '@ng-icons/lucide';
 
 @Component({
   selector: 'b-alert',
-  templateUrl: './alert.component.html',
-  imports: [],
+  template: `
+    @if (icon()) {
+      <div class="icon">
+        <ng-icon [name]="icon()!" size="20" color="currentColor" />
+      </div>
+    }
+    <div class="content">
+      @if (title()) {
+        <div class="title">{{ title() }}</div>
+      }
+      <div class="body">
+        <ng-content />
+      </div>
+    </div>
+    @if (dismissible()) {
+      <button class="close-btn" (click)="dismiss()" aria-label="Close">
+        <ng-icon name="lucideX" size="16" color="currentColor" />
+      </button>
+    }
+  `,
+  imports: [NgIcon],
   host: {
     '[class]': 'type()',
     '[style.max-width]': 'maxWidth()',
   },
+  providers: [provideIcons({ lucideX })],
 })
 export class AlertComponent {
   /** The type of the alert. */
@@ -16,7 +38,7 @@ export class AlertComponent {
   /** The title of the alert. */
   readonly title = input<string | null>(null);
 
-  /** The icon of the alert. */
+  /** The icon name for ng-icon. */
   readonly icon = input<string | null>(null);
 
   /** Whether the alert is dismissible. */
@@ -27,13 +49,6 @@ export class AlertComponent {
 
   /** The maximum width of the alert. */
   readonly maxWidth = input<string | null>(null);
-
-  /** The color foreground of the alert. */
-  readonly colorForeground = computed(() => {
-    return this.type() === 'info'
-      ? 'var(--secondary-foreground)'
-      : `var(--${this.type()}-foreground)`;
-  });
 
   dismiss(): void {
     this.dismissed.emit();

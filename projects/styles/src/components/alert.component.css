@@ -1,71 +1,43 @@
 b-alert {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  padding: 1rem;
-  border-radius: 0.5rem;
-  position: relative;
-  font-family: 'Geist', sans-serif;
-  max-width: var(--max-width, none);
-  width: 100%;
-  box-sizing: border-box;
+  @apply flex items-center gap-4 p-4 rounded-size-md relative font-sans w-full box-border max-w-full;
 
   .icon {
-    flex-shrink: 0;
-    align-self: flex-start;
+    @apply flex-shrink-0 self-start;
   }
 
   .content {
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
+    @apply flex-grow flex flex-col gap-2;
 
     .title {
-      font-weight: bold;
+      @apply font-bold;
     }
 
     .body {
-      font-size: 0.875rem;
-      display: flex;
-      flex-direction: column;
-      gap: 0.2rem;
+      @apply text-sm flex flex-col gap-1;
     }
   }
 
   &.success {
-    background-color: var(--success);
-    color: var(--success-foreground);
-    border: 1px solid var(--success-border-color);
+    @apply bg-success/20 text-success border border-success;
+    @apply dark:bg-success-dark/20 dark:text-success-dark dark:border-success-dark;
   }
 
   &.error {
-    background-color: var(--error);
-    color: var(--error-foreground);
-    border: 1px solid var(--error-border-color);
+    @apply bg-destructive/20 text-destructive border border-destructive;
+    @apply dark:bg-destructive-dark/20 dark:text-destructive-dark dark:border-destructive-dark;
   }
 
   &.warning {
-    background-color: var(--warning);
-    color: var(--warning-foreground);
-    border: 1px solid var(--warning-border-color);
+    @apply bg-warning/20 text-warning border border-warning;
+    @apply dark:bg-warning-dark/20 dark:text-warning-dark dark:border-warning-dark;
   }
 
   &.info {
-    background-color: var(--secondary);
-    color: var(--secondary-foreground);
-    border: 1px solid var(--secondary-border-color);
+    @apply bg-info/20 text-info border border-info;
+    @apply dark:bg-info-dark/20 dark:text-info-dark dark:border-info-dark;
   }
 
   .close-btn {
-    align-self: flex-start;
-    flex-shrink: 0;
-    background: none;
-    border: none;
-    cursor: pointer;
-    color: inherit;
-    display: flex;
-    align-items: start;
-    padding: 0;
+    @apply self-start flex-shrink-0 bg-transparent border-none cursor-pointer text-inherit flex items-start p-0;
   }
 }

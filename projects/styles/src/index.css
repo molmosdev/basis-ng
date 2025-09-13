@@ -26,6 +26,12 @@
   --color-secondary-foreground: #0a0a0a;
   --color-destructive: #e53935;
   --color-destructive-foreground: #fff;
+  --color-success: #22c55e;
+  --color-success-foreground: #fff;
+  --color-warning: #facc15;
+  --color-warning-foreground: #0a0a0a;
+  --color-info: #3b82f6;
+  --color-info-foreground: #fff;
 
   /* Dark theme colors */
   --color-background-dark: #0a0a0a;
@@ -37,6 +43,12 @@
   --color-secondary-foreground-dark: #fff;
   --color-destructive-dark: #ff6659;
   --color-destructive-foreground-dark: #0a0a0a;
+  --color-success-dark: #166534;
+  --color-success-foreground-dark: #fff;
+  --color-warning-dark: #eab308;
+  --color-warning-foreground-dark: #0a0a0a;
+  --color-info-dark: #2563eb;
+  --color-info-foreground-dark: #fff;
 }
 
 @import './components/alert.component.css';

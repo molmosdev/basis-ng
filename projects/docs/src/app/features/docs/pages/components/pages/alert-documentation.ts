@@ -2,10 +2,25 @@ import { Component } from '@angular/core';
 import { AlertComponent } from '@basis-ng/primitives';
 import { CodeBlock } from '../shared/components/code-block';
 import { StepsButtons } from '../../shared/components/steps-buttons';
+import { provideIcons } from '@ng-icons/core';
+import {
+  lucideInfo,
+  lucideCircleCheck,
+  lucideCircleX,
+  lucideOctagonAlert,
+} from '@ng-icons/lucide';
 
 @Component({
   selector: 'article[app-alert-documentation]',
   imports: [AlertComponent, CodeBlock, StepsButtons],
+  providers: [
+    provideIcons({
+      lucideInfo,
+      lucideCircleCheck,
+      lucideCircleX,
+      lucideOctagonAlert,
+    }),
+  ],
   template: `
     <app-steps-buttons
       [previous]="{ label: 'Badge', path: '/docs/components/badge' }"
@@ -65,7 +80,13 @@ import { StepsButtons } from '../../shared/components/steps-buttons';
               </td>
               <td
                 class="border-t border-gray-200 dark:border-zinc-700 px-4 py-2 font-display-mono">
-                string | null <strong>null</strong>
+                string | null <strong>null</strong><br />
+                <span class="text-xs text-gray-500"
+                  >El icono debe estar registrado en
+                  <code>provideIcons</code> en el módulo donde se use el
+                  alert.<br />Ejemplo:
+                  <code>{{ iconProvideExample }}</code></span
+                >
               </td>
             </tr>
             <tr>
@@ -125,7 +146,7 @@ import { StepsButtons } from '../../shared/components/steps-buttons';
       <code-block [code]="basicUsage" />
       <div
         class="border border-gray-200 dark:border-zinc-700 rounded-lg p-6 mb-6 bg-white dark:bg-zinc-900 documentation-playground flex flex-col gap-4 items-center">
-        <b-alert type="info" title="Info Alert" icon="Info">
+        <b-alert type="info" title="Info Alert" icon="lucideInfo">
           This is a basic informational alert.
         </b-alert>
       </div>
@@ -133,16 +154,16 @@ import { StepsButtons } from '../../shared/components/steps-buttons';
       <code-block [code]="typesUsage" />
       <div
         class="border border-gray-200 dark:border-zinc-700 rounded-lg p-6 mb-6 bg-white dark:bg-zinc-900 documentation-playground flex flex-col gap-4 items-center">
-        <b-alert type="success" title="Success" icon="CircleCheck">
+        <b-alert type="success" title="Success" icon="lucideCircleCheck">
           This is a success alert.
         </b-alert>
-        <b-alert type="error" title="Error" icon="CircleX">
+        <b-alert type="error" title="Error" icon="lucideCircleX">
           This is an error alert.
         </b-alert>
-        <b-alert type="warning" title="Warning" icon="OctagonAlert">
+        <b-alert type="warning" title="Warning" icon="lucideOctagonAlert">
           This is a warning alert.
         </b-alert>
-        <b-alert type="info" title="Info" icon="Info">
+        <b-alert type="info" title="Info" icon="lucideInfo">
           This is an informational alert.
         </b-alert>
       </div>
@@ -150,7 +171,11 @@ import { StepsButtons } from '../../shared/components/steps-buttons';
       <code-block [code]="dismissibleUsage" />
       <div
         class="border border-gray-200 dark:border-zinc-700 rounded-lg p-6 mb-6 bg-white dark:bg-zinc-900 documentation-playground flex flex-col gap-4 items-center">
-        <b-alert type="info" [dismissible]="true" title="Info" icon="Info">
+        <b-alert
+          type="info"
+          [dismissible]="true"
+          title="Info"
+          icon="lucideInfo">
           This alert can be dismissed.
         </b-alert>
       </div>
@@ -161,7 +186,7 @@ import { StepsButtons } from '../../shared/components/steps-buttons';
         <b-alert
           type="info"
           title="Info Alert"
-          icon="Info"
+          icon="lucideInfo"
           [maxWidth]="'300px'">
           This alert has a maximum width of 300px.
         </b-alert>
@@ -183,4 +208,5 @@ export class AlertDocumentation {
   typesUsage = `<b-alert type="success" title="Success" icon="CircleCheck">\n  This is a success alert.\n</b-alert>\n<b-alert type="error" title="Error" icon="CircleX">\n  This is an error alert.\n</b-alert>\n<b-alert type="warning" title="Warning" icon="OctagonAlert">\n  This is a warning alert.\n</b-alert>\n<b-alert type="info" title="Info" icon="Info">\n  This is an informational alert.\n</b-alert>`;
   dismissibleUsage = `<b-alert type="info" [dismissible]="true" title="Info" icon="Info">\n  This alert can be dismissed.\n</b-alert>`;
   maxWidthUsage = `<b-alert type="info" title="Info Alert" icon="Info" [maxWidth]="'300px'">\n  This alert has a maximum width of 300px.\n</b-alert>`;
+  iconProvideExample = `providers: [provideIcons(&#123; lucideSearch &#125;)]`;
 }
