@@ -6,7 +6,6 @@ import { Component, input } from '@angular/core';
  */
 @Component({
   selector: 'button[b-menu-item]',
-  imports: [],
   template: `<ng-content />`,
   hostDirectives: [
     {
@@ -22,7 +21,7 @@ import { Component, input } from '@angular/core';
     '[class.squared]': 'squared()',
   },
 })
-export class MenuItemComponent {
+export class MenuItem {
   /**
    * Input to set the squared state of the menu item.
    */

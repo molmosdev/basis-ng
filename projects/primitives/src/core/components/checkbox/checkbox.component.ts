@@ -5,6 +5,7 @@ import {
   model,
   output,
   AfterViewInit,
+  signal,
 } from '@angular/core';
 
 @Component({
@@ -17,13 +18,16 @@ import {
     '(click)': 'toggleValue()',
     '(keydown.enter)': 'toggleValue()',
     '(keydown.space)': 'toggleValue()',
+    '[class.b-size-sm]': 'size() === "sm"',
+    '[class.b-size-md]': 'size() === "md"',
+    '[class.b-size-lg]': 'size() === "lg"',
   },
 })
 export class Checkbox implements AfterViewInit {
   /**
    * Value of the checkbox.
    */
-  readonly value = model<boolean>(false);
+  readonly value = signal<boolean>(false);
 
   /**
    * Reference to the checkbox element.
@@ -34,6 +38,11 @@ export class Checkbox implements AfterViewInit {
    * Event emitted when the value changes.
    */
   valueChange = output<boolean>();
+
+  /**
+   * Tamaño del checkbox: 'sm', 'md', 'lg'.
+   */
+  readonly size = model<'sm' | 'md' | 'lg'>('md');
 
   /**
    * Initializes the checkbox value after the view is initialized.

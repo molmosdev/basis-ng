@@ -7,7 +7,7 @@ import {
   model,
   output,
 } from '@angular/core';
-import { OverlayDirective } from '../../../directives/overlay.directive';
+import { OverlayDirective } from '@basis-ng/primitives';
 
 /**
  * Component representing the content of a select dropdown.

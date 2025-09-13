@@ -5,7 +5,6 @@ import { Component } from '@angular/core';
  */
 @Component({
   selector: 'b-menu-label',
-  imports: [],
   template: `<ng-content />`,
 })
-export class MenuLabelComponent {}
+export class MenuLabel {}

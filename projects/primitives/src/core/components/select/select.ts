@@ -9,9 +9,9 @@ import {
 } from '@angular/core';
 import { OverlayDirective } from '../../directives/overlay.directive';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { SelectTrigger } from './components/select-trigger';
-import { SelectValue } from './components/select-value';
-import { SelectContent } from './components/select-content';
+import { SelectTrigger } from './shared/components/select-trigger';
+import { SelectValue } from './shared/components/select-value';
+import { SelectContent } from './shared/components/select-content';
 
 /**
  * Select component that provides a customizable dropdown selection interface.
@@ -28,9 +28,9 @@ import { SelectContent } from './components/select-content';
     },
   ],
   host: {
-    '[class.b-size-1]': 'size() === "1"',
-    '[class.b-size-2]': 'size() === "2"',
-    '[class.b-size-3]': 'size() === "3"',
+    '[class.b-size-sm]': 'size() === "sm"',
+    '[class.b-size-md]': 'size() === "md"',
+    '[class.b-size-lg]': 'size() === "lg"',
   },
 })
 export class Select implements ControlValueAccessor, OnInit {
@@ -60,9 +60,9 @@ export class Select implements ControlValueAccessor, OnInit {
 
   /**
    * Input signal for the size of the select component.
-   * Can be '1', '2', or '3'. Default is '2'.
+   * Can be 'sm', 'md', or 'lg'. Default is 'md'.
    */
-  readonly size = input<'1' | '2' | '3'>('2');
+  readonly size = input<'sm' | 'md' | 'lg'>('md');
 
   /**
    * Input signal for a function to display the selected value(s).

@@ -17,13 +17,13 @@ export * from './core/components/input/input.component';
 
 /* Select */
 export * from './core/components/select/select';
-export * from './core/components/select/components/select-trigger';
-export * from './core/components/select/components/select-value';
-export * from './core/components/select/components/select-content';
+export * from './core/components/select/shared/components/select-trigger';
+export * from './core/components/select/shared/components/select-value';
+export * from './core/components/select/shared/components/select-content';
 export * from './shared/components/option.component';
 
 /* Spinner */
-export * from './core/components/spinner/spinner.component';
+export * from './core/components/spinner/spinner';
 
 /* Switch */
 export * from './core/components/switch/switch.component';
@@ -54,7 +54,7 @@ export * from './core/services/responsive.service';
 export * from './core/components/otp/otp.component';
 
 /* Badge */
-export * from './core/components/badge/badge.component';
+export * from './core/components/badge/badge';
 
 /* Checkbox */
 export * from './core/components/checkbox/checkbox.component';
@@ -66,10 +66,12 @@ export * from './core/components/textarea/textarea.component';
 export * from './core/components/range/range.component';
 
 /* Badge */
-export * from './core/components/badge/badge.component';
+export * from './core/components/badge/badge';
 
 /* Tooltip */
-export * from './core/components/tooltip/tooltip.directive';
+export * from './core/components/tooltip/tooltip';
+export * from './core/components/tooltip/shared/directives/tooltip-trigger';
+export * from './core/components/tooltip/shared/components/tooltip-content';
 
 /* Color Picker */
 export * from './core/components/color-picker/color-picker.component';
@@ -79,12 +81,12 @@ export * from './core/components/tree/tree.component';
 export * from './core/components/tree/shared/components/tree-node/tree-node.component';
 
 /* Menu */
-export * from './core/components/menu/menu.component';
-export * from './core/components/menu/shared/components/menu-label/menu-label.component';
-export * from './core/components/menu/shared/components/menu-item/menu-item.component';
-export * from './core/components/menu/shared/components/menu-group/menu-group.component';
-export * from './core/components/menu/shared/components/menu-item-checkbox/menu-item-checkbox.component';
-export * from './core/components/menu/shared/components/menu-item-radio/menu-item-radio.component';
+export * from './core/components/menu/menu';
+export * from './core/components/menu/shared/components/menu-group';
+export * from './core/components/menu/shared/components/menu-label';
+export * from './core/components/menu/shared/components/menu-item';
+export * from './core/components/menu/shared/components/menu-item-checkbox';
+export * from './core/components/menu/shared/components/menu-item-radio';
 export * from './core/components/menu/shared/directives/menu-trigger.directive';
 
 /* Alert */

@@ -172,6 +172,12 @@ export class OverlayDirective {
   readonly positions = input<Position[]>(['bottom-left']);
 
   /**
+   * Controls whether the trigger element should be focused when the overlay is closed.
+   * @default true
+   */
+  readonly focusTriggerOnClose = input(true);
+
+  /**
    * Computed list of `ConnectedPosition` objects based on the `positions` input.
    */
   readonly connectedPositions = computed<ConnectedPosition[]>(() =>
@@ -273,7 +279,7 @@ export class OverlayDirective {
       this.cdkConnectedOverlay.attachOverlay();
     } else {
       this.cdkConnectedOverlay.detachOverlay();
-      this.trigger().el.nativeElement.focus();
+      if (this.focusTriggerOnClose()) this.trigger().el.nativeElement.focus();
     }
   }
 

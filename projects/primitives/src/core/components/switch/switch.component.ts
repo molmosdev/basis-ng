@@ -4,8 +4,8 @@ import {
   ElementRef,
   inject,
   input,
-  model,
   output,
+  signal,
 } from '@angular/core';
 
 @Component({
@@ -16,7 +16,9 @@ import {
     '[attr.checked]': 'value()',
     '[attr.aria-checked]': 'value()',
     '(click)': 'toggleValue()',
-    '[class]': 'size()',
+    '[class.b-size-sm]': 'size() === "sm"',
+    '[class.b-size-md]': 'size() === "md"',
+    '[class.b-size-lg]': 'size() === "lg"',
     '(keydown.enter)': 'toggleValue()',
     '(keydown.arrowleft)': 'setValue(false)',
     '(keydown.arrowright)': 'setValue(true)',
@@ -26,12 +28,12 @@ export class SwitchComponent implements AfterViewInit {
   /**
    * Value of the switch.
    */
-  readonly value = model<boolean>(false);
+  readonly value = signal<boolean>(false);
 
   /**
    * The size of the switch.
    */
-  readonly size = input<'default' | 'large'>('default');
+  readonly size = input<'sm' | 'md' | 'lg'>('md');
 
   /**
    * Reference to the switch element.

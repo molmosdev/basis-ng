@@ -13,10 +13,11 @@ import { NgModel } from '@angular/forms';
   template: ``,
   host: {
     '[type]': 'type()',
-    '[style.max-width]': 'maxWidth()',
     '(input)': 'onInput($event)',
     '(blur)': 'onBlur($event)',
-    '[class]': ' "size-" + size() ',
+    '[class.b-size-sm]': 'size() === "sm"',
+    '[class.b-size-md]': 'size() === "md"',
+    '[class.b-size-lg]': 'size() === "lg"',
   },
   exportAs: 'bInput',
 })
@@ -25,11 +26,6 @@ export class InputComponent implements AfterViewInit {
    * The type of the input.
    */
   readonly type = input<'text' | 'number' | 'password' | 'email'>('text');
-
-  /**
-   * The maximum width of the input.
-   */
-  readonly maxWidth = input<string>('');
 
   /**
    * The number of decimal places for number input.
@@ -59,7 +55,7 @@ export class InputComponent implements AfterViewInit {
   /**
    * The size of the input.
    */
-  readonly size = input<'1' | '2' | '3'>('2');
+  readonly size = input<'sm' | 'md' | 'lg'>('md');
 
   /**
    * After the view has been initialized, set the value of the select.

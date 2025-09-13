@@ -6,8 +6,7 @@ import { Component } from '@angular/core';
  */
 @Component({
   selector: 'b-menu-group',
-  imports: [],
   template: `<ng-content />`,
   hostDirectives: [CdkMenuGroup],
 })
-export class MenuGroupComponent {}
+export class MenuGroup {}

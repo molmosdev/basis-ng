@@ -1,16 +1,15 @@
-import { CdkMenuItemRadio } from '@angular/cdk/menu';
+import { CdkMenuItemCheckbox } from '@angular/cdk/menu';
 import { Component, input } from '@angular/core';
 
 /**
- * Represents a radio menu item.
+ * Represents a checkbox menu item.
  */
 @Component({
-  selector: 'button[b-menu-item-radio]',
-  imports: [],
+  selector: 'button[b-menu-item-checkbox]',
   template: `<ng-content />`,
   hostDirectives: [
     {
-      directive: CdkMenuItemRadio,
+      directive: CdkMenuItemCheckbox,
       inputs: [
         'cdkMenuItemDisabled: disabled',
         'cdkMenuitemTypeaheadLabel: typeaheadLabel',
@@ -23,7 +22,7 @@ import { Component, input } from '@angular/core';
     '[class.squared]': 'squared()',
   },
 })
-export class MenuItemRadioComponent {
+export class MenuItemCheckbox {
   /**
    * Input to set the squared state of the menu item.
    */

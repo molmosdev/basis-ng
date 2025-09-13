@@ -42,7 +42,6 @@ import { Button } from '../button/button';
       [open]="isOpen()"
       [minWidth]="buttonWidth()"
       [positions]="['bottom-left', 'bottom-right', 'top-left', 'top-right']"
-      [closeDelay]="closeDelay()"
       (attach)="onOverlayAttached()"
       (outsideClick)="isOpen.set(false)"
       (detach)="isOpen.set(false)">
@@ -126,12 +125,6 @@ export class ComboboxComponent implements OnInit, ControlValueAccessor {
       return this.placeholder();
     }
   });
-
-  /**
-   * Signal representing the delay before closing the dropdown.
-   * This is used to provide a smooth transition when closing the dropdown.
-   */
-  readonly closeDelay = signal(150);
 
   /**
    * Lifecycle hook that is called after the component is initialized.
