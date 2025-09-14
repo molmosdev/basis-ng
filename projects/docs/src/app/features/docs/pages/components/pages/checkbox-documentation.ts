@@ -128,7 +128,7 @@ import { StepsButtons } from '../../shared/components/steps-buttons';
   },
 })
 export class CheckboxDocumentation {
-  angularImport = `import { CheckboxComponent } from '@basis-ng/primitives'`;
+  angularImport = `import { Checkbox } from '@basis-ng/primitives'`;
   stylesImport = `@import '@basis-ng/styles/checkbox';`;
   basicUsage = `<input type="checkbox" b-checkbox [value]="basicValue" (valueChange)="onValueChange($event)" />`;
   sizesUsage = `<input type="checkbox" b-checkbox size="sm" />\n<input type="checkbox" b-checkbox size="md" />\n<input type="checkbox" b-checkbox size="lg" />`;
