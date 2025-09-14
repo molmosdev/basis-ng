@@ -15,7 +15,7 @@ export interface DialogData {
 /**
  * Represents the configuration options for a dialog.
  */
-interface DialogConfig {
+export interface DialogConfig {
   /** Whether the dialog should restore focus to the previously focused element when closed. */
   restoreFocus: boolean;
   /** Whether the dialog should be closed on outside click or escape key press. */
@@ -81,7 +81,6 @@ export class DialogService {
    */
   openDialog(id: string) {
     const dialogData = this.dialogs.get(id);
-    const config = this.dialogs.get(id)?.config;
 
     if (!dialogData) {
       throw new Error(
@@ -91,9 +90,11 @@ export class DialogService {
 
     this.dialog.open(dialogData.template, {
       id: id,
-      disableClose: !config?.close,
+      disableClose: true,
+      restoreFocus: dialogData.config.restoreFocus,
       backdropClass: 'b-dialog-content-backdrop',
       container: DialogContent,
+      data: dialogData.config, // Aquí va tu DialogConfig
     });
   }
 
@@ -113,7 +114,7 @@ export class DialogService {
       return;
     }
 
-    this.dialog.getDialogById(id)?.close();
+    setTimeout(() => this.dialog.getDialogById(id)?.close(), 150);
   }
 
   /**
