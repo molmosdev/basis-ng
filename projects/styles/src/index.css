@@ -83,7 +83,7 @@
 @import './components/table.component.css';
 @import './components/tabs.component.css';
 @import './components/textarea.component.css';
-@import './components/tooltip.component.css';
+@import './components/tooltip.css';
 @import './components/tree-node.component.css';
 @import './components/tree.component.css';
 @import './components/dialog.component.css';

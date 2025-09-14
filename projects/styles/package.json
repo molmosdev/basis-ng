@@ -31,7 +31,7 @@
     "./table": "./src/components/table.component.css",
     "./tabs": "./src/components/tabs.component.css",
     "./textarea": "./src/components/textarea.component.css",
-    "./tooltip": "./src/components/tooltip.component.css",
+    "./tooltip": "./src/components/tooltip.css",
     "./tree-node": "./src/components/tree-node.component.css",
     "./tree": "./src/components/tree.component.css",
     "./dialog": "./src/components/dialog.component.css"
