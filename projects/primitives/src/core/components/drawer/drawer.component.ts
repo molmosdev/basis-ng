@@ -17,22 +17,16 @@ import { CommonModule } from '@angular/common';
   imports: [CommonModule],
   templateUrl: './drawer.component.html',
   host: {
-    '[style.height]': 'height()',
     '[class.dragging]': 'isDragging()',
     '[style.transform]': 'transform()',
     '[class.open]': 'isOpen()',
   },
 })
-export class DrawerComponent {
+export class Drawer {
   /**
    * Indicates whether the drawer is open.
    */
   readonly isOpen = model(false);
-
-  /**
-   * The height of the drawer.
-   */
-  readonly height = input('30dvh');
 
   /**
    * Event emitted when the drawer is closed.

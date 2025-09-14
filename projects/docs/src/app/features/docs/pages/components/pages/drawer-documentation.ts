@@ -1,13 +1,13 @@
 import { Component, signal } from '@angular/core';
 import { CodeBlock } from '../shared/components/code-block';
-import { Button, DrawerComponent, Alert } from '@basis-ng/primitives';
+import { Button, Drawer, Alert } from '@basis-ng/primitives';
 import { provideIcons } from '@ng-icons/core';
 import { lucideRocket } from '@ng-icons/lucide';
 import { StepsButtons } from '../../shared/components/steps-buttons';
 
 @Component({
   selector: 'article[app-drawer-documentation]',
-  imports: [CodeBlock, DrawerComponent, Button, StepsButtons, Alert],
+  imports: [CodeBlock, Drawer, Button, StepsButtons, Alert],
   template: `
     <app-steps-buttons
       [previous]="{ label: 'Dialog', path: '/docs/components/dialog' }"
@@ -50,16 +50,6 @@ import { StepsButtons } from '../../shared/components/steps-buttons';
               <td
                 class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2 font-display-mono">
                 boolean
-              </td>
-            </tr>
-            <tr>
-              <td
-                class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2 font-display-mono">
-                height
-              </td>
-              <td
-                class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2 font-display-mono">
-                string
               </td>
             </tr>
             <tr>
@@ -112,7 +102,7 @@ import { StepsButtons } from '../../shared/components/steps-buttons';
         <button b-button (click)="basicDrawerOpen.set(true)">
           Open Drawer
         </button>
-        <b-drawer [(isOpen)]="basicDrawerOpen" [height]="'50dvh'">
+        <b-drawer [(isOpen)]="basicDrawerOpen">
           <div
             style="display: flex; justify-content: center; align-items: center; height: 100%;">
             This is the content of the drawer.
@@ -126,7 +116,7 @@ import { StepsButtons } from '../../shared/components/steps-buttons';
         <button b-button (click)="customHeightDrawerOpen.set(true)">
           Open Drawer
         </button>
-        <b-drawer [(isOpen)]="customHeightDrawerOpen" [height]="'70dvh'">
+        <b-drawer [(isOpen)]="customHeightDrawerOpen" class="!h-4/5">
           <div
             style="display: flex; justify-content: center; align-items: center; height: 100%;">
             This is a taller drawer.
@@ -159,20 +149,28 @@ import { StepsButtons } from '../../shared/components/steps-buttons';
   },
 })
 export class DrawerDocumentation {
-  angularImport = `import { DrawerComponent } from '@basis-ng/primitives'`;
+  angularImport = `import { Drawer } from '@basis-ng/primitives'`;
   stylesImport = `@import '@basis-ng/styles/drawer';`;
   basicUsage = `<button b-button (click)="isOpen = true">Open Drawer</button>
-<b-drawer [(isOpen)]="isOpen" [height]="'50dvh'">
+<b-drawer [(isOpen)]="isOpen">
   <div style="display: flex; justify-content: center; align-items: center; height: 100%;">
     This is the content of the drawer.
   </div>
 </b-drawer>`;
   customHeightUsage = `<button b-button (click)="isOpen = true">Open Drawer</button>
-<b-drawer [(isOpen)]="isOpen" [height]="'70dvh'">
+<b-drawer [(isOpen)]="isOpen" [style.height]="'80dvh'">
   <div style="display: flex; justify-content: center; align-items: center; height: 100%;">
     This is a taller drawer.
   </div>
-</b-drawer>`;
+</b-drawer>
+
+<!-- With Tailwind predefined styles -->
+<button b-button (click)="isOpen = true">Open Drawer</button>
+<b-drawer [(isOpen)]="isOpen" class="!h-4/5">
+  <div style="display: flex; justify-content: center; align-items: center; height: 100%;">
+    This is a taller drawer.
+  </div>
+</b-drawer>;`;
   customCloseThresholdUsage = `<button b-button (click)="isOpen = true">Open Drawer</button>
 <b-drawer [(isOpen)]="isOpen" [closeThreshold]="70">
   <div style="display: flex; justify-content: center; align-items: center; height: 100%;">
