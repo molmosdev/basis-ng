@@ -70,7 +70,7 @@ export * from './core/components/tooltip/shared/directives/tooltip-trigger';
 export * from './core/components/tooltip/shared/components/tooltip-content';
 
 /* Color Picker */
-export * from './core/components/color-picker/color-picker.component';
+export * from './core/components/color-picker/color-picker';
 
 /* Tree */
 export * from './core/components/tree/tree.component';

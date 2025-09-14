@@ -1,0 +1,41 @@
+input[b-color-picker] {
+  @apply w-full relative bg-background dark:bg-background-dark p-0 border-0 cursor-pointer border-secondary dark:border-secondary-dark;
+
+  &::-webkit-color-swatch-wrapper {
+    @apply w-full h-full p-0;
+  }
+
+  &::-webkit-color-swatch {
+    @apply border border-secondary dark:border-secondary-dark rounded-lg;
+  }
+
+  &.show-color {
+    &::before {
+      @apply flex absolute text-[var(--text-color)] content-[var(--value)] top-1/2 left-1/2 text-base font-display -translate-y-1/2 -translate-x-1/2;
+    }
+  }
+
+  &.b-size-sm {
+    @apply h-7 rounded-size-sm;
+
+    &::before {
+      @apply text-xs;
+    }
+  }
+
+  &.b-size-md {
+    @apply h-9 rounded-size-md;
+
+    &::before {
+      @apply text-base;
+    }
+  }
+
+  &.b-size-lg {
+    @apply h-11 rounded-size-lg;
+
+    &::before {
+      @apply text-lg;
+    }
+  }
+}

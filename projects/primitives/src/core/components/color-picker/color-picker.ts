@@ -16,22 +16,18 @@ import { ControlContainer, NgModel } from '@angular/forms';
   template: ``,
   host: {
     '[class.focused]': 'focused()',
-    '[style.max-width]': 'maxWidth()',
     '[style.--value]': 'valueWithSingleQuotes()',
     '[style.--text-color]': 'textColor()',
     '[class.show-color]': 'showColor()',
     '(focus)': 'focused.set(true)',
     '(blur)': 'focused.set(false)',
     '(input)': 'value.set($event.target.value)',
-    '[class]': '"size-" + size()',
+    '[class.b-size-sm]': 'size() === "sm"',
+    '[class.b-size-md]': 'size() === "md"',
+    '[class.b-size-lg]': 'size() === "lg"',
   },
 })
-export class ColorPickerComponent implements AfterViewInit {
-  /**
-   * Specifies the maximum width of the input.
-   */
-  readonly maxWidth = input('');
-
+export class ColorPicker implements AfterViewInit {
   /**
    * Represents the value of the input.
    */
@@ -76,7 +72,7 @@ export class ColorPickerComponent implements AfterViewInit {
   /**
    * The size of the color picker input.
    */
-  readonly size = input<'1' | '2' | '3'>('2');
+  readonly size = input<'sm' | 'md' | 'lg'>('md');
 
   /**
    * A reference to the native element.

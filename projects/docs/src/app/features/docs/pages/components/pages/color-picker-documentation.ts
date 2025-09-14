@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { CodeBlock } from '../shared/components/code-block';
-import { ColorPickerComponent, Alert } from '@basis-ng/primitives';
+import { ColorPicker, Alert } from '@basis-ng/primitives';
 import { provideIcons } from '@ng-icons/core';
 import { lucideRocket } from '@ng-icons/lucide';
 import { StepsButtons } from '../../shared/components/steps-buttons';
@@ -15,7 +15,7 @@ import {
   selector: 'article[app-color-picker-documentation]',
   imports: [
     CodeBlock,
-    ColorPickerComponent,
+    ColorPicker,
     StepsButtons,
     FormsModule,
     ReactiveFormsModule,
@@ -65,7 +65,7 @@ import {
               </td>
               <td
                 class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2 font-display-mono">
-                '1' | '2' | '3'
+                'sm' | 'md' | 'lg'
               </td>
             </tr>
             <tr>
@@ -137,8 +137,8 @@ import {
         class="border border-gray-200 dark:border-neutral-700 rounded-lg p-6 mb-6 bg-white dark:bg-neutral-900 documentation-playground flex flex-col items-center justify-center gap-4">
         <input
           b-color-picker
+          [class]="'max-w-[240px]'"
           type="color"
-          [maxWidth]="'240px'"
           [showColor]="true"
           [value]="selectedColor"
           (input)="onColorChange($event)" />
@@ -149,8 +149,8 @@ import {
         class="border border-gray-200 dark:border-neutral-700 rounded-lg p-6 mb-6 bg-white dark:bg-neutral-900 documentation-playground flex flex-col items-center justify-center gap-4">
         <input
           b-color-picker
+          [class]="'max-w-[240px]'"
           type="color"
-          [maxWidth]="'240px'"
           [showColor]="true"
           [(ngModel)]="ngModelColor" />
       </div>
@@ -161,8 +161,8 @@ import {
           class="border border-gray-200 dark:border-neutral-700 rounded-lg p-6 mb-6 bg-white dark:bg-neutral-900 documentation-playground flex flex-col items-center justify-center gap-4">
           <input
             b-color-picker
+            [class]="'max-w-[240px]'"
             type="color"
-            [maxWidth]="'240px'"
             [showColor]="true"
             formControlName="colorControl" />
         </div>
@@ -173,8 +173,8 @@ import {
         class="border border-gray-200 dark:border-neutral-700 rounded-lg p-6 mb-6 bg-white dark:bg-neutral-900 documentation-playground flex flex-col items-center justify-center gap-4">
         <input
           b-color-picker
+          [class]="'max-w-[240px]'"
           type="color"
-          [maxWidth]="'240px'"
           [showColor]="false"
           [value]="selectedColor"
           (input)="onColorChange($event)" />
@@ -183,9 +183,21 @@ import {
       <code-block [code]="sizeUsage" />
       <div
         class="border border-gray-200 dark:border-neutral-700 rounded-lg p-6 mb-6 bg-white dark:bg-neutral-900 documentation-playground flex flex-col items-center justify-center gap-4">
-        <input b-color-picker type="color" size="1" [maxWidth]="'120px'" />
-        <input b-color-picker type="color" size="2" [maxWidth]="'120px'" />
-        <input b-color-picker type="color" size="3" [maxWidth]="'120px'" />
+        <input
+          b-color-picker
+          [class]="'max-w-[240px]'"
+          type="color"
+          size="sm" />
+        <input
+          b-color-picker
+          [class]="'max-w-[240px]'"
+          type="color"
+          size="md" />
+        <input
+          b-color-picker
+          [class]="'max-w-[240px]'"
+          type="color"
+          size="lg" />
       </div>
     </div>
     <app-steps-buttons
@@ -199,13 +211,13 @@ import {
   },
 })
 export class ColorPickerDocumentation {
-  angularImport = `import { ColorPickerComponent } from '@basis-ng/primitives';`;
+  angularImport = `import { ColorPicker } from '@basis-ng/primitives';`;
   stylesImport = `@import '@basis-ng/styles/color-picker';`;
-  basicUsage = `<input b-color-picker type="color" [maxWidth]="'240px'" [showColor]="true" [value]="selectedColor" (input)="onColorChange($event)" />`;
-  withoutShowColorUsage = `<input b-color-picker type="color" [maxWidth]="'240px'" [showColor]="false" [value]="selectedColor" (input)="onColorChange($event)" />`;
-  ngModelUsage = `<input b-color-picker type="color" [maxWidth]="'240px'" [showColor]="true" [(ngModel)]="ngModelColor" />`;
-  formControlUsage = `<form [formGroup]="form">\n  <input b-color-picker type="color" [maxWidth]="'240px'" [showColor]="true" formControlName="colorControl" />\n</form>`;
-  sizeUsage = `<input b-color-picker type="color" size="1" [maxWidth]="'120px'" />\n<input b-color-picker type="color" size="2" [maxWidth]="'120px'" />\n<input b-color-picker type="color" size="3" [maxWidth]="'120px'" />`;
+  basicUsage = `<input b-color-picker type="color" [showColor]="true" [value]="selectedColor" (input)="onColorChange($event)" />`;
+  withoutShowColorUsage = `<input b-color-picker type="color" [showColor]="false" [value]="selectedColor" (input)="onColorChange($event)" />`;
+  ngModelUsage = `<input b-color-picker type="color" [showColor]="true" [(ngModel)]="ngModelColor" />`;
+  formControlUsage = `<form [formGroup]="form">\n  <input b-color-picker type="color" [showColor]="true" formControlName="colorControl" />\n</form>`;
+  sizeUsage = `<input b-color-picker type="color" size="sm" />\n<input b-color-picker type="color" size="md" />\n<input b-color-picker type="color" size="lg" />`;
 
   selectedColor = '#ff0000';
   ngModelColor = '#00ff00';
