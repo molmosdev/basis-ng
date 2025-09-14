@@ -104,7 +104,7 @@ import { lucideRocket } from '@ng-icons/lucide';
   },
 })
 export class BadgeDocumentation {
-  angularImport = `import { BadgeComponent } from '@basis-ng/primitives'`;
+  angularImport = `import { Badge } from '@basis-ng/primitives'`;
   stylesImport = `@import '@basis-ng/styles/badge';`;
   basicUsage = `<span b-badge variant="primary" size="md">Primary Badge</span>`;
   variantsUsage = `<span b-badge variant="primary">Primary</span>\n<span b-badge variant="secondary">Secondary</span>\n<span b-badge variant="ghost">Ghost</span>\n<span b-badge variant="outlined">Outlined</span>\n<span b-badge variant="destructive">Destructive</span>`;
