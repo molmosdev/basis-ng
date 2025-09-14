@@ -40,9 +40,19 @@ export class Dialog implements OnInit, OnDestroy {
   readonly id = input.required<string>({ alias: 'bDialog' });
 
   /**
-   * Determines whether the dialog should close on backdrop click or escape key press. Defaults to `true`.
+   * Determines whether the dialog should have a backdrop. Defaults to `true`.
    */
-  readonly closeEnabled = input<boolean>(true);
+  readonly hasBackdrop = input<boolean>(true);
+
+  /**
+   * Determines whether the dialog should close when the backdrop is clicked. Defaults to `true`.
+   */
+  readonly closeOnBackdropClick = input<boolean>(true);
+
+  /**
+   * Determines whether the dialog should close when the escape key is pressed. Defaults to `true`.
+   */
+  readonly closeOnEscapeKey = input<boolean>(true);
 
   /**
    * Determines whether the dialog should close when the escape key is pressed or when a pointer event occurs outside the dialog.
@@ -51,14 +61,22 @@ export class Dialog implements OnInit, OnDestroy {
   readonly restoreFocus = input<boolean>(true);
 
   /**
+   * Delay in milliseconds before the dialog closes. Defaults to `150`.
+   */
+  readonly closeDelay = input<number>(150);
+
+  /**
    * Computed signal that combines the template reference and configuration inputs
    * into the `DialogData` structure expected by the `DialogService`.
    */
   readonly data = computed<DialogData>(() => ({
     template: this.templateRef,
     config: {
+      hasBackdrop: this.hasBackdrop(),
       restoreFocus: this.restoreFocus(),
-      close: this.closeEnabled(),
+      closeDelay: this.closeDelay(),
+      closeOnBackdropClick: this.closeOnBackdropClick(),
+      closeOnEscapeKey: this.closeOnEscapeKey(),
     },
   }));
 
@@ -66,12 +84,6 @@ export class Dialog implements OnInit, OnDestroy {
    * Delay in milliseconds before the dialog opens. Defaults to `0`.
    */
   readonly openDelay = input<number>(0);
-
-  /**
-   * Delay in milliseconds before the dialog closes. Defaults to `150`.
-   */
-  readonly closeDelay = input<number>(150);
-
   /**
    * Emits when the dialog is closed.
    */

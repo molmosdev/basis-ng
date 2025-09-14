@@ -1,14 +1,26 @@
 b-dialog-content {
-  &.entering {
-    animation: entering 150ms ease-in-out;
-  }
+  animation: b-dialog-enter 150ms ease-in-out;
 
   &.leaving {
-    animation: leaving 150ms ease-in-out;
+    transform: scale(0.9);
+    opacity: 0;
+    transition:
+      transform 150ms ease-in-out,
+      opacity 150ms ease-in-out;
   }
 }
 
-@keyframes entering {
+.b-dialog-backdrop {
+  background-color: rgba(0, 0, 0, 0.08);
+  animation: b-dialog-backdrop-enter 150ms ease-in-out;
+}
+
+:has(b-dialog-content.leaving) .b-dialog-backdrop {
+  opacity: 0;
+  transition: opacity 150ms ease-in-out;
+}
+
+@keyframes b-dialog-enter {
   0% {
     opacity: 0;
     transform: scale(0.9);
@@ -19,40 +31,11 @@ b-dialog-content {
   }
 }
 
-@keyframes leaving {
-  0% {
-    opacity: 1;
-    transform: scale(1);
-  }
-  100% {
-    opacity: 0;
-    transform: scale(0.9);
-  }
-}
-
-.b-dialog-content-backdrop {
-  @apply fixed inset-0 bg-black/20 dark:bg-black/50;
-  animation: b-dialog-backdrop-entering 150ms ease-in-out;
-}
-
-:has(b-dialog-content.leaving) .b-dialog-content-backdrop {
-  animation: b-dialog-backdrop-leaving 150ms ease-in-out;
-}
-
-@keyframes b-dialog-backdrop-entering {
+@keyframes b-dialog-backdrop-enter {
   0% {
     opacity: 0;
   }
   100% {
     opacity: 1;
-  }
-}
-
-@keyframes b-dialog-backdrop-leaving {
-  0% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
   }
 }

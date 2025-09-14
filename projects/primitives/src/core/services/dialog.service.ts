@@ -1,6 +1,7 @@
 import { Dialog } from '@angular/cdk/dialog';
 import { inject, Injectable, TemplateRef } from '@angular/core';
 import { DialogContent } from '../components/dialog/dialog-content';
+import { UtilsService } from '../../shared/services/utils.service';
 
 /**
  * Represents the data structure for a registered dialog, containing its template and configuration.
@@ -16,10 +17,16 @@ export interface DialogData {
  * Represents the configuration options for a dialog.
  */
 export interface DialogConfig {
+  /** Whether the dialog should have a backdrop. */
+  hasBackdrop: boolean;
   /** Whether the dialog should restore focus to the previously focused element when closed. */
   restoreFocus: boolean;
-  /** Whether the dialog should be closed on outside click or escape key press. */
-  close: boolean;
+  /** The delay before the dialog closes, in milliseconds. */
+  closeDelay: number;
+  /** Whether the dialog should be closed when the backdrop is clicked. */
+  closeOnBackdropClick: boolean;
+  /** Whether the dialog should be closed when the escape key is pressed. */
+  closeOnEscapeKey: boolean;
 }
 
 /**
@@ -40,6 +47,11 @@ export class DialogService {
    * @internal
    */
   private readonly dialog = inject(Dialog);
+
+  /**
+   * Injected instance of the `UtilsService`.
+   */
+  utilsService = inject(UtilsService);
 
   /**
    * A map storing the registered dialog templates and their data, keyed by their unique ID.
@@ -94,7 +106,7 @@ export class DialogService {
       restoreFocus: dialogData.config.restoreFocus,
       backdropClass: 'b-dialog-content-backdrop',
       container: DialogContent,
-      data: dialogData.config, // Aquí va tu DialogConfig
+      data: dialogData.config,
     });
   }
 
@@ -103,7 +115,6 @@ export class DialogService {
    * Does nothing if no dialog with the specified ID is currently open.
    *
    * @param id - The unique identifier of the dialog to close.
-   * @param type - The type of closing action.
    */
   closeDialog(id: string): void {
     const config = this.dialogs.get(id)?.config;
@@ -114,7 +125,28 @@ export class DialogService {
       return;
     }
 
-    setTimeout(() => this.dialog.getDialogById(id)?.close(), 150);
+    const dialogRef = this.dialog.getDialogById(id);
+
+    if (dialogRef) {
+      const container = dialogRef.containerInstance as any;
+      if (container && container.leaving) {
+        container.leaving.set(true);
+      }
+      this.utilsService.debounce(
+        'close-dialog-' + id,
+        () => {
+          dialogRef.close();
+          if (container && container.leaving) {
+            container.leaving.set(false);
+          }
+        },
+        config.closeDelay
+      );
+    } else {
+      console.warn(
+        `[DialogService] Attempted to close dialog with id "${id}", but no open dialog with that id was found.`
+      );
+    }
   }
 
   /**

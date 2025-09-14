@@ -1,6 +1,12 @@
-import { Component, inject, OnInit, ViewEncapsulation } from '@angular/core';
+import {
+  Component,
+  inject,
+  OnInit,
+  signal,
+  ViewEncapsulation,
+} from '@angular/core';
 import { CdkPortalOutlet } from '@angular/cdk/portal';
-import { CdkDialogContainer, Dialog } from '@angular/cdk/dialog';
+import { CdkDialogContainer, DialogRef } from '@angular/cdk/dialog';
 import { DialogConfig, DialogService } from '@basis-ng/primitives';
 
 /**
@@ -16,36 +22,54 @@ import { DialogConfig, DialogService } from '@basis-ng/primitives';
   encapsulation: ViewEncapsulation.None,
   imports: [CdkPortalOutlet],
   host: {
-    'animate.enter': 'entering',
-    'animate.leave': 'leaving',
+    '[class.leaving]': 'leaving()',
   },
 })
 export class DialogContent extends CdkDialogContainer implements OnInit {
-  dialog = inject(Dialog);
+  dialogRef = inject(DialogRef);
   dialogService = inject(DialogService);
+  readonly leaving = signal(false);
 
   constructor() {
     super();
   }
 
   ngOnInit(): void {
-    const config = this._config;
-    const data = config?.['data'] as DialogConfig | undefined;
-    const id = config?.id;
-    if (id !== undefined) {
-      const dialogRef = this.dialog.getDialogById(id);
-      if (data?.close) {
-        dialogRef?.backdropClick.subscribe(() => {
-          this.dialogService.closeDialog(id);
-        });
-        dialogRef?.keydownEvents.subscribe(event => {
-          if (event.key === 'Escape') {
-            this.dialogService.closeDialog(id);
-          }
-        });
-      }
-    } else {
-      console.warn('Dialog id is undefined.');
+    this.handleDialogEvents();
+  }
+
+  handleDialogEvents(): void {
+    const data = this._config?.data as DialogConfig | undefined;
+
+    if (!data) {
+      return;
+    }
+
+    this.handleBackdropClose(data);
+    this.handleEscapeKeyClose(data);
+  }
+
+  /**
+   * Suscribe al evento de cierre por click en el backdrop si está habilitado en la config.
+   */
+  handleBackdropClose(data: DialogConfig): void {
+    if (data.closeOnBackdropClick) {
+      this.dialogRef.backdropClick.subscribe(() => {
+        this.dialogService.closeDialog(this.dialogRef.id);
+      });
+    }
+  }
+
+  /**
+   * Suscribe al evento de cierre por tecla Escape si está habilitado en la config.
+   */
+  handleEscapeKeyClose(data: DialogConfig): void {
+    if (data.closeOnEscapeKey) {
+      this.dialogRef.keydownEvents.subscribe(event => {
+        if (event.key === 'Escape') {
+          this.dialogService.closeDialog(this.dialogRef.id);
+        }
+      });
     }
   }
 }
