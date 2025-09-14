@@ -3,68 +3,53 @@ import { inject, Injectable, TemplateRef } from '@angular/core';
 import { DialogContent } from '../components/dialog/dialog-content';
 import { UtilsService } from '../../shared/services/utils.service';
 
-/**
- * Represents the data structure for a registered dialog, containing its template and configuration.
+/** Provides dialog template reference and runtime configuration.
+ *
+ * @public
  */
 export interface DialogData {
-  /** The template reference (`ng-template`) to be rendered as the dialog content. */
+  /** Template to render inside the dialog. */
   template: TemplateRef<any>;
-  /** Configuration options for the dialog. */
+  /** Configuration controlling dialog behavior. */
   config: DialogConfig;
 }
 
-/**
- * Represents the configuration options for a dialog.
+/** Describes configurable dialog behavior flags and timings.
+ *
+ * @public
  */
 export interface DialogConfig {
-  /** Whether the dialog should have a backdrop. */
+  /** Whether a backdrop is displayed behind the dialog. */
   hasBackdrop: boolean;
-  /** Whether the dialog should restore focus to the previously focused element when closed. */
+  /** Whether focus returns to the previously focused element on close. */
   restoreFocus: boolean;
-  /** The delay before the dialog closes, in milliseconds. */
+  /** Delay in milliseconds before the dialog closes after requesting close. */
   closeDelay: number;
-  /** Whether the dialog should be closed when the backdrop is clicked. */
+  /** Whether clicking on the backdrop triggers dialog close. */
   closeOnBackdropClick: boolean;
-  /** Whether the dialog should be closed when the escape key is pressed. */
+  /** Whether pressing the Escape key triggers dialog close. */
   closeOnEscapeKey: boolean;
 }
 
-/**
- * Type representing the closing type for dialogs.
- */
-export type ClosingType = 'outsideClick' | 'escapeKey' | 'closeButton';
-
-/**
- * Service responsible for managing and controlling dialogs registered via the `Dialog`.
- * It uses the Angular CDK Dialog module internally.
+/** Central registry and controller for application dialogs. Manages registration, opening and closing instances.
+ *
+ * @public
  */
 @Injectable({
   providedIn: 'root',
 })
 export class DialogService {
-  /**
-   * Injected instance of the Angular CDK `Dialog` service.
-   * @internal
-   */
+  /** Reference to Angular CDK dialog service. */
   private readonly dialog = inject(Dialog);
-
-  /**
-   * Injected instance of the `UtilsService`.
-   */
+  /** Utility service used for debounced close actions. */
   utilsService = inject(UtilsService);
-
-  /**
-   * A map storing the registered dialog templates and their data, keyed by their unique ID.
-   * @internal
-   */
+  /** Internal map of dialog identifiers to their data. */
   private readonly dialogs = new Map<string, DialogData>();
 
-  /**
-   * Registers a dialog template and its data with the service.
-   * Typically called automatically by the `Dialog`.
-   *
-   * @param id - The unique identifier for the dialog.
-   * @param data - The dialog data containing the template and configuration.
+  /** Registers or replaces a dialog definition.
+   * @param id - Unique dialog identifier.
+   * @param data - Dialog data including template and configuration.
+   * @public
    */
   registerDialog(id: string, data: DialogData): void {
     if (this.dialogs.has(id)) {
@@ -75,31 +60,26 @@ export class DialogService {
     this.dialogs.set(id, data);
   }
 
-  /**
-   * Removes a dialog registration from the service.
-   * Typically called automatically by the `Dialog` when the template is destroyed.
-   *
-   * @param id - The unique identifier of the dialog to remove.
+  /** Removes a dialog definition from the registry.
+   * @param id - Unique dialog identifier to remove.
+   * @public
    */
   removeDialog(id: string): void {
     this.dialogs.delete(id);
   }
 
-  /**
-   * Opens the dialog associated with the given ID.
-   *
-   * @param id - The unique identifier of the dialog to open.
-   * @throws Error if a dialog with the specified ID is not found.
+  /** Opens a registered dialog by id.
+   * @param id - Unique dialog identifier to open.
+   * @throws Error When the id is not registered.
+   * @public
    */
   openDialog(id: string) {
     const dialogData = this.dialogs.get(id);
-
     if (!dialogData) {
       throw new Error(
         `[DialogService] Dialog with id "${id}" not found. Ensure the bDialog directive is applied correctly.`
       );
     }
-
     this.dialog.open(dialogData.template, {
       id: id,
       disableClose: true,
@@ -110,11 +90,9 @@ export class DialogService {
     });
   }
 
-  /**
-   * Closes the dialog associated with the given ID.
-   * Does nothing if no dialog with the specified ID is currently open.
-   *
-   * @param id - The unique identifier of the dialog to close.
+  /** Closes a specific dialog instance using its id.
+   * @param id - Unique dialog identifier to close.
+   * @public
    */
   closeDialog(id: string): void {
     const config = this.dialogs.get(id)?.config;
@@ -124,9 +102,7 @@ export class DialogService {
       );
       return;
     }
-
     const dialogRef = this.dialog.getDialogById(id);
-
     if (dialogRef) {
       const container = dialogRef.containerInstance as any;
       if (container && container.leaving) {
@@ -149,8 +125,8 @@ export class DialogService {
     }
   }
 
-  /**
-   * Closes all currently open dialogs managed by the CDK Dialog service.
+  /** Closes all currently open dialogs.
+   * @public
    */
   closeAllDialogs(): void {
     this.dialog.closeAll();

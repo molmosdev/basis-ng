@@ -1,4 +1,3 @@
-// dialog.directive.ts
 import {
   computed,
   Directive,
@@ -12,18 +11,9 @@ import {
 import { DialogData, DialogService } from '../services/dialog.service';
 
 /**
- * Directive used to register an `ng-template` as a dialog with the `DialogService`.
- * Apply this directive to an `<ng-template>` element, providing a unique ID.
- * The service can then open this template as a dialog by referencing the ID.
+ * Structural directive that registers a dialog template and manages its open/close lifecycle via the DialogService.
  *
- * @example
- * ```html
- * <ng-template bDialog="myModalId">
- * <h2>My Modal Content</h2>
- * <p>This is the content of the dialog.</p>
- * <button (click)="dialogService.closeDialog('myModalId')">Close</button>
- * </ng-template>
- * ```
+ * @public
  */
 @Directive({
   selector: '[bDialog]',
@@ -34,40 +24,56 @@ import { DialogData, DialogService } from '../services/dialog.service';
 })
 export class Dialog implements OnInit, OnDestroy {
   /**
-   * The unique identifier for this dialog template. Used by the `DialogService` to open this specific dialog.
-   * Applied as the value of the `bDialog` attribute.
+   * Unique identifier of the dialog used for registration and lookup.
+   *
+   * @readonly
    */
   readonly id = input.required<string>({ alias: 'bDialog' });
 
   /**
-   * Determines whether the dialog should have a backdrop. Defaults to `true`.
+   * Indicates whether a backdrop is displayed behind the dialog.
+   *
+   * @defaultValue true
+   * @readonly
    */
   readonly hasBackdrop = input<boolean>(true);
 
   /**
-   * Determines whether the dialog should close when the backdrop is clicked. Defaults to `true`.
+   * Determines if a click on the backdrop should close the dialog.
+   *
+   * @defaultValue true
+   * @readonly
    */
   readonly closeOnBackdropClick = input<boolean>(true);
 
   /**
-   * Determines whether the dialog should close when the escape key is pressed. Defaults to `true`.
+   * Determines if pressing the Escape key should close the dialog.
+   *
+   * @defaultValue true
+   * @readonly
    */
   readonly closeOnEscapeKey = input<boolean>(true);
 
   /**
-   * Determines whether the dialog should close when the escape key is pressed or when a pointer event occurs outside the dialog.
-   * Defaults to `false`.
+   * Indicates whether focus returns to the previously focused element after the dialog closes.
+   *
+   * @defaultValue true
+   * @readonly
    */
   readonly restoreFocus = input<boolean>(true);
 
   /**
-   * Delay in milliseconds before the dialog closes. Defaults to `150`.
+   * Delay in milliseconds applied before the dialog fully closes (useful for exit animations).
+   *
+   * @defaultValue 150
+   * @readonly
    */
   readonly closeDelay = input<number>(150);
 
   /**
-   * Computed signal that combines the template reference and configuration inputs
-   * into the `DialogData` structure expected by the `DialogService`.
+   * Computed dialog data including the template and current configuration flags.
+   *
+   * @readonly
    */
   readonly data = computed<DialogData>(() => ({
     template: this.templateRef,
@@ -81,56 +87,71 @@ export class Dialog implements OnInit, OnDestroy {
   }));
 
   /**
-   * Delay in milliseconds before the dialog opens. Defaults to `0`.
+   * Delay in milliseconds applied before the dialog opens (useful for entrance animations or sequencing).
+   *
+   * @defaultValue 0
+   * @readonly
    */
   readonly openDelay = input<number>(0);
   /**
-   * Emits when the dialog is closed.
+   * Emits when the dialog has been closed.
+   *
+   * @readonly
    */
   readonly closed = output<void>();
-
   /**
-   * Injected instance of the `DialogService`.
-   * @internal
+   * Reference to the dialog coordination service that manages registration,
+   * opening and closing of this dialog instance.
+   *
+   * @private
+   * @readonly
    */
   private readonly dialogService = inject(DialogService);
 
   /**
-   * Injected reference to the `ng-template` element this directive is applied to.
-   * @internal
+   * Captured structural template representing the dialog content. Provided to
+   * the service through the computed `data` property so it can be rendered in
+   * the appropriate overlay container.
+   *
+   * @private
+   * @readonly
    */
-  private readonly templateRef = inject(TemplateRef<any>); // Specify type as any or a specific context type
+  private readonly templateRef = inject(TemplateRef<any>);
 
   /**
-   * Lifecycle hook called after Angular has initialized all data-bound properties of a directive.
-   * Registers the dialog template and its configuration with the `DialogService`.
+   * Registers the dialog with the DialogService when the directive initializes.
+   *
+   * @public
    */
   ngOnInit() {
     this.dialogService.registerDialog(this.id(), this.data());
   }
 
   /**
-   * Opens the dialog using the `DialogService`.
-   * This method can be called to programmatically open the dialog.
+   * Opens the dialog via the DialogService.
+   *
+   * @public
    */
-  open() {
+  open(): void {
     this.dialogService.openDialog(this.id());
   }
 
   /**
-   * Closes the dialog using the `DialogService`.
-   * This method can be called to programmatically close the dialog.
+   * Closes the dialog via the DialogService and emits the closed event.
+   *
+   * @public
    */
-  close() {
+  close(): void {
     this.dialogService.closeDialog(this.id());
     this.closed.emit();
   }
 
   /**
-   * Lifecycle hook called once, before the directive is destroyed.
-   * Removes the dialog registration from the `DialogService`.
+   * Removes the dialog registration from the DialogService on destruction.
+   *
+   * @public
    */
-  ngOnDestroy() {
+  ngOnDestroy(): void {
     this.dialogService.removeDialog(this.id());
   }
 }
