@@ -8,7 +8,6 @@ import { lucideRocket } from '@ng-icons/lucide';
 @Component({
   selector: 'article[app-range-documentation]',
   imports: [CodeBlock, RangeComponent, StepsButtons, Alert],
-  providers: [provideIcons({ lucideRocket })],
   template: `
     <app-steps-buttons
       [previous]="{ label: 'OTP', path: '/docs/components/otp' }"
@@ -132,6 +131,7 @@ import { lucideRocket } from '@ng-icons/lucide';
       [previous]="{ label: 'OTP', path: '/docs/components/otp' }"
       [next]="{ label: 'Select', path: '/docs/components/select' }" />
   `,
+  providers: [provideIcons({ lucideRocket })],
   host: {
     class:
       'mx-auto flex w-full max-w-3xl min-w-0 flex-1 flex-col gap-6 px-4 pb-20',

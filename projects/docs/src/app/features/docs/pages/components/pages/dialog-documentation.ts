@@ -31,7 +31,6 @@ import { StepsButtons } from '../../shared/components/steps-buttons';
     Badge,
     Alert,
   ],
-  providers: [provideIcons({ lucideRocket })],
   template: `
     <app-steps-buttons
       [previous]="{ label: 'Combobox', path: '/docs/components/combobox' }"
@@ -261,6 +260,7 @@ import { StepsButtons } from '../../shared/components/steps-buttons';
       [previous]="{ label: 'Combobox', path: '/docs/components/combobox' }"
       [next]="{ label: 'Drawer', path: '/docs/components/drawer' }" />
   `,
+  providers: [provideIcons({ lucideRocket })],
   host: {
     class:
       'mx-auto flex w-full max-w-3xl min-w-0 flex-1 flex-col gap-6 px-4 pb-20',

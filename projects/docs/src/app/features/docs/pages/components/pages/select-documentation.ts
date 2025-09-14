@@ -18,6 +18,20 @@ import { lucideRocket } from '@ng-icons/lucide';
 
 @Component({
   selector: 'article[app-select-documentation]',
+  imports: [
+    CodeBlock,
+    FormsModule,
+    ReactiveFormsModule,
+    Select,
+    SelectTrigger,
+    SelectValue,
+    SelectContent,
+    Option,
+    OverlayOrigin,
+    ConnectedOverlay,
+    StepsButtons,
+    Alert,
+  ],
   template: `
     <app-steps-buttons
       [previous]="{ label: 'Range', path: '/docs/components/range' }"
@@ -333,25 +347,11 @@ import { lucideRocket } from '@ng-icons/lucide';
       [previous]="{ label: 'Range', path: '/docs/components/range' }"
       [next]="{ label: 'Sheet', path: '/docs/components/sheet' }" />
   `,
+  providers: [provideIcons({ lucideRocket })],
   host: {
     class:
       'mx-auto flex w-full max-w-3xl min-w-0 flex-1 flex-col gap-6 px-4 pb-20',
   },
-  imports: [
-    CodeBlock,
-    FormsModule,
-    ReactiveFormsModule,
-    Select,
-    SelectTrigger,
-    SelectValue,
-    SelectContent,
-    Option,
-    OverlayOrigin,
-    ConnectedOverlay,
-    StepsButtons,
-    Alert,
-  ],
-  providers: [provideIcons({ lucideRocket })],
 })
 export class SelectDocumentation {
   angularImport = `import { Select, SelectTrigger, SelectValue, SelectContent, Option, ConnectedOverlay, OverlayOrigin } from '@basis-ng/primitives';`;

@@ -8,7 +8,6 @@ import { lucideRocket } from '@ng-icons/lucide';
 @Component({
   selector: 'article[app-badge-documentation]',
   imports: [CodeBlock, Badge, StepsButtons, Alert],
-  providers: [provideIcons({ lucideRocket })],
   template: `
     <app-steps-buttons
       [previous]="{ label: 'Alert', path: '/docs/components/alert' }"
@@ -98,6 +97,7 @@ import { lucideRocket } from '@ng-icons/lucide';
       [previous]="{ label: 'Alert', path: '/docs/components/alert' }"
       [next]="{ label: 'Button', path: '/docs/components/button' }" />
   `,
+  providers: [provideIcons({ lucideRocket })],
   host: {
     class:
       'mx-auto flex w-full max-w-3xl min-w-0 flex-1 flex-col gap-6 px-4 pb-20',

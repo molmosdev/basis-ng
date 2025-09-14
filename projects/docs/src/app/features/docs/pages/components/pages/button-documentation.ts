@@ -21,9 +21,6 @@ import {
     NgIcon,
     Alert,
   ],
-  providers: [
-    provideIcons({ lucideZoomIn, lucideZoomOut, lucideSearch, lucideRocket }),
-  ],
   template: `
     <app-steps-buttons
       [previous]="{ label: 'Badge', path: '/docs/components/badge' }"
@@ -210,6 +207,9 @@ import {
       [previous]="{ label: 'Badge', path: '/docs/components/badge' }"
       [next]="{ label: 'Card', path: '/docs/components/card' }" />
   `,
+  providers: [
+    provideIcons({ lucideZoomIn, lucideZoomOut, lucideSearch, lucideRocket }),
+  ],
   host: {
     class:
       'mx-auto flex w-full max-w-3xl min-w-0 flex-1 flex-col gap-6 px-4 pb-20',

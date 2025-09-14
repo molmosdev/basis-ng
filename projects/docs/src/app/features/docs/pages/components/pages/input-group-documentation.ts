@@ -22,7 +22,6 @@ import { lucideRocket } from '@ng-icons/lucide';
     Badge,
     Alert,
   ],
-  providers: [provideIcons({ lucideRocket })],
   template: `
     <app-steps-buttons
       [previous]="{ label: 'Input', path: '/docs/components/input' }"
@@ -113,6 +112,7 @@ import { lucideRocket } from '@ng-icons/lucide';
       [previous]="{ label: 'Input', path: '/docs/components/input' }"
       [next]="{ label: 'Menu', path: '/docs/components/menu' }" />
   `,
+  providers: [provideIcons({ lucideRocket })],
   host: {
     class:
       'mx-auto flex w-full max-w-3xl min-w-0 flex-1 flex-col gap-6 px-4 pb-20',

@@ -16,6 +16,19 @@ import { lucideInfo } from '@ng-icons/lucide';
 
 @Component({
   selector: 'article[app-tooltip-documentation]',
+  imports: [
+    CodeBlock,
+    Button,
+    ConnectedOverlay,
+    OverlayOrigin,
+    Tooltip,
+    TooltipContent,
+    TooltipTrigger,
+    StepsButtons,
+    NgIcon,
+    Badge,
+    Alert,
+  ],
   template: `
     <app-steps-buttons
       [previous]="{ label: 'Textarea', path: '/docs/components/textarea' }"
@@ -371,24 +384,11 @@ import { lucideInfo } from '@ng-icons/lucide';
       [previous]="{ label: 'Textarea', path: '/docs/components/textarea' }"
       [next]="{ label: 'Tree', path: '/docs/components/tree' }" />
   `,
+  providers: [provideIcons({ lucideInfo })],
   host: {
     class:
       'mx-auto flex w-full max-w-3xl min-w-0 flex-1 flex-col gap-6 px-4 pb-20',
   },
-  imports: [
-    CodeBlock,
-    Button,
-    ConnectedOverlay,
-    OverlayOrigin,
-    Tooltip,
-    TooltipContent,
-    TooltipTrigger,
-    StepsButtons,
-    NgIcon,
-    Badge,
-    Alert,
-  ],
-  providers: [provideIcons({ lucideInfo })],
 })
 export class TooltipDocumentation {
   angularImport = `import { Tooltip, TooltipContent, TooltipTrigger } from '@basis-ng/primitives';`;
