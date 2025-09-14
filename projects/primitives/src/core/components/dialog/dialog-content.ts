@@ -9,10 +9,9 @@ import { CdkPortalOutlet } from '@angular/cdk/portal';
 import { CdkDialogContainer, DialogRef } from '@angular/cdk/dialog';
 import { DialogConfig, DialogService } from '@basis-ng/primitives';
 
-/**
- * Hosts projected dialog content and manages close behaviors (backdrop and escape key).
+/** Dialog content container that renders projected portal content for a dialog instance.
  *
- * @public
+ * @remarks Extends CdkDialogContainer to integrate with Angular CDK dialog infrastructure.
  */
 @Component({
   selector: 'b-dialog-content',
@@ -24,51 +23,26 @@ import { DialogConfig, DialogService } from '@basis-ng/primitives';
   },
 })
 export class DialogContent extends CdkDialogContainer implements OnInit {
-  /**
-   * Reference to the active dialog instance for event subscriptions and closing.
-   *
-   * @internal
-   */
+  /** Reference to the active dialog instance used to control lifecycle and closing. */
   dialogRef = inject(DialogRef);
 
-  /**
-   * Service that orchestrates dialog lifecycle operations (open/close).
-   *
-   * @internal
-   */
+  /** Service that orchestrates opening and closing of dialog instances. */
   dialogService = inject(DialogService);
 
-  /**
-   * Signal that indicates whether the dialog is in its leaving (closing) transition state.
-   *
-   * @public
-   * @readonly
-   */
+  /** Tracks whether the dialog is in its leaving (closing) animation state. */
   readonly leaving = signal(false);
 
-  /**
-   * Creates the dialog content container instance.
-   *
-   * @public
-   */
+  /** Initializes the dialog content component by calling the superclass constructor. */
   constructor() {
     super();
   }
 
-  /**
-   * Initializes dialog event handlers after component creation.
-   *
-   * @public
-   */
+  /** Initializes component logic and subscribes to dialog events. */
   ngOnInit(): void {
     this.handleDialogEvents();
   }
 
-  /**
-   * Sets up conditional event handlers based on provided dialog configuration.
-   *
-   * @internal
-   */
+  /** Handles all dialog behavioral event subscriptions based on provided configuration data. */
   handleDialogEvents(): void {
     const data = this._config?.data as DialogConfig | undefined;
 
@@ -80,11 +54,9 @@ export class DialogContent extends CdkDialogContainer implements OnInit {
     this.handleEscapeKeyClose(data);
   }
 
-  /**
-   * Attaches backdrop click handler to close the dialog when enabled in config.
+  /** Subscribes to backdrop clicks to close the dialog when enabled in config.
    *
-   * @param data - Dialog configuration containing backdrop close option.
-   * @internal
+   * @param data - Dialog configuration containing close behavior flags.
    */
   handleBackdropClose(data: DialogConfig): void {
     if (data.closeOnBackdropClick) {
@@ -94,11 +66,9 @@ export class DialogContent extends CdkDialogContainer implements OnInit {
     }
   }
 
-  /**
-   * Attaches escape key handler to close the dialog when enabled in config.
+  /** Subscribes to keydown events to close the dialog on Escape key when enabled.
    *
-   * @param data - Dialog configuration containing escape key close option.
-   * @internal
+   * @param data - Dialog configuration containing close behavior flags.
    */
   handleEscapeKeyClose(data: DialogConfig): void {
     if (data.closeOnEscapeKey) {

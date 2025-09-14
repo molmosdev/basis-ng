@@ -11,9 +11,9 @@ import {
 import { DialogData, DialogService } from '../services/dialog.service';
 
 /**
- * Structural directive that registers a dialog template and manages its open/close lifecycle via the DialogService.
+ * Directive that registers and controls a dialog template instance.
  *
- * @public
+ * Registers itself in the {@link DialogService} on init and exposes open/close APIs.
  */
 @Directive({
   selector: '[bDialog]',
@@ -24,56 +24,47 @@ import { DialogData, DialogService } from '../services/dialog.service';
 })
 export class Dialog implements OnInit, OnDestroy {
   /**
-   * Unique identifier of the dialog used for registration and lookup.
-   *
-   * @readonly
+   * Unique dialog identifier bound from the `bDialog` attribute.
    */
   readonly id = input.required<string>({ alias: 'bDialog' });
 
   /**
-   * Indicates whether a backdrop is displayed behind the dialog.
+   * Whether the dialog renders a backdrop element.
    *
    * @defaultValue true
-   * @readonly
    */
   readonly hasBackdrop = input<boolean>(true);
 
   /**
-   * Determines if a click on the backdrop should close the dialog.
+   * Closes the dialog when the user clicks on the backdrop.
    *
    * @defaultValue true
-   * @readonly
    */
   readonly closeOnBackdropClick = input<boolean>(true);
 
   /**
-   * Determines if pressing the Escape key should close the dialog.
+   * Closes the dialog when the Escape key is pressed while focused inside.
    *
    * @defaultValue true
-   * @readonly
    */
   readonly closeOnEscapeKey = input<boolean>(true);
 
   /**
-   * Indicates whether focus returns to the previously focused element after the dialog closes.
+   * Restores focus to the previously focused element after the dialog closes.
    *
    * @defaultValue true
-   * @readonly
    */
   readonly restoreFocus = input<boolean>(true);
 
   /**
-   * Delay in milliseconds applied before the dialog fully closes (useful for exit animations).
+   * Delay in milliseconds before the dialog is fully closed (useful for animations).
    *
    * @defaultValue 150
-   * @readonly
    */
   readonly closeDelay = input<number>(150);
 
   /**
-   * Computed dialog data including the template and current configuration flags.
-   *
-   * @readonly
+   * Computed dialog data passed to the service containing template and configuration.
    */
   readonly data = computed<DialogData>(() => ({
     template: this.templateRef,
@@ -87,59 +78,43 @@ export class Dialog implements OnInit, OnDestroy {
   }));
 
   /**
-   * Delay in milliseconds applied before the dialog opens (useful for entrance animations or sequencing).
+   * Delay in milliseconds before opening the dialog (for entrance timing / animations).
    *
    * @defaultValue 0
-   * @readonly
    */
   readonly openDelay = input<number>(0);
+
   /**
-   * Emits when the dialog has been closed.
-   *
-   * @readonly
+   * Event emitted after the dialog has been programmatically or automatically closed.
    */
   readonly closed = output<void>();
+
   /**
-   * Reference to the dialog coordination service that manages registration,
-   * opening and closing of this dialog instance.
-   *
-   * @private
-   * @readonly
+   * Reference to the dialog service handling registration and state.
    */
   private readonly dialogService = inject(DialogService);
 
   /**
-   * Captured structural template representing the dialog content. Provided to
-   * the service through the computed `data` property so it can be rendered in
-   * the appropriate overlay container.
-   *
-   * @private
-   * @readonly
+   * Template reference representing the dialog content projected when opened.
    */
   private readonly templateRef = inject(TemplateRef<any>);
 
   /**
-   * Registers the dialog with the DialogService when the directive initializes.
-   *
-   * @public
+   * Lifecycle hook that registers the dialog with the dialog service.
    */
   ngOnInit() {
     this.dialogService.registerDialog(this.id(), this.data());
   }
 
   /**
-   * Opens the dialog via the DialogService.
-   *
-   * @public
+   * Opens the dialog via the dialog service using its identifier.
    */
   open(): void {
     this.dialogService.openDialog(this.id());
   }
 
   /**
-   * Closes the dialog via the DialogService and emits the closed event.
-   *
-   * @public
+   * Closes the dialog and emits the `closed` output.
    */
   close(): void {
     this.dialogService.closeDialog(this.id());
@@ -147,9 +122,7 @@ export class Dialog implements OnInit, OnDestroy {
   }
 
   /**
-   * Removes the dialog registration from the DialogService on destruction.
-   *
-   * @public
+   * Lifecycle hook that removes the dialog from the dialog service registry.
    */
   ngOnDestroy(): void {
     this.dialogService.removeDialog(this.id());
