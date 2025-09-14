@@ -18,7 +18,7 @@ import { DialogData, DialogService } from '../services/dialog.service';
  *
  * @example
  * ```html
- * <ng-template bDialog="myModalId" [hasBackdrop]="false">
+ * <ng-template bDialog="myModalId">
  * <h2>My Modal Content</h2>
  * <p>This is the content of the dialog.</p>
  * <button (click)="dialogService.closeDialog('myModalId')">Close</button>
@@ -40,19 +40,9 @@ export class Dialog implements OnInit, OnDestroy {
   readonly id = input.required<string>({ alias: 'bDialog' });
 
   /**
-   * Determines whether the dialog should have a backdrop. Defaults to `true`.
+   * Determines whether the dialog should close on backdrop click or escape key press. Defaults to `true`.
    */
-  readonly hasBackdrop = input<boolean>(true);
-
-  /**
-   * Determines whether the dialog should close when the backdrop is clicked. Defaults to `true`.
-   */
-  readonly closeOnBackdropClick = input<boolean>(true);
-
-  /**
-   * Determines whether the dialog should close when the escape key is pressed. Defaults to `true`.
-   */
-  readonly closeOnEscapeKey = input<boolean>(true);
+  readonly closeEnabled = input<boolean>(true);
 
   /**
    * Determines whether the dialog should close when the escape key is pressed or when a pointer event occurs outside the dialog.
@@ -67,12 +57,8 @@ export class Dialog implements OnInit, OnDestroy {
   readonly data = computed<DialogData>(() => ({
     template: this.templateRef,
     config: {
-      hasBackdrop: this.hasBackdrop(),
-      openDelay: this.openDelay(),
-      closeDelay: this.closeDelay(),
       restoreFocus: this.restoreFocus(),
-      closeOnBackdropClick: this.closeOnBackdropClick(),
-      closeOnEscapeKey: this.closeOnEscapeKey(),
+      close: this.closeEnabled(),
     },
   }));
 
@@ -108,7 +94,7 @@ export class Dialog implements OnInit, OnDestroy {
    * Registers the dialog template and its configuration with the `DialogService`.
    */
   ngOnInit() {
-    this.dialogService.addDialog(this.id(), this.data());
+    this.dialogService.registerDialog(this.id(), this.data());
   }
 
   /**
@@ -124,7 +110,7 @@ export class Dialog implements OnInit, OnDestroy {
    * This method can be called to programmatically close the dialog.
    */
   close() {
-    this.dialogService.closeDialog(this.id(), 'closeButton');
+    this.dialogService.closeDialog(this.id());
     this.closed.emit();
   }
 

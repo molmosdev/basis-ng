@@ -1,8 +1,6 @@
-// dialog.service.ts
 import { Dialog } from '@angular/cdk/dialog';
-import { inject, Injectable, TemplateRef, EventEmitter } from '@angular/core';
-import { UtilsService } from '../../shared/services/utils.service';
-import { DialogComponent } from '../components/dialog/dialog.component';
+import { inject, Injectable, TemplateRef } from '@angular/core';
+import { DialogContent } from '../components/dialog/dialog-content';
 
 /**
  * Represents the data structure for a registered dialog, containing its template and configuration.
@@ -18,18 +16,10 @@ export interface DialogData {
  * Represents the configuration options for a dialog.
  */
 interface DialogConfig {
-  /** Whether the dialog should have a backdrop. */
-  hasBackdrop: boolean;
-  /** The delay before the dialog opens, in milliseconds. */
-  openDelay: number;
-  /** The delay before the dialog closes, in milliseconds. */
-  closeDelay: number;
   /** Whether the dialog should restore focus to the previously focused element when closed. */
   restoreFocus: boolean;
-  /** Whether the dialog should be closed when the backdrop is clicked. */
-  closeOnBackdropClick: boolean;
-  /** Whether the dialog should be closed when the escape key is pressed. */
-  closeOnEscapeKey: boolean;
+  /** Whether the dialog should be closed on outside click or escape key press. */
+  close: boolean;
 }
 
 /**
@@ -52,21 +42,10 @@ export class DialogService {
   private readonly dialog = inject(Dialog);
 
   /**
-   * Injected instance of the `UtilsService`.
-   * @internal
-   */
-  utilsService = inject(UtilsService);
-
-  /**
    * A map storing the registered dialog templates and their data, keyed by their unique ID.
    * @internal
    */
   private readonly dialogs = new Map<string, DialogData>();
-
-  /**
-   * Emits the ID of a dialog when it is closed.
-   */
-  readonly dialogClosed = new EventEmitter<string>();
 
   /**
    * Registers a dialog template and its data with the service.
@@ -75,7 +54,7 @@ export class DialogService {
    * @param id - The unique identifier for the dialog.
    * @param data - The dialog data containing the template and configuration.
    */
-  addDialog(id: string, data: DialogData): void {
+  registerDialog(id: string, data: DialogData): void {
     if (this.dialogs.has(id)) {
       console.warn(
         `[DialogService] Dialog with id "${id}" is already registered. Overwriting.`
@@ -102,6 +81,7 @@ export class DialogService {
    */
   openDialog(id: string) {
     const dialogData = this.dialogs.get(id);
+    const config = this.dialogs.get(id)?.config;
 
     if (!dialogData) {
       throw new Error(
@@ -109,19 +89,12 @@ export class DialogService {
       );
     }
 
-    this.utilsService.debounce(
-      'open-dialog-' + id,
-      () => {
-        this.dialog.open(dialogData.template, {
-          id: id,
-          hasBackdrop: dialogData.config.hasBackdrop,
-          backdropClass: 'b-dialog-backdrop',
-          disableClose: true,
-          container: DialogComponent,
-        });
-      },
-      dialogData.config.openDelay
-    );
+    this.dialog.open(dialogData.template, {
+      id: id,
+      disableClose: !config?.close,
+      backdropClass: 'b-dialog-content-backdrop',
+      container: DialogContent,
+    });
   }
 
   /**
@@ -131,7 +104,7 @@ export class DialogService {
    * @param id - The unique identifier of the dialog to close.
    * @param type - The type of closing action.
    */
-  closeDialog(id: string, type: ClosingType = 'closeButton'): void {
+  closeDialog(id: string): void {
     const config = this.dialogs.get(id)?.config;
     if (!config) {
       console.warn(
@@ -140,37 +113,7 @@ export class DialogService {
       return;
     }
 
-    if (
-      (type === 'escapeKey' && !config.closeOnEscapeKey) ||
-      (type === 'outsideClick' && !config.closeOnBackdropClick)
-    ) {
-      return;
-    }
-
-    const dialogRef = this.dialog.getDialogById(id);
-
-    if (dialogRef) {
-      const container = dialogRef.containerInstance as any;
-      if (container && container.leaving) {
-        container.leaving.set(true);
-      }
-      this.utilsService.debounce(
-        'close-dialog-' + id,
-        () => {
-          dialogRef.close();
-          if (container && container.leaving) {
-            container.leaving.set(false);
-          }
-          // Emit the closed dialog ID
-          this.dialogClosed.emit(id);
-        },
-        config.closeDelay
-      );
-    } else {
-      console.warn(
-        `[DialogService] Attempted to close dialog with id "${id}", but no open dialog with that id was found.`
-      );
-    }
+    this.dialog.getDialogById(id)?.close();
   }
 
   /**

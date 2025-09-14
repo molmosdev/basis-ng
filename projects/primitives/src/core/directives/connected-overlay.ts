@@ -29,7 +29,6 @@ import { OverlayOrigin, Position } from '../../public-api';
       inputs: [
         'cdkConnectedOverlayWidth: width',
         'cdkConnectedOverlayMinWidth: minWidth',
-        'cdkConnectedOverlayHasBackdrop: hasBackdrop',
         'cdkConnectedOverlayBackdropClass: customBackdropClass',
         'cdkConnectedOverlayPanelClass: panelClass',
       ],
