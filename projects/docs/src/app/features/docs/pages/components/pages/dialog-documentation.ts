@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 import {
   DialogService,
-  DialogDirective,
+  Dialog,
   Card,
   CardHeaderComponent,
   CardTitleComponent,
@@ -21,7 +21,7 @@ import { StepsButtons } from '../../shared/components/steps-buttons';
   imports: [
     CodeBlock,
     Button,
-    DialogDirective,
+    Dialog,
     Card,
     CardHeaderComponent,
     CardTitleComponent,
@@ -267,7 +267,7 @@ import { StepsButtons } from '../../shared/components/steps-buttons';
   },
 })
 export class DialogDocumentation {
-  angularImport = `import { DialogDirective } from '@basis-ng/primitives'`;
+  angularImport = `import { Dialog } from '@basis-ng/primitives'`;
   stylesImport = `@import '@basis-ng/styles/dialog';`;
   basicUsageService = `<button b-button (click)="openDialogService()">Open Dialog (Service)</button>\n<ng-template bDialog="exampleDialog">\n  <b-card>\n    <b-card-header>\n      <b-card-title>Dialog</b-card-title>\n      <b-card-description>\n        This is a dialog component. You can use it to display important information to the user.\n      </b-card-description>\n    </b-card-header>\n    <b-card-footer>\n      <button b-button (click)="closeDialogService()">Close</button>\n    </b-card-footer>\n  </b-card>\n</ng-template>`;
   basicUsageDirective = `<button b-button (click)="dialogRef.open()">Open Dialog (Directive Ref)</button>\n<ng-template bDialog="exampleDialog2" #dialogRef="bDialog" (closed)="onDialogClosed()">\n  <b-card>\n    <b-card-header>\n      <b-card-title>Dialog</b-card-title>\n      <b-card-description>\n        This is a dialog component. You can use it to display important information to the user.\n      </b-card-description>\n    </b-card-header>\n    <b-card-footer>\n      <button b-button (click)="dialogRef.close()">Close</button>\n    </b-card-footer>\n  </b-card>\n</ng-template>`;

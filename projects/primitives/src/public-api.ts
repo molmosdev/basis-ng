@@ -104,7 +104,7 @@ export * from './core/components/input-group/input-group.component';
 
 /* Dialog */
 export * from './core/services/dialog.service';
-export * from './core/directives/dialog.directive';
+export * from './core/directives/dialog';
 
 /* Card */
 export * from './core/components/card/card.component';

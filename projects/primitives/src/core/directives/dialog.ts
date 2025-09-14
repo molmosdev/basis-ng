@@ -32,7 +32,7 @@ import { DialogData, DialogService } from '../services/dialog.service';
     '(keydown.escape)': 'closeOnEscapeKey() ? close() : null',
   },
 })
-export class DialogDirective implements OnInit, OnDestroy {
+export class Dialog implements OnInit, OnDestroy {
   /**
    * The unique identifier for this dialog template. Used by the `DialogService` to open this specific dialog.
    * Applied as the value of the `bDialog` attribute.

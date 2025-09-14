@@ -38,7 +38,7 @@ interface DialogConfig {
 export type ClosingType = 'outsideClick' | 'escapeKey' | 'closeButton';
 
 /**
- * Service responsible for managing and controlling dialogs registered via the `DialogDirective`.
+ * Service responsible for managing and controlling dialogs registered via the `Dialog`.
  * It uses the Angular CDK Dialog module internally.
  */
 @Injectable({
@@ -70,7 +70,7 @@ export class DialogService {
 
   /**
    * Registers a dialog template and its data with the service.
-   * Typically called automatically by the `DialogDirective`.
+   * Typically called automatically by the `Dialog`.
    *
    * @param id - The unique identifier for the dialog.
    * @param data - The dialog data containing the template and configuration.
@@ -86,7 +86,7 @@ export class DialogService {
 
   /**
    * Removes a dialog registration from the service.
-   * Typically called automatically by the `DialogDirective` when the template is destroyed.
+   * Typically called automatically by the `Dialog` when the template is destroyed.
    *
    * @param id - The unique identifier of the dialog to remove.
    */
