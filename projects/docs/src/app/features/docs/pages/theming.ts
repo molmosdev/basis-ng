@@ -32,5 +32,36 @@ import { Badge } from '@basis-ng/primitives';
   },
 })
 export class Theming {
-  readonly themingExample = `@import 'tailwindcss';\n\n@theme {\n  /* Font family */\n  --font-display: 'Geist', sans-serif;\n  --font-display-mono: 'Geist Mono', monospace;\n\n  /* Rounded sizes */\n  --radius-size-xs: 0.25rem;\n  --radius-size-sm: 0.375rem;\n  --radius-size-md: 0.5rem;\n  --radius-size-lg: 0.75rem;\n\n  /* Light theme colors */\n  --color-background: #fff;\n  --color-font: #0a0a0a;\n  --color-primary: #0a0a0a;\n  --color-primary-foreground: #fff;\n  --color-secondary: color-mix(in srgb, #fff, #0a0a0a 8%);\n  --color-secondary-foreground: #0a0a0a;\n  --color-destructive: #e53935;\n  --color-destructive-foreground: #fff;\n\n  /* Dark theme colors */\n  --color-background-dark: #0a0a0a;\n  --color-font-dark: #fff;\n  --color-bg-dark: #0a0a0a;\n  --color-primary-dark: #fff;\n  --color-primary-foreground-dark: #0a0a0a;\n  --color-secondary-dark: color-mix(in srgb, #0a0a0a, #fff 8%);\n  --color-secondary-foreground-dark: #fff;\n  --color-destructive-dark: #ff6659;\n  --color-destructive-foreground-dark: #0a0a0a;\n}`;
+  readonly themingExample = `@theme {
+  /* Font family */
+  --font-display: 'Geist', sans-serif;
+  --font-display-mono: 'Geist Mono', monospace;
+
+  /* Rounded sizes */
+  --radius-size-xs: 0.25rem;
+  --radius-size-sm: 0.375rem;
+  --radius-size-md: 0.5rem;
+  --radius-size-lg: 0.75rem;
+
+  /* Light theme colors */
+  --color-background: #fff;
+  --color-font: #0a0a0a;
+  --color-primary: #0a0a0a;
+  --color-primary-foreground: #fff;
+  --color-secondary: color-mix(in srgb, #fff, #0a0a0a 8%);
+  --color-secondary-foreground: #0a0a0a;
+  --color-destructive: #e53935;
+  --color-destructive-foreground: #fff;
+
+  /* Dark theme colors */
+  --color-background-dark: #0a0a0a;
+  --color-font-dark: #fff;
+  --color-bg-dark: #0a0a0a;
+  --color-primary-dark: #fff;
+  --color-primary-foreground-dark: #0a0a0a;
+  --color-secondary-dark: color-mix(in srgb, #0a0a0a, #fff 8%);
+  --color-secondary-foreground-dark: #fff;
+  --color-destructive-dark: #ff6659;
+  --color-destructive-foreground-dark: #0a0a0a;
+}`;
 }
