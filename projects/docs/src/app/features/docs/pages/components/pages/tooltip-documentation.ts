@@ -54,16 +54,16 @@ import { lucideInfo } from '@ng-icons/lucide';
       <code-block [code]="stylesImport" />
       <h2 class="font-semibold text-xl">Tooltip properties</h2>
       <div
-        class="overflow-x-auto overflow-hidden rounded-lg border border-gray-200 dark:border-zinc-700 dark:bg-zinc-900 mb-6">
+        class="overflow-x-auto overflow-hidden rounded-lg border border-gray-200 dark:border-neutral-700 dark:bg-neutral-900 mb-6">
         <table class="table-auto w-full text-left text-sm">
           <thead class="bg-gray-50 dark:bg-zinc-800">
             <tr>
               <th
-                class="border-b border-gray-200 dark:border-zinc-700 px-4 py-2 font-semibold">
+                class="border-b border-gray-200 dark:border-neutral-700 px-4 py-2 font-semibold">
                 Prop
               </th>
               <th
-                class="border-b border-gray-200 dark:border-zinc-700 px-4 py-2 font-semibold">
+                class="border-b border-gray-200 dark:border-neutral-700 px-4 py-2 font-semibold">
                 Type
               </th>
             </tr>
@@ -71,21 +71,21 @@ import { lucideInfo } from '@ng-icons/lucide';
           <tbody>
             <tr>
               <td
-                class="border-t border-gray-200 dark:border-zinc-700 px-4 py-2 font-display-mono">
+                class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2 font-display-mono">
                 size
               </td>
               <td
-                class="border-t border-gray-200 dark:border-zinc-700 px-4 py-2 font-display-mono">
+                class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2 font-display-mono">
                 <b class="font-bold">'md'</b> | 'sm' | 'lg'
               </td>
             </tr>
             <tr>
               <td
-                class="border-t border-gray-200 dark:border-zinc-700 px-4 py-2 font-display-mono">
+                class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2 font-display-mono">
                 variant
               </td>
               <td
-                class="border-t border-gray-200 dark:border-zinc-700 px-4 py-2 font-display-mono">
+                class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2 font-display-mono">
                 <b class="font-bold">'primary'</b> | 'secondary' | 'ghost' |
                 'outlined' | 'destructive'
               </td>
@@ -96,7 +96,7 @@ import { lucideInfo } from '@ng-icons/lucide';
       <h2 class="font-semibold text-xl">Basic usage</h2>
       <code-block [code]="basicUsage" />
       <div
-        class="border border-gray-200 dark:border-zinc-700 rounded-lg p-6 mb-6 bg-white dark:bg-zinc-900 documentation-playground flex flex-col items-center justify-center gap-4">
+        class="border border-gray-200 dark:border-neutral-700 rounded-lg p-6 mb-6 bg-white dark:bg-neutral-900 documentation-playground flex flex-col items-center justify-center gap-4">
         <b-tooltip>
           <span
             bTooltipTrigger
@@ -113,7 +113,7 @@ import { lucideInfo } from '@ng-icons/lucide';
       <h2 class="font-semibold text-xl">Variants</h2>
       <code-block [code]="variantsUsage" />
       <div
-        class="border border-gray-200 dark:border-zinc-700 rounded-lg p-6 mb-6 bg-white dark:bg-zinc-900 documentation-playground flex flex-row items-center justify-center gap-8">
+        class="border border-gray-200 dark:border-neutral-700 rounded-lg p-6 mb-6 bg-white dark:bg-neutral-900 documentation-playground flex flex-row items-center justify-center gap-8">
         <b-tooltip variant="primary">
           <span
             bTooltipTrigger
@@ -178,7 +178,7 @@ import { lucideInfo } from '@ng-icons/lucide';
       <h2 class="font-semibold text-xl">Sizes</h2>
       <code-block [code]="sizesUsage" />
       <div
-        class="border border-gray-200 dark:border-zinc-700 rounded-lg p-6 mb-6 bg-white dark:bg-zinc-900 documentation-playground flex flex-row items-center justify-center gap-8">
+        class="border border-gray-200 dark:border-neutral-700 rounded-lg p-6 mb-6 bg-white dark:bg-neutral-900 documentation-playground flex flex-row items-center justify-center gap-8">
         <b-tooltip size="sm">
           <span
             bTooltipTrigger
@@ -219,7 +219,7 @@ import { lucideInfo } from '@ng-icons/lucide';
       <h2 class="font-semibold text-xl">With button and overlay trigger</h2>
       <code-block [code]="buttonOverlayUsage" />
       <div
-        class="border border-gray-200 dark:border-zinc-700 rounded-lg p-6 mb-6 bg-white dark:bg-zinc-900 documentation-playground flex flex-col items-center justify-center gap-4">
+        class="border border-gray-200 dark:border-neutral-700 rounded-lg p-6 mb-6 bg-white dark:bg-neutral-900 documentation-playground flex flex-col items-center justify-center gap-4">
         <b-tooltip size="sm" variant="outlined">
           <button
             b-button
@@ -244,16 +244,16 @@ import { lucideInfo } from '@ng-icons/lucide';
       </div>
       <h2 class="font-semibold text-xl">Overlay properties (ng-template)</h2>
       <div
-        class="overflow-x-auto overflow-hidden rounded-lg border border-gray-200 dark:border-zinc-700 dark:bg-zinc-900 mb-6">
+        class="overflow-x-auto overflow-hidden rounded-lg border border-gray-200 dark:border-neutral-700 dark:bg-neutral-900 mb-6">
         <table class="table-auto w-full text-left text-sm">
           <thead class="bg-gray-50 dark:bg-zinc-800">
             <tr>
               <th
-                class="border-b border-gray-200 dark:border-zinc-700 px-4 py-2 font-semibold">
+                class="border-b border-gray-200 dark:border-neutral-700 px-4 py-2 font-semibold">
                 Prop
               </th>
               <th
-                class="border-b border-gray-200 dark:border-zinc-700 px-4 py-2 font-semibold">
+                class="border-b border-gray-200 dark:border-neutral-700 px-4 py-2 font-semibold">
                 Type
               </th>
             </tr>
@@ -261,11 +261,11 @@ import { lucideInfo } from '@ng-icons/lucide';
           <tbody>
             <tr>
               <td
-                class="border-t border-gray-200 dark:border-zinc-700 px-4 py-2 font-display-mono">
+                class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2 font-display-mono">
                 positions
               </td>
               <td
-                class="border-t border-gray-200 dark:border-zinc-700 px-4 py-2 font-display-mono relative">
+                class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2 font-display-mono relative">
                 <span class="group cursor-pointer inline-flex items-center">
                   Position[]
                   <b-tooltip size="sm" variant="secondary">
@@ -303,11 +303,11 @@ import { lucideInfo } from '@ng-icons/lucide';
             </tr>
             <tr>
               <td
-                class="border-t border-gray-200 dark:border-zinc-700 px-4 py-2 font-display-mono">
+                class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2 font-display-mono">
                 focusTriggerOnClose
               </td>
               <td
-                class="border-t border-gray-200 dark:border-zinc-700 px-4 py-2 font-display-mono">
+                class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2 font-display-mono">
                 boolean
               </td>
             </tr>
@@ -317,7 +317,7 @@ import { lucideInfo } from '@ng-icons/lucide';
       <h2 class="font-semibold text-xl">Positioning examples</h2>
       <code-block [code]="positionsUsage" />
       <div
-        class="border border-gray-200 dark:border-zinc-700 rounded-lg p-6 mb-6 bg-white dark:bg-zinc-900 documentation-playground flex flex-row items-center justify-center gap-8">
+        class="border border-gray-200 dark:border-neutral-700 rounded-lg p-6 mb-6 bg-white dark:bg-neutral-900 documentation-playground flex flex-row items-center justify-center gap-8">
         <b-tooltip>
           <span
             bTooltipTrigger

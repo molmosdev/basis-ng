@@ -56,16 +56,16 @@ import { lucideRocket } from '@ng-icons/lucide';
       <code-block [code]="stylesImport" />
       <h2 class="font-semibold text-xl">Properties</h2>
       <div
-        class="overflow-x-auto overflow-hidden rounded-lg border border-gray-200 dark:border-zinc-700 dark:bg-zinc-900 mb-6">
+        class="overflow-x-auto overflow-hidden rounded-lg border border-gray-200 dark:border-neutral-700 dark:bg-neutral-900 mb-6">
         <table class="table-auto w-full text-left text-sm">
           <thead class="bg-gray-50 dark:bg-zinc-800">
             <tr>
               <th
-                class="border-b border-gray-200 dark:border-zinc-700 px-4 py-2 font-semibold">
+                class="border-b border-gray-200 dark:border-neutral-700 px-4 py-2 font-semibold">
                 Property
               </th>
               <th
-                class="border-b border-gray-200 dark:border-zinc-700 px-4 py-2 font-semibold">
+                class="border-b border-gray-200 dark:border-neutral-700 px-4 py-2 font-semibold">
                 Type
               </th>
             </tr>
@@ -73,21 +73,21 @@ import { lucideRocket } from '@ng-icons/lucide';
           <tbody>
             <tr>
               <td
-                class="border-t border-gray-200 dark:border-zinc-700 px-4 py-2 font-display-mono">
+                class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2 font-display-mono">
                 disabled
               </td>
               <td
-                class="border-t border-gray-200 dark:border-zinc-700 px-4 py-2 font-display-mono">
+                class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2 font-display-mono">
                 <strong>boolean</strong>
               </td>
             </tr>
             <tr>
               <td
-                class="border-t border-gray-200 dark:border-zinc-700 px-4 py-2 font-display-mono">
+                class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2 font-display-mono">
                 typeaheadLabel
               </td>
               <td
-                class="border-t border-gray-200 dark:border-zinc-700 px-4 py-2 font-display-mono">
+                class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2 font-display-mono">
                 string
               </td>
             </tr>
@@ -96,16 +96,16 @@ import { lucideRocket } from '@ng-icons/lucide';
       </div>
       <h2 class="font-semibold text-xl">Events</h2>
       <div
-        class="overflow-x-auto overflow-hidden rounded-lg border border-gray-200 dark:border-zinc-700 dark:bg-zinc-900 mb-6">
+        class="overflow-x-auto overflow-hidden rounded-lg border border-gray-200 dark:border-neutral-700 dark:bg-neutral-900 mb-6">
         <table class="table-auto w-full text-left text-sm">
           <thead class="bg-gray-50 dark:bg-zinc-800">
             <tr>
               <th
-                class="border-b border-gray-200 dark:border-zinc-700 px-4 py-2 font-semibold">
+                class="border-b border-gray-200 dark:border-neutral-700 px-4 py-2 font-semibold">
                 Event
               </th>
               <th
-                class="border-b border-gray-200 dark:border-zinc-700 px-4 py-2 font-semibold">
+                class="border-b border-gray-200 dark:border-neutral-700 px-4 py-2 font-semibold">
                 Type
               </th>
             </tr>
@@ -113,11 +113,11 @@ import { lucideRocket } from '@ng-icons/lucide';
           <tbody>
             <tr>
               <td
-                class="border-t border-gray-200 dark:border-zinc-700 px-4 py-2 font-display-mono">
+                class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2 font-display-mono">
                 triggered
               </td>
               <td
-                class="border-t border-gray-200 dark:border-zinc-700 px-4 py-2 font-display-mono">
+                class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2 font-display-mono">
                 Event
               </td>
             </tr>
@@ -127,7 +127,7 @@ import { lucideRocket } from '@ng-icons/lucide';
       <h2 class="font-semibold text-xl">Basic Example</h2>
       <code-block [code]="basicUsage" />
       <div
-        class="border border-gray-200 dark:border-zinc-700 rounded-lg p-6 mb-6 bg-white dark:bg-zinc-900 documentation-playground flex flex-col gap-4">
+        class="border border-gray-200 dark:border-neutral-700 rounded-lg p-6 mb-6 bg-white dark:bg-neutral-900 documentation-playground flex flex-col gap-4">
         <b-menu>
           <b-menu-label>Basic Menu</b-menu-label>
           <button b-menu-item>Item 1</button>
@@ -138,7 +138,7 @@ import { lucideRocket } from '@ng-icons/lucide';
       <h2 class="font-semibold text-xl">With Nested Menus</h2>
       <code-block [code]="nestedUsage" />
       <div
-        class="border border-gray-200 dark:border-zinc-700 rounded-lg p-6 mb-6 bg-white dark:bg-zinc-900 documentation-playground flex flex-col gap-4">
+        class="border border-gray-200 dark:border-neutral-700 rounded-lg p-6 mb-6 bg-white dark:bg-neutral-900 documentation-playground flex flex-col gap-4">
         <b-menu>
           <b-menu-label>Main Menu</b-menu-label>
           <button b-menu-item>Item 1</button>
@@ -166,7 +166,7 @@ import { lucideRocket } from '@ng-icons/lucide';
       <h2 class="font-semibold text-xl">With b-button Trigger</h2>
       <code-block [code]="buttonTriggerUsage" />
       <div
-        class="border border-gray-200 dark:border-zinc-700 rounded-lg p-6 mb-6 bg-white dark:bg-zinc-900 documentation-playground flex flex-col gap-4">
+        class="border border-gray-200 dark:border-neutral-700 rounded-lg p-6 mb-6 bg-white dark:bg-neutral-900 documentation-playground flex flex-col gap-4">
         <button
           b-button
           variant="outlined"
@@ -200,7 +200,7 @@ import { lucideRocket } from '@ng-icons/lucide';
       <h2 class="font-semibold text-xl">With Different Trigger Positions</h2>
       <code-block [code]="triggerPositionExamples" />
       <div
-        class="border border-gray-200 dark:border-zinc-700 rounded-lg p-6 mb-6 bg-white dark:bg-zinc-900 documentation-playground flex flex-col gap-4">
+        class="border border-gray-200 dark:border-neutral-700 rounded-lg p-6 mb-6 bg-white dark:bg-neutral-900 documentation-playground flex flex-col gap-4">
         <button
           b-button
           variant="outlined"

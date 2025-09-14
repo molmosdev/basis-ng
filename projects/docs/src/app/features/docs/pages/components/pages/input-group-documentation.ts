@@ -40,25 +40,25 @@ import { lucideRocket } from '@ng-icons/lucide';
       <span>Include this to apply the styles</span>
       <code-block [code]="stylesImport" />
       <h2 class="font-semibold text-xl">Properties</h2>
-      <div class="overflow-x-auto overflow-hidden rounded-lg border border-gray-200 dark:border-zinc-700 dark:bg-zinc-900 mb-6">
+      <div class="overflow-x-auto overflow-hidden rounded-lg border border-gray-200 dark:border-neutral-700 dark:bg-neutral-900 mb-6">
         <table class="table-auto w-full text-left text-sm">
           <thead class="bg-gray-50 dark:bg-zinc-800">
             <tr>
-              <th class="border-b border-gray-200 dark:border-zinc-700 px-4 py-2 font-semibold">Property</th>
-              <th class="border-b border-gray-200 dark:border-zinc-700 px-4 py-2 font-semibold">Type</th>
+              <th class="border-b border-gray-200 dark:border-neutral-700 px-4 py-2 font-semibold">Property</th>
+              <th class="border-b border-gray-200 dark:border-neutral-700 px-4 py-2 font-semibold">Type</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td class="border-t border-gray-200 dark:border-zinc-700 px-4 py-2 font-display-mono">maxWidth</td>
-              <td class="border-t border-gray-200 dark:border-zinc-700 px-4 py-2 font-display-mono">string</td>
+              <td class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2 font-display-mono">maxWidth</td>
+              <td class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2 font-display-mono">string</td>
             </tr>
           </tbody>
         </table>
       </div>
       <h2 class="font-semibold text-xl">With prepended text</h2>
       <code-block [code]="prependTextUsage" />
-      <div class="border border-gray-200 dark:border-zinc-700 rounded-lg p-6 mb-6 bg-white dark:bg-zinc-900 documentation-playground flex flex-col items-center justify-center gap-4">
+      <div class="border border-gray-200 dark:border-neutral-700 rounded-lg p-6 mb-6 bg-white dark:bg-neutral-900 documentation-playground flex flex-col items-center justify-center gap-4">
         <b-input-group maxWidth="240px">
           <span>@</span>
           <input b-input type="text" placeholder="username" />
@@ -66,7 +66,7 @@ import { lucideRocket } from '@ng-icons/lucide';
       </div>
       <h2 class="font-semibold text-xl">With appended text</h2>
       <code-block [code]="appendTextUsage" />
-      <div class="border border-gray-200 dark:border-zinc-700 rounded-lg p-6 mb-6 bg-white dark:bg-zinc-900 documentation-playground flex flex-col items-center justify-center gap-4">
+      <div class="border border-gray-200 dark:border-neutral-700 rounded-lg p-6 mb-6 bg-white dark:bg-neutral-900 documentation-playground flex flex-col items-center justify-center gap-4">
         <b-input-group maxWidth="240px">
           <input b-input type="text" placeholder="Amount" />
           <span>USD</span>
@@ -74,7 +74,7 @@ import { lucideRocket } from '@ng-icons/lucide';
       </div>
       <h2 class="font-semibold text-xl">With prepended button</h2>
       <code-block [code]="prependButtonUsage" />
-      <div class="border border-gray-200 dark:border-zinc-700 rounded-lg p-6 mb-6 bg-white dark:bg-zinc-900 documentation-playground flex flex-col items-center justify-center gap-4">
+      <div class="border border-gray-200 dark:border-neutral-700 rounded-lg p-6 mb-6 bg-white dark:bg-neutral-900 documentation-playground flex flex-col items-center justify-center gap-4">
         <b-input-group maxWidth="240px">
           <button b-button variant="primary" size="sm">Search</button>
           <input b-input type="text" placeholder="Search..." />
@@ -82,7 +82,7 @@ import { lucideRocket } from '@ng-icons/lucide';
       </div>
       <h2 class="font-semibold text-xl">With appended button</h2>
       <code-block [code]="appendButtonUsage" />
-      <div class="border border-gray-200 dark:border-zinc-700 rounded-lg p-6 mb-6 bg-white dark:bg-zinc-900 documentation-playground flex flex-col items-center justify-center gap-4">
+      <div class="border border-gray-200 dark:border-neutral-700 rounded-lg p-6 mb-6 bg-white dark:bg-neutral-900 documentation-playground flex flex-col items-center justify-center gap-4">
         <b-input-group maxWidth="240px">
           <input b-input type="email" placeholder="Email address" />
           <button b-button variant="primary" size="sm">Send</button>
@@ -90,7 +90,7 @@ import { lucideRocket } from '@ng-icons/lucide';
       </div>
       <h2 class="font-semibold text-xl">Combining elements</h2>
       <code-block [code]="combinedUsage" />
-      <div class="border border-gray-200 dark:border-zinc-700 rounded-lg p-6 mb-6 bg-white dark:bg-zinc-900 documentation-playground flex flex-col items-center justify-center gap-4">
+      <div class="border border-gray-200 dark:border-neutral-700 rounded-lg p-6 mb-6 bg-white dark:bg-neutral-900 documentation-playground flex flex-col items-center justify-center gap-4">
         <b-input-group maxWidth="240px">
           <span>+52</span>
           <input b-input type="number" placeholder="Phone" />
@@ -99,7 +99,7 @@ import { lucideRocket } from '@ng-icons/lucide';
       </div>
       <h2 class="font-semibold text-xl">Password input with show/hide button</h2>
       <code-block [code]="passwordToggleUsage" />
-      <div class="border border-gray-200 dark:border-zinc-700 rounded-lg p-6 mb-6 bg-white dark:bg-zinc-900 documentation-playground flex flex-col items-center justify-center gap-4">
+      <div class="border border-gray-200 dark:border-neutral-700 rounded-lg p-6 mb-6 bg-white dark:bg-neutral-900 documentation-playground flex flex-col items-center justify-center gap-4">
         <b-input-group maxWidth="240px">
           <input b-input [type]="showPassword ? 'text' : 'password'" placeholder="Password" type="password" />
           <button b-button variant="ghost" size="sm" type="button" [squared]="true" (click)="showPassword = !showPassword" [attr.aria-label]="showPassword ? 'Hide password' : 'Show password'">

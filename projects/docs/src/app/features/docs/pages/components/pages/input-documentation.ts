@@ -43,16 +43,16 @@ import { StepsButtons } from '../../shared/components/steps-buttons';
       <code-block [code]="stylesImport" />
       <h2 class="font-semibold text-xl">Properties</h2>
       <div
-        class="overflow-x-auto overflow-hidden rounded-lg border border-gray-200 dark:border-zinc-700 dark:bg-zinc-900 mb-6">
+        class="overflow-x-auto overflow-hidden rounded-lg border border-gray-200 dark:border-neutral-700 dark:bg-neutral-900 mb-6">
         <table class="table-auto w-full text-left text-sm">
           <thead class="bg-gray-50 dark:bg-zinc-800">
             <tr>
               <th
-                class="border-b border-gray-200 dark:border-zinc-700 px-4 py-2 font-semibold">
+                class="border-b border-gray-200 dark:border-neutral-700 px-4 py-2 font-semibold">
                 Prop
               </th>
               <th
-                class="border-b border-gray-200 dark:border-zinc-700 px-4 py-2 font-semibold">
+                class="border-b border-gray-200 dark:border-neutral-700 px-4 py-2 font-semibold">
                 Type
               </th>
             </tr>
@@ -60,42 +60,42 @@ import { StepsButtons } from '../../shared/components/steps-buttons';
           <tbody>
             <tr>
               <td
-                class="border-t border-gray-200 dark:border-zinc-700 px-4 py-2 font-display-mono">
+                class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2 font-display-mono">
                 size
               </td>
               <td
-                class="border-t border-gray-200 dark:border-zinc-700 px-4 py-2 font-display-mono">
+                class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2 font-display-mono">
                 <b class="font-bold">'md'</b> | 'sm' | 'lg'
               </td>
             </tr>
             <tr>
               <td
-                class="border-t border-gray-200 dark:border-zinc-700 px-4 py-2 font-display-mono">
+                class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2 font-display-mono">
                 type
               </td>
               <td
-                class="border-t border-gray-200 dark:border-zinc-700 px-4 py-2 font-display-mono">
+                class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2 font-display-mono">
                 <b class="font-bold">'text'</b> | 'number' | 'password' |
                 'email'
               </td>
             </tr>
             <tr>
               <td
-                class="border-t border-gray-200 dark:border-zinc-700 px-4 py-2 font-display-mono">
+                class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2 font-display-mono">
                 decimals
               </td>
               <td
-                class="border-t border-gray-200 dark:border-zinc-700 px-4 py-2 font-display-mono">
+                class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2 font-display-mono">
                 <b class="font-bold">2</b> | number
               </td>
             </tr>
             <tr>
               <td
-                class="border-t border-gray-200 dark:border-zinc-700 px-4 py-2 font-display-mono">
+                class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2 font-display-mono">
                 numberType
               </td>
               <td
-                class="border-t border-gray-200 dark:border-zinc-700 px-4 py-2 font-display-mono">
+                class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2 font-display-mono">
                 <b class="font-bold">'integer'</b> | 'decimal'
               </td>
             </tr>
@@ -105,7 +105,7 @@ import { StepsButtons } from '../../shared/components/steps-buttons';
       <h2 class="font-semibold text-xl">Basic</h2>
       <code-block [code]="ngModelUsage" />
       <div
-        class="border border-gray-200 dark:border-zinc-700 rounded-lg p-6 mb-6 bg-white dark:bg-zinc-900 documentation-playground flex flex-col items-center justify-center gap-4">
+        class="border border-gray-200 dark:border-neutral-700 rounded-lg p-6 mb-6 bg-white dark:bg-neutral-900 documentation-playground flex flex-col items-center justify-center gap-4">
         <input
           b-input
           type="text"
@@ -115,7 +115,7 @@ import { StepsButtons } from '../../shared/components/steps-buttons';
       <h2 class="font-semibold text-xl">Number Input (Integer)</h2>
       <code-block [code]="numberIntegerUsage" />
       <div
-        class="border border-gray-200 dark:border-zinc-700 rounded-lg p-6 mb-6 bg-white dark:bg-zinc-900 documentation-playground flex flex-col items-center justify-center gap-4">
+        class="border border-gray-200 dark:border-neutral-700 rounded-lg p-6 mb-6 bg-white dark:bg-neutral-900 documentation-playground flex flex-col items-center justify-center gap-4">
         <input
           b-input
           type="number"
@@ -126,7 +126,7 @@ import { StepsButtons } from '../../shared/components/steps-buttons';
       <h2 class="font-semibold text-xl">Number Input (Decimal)</h2>
       <code-block [code]="numberDecimalUsage" />
       <div
-        class="border border-gray-200 dark:border-zinc-700 rounded-lg p-6 mb-6 bg-white dark:bg-zinc-900 documentation-playground flex flex-col items-center justify-center gap-4">
+        class="border border-gray-200 dark:border-neutral-700 rounded-lg p-6 mb-6 bg-white dark:bg-neutral-900 documentation-playground flex flex-col items-center justify-center gap-4">
         <input
           b-input
           type="number"
@@ -138,7 +138,7 @@ import { StepsButtons } from '../../shared/components/steps-buttons';
       <h2 class="font-semibold text-xl">Input Sizes</h2>
       <code-block [code]="sizeUsage" />
       <div
-        class="border border-gray-200 dark:border-zinc-700 rounded-lg p-6 mb-6 bg-white dark:bg-zinc-900 documentation-playground flex flex-col items-center justify-center gap-4">
+        class="border border-gray-200 dark:border-neutral-700 rounded-lg p-6 mb-6 bg-white dark:bg-neutral-900 documentation-playground flex flex-col items-center justify-center gap-4">
         <input b-input type="text" size="sm" placeholder="Size sm" />
         <input b-input type="text" size="md" placeholder="Size md" />
         <input b-input type="text" size="lg" placeholder="Size lg" />
@@ -146,7 +146,7 @@ import { StepsButtons } from '../../shared/components/steps-buttons';
       <h2 class="font-semibold text-xl">Reactive Forms</h2>
       <code-block [code]="formControlUsage" />
       <form
-        class="border border-gray-200 dark:border-zinc-700 rounded-lg p-6 mb-6 bg-white dark:bg-zinc-900 documentation-playground flex flex-col items-center justify-center gap-4"
+        class="border border-gray-200 dark:border-neutral-700 rounded-lg p-6 mb-6 bg-white dark:bg-neutral-900 documentation-playground flex flex-col items-center justify-center gap-4"
         [formGroup]="form">
         <input
           b-input
@@ -157,7 +157,7 @@ import { StepsButtons } from '../../shared/components/steps-buttons';
       <h2 class="font-semibold text-xl">Password Input</h2>
       <code-block [code]="passwordUsage" />
       <div
-        class="border border-gray-200 dark:border-zinc-700 rounded-lg p-6 mb-6 bg-white dark:bg-zinc-900 documentation-playground flex flex-col items-center justify-center gap-4">
+        class="border border-gray-200 dark:border-neutral-700 rounded-lg p-6 mb-6 bg-white dark:bg-neutral-900 documentation-playground flex flex-col items-center justify-center gap-4">
         <input
           b-input
           type="password"
@@ -167,7 +167,7 @@ import { StepsButtons } from '../../shared/components/steps-buttons';
       <h2 class="font-semibold text-xl">Disabled Input</h2>
       <code-block [code]="disabledUsage" />
       <div
-        class="border border-gray-200 dark:border-zinc-700 rounded-lg p-6 mb-6 bg-white dark:bg-zinc-900 documentation-playground flex flex-col items-center justify-center gap-4">
+        class="border border-gray-200 dark:border-neutral-700 rounded-lg p-6 mb-6 bg-white dark:bg-neutral-900 documentation-playground flex flex-col items-center justify-center gap-4">
         <input
           b-input
           type="text"
@@ -177,7 +177,7 @@ import { StepsButtons } from '../../shared/components/steps-buttons';
       <h2 class="font-semibold text-xl">Invalid Input</h2>
       <code-block [code]="invalidUsage" />
       <form
-        class="border border-gray-200 dark:border-zinc-700 rounded-lg p-6 mb-6 bg-white dark:bg-zinc-900 documentation-playground flex flex-col items-center justify-center gap-4"
+        class="border border-gray-200 dark:border-neutral-700 rounded-lg p-6 mb-6 bg-white dark:bg-neutral-900 documentation-playground flex flex-col items-center justify-center gap-4"
         [formGroup]="form">
         <input
           b-input

@@ -53,16 +53,16 @@ import { lucideRocket } from '@ng-icons/lucide';
       <code-block [code]="stylesImport" />
       <h2 class="font-semibold text-xl">Properties</h2>
       <div
-        class="overflow-x-auto overflow-hidden rounded-lg border border-gray-200 dark:border-zinc-700 dark:bg-zinc-900 mb-6">
+        class="overflow-x-auto overflow-hidden rounded-lg border border-gray-200 dark:border-neutral-700 dark:bg-neutral-900 mb-6">
         <table class="table-auto w-full text-left text-sm">
           <thead class="bg-gray-50 dark:bg-zinc-800">
             <tr>
               <th
-                class="border-b border-gray-200 dark:border-zinc-700 px-4 py-2 font-semibold">
+                class="border-b border-gray-200 dark:border-neutral-700 px-4 py-2 font-semibold">
                 Property
               </th>
               <th
-                class="border-b border-gray-200 dark:border-zinc-700 px-4 py-2 font-semibold">
+                class="border-b border-gray-200 dark:border-neutral-700 px-4 py-2 font-semibold">
                 Type
               </th>
             </tr>
@@ -70,31 +70,31 @@ import { lucideRocket } from '@ng-icons/lucide';
           <tbody>
             <tr>
               <td
-                class="border-t border-gray-200 dark:border-zinc-700 px-4 py-2 font-display-mono">
+                class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2 font-display-mono">
                 size
               </td>
               <td
-                class="border-t border-gray-200 dark:border-zinc-700 px-4 py-2 font-display-mono">
+                class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2 font-display-mono">
                 '1' | <strong>'2'</strong> | '3'
               </td>
             </tr>
             <tr>
               <td
-                class="border-t border-gray-200 dark:border-zinc-700 px-4 py-2 font-display-mono">
+                class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2 font-display-mono">
                 disabled
               </td>
               <td
-                class="border-t border-gray-200 dark:border-zinc-700 px-4 py-2 font-display-mono">
+                class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2 font-display-mono">
                 <strong>boolean</strong>
               </td>
             </tr>
             <tr>
               <td
-                class="border-t border-gray-200 dark:border-zinc-700 px-4 py-2 font-display-mono">
+                class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2 font-display-mono">
                 b-otp-digit
               </td>
               <td
-                class="border-t border-gray-200 dark:border-zinc-700 px-4 py-2 font-display-mono">
+                class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2 font-display-mono">
                 directive
               </td>
             </tr>
@@ -104,7 +104,7 @@ import { lucideRocket } from '@ng-icons/lucide';
       <h2 class="font-semibold text-xl">Basic usage</h2>
       <code-block [code]="ngModelUsage" />
       <div
-        class="border border-gray-200 dark:border-zinc-700 rounded-lg p-6 mb-6 bg-white dark:bg-zinc-900 documentation-playground flex flex-col gap-4 items-center">
+        class="border border-gray-200 dark:border-neutral-700 rounded-lg p-6 mb-6 bg-white dark:bg-neutral-900 documentation-playground flex flex-col gap-4 items-center">
         <b-otp [(ngModel)]="otpValue">
           <input b-otp-digit />
           <input b-otp-digit />
@@ -117,7 +117,7 @@ import { lucideRocket } from '@ng-icons/lucide';
       <h2 class="font-semibold text-xl">Sizes</h2>
       <code-block [code]="sizeUsage" />
       <div
-        class="border border-gray-200 dark:border-zinc-700 rounded-lg p-6 mb-6 bg-white dark:bg-zinc-900 documentation-playground flex flex-col gap-4 items-center">
+        class="border border-gray-200 dark:border-neutral-700 rounded-lg p-6 mb-6 bg-white dark:bg-neutral-900 documentation-playground flex flex-col gap-4 items-center">
         <b-otp size="1">
           <input b-otp-digit />
           <input b-otp-digit />
@@ -146,7 +146,7 @@ import { lucideRocket } from '@ng-icons/lucide';
       <h2 class="font-semibold text-xl">Disabled</h2>
       <code-block [code]="disabledUsage" />
       <div
-        class="border border-gray-200 dark:border-zinc-700 rounded-lg p-6 mb-6 bg-white dark:bg-zinc-900 documentation-playground flex flex-col gap-4 items-center">
+        class="border border-gray-200 dark:border-neutral-700 rounded-lg p-6 mb-6 bg-white dark:bg-neutral-900 documentation-playground flex flex-col gap-4 items-center">
         <b-otp [disabled]="true">
           <input b-otp-digit />
           <input b-otp-digit />
@@ -160,7 +160,7 @@ import { lucideRocket } from '@ng-icons/lucide';
       <code-block [code]="invalidUsage" />
       <form [formGroup]="form">
         <div
-          class="border border-gray-200 dark:border-zinc-700 rounded-lg p-6 mb-6 bg-white dark:bg-zinc-900 documentation-playground flex flex-col gap-4 items-center">
+          class="border border-gray-200 dark:border-neutral-700 rounded-lg p-6 mb-6 bg-white dark:bg-neutral-900 documentation-playground flex flex-col gap-4 items-center">
           <b-otp formControlName="invalidControl">
             <input b-otp-digit />
             <input b-otp-digit />

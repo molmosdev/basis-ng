@@ -57,16 +57,16 @@ import { CommonModule } from '@angular/common';
       <code-block [code]="stylesImport" />
       <h2 class="font-semibold text-xl">Properties</h2>
       <div
-        class="overflow-x-auto overflow-hidden rounded-lg border border-gray-200 dark:border-zinc-700 dark:bg-zinc-900 mb-6">
+        class="overflow-x-auto overflow-hidden rounded-lg border border-gray-200 dark:border-neutral-700 dark:bg-neutral-900 mb-6">
         <table class="table-auto w-full text-left text-sm">
           <thead class="bg-gray-50 dark:bg-zinc-800">
             <tr>
               <th
-                class="border-b border-gray-200 dark:border-zinc-700 px-4 py-2 font-semibold">
+                class="border-b border-gray-200 dark:border-neutral-700 px-4 py-2 font-semibold">
                 Prop
               </th>
               <th
-                class="border-b border-gray-200 dark:border-zinc-700 px-4 py-2 font-semibold">
+                class="border-b border-gray-200 dark:border-neutral-700 px-4 py-2 font-semibold">
                 Type
               </th>
             </tr>
@@ -74,21 +74,21 @@ import { CommonModule } from '@angular/common';
           <tbody>
             <tr>
               <td
-                class="border-t border-gray-200 dark:border-zinc-700 px-4 py-2 font-display-mono">
+                class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2 font-display-mono">
                 value
               </td>
               <td
-                class="border-t border-gray-200 dark:border-zinc-700 px-4 py-2 font-display-mono">
+                class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2 font-display-mono">
                 string
               </td>
             </tr>
             <tr>
               <td
-                class="border-t border-gray-200 dark:border-zinc-700 px-4 py-2 font-display-mono">
+                class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2 font-display-mono">
                 ngModel
               </td>
               <td
-                class="border-t border-gray-200 dark:border-zinc-700 px-4 py-2 font-display-mono">
+                class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2 font-display-mono">
                 string[] <strong>['tab1']</strong>
               </td>
             </tr>
@@ -103,7 +103,7 @@ import { CommonModule } from '@angular/common';
       <h2 class="font-semibold text-xl">Basic Usage</h2>
       <code-block [code]="basicUsage" />
       <div
-        class="border border-gray-200 dark:border-zinc-700 rounded-lg p-6 mb-6 bg-white dark:bg-zinc-900 documentation-playground flex flex-col gap-4 items-center">
+        class="border border-gray-200 dark:border-neutral-700 rounded-lg p-6 mb-6 bg-white dark:bg-neutral-900 documentation-playground flex flex-col gap-4 items-center">
         <b-tabs [(ngModel)]="selectedTab">
           <b-tab value="tab1">Tab 1</b-tab>
           <b-tab value="tab2">Tab 2</b-tab>
@@ -123,7 +123,7 @@ import { CommonModule } from '@angular/common';
       <span>Use <code>ng-template</code> to lazily load tab content.</span>
       <code-block [code]="lazyLoadingUsage" />
       <div
-        class="border border-gray-200 dark:border-zinc-700 rounded-lg p-6 mb-6 bg-white dark:bg-zinc-900 documentation-playground flex flex-col gap-4 items-center">
+        class="border border-gray-200 dark:border-neutral-700 rounded-lg p-6 mb-6 bg-white dark:bg-neutral-900 documentation-playground flex flex-col gap-4 items-center">
         <b-tabs [(ngModel)]="lazySelectedTab">
           <b-tab value="tab1">Tab 1</b-tab>
           <b-tab value="tab2">Tab 2</b-tab>
@@ -152,7 +152,7 @@ import { CommonModule } from '@angular/common';
       <span>Use with Angular's Reactive Forms to manage tab state.</span>
       <code-block [code]="reactiveFormsUsage" />
       <div
-        class="border border-gray-200 dark:border-zinc-700 rounded-lg p-6 mb-6 bg-white dark:bg-zinc-900 documentation-playground flex flex-col gap-4 items-center">
+        class="border border-gray-200 dark:border-neutral-700 rounded-lg p-6 mb-6 bg-white dark:bg-neutral-900 documentation-playground flex flex-col gap-4 items-center">
         <form [formGroup]="tabsForm">
           <b-tabs formControlName="tabControl">
             <b-tab value="tab1">Tab 1</b-tab>

@@ -56,16 +56,16 @@ import { StepsButtons } from '../../shared/components/steps-buttons';
     <code-block [code]="stylesImport" />
     <h2 class="font-semibold text-xl">Properties</h2>
     <div
-      class="overflow-x-auto overflow-hidden rounded-lg border border-gray-200 dark:border-zinc-700 dark:bg-zinc-900 mb-6">
+      class="overflow-x-auto overflow-hidden rounded-lg border border-gray-200 dark:border-neutral-700 dark:bg-neutral-900 mb-6">
       <table class="table-auto w-full text-left text-sm">
         <thead class="bg-gray-50 dark:bg-zinc-800">
           <tr>
             <th
-              class="border-b border-gray-200 dark:border-zinc-700 px-4 py-2 font-semibold">
+              class="border-b border-gray-200 dark:border-neutral-700 px-4 py-2 font-semibold">
               Property
             </th>
             <th
-              class="border-b border-gray-200 dark:border-zinc-700 px-4 py-2 font-semibold">
+              class="border-b border-gray-200 dark:border-neutral-700 px-4 py-2 font-semibold">
               Type
             </th>
           </tr>
@@ -73,61 +73,61 @@ import { StepsButtons } from '../../shared/components/steps-buttons';
         <tbody>
           <tr>
             <td
-              class="border-t border-gray-200 dark:border-zinc-700 px-4 py-2 font-display-mono">
+              class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2 font-display-mono">
               hasBackdrop
             </td>
             <td
-              class="border-t border-gray-200 dark:border-zinc-700 px-4 py-2 font-display-mono">
+              class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2 font-display-mono">
               <strong>true</strong> | false
             </td>
           </tr>
           <tr>
             <td
-              class="border-t border-gray-200 dark:border-zinc-700 px-4 py-2 font-display-mono">
+              class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2 font-display-mono">
               closeOnBackdropClick
             </td>
             <td
-              class="border-t border-gray-200 dark:border-zinc-700 px-4 py-2 font-display-mono">
+              class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2 font-display-mono">
               <strong>true</strong> | false
             </td>
           </tr>
           <tr>
             <td
-              class="border-t border-gray-200 dark:border-zinc-700 px-4 py-2 font-display-mono">
+              class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2 font-display-mono">
               closeOnEscapeKey
             </td>
             <td
-              class="border-t border-gray-200 dark:border-zinc-700 px-4 py-2 font-display-mono">
+              class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2 font-display-mono">
               <strong>true</strong> | false
             </td>
           </tr>
           <tr>
             <td
-              class="border-t border-gray-200 dark:border-zinc-700 px-4 py-2 font-display-mono">
+              class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2 font-display-mono">
               openDelay
             </td>
             <td
-              class="border-t border-gray-200 dark:border-zinc-700 px-4 py-2 font-display-mono">
+              class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2 font-display-mono">
               <strong>0</strong> | number
             </td>
           </tr>
           <tr>
             <td
-              class="border-t border-gray-200 dark:border-zinc-700 px-4 py-2 font-display-mono">
+              class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2 font-display-mono">
               closeDelay
             </td>
             <td
-              class="border-t border-gray-200 dark:border-zinc-700 px-4 py-2 font-display-mono">
+              class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2 font-display-mono">
               <strong>150</strong> | number
             </td>
           </tr>
           <tr>
             <td
-              class="border-t border-gray-200 dark:border-zinc-700 px-4 py-2 font-display-mono">
+              class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2 font-display-mono">
               closed
             </td>
             <td
-              class="border-t border-gray-200 dark:border-zinc-700 px-4 py-2 font-display-mono">
+              class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2 font-display-mono">
               EventEmitter&lt;void&gt;
             </td>
           </tr>
@@ -137,7 +137,7 @@ import { StepsButtons } from '../../shared/components/steps-buttons';
     <h2 class="font-semibold text-xl">Basic Usage (Service)</h2>
     <code-block [code]="basicUsageService" />
     <div
-      class="border border-gray-200 dark:border-zinc-700 rounded-lg p-6 mb-6 bg-white dark:bg-zinc-900 documentation-playground flex flex-col items-center justify-center gap-4">
+      class="border border-gray-200 dark:border-neutral-700 rounded-lg p-6 mb-6 bg-white dark:bg-neutral-900 documentation-playground flex flex-col items-center justify-center gap-4">
       <button b-button (click)="openDialogService()">
         Open Dialog (Service)
       </button>
@@ -159,7 +159,7 @@ import { StepsButtons } from '../../shared/components/steps-buttons';
     <h2 class="font-semibold text-xl">Basic Usage (Directive Reference)</h2>
     <code-block [code]="basicUsageDirective" />
     <div
-      class="border border-gray-200 dark:border-zinc-700 rounded-lg p-6 mb-6 bg-white dark:bg-zinc-900 documentation-playground flex flex-col items-center justify-center gap-4">
+      class="border border-gray-200 dark:border-neutral-700 rounded-lg p-6 mb-6 bg-white dark:bg-neutral-900 documentation-playground flex flex-col items-center justify-center gap-4">
       <button b-button (click)="dialogRef.open()">
         Open Dialog (Directive Ref)
       </button>
@@ -184,7 +184,7 @@ import { StepsButtons } from '../../shared/components/steps-buttons';
     <h2 class="font-semibold text-xl">hasBackdrop = false</h2>
     <code-block [code]="hasBackdropFalseExample" />
     <div
-      class="border border-gray-200 dark:border-zinc-700 rounded-lg p-6 mb-6 bg-white dark:bg-zinc-900 documentation-playground flex flex-col items-center justify-center gap-4">
+      class="border border-gray-200 dark:border-neutral-700 rounded-lg p-6 mb-6 bg-white dark:bg-neutral-900 documentation-playground flex flex-col items-center justify-center gap-4">
       <button b-button (click)="dialogNoBackdrop.open()">
         Open Dialog (No Backdrop)
       </button>
@@ -208,7 +208,7 @@ import { StepsButtons } from '../../shared/components/steps-buttons';
     <h2 class="font-semibold text-xl">closeOnBackdropClick = false</h2>
     <code-block [code]="noBackdropCloseExample" />
     <div
-      class="border border-gray-200 dark:border-zinc-700 rounded-lg p-6 mb-6 bg-white dark:bg-zinc-900 documentation-playground flex flex-col items-center justify-center gap-4">
+      class="border border-gray-200 dark:border-neutral-700 rounded-lg p-6 mb-6 bg-white dark:bg-neutral-900 documentation-playground flex flex-col items-center justify-center gap-4">
       <button b-button (click)="dialogNoBackdropClose.open()">
         Open Dialog (Backdrop can't close)
       </button>
@@ -235,7 +235,7 @@ import { StepsButtons } from '../../shared/components/steps-buttons';
     <h2 class="font-semibold text-xl">closeOnEscapeKey = false</h2>
     <code-block [code]="noEscapeCloseExample" />
     <div
-      class="border border-gray-200 dark:border-zinc-700 rounded-lg p-6 mb-6 bg-white dark:bg-zinc-900 documentation-playground flex flex-col items-center justify-center gap-4">
+      class="border border-gray-200 dark:border-neutral-700 rounded-lg p-6 mb-6 bg-white dark:bg-neutral-900 documentation-playground flex flex-col items-center justify-center gap-4">
       <button b-button (click)="dialogNoEscape.open()">
         Open Dialog (Escape can't close)
       </button>
