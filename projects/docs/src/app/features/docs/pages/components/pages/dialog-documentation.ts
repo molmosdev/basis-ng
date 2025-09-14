@@ -2,7 +2,7 @@ import { Component, inject } from '@angular/core';
 import {
   DialogService,
   DialogDirective,
-  CardComponent,
+  Card,
   CardHeaderComponent,
   CardTitleComponent,
   CardDescriptionComponent,
@@ -22,7 +22,7 @@ import { StepsButtons } from '../../shared/components/steps-buttons';
     CodeBlock,
     Button,
     DialogDirective,
-    CardComponent,
+    Card,
     CardHeaderComponent,
     CardTitleComponent,
     CardDescriptionComponent,

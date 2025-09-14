@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { CodeBlock } from '../shared/components/code-block';
 import {
-  CardComponent,
+  Card,
   CardHeaderComponent,
   CardTitleComponent,
   CardDescriptionComponent,
@@ -20,7 +20,7 @@ import { StepsButtons } from '../../shared/components/steps-buttons';
   selector: 'article[app-card-documentation]',
   imports: [
     CodeBlock,
-    CardComponent,
+    Card,
     CardHeaderComponent,
     CardTitleComponent,
     CardDescriptionComponent,
@@ -141,7 +141,7 @@ import { StepsButtons } from '../../shared/components/steps-buttons';
   },
 })
 export class CardDocumentation {
-  angularImport = `import { CardComponent } from '@basis-ng/primitives'`;
+  angularImport = `import { Card } from '@basis-ng/primitives'`;
   stylesImport = `@import '@basis-ng/styles/card';`;
   inputsCardUsage = `<b-card class="w-full max-w-[350px]">
   <b-card-header>
