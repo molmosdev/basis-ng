@@ -30,12 +30,14 @@ export class DialogContent extends CdkDialogContainer implements OnInit {
    * @internal
    */
   dialogRef = inject(DialogRef);
+
   /**
    * Service that orchestrates dialog lifecycle operations (open/close).
    *
    * @internal
    */
   dialogService = inject(DialogService);
+
   /**
    * Signal that indicates whether the dialog is in its leaving (closing) transition state.
    *
