@@ -6,7 +6,6 @@
   "exports": {
     ".": "./src/index.css",
     "./alert": "./src/components/alert.css",
-    "./attached-box": "./src/components/attached-box.component.css",
     "./badge": "./src/components/badge.css",
     "./drawer": "./src/components/drawer.css",
     "./button-group": "./src/components/button-group.css",
