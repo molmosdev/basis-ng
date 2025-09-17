@@ -10,7 +10,7 @@
     "./drawer": "./src/components/drawer.css",
     "./button-group": "./src/components/button-group.css",
     "./button": "./src/components/button.css",
-    "./checkbox": "./src/components/checkbox.component.css",
+    "./checkbox": "./src/components/checkbox.css",
     "./color-picker": "./src/components/color-picker.css",
     "./input-group": "./src/components/input-group.component.css",
     "./input": "./src/components/input.component.css",
