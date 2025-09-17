@@ -9,7 +9,7 @@
     "./attached-box": "./src/components/attached-box.component.css",
     "./badge": "./src/components/badge.css",
     "./drawer": "./src/components/drawer.css",
-    "./button-group": "./src/components/button-group.component.css",
+    "./button-group": "./src/components/button-group.css",
     "./button": "./src/components/button.css",
     "./checkbox": "./src/components/checkbox.component.css",
     "./color-picker": "./src/components/color-picker.css",
