@@ -1,0 +1,68 @@
+b-otp {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+}
+
+input[b-otp-digit] {
+  @apply box-border text-center font-sans text-base transition-opacity bg-background text-font inset-ring-1 inset-ring-secondary;
+  @apply dark:bg-background-dark dark:text-font-dark dark:inset-ring-secondary-dark;
+
+  &:read-only:not(:disabled) {
+    @apply border-0;
+  }
+
+  &::-webkit-outer-spin-button,
+  &::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  &[type='text'],
+  &[type='number'] {
+    appearance: textfield;
+    -moz-appearance: textfield;
+  }
+
+  &:focus-visible:not(:read-only) {
+    @apply outline-2 outline-offset-2 outline-primary;
+    @apply dark:outline-primary-dark;
+  }
+
+  &::placeholder {
+    @apply opacity-50;
+    @apply dark:opacity-70 dark:text-font-dark;
+  }
+
+  &:disabled {
+    @apply opacity-60 pointer-events-none;
+  }
+
+  &.b-size-sm {
+    @apply w-7 h-7 text-xs rounded-size-sm p-0;
+  }
+  &.b-size-md {
+    @apply w-9 h-9 text-base rounded-size-md p-0;
+  }
+  &.b-size-lg {
+    @apply w-11 h-11 text-lg rounded-size-lg p-0;
+  }
+}
+
+b-otp.ng-invalid.ng-touched input[b-otp-digit],
+b-otp.ng-invalid.ng-dirty input[b-otp-digit] {
+  @apply text-destructive placeholder:text-destructive bg-destructive/20 inset-ring-1 inset-ring-destructive;
+  @apply dark:text-destructive-dark dark:placeholder:text-destructive-dark dark:bg-destructive-dark/20 dark:inset-ring-destructive-dark;
+}
+
+b-otp.ng-invalid.ng-touched input[b-otp-digit]:focus-visible,
+b-otp.ng-invalid.ng-dirty input[b-otp-digit]:focus-visible {
+  @apply outline-2 outline-offset-2 outline-destructive;
+  @apply dark:outline-destructive-dark;
+}
+
+b-otp.ng-invalid.ng-touched input[b-otp-digit]::placeholder,
+b-otp.ng-invalid.ng-dirty input[b-otp-digit]::placeholder {
+  @apply text-destructive;
+  @apply dark:text-destructive-foreground;
+}

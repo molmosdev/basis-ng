@@ -1,11 +1,6 @@
 import { Component } from '@angular/core';
 import { CodeBlock } from '../shared/components/code-block';
-import {
-  OtpComponent,
-  OtpDigitDirective,
-  Badge,
-  Alert,
-} from '@basis-ng/primitives';
+import { Otp, OtpDigitDirective, Badge, Alert } from '@basis-ng/primitives';
 import { StepsButtons } from '../../shared/components/steps-buttons';
 import {
   FormsModule,
@@ -20,7 +15,7 @@ import { lucideRocket } from '@ng-icons/lucide';
   selector: 'article[app-otp-documentation]',
   imports: [
     CodeBlock,
-    OtpComponent,
+    Otp,
     OtpDigitDirective,
     StepsButtons,
     FormsModule,
@@ -75,7 +70,7 @@ import { lucideRocket } from '@ng-icons/lucide';
               </td>
               <td
                 class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2 font-display-mono">
-                '1' | <strong>'2'</strong> | '3'
+                <b class="font-bold">'md'</b> | 'sm' | 'lg'
               </td>
             </tr>
             <tr>
@@ -118,7 +113,7 @@ import { lucideRocket } from '@ng-icons/lucide';
       <code-block [code]="sizeUsage" />
       <div
         class="border border-gray-200 dark:border-neutral-700 rounded-lg p-6 mb-6 bg-white dark:bg-neutral-900 documentation-playground flex flex-col gap-4 items-center">
-        <b-otp size="1">
+        <b-otp size="sm">
           <input b-otp-digit />
           <input b-otp-digit />
           <input b-otp-digit />
@@ -126,7 +121,7 @@ import { lucideRocket } from '@ng-icons/lucide';
           <input b-otp-digit />
           <input b-otp-digit />
         </b-otp>
-        <b-otp size="2">
+        <b-otp size="md">
           <input b-otp-digit />
           <input b-otp-digit />
           <input b-otp-digit />
@@ -134,7 +129,7 @@ import { lucideRocket } from '@ng-icons/lucide';
           <input b-otp-digit />
           <input b-otp-digit />
         </b-otp>
-        <b-otp size="3">
+        <b-otp size="lg">
           <input b-otp-digit />
           <input b-otp-digit />
           <input b-otp-digit />
@@ -183,10 +178,10 @@ import { lucideRocket } from '@ng-icons/lucide';
   },
 })
 export class OtpDocumentation {
-  angularImport = `import { OtpComponent, OtpDigitDirective } from '@basis-ng/primitives'`;
-  stylesImport = `@import '@basis-ng/styles/components/otp.component.css';`;
+  angularImport = `import { Otp, OtpDigitDirective } from '@basis-ng/primitives'`;
+  stylesImport = `@import '@basis-ng/styles/components/otp.css';`;
   ngModelUsage = `<b-otp [(ngModel)]='otpValue'>\n  <input b-otp-digit />\n  <input b-otp-digit />\n  <input b-otp-digit />\n  <input b-otp-digit />\n  <input b-otp-digit />\n  <input b-otp-digit />\n</b-otp>`;
-  sizeUsage = `<b-otp size='1'>\n  <input b-otp-digit />\n  <input b-otp-digit />\n  <input b-otp-digit />\n  <input b-otp-digit />\n  <input b-otp-digit />\n  <input b-otp-digit />\n</b-otp>\n\n<b-otp size='2'>\n  <input b-otp-digit />\n  <input b-otp-digit />\n  <input b-otp-digit />\n  <input b-otp-digit />\n  <input b-otp-digit />\n  <input b-otp-digit />\n</b-otp>\n\n<b-otp size='3'>\n  <input b-otp-digit />\n  <input b-otp-digit />\n  <input b-otp-digit />\n  <input b-otp-digit />\n  <input b-otp-digit />\n  <input b-otp-digit />\n</b-otp>`;
+  sizeUsage = `<b-otp size='sm'>\n  <input b-otp-digit />\n  <input b-otp-digit />\n  <input b-otp-digit />\n  <input b-otp-digit />\n  <input b-otp-digit />\n  <input b-otp-digit />\n</b-otp>\n\n<b-otp size='md'>\n  <input b-otp-digit />\n  <input b-otp-digit />\n  <input b-otp-digit />\n  <input b-otp-digit />\n  <input b-otp-digit />\n  <input b-otp-digit />\n</b-otp>\n\n<b-otp size='lg'>\n  <input b-otp-digit />\n  <input b-otp-digit />\n  <input b-otp-digit />\n  <input b-otp-digit />\n  <input b-otp-digit />\n  <input b-otp-digit />\n</b-otp>`;
   disabledUsage = `<b-otp [disabled]='true'>\n  <input b-otp-digit />\n  <input b-otp-digit />\n  <input b-otp-digit />\n  <input b-otp-digit />\n  <input b-otp-digit />\n  <input b-otp-digit />\n</b-otp>`;
   invalidUsage = `<form [formGroup]='form'>\n  <b-otp formControlName='invalidControl'>\n    <input b-otp-digit />\n    <input b-otp-digit />\n    <input b-otp-digit />\n    <input b-otp-digit />\n    <input b-otp-digit />\n    <input b-otp-digit />\n  </b-otp>\n</form>`;
 

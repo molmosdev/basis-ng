@@ -47,7 +47,7 @@ export * from './core/components/drawer/drawer.component';
 export * from './core/services/responsive.service';
 
 /* OTP */
-export * from './core/components/otp/otp.component';
+export * from './core/components/otp/otp';
 
 /* Badge */
 export * from './core/components/badge/badge';

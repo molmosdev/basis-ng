@@ -30,20 +30,20 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => OtpComponent),
+      useExisting: forwardRef(() => Otp),
       multi: true,
     },
   ],
 })
 /**
- * OtpComponent manages a group of digit inputs for OTP entry.
+ * Otp manages a group of digit inputs for OTP entry.
  * Implements keyboard navigation, paste handling, and ControlValueAccessor for Angular Forms.
  */
-export class OtpComponent implements AfterContentInit, ControlValueAccessor {
+export class Otp implements AfterContentInit, ControlValueAccessor {
   /**
-   * The visual size of the OTP inputs. Accepts '1', '2', or '3'. Default is '2'.
+   * The visual size of the OTP inputs. Accepts 'sm', 'md', or 'lg'. Default is 'md'.
    */
-  readonly size = model<'1' | '2' | '3'>('2');
+  readonly size = model<'sm' | 'md' | 'lg'>('md');
 
   /**
    * Computed signal for the number of digit inputs.
@@ -88,8 +88,8 @@ export class OtpComponent implements AfterContentInit, ControlValueAccessor {
       const el = input.el.nativeElement;
       // maxLength y type se aplican por la directiva
       el.disabled = this.disabled();
-      el.classList.remove('size-1', 'size-2', 'size-3');
-      el.classList.add(`size-${this.size()}`);
+      el.classList.remove('b-size-sm', 'b-size-md', 'b-size-lg');
+      el.classList.add(`b-size-${this.size()}`);
       el.addEventListener('input', (event: Event) => {
         this.onInput(event, idx);
       });
@@ -251,8 +251,12 @@ export class OtpComponent implements AfterContentInit, ControlValueAccessor {
     this.disabled.set(isDisabled);
     this.digitInputs().forEach(input => {
       input.el.nativeElement.disabled = isDisabled;
-      input.el.nativeElement.classList.remove('size-1', 'size-2', 'size-3');
-      input.el.nativeElement.classList.add(`size-${this.size()}`);
+      input.el.nativeElement.classList.remove(
+        'b-size-sm',
+        'b-size-md',
+        'b-size-lg'
+      );
+      input.el.nativeElement.classList.add(`b-size-${this.size()}`);
     });
   }
 }
