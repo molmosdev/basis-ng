@@ -1,5 +1,5 @@
 input[b-input] {
-  @apply box-border border transition-colors text-base font-sans rounded-lg bg-background border-secondary text-font min-w-1/2;
+  @apply box-border border transition-colors text-base font-sans bg-background border-secondary text-font min-w-1/2;
   @apply dark:bg-background-dark dark:text-font-dark dark:border-secondary-dark;
 
   &:focus-visible:not(:read-only) {
@@ -31,12 +31,12 @@ input[b-input] {
   }
 
   &.b-size-sm {
-    @apply px-2 py-1 h-7 text-xs;
+    @apply px-2 py-1 h-7 text-xs rounded-size-sm;
   }
   &.b-size-md {
-    @apply px-3 py-2 h-9 text-base;
+    @apply px-3 py-2 h-9 text-base rounded-size-md;
   }
   &.b-size-lg {
-    @apply px-4 py-3 h-11 text-lg;
+    @apply px-4 py-3 h-11 text-lg rounded-size-lg;
   }
 }
