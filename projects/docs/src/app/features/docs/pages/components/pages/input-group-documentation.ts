@@ -8,8 +8,8 @@ import {
 import { Component } from '@angular/core';
 import { CodeBlock } from '../shared/components/code-block';
 import { StepsButtons } from '../../shared/components/steps-buttons';
-import { provideIcons } from '@ng-icons/core';
-import { lucideRocket } from '@ng-icons/lucide';
+import { provideIcons, NgIcon } from '@ng-icons/core';
+import { lucideEye, lucideEyeOff, lucideRocket } from '@ng-icons/lucide';
 
 @Component({
   selector: 'article[app-input-group-documentation]',
@@ -21,6 +21,7 @@ import { lucideRocket } from '@ng-icons/lucide';
     StepsButtons,
     Badge,
     Alert,
+    NgIcon,
   ],
   template: `
     <app-steps-buttons
@@ -32,7 +33,7 @@ import { lucideRocket } from '@ng-icons/lucide';
     </b-alert>
     <h1 class="font-bold text-2xl flex gap-2 items-start">
       Input Group
-      <span b-badge variant="outlined" size="sm"> New </span>
+      <span b-badge variant="secondary" size="sm"> New </span>
     </h1>
     <div class="flex flex-col gap-4">
       <span>Input Group allows you to group one or more <code>b-input</code> elements together with additional elements such as text or buttons, before or after the input.</span>
@@ -55,6 +56,22 @@ import { lucideRocket } from '@ng-icons/lucide';
             </tr>
           </tbody>
         </table>
+      </div>
+      <h2 class="font-semibold text-xl">Sizes</h2>
+      <code-block [code]="sizesUsage" />
+      <div class="border border-gray-200 dark:border-neutral-700 rounded-lg p-6 mb-6 bg-white dark:bg-neutral-900 documentation-playground flex flex-col items-center justify-center gap-4">
+        <b-input-group maxWidth="240px">
+          <span>@</span>
+          <input b-input type="text" size="sm" placeholder="username (sm)" />
+        </b-input-group>
+        <b-input-group maxWidth="240px">
+          <input b-input type="text" size="md" placeholder="Amount (md)" />
+          <span>USD</span>
+        </b-input-group>
+        <b-input-group maxWidth="240px">
+          <button b-button variant="secondary" size="md">Search</button>
+          <input b-input type="text" size="lg" placeholder="Search... (lg)" />
+        </b-input-group>
       </div>
       <h2 class="font-semibold text-xl">With prepended text</h2>
       <code-block [code]="prependTextUsage" />
@@ -103,7 +120,7 @@ import { lucideRocket } from '@ng-icons/lucide';
         <b-input-group maxWidth="240px">
           <input b-input [type]="showPassword ? 'text' : 'password'" placeholder="Password" type="password" />
           <button b-button variant="ghost" size="sm" type="button" [squared]="true" (click)="showPassword = !showPassword" [attr.aria-label]="showPassword ? 'Hide password' : 'Show password'">
-            <!-- <i b-icon [icon]="showPassword ? 'EyeOff' : 'Eye'" [size]="15"></i> -->
+            <ng-icon [name]="showPassword ? 'lucideEyeOff' : 'lucideEye'" size="15" color="currentColor" />
           </button>
         </b-input-group>
       </div>
@@ -112,7 +129,7 @@ import { lucideRocket } from '@ng-icons/lucide';
       [previous]="{ label: 'Input', path: '/docs/components/input' }"
       [next]="{ label: 'Menu', path: '/docs/components/menu' }" />
   `,
-  providers: [provideIcons({ lucideRocket })],
+  providers: [provideIcons({ lucideRocket, lucideEyeOff, lucideEye })],
   host: {
     class:
       'mx-auto flex w-full max-w-3xl min-w-0 flex-1 flex-col gap-6 px-4 pb-20',
@@ -121,6 +138,7 @@ import { lucideRocket } from '@ng-icons/lucide';
 export class InputGroupDocumentation {
   angularImport = `import { InputGroupComponent, InputComponent } from '@basis-ng/primitives'`;
   stylesImport = `@import '@basis-ng/styles/input-group';`;
+  sizesUsage = `<b-input-group maxWidth="240px">\n  <span>@</span>\n  <input b-input type="text" size="sm" placeholder="username (sm)" />\n</b-input-group>\n<b-input-group maxWidth="240px">\n  <input b-input type="text" size="md" placeholder="Amount (md)" />\n  <span>USD</span>\n</b-input-group>\n<b-input-group maxWidth="240px">\n  <button b-button variant="secondary" size="md">Search</button>\n  <input b-input type="text" size="lg" placeholder="Search... (lg)" />\n</b-input-group>`;
   prependTextUsage = `<b-input-group maxWidth="240px">\n  <span>@</span>\n  <input b-input type="text" placeholder="username" />\n</b-input-group>`;
   appendTextUsage = `<b-input-group maxWidth="240px">\n  <input b-input type="text" placeholder="Amount" />\n  <span>USD</span>\n</b-input-group>`;
   prependButtonUsage = `<b-input-group maxWidth="240px">\n  <button b-button variant="primary" size="sm">Search</button>\n  <input b-input type="text" placeholder="Search..." />\n</b-input-group>`;
