@@ -12,7 +12,7 @@ import {
 import { CdkTrapFocus } from '@angular/cdk/a11y';
 import { CommandOptionsComponent } from './command-options.component';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
-import { InputComponent } from '../input/input.component';
+import { Input } from '../input/input';
 import { UtilsService } from '../../../shared/services/utils.service';
 
 /**
@@ -21,7 +21,7 @@ import { UtilsService } from '../../../shared/services/utils.service';
  */
 @Component({
   selector: 'b-command',
-  imports: [InputComponent, CdkTrapFocus],
+  imports: [Input, CdkTrapFocus],
   template: `<input
       type="text"
       b-input

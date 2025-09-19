@@ -21,7 +21,7 @@ import { NgModel } from '@angular/forms';
   },
   exportAs: 'bInput',
 })
-export class InputComponent implements AfterViewInit {
+export class Input implements AfterViewInit {
   /**
    * The type of the input.
    */

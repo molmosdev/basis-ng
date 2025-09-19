@@ -13,7 +13,7 @@
     "./checkbox": "./src/components/checkbox.css",
     "./color-picker": "./src/components/color-picker.css",
     "./input-group": "./src/components/input-group.css",
-    "./input": "./src/components/input.component.css",
+    "./input": "./src/components/input.css",
     "./label": "./src/components/label.component.css",
     "./menu": "./src/components/menu.css",
     "./option": "./src/components/option.component.css",

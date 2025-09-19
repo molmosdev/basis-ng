@@ -8,7 +8,7 @@ import {
   CardContentComponent,
   CardFooterComponent,
   Button,
-  InputComponent,
+  Input,
   Badge,
   Alert,
 } from '@basis-ng/primitives';
@@ -27,7 +27,7 @@ import { StepsButtons } from '../../shared/components/steps-buttons';
     CardContentComponent,
     CardFooterComponent,
     Button,
-    InputComponent,
+    Input,
     StepsButtons,
     Badge,
     Alert,

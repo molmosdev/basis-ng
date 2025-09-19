@@ -13,7 +13,7 @@ export * from './core/components/button-group/button-group';
 export * from './shared/directives/lazy-content.directive';
 
 /* Input */
-export * from './core/components/input/input.component';
+export * from './core/components/input/input';
 
 /* Select */
 export * from './core/components/select/select';

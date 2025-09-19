@@ -1,5 +1,5 @@
 b-input-group {
-  /* Base container styles mirroring input.component.css approach */
+  /* Base container styles mirroring input.css approach */
   @apply flex items-center overflow-hidden inset-ring-1 inset-ring-secondary bg-background text-font font-sans transition-colors;
   @apply dark:inset-ring-secondary-dark dark:bg-background-dark dark:text-font-dark;
 
