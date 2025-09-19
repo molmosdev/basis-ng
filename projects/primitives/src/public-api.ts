@@ -59,7 +59,7 @@ export * from './core/components/checkbox/checkbox.component';
 export * from './core/components/textarea/textarea.component';
 
 /* Range */
-export * from './core/components/range/range.component';
+export * from './core/components/range/range';
 
 /* Badge */
 export * from './core/components/badge/badge';

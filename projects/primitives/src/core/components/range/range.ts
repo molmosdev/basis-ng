@@ -14,9 +14,12 @@ import {
     '[attr.value]': 'value()',
     '[style.max-width]': 'maxWidth()',
     '(input)': 'onInput($event)',
+    '[class.b-size-sm]': 'size() === "sm"',
+    '[class.b-size-md]': 'size() === "md"',
+    '[class.b-size-lg]': 'size() === "lg"',
   },
 })
-export class RangeComponent implements AfterViewInit {
+export class Range implements AfterViewInit {
   /**
    * Current value of the range.
    */
@@ -26,6 +29,11 @@ export class RangeComponent implements AfterViewInit {
    * Maximum width of the range slider.
    */
   readonly maxWidth = input<string>('100%');
+
+  /**
+   * Size of the range slider (sm, md, lg)
+   */
+  readonly size = input<'sm' | 'md' | 'lg'>('md');
 
   /**
    * Reference to the range element.

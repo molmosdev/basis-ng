@@ -17,7 +17,7 @@
     "./label": "./src/components/label.component.css",
     "./menu": "./src/components/menu.css",
     "./option": "./src/components/option.component.css",
-    "./range": "./src/components/range.component.css",
+    "./range": "./src/components/range.css",
     "./row-item": "./src/components/row-item.component.css",
     "./row": "./src/components/row.component.css",
     "./search": "./src/components/search.component.css",

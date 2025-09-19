@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
 import { CodeBlock } from '../shared/components/code-block';
-import { Alert, RangeComponent } from '@basis-ng/primitives';
+import { Alert, Range } from '@basis-ng/primitives';
 import { StepsButtons } from '../../shared/components/steps-buttons';
 import { provideIcons } from '@ng-icons/core';
 import { lucideRocket } from '@ng-icons/lucide';
 
 @Component({
   selector: 'article[app-range-documentation]',
-  imports: [CodeBlock, RangeComponent, StepsButtons, Alert],
+  imports: [CodeBlock, Range, StepsButtons, Alert],
   template: `
     <app-steps-buttons
       [previous]="{ label: 'OTP', path: '/docs/components/otp' }"
@@ -126,6 +126,30 @@ import { lucideRocket } from '@ng-icons/lucide';
           [maxWidth]="'240px'"
           (valueChange)="onValueChange($event)" />
       </div>
+
+      <h2 class="font-semibold text-xl">Range Sizes</h2>
+      <code-block [code]="sizeUsage" />
+      <div
+        class="border border-gray-200 dark:border-neutral-700 rounded-lg p-6 mb-6 bg-white dark:bg-neutral-900 documentation-playground flex flex-col items-center justify-center gap-4">
+        <input
+          b-range
+          type="range"
+          size="sm"
+          [value]="basicValue"
+          [maxWidth]="'240px'" />
+        <input
+          b-range
+          type="range"
+          size="md"
+          [value]="basicValue"
+          [maxWidth]="'240px'" />
+        <input
+          b-range
+          type="range"
+          size="lg"
+          [value]="basicValue"
+          [maxWidth]="'240px'" />
+      </div>
     </div>
     <app-steps-buttons
       [previous]="{ label: 'OTP', path: '/docs/components/otp' }"
@@ -138,9 +162,10 @@ import { lucideRocket } from '@ng-icons/lucide';
   },
 })
 export class RangeDocumentation {
-  angularImport = `import { RangeComponent } from '@basis-ng/primitives'`;
+  angularImport = `import { Range } from '@basis-ng/primitives'`;
   stylesImport = `@import '@basis-ng/styles/range';`;
   basicUsage = `<input type="range" b-range [value]="basicValue" (valueChange)="onValueChange($event)" />`;
+  sizeUsage = `<input b-range type="range" size="sm" />\n<input b-range type="range" size="md" />\n<input b-range type="range" size="lg" />`;
   basicValue = '50';
   onValueChange(value: string) {
     this.basicValue = value;
