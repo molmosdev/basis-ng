@@ -1,88 +1,81 @@
 b-input-group {
-  display: flex;
-  align-items: center;
-  border-radius: var(--radius);
-  box-sizing: border-box;
-  background-color: var(--input-background);
-  border-width: 1px;
-  border-style: solid;
-  border-color: var(--border-color);
+  /* Base container styles mirroring input.component.css approach */
+  @apply flex items-center box-border rounded-lg overflow-hidden border border-secondary bg-background text-font font-sans transition-colors;
+  @apply dark:border-secondary-dark dark:bg-background-dark dark:text-font-dark;
 
-  &:has(input[b-input]:read-only) {
-    border-width: 0px;
-  }
-
+  /* Internal input adjustments when placed inside group */
   input[b-input] {
-    border-left: 0;
-    border-right: 0;
-    outline-width: 0 !important;
-    padding: 0 !important;
-    border-radius: 0 !important;
-    width: 100%;
+    @apply !border-0 !outline-0 p-0 !rounded-none !w-full;
   }
 
+  /* Focus state when any inner input is focused (and not readonly) */
   &:has(input[b-input]:focus-visible:not(:read-only)) {
-    outline: 2px solid var(--primary);
-    outline-offset: 2px;
+    @apply outline-2 outline-offset-2 outline-primary dark:outline-primary-dark;
 
+    /* Override outline color if invalid while focused */
     &:has(.ng-invalid.ng-touched),
     &:has(.ng-invalid.ng-dirty) {
-      outline-color: var(--error-foreground);
+      @apply outline-destructive dark:outline-destructive-dark;
     }
   }
 
+  /* Disabled inner input visual tweak */
   input[b-input]:disabled {
-    opacity: 0.6;
-    pointer-events: none;
+    @apply opacity-60 pointer-events-none;
   }
 
+  /* Invalid state styles (group reflects error) */
   &:has(input[b-input].ng-invalid.ng-touched),
   &:has(input[b-input].ng-invalid.ng-dirty) {
-    color: var(--error-foreground);
-    background-color: var(--error);
-    border-color: var(--error-border-color);
+    @apply text-destructive bg-destructive/20 border-destructive dark:text-destructive-dark dark:bg-destructive-dark/20 dark:border-destructive-dark;
 
     button[b-button] {
-      color: var(--error-foreground);
-      background-color: var(--error);
-      border: 1px solid var(--error-border-color);
+      @apply text-destructive bg-destructive border border-destructive dark:text-destructive-dark dark:bg-destructive-dark dark:border-destructive-dark;
     }
 
+    /* Icon strokes inside when error */
     i svg {
-      stroke: var(--error-foreground);
+      stroke: var(--color-destructive-foreground, currentColor);
     }
   }
 
-  &:has(.size-1) {
-    padding: 0.357rem 0.5rem;
-    height: 1.714rem;
-    gap: 0.5rem;
-    font-size: 0.857rem;
+  /* Size variants (normalized to Tailwind scale, matching input sizes) */
+  &:has(.b-size-sm) {
+    /* small */
+    @apply py-1 h-7 text-xs;
+    &:has(> :first-child:not(input[b-input])) {
+      @apply pl-2;
+    }
+    &:has(> :last-child:not(input[b-input])) {
+      @apply pr-2;
+    }
+  }
+  &:has(.b-size-md) {
+    /* medium */
+    @apply py-2 h-9 text-base;
+    &:has(> :first-child:not(input[b-input])) {
+      @apply pl-3;
+    }
+    &:has(> :first-child(button[b-button])) {
+      @apply pl-1;
+    }
+    &:has(> :last-child:not(input[b-input])) {
+      @apply pr-3;
+    }
+  }
+  &:has(.b-size-lg) {
+    /* large */
+    @apply py-3 h-11 text-lg;
+    &:has(> :first-child:not(input[b-input])) {
+      @apply pl-4;
+    }
+    &:has(> :last-child:not(input[b-input])) {
+      @apply pr-4;
+    }
   }
 
-  &:has(.size-2) {
-    padding: 0.5rem 0.75rem;
-    height: 2.286rem;
-    gap: 0.75rem;
-    font-size: 1rem;
-  }
-
-  &:has(.size-3) {
-    padding: 0.786rem 1rem;
-    min-height: 2.857rem;
-    gap: 1rem;
-    font-size: 1.143rem;
-  }
-
-  &:has(button[b-button]:last-child) {
-    padding-right: 0.22rem;
-  }
-
-  &:has(button[b-button]:first-child) {
-    padding-left: 0.285rem;
-  }
-
+  /* Inner buttons: slightly reduced radius */
   button[b-button] {
-    border-radius: calc(var(--radius) - 0.2rem);
+    border-radius: calc(var(--radius-size-lg, var(--radius)) - 0.2rem);
   }
 }
