@@ -1,11 +1,11 @@
 b-input-group {
   /* Base container styles mirroring input.component.css approach */
-  @apply flex items-center box-border overflow-hidden border border-secondary bg-background text-font font-sans transition-colors;
-  @apply dark:border-secondary-dark dark:bg-background-dark dark:text-font-dark;
+  @apply flex items-center overflow-hidden inset-ring-1 inset-ring-secondary bg-background text-font font-sans transition-colors;
+  @apply dark:inset-ring-secondary-dark dark:bg-background-dark dark:text-font-dark;
 
   /* Internal input adjustments when placed inside group */
   input[b-input] {
-    @apply !border-0 !outline-0 p-0 !rounded-none !w-full;
+    @apply !outline-0 p-0 inset-ring-0 !w-full !rounded-none bg-transparent;
   }
 
   /* Focus state when any inner input is focused (and not readonly) */
@@ -27,10 +27,10 @@ b-input-group {
   /* Invalid state styles (group reflects error) */
   &:has(input[b-input].ng-invalid.ng-touched),
   &:has(input[b-input].ng-invalid.ng-dirty) {
-    @apply text-destructive bg-destructive/20 border-destructive dark:text-destructive-dark dark:bg-destructive-dark/20 dark:border-destructive-dark;
+    @apply text-destructive bg-destructive/20 inset-ring-1 inset-ring-destructive dark:text-destructive-dark dark:bg-destructive-dark/20 dark:inset-ring-destructive-dark;
 
     button[b-button] {
-      @apply text-destructive bg-destructive border border-destructive dark:text-destructive-dark dark:bg-destructive-dark dark:border-destructive-dark;
+      @apply text-destructive bg-destructive inset-ring-1 inset-ring-destructive dark:text-destructive-dark dark:bg-destructive-dark dark:inset-ring-destructive-dark;
     }
 
     /* Icon strokes inside when error */
@@ -46,17 +46,10 @@ b-input-group {
 
     &:has(> :first-child:not(input[b-input])) {
       @apply pl-2;
-
-      &:has(> button[b-button]:first-child) {
-        @apply !pl-1;
-      }
     }
+
     &:has(> :last-child:not(input[b-input])) {
       @apply pr-2;
-
-      &:has(> button[b-button]:last-child) {
-        @apply !pr-1;
-      }
     }
   }
   &:has(.b-size-md) {
@@ -87,20 +80,15 @@ b-input-group {
       @apply pl-4;
 
       &:has(> button[b-button]:first-child) {
-        @apply !pl-2;
+        @apply !pl-1;
       }
     }
     &:has(> :last-child:not(input[b-input])) {
       @apply pr-4;
 
       &:has(> button[b-button]:last-child) {
-        @apply !pr-2;
+        @apply !pr-1;
       }
     }
-  }
-
-  /* Inner buttons: slightly reduced radius */
-  button[b-button] {
-    border-radius: calc(var(--radius-size-lg, var(--radius)) - 0.2rem);
   }
 }
