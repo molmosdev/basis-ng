@@ -15,8 +15,8 @@ button[b-button] {
     @apply dark:text-primary-dark dark:hover:bg-primary-dark/10;
   }
   &.b-variant-outlined {
-    @apply bg-transparent text-primary inset-ring-1 inset-ring-secondary-foreground/30 hover:bg-primary/5;
-    @apply dark:text-primary-dark dark:inset-ring-secondary-foreground-dark/30 dark:hover:bg-primary-dark/5;
+    @apply bg-transparent text-primary inset-ring-1 inset-ring-secondary hover:bg-primary/5;
+    @apply dark:text-primary-dark dark:inset-ring-secondary-dark dark:hover:bg-primary-dark/5;
   }
   &.b-variant-destructive {
     @apply bg-destructive text-destructive-foreground inset-ring-1 inset-ring-destructive hover:bg-destructive/90 hover:inset-ring-destructive/80;
