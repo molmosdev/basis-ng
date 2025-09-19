@@ -1,5 +1,5 @@
 import {
-  InputGroupComponent,
+  InputGroup,
   InputComponent,
   Button,
   Badge,
@@ -15,7 +15,7 @@ import { lucideEye, lucideEyeOff, lucideRocket } from '@ng-icons/lucide';
   selector: 'article[app-input-group-documentation]',
   imports: [
     CodeBlock,
-    InputGroupComponent,
+    InputGroup,
     InputComponent,
     Button,
     StepsButtons,
@@ -136,7 +136,7 @@ import { lucideEye, lucideEyeOff, lucideRocket } from '@ng-icons/lucide';
   },
 })
 export class InputGroupDocumentation {
-  angularImport = `import { InputGroupComponent, InputComponent } from '@basis-ng/primitives'`;
+  angularImport = `import { InputGroup, InputComponent } from '@basis-ng/primitives'`;
   stylesImport = `@import '@basis-ng/styles/input-group';`;
   sizesUsage = `<b-input-group maxWidth="240px">\n  <span>@</span>\n  <input b-input type="text" size="sm" placeholder="username (sm)" />\n</b-input-group>\n<b-input-group maxWidth="240px">\n  <input b-input type="text" size="md" placeholder="Amount (md)" />\n  <span>USD</span>\n</b-input-group>\n<b-input-group maxWidth="240px">\n  <button b-button variant="secondary" size="md">Search</button>\n  <input b-input type="text" size="lg" placeholder="Search... (lg)" />\n</b-input-group>`;
   prependTextUsage = `<b-input-group maxWidth="240px">\n  <span>@</span>\n  <input b-input type="text" placeholder="username" />\n</b-input-group>`;

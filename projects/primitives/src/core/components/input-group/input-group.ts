@@ -4,4 +4,4 @@ import { Component } from '@angular/core';
   selector: 'b-input-group',
   template: `<ng-content />`,
 })
-export class InputGroupComponent {}
+export class InputGroup {}

@@ -100,7 +100,7 @@ export * from './core/directives/overlay-origin';
 export * from './core/directives/connected-overlay';
 
 /* Input Group */
-export * from './core/components/input-group/input-group.component';
+export * from './core/components/input-group/input-group';
 
 /* Dialog */
 export * from './core/services/dialog.service';
