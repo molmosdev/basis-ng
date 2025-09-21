@@ -23,7 +23,6 @@ import { TreeNodeComponent } from '@basis-ng/primitives';
   template: `<ng-content />`,
   host: {
     '(cdkDropListDropped)': 'dropEmitter.emit($event)',
-    '[style.max-width]': 'maxWidth()',
   },
   hostDirectives: [
     {
@@ -35,10 +34,6 @@ import { TreeNodeComponent } from '@basis-ng/primitives';
   ],
 })
 export class TreeComponent implements OnInit {
-  /**
-   * The ID of the tree component.
-   */
-  readonly maxWidth = input<string>('100%');
   /**
    * Determines whether the tree is draggable.
    */
