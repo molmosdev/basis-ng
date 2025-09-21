@@ -38,15 +38,15 @@ import { lucideEye, lucideEyeOff, lucideRocket } from '@ng-icons/lucide';
       <h2 class="font-semibold text-xl">Sizes</h2>
       <code-block [code]="sizesUsage" />
       <div class="border border-gray-200 dark:border-neutral-700 rounded-lg p-6 mb-6 bg-white dark:bg-neutral-900 documentation-playground flex flex-col items-center justify-center gap-4">
-        <b-input-group maxWidth="240px">
+        <b-input-group>
           <span>@</span>
           <input b-input type="text" size="sm" placeholder="username (sm)" />
         </b-input-group>
-        <b-input-group maxWidth="240px">
+        <b-input-group>
           <input b-input type="text" size="md" placeholder="Amount (md)" />
           <span>USD</span>
         </b-input-group>
-        <b-input-group maxWidth="240px">
+        <b-input-group>
           <button b-button variant="secondary" size="md">Search</button>
           <input b-input type="text" size="lg" placeholder="Search... (lg)" />
         </b-input-group>
@@ -54,7 +54,7 @@ import { lucideEye, lucideEyeOff, lucideRocket } from '@ng-icons/lucide';
       <h2 class="font-semibold text-xl">With prepended text</h2>
       <code-block [code]="prependTextUsage" />
       <div class="border border-gray-200 dark:border-neutral-700 rounded-lg p-6 mb-6 bg-white dark:bg-neutral-900 documentation-playground flex flex-col items-center justify-center gap-4">
-        <b-input-group maxWidth="240px">
+        <b-input-group>
           <span>@</span>
           <input b-input type="text" placeholder="username" />
         </b-input-group>
@@ -62,7 +62,7 @@ import { lucideEye, lucideEyeOff, lucideRocket } from '@ng-icons/lucide';
       <h2 class="font-semibold text-xl">With appended text</h2>
       <code-block [code]="appendTextUsage" />
       <div class="border border-gray-200 dark:border-neutral-700 rounded-lg p-6 mb-6 bg-white dark:bg-neutral-900 documentation-playground flex flex-col items-center justify-center gap-4">
-        <b-input-group maxWidth="240px">
+        <b-input-group>
           <input b-input type="text" placeholder="Amount" />
           <span>USD</span>
         </b-input-group>
@@ -70,7 +70,7 @@ import { lucideEye, lucideEyeOff, lucideRocket } from '@ng-icons/lucide';
       <h2 class="font-semibold text-xl">With prepended button</h2>
       <code-block [code]="prependButtonUsage" />
       <div class="border border-gray-200 dark:border-neutral-700 rounded-lg p-6 mb-6 bg-white dark:bg-neutral-900 documentation-playground flex flex-col items-center justify-center gap-4">
-        <b-input-group maxWidth="240px">
+        <b-input-group>
           <button b-button variant="primary" size="sm">Search</button>
           <input b-input type="text" placeholder="Search..." />
         </b-input-group>
@@ -78,7 +78,7 @@ import { lucideEye, lucideEyeOff, lucideRocket } from '@ng-icons/lucide';
       <h2 class="font-semibold text-xl">With appended button</h2>
       <code-block [code]="appendButtonUsage" />
       <div class="border border-gray-200 dark:border-neutral-700 rounded-lg p-6 mb-6 bg-white dark:bg-neutral-900 documentation-playground flex flex-col items-center justify-center gap-4">
-        <b-input-group maxWidth="240px">
+        <b-input-group>
           <input b-input type="email" placeholder="Email address" />
           <button b-button variant="primary" size="sm">Send</button>
         </b-input-group>
@@ -86,7 +86,7 @@ import { lucideEye, lucideEyeOff, lucideRocket } from '@ng-icons/lucide';
       <h2 class="font-semibold text-xl">Combining elements</h2>
       <code-block [code]="combinedUsage" />
       <div class="border border-gray-200 dark:border-neutral-700 rounded-lg p-6 mb-6 bg-white dark:bg-neutral-900 documentation-playground flex flex-col items-center justify-center gap-4">
-        <b-input-group maxWidth="240px">
+        <b-input-group>
           <span>+52</span>
           <input b-input type="number" placeholder="Phone" />
           <button b-button variant="primary" size="sm">Verify</button>
@@ -95,7 +95,7 @@ import { lucideEye, lucideEyeOff, lucideRocket } from '@ng-icons/lucide';
       <h2 class="font-semibold text-xl">Password input with show/hide button</h2>
       <code-block [code]="passwordToggleUsage" />
       <div class="border border-gray-200 dark:border-neutral-700 rounded-lg p-6 mb-6 bg-white dark:bg-neutral-900 documentation-playground flex flex-col items-center justify-center gap-4">
-        <b-input-group maxWidth="240px">
+        <b-input-group>
           <input b-input [type]="showPassword ? 'text' : 'password'" placeholder="Password" type="password" />
           <button b-button variant="ghost" size="sm" type="button" [squared]="true" (click)="showPassword = !showPassword" [attr.aria-label]="showPassword ? 'Hide password' : 'Show password'">
             <ng-icon [name]="showPassword ? 'lucideEyeOff' : 'lucideEye'" size="15" color="currentColor" />
@@ -116,12 +116,12 @@ import { lucideEye, lucideEyeOff, lucideRocket } from '@ng-icons/lucide';
 export class InputGroupDocumentation {
   angularImport = `import { InputGroup, Input } from '@basis-ng/primitives'`;
   stylesImport = `@import '@basis-ng/styles/input-group';`;
-  sizesUsage = `<b-input-group maxWidth="240px">\n  <span>@</span>\n  <input b-input type="text" size="sm" placeholder="username (sm)" />\n</b-input-group>\n<b-input-group maxWidth="240px">\n  <input b-input type="text" size="md" placeholder="Amount (md)" />\n  <span>USD</span>\n</b-input-group>\n<b-input-group maxWidth="240px">\n  <button b-button variant="secondary" size="md">Search</button>\n  <input b-input type="text" size="lg" placeholder="Search... (lg)" />\n</b-input-group>`;
-  prependTextUsage = `<b-input-group maxWidth="240px">\n  <span>@</span>\n  <input b-input type="text" placeholder="username" />\n</b-input-group>`;
-  appendTextUsage = `<b-input-group maxWidth="240px">\n  <input b-input type="text" placeholder="Amount" />\n  <span>USD</span>\n</b-input-group>`;
-  prependButtonUsage = `<b-input-group maxWidth="240px">\n  <button b-button variant="primary" size="sm">Search</button>\n  <input b-input type="text" placeholder="Search..." />\n</b-input-group>`;
-  appendButtonUsage = `<b-input-group maxWidth="240px">\n  <input b-input type="email" placeholder="Email address" />\n  <button b-button variant="primary" size="sm">Send</button>\n</b-input-group>`;
-  combinedUsage = `<b-input-group maxWidth="240px">\n  <span>+52</span>\n  <input b-input type="number" placeholder="Phone" />\n  <button b-button variant="primary" size="sm">Verify</button>\n</b-input-group>`;
+  sizesUsage = `<b-input-group>\n  <span>@</span>\n  <input b-input type="text" size="sm" placeholder="username (sm)" />\n</b-input-group>\n<b-input-group>\n  <input b-input type="text" size="md" placeholder="Amount (md)" />\n  <span>USD</span>\n</b-input-group>\n<b-input-group>\n  <button b-button variant="secondary" size="md">Search</button>\n  <input b-input type="text" size="lg" placeholder="Search... (lg)" />\n</b-input-group>`;
+  prependTextUsage = `<b-input-group>\n  <span>@</span>\n  <input b-input type="text" placeholder="username" />\n</b-input-group>`;
+  appendTextUsage = `<b-input-group>\n  <input b-input type="text" placeholder="Amount" />\n  <span>USD</span>\n</b-input-group>`;
+  prependButtonUsage = `<b-input-group>\n  <button b-button variant="primary" size="sm">Search</button>\n  <input b-input type="text" placeholder="Search..." />\n</b-input-group>`;
+  appendButtonUsage = `<b-input-group>\n  <input b-input type="email" placeholder="Email address" />\n  <button b-button variant="primary" size="sm">Send</button>\n</b-input-group>`;
+  combinedUsage = `<b-input-group>\n  <span>+52</span>\n  <input b-input type="number" placeholder="Phone" />\n  <button b-button variant="primary" size="sm">Verify</button>\n</b-input-group>`;
   showPassword = false;
-  passwordToggleUsage = `<b-input-group maxWidth="240px">\n  <input\n    b-input\n    [type]="showPassword ? 'text' : 'password'"\n    placeholder="Password"\n    type="password"/>\n  <button\n    b-button\n    variant="ghost"\n    size="sm"\n    type="button"\n    [squared]="true"\n    (click)="showPassword = !showPassword"\n    [attr.aria-label]="showPassword ? 'Hide password' : 'Show password'">\n    <!-- <i b-icon [icon]="showPassword ? 'EyeOff' : 'Eye'" [size]="15"></i> -->\n  </button>\n</b-input-group>`;
+  passwordToggleUsage = `<b-input-group>\n  <input\n    b-input\n    [type]="showPassword ? 'text' : 'password'"\n    placeholder="Password"\n    type="password"/>\n  <button\n    b-button\n    variant="ghost"\n    size="sm"\n    type="button"\n    [squared]="true"\n    (click)="showPassword = !showPassword"\n    [attr.aria-label]="showPassword ? 'Hide password' : 'Show password'">\n    <!-- <i b-icon [icon]="showPassword ? 'EyeOff' : 'Eye'" [size]="15"></i> -->\n  </button>\n</b-input-group>`;
 }
