@@ -220,7 +220,6 @@ export class InputDocumentation {
   invalidUsage = `<form [formGroup]="form">
   <input b-input type="text" placeholder="Invalid input" formControlName="invalidControl" />
 </form>`;
-  maxWidthUsage = `<input b-input type="text" placeholder="Input with max width" [maxWidth]="'200px'" />`;
 
   ngModelValue = 'Hello World!';
   passwordValue = 'kñl23jkjf2i';
