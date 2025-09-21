@@ -1,11 +1,14 @@
-import { CdkListbox } from '@angular/cdk/listbox';
+import { ActiveDescendantKeyManager } from '@angular/cdk/a11y';
+import { CdkListbox, CdkOption } from '@angular/cdk/listbox';
 import {
   Component,
   computed,
+  contentChildren,
   ElementRef,
   inject,
   model,
   output,
+  OnInit,
 } from '@angular/core';
 import { ConnectedOverlay } from '@basis-ng/primitives';
 
@@ -30,7 +33,7 @@ import { ConnectedOverlay } from '@basis-ng/primitives';
     '[animate.leave]': '"b-select-content-leaving-" + this.direction()',
   },
 })
-export class SelectContent {
+export class SelectContent implements OnInit {
   /**
    * Reference to the host element of the component.
    */
@@ -40,6 +43,20 @@ export class SelectContent {
    * Reference to the CDK Listbox directive.
    */
   listBox = inject(CdkListbox);
+
+  /**
+   * Collection of CdkOption elements within the listbox.
+   */
+  readonly options = contentChildren(CdkOption);
+
+  /**
+   * Key manager for handling keyboard navigation and active descendant management.
+   */
+  readonly listKeyManager = computed(() =>
+    new ActiveDescendantKeyManager(this.options())
+      .withWrap()
+      .withVerticalOrientation()
+  );
 
   /**
    * Event emitter that emits when the value changes.
@@ -60,4 +77,12 @@ export class SelectContent {
    * Computed signal representing the direction of the overlay.
    */
   readonly direction = computed(() => this.overlay.direction());
+
+  /**
+   * Lifecycle hook that initializes the component.
+   * Enables the use of active descendant for the listbox.
+   */
+  ngOnInit(): void {
+    this.listBox.useActiveDescendant = true;
+  }
 }
