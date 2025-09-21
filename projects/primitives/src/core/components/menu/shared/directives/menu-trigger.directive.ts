@@ -14,7 +14,7 @@ import { Position } from '../../../../../shared/types/position.type';
 })
 export class MenuTriggerDirective implements OnInit {
   trigger = inject(CdkMenuTrigger);
-  readonly menuTriggerPosition = input<Position>('right-top');
+  readonly menuTriggerPosition = input<Position | Position[]>('right-top');
   readonly submenu = input(false);
 
   ngOnInit(): void {
@@ -109,7 +109,11 @@ export class MenuTriggerDirective implements OnInit {
       },
     };
 
-    const connectedPosition = positionMap[this.menuTriggerPosition()];
-    this.trigger.menuPosition = [connectedPosition];
+    const pos = this.menuTriggerPosition();
+    if (Array.isArray(pos)) {
+      this.trigger.menuPosition = pos.map(p => positionMap[p]);
+    } else {
+      this.trigger.menuPosition = [positionMap[pos]];
+    }
   }
 }
