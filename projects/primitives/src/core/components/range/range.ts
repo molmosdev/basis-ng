@@ -12,7 +12,6 @@ import {
   template: ``,
   host: {
     '[attr.value]': 'value()',
-    '[style.max-width]': 'maxWidth()',
     '(input)': 'onInput($event)',
     '[class.b-size-sm]': 'size() === "sm"',
     '[class.b-size-md]': 'size() === "md"',
@@ -24,11 +23,6 @@ export class Range implements AfterViewInit {
    * Current value of the range.
    */
   readonly value = model<string>('0');
-
-  /**
-   * Maximum width of the range slider.
-   */
-  readonly maxWidth = input<string>('100%');
 
   /**
    * Size of the range slider (sm, md, lg)

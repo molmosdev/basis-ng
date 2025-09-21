@@ -4,10 +4,23 @@ import { Alert, Range } from '@basis-ng/primitives';
 import { StepsButtons } from '../../shared/components/steps-buttons';
 import { provideIcons } from '@ng-icons/core';
 import { lucideRocket } from '@ng-icons/lucide';
+import {
+  FormsModule,
+  ReactiveFormsModule,
+  FormControl,
+  FormGroup,
+} from '@angular/forms';
 
 @Component({
   selector: 'article[app-range-documentation]',
-  imports: [CodeBlock, Range, StepsButtons, Alert],
+  imports: [
+    CodeBlock,
+    Range,
+    StepsButtons,
+    Alert,
+    FormsModule,
+    ReactiveFormsModule,
+  ],
   template: `
     <app-steps-buttons
       [previous]="{ label: 'OTP', path: '/docs/components/otp' }"
@@ -45,110 +58,41 @@ import { lucideRocket } from '@ng-icons/lucide';
             <tr>
               <td
                 class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2 font-display-mono">
-                value
+                size
               </td>
               <td
                 class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2 font-display-mono">
-                number
-              </td>
-            </tr>
-            <tr>
-              <td
-                class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2 font-display-mono">
-                min
-              </td>
-              <td
-                class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2 font-display-mono">
-                string
-              </td>
-            </tr>
-            <tr>
-              <td
-                class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2 font-display-mono">
-                max
-              </td>
-              <td
-                class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2 font-display-mono">
-                string
-              </td>
-            </tr>
-            <tr>
-              <td
-                class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2 font-display-mono">
-                step
-              </td>
-              <td
-                class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2 font-display-mono">
-                string
+                'sm' | <b class="font-bold">'md'</b> | 'lg'
               </td>
             </tr>
           </tbody>
         </table>
       </div>
-      <h2 class="font-semibold text-xl">Events</h2>
-      <div
-        class="overflow-x-auto overflow-hidden rounded-lg border border-gray-200 dark:border-neutral-700 dark:bg-neutral-900 mb-6">
-        <table class="table-auto w-full text-left text-sm">
-          <thead class="bg-gray-50 dark:bg-zinc-800">
-            <tr>
-              <th
-                class="border-b border-gray-200 dark:border-neutral-700 px-4 py-2 font-semibold">
-                Event
-              </th>
-              <th
-                class="border-b border-gray-200 dark:border-neutral-700 px-4 py-2 font-semibold">
-                Type
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td
-                class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2 font-display-mono">
-                valueChange
-              </td>
-              <td
-                class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2 font-display-mono">
-                number
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <h2 class="font-semibold text-xl">Basic</h2>
-      <code-block [code]="basicUsage" />
+
+      <h2 class="font-semibold text-xl">Basic (ngModel)</h2>
+      <code-block [code]="ngModelUsage" />
       <div
         class="border border-gray-200 dark:border-neutral-700 rounded-lg p-6 mb-6 bg-white dark:bg-neutral-900 documentation-playground flex flex-col items-center justify-center gap-4">
-        <input
-          type="range"
-          b-range
-          [value]="basicValue"
-          [maxWidth]="'240px'"
-          (valueChange)="onValueChange($event)" />
+        <input type="range" b-range [(ngModel)]="ngModelValue" />
+        <span>Value: {{ ngModelValue }}</span>
       </div>
+
+      <h2 class="font-semibold text-xl">Reactive Forms</h2>
+      <code-block [code]="formControlUsage" />
+      <form
+        class="border border-gray-200 dark:border-neutral-700 rounded-lg p-6 mb-6 bg-white dark:bg-neutral-900 documentation-playground flex flex-col items-center justify-center gap-4"
+        [formGroup]="form">
+        <input type="range" b-range formControlName="rangeControl" />
+        <span>Value: {{ form.get('rangeControl')?.value }}</span>
+      </form>
 
       <h2 class="font-semibold text-xl">Range Sizes</h2>
       <code-block [code]="sizeUsage" />
       <div
         class="border border-gray-200 gap-y-8 dark:border-neutral-700 rounded-lg p-6 mb-6 bg-white dark:bg-neutral-900 documentation-playground flex flex-col items-center justify-center gap-4">
-        <input
-          b-range
-          type="range"
-          size="sm"
-          [value]="basicValue"
-          [maxWidth]="'240px'" />
-        <input
-          b-range
-          type="range"
-          size="md"
-          [value]="basicValue"
-          [maxWidth]="'240px'" />
-        <input
-          b-range
-          type="range"
-          size="lg"
-          [value]="basicValue"
-          [maxWidth]="'240px'" />
+        <input b-range type="range" size="sm" />
+        <input b-range type="range" size="md" />
+        <input b-range type="range" size="lg" />
       </div>
     </div>
     <app-steps-buttons
@@ -164,10 +108,13 @@ import { lucideRocket } from '@ng-icons/lucide';
 export class RangeDocumentation {
   angularImport = `import { Range } from '@basis-ng/primitives'`;
   stylesImport = `@import '@basis-ng/styles/range';`;
-  basicUsage = `<input type="range" b-range [value]="basicValue" (valueChange)="onValueChange($event)" />`;
+  ngModelUsage = `<input type="range" b-range [(ngModel)]="ngModelValue" />`;
+  formControlUsage = `<form [formGroup]="form">
+  <input type="range" b-range formControlName="rangeControl" />
+</form>`;
   sizeUsage = `<input b-range type="range" size="sm" />\n<input b-range type="range" size="md" />\n<input b-range type="range" size="lg" />`;
-  basicValue = '50';
-  onValueChange(value: string) {
-    this.basicValue = value;
-  }
+  ngModelValue = 50;
+  form = new FormGroup({
+    rangeControl: new FormControl(25),
+  });
 }
