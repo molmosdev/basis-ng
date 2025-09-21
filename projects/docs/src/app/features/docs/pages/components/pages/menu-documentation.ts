@@ -144,7 +144,7 @@ import { lucideRocket } from '@ng-icons/lucide';
       <h2 class="font-semibold text-xl">Basic Example</h2>
       <code-block [code]="basicUsage" />
       <div
-        class="border border-gray-200 dark:border-neutral-700 rounded-lg p-6 mb-6 bg-white dark:bg-neutral-900 documentation-playground flex flex-col gap-4">
+        class="border border-gray-200 items-center dark:border-neutral-700 rounded-lg p-6 mb-6 bg-white dark:bg-neutral-900 documentation-playground flex flex-col gap-4">
         <b-menu>
           <b-menu-label>Basic Menu</b-menu-label>
           <button b-menu-item>Item 1</button>
@@ -152,11 +152,10 @@ import { lucideRocket } from '@ng-icons/lucide';
           <button b-menu-item>Item 3</button>
         </b-menu>
       </div>
-      <h2 class="font-semibold text-xl">Sizes</h2>
       <h2 class="font-semibold text-xl">With Nested Menus</h2>
       <code-block [code]="nestedUsage" />
       <div
-        class="border border-gray-200 dark:border-neutral-700 rounded-lg p-6 mb-6 bg-white dark:bg-neutral-900 documentation-playground flex flex-col gap-4">
+        class="border border-gray-200 items-center dark:border-neutral-700 rounded-lg p-6 mb-6 bg-white dark:bg-neutral-900 documentation-playground flex flex-col gap-4">
         <b-menu>
           <b-menu-label>Main Menu</b-menu-label>
           <button b-menu-item>Item 1</button>
@@ -184,7 +183,7 @@ import { lucideRocket } from '@ng-icons/lucide';
       <h2 class="font-semibold text-xl">With b-button Trigger</h2>
       <code-block [code]="buttonTriggerUsage" />
       <div
-        class="border border-gray-200 dark:border-neutral-700 rounded-lg p-6 mb-6 bg-white dark:bg-neutral-900 documentation-playground flex flex-col gap-4">
+        class="border border-gray-200 items-center dark:border-neutral-700 rounded-lg p-6 mb-6 bg-white dark:bg-neutral-900 documentation-playground flex flex-col gap-4">
         <button
           b-button
           variant="outlined"
@@ -218,7 +217,7 @@ import { lucideRocket } from '@ng-icons/lucide';
       <h2 class="font-semibold text-xl">With Different Trigger Positions</h2>
       <code-block [code]="triggerPositionExamples" />
       <div
-        class="border border-gray-200 dark:border-neutral-700 rounded-lg p-6 mb-6 bg-white dark:bg-neutral-900 documentation-playground flex flex-col gap-4">
+        class="border border-gray-200 items-center dark:border-neutral-700 rounded-lg p-6 mb-6 bg-white dark:bg-neutral-900 documentation-playground flex flex-col gap-4">
         <button
           b-button
           variant="outlined"
@@ -281,7 +280,7 @@ import { lucideRocket } from '@ng-icons/lucide';
       <h2 class="font-semibold text-xl">Sizes</h2>
       <code-block [code]="sizesUsage" />
       <div
-        class="border border-gray-200 dark:border-neutral-700 rounded-lg p-6 mb-6 bg-white dark:bg-neutral-900 documentation-playground flex flex-col md:flex-row items-center justify-center gap-4">
+        class="border border-gray-200 items-center dark:border-neutral-700 rounded-lg p-6 mb-6 bg-white dark:bg-neutral-900 documentation-playground flex flex-col md:flex-row items-center justify-center gap-4">
         <div class="flex flex-col items-center gap-2">
           <button
             b-button
