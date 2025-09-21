@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, signal, computed } from '@angular/core';
 import { CodeBlock } from '../shared/components/code-block';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FormGroup, FormControl } from '@angular/forms';
@@ -11,10 +11,12 @@ import {
   SelectTrigger,
   SelectValue,
   Alert,
+  Input,
 } from '@basis-ng/primitives';
 import { StepsButtons } from '../../shared/components/steps-buttons';
 import { provideIcons } from '@ng-icons/core';
 import { lucideRocket } from '@ng-icons/lucide';
+import { SelectFilter } from 'projects/primitives/src/core/components/select/shared/directives/select-filter';
 
 @Component({
   selector: 'article[app-select-documentation]',
@@ -26,11 +28,13 @@ import { lucideRocket } from '@ng-icons/lucide';
     SelectTrigger,
     SelectValue,
     SelectContent,
+    SelectFilter,
     Option,
     OverlayOrigin,
     ConnectedOverlay,
     StepsButtons,
     Alert,
+    Input,
   ],
   template: `
     <app-steps-buttons
@@ -342,6 +346,50 @@ import { lucideRocket } from '@ng-icons/lucide';
           </ng-template>
         </b-select>
       </div>
+      <h2 class="font-semibold text-xl">Filter with input</h2>
+      <span>
+        If you want to implement a <b>combobox</b> (a select with an input to
+        type and filter options), you can subscribe to the standard HTML
+        <code>&lt;input&gt;</code> events (like <code>input</code> or
+        <code>change</code>). This way, you can dynamically update the displayed
+        options based on the entered text.
+      </span>
+      <code-block [code]="withFilterImport" />
+      <code-block [code]="filterUsage" />
+      <div
+        class="border border-gray-200 dark:border-neutral-700 rounded-lg p-6 mb-6 bg-white dark:bg-neutral-900 documentation-playground flex flex-col items-center justify-center gap-4">
+        <b-select
+          [(ngModel)]="selectedOptionsFiltered"
+          [displayWith]="displayFn">
+          <button
+            b-select-trigger
+            bOverlayOrigin
+            #triggerFilter="bOverlayOrigin">
+            <b-select-value placeholder="Select (filter)" />
+          </button>
+          <ng-template
+            bConnectedOverlay
+            [trigger]="triggerFilter"
+            [positions]="[
+              'bottom-left',
+              'bottom-right',
+              'top-left',
+              'top-right',
+            ]">
+            <ul b-select-content [multiple]="false">
+              <input
+                b-input
+                bSelectFilter
+                type="text"
+                placeholder="Filter options"
+                [(ngModel)]="filterText" />
+              @for (option of filteredOptions(); track option) {
+                <li b-option [value]="option.value">{{ option.label }}</li>
+              }
+            </ul>
+          </ng-template>
+        </b-select>
+      </div>
     </div>
     <app-steps-buttons
       [previous]="{ label: 'Range', path: '/docs/components/range' }"
@@ -359,11 +407,18 @@ export class SelectDocumentation {
 
   selectedOptions: string[] = ['option3'];
   selectedMultiple: string[] = ['option1', 'option3'];
+  selectedOptionsFiltered: string[] = [];
   readonly options = signal([
     { value: 'option1', label: 'Opción 1' },
     { value: 'option2', label: 'Opción 2' },
     { value: 'option3', label: 'Opción 3' },
   ]);
+  filterText = '';
+  readonly filteredOptions = computed(() =>
+    this.options().filter(o =>
+      o.label.toLowerCase().includes(this.filterText.toLowerCase())
+    )
+  );
   displayFn = (value: string[]) => {
     return value
       ? this.options()
@@ -463,6 +518,22 @@ export class SelectDocumentation {
       <li b-option [value]='option1'>Opción 1</li>
       <li b-option [value]='option2' [disabled]='true'>Opción 2 (Deshabilitada)</li>
       <li b-option [value]='option3'>Opción 3</li>
+    </ul>
+  </ng-template>
+</b-select>`;
+
+  withFilterImport = `import { SelectFilter } from '@basis-ng/primitives';`;
+
+  filterUsage = `<b-select [(ngModel)]='selectedOptionsFiltered' [displayWith]='displayFn'>
+  <button b-select-trigger bOverlayOrigin #triggerFilter='bOverlayOrigin'>
+    <b-select-value placeholder='Select (filter)' />
+  </button>
+  <ng-template bConnectedOverlay [trigger]='triggerFilter' [positions]="['bottom-left','bottom-right','top-left','top-right']">
+    <ul b-select-content [multiple]='false'>
+      <input b-input bSelectFilter type='text' placeholder='Filter options' [(ngModel)]='filterText' />
+      @for (option of filteredOptions(); track option) {
+        <li b-option [value]='option.value'>{{ option.label }}</li>
+      }
     </ul>
   </ng-template>
 </b-select>`;
