@@ -61,10 +61,15 @@ b-select {
 ul[b-select-content] {
   @apply list-none box-border m-0 relative bg-background shadow-xs inset-ring-1 inset-ring-secondary flex flex-col w-full overflow-y-auto;
   @apply dark:bg-background-dark dark:shadow-xs dark:inset-ring-secondary-dark;
+  @apply outline-none;
 
   .no-options-message {
     @apply py-1 px-2 text-sm;
     @apply dark:text-primary-dark;
+  }
+
+  input[b-input] {
+    @apply outline-none;
   }
 
   &.b-select-content-entering-top {
