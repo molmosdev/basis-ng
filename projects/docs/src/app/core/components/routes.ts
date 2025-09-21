@@ -27,8 +27,10 @@ import { utilitiesRoutes } from '../../features/docs/pages/utilities/utilities.r
             [routerLink]="route.path"
             [routerLinkActive]="['active']">
             {{ route.data['title'] }}
-            @if (route.data['new']) {
-              <span b-badge variant="outlined" size="sm"> New </span>
+            @if (route.data['badge']) {
+              <span b-badge variant="outlined" size="sm">
+                {{ route.data['badge'] }}
+              </span>
             }
           </button>
         }
@@ -44,8 +46,10 @@ import { utilitiesRoutes } from '../../features/docs/pages/utilities/utilities.r
             [routerLink]="path"
             [routerLinkActive]="['active']">
             {{ route.data['title'] }}
-            @if (route.data['new']) {
-              <span b-badge variant="outlined" size="sm"> New </span>
+            @if (route.data['badge']) {
+              <span b-badge variant="outlined" size="sm">{{
+                route.data['badge']
+              }}</span>
             }
           </button>
         }

@@ -40,7 +40,6 @@ export const componentsRoutes: Routes = [
     title: 'Card - Basis UI',
     data: {
       title: 'Card',
-      new: true,
     },
   },
   {
@@ -65,18 +64,6 @@ export const componentsRoutes: Routes = [
       title: 'Color Picker',
     },
   },
-  {
-    path: 'combobox',
-    loadComponent: () =>
-      import('./pages/combobox-documentation').then(
-        c => c.ComboboxDocumentation
-      ),
-    title: 'Combobox - Basis UI',
-    data: {
-      title: 'Combobox',
-      new: true,
-    },
-  },
   // {
   //   path: 'command',
   //   loadComponent: () =>
@@ -84,7 +71,7 @@ export const componentsRoutes: Routes = [
   //   title: 'Command - Basis UI',
   //   data: {
   //     title: 'Command',
-  //     new: true,
+  //     badge: 'New'
   //   },
   // },
   {
@@ -94,7 +81,6 @@ export const componentsRoutes: Routes = [
     title: 'Dialog - Basis UI',
     data: {
       title: 'Dialog',
-      new: true,
     },
   },
   {
@@ -124,7 +110,6 @@ export const componentsRoutes: Routes = [
     title: 'Input Group - Basis UI',
     data: {
       title: 'Input Group',
-      new: true,
     },
   },
   {
@@ -134,7 +119,6 @@ export const componentsRoutes: Routes = [
     title: 'Menu - Basis UI',
     data: {
       title: 'Menu',
-      new: true,
     },
   },
   {
@@ -144,7 +128,7 @@ export const componentsRoutes: Routes = [
     title: 'OTP - Basis UI',
     data: {
       title: 'OTP',
-      new: true,
+      badge: 'New',
     },
   },
   {
@@ -163,6 +147,7 @@ export const componentsRoutes: Routes = [
     title: 'Select - Basis UI',
     data: {
       title: 'Select',
+      badge: 'Updated',
     },
   },
   {
@@ -199,7 +184,6 @@ export const componentsRoutes: Routes = [
     title: 'Tabs - Basis UI',
     data: {
       title: 'Tabs',
-      new: true,
     },
   },
   {
@@ -220,7 +204,7 @@ export const componentsRoutes: Routes = [
     title: 'Tooltip - Basis UI',
     data: {
       title: 'Tooltip',
-      new: true,
+      badge: 'Updated',
     },
   },
   {
@@ -230,7 +214,6 @@ export const componentsRoutes: Routes = [
     title: 'Tree - Basis UI',
     data: {
       title: 'Tree',
-      new: true,
     },
   },
   {

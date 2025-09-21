@@ -91,10 +91,6 @@ export * from './core/components/alert/alert';
 /* Command */
 export * from './core/components/command/command.component';
 export * from './core/components/command/command-options.component';
-
-/* Combobox */
-export * from './core/components/combobox/combobox.component';
-
 /* Overlay */
 export * from './core/directives/overlay-origin';
 export * from './core/directives/connected-overlay';
