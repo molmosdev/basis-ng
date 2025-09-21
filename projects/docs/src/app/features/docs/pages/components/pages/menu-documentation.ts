@@ -48,20 +48,13 @@ import { lucideRocket } from '@ng-icons/lucide';
         The Menu component provides a flexible and accessible way to create
         dropdown menus with support for nested menus and various configurations.
       </span>
-      <span>
-        <strong>Size:</strong> You can set the <code>size</code> property to
-        control the menu's size. Available values are<br />
-        <code>'sm'</code> (small), <code><strong>'md'</strong></code> (medium,
-        default), and <code>'lg'</code> (large).
-      </span>
-      <code-block [code]="sizeUsage" />
       <code-block [code]="angularImport" />
       <span>
         Include this to apply predefined styles. The component is headless
         without it.
       </span>
       <code-block [code]="stylesImport" />
-      <h2 class="font-semibold text-xl">Properties</h2>
+      <h2 class="font-semibold text-xl">Menu properties</h2>
       <div
         class="overflow-x-auto overflow-hidden rounded-lg border border-gray-200 dark:border-neutral-700 dark:bg-neutral-900 mb-6">
         <table class="table-auto w-full text-left text-sm">
@@ -69,11 +62,42 @@ import { lucideRocket } from '@ng-icons/lucide';
             <tr>
               <th
                 class="border-b border-gray-200 dark:border-neutral-700 px-4 py-2 font-semibold">
-                Property
+                Prop
               </th>
               <th
                 class="border-b border-gray-200 dark:border-neutral-700 px-4 py-2 font-semibold">
-                Type
+                Tipo
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td
+                class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2 font-display-mono">
+                size
+              </td>
+              <td
+                class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2 font-display-mono">
+                'sm' | <strong>'md'</strong> | 'lg'
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2 class="font-semibold text-xl">MenuItem properties</h2>
+      <div
+        class="overflow-x-auto overflow-hidden rounded-lg border border-gray-200 dark:border-neutral-700 dark:bg-neutral-900 mb-6">
+        <table class="table-auto w-full text-left text-sm">
+          <thead class="bg-gray-50 dark:bg-zinc-800">
+            <tr>
+              <th
+                class="border-b border-gray-200 dark:border-neutral-700 px-4 py-2 font-semibold">
+                Prop
+              </th>
+              <th
+                class="border-b border-gray-200 dark:border-neutral-700 px-4 py-2 font-semibold">
+                Tipo
               </th>
             </tr>
           </thead>
@@ -85,17 +109,7 @@ import { lucideRocket } from '@ng-icons/lucide';
               </td>
               <td
                 class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2 font-display-mono">
-                <strong>boolean</strong>
-              </td>
-            </tr>
-            <tr>
-              <td
-                class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2 font-display-mono">
-                size
-              </td>
-              <td
-                class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2 font-display-mono">
-                'sm' | <strong>'md'</strong> | 'lg'
+                <strong>false</strong> | true
               </td>
             </tr>
             <tr>
@@ -106,6 +120,189 @@ import { lucideRocket } from '@ng-icons/lucide';
               <td
                 class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2 font-display-mono">
                 string
+              </td>
+            </tr>
+            <tr>
+              <td
+                class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2 font-display-mono">
+                squared
+              </td>
+              <td
+                class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2 font-display-mono">
+                <strong>false</strong> | true
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2 class="font-semibold text-xl">MenuItemCheckbox properties</h2>
+      <div
+        class="overflow-x-auto overflow-hidden rounded-lg border border-gray-200 dark:border-neutral-700 dark:bg-neutral-900 mb-6">
+        <table class="table-auto w-full text-left text-sm">
+          <thead class="bg-gray-50 dark:bg-zinc-800">
+            <tr>
+              <th
+                class="border-b border-gray-200 dark:border-neutral-700 px-4 py-2 font-semibold">
+                Prop
+              </th>
+              <th
+                class="border-b border-gray-200 dark:border-neutral-700 px-4 py-2 font-semibold">
+                Tipo
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td
+                class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2 font-display-mono">
+                disabled
+              </td>
+              <td
+                class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2 font-display-mono">
+                <strong>false</strong> | true
+              </td>
+            </tr>
+            <tr>
+              <td
+                class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2 font-display-mono">
+                typeaheadLabel
+              </td>
+              <td
+                class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2 font-display-mono">
+                string
+              </td>
+            </tr>
+            <tr>
+              <td
+                class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2 font-display-mono">
+                active
+              </td>
+              <td
+                class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2 font-display-mono">
+                <strong>false</strong> | true
+              </td>
+            </tr>
+            <tr>
+              <td
+                class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2 font-display-mono">
+                squared
+              </td>
+              <td
+                class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2 font-display-mono">
+                <strong>false</strong> | true
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2 class="font-semibold text-xl">MenuItemRadio properties</h2>
+      <div
+        class="overflow-x-auto overflow-hidden rounded-lg border border-gray-200 dark:border-neutral-700 dark:bg-neutral-900 mb-6">
+        <table class="table-auto w-full text-left text-sm">
+          <thead class="bg-gray-50 dark:bg-zinc-800">
+            <tr>
+              <th
+                class="border-b border-gray-200 dark:border-neutral-700 px-4 py-2 font-semibold">
+                Prop
+              </th>
+              <th
+                class="border-b border-gray-200 dark:border-neutral-700 px-4 py-2 font-semibold">
+                Tipo
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td
+                class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2 font-display-mono">
+                disabled
+              </td>
+              <td
+                class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2 font-display-mono">
+                <strong>false</strong> | true
+              </td>
+            </tr>
+            <tr>
+              <td
+                class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2 font-display-mono">
+                typeaheadLabel
+              </td>
+              <td
+                class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2 font-display-mono">
+                string
+              </td>
+            </tr>
+            <tr>
+              <td
+                class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2 font-display-mono">
+                active
+              </td>
+              <td
+                class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2 font-display-mono">
+                <strong>false</strong> | true
+              </td>
+            </tr>
+            <tr>
+              <td
+                class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2 font-display-mono">
+                squared
+              </td>
+              <td
+                class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2 font-display-mono">
+                <strong>false</strong> | true
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2 class="font-semibold text-xl">MenuTriggerDirective properties</h2>
+      <div
+        class="overflow-x-auto overflow-hidden rounded-lg border border-gray-200 dark:border-neutral-700 dark:bg-neutral-900 mb-6">
+        <table class="table-auto w-full text-left text-sm">
+          <thead class="bg-gray-50 dark:bg-zinc-800">
+            <tr>
+              <th
+                class="border-b border-gray-200 dark:border-neutral-700 px-4 py-2 font-semibold">
+                Prop
+              </th>
+              <th
+                class="border-b border-gray-200 dark:border-neutral-700 px-4 py-2 font-semibold">
+                Tipo
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td
+                class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2 font-display-mono">
+                menuTriggerFor
+              </td>
+              <td
+                class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2 font-display-mono">
+                TemplateRef&lt;any&gt;
+              </td>
+            </tr>
+            <tr>
+              <td
+                class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2 font-display-mono">
+                menuTriggerPosition
+              </td>
+              <td
+                class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2 font-display-mono">
+                <strong>'right-top'</strong> | Position | Position[]
+              </td>
+            </tr>
+            <tr>
+              <td
+                class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2 font-display-mono">
+                submenu
+              </td>
+              <td
+                class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2 font-display-mono">
+                <strong>false</strong> | true
               </td>
             </tr>
           </tbody>
@@ -188,7 +385,7 @@ import { lucideRocket } from '@ng-icons/lucide';
           b-button
           variant="outlined"
           [menuTriggerFor]="menu"
-          [menuTriggerPosition]="'bottom-left'">
+          [menuTriggerPosition]="['bottom-left', 'top-left']">
           Open Menu
         </button>
         <ng-template #menu>
@@ -285,7 +482,7 @@ import { lucideRocket } from '@ng-icons/lucide';
           <button
             b-button
             [menuTriggerFor]="menuSm"
-            [menuTriggerPosition]="'bottom-left'">
+            [menuTriggerPosition]="['bottom-left', 'top-left']">
             Small
           </button>
           <ng-template #menuSm>
@@ -303,7 +500,7 @@ import { lucideRocket } from '@ng-icons/lucide';
           <button
             b-button
             [menuTriggerFor]="menuMd"
-            [menuTriggerPosition]="'bottom-left'">
+            [menuTriggerPosition]="['bottom-left', 'top-left']">
             Medium (default)
           </button>
           <ng-template #menuMd>
@@ -321,7 +518,7 @@ import { lucideRocket } from '@ng-icons/lucide';
           <button
             b-button
             [menuTriggerFor]="menuLg"
-            [menuTriggerPosition]="'bottom-left'">
+            [menuTriggerPosition]="['bottom-left', 'top-left']">
             Large
           </button>
           <ng-template #menuLg>
@@ -351,10 +548,10 @@ import { lucideRocket } from '@ng-icons/lucide';
   },
 })
 export class MenuDocumentation {
-  sizesUsage = `<button b-button [menuTriggerFor]=menuSm>Small</button>\n<ng-template #menuSm>\n  <b-menu size="sm">\n    <b-menu-label>Small</b-menu-label>\n    <button b-menu-item>Item 1</button>\n    <button b-menu-item>Item 2</button>\n    <button b-menu-item>Item 3</button>\n  </b-menu>\n</ng-template>\n\n<button b-button [menuTriggerFor]=menuMd>Medium (default)</button>\n<ng-template #menuMd>\n  <b-menu size="md">\n    <b-menu-label>Medium (default)</b-menu-label>\n    <button b-menu-item>Item 1</button>\n    <button b-menu-item>Item 2</button>\n    <button b-menu-item>Item 3</button>\n  </b-menu>\n</ng-template>\n\n<button b-button [menuTriggerFor]=menuLg>Large</button>\n<ng-template #menuLg>\n  <b-menu size="lg">\n    <b-menu-label>Large</b-menu-label>\n    <button b-menu-item>Item 1</button>\n    <button b-menu-item>Item 2</button>\n    <button b-menu-item>Item 3</button>\n  </b-menu>\n</ng-template>`;
+  sizesUsage = `<button b-button [menuTriggerFor]=menuSm [menuTriggerPosition]="['bottom-left', 'top-left']">Small</button>\n<ng-template #menuSm>\n  <b-menu size="sm">\n    <b-menu-label>Small</b-menu-label>\n    <button b-menu-item>Item 1</button>\n    <button b-menu-item>Item 2</button>\n    <button b-menu-item>Item 3</button>\n  </b-menu>\n</ng-template>\n\n<button b-button [menuTriggerFor]=menuMd [menuTriggerPosition]="['bottom-left', 'top-left']">Medium (default)</button>\n<ng-template #menuMd>\n  <b-menu size="md">\n    <b-menu-label>Medium (default)</b-menu-label>\n    <button b-menu-item>Item 1</button>\n    <button b-menu-item>Item 2</button>\n    <button b-menu-item>Item 3</button>\n  </b-menu>\n</ng-template>\n\n<button b-button [menuTriggerFor]=menuLg [menuTriggerPosition]="['bottom-left', 'top-left']">Large</button>\n<ng-template #menuLg>\n  <b-menu size="lg">\n    <b-menu-label>Large</b-menu-label>\n    <button b-menu-item>Item 1</button>\n    <button b-menu-item>Item 2</button>\n    <button b-menu-item>Item 3</button>\n  </b-menu>\n</ng-template>`;
   sizeUsage = `<b-menu size='sm'>...</b-menu>\n<b-menu size='md'>...</b-menu>\n<b-menu size='lg'>...</b-menu>`;
   angularImport = `import { Menu, MenuItem, MenuGroup, MenuLabel, MenuTriggerDirective } from '@basis-ng/primitives'`;
-  stylesImport = `@import '@basis-ng/styles/menu';\n@import '@basis-ng/styles/menu-item';\n@import '@basis-ng/styles/menu-group';\n@import '@basis-ng/styles/menu-label';`;
+  stylesImport = `@import '@basis-ng/styles/menu';`;
   basicUsage = `<b-menu>\n  <b-menu-label>Basic Menu</b-menu-label>\n  <button b-menu-item>Item 1</button>\n  <button b-menu-item>Item 2</button>\n  <button b-menu-item>Item 3</button>\n</b-menu>`;
   nestedUsage = `<b-menu>\n  <b-menu-label>Main Menu</b-menu-label>\n  <button b-menu-item>Item 1</button>\n  <button b-menu-item [menuTriggerFor]=subMenu [submenu]=true>\n    <div style='display: flex; justify-content: space-between; width: 100%'>\n      Item 2\n    </div>\n  </button>\n  <ng-template #subMenu>\n    <b-menu>\n      <b-menu-label>Submenu</b-menu-label>\n      <b-menu-group>\n        <button b-menu-item>Subitem 1</button>\n        <button b-menu-item>Subitem 2</button>\n      </b-menu-group>\n      <b-menu-group>\n        <button b-menu-item>Subitem 3</button>\n        <button b-menu-item>Subitem 4</button>\n      </b-menu-group>\n    </b-menu>\n  </ng-template>\n</b-menu>`;
   buttonTriggerUsage = `<button\n  b-button\n  variant='outlined'\n  [menuTriggerFor]=menu\n  [menuTriggerPosition]='bottom-left'>\n  Open Menu\n</button>\n<ng-template #menu>\n  <b-menu>\n    <b-menu-label>Menu</b-menu-label>\n    <button b-menu-item>Item 1</button>\n    <button b-menu-item>Item 2</button>\n    <button b-menu-item [menuTriggerFor]=subMenu [submenu]=true>\n      <div style='display: flex; justify-content: space-between; width: 100%'>\n        Item 3\n      </div>\n    </button>\n    <ng-template #subMenu>\n      <b-menu>\n        <b-menu-label>Submenu</b-menu-label>\n        <b-menu-group>\n          <button b-menu-item>Subitem 1</button>\n          <button b-menu-item>Subitem 2</button>\n        </b-menu-group>\n      </b-menu>\n    </ng-template>\n  </b-menu>\n</ng-template>`;
