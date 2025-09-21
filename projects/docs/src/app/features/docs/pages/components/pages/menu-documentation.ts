@@ -48,6 +48,13 @@ import { lucideRocket } from '@ng-icons/lucide';
         The Menu component provides a flexible and accessible way to create
         dropdown menus with support for nested menus and various configurations.
       </span>
+      <span>
+        <strong>Size:</strong> You can set the <code>size</code> property to
+        control the menu's size. Available values are<br />
+        <code>'sm'</code> (small), <code><strong>'md'</strong></code> (medium,
+        default), and <code>'lg'</code> (large).
+      </span>
+      <code-block [code]="sizeUsage" />
       <code-block [code]="angularImport" />
       <span>
         Include this to apply predefined styles. The component is headless
@@ -79,6 +86,16 @@ import { lucideRocket } from '@ng-icons/lucide';
               <td
                 class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2 font-display-mono">
                 <strong>boolean</strong>
+              </td>
+            </tr>
+            <tr>
+              <td
+                class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2 font-display-mono">
+                size
+              </td>
+              <td
+                class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2 font-display-mono">
+                'sm' | <strong>'md'</strong> | 'lg'
               </td>
             </tr>
             <tr>
@@ -135,6 +152,7 @@ import { lucideRocket } from '@ng-icons/lucide';
           <button b-menu-item>Item 3</button>
         </b-menu>
       </div>
+      <h2 class="font-semibold text-xl">Sizes</h2>
       <h2 class="font-semibold text-xl">With Nested Menus</h2>
       <code-block [code]="nestedUsage" />
       <div
@@ -260,6 +278,65 @@ import { lucideRocket } from '@ng-icons/lucide';
           </b-menu>
         </ng-template>
       </div>
+      <h2 class="font-semibold text-xl">Sizes</h2>
+      <code-block [code]="sizesUsage" />
+      <div
+        class="border border-gray-200 dark:border-neutral-700 rounded-lg p-6 mb-6 bg-white dark:bg-neutral-900 documentation-playground flex flex-col md:flex-row items-center justify-center gap-4">
+        <div class="flex flex-col items-center gap-2">
+          <button
+            b-button
+            [menuTriggerFor]="menuSm"
+            [menuTriggerPosition]="'bottom-left'">
+            Small
+          </button>
+          <ng-template #menuSm>
+            <b-menu size="sm">
+              <b-menu-label>Small</b-menu-label>
+              <b-menu-group>
+                <button b-menu-item>Item 1</button>
+                <button b-menu-item>Item 2</button>
+                <button b-menu-item>Item 3</button>
+              </b-menu-group>
+            </b-menu>
+          </ng-template>
+        </div>
+        <div class="flex flex-col items-center gap-2">
+          <button
+            b-button
+            [menuTriggerFor]="menuMd"
+            [menuTriggerPosition]="'bottom-left'">
+            Medium (default)
+          </button>
+          <ng-template #menuMd>
+            <b-menu size="md">
+              <b-menu-label>Medium (default)</b-menu-label>
+              <b-menu-group>
+                <button b-menu-item>Item 1</button>
+                <button b-menu-item>Item 2</button>
+                <button b-menu-item>Item 3</button>
+              </b-menu-group>
+            </b-menu>
+          </ng-template>
+        </div>
+        <div class="flex flex-col items-center gap-2">
+          <button
+            b-button
+            [menuTriggerFor]="menuLg"
+            [menuTriggerPosition]="'bottom-left'">
+            Large
+          </button>
+          <ng-template #menuLg>
+            <b-menu size="lg">
+              <b-menu-label>Large</b-menu-label>
+              <b-menu-group>
+                <button b-menu-item>Item 1</button>
+                <button b-menu-item>Item 2</button>
+                <button b-menu-item>Item 3</button>
+              </b-menu-group>
+            </b-menu>
+          </ng-template>
+        </div>
+      </div>
     </div>
     <app-steps-buttons
       [previous]="{
@@ -275,6 +352,8 @@ import { lucideRocket } from '@ng-icons/lucide';
   },
 })
 export class MenuDocumentation {
+  sizesUsage = `<button b-button [menuTriggerFor]=menuSm>Small</button>\n<ng-template #menuSm>\n  <b-menu size="sm">\n    <b-menu-label>Small</b-menu-label>\n    <button b-menu-item>Item 1</button>\n    <button b-menu-item>Item 2</button>\n    <button b-menu-item>Item 3</button>\n  </b-menu>\n</ng-template>\n\n<button b-button [menuTriggerFor]=menuMd>Medium (default)</button>\n<ng-template #menuMd>\n  <b-menu size="md">\n    <b-menu-label>Medium (default)</b-menu-label>\n    <button b-menu-item>Item 1</button>\n    <button b-menu-item>Item 2</button>\n    <button b-menu-item>Item 3</button>\n  </b-menu>\n</ng-template>\n\n<button b-button [menuTriggerFor]=menuLg>Large</button>\n<ng-template #menuLg>\n  <b-menu size="lg">\n    <b-menu-label>Large</b-menu-label>\n    <button b-menu-item>Item 1</button>\n    <button b-menu-item>Item 2</button>\n    <button b-menu-item>Item 3</button>\n  </b-menu>\n</ng-template>`;
+  sizeUsage = `<b-menu size='sm'>...</b-menu>\n<b-menu size='md'>...</b-menu>\n<b-menu size='lg'>...</b-menu>`;
   angularImport = `import { Menu, MenuItem, MenuGroup, MenuLabel, MenuTriggerDirective } from '@basis-ng/primitives'`;
   stylesImport = `@import '@basis-ng/styles/menu';\n@import '@basis-ng/styles/menu-item';\n@import '@basis-ng/styles/menu-group';\n@import '@basis-ng/styles/menu-label';`;
   basicUsage = `<b-menu>\n  <b-menu-label>Basic Menu</b-menu-label>\n  <button b-menu-item>Item 1</button>\n  <button b-menu-item>Item 2</button>\n  <button b-menu-item>Item 3</button>\n</b-menu>`;
