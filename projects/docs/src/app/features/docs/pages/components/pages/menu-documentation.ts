@@ -280,7 +280,7 @@ import { lucideRocket } from '@ng-icons/lucide';
       <h2 class="font-semibold text-xl">Sizes</h2>
       <code-block [code]="sizesUsage" />
       <div
-        class="border border-gray-200 items-center dark:border-neutral-700 rounded-lg p-6 mb-6 bg-white dark:bg-neutral-900 documentation-playground flex flex-col md:flex-row items-center justify-center gap-4">
+        class="border border-gray-200 items-center dark:border-neutral-700 rounded-lg p-6 mb-6 bg-white dark:bg-neutral-900 documentation-playground flex flex-col md:flex-row justify-center gap-4">
         <div class="flex flex-col items-center gap-2">
           <button
             b-button
