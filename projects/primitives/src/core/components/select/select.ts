@@ -133,13 +133,23 @@ export class Select implements ControlValueAccessor, OnInit {
   }
 
   /**
-   * Handles overlay attachment event. Focuses the content and selects current values.
+   * Handles overlay attachment event. Selects current values and focuses the content.
    */
   handleOverlayAttached(): void {
     this.overlay()?.attachEmitter.subscribe(() => {
-      this.selectContent()?.el.nativeElement.focus();
+      if (this.value().length === 0) {
+        this.selectContent()?.el.nativeElement.focus();
+        return;
+      }
+
       this.value().forEach(val => {
         this.selectContent()?.listBox?.selectValue(val);
+
+        // Focus the selected option
+        this.selectContent()
+          ?.options()
+          .find(opt => opt.value === val)
+          ?.focus();
       });
     });
   }
