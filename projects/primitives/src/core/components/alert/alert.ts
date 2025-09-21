@@ -27,7 +27,6 @@ import { lucideX } from '@ng-icons/lucide';
   imports: [NgIcon],
   host: {
     '[class]': 'type()',
-    '[style.max-width]': 'maxWidth()',
   },
   providers: [provideIcons({ lucideX })],
 })
@@ -46,9 +45,6 @@ export class Alert {
 
   /** Event emitted when the alert is dismissed. */
   readonly dismissed = output<void>();
-
-  /** The maximum width of the alert. */
-  readonly maxWidth = input<string | null>(null);
 
   dismiss(): void {
     this.dismissed.emit();

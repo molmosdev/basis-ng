@@ -142,16 +142,6 @@ import {
                 boolean | <strong>false</strong>
               </td>
             </tr>
-            <tr>
-              <td
-                class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2 font-display-mono">
-                maxWidth
-              </td>
-              <td
-                class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2 font-display-mono">
-                string | <strong>null</strong>
-              </td>
-            </tr>
           </tbody>
         </table>
       </div>
@@ -222,18 +212,7 @@ import {
           This alert can be dismissed.
         </b-alert>
       </div>
-      <h2 class="font-semibold text-xl">Max Width</h2>
-      <code-block [code]="maxWidthUsage" />
-      <div
-        class="border border-gray-200 dark:border-neutral-700 rounded-lg p-6 mb-6 bg-white dark:bg-neutral-900 documentation-playground flex flex-col gap-4 items-center">
-        <b-alert
-          type="info"
-          title="Info Alert"
-          icon="lucideInfo"
-          [maxWidth]="'300px'">
-          This alert has a maximum width of 300px.
-        </b-alert>
-      </div>
+      <!-- Sección Max Width eliminada -->
     </div>
     <app-steps-buttons
       [previous]="{ label: 'Badge', path: '/docs/components/badge' }"
@@ -259,6 +238,6 @@ export class AlertDocumentation {
   basicUsage = `<b-alert type="info" title="Info Alert" icon="Info">\n  This is a basic informational alert.\n</b-alert>`;
   typesUsage = `<b-alert type="success" title="Success" icon="CircleCheck">\n  This is a success alert.\n</b-alert>\n<b-alert type="error" title="Error" icon="CircleX">\n  This is an error alert.\n</b-alert>\n<b-alert type="warning" title="Warning" icon="OctagonAlert">\n  This is a warning alert.\n</b-alert>\n<b-alert type="info" title="Info" icon="Info">\n  This is an informational alert.\n</b-alert>`;
   dismissibleUsage = `<b-alert type="info" [dismissible]="true" title="Info" icon="Info">\n  This alert can be dismissed.\n</b-alert>`;
-  maxWidthUsage = `<b-alert type="info" title="Info Alert" icon="Info" [maxWidth]="'300px'">\n  This alert has a maximum width of 300px.\n</b-alert>`;
+  // maxWidthUsage eliminado
   iconProvideExample = `providers: [provideIcons({ lucideSearch })]`;
 }
