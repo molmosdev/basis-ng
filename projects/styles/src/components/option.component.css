@@ -3,6 +3,11 @@ li[b-option] {
   @apply hover:bg-secondary/30;
   @apply dark:hover:bg-secondary-dark/30;
 
+  &.cdk-option-active {
+    @apply bg-secondary/30;
+    @apply dark:bg-secondary-dark/30;
+  }
+
   &.cdk-option-highlighted {
     @apply bg-secondary/10;
     @apply dark:bg-secondary-dark/10;
