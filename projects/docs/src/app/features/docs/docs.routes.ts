@@ -32,7 +32,7 @@ export const docsRoutes: Routes = [
     title: 'Theming - Basis UI',
     data: {
       title: 'Theming',
-      new: true,
+      badge: 'Updated',
     },
   },
   {
