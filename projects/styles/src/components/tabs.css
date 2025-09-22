@@ -1,5 +1,5 @@
 b-tabs {
-  @apply flex p-1 gap-1 bg-secondary outline-none inset-ring-1 inset-ring-primary/10;
+  @apply flex bg-secondary outline-none inset-ring-1 inset-ring-primary/10;
   @apply dark:bg-secondary-dark dark:inset-ring-primary-dark/10;
 
   b-tab {
@@ -20,7 +20,7 @@ b-tabs {
   }
 
   &.b-size-sm {
-    @apply h-6 rounded-size-sm;
+    @apply h-6 rounded-size-sm p-0.5 gap-0.5;
 
     b-tab {
       @apply px-2 text-xs rounded-size-xs flex items-center justify-center;
@@ -28,7 +28,7 @@ b-tabs {
   }
 
   &.b-size-md {
-    @apply h-9 rounded-size-md;
+    @apply h-9 rounded-size-md p-1 gap-1;
 
     b-tab {
       @apply px-4 text-sm rounded-size-sm flex items-center justify-center;
@@ -36,7 +36,7 @@ b-tabs {
   }
 
   &.b-size-lg {
-    @apply h-12 rounded-size-lg;
+    @apply h-12 rounded-size-lg p-1.5 gap-1.5;
 
     b-tab {
       @apply px-6 text-base rounded-size-md flex items-center justify-center;
