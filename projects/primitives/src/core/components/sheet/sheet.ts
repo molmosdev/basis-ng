@@ -20,15 +20,30 @@ import { CommonModule } from '@angular/common';
   selector: 'b-sheet',
   standalone: true,
   imports: [CommonModule],
-  templateUrl: './sheet.component.html',
+  template: `<button class="close-button" (click)="isOpen.set(false)">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="20"
+        height="20"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="0.094rem"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="lucide lucide-x">
+        <path d="M18 6 6 18" />
+        <path d="m6 6 12 12" />
+      </svg>
+    </button>
+    <ng-content /> `,
   host: {
-    '[class.left]': 'isLeft()',
-    '[class.right]': '!isLeft()',
+    '[class.left]': 'side() === "left"',
+    '[class.right]': 'side() === "right"',
     '[class.open]': 'isOpen()',
-    '[style.width]': 'width()',
   },
 })
-export class SheetComponent {
+export class Sheet {
   /**
    * Indicates whether the sheet is open.
    */
@@ -39,16 +54,6 @@ export class SheetComponent {
    * Can be either 'left' or 'right'.
    */
   readonly side = input<'left' | 'right'>('right');
-
-  /**
-   * Specifies the width of the sheet.
-   */
-  readonly width = input('300px');
-
-  /**
-   * Computes whether the sheet is positioned on the left side.
-   */
-  readonly isLeft = computed(() => this.side() === 'left');
 
   /**
    * Computes whether the sheet is positioned on the right side.

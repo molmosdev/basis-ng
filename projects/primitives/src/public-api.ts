@@ -38,7 +38,7 @@ export * from './core/components/tabs/tabs.component';
 export * from './core/components/tabs/tab.component';
 
 /* Sheet */
-export * from './core/components/sheet/sheet.component';
+export * from './core/components/sheet/sheet';
 
 /* Drawer */
 export * from './core/components/drawer/drawer.component';

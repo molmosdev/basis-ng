@@ -23,7 +23,7 @@
     "./search": "./src/components/search.component.css",
     "./select": "./src/components/select.css",
     "./select-option": "./src/components/select-option.component.css",
-    "./sheet": "./src/components/sheet.component.css",
+    "./sheet": "./src/components/sheet.css",
     "./spinner": "./src/components/spinner.css",
     "./switch": "./src/components/switch.css",
     "./tab": "./src/components/tab.component.css",

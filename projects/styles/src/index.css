@@ -74,7 +74,7 @@
 @import './components/command.component.css';
 @import './components/command-options.component.css';
 @import './components/option.component.css';
-@import './components/sheet.component.css';
+@import './components/sheet.css';
 @import './components/spinner.css';
 @import './components/switch.css';
 @import './components/tab.component.css';

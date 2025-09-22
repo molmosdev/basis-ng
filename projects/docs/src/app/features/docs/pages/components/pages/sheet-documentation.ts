@@ -1,13 +1,13 @@
 import { Component, signal } from '@angular/core';
 import { CodeBlock } from '../shared/components/code-block';
-import { SheetComponent, Button, Alert } from '@basis-ng/primitives';
+import { Sheet, Button, Alert } from '@basis-ng/primitives';
 import { StepsButtons } from '../../shared/components/steps-buttons';
 import { provideIcons } from '@ng-icons/core';
 import { lucideRocket } from '@ng-icons/lucide';
 
 @Component({
   selector: 'article[app-sheet-documentation]',
-  imports: [CodeBlock, SheetComponent, Button, StepsButtons, Alert],
+  imports: [CodeBlock, Sheet, Button, StepsButtons, Alert],
   template: `
     <app-steps-buttons
       [previous]="{ label: 'Select', path: '/docs/components/select' }"
@@ -65,16 +65,6 @@ import { lucideRocket } from '@ng-icons/lucide';
                 'left' | <strong>'right'</strong>
               </td>
             </tr>
-            <tr>
-              <td
-                class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2 font-display-mono">
-                width
-              </td>
-              <td
-                class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2 font-display-mono">
-                string
-              </td>
-            </tr>
           </tbody>
         </table>
       </div>
@@ -117,7 +107,6 @@ import { lucideRocket } from '@ng-icons/lucide';
       </div>
       <b-sheet
         [(isOpen)]="isLeftOpen"
-        [width]="'300px'"
         [side]="'left'"
         (closeSheet)="isLeftOpen.set(false)">
         <div class="flex items-center justify-center h-full">
@@ -126,7 +115,6 @@ import { lucideRocket } from '@ng-icons/lucide';
       </b-sheet>
       <b-sheet
         [(isOpen)]="isRightOpen"
-        [width]="'300px'"
         [side]="'right'"
         (closeSheet)="isRightOpen.set(false)">
         <div class="flex items-center justify-center h-full">
@@ -143,7 +131,7 @@ import { lucideRocket } from '@ng-icons/lucide';
       </div>
       <b-sheet
         [(isOpen)]="isCustomWidthOpen"
-        [width]="'500px'"
+        class="!w-[500px]"
         [side]="'right'"
         (closeSheet)="isCustomWidthOpen.set(false)">
         <div class="flex items-center justify-center h-full">
@@ -162,10 +150,10 @@ import { lucideRocket } from '@ng-icons/lucide';
   },
 })
 export class SheetDocumentation {
-  angularImport = `import { SheetComponent } from '@basis-ng/primitives'`;
+  angularImport = `import { Sheet } from '@basis-ng/primitives'`;
   stylesImport = `@import '@basis-ng/styles/sheet';`;
-  basicUsage = `<button b-button (click)="openLeftSheet()">Open Left Sheet</button>\n<button b-button (click)="openRightSheet()">Open Right Sheet</button>\n\n<b-sheet\n  [(isOpen)]="isLeftOpen"\n  [width]="'300px'"\n  [side]="'left'">\n  <div style="display: flex; justify-content: center; align-items: center; height: 100%;">\n    This is the left sheet.\n  </div>\n</b-sheet>\n\n<b-sheet\n  [(isOpen)]="isRightOpen"\n  [width]="'300px'"\n  [side]="'right'">\n  <div style="display: flex; justify-content: center; align-items: center; height: 100%;">\n    This is the right sheet.\n  </div>\n</b-sheet>`;
-  customWidthUsage = `<button b-button (click)="openCustomWidthSheet()">Open Custom Width Sheet</button>\n\n<b-sheet\n  [(isOpen)]="isCustomWidthOpen"\n  [width]="'500px'"\n  [side]="'right'">\n  <div style="display: flex; justify-content: center; align-items: center; height: 100%;">\n    This is a custom width sheet.\n  </div>\n</b-sheet>`;
+  basicUsage = `<button b-button (click)="openLeftSheet()">Open Left Sheet</button>\n<button b-button (click)="openRightSheet()">Open Right Sheet</button>\n\n<b-sheet\n  [(isOpen)]="isLeftOpen"\n  [side]="'left'">\n  <div style="display: flex; justify-content: center; align-items: center; height: 100%;">\n    This is the left sheet.\n  </div>\n</b-sheet>\n\n<b-sheet\n  [(isOpen)]="isRightOpen"\n  [side]="'right'">\n  <div style="display: flex; justify-content: center; align-items: center; height: 100%;">\n    This is the right sheet.\n  </div>\n</b-sheet>`;
+  customWidthUsage = `<button b-button (click)="openCustomWidthSheet()">Open Custom Width Sheet</button>\n\n<b-sheet\n  [(isOpen)]="isCustomWidthOpen"\n  style="width: 500px;"\n  [side]="'right'">\n  <div style="display: flex; justify-content: center; align-items: center; height: 100%;">\n    This is a custom width sheet.\n  </div>\n</b-sheet>\n\n<!-- With Tailwind predefined styles -->\n<b-sheet\n  [(isOpen)]="isCustomWidthOpen"\n  class="!w-[500px]"\n  [side]="'right'">\n  <div style="display: flex; justify-content: center; align-items: center; height: 100%;">\n    This is a custom width sheet.\n  </div>\n</b-sheet>`;
   readonly isLeftOpen = signal<boolean>(false);
   readonly isRightOpen = signal<boolean>(false);
   readonly isCustomWidthOpen = signal<boolean>(false);
