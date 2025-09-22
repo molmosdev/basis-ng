@@ -33,7 +33,10 @@ import { StepsButtons } from '../../shared/components/steps-buttons';
   ],
   template: `
     <app-steps-buttons
-      [previous]="{ label: 'Combobox', path: '/docs/components/combobox' }"
+      [previous]="{
+        label: 'Color Picker',
+        path: '/docs/components/color-picker',
+      }"
       [next]="{ label: 'Drawer', path: '/docs/components/drawer' }" />
     <b-alert icon="lucideRocket" title="Components are in alpha">
       Components are in alpha Try them out! We'd love to hear your feedback!
@@ -250,7 +253,10 @@ import { StepsButtons } from '../../shared/components/steps-buttons';
       </b-card>
     </ng-template>
     <app-steps-buttons
-      [previous]="{ label: 'Combobox', path: '/docs/components/combobox' }"
+      [previous]="{
+        label: 'Color Picker',
+        path: '/docs/components/color-picker',
+      }"
       [next]="{ label: 'Drawer', path: '/docs/components/drawer' }" />
   `,
   providers: [provideIcons({ lucideRocket })],

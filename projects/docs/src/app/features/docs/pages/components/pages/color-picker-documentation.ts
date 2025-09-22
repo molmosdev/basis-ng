@@ -24,7 +24,7 @@ import {
   template: `
     <app-steps-buttons
       [previous]="{ label: 'Checkbox', path: '/docs/components/checkbox' }"
-      [next]="{ label: 'Combobox', path: '/docs/components/combobox' }" />
+      [next]="{ label: 'Dialog', path: '/docs/components/dialog' }" />
     <b-alert icon="lucideRocket" title="Components are in alpha">
       Components are in alpha Try them out! We'd love to hear your feedback!
       Expect breaking changes!
@@ -192,7 +192,7 @@ import {
     </div>
     <app-steps-buttons
       [previous]="{ label: 'Checkbox', path: '/docs/components/checkbox' }"
-      [next]="{ label: 'Combobox', path: '/docs/components/combobox' }" />
+      [next]="{ label: 'Dialog', path: '/docs/components/dialog' }" />
   `,
   providers: [provideIcons({ lucideRocket })],
   host: {
