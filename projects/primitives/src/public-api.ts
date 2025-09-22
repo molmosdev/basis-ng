@@ -73,8 +73,8 @@ export * from './core/components/tooltip/shared/components/tooltip-content';
 export * from './core/components/color-picker/color-picker';
 
 /* Tree */
-export * from './core/components/tree/tree.component';
-export * from './core/components/tree/shared/components/tree-node/tree-node.component';
+export * from './core/components/tree/tree';
+export * from './core/components/tree/shared/components/tree-node/tree-node';
 
 /* Menu */
 export * from './core/components/menu/menu';

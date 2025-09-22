@@ -1,10 +1,5 @@
 import { Component } from '@angular/core';
-import {
-  TreeComponent,
-  TreeNodeComponent,
-  Badge,
-  Alert,
-} from '@basis-ng/primitives';
+import { Tree, TreeNode, Badge, Alert } from '@basis-ng/primitives';
 import { provideIcons } from '@ng-icons/core';
 import { lucideRocket } from '@ng-icons/lucide';
 import { CodeBlock } from '../shared/components/code-block';
@@ -12,14 +7,7 @@ import { StepsButtons } from '../../shared/components/steps-buttons';
 
 @Component({
   selector: 'article[app-tree-documentation]',
-  imports: [
-    TreeComponent,
-    TreeNodeComponent,
-    CodeBlock,
-    StepsButtons,
-    Badge,
-    Alert,
-  ],
+  imports: [Tree, TreeNode, CodeBlock, StepsButtons, Badge, Alert],
   template: `
     <app-steps-buttons
       [previous]="{ label: 'Tooltip', path: '/docs/components/tooltip' }"
@@ -157,8 +145,8 @@ import { StepsButtons } from '../../shared/components/steps-buttons';
   },
 })
 export class TreeDocumentation {
-  angularImport = `import { TreeComponent, TreeNodeComponent } from '@basis-ng/primitives'`;
-  stylesImport = `@import '@basis-ng/styles/tree';\n@import '@basis-ng/styles/tree-node';`;
+  angularImport = `import { Tree, TreeNode } from '@basis-ng/primitives'`;
+  stylesImport = `@import '@basis-ng/styles/tree';`;
   basicUsage = `<b-tree>\n  <b-tree-node>Node 1</b-tree-node>\n  <b-tree-node>Node 2</b-tree-node>\n</b-tree>`;
   nestedUsage = `<b-tree>\n  <b-tree-node>\n    Parent Node\n    <b-tree>\n      <b-tree-node>Child Node 1</b-tree-node>\n      <b-tree-node>Child Node 2</b-tree-node>\n    </b-tree>\n  </b-tree-node>\n</b-tree>`;
   recursiveCloseUsage = `<b-tree [closeRecursively]="true">\n  <b-tree-node>\n    Parent Node\n    <b-tree>\n      <b-tree-node>\n        Child Node 1\n        <b-tree>\n          <b-tree-node>Grandchild Node 1</b-tree-node>\n          <b-tree-node>Grandchild Node 2</b-tree-node>\n        </b-tree>\n      </b-tree-node>\n      <b-tree-node>Child Node 2</b-tree-node>\n    </b-tree>\n  </b-tree-node>\n</b-tree>`;

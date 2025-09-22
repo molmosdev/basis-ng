@@ -1,7 +1,51 @@
 b-tree {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  min-height: 1rem;
-  gap: 0.2rem;
+  @apply flex flex-col w-full min-h-4 gap-0.5;
+
+  b-tree-node {
+    @apply flex flex-col box-border;
+
+    &.active section {
+      @apply bg-background;
+      @apply dark:bg-background-dark;
+    }
+
+    section {
+      @apply px-3 rounded-size-md flex justify-between items-center h-9 box-border gap-3 select-none bg-background;
+      @apply dark:bg-background-dark;
+
+      ng-icon {
+        @apply cursor-move;
+      }
+
+      &:hover {
+        @apply bg-secondary/50;
+        @apply dark:bg-secondary-dark/50;
+      }
+
+      .projected-content {
+        @apply flex items-center flex-1 gap-3 py-2 cursor-pointer;
+      }
+    }
+
+    b-tree {
+      @apply pl-4 box-border;
+    }
+
+    &.cdk-drag-preview {
+      @apply h-full w-full overflow-hidden shadow-none;
+
+      & > section {
+        @apply px-3 rounded-size-md flex justify-between items-center h-9 box-border gap-3 select-none bg-background;
+        @apply dark:bg-background-dark;
+
+        .projected-content {
+          @apply flex items-center flex-1 gap-3 py-2 cursor-pointer;
+        }
+      }
+    }
+
+    &.cdk-drag-placeholder {
+      @apply opacity-0;
+    }
+  }
 }

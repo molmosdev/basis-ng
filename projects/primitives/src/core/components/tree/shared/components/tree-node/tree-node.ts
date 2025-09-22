@@ -1,4 +1,4 @@
-import { CdkDrag } from '@angular/cdk/drag-drop';
+import { CdkDrag, CdkDragHandle } from '@angular/cdk/drag-drop';
 import {
   Component,
   contentChild,
@@ -7,7 +7,9 @@ import {
   OnInit,
   output,
 } from '@angular/core';
-import { TreeComponent } from '../../../tree.component';
+import { Tree } from '../../../tree';
+import { NgIcon, provideIcons } from '@ng-icons/core';
+import { lucideGripVertical } from '@ng-icons/lucide';
 
 /**
  * Represents a tree node component that can be extended, collapsed,
@@ -15,16 +17,57 @@ import { TreeComponent } from '../../../tree.component';
  */
 @Component({
   selector: 'b-tree-node',
-  // imports: [CdkDragHandle],
-  templateUrl: './tree-node.component.html',
+  imports: [CdkDragHandle, NgIcon],
+  template: `<section>
+      @if (!node.disabled) {
+        <ng-icon
+          name="lucideGripVertical"
+          size="16"
+          color="currentColor"
+          cdkDragHandle />
+      }
+      <div
+        class="projected-content"
+        (click)="nestedTree() && handleExtension()"
+        (keydown.enter)="nestedTree() && handleExtension()"
+        (keydown.space)="nestedTree() && handleExtension()"
+        role="button"
+        tabindex="0">
+        <ng-content />
+      </div>
+      @if (nestedTree()) {
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="20"
+          height="20"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round">
+          <path d="m6 9 6 6 6-6" />
+        </svg>
+      }
+    </section>
+    @if (nestedTree() && extended()) {
+      <div class="nested">
+        <ng-content select="b-tree" />
+      </div>
+    } `,
   hostDirectives: [
     {
       directive: CdkDrag,
       inputs: ['cdkDragDisabled: disabled'],
     },
   ],
+  providers: [
+    provideIcons({
+      lucideGripVertical,
+    }),
+  ],
 })
-export class TreeNodeComponent implements OnInit {
+export class TreeNode implements OnInit {
   /**
    * Indicates whether the node is extended (expanded).
    */
@@ -38,7 +81,7 @@ export class TreeNodeComponent implements OnInit {
   /**
    * Reference to a nested `Tree` component, if present.
    */
-  readonly nestedTree = contentChild(TreeComponent);
+  readonly nestedTree = contentChild(Tree);
 
   /**
    * Emits an event when the node is closed.
