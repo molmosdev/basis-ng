@@ -12,7 +12,7 @@ import { Component, inject } from '@angular/core';
     },
   ],
 })
-export class TabComponent {
+export class Tab {
   /**
    * Reference to the injected CDK Option instance.
    */

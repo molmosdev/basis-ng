@@ -5,9 +5,16 @@ import {
   computed,
   contentChildren,
   inject,
+  input,
   OnInit,
 } from '@angular/core';
-import { TabComponent } from './tab.component';
+import { Tab } from './tab';
+
+/**
+ * Defines the available sizes for the button component.
+ * @public
+ */
+type TabsSize = 'sm' | 'md' | 'lg';
 
 @Component({
   selector: 'b-tabs',
@@ -15,21 +22,32 @@ import { TabComponent } from './tab.component';
   template: `<ng-content />`,
   hostDirectives: [CdkListbox],
   host: {
+    '[class.b-size-sm]': 'size() === "sm"',
+    '[class.b-size-md]': 'size() === "md"',
+    '[class.b-size-lg]': 'size() === "lg"',
     '(keydown.arrowLeft)': 'previousTab()',
     '(keydown.arrowUp)': 'previousTab()',
     '(keydown.arrowRight)': 'nextTab()',
     '(keydown.arrowDown)': 'nextTab()',
   },
 })
-export class TabsComponent implements OnInit {
+export class Tabs implements OnInit {
   /**
    * Reference to the injected CDK Listbox instance.
    */
   cdkListbox = inject(CdkListbox);
+
+  /**
+   * The size of the tabs.
+   *
+   * @defaultValue 'md'
+   */
+  readonly size = input<TabsSize>('md');
+
   /**
    * Collection of child options within the listbox.
    */
-  readonly tabs = contentChildren(TabComponent);
+  readonly tabs = contentChildren(Tab);
 
   /**
    * Collection of cdk options within the listbox.

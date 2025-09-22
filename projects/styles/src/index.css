@@ -77,9 +77,8 @@
 @import './components/sheet.css';
 @import './components/spinner.css';
 @import './components/switch.css';
-@import './components/tab.component.css';
 @import './components/table.component.css';
-@import './components/tabs.component.css';
+@import './components/tabs.css';
 @import './components/textarea.component.css';
 @import './components/tooltip.css';
 @import './components/tree-node.component.css';

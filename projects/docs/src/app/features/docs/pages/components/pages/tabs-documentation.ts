@@ -1,10 +1,5 @@
 import { Component } from '@angular/core';
-import {
-  TabsComponent,
-  TabComponent,
-  Badge,
-  Alert,
-} from '@basis-ng/primitives';
+import { Badge, Alert, Tabs, Tab } from '@basis-ng/primitives';
 import { provideIcons } from '@ng-icons/core';
 import { lucideRocket } from '@ng-icons/lucide';
 import { CodeBlock } from '../shared/components/code-block';
@@ -22,8 +17,8 @@ import { CommonModule } from '@angular/common';
   selector: 'article[app-tabs-documentation]',
   imports: [
     CommonModule,
-    TabsComponent,
-    TabComponent,
+    Tabs,
+    Tab,
     CodeBlock,
     FormsModule,
     ReactiveFormsModule,
@@ -100,6 +95,26 @@ import { CommonModule } from '@angular/common';
         Use the arrow keys to navigate between tabs. The component supports
         horizontal navigation.
       </span>
+      <h2 class="font-semibold text-xl">Sizes</h2>
+      <code-block [code]="sizesUsage" />
+      <div
+        class="border border-gray-200 dark:border-neutral-700 rounded-lg p-6 mb-6 bg-white dark:bg-neutral-900 documentation-playground flex flex-col gap-4 items-center">
+        <b-tabs [(ngModel)]="sizesTab" size="sm">
+          <b-tab value="tab1">Small</b-tab>
+          <b-tab value="tab2">Small</b-tab>
+          <b-tab value="tab3">Small</b-tab>
+        </b-tabs>
+        <b-tabs [(ngModel)]="sizesTab" size="md">
+          <b-tab value="tab1">Medium (default)</b-tab>
+          <b-tab value="tab2">Medium (default)</b-tab>
+          <b-tab value="tab3">Medium (default)</b-tab>
+        </b-tabs>
+        <b-tabs [(ngModel)]="sizesTab" size="lg">
+          <b-tab value="tab1">Large</b-tab>
+          <b-tab value="tab2">Large</b-tab>
+          <b-tab value="tab3">Large</b-tab>
+        </b-tabs>
+      </div>
       <h2 class="font-semibold text-xl">Basic Usage</h2>
       <code-block [code]="basicUsage" />
       <div
@@ -188,7 +203,7 @@ import { CommonModule } from '@angular/common';
   },
 })
 export class TabsDocumentation {
-  angularImport = `import { TabsComponent, TabComponent } from '@basis-ng/primitives'`;
+  angularImport = `import { Tabs, Tab } from '@basis-ng/primitives'`;
   stylesImport = `@import '@basis-ng/styles/tabs';\n@import '@basis-ng/styles/tab';`;
   basicUsage = `<b-tabs [(ngModel)]='selectedTab'>
   <b-tab value='tab1'>Tab 1</b-tab>
@@ -209,6 +224,7 @@ export class TabsDocumentation {
 }`;
   selectedTab = ['tab2'];
   lazySelectedTab = ['tab1'];
+  sizesTab = ['tab1'];
   lazyLoadingUsage = `<b-tabs [(ngModel)]='lazySelectedTab'>
   <b-tab value='tab1'>Tab 1</b-tab>
   <b-tab value='tab2'>Tab 2</b-tab>
@@ -258,4 +274,19 @@ export class TabsDocumentation {
   tabsForm = new FormGroup({
     tabControl: new FormControl(['tab1']),
   });
+  sizesUsage = `<b-tabs [(ngModel)]='sizesTab' size="sm">
+  <b-tab value='tab1'>Small</b-tab>
+  <b-tab value='tab2'>Small</b-tab>
+  <b-tab value='tab3'>Small</b-tab>
+</b-tabs>
+<b-tabs [(ngModel)]='sizesTab' size="md">
+  <b-tab value='tab1'>Medium (default)</b-tab>
+  <b-tab value='tab2'>Medium (default)</b-tab>
+  <b-tab value='tab3'>Medium (default)</b-tab>
+</b-tabs>
+<b-tabs [(ngModel)]='sizesTab' size="lg">
+  <b-tab value='tab1'>Large</b-tab>
+  <b-tab value='tab2'>Large</b-tab>
+  <b-tab value='tab3'>Large</b-tab>
+</b-tabs>`;
 }

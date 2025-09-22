@@ -34,8 +34,8 @@ export * from './core/components/table/components/row/row.component';
 export * from './core/components/table/components/row/components/row-item/row-item.component';
 
 /* Tabs */
-export * from './core/components/tabs/tabs.component';
-export * from './core/components/tabs/tab.component';
+export * from './core/components/tabs/tabs';
+export * from './core/components/tabs/tab';
 
 /* Sheet */
 export * from './core/components/sheet/sheet';
