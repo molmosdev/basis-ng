@@ -1,17 +1,53 @@
-import { Component } from '@angular/core';
+import { Component, computed, inject, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { Routes } from '../../core/components/routes';
+import { NgTemplateOutlet } from '@angular/common';
+import { Button, Drawer, ResponsiveService } from '@basis-ng/primitives';
+import { NgIcon, provideIcons } from '@ng-icons/core';
+import { lucideTelescope } from '@ng-icons/lucide';
 
 @Component({
   selector: 'app-documentation',
-  imports: [Routes, RouterOutlet],
+  imports: [Routes, RouterOutlet, NgTemplateOutlet, Drawer, Button, NgIcon],
   template: `
-    <app-routes
-      class="max-h-[calc(100vh-5rem)] overflow-y-scroll sticky top-20 scroll-0 no-scrollbar px-6.5 pb-4" />
+    @if (isMobile()) {
+      <button
+        b-button
+        variant="secondary"
+        class="fixed top-6 right-4 z-30"
+        (click)="drawerOpen.set(true)">
+        <ng-icon
+          name="lucideTelescope"
+          size="22"
+          color="currentColor"
+          cdkDragHandle />
+        Explore
+      </button>
+      <b-drawer [(isOpen)]="drawerOpen" class="h-[60dvh]">
+        <ng-container *ngTemplateOutlet="menu" />
+      </b-drawer>
+    } @else {
+      <ng-container *ngTemplateOutlet="menu" />
+    }
+    <ng-template #menu>
+      <app-routes (navigationEmitter)="drawerOpen.set(false)" />
+    </ng-template>
     <router-outlet />
   `,
   host: {
-    class: 'flex gap-5',
+    class: 'flex',
+    '[class]': 'isMobile() ? "gap-0" : "gap-5"',
   },
+  providers: [
+    provideIcons({
+      lucideTelescope,
+    }),
+  ],
 })
-export class Documentation {}
+export class Documentation {
+  responsiveService = inject(ResponsiveService);
+  readonly isMobile = computed(
+    () => this.responsiveService.currentDevice() === 'mobile'
+  );
+  readonly drawerOpen = signal(false);
+}
