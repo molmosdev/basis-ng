@@ -1,4 +1,11 @@
-import { Component, computed, inject, OnInit, signal } from '@angular/core';
+import {
+  Component,
+  computed,
+  inject,
+  OnInit,
+  output,
+  signal,
+} from '@angular/core';
 import {
   ActivatedRoute,
   NavigationEnd,
@@ -7,7 +14,12 @@ import {
   RouterLink,
   RouterLinkActive,
 } from '@angular/router';
-import { Badge, Menu, MenuItemRadio } from '@basis-ng/primitives';
+import {
+  Badge,
+  Menu,
+  MenuItemRadio,
+  ResponsiveService,
+} from '@basis-ng/primitives';
 import { docsRoutes } from '../../features/docs/docs.routes';
 import { componentsRoutes } from '../../features/docs/pages/components/components.routes';
 import { utilitiesRoutes } from '../../features/docs/pages/utilities/utilities.routes';
@@ -16,8 +28,10 @@ import { utilitiesRoutes } from '../../features/docs/pages/utilities/utilities.r
   selector: 'app-routes',
   imports: [Menu, MenuItemRadio, RouterLink, RouterLinkActive, Badge],
   template: `
-    <b-menu size="sm">
-      <span class="opacity-70 text-xs mb-1 pl-1 font-display-mono">
+    <b-menu [size]="isMobile() ? 'md' : 'sm'">
+      <span
+        class="opacity-70 mb-1 pl-1 font-display-mono"
+        [class]="!isMobile() ? 'text-sm' : 'text-md'">
         Getting started
       </span>
       @for (route of documentationRoutes(); track route) {
@@ -25,7 +39,8 @@ import { utilitiesRoutes } from '../../features/docs/pages/utilities/utilities.r
           <button
             b-menu-item-radio
             [routerLink]="route.path"
-            [routerLinkActive]="['active']">
+            [routerLinkActive]="['active']"
+            (click)="navigationEmitter.emit()">
             {{ route.data['title'] }}
             @if (route.data['badge']) {
               <span b-badge variant="outlined" size="sm">
@@ -35,7 +50,9 @@ import { utilitiesRoutes } from '../../features/docs/pages/utilities/utilities.r
           </button>
         }
       }
-      <span class="opacity-70 text-xs mb-1 pl-1 font-display-mono mt-5">
+      <span
+        class="opacity-70 mb-1 pl-1 font-display-mono mt-5"
+        [class]="!isMobile() ? 'text-sm' : 'text-md'">
         Components
       </span>
       @for (route of componentsRoutes(); track route) {
@@ -44,7 +61,8 @@ import { utilitiesRoutes } from '../../features/docs/pages/utilities/utilities.r
           <button
             b-menu-item-radio
             [routerLink]="path"
-            [routerLinkActive]="['active']">
+            [routerLinkActive]="['active']"
+            (click)="navigationEmitter.emit()">
             {{ route.data['title'] }}
             @if (route.data['badge']) {
               <span b-badge variant="outlined" size="sm">{{
@@ -63,7 +81,8 @@ import { utilitiesRoutes } from '../../features/docs/pages/utilities/utilities.r
           <button
             b-menu-item-radio
             [routerLink]="path"
-            [routerLinkActive]="['active']">
+            [routerLinkActive]="['active']"
+            (click)="navigationEmitter.emit()">
             {{ route.data['title'] }}
             @if (route.data['new']) {
               <span b-badge variant="outlined" size="sm"> New </span>
@@ -73,8 +92,19 @@ import { utilitiesRoutes } from '../../features/docs/pages/utilities/utilities.r
       }
     </b-menu>
   `,
+  host: {
+    class:
+      'max-h-[calc(100vh-5rem)] overflow-y-scroll sticky top-20 scroll-0 no-scrollbar px-6.5',
+    '[class]': 'isMobile() ? "pb-6.5" : "pb-4"',
+  },
 })
 export class Routes implements OnInit {
+  responsiveService = inject(ResponsiveService);
+  readonly isMobile = computed(
+    () => this.responsiveService.currentDevice() === 'mobile'
+  );
+  navigationEmitter = output<void>();
+
   router = inject(Router);
   route = inject(ActivatedRoute);
   readonly path = signal(this.router.url);
