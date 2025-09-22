@@ -70,21 +70,11 @@ import { CommonModule } from '@angular/common';
             <tr>
               <td
                 class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2 font-display-mono">
-                value
+                size
               </td>
               <td
                 class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2 font-display-mono">
-                string
-              </td>
-            </tr>
-            <tr>
-              <td
-                class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2 font-display-mono">
-                ngModel
-              </td>
-              <td
-                class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2 font-display-mono">
-                string[] <strong>['tab1']</strong>
+                'sm' | <b class="font-bold">'md'</b> | 'lg'
               </td>
             </tr>
           </tbody>
@@ -204,7 +194,7 @@ import { CommonModule } from '@angular/common';
 })
 export class TabsDocumentation {
   angularImport = `import { Tabs, Tab } from '@basis-ng/primitives'`;
-  stylesImport = `@import '@basis-ng/styles/tabs';\n@import '@basis-ng/styles/tab';`;
+  stylesImport = `@import '@basis-ng/styles/tabs';`;
   basicUsage = `<b-tabs [(ngModel)]='selectedTab'>
   <b-tab value='tab1'>Tab 1</b-tab>
   <b-tab value='tab2'>Tab 2</b-tab>
