@@ -25,9 +25,9 @@ export type DeviceType = 'mobile' | 'tablet' | 'desktop';
 export class ResponsiveService {
   /** Signal that holds the breakpoint configuration */
   private readonly breakpoints = signal<DeviceBreakpoints>({
-    mobile: 576,
-    tablet: 992,
-    desktop: 1200,
+    mobile: 640,
+    tablet: 1024,
+    desktop: 1280,
   });
 
   /** Signal that holds the current window width */
