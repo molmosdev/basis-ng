@@ -2,7 +2,7 @@ b-menu {
   @apply flex flex-col;
 
   &.b-size-sm {
-    @apply text-sm rounded-size-sm;
+    @apply text-sm rounded-size-sm box-border;
 
     &:not(:has(b-menu-group)) {
       @apply p-0.5 gap-0.5;
