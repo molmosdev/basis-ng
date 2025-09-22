@@ -75,51 +75,51 @@ import { StepsButtons } from '../../shared/components/steps-buttons';
         <tbody>
           <tr>
             <td
-              class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2 font-display-mono">
+              class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2 font-display-mono whitespace-nowrap">
               hasBackdrop
             </td>
             <td
-              class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2 font-display-mono">
+              class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2 font-display-mono whitespace-nowrap">
               <strong>true</strong> | false
             </td>
           </tr>
           <tr>
             <td
-              class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2 font-display-mono">
+              class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2 font-display-mono whitespace-nowrap">
               closeOnBackdropClick
             </td>
             <td
-              class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2 font-display-mono">
+              class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2 font-display-mono whitespace-nowrap">
               <strong>true</strong> | false
             </td>
           </tr>
           <tr>
             <td
-              class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2 font-display-mono">
+              class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2 font-display-mono whitespace-nowrap">
               closeOnEscapeKey
             </td>
             <td
-              class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2 font-display-mono">
+              class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2 font-display-mono whitespace-nowrap">
               <strong>true</strong> | false
             </td>
           </tr>
           <tr>
             <td
-              class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2 font-display-mono">
+              class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2 font-display-mono whitespace-nowrap">
               closeDelay
             </td>
             <td
-              class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2 font-display-mono">
+              class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2 font-display-mono whitespace-nowrap">
               <strong>150</strong> | number
             </td>
           </tr>
           <tr>
             <td
-              class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2 font-display-mono">
+              class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2 font-display-mono whitespace-nowrap">
               closed
             </td>
             <td
-              class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2 font-display-mono">
+              class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2 font-display-mono whitespace-nowrap">
               EventEmitter&lt;void&gt;
             </td>
           </tr>
