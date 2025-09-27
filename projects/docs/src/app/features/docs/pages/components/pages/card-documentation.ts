@@ -2,11 +2,11 @@ import { Component } from '@angular/core';
 import { CodeBlock } from '../shared/components/code-block';
 import {
   Card,
-  CardHeaderComponent,
-  CardTitleComponent,
-  CardDescriptionComponent,
-  CardContentComponent,
-  CardFooterComponent,
+  CardHeader,
+  CardTitle,
+  CardDescription,
+  CardContent,
+  CardFooter,
   Button,
   Input,
   Badge,
@@ -21,11 +21,11 @@ import { StepsButtons } from '../../shared/components/steps-buttons';
   imports: [
     CodeBlock,
     Card,
-    CardHeaderComponent,
-    CardTitleComponent,
-    CardDescriptionComponent,
-    CardContentComponent,
-    CardFooterComponent,
+    CardHeader,
+    CardTitle,
+    CardDescription,
+    CardContent,
+    CardFooter,
     Button,
     Input,
     StepsButtons,
@@ -141,7 +141,7 @@ import { StepsButtons } from '../../shared/components/steps-buttons';
   },
 })
 export class CardDocumentation {
-  angularImport = `import { Card } from '@basis-ng/primitives'`;
+  angularImport = `import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from '@basis-ng/primitives'`;
   stylesImport = `@import '@basis-ng/styles/card';`;
   inputsCardUsage = `<b-card class="w-full max-w-[350px]">
   <b-card-header>

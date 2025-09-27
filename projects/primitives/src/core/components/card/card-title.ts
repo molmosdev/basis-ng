@@ -4,4 +4,4 @@ import { Component } from '@angular/core';
   selector: 'b-card-title',
   template: ` <ng-content /> `,
 })
-export class CardTitleComponent {}
+export class CardTitle {}

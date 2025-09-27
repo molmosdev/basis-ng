@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'b-card-content',
+  selector: 'b-card-footer',
   template: ` <ng-content /> `,
 })
-export class CardContentComponent {}
+export class CardFooter {}

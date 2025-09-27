@@ -103,12 +103,12 @@ export * from './core/services/dialog.service';
 export * from './core/directives/dialog';
 
 /* Card */
-export * from './core/components/card/card.component';
-export * from './core/components/card/card-header.component';
-export * from './core/components/card/card-title.component';
-export * from './core/components/card/card-description.component';
-export * from './core/components/card/card-content.component';
-export * from './core/components/card/card-footer.component';
+export * from './core/components/card/card';
+export * from './core/components/card/card-header';
+export * from './core/components/card/card-title';
+export * from './core/components/card/card-description';
+export * from './core/components/card/card-content';
+export * from './core/components/card/card-footer';
 
 /* Translation Service */
 export * from './core/services/translation.service';
