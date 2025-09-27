@@ -108,7 +108,7 @@ import { StepsButtons } from '../../shared/components/steps-buttons';
       <span>
         Create language JSON files in <b>public/lang</b> (e.g.
         <code>public/lang/en.json</code>). This is the default location where
-        the TranslationService looks for language files.
+        the TranslationManager looks for language files.
       </span>
       <code-block [code]="dictionaryExample" [highlight]="false" />
       <h2 class="font-semibold text-xl">Basic Usage</h2>
@@ -134,7 +134,7 @@ import { StepsButtons } from '../../shared/components/steps-buttons';
         <li>
           <b>Always</b> store your language JSON files in <b>public/lang</b> so
           they are accessible via HTTP requests and detected by the
-          TranslationService
+          TranslationManager
         </li>
         <li>Use signals for reactive UI updates</li>
         <li>
@@ -151,7 +151,7 @@ import { StepsButtons } from '../../shared/components/steps-buttons';
   },
 })
 export class TranslationDocumentation {
-  angularImport = `import { TranslationService } from '@basis-ng/primitives';`;
+  angularImport = `import { TranslationManager } from '@basis-ng/primitives';`;
   dictionaryExample = `{
   "home": {
     "title": "Welcome Home",
@@ -162,7 +162,7 @@ export class TranslationDocumentation {
     "cancel": "Cancel"
   }
 }`;
-  serviceUsage = `translation = inject(TranslationService);
+  serviceUsage = `translation = inject(TranslationManager);
 
 ngOnInit() {
   this.translation.setLanguage('es'); // Loads public/lang/es.json

@@ -7,7 +7,7 @@ import {
 } from '@angular/core';
 import { CdkPortalOutlet } from '@angular/cdk/portal';
 import { CdkDialogContainer, DialogRef } from '@angular/cdk/dialog';
-import { DialogConfig, DialogService } from '../../services/dialog.service';
+import { DialogConfig, DialogManager } from '../../services/dialog-manager';
 
 /** Dialog content container that renders projected portal content for a dialog instance.
  *
@@ -27,7 +27,7 @@ export class DialogContent extends CdkDialogContainer implements OnInit {
   dialogRef = inject(DialogRef);
 
   /** Service that orchestrates opening and closing of dialog instances. */
-  dialogService = inject(DialogService);
+  dialogManager = inject(DialogManager);
 
   /** Tracks whether the dialog is in its leaving (closing) animation state. */
   readonly leaving = signal(false);
@@ -61,7 +61,7 @@ export class DialogContent extends CdkDialogContainer implements OnInit {
   handleBackdropClose(data: DialogConfig): void {
     if (data.closeOnBackdropClick) {
       this.dialogRef.backdropClick.subscribe((): void => {
-        this.dialogService.closeDialog(this.dialogRef.id);
+        this.dialogManager.closeDialog(this.dialogRef.id);
       });
     }
   }
@@ -74,7 +74,7 @@ export class DialogContent extends CdkDialogContainer implements OnInit {
     if (data.closeOnEscapeKey) {
       this.dialogRef.keydownEvents.subscribe((event: KeyboardEvent): void => {
         if (event.key === 'Escape') {
-          this.dialogService.closeDialog(this.dialogRef.id);
+          this.dialogManager.closeDialog(this.dialogRef.id);
         }
       });
     }

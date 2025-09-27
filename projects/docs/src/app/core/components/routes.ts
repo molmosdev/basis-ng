@@ -18,7 +18,7 @@ import {
   Badge,
   Menu,
   MenuItemRadio,
-  ResponsiveService,
+  ResponsiveManager,
 } from '@basis-ng/primitives';
 import { docsRoutes } from '../../features/docs/docs.routes';
 import { componentsRoutes } from '../../features/docs/pages/components/components.routes';
@@ -99,9 +99,9 @@ import { utilitiesRoutes } from '../../features/docs/pages/utilities/utilities.r
   },
 })
 export class Routes implements OnInit {
-  responsiveService = inject(ResponsiveService);
+  responsiveManager = inject(ResponsiveManager);
   readonly isMobile = computed(
-    () => this.responsiveService.currentDevice() === 'mobile'
+    () => this.responsiveManager.currentDevice() === 'mobile'
   );
   navigationEmitter = output<void>();
 

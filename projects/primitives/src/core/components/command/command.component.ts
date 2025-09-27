@@ -13,7 +13,7 @@ import { CdkTrapFocus } from '@angular/cdk/a11y';
 import { CommandOptionsComponent } from './command-options.component';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Input } from '../input/input';
-import { UtilsService } from '../../../shared/services/utils.service';
+import { Utils } from '../../../shared/services/utils';
 
 /**
  * Component representing a command input with associated options.
@@ -93,9 +93,9 @@ export class CommandComponent implements OnDestroy {
   readonly debounce = input(0);
 
   /**
-   * Reference to the UtilsService for debounce logic.
+   * Reference to the Utils for debounce logic.
    */
-  private utils = inject(UtilsService);
+  private utils = inject(Utils);
 
   /**
    * Unique key for debounce timer.

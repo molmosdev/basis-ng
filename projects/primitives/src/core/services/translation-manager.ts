@@ -17,12 +17,12 @@ export type TranslationDictionary = Record<string, Record<string, string>>;
  *
  * @example
  * ```typescript
- * translationService.setLanguage('es');
- * translationService.translate('home.title');
+ * translationManager.setLanguage('es');
+ * translationManager.translate('home.title');
  * ```
  */
 @Injectable({ providedIn: 'root' })
-export class TranslationService {
+export class TranslationManager {
   /** Current language code. */
   private readonly _language = signal<string>('en');
 

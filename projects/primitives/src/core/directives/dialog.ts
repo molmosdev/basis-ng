@@ -8,12 +8,12 @@ import {
   TemplateRef,
   output,
 } from '@angular/core';
-import { DialogData, DialogService } from '../services/dialog.service';
+import { DialogData, DialogManager } from '../services/dialog-manager';
 
 /**
  * Directive that registers and controls a dialog template instance.
  *
- * Registers itself in the {@link DialogService} on init and exposes open/close APIs.
+ * Registers itself in the {@link DialogManager} on init and exposes open/close APIs.
  */
 @Directive({
   selector: '[bDialog]',
@@ -92,7 +92,7 @@ export class Dialog implements OnInit, OnDestroy {
   /**
    * Reference to the dialog service handling registration and state.
    */
-  private readonly dialogService = inject(DialogService);
+  private readonly dialogManager = inject(DialogManager);
 
   /**
    * Template reference representing the dialog content projected when opened.
@@ -103,21 +103,21 @@ export class Dialog implements OnInit, OnDestroy {
    * Lifecycle hook that registers the dialog with the dialog service.
    */
   ngOnInit() {
-    this.dialogService.registerDialog(this.id(), this.data());
+    this.dialogManager.registerDialog(this.id(), this.data());
   }
 
   /**
    * Opens the dialog via the dialog service using its identifier.
    */
   open(): void {
-    this.dialogService.openDialog(this.id());
+    this.dialogManager.openDialog(this.id());
   }
 
   /**
    * Closes the dialog and emits the `closed` output.
    */
   close(): void {
-    this.dialogService.closeDialog(this.id());
+    this.dialogManager.closeDialog(this.id());
     this.closed.emit();
   }
 
@@ -125,6 +125,6 @@ export class Dialog implements OnInit, OnDestroy {
    * Lifecycle hook that removes the dialog from the dialog service registry.
    */
   ngOnDestroy(): void {
-    this.dialogService.removeDialog(this.id());
+    this.dialogManager.removeDialog(this.id());
   }
 }

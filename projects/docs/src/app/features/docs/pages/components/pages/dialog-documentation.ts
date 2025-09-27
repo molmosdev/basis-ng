@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import {
-  DialogService,
+  DialogManager,
   Dialog,
   Card,
   CardHeader,
@@ -49,7 +49,7 @@ import { StepsButtons } from '../../shared/components/steps-buttons';
     <span>
       The <strong>Dialog</strong> directive allows you to register an
       <span class="font-display-mono">ng-template</span> as a dialog. You can
-      open dialogs using the <strong>DialogService</strong> or by referencing
+      open dialogs using the <strong>DialogManager</strong> or by referencing
       the directive instance. The directive, together with the service,
       dynamically instantiates the dialog content component.
     </span>
@@ -133,7 +133,7 @@ import { StepsButtons } from '../../shared/components/steps-buttons';
     <code-block [code]="basicUsageService" />
     <div
       class="border border-gray-200 dark:border-neutral-700 rounded-lg p-6 mb-6 bg-white dark:bg-neutral-900 documentation-playground flex flex-col items-center justify-center gap-4">
-      <button b-button (click)="openDialogService()">
+      <button b-button (click)="openDialogManager()">
         Open Dialog (Service)
       </button>
     </div>
@@ -147,7 +147,7 @@ import { StepsButtons } from '../../shared/components/steps-buttons';
           </b-card-description>
         </b-card-header>
         <b-card-footer>
-          <button b-button (click)="closeDialogService()">Close</button>
+          <button b-button (click)="closeDialogManager()">Close</button>
         </b-card-footer>
       </b-card>
     </ng-template>
@@ -266,18 +266,18 @@ import { StepsButtons } from '../../shared/components/steps-buttons';
   },
 })
 export class DialogDocumentation {
-  angularImport = `import { Dialog, DialogService } from '@basis-ng/primitives'`;
+  angularImport = `import { Dialog, DialogManager } from '@basis-ng/primitives'`;
   stylesImport = `@import '@basis-ng/styles/dialog';`;
-  basicUsageService = `<button b-button (click)="openDialogService()">Open Dialog (Service)</button>\n<ng-template bDialog="exampleDialog">\n  <b-card>\n    <b-card-header>\n      <b-card-title>Dialog</b-card-title>\n      <b-card-description>\n        This is a dialog component. You can use it to display important information to the user.\n      </b-card-description>\n    </b-card-header>\n    <b-card-footer>\n      <button b-button (click)="closeDialogService()">Close</button>\n    </b-card-footer>\n  </b-card>\n</ng-template>`;
+  basicUsageService = `<button b-button (click)="openDialogManager()">Open Dialog (Service)</button>\n<ng-template bDialog="exampleDialog">\n  <b-card>\n    <b-card-header>\n      <b-card-title>Dialog</b-card-title>\n      <b-card-description>\n        This is a dialog component. You can use it to display important information to the user.\n      </b-card-description>\n    </b-card-header>\n    <b-card-footer>\n      <button b-button (click)="closeDialogManager()">Close</button>\n    </b-card-footer>\n  </b-card>\n</ng-template>`;
   basicUsageDirective = `<button b-button (click)="dialogRef.open()">Open Dialog (Directive Ref)</button>\n<ng-template bDialog="exampleDialog2" #dialogRef="bDialog">\n  <b-card>\n    <b-card-header>\n      <b-card-title>Dialog</b-card-title>\n      <b-card-description>\n        This is a dialog component. You can use it to display important information to the user.\n      </b-card-description>\n    </b-card-header>\n    <b-card-footer>\n      <button b-button (click)="dialogRef.close()">Close</button>\n    </b-card-footer>\n  </b-card>\n</ng-template>`;
   hasBackdropFalseExample = `<button b-button (click)="dialogNoBackdrop.open()">Open Dialog (No Backdrop)</button>\n<ng-template bDialog="dialogNoBackdrop" [hasBackdrop]="false" #dialogNoBackdrop="bDialog">\n  <b-card>\n    <b-card-header>\n      <b-card-title>Dialog</b-card-title>\n      <b-card-description>\n        No backdrop is rendered behind this dialog.\n      </b-card-description>\n    </b-card-header>\n    <b-card-footer>\n      <button b-button (click)="dialogNoBackdrop.close()">Close</button>\n    </b-card-footer>\n  </b-card>\n</ng-template>`;
   noBackdropCloseExample = `<button b-button (click)="dialogNoBackdropClose.open()">Open Dialog (Backdrop can't close)</button>\n<ng-template bDialog="dialogNoBackdropClose" [closeOnBackdropClick]="false" #dialogNoBackdropClose="bDialog">\n  <b-card>\n    <b-card-header>\n      <b-card-title>Dialog</b-card-title>\n      <b-card-description>\n        Clicking the backdrop will not close this dialog.\n      </b-card-description>\n    </b-card-header>\n    <b-card-footer>\n      <button b-button (click)="dialogNoBackdropClose.close()">Close</button>\n    </b-card-footer>\n  </b-card>\n</ng-template>`;
   noEscapeCloseExample = `<button b-button (click)="dialogNoEscape.open()">Open Dialog (Escape can't close)</button>\n<ng-template bDialog="dialogNoEscape" [closeOnEscapeKey]="false" #dialogNoEscape="bDialog">\n  <b-card>\n    <b-card-header>\n      <b-card-title>Dialog</b-card-title>\n      <b-card-description>\n        Pressing Escape will not close this dialog.\n      </b-card-description>\n    </b-card-header>\n    <b-card-footer>\n      <button b-button (click)="dialogNoEscape.close()">Close</button>\n    </b-card-footer>\n  </b-card>\n</ng-template>`;
-  dialogService = inject(DialogService);
-  openDialogService() {
-    this.dialogService.openDialog('exampleDialog');
+  dialogManager = inject(DialogManager);
+  openDialogManager() {
+    this.dialogManager.openDialog('exampleDialog');
   }
-  closeDialogService() {
-    this.dialogService.closeDialog('exampleDialog');
+  closeDialogManager() {
+    this.dialogManager.closeDialog('exampleDialog');
   }
 }

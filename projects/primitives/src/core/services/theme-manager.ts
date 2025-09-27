@@ -11,7 +11,7 @@ import { isPlatformBrowser } from '@angular/common';
 @Injectable({
   providedIn: 'root',
 })
-export class ThemeService {
+export class ThemeManager {
   /**
    * Signal representing the current theme.
    *

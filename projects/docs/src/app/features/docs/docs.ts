@@ -2,7 +2,7 @@ import { Component, computed, inject, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { Routes } from '../../core/components/routes';
 import { NgTemplateOutlet } from '@angular/common';
-import { Button, Drawer, ResponsiveService } from '@basis-ng/primitives';
+import { Button, Drawer, ResponsiveManager } from '@basis-ng/primitives';
 import { NgIcon, provideIcons } from '@ng-icons/core';
 import { lucideTelescope } from '@ng-icons/lucide';
 
@@ -45,9 +45,9 @@ import { lucideTelescope } from '@ng-icons/lucide';
   ],
 })
 export class Documentation {
-  responsiveService = inject(ResponsiveService);
+  responsiveManager = inject(ResponsiveManager);
   readonly isMobile = computed(
-    () => this.responsiveService.currentDevice() === 'mobile'
+    () => this.responsiveManager.currentDevice() === 'mobile'
   );
   readonly drawerOpen = signal(false);
 }

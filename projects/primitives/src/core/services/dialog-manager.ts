@@ -1,7 +1,7 @@
 import { Dialog } from '@angular/cdk/dialog';
 import { inject, Injectable, TemplateRef } from '@angular/core';
 import { DialogContent } from '../components/dialog/dialog-content';
-import { UtilsService } from '../../shared/services/utils.service';
+import { Utils } from '../../shared/services/utils';
 
 /**
  * Represents the template and configuration registered for a dialog instance.
@@ -35,12 +35,12 @@ export interface DialogConfig {
 @Injectable({
   providedIn: 'root',
 })
-export class DialogService {
+export class DialogManager {
   /** Angular CDK dialog service used to manage overlay instances. */
   private readonly dialog = inject(Dialog);
 
   /** Utility service used for debounced close behavior. */
-  private readonly utilsService = inject(UtilsService);
+  private readonly utils = inject(Utils);
 
   /** Registry mapping dialog identifiers to their data. */
   private readonly dialogs = new Map<string, DialogData>();
@@ -54,7 +54,7 @@ export class DialogService {
   registerDialog(id: string, data: DialogData): void {
     if (this.dialogs.has(id)) {
       console.warn(
-        `[DialogService] Dialog with id "${id}" is already registered. Overwriting.`
+        `[DialogManager] Dialog with id "${id}" is already registered. Overwriting.`
       );
     }
     this.dialogs.set(id, data);
@@ -79,7 +79,7 @@ export class DialogService {
     const dialogData = this.dialogs.get(id);
     if (!dialogData) {
       throw new Error(
-        `[DialogService] Dialog with id "${id}" not found. Ensure the bDialog directive is applied correctly.`
+        `[DialogManager] Dialog with id "${id}" not found. Ensure the bDialog directive is applied correctly.`
       );
     }
     this.dialog.open(dialogData.template, {
@@ -101,7 +101,7 @@ export class DialogService {
     const config = this.dialogs.get(id)?.config;
     if (!config) {
       console.warn(
-        `[DialogService] Attempted to close dialog with id "${id}", but no open dialog with that id was found.`
+        `[DialogManager] Attempted to close dialog with id "${id}", but no open dialog with that id was found.`
       );
       return;
     }
@@ -111,7 +111,7 @@ export class DialogService {
       if (container && container.leaving) {
         container.leaving.set(true);
       }
-      this.utilsService.debounce(
+      this.utils.debounce(
         'close-dialog-' + id,
         () => {
           dialogRef.close();
@@ -123,7 +123,7 @@ export class DialogService {
       );
     } else {
       console.warn(
-        `[DialogService] Attempted to close dialog with id "${id}", but no open dialog with that id was found.`
+        `[DialogManager] Attempted to close dialog with id "${id}", but no open dialog with that id was found.`
       );
     }
   }

@@ -2,8 +2,8 @@
  * Public API Surface of basis-ng
  */
 
-/* Theme Service */
-export * from './core/services/theme.service';
+/* Theme Manager */
+export * from './core/services/theme-manager';
 
 /* Button */
 export * from './core/components/button/button';
@@ -44,7 +44,7 @@ export * from './core/components/sheet/sheet';
 export * from './core/components/drawer/drawer.component';
 
 /* Responsive */
-export * from './core/services/responsive.service';
+export * from './core/services/responsive-manager';
 
 /* OTP */
 export * from './core/components/otp/otp';
@@ -99,7 +99,7 @@ export * from './core/directives/connected-overlay';
 export * from './core/components/input-group/input-group';
 
 /* Dialog */
-export * from './core/services/dialog.service';
+export * from './core/services/dialog-manager';
 export * from './core/directives/dialog';
 
 /* Card */
@@ -110,8 +110,8 @@ export * from './core/components/card/card-description';
 export * from './core/components/card/card-content';
 export * from './core/components/card/card-footer';
 
-/* Translation Service */
-export * from './core/services/translation.service';
+/* Translation Manager */
+export * from './core/services/translation-manager';
 
 // pipe
 export * from './core/pipes/translate.pipe';

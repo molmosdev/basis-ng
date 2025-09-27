@@ -22,7 +22,7 @@ export type DeviceType = 'mobile' | 'tablet' | 'desktop';
 @Injectable({
   providedIn: 'root',
 })
-export class ResponsiveService {
+export class ResponsiveManager {
   /** Signal that holds the breakpoint configuration */
   private readonly breakpoints = signal<DeviceBreakpoints>({
     mobile: 640,
