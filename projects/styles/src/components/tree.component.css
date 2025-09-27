@@ -10,8 +10,7 @@ b-tree {
     }
 
     section {
-      @apply px-3 rounded-size-md flex justify-between items-center h-9 box-border gap-3 select-none bg-background;
-      @apply dark:bg-background-dark;
+      @apply px-3 rounded-size-md flex justify-between items-center h-9 box-border gap-3 select-none;
 
       ng-icon {
         @apply cursor-move;
