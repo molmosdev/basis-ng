@@ -10,7 +10,7 @@ import {
   output,
   OnInit,
 } from '@angular/core';
-import { ConnectedOverlay } from '@basis-ng/primitives';
+import { ConnectedOverlay } from 'projects/primitives/src/core/directives/connected-overlay';
 
 /**
  * Component representing the content of a select dropdown.

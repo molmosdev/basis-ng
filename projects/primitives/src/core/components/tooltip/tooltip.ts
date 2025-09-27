@@ -4,9 +4,9 @@ import {
   contentChild,
   input,
 } from '@angular/core';
-import { ConnectedOverlay } from '@basis-ng/primitives';
 import { TooltipTrigger } from './shared/directives/tooltip-trigger';
 import { TooltipContent } from './shared/components/tooltip-content';
+import { ConnectedOverlay } from '../../directives/connected-overlay';
 
 /**
  * Defines the available visual variants for the tooltip component.

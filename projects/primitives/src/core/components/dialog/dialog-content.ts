@@ -7,7 +7,7 @@ import {
 } from '@angular/core';
 import { CdkPortalOutlet } from '@angular/cdk/portal';
 import { CdkDialogContainer, DialogRef } from '@angular/cdk/dialog';
-import { DialogConfig, DialogService } from '@basis-ng/primitives';
+import { DialogConfig, DialogService } from '../../services/dialog.service';
 
 /** Dialog content container that renders projected portal content for a dialog instance.
  *

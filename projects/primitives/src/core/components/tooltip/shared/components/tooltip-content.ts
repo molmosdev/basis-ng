@@ -1,5 +1,5 @@
 import { Component, computed, effect, inject } from '@angular/core';
-import { ConnectedOverlay } from '@basis-ng/primitives';
+import { ConnectedOverlay } from 'projects/primitives/src/core/directives/connected-overlay';
 
 @Component({
   selector: 'b-tooltip-content',
