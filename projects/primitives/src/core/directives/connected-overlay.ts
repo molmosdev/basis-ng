@@ -14,7 +14,8 @@ import {
   model,
   output,
 } from '@angular/core';
-import { OverlayOrigin, Position } from '../../public-api';
+import { OverlayOrigin } from './overlay-origin';
+import { Position } from '../../shared/types/position.type';
 
 /**
  * Directive to manage overlay behavior and positioning.
