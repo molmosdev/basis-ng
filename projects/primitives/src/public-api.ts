@@ -21,6 +21,7 @@ export * from './core/components/select/shared/components/select-trigger';
 export * from './core/components/select/shared/components/select-value';
 export * from './core/components/select/shared/components/select-content';
 export * from './shared/components/option.component';
+export * from './core/components/select/shared/directives/select-filter';
 
 /* Spinner */
 export * from './core/components/spinner/spinner';
