@@ -9,9 +9,7 @@
     "noPropertyAccessFromIndexSignature": true,
     "baseUrl": "./",
     "paths": {
-      "primitives": ["dist/primitives"],
-      "@basis-ng/primitives": ["projects/primitives/src/public-api.ts"],
-      "@basis-ng/styles": ["projects/styles/src/index.css"]
+      "primitives": ["dist/primitives"]
     },
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
