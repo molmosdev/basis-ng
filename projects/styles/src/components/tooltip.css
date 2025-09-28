@@ -52,7 +52,7 @@ b-tooltip-content {
 
 /* Sizes */
 .b-tooltip-size-sm b-tooltip-content {
-  @apply px-2 py-1 text-xs;
+  @apply px-2 py-1 text-sm;
 }
 .b-tooltip-size-md b-tooltip-content {
   @apply px-3 py-2 text-base;

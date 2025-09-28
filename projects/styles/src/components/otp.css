@@ -39,7 +39,7 @@ input[b-otp-digit] {
   }
 
   &.b-otp-size-sm {
-    @apply w-7 h-7 text-xs rounded-size-sm p-0;
+    @apply w-7 h-7 text-sm rounded-size-sm p-0;
   }
   &.b-otp-size-md {
     @apply w-9 h-9 text-base rounded-size-md p-0;

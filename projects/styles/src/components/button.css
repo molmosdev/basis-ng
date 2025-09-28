@@ -25,13 +25,13 @@ button[b-button] {
 
   /* Sizes */
   &.b-button-size-sm {
-    @apply px-2 py-1 text-xs rounded-size-sm;
+    @apply px-2 py-1 text-sm rounded-size-sm;
   }
   &.b-button-size-md {
-    @apply px-4 py-2 text-sm rounded-size-md;
+    @apply px-4 py-2 text-base rounded-size-md;
   }
   &.b-button-size-lg {
-    @apply px-6 py-3 text-base rounded-size-lg;
+    @apply px-6 py-3 text-lg rounded-size-lg;
   }
 
   /* Active state */

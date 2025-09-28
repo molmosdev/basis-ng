@@ -20,26 +20,26 @@ b-tabs {
   }
 
   &.b-tabs-size-sm {
-    @apply h-6 rounded-size-sm p-0.5 gap-0.5;
+    @apply h-7 rounded-size-sm p-0.5 gap-0.5;
 
     b-tab {
-      @apply px-2 text-xs rounded-size-xs flex items-center justify-center;
+      @apply px-2 text-sm rounded-size-xs flex items-center justify-center;
     }
   }
 
   &.b-tabs-size-md {
-    @apply h-9 rounded-size-md p-1 gap-1;
+    @apply h-10 rounded-size-md p-1 gap-1;
 
     b-tab {
-      @apply px-4 text-sm rounded-size-sm flex items-center justify-center;
+      @apply px-4 text-base rounded-size-sm flex items-center justify-center;
     }
   }
 
   &.b-tabs-size-lg {
-    @apply h-12 rounded-size-lg p-1.5 gap-1.5;
+    @apply h-13 rounded-size-lg p-1.5 gap-1.5;
 
     b-tab {
-      @apply px-6 text-base rounded-size-md flex items-center justify-center;
+      @apply px-6 text-lg rounded-size-md flex items-center justify-center;
     }
   }
 }

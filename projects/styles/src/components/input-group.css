@@ -40,9 +40,9 @@ b-input-group {
   }
 
   /* Size variants (normalized to Tailwind scale, matching input sizes) */
-  &:has(.b-input-group-size-sm) {
+  &:has(.b-input-size-sm) {
     /* small */
-    @apply py-1 h-7 text-xs rounded-size-sm;
+    @apply py-1 h-7 text-sm rounded-size-sm;
 
     &:has(> :first-child:not(input[b-input])) {
       @apply pl-2;
@@ -52,9 +52,9 @@ b-input-group {
       @apply pr-2;
     }
   }
-  &:has(.b-input-group-size-md) {
+  &:has(.b-input-size-md) {
     /* medium */
-    @apply py-2 h-9 text-base rounded-size-md;
+    @apply py-2 h-10 text-base rounded-size-md;
 
     &:has(> :first-child:not(input[b-input])) {
       @apply pl-3;
@@ -72,22 +72,22 @@ b-input-group {
       }
     }
   }
-  &:has(.b-input-group-size-lg) {
+  &:has(.b-input-size-lg) {
     /* large */
-    @apply py-3 h-11 text-lg rounded-size-lg;
+    @apply py-3 h-13 text-lg rounded-size-lg;
 
     &:has(> :first-child:not(input[b-input])) {
       @apply pl-4;
 
       &:has(> button[b-button]:first-child) {
-        @apply !pl-1;
+        @apply !pl-1.5;
       }
     }
     &:has(> :last-child:not(input[b-input])) {
       @apply pr-4;
 
       &:has(> button[b-button]:last-child) {
-        @apply !pr-1;
+        @apply !pr-1.5;
       }
     }
   }
