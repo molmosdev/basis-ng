@@ -3,12 +3,11 @@ b-select {
 
   button[b-select-trigger] {
     @apply font-medium shadow-xs transition-colors duration-150 flex items-center justify-center gap-x-2 disabled:opacity-50 disabled:cursor-not-allowed;
-    @apply bg-transparent text-primary inset-ring-1 inset-ring-secondary hover:bg-primary/5 flex-1;
-    @apply dark:text-primary-dark dark:inset-ring-secondary-dark dark:hover:bg-primary-dark/5;
+    @apply bg-transparent inset-ring-1 inset-ring-secondary hover:bg-primary/5 flex-1;
+    @apply dark:inset-ring-secondary-dark dark:hover:bg-primary-dark/5;
 
     b-select-value {
       @apply flex-1 text-start whitespace-nowrap overflow-hidden text-ellipsis;
-      @apply dark:text-primary-dark;
     }
 
     svg {
@@ -65,7 +64,6 @@ ul[b-select-content] {
 
   .no-options-message {
     @apply py-1 px-2 text-sm;
-    @apply dark:text-primary-dark;
   }
 
   input[b-input] {

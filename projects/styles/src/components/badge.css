@@ -11,12 +11,12 @@ span[b-badge] {
     @apply dark:bg-secondary-dark dark:text-secondary-foreground-dark;
   }
   &.b-badge-variant-ghost {
-    @apply bg-transparent text-primary hover:bg-primary/10;
-    @apply dark:text-primary-dark dark:hover:bg-primary-dark/10;
+    @apply bg-transparent hover:bg-primary/10;
+    @apply dark:hover:bg-primary-dark/10;
   }
   &.b-badge-variant-outlined {
-    @apply bg-transparent text-primary inset-ring-1 inset-ring-secondary-foreground/30 hover:bg-primary/5;
-    @apply dark:text-primary-dark dark:inset-ring-secondary-foreground-dark/30 dark:hover:bg-primary-dark/5;
+    @apply bg-transparent inset-ring-1 inset-ring-secondary-foreground/30 hover:bg-primary/5;
+    @apply dark:inset-ring-secondary-foreground-dark/30 dark:hover:bg-primary-dark/5;
   }
   &.b-badge-variant-destructive {
     @apply bg-destructive text-destructive-foreground inset-ring-1 inset-ring-destructive hover:bg-destructive/90 hover:inset-ring-destructive/80;

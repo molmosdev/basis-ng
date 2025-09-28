@@ -26,7 +26,7 @@ textarea[b-textarea] {
   }
 
   &.b-textarea-size-sm {
-    @apply px-2 py-1 text-xs;
+    @apply px-2 py-1 text-sm;
   }
   &.b-textarea-size-md {
     @apply px-3 py-2 text-base;
