@@ -28,9 +28,9 @@ import { SelectContent } from './shared/components/select-content';
     },
   ],
   host: {
-    '[class.b-size-sm]': 'size() === "sm"',
-    '[class.b-size-md]': 'size() === "md"',
-    '[class.b-size-lg]': 'size() === "lg"',
+    '[class.b-select-size-sm]': 'size() === "sm"',
+    '[class.b-select-size-md]': 'size() === "md"',
+    '[class.b-select-size-lg]': 'size() === "lg"',
   },
 })
 export class Select implements ControlValueAccessor, OnInit {
@@ -185,7 +185,7 @@ export class Select implements ControlValueAccessor, OnInit {
    * Sets the panel size class on the overlay based on the select size input.
    */
   handlePanelSizeClass(): void {
-    this.overlay()!.cdkConnectedOverlay.panelClass = `b-size-${this.size()}`;
+    this.overlay()!.cdkConnectedOverlay.panelClass = `b-select-size-${this.size()}`;
   }
 
   // Control value accessor methods

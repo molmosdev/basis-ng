@@ -13,9 +13,9 @@ import {
   host: {
     '[attr.value]': 'value()',
     '(input)': 'onInput($event)',
-    '[class.b-size-sm]': 'size() === "sm"',
-    '[class.b-size-md]': 'size() === "md"',
-    '[class.b-size-lg]': 'size() === "lg"',
+    '[class.b-range-size-sm]': 'size() === "sm"',
+    '[class.b-range-size-md]': 'size() === "md"',
+    '[class.b-range-size-lg]': 'size() === "lg"',
   },
 })
 export class Range implements AfterViewInit {

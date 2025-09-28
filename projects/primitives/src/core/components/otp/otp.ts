@@ -88,8 +88,8 @@ export class Otp implements AfterContentInit, ControlValueAccessor {
       const el = input.el.nativeElement;
       // maxLength y type se aplican por la directiva
       el.disabled = this.disabled();
-      el.classList.remove('b-size-sm', 'b-size-md', 'b-size-lg');
-      el.classList.add(`b-size-${this.size()}`);
+      el.classList.remove('b-otp-size-sm', 'b-otp-size-md', 'b-otp-size-lg');
+      el.classList.add(`b-otp-size-${this.size()}`);
       el.addEventListener('input', (event: Event) => {
         this.onInput(event, idx);
       });
@@ -252,11 +252,11 @@ export class Otp implements AfterContentInit, ControlValueAccessor {
     this.digitInputs().forEach(input => {
       input.el.nativeElement.disabled = isDisabled;
       input.el.nativeElement.classList.remove(
-        'b-size-sm',
-        'b-size-md',
-        'b-size-lg'
+        'b-otp-size-sm',
+        'b-otp-size-md',
+        'b-otp-size-lg'
       );
-      input.el.nativeElement.classList.add(`b-size-${this.size()}`);
+      input.el.nativeElement.classList.add(`b-otp-size-${this.size()}`);
     });
   }
 }

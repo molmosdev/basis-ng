@@ -4,9 +4,9 @@ import { Component, input } from '@angular/core';
   selector: 'textarea[b-textarea]',
   template: ``,
   host: {
-    '[class.b-size-sm]': 'size() === "sm"',
-    '[class.b-size-md]': 'size() === "md"',
-    '[class.b-size-lg]': 'size() === "lg"',
+    '[class.b-textarea-size-sm]': 'size() === "sm"',
+    '[class.b-textarea-size-md]': 'size() === "md"',
+    '[class.b-textarea-size-lg]': 'size() === "lg"',
   },
 })
 export class TextareaComponent {

@@ -22,9 +22,9 @@ import { ControlContainer, NgModel } from '@angular/forms';
     '(focus)': 'focused.set(true)',
     '(blur)': 'focused.set(false)',
     '(input)': 'value.set($event.target.value)',
-    '[class.b-size-sm]': 'size() === "sm"',
-    '[class.b-size-md]': 'size() === "md"',
-    '[class.b-size-lg]': 'size() === "lg"',
+    '[class.b-color-picker-size-sm]': 'size() === "sm"',
+    '[class.b-color-picker-size-md]': 'size() === "md"',
+    '[class.b-color-picker-size-lg]': 'size() === "lg"',
   },
 })
 export class ColorPicker implements AfterViewInit {

@@ -29,9 +29,14 @@ type TooltipSize = 'sm' | 'md' | 'lg';
   selector: 'b-tooltip',
   template: `<ng-content />`,
   host: {
-    '[class.b-size-sm]': 'size() === "sm"',
-    '[class.b-size-md]': 'size() === "md"',
-    '[class.b-size-lg]': 'size() === "lg"',
+    '[class.b-tooltip-size-sm]': 'size() === "sm"',
+    '[class.b-tooltip-size-md]': 'size() === "md"',
+    '[class.b-tooltip-size-lg]': 'size() === "lg"',
+    '[class.b-tooltip-variant-primary]': 'variant() === "primary"',
+    '[class.b-tooltip-variant-secondary]': 'variant() === "secondary"',
+    '[class.b-tooltip-variant-ghost]': 'variant() === "ghost"',
+    '[class.b-tooltip-variant-outlined]': 'variant() === "outlined"',
+    '[class.b-tooltip-variant-destructive]': 'variant() === "destructive"',
   },
 })
 export class Tooltip implements AfterContentInit {
@@ -107,7 +112,7 @@ export class Tooltip implements AfterContentInit {
    */
   handlePanelClasses(): void {
     this.overlay()!.cdkConnectedOverlay.panelClass = [
-      `b-size-${this.size()}`,
+      `b-tooltip-size-${this.size()}`,
       `b-variant-${this.variant()}`,
     ];
   }

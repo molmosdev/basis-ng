@@ -9,9 +9,9 @@ import { Component, input } from '@angular/core';
   template: `<ng-content />`,
   hostDirectives: [CdkMenu],
   host: {
-    '[class.b-size-sm]': "size() === 'sm'",
-    '[class.b-size-md]': "size() === 'md'",
-    '[class.b-size-lg]': "size() === 'lg'",
+    '[class.b-menu-size-sm]': "size() === 'sm'",
+    '[class.b-menu-size-md]': "size() === 'md'",
+    '[class.b-menu-size-lg]': "size() === 'lg'",
   },
 })
 export class Menu {

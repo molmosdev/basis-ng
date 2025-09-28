@@ -21,14 +21,14 @@ type BadgeSize = 'sm' | 'md' | 'lg';
   selector: 'span[b-badge]',
   template: `<ng-content />`,
   host: {
-    '[class.b-variant-primary]': 'variant() === "primary"',
-    '[class.b-variant-secondary]': 'variant() === "secondary"',
-    '[class.b-variant-ghost]': 'variant() === "ghost"',
-    '[class.b-variant-outlined]': 'variant() === "outlined"',
-    '[class.b-variant-destructive]': 'variant() === "destructive"',
-    '[class.b-size-sm]': 'size() === "sm"',
-    '[class.b-size-md]': 'size() === "md"',
-    '[class.b-size-lg]': 'size() === "lg"',
+    '[class.b-badge-variant-primary]': 'variant() === "primary"',
+    '[class.b-badge-variant-secondary]': 'variant() === "secondary"',
+    '[class.b-badge-variant-ghost]': 'variant() === "ghost"',
+    '[class.b-badge-variant-outlined]': 'variant() === "outlined"',
+    '[class.b-badge-variant-destructive]': 'variant() === "destructive"',
+    '[class.b-badge-size-sm]': 'size() === "sm"',
+    '[class.b-badge-size-md]': 'size() === "md"',
+    '[class.b-badge-size-lg]': 'size() === "lg"',
   },
 })
 export class Badge {

@@ -22,9 +22,9 @@ type TabsSize = 'sm' | 'md' | 'lg';
   template: `<ng-content />`,
   hostDirectives: [CdkListbox],
   host: {
-    '[class.b-size-sm]': 'size() === "sm"',
-    '[class.b-size-md]': 'size() === "md"',
-    '[class.b-size-lg]': 'size() === "lg"',
+    '[class.b-tabs-size-sm]': 'size() === "sm"',
+    '[class.b-tabs-size-md]': 'size() === "md"',
+    '[class.b-tabs-size-lg]': 'size() === "lg"',
     '(keydown.arrowLeft)': 'previousTab()',
     '(keydown.arrowUp)': 'previousTab()',
     '(keydown.arrowRight)': 'nextTab()',

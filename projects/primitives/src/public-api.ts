@@ -27,7 +27,7 @@ export * from './core/components/select/shared/directives/select-filter';
 export * from './core/components/spinner/spinner';
 
 /* Switch */
-export * from './core/components/switch/switch.component';
+export * from './core/components/switch/switch';
 
 /* Table */
 export * from './core/components/table/table.component';
@@ -54,10 +54,10 @@ export * from './core/components/otp/otp';
 export * from './core/components/badge/badge';
 
 /* Checkbox */
-export * from './core/components/checkbox/checkbox.component';
+export * from './core/components/checkbox/checkbox';
 
 /* Textarea */
-export * from './core/components/textarea/textarea.component';
+export * from './core/components/textarea/textarea';
 
 /* Range */
 export * from './core/components/range/range';

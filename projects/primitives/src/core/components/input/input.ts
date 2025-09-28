@@ -15,9 +15,9 @@ import { NgModel } from '@angular/forms';
     '[type]': 'type()',
     '(input)': 'onInput($event)',
     '(blur)': 'onBlur($event)',
-    '[class.b-size-sm]': 'size() === "sm"',
-    '[class.b-size-md]': 'size() === "md"',
-    '[class.b-size-lg]': 'size() === "lg"',
+    '[class.b-input-size-sm]': 'size() === "sm"',
+    '[class.b-input-size-md]': 'size() === "md"',
+    '[class.b-input-size-lg]': 'size() === "lg"',
   },
   exportAs: 'bInput',
 })

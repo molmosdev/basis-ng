@@ -18,9 +18,9 @@ import {
     '(click)': 'toggleValue()',
     '(keydown.enter)': 'toggleValue()',
     '(keydown.space)': 'toggleValue()',
-    '[class.b-size-sm]': 'size() === "sm"',
-    '[class.b-size-md]': 'size() === "md"',
-    '[class.b-size-lg]': 'size() === "lg"',
+    '[class.b-checkbox-size-sm]': 'size() === "sm"',
+    '[class.b-checkbox-size-md]': 'size() === "md"',
+    '[class.b-checkbox-size-lg]': 'size() === "lg"',
   },
 })
 export class Checkbox implements AfterViewInit {
