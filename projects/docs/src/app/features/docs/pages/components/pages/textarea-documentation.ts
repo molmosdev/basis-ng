@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { TextareaComponent, Alert } from '@basis-ng/primitives';
+import { TextareaComponent, Alert } from 'primitives';
 import { provideIcons } from '@ng-icons/core';
 import { lucideRocket } from '@ng-icons/lucide';
 import { CodeBlock } from '../shared/components/code-block';
@@ -106,7 +106,7 @@ import { StepsButtons } from '../../shared/components/steps-buttons';
   },
 })
 export class TextareaDocumentation {
-  angularImport = `import { TextareaComponent } from '@basis-ng/primitives'`;
+  angularImport = `import { TextareaComponent } from 'primitives'`;
   stylesImport = `@import '@basis-ng/styles/textarea';`;
   basicUsage = `<textarea b-textarea placeholder="Enter text"></textarea>`;
   sizeUsage = `<textarea b-textarea size="sm" placeholder="Small"></textarea>\n<textarea b-textarea size="md" placeholder="Medium"></textarea>\n<textarea b-textarea size="lg" placeholder="Large"></textarea>`;

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { Button } from '@basis-ng/primitives';
+import { Button } from 'primitives';
 
 @Component({
   selector: 'app-home',

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Input, Alert } from '@basis-ng/primitives';
+import { Input, Alert } from 'primitives';
 import { provideIcons } from '@ng-icons/core';
 import { lucideRocket } from '@ng-icons/lucide';
 import { CodeBlock } from '../shared/components/code-block';
@@ -200,7 +200,7 @@ import { StepsButtons } from '../../shared/components/steps-buttons';
   },
 })
 export class InputDocumentation {
-  angularImport = `import { Input } from '@basis-ng/primitives'`;
+  angularImport = `import { Input } from 'primitives'`;
   stylesImport = `@import '@basis-ng/styles/input';`;
   ngModelUsage = `<input b-input type="text" placeholder="Enter text" [(ngModel)]="ngModelValue" />`;
   formControlUsage = `<form [formGroup]="form">

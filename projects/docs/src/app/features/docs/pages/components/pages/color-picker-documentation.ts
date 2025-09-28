@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { CodeBlock } from '../shared/components/code-block';
-import { ColorPicker, Alert } from '@basis-ng/primitives';
+import { ColorPicker, Alert } from 'primitives';
 import { provideIcons } from '@ng-icons/core';
 import { lucideRocket } from '@ng-icons/lucide';
 import { StepsButtons } from '../../shared/components/steps-buttons';
@@ -201,7 +201,7 @@ import {
   },
 })
 export class ColorPickerDocumentation {
-  angularImport = `import { ColorPicker } from '@basis-ng/primitives';`;
+  angularImport = `import { ColorPicker } from 'primitives';`;
   stylesImport = `@import '@basis-ng/styles/color-picker';`;
   basicUsage = `<input b-color-picker type="color" [showColor]="true" [value]="selectedColor" (input)="onColorChange($event)" />`;
   withoutShowColorUsage = `<input b-color-picker type="color" [showColor]="false" [value]="selectedColor" (input)="onColorChange($event)" />`;

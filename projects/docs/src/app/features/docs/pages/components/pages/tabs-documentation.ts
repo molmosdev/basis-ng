@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Badge, Alert, Tabs, Tab } from '@basis-ng/primitives';
+import { Badge, Alert, Tabs, Tab } from 'primitives';
 import { provideIcons } from '@ng-icons/core';
 import { lucideRocket } from '@ng-icons/lucide';
 import { CodeBlock } from '../shared/components/code-block';
@@ -193,7 +193,7 @@ import { CommonModule } from '@angular/common';
   },
 })
 export class TabsDocumentation {
-  angularImport = `import { Tabs, Tab } from '@basis-ng/primitives'`;
+  angularImport = `import { Tabs, Tab } from 'primitives'`;
   stylesImport = `@import '@basis-ng/styles/tabs';`;
   basicUsage = `<b-tabs [(ngModel)]='selectedTab'>
   <b-tab value='tab1'>Tab 1</b-tab>

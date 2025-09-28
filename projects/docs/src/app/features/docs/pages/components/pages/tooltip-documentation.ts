@@ -9,7 +9,7 @@ import {
   TooltipTrigger,
   Badge,
   Alert,
-} from '@basis-ng/primitives';
+} from 'primitives';
 import { StepsButtons } from '../../shared/components/steps-buttons';
 import { NgIcon, provideIcons } from '@ng-icons/core';
 import { lucideInfo } from '@ng-icons/lucide';
@@ -391,7 +391,7 @@ import { lucideInfo } from '@ng-icons/lucide';
   },
 })
 export class TooltipDocumentation {
-  angularImport = `import { Tooltip, TooltipContent, TooltipTrigger } from '@basis-ng/primitives';`;
+  angularImport = `import { Tooltip, TooltipContent, TooltipTrigger } from 'primitives';`;
   stylesImport = `@import '@basis-ng/styles/index.css';`;
   basicUsage = `<b-tooltip>
   <span bTooltipTrigger>Hover me</span>

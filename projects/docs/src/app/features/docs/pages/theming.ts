@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { CodeBlock } from './components/shared/components/code-block';
 import { StepsButtons } from './shared/components/steps-buttons';
-import { Badge } from '@basis-ng/primitives';
+import { Badge } from 'primitives';
 
 @Component({
   selector: 'article[app-theming]',

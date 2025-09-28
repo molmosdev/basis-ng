@@ -12,11 +12,11 @@ import {
   SelectValue,
   Alert,
   Input,
-} from '@basis-ng/primitives';
+  SelectFilter,
+} from 'primitives';
 import { StepsButtons } from '../../shared/components/steps-buttons';
 import { provideIcons } from '@ng-icons/core';
 import { lucideRocket } from '@ng-icons/lucide';
-import { SelectFilter } from 'projects/primitives/src/core/components/select/shared/directives/select-filter';
 
 @Component({
   selector: 'article[app-select-documentation]',
@@ -402,7 +402,7 @@ import { SelectFilter } from 'projects/primitives/src/core/components/select/sha
   },
 })
 export class SelectDocumentation {
-  angularImport = `import { Select, SelectTrigger, SelectValue, SelectContent, Option, ConnectedOverlay, OverlayOrigin } from '@basis-ng/primitives';`;
+  angularImport = `import { Select, SelectTrigger, SelectValue, SelectContent, Option, ConnectedOverlay, OverlayOrigin } from 'primitives';`;
   stylesImport = `@import '@basis-ng/styles/select';`;
 
   selectedOptions: string[] = ['option3'];
@@ -522,7 +522,7 @@ export class SelectDocumentation {
   </ng-template>
 </b-select>`;
 
-  withFilterImport = `import { SelectFilter } from '@basis-ng/primitives';`;
+  withFilterImport = `import { SelectFilter } from 'primitives';`;
 
   filterUsage = `<b-select [(ngModel)]='selectedOptionsFiltered' [displayWith]='displayFn'>
   <button b-select-trigger bOverlayOrigin #triggerFilter='bOverlayOrigin'>

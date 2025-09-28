@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { CodeBlock } from '../shared/components/code-block';
-import { SwitchComponent, Alert } from '@basis-ng/primitives';
+import { SwitchComponent, Alert } from 'primitives';
 import { provideIcons } from '@ng-icons/core';
 import { lucideRocket } from '@ng-icons/lucide';
 import { StepsButtons } from '../../shared/components/steps-buttons';
@@ -130,7 +130,7 @@ import {
   },
 })
 export class SwitchDocumentation {
-  angularImport = `import { SwitchComponent } from '@basis-ng/primitives'`;
+  angularImport = `import { SwitchComponent } from 'primitives'`;
   stylesImport = `@import '@basis-ng/styles/switch';`;
   sizesUsage = `<input type="checkbox" b-switch size="sm" [(ngModel)]="ngModelValue" />\n<input type="checkbox" b-switch size="md" [(ngModel)]="ngModelValue" />\n<input type="checkbox" b-switch size="lg" [(ngModel)]="ngModelValue" />`;
   formControlUsage = `<form [formGroup]="form">\n  <input type="checkbox" b-switch formControlName="switchControl" />\n</form>`;

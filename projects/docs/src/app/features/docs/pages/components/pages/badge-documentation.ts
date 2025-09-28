@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { CodeBlock } from '../shared/components/code-block';
-import { Badge, Alert } from '@basis-ng/primitives';
+import { Badge, Alert } from 'primitives';
 import { StepsButtons } from '../../shared/components/steps-buttons';
 import { provideIcons } from '@ng-icons/core';
 import { lucideRocket } from '@ng-icons/lucide';
@@ -104,7 +104,7 @@ import { lucideRocket } from '@ng-icons/lucide';
   },
 })
 export class BadgeDocumentation {
-  angularImport = `import { Badge } from '@basis-ng/primitives'`;
+  angularImport = `import { Badge } from 'primitives'`;
   stylesImport = `@import '@basis-ng/styles/badge';`;
   basicUsage = `<span b-badge variant="primary" size="md">Primary Badge</span>`;
   variantsUsage = `<span b-badge variant="primary">Primary</span>\n<span b-badge variant="secondary">Secondary</span>\n<span b-badge variant="ghost">Ghost</span>\n<span b-badge variant="outlined">Outlined</span>\n<span b-badge variant="destructive">Destructive</span>`;

@@ -9,7 +9,7 @@ import {
   Button,
   Badge,
   Alert,
-} from '@basis-ng/primitives';
+} from 'primitives';
 import { StepsButtons } from '../../shared/components/steps-buttons';
 import { provideIcons } from '@ng-icons/core';
 import { lucideRocket } from '@ng-icons/lucide';
@@ -550,7 +550,7 @@ import { lucideRocket } from '@ng-icons/lucide';
 export class MenuDocumentation {
   sizesUsage = `<button b-button [menuTriggerFor]=menuSm [menuTriggerPosition]="['bottom-left', 'top-left']">Small</button>\n<ng-template #menuSm>\n  <b-menu size="sm">\n    <b-menu-label>Small</b-menu-label>\n    <button b-menu-item>Item 1</button>\n    <button b-menu-item>Item 2</button>\n    <button b-menu-item>Item 3</button>\n  </b-menu>\n</ng-template>\n\n<button b-button [menuTriggerFor]=menuMd [menuTriggerPosition]="['bottom-left', 'top-left']">Medium (default)</button>\n<ng-template #menuMd>\n  <b-menu size="md">\n    <b-menu-label>Medium (default)</b-menu-label>\n    <button b-menu-item>Item 1</button>\n    <button b-menu-item>Item 2</button>\n    <button b-menu-item>Item 3</button>\n  </b-menu>\n</ng-template>\n\n<button b-button [menuTriggerFor]=menuLg [menuTriggerPosition]="['bottom-left', 'top-left']">Large</button>\n<ng-template #menuLg>\n  <b-menu size="lg">\n    <b-menu-label>Large</b-menu-label>\n    <button b-menu-item>Item 1</button>\n    <button b-menu-item>Item 2</button>\n    <button b-menu-item>Item 3</button>\n  </b-menu>\n</ng-template>`;
   sizeUsage = `<b-menu size='sm'>...</b-menu>\n<b-menu size='md'>...</b-menu>\n<b-menu size='lg'>...</b-menu>`;
-  angularImport = `import { Menu, MenuItem, MenuGroup, MenuLabel, MenuTriggerDirective } from '@basis-ng/primitives'`;
+  angularImport = `import { Menu, MenuItem, MenuGroup, MenuLabel, MenuTriggerDirective } from 'primitives'`;
   stylesImport = `@import '@basis-ng/styles/menu';`;
   basicUsage = `<b-menu>\n  <b-menu-label>Basic Menu</b-menu-label>\n  <button b-menu-item>Item 1</button>\n  <button b-menu-item>Item 2</button>\n  <button b-menu-item>Item 3</button>\n</b-menu>`;
   nestedUsage = `<b-menu>\n  <b-menu-label>Main Menu</b-menu-label>\n  <button b-menu-item>Item 1</button>\n  <button b-menu-item [menuTriggerFor]=subMenu [submenu]=true>\n    <div style='display: flex; justify-content: space-between; width: 100%'>\n      Item 2\n    </div>\n  </button>\n  <ng-template #subMenu>\n    <b-menu>\n      <b-menu-label>Submenu</b-menu-label>\n      <b-menu-group>\n        <button b-menu-item>Subitem 1</button>\n        <button b-menu-item>Subitem 2</button>\n      </b-menu-group>\n      <b-menu-group>\n        <button b-menu-item>Subitem 3</button>\n        <button b-menu-item>Subitem 4</button>\n      </b-menu-group>\n    </b-menu>\n  </ng-template>\n</b-menu>`;

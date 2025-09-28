@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { CodeBlock } from '../shared/components/code-block';
-import { Otp, OtpDigitDirective, Badge, Alert } from '@basis-ng/primitives';
+import { Otp, OtpDigitDirective, Badge, Alert } from 'primitives';
 import { StepsButtons } from '../../shared/components/steps-buttons';
 import {
   FormsModule,
@@ -178,7 +178,7 @@ import { lucideRocket } from '@ng-icons/lucide';
   },
 })
 export class OtpDocumentation {
-  angularImport = `import { Otp, OtpDigitDirective } from '@basis-ng/primitives'`;
+  angularImport = `import { Otp, OtpDigitDirective } from 'primitives'`;
   stylesImport = `@import '@basis-ng/styles/components/otp.css';`;
   ngModelUsage = `<b-otp [(ngModel)]='otpValue'>\n  <input b-otp-digit />\n  <input b-otp-digit />\n  <input b-otp-digit />\n  <input b-otp-digit />\n  <input b-otp-digit />\n  <input b-otp-digit />\n</b-otp>`;
   sizeUsage = `<b-otp size='sm'>\n  <input b-otp-digit />\n  <input b-otp-digit />\n  <input b-otp-digit />\n  <input b-otp-digit />\n  <input b-otp-digit />\n  <input b-otp-digit />\n</b-otp>\n\n<b-otp size='md'>\n  <input b-otp-digit />\n  <input b-otp-digit />\n  <input b-otp-digit />\n  <input b-otp-digit />\n  <input b-otp-digit />\n  <input b-otp-digit />\n</b-otp>\n\n<b-otp size='lg'>\n  <input b-otp-digit />\n  <input b-otp-digit />\n  <input b-otp-digit />\n  <input b-otp-digit />\n  <input b-otp-digit />\n  <input b-otp-digit />\n</b-otp>`;
