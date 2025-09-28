@@ -51,8 +51,8 @@ input[b-otp-digit] {
 
 b-otp.ng-invalid.ng-touched input[b-otp-digit],
 b-otp.ng-invalid.ng-dirty input[b-otp-digit] {
-  @apply text-destructive placeholder:text-destructive bg-destructive/20 inset-ring-1 inset-ring-destructive;
-  @apply dark:text-destructive-dark dark:placeholder:text-destructive-dark dark:bg-destructive-dark/20 dark:inset-ring-destructive-dark;
+  @apply text-destructive placeholder:text-destructive bg-destructive/20 inset-ring-1 inset-ring-destructive/20;
+  @apply dark:text-destructive-dark dark:placeholder:text-destructive-dark dark:bg-destructive-dark/20 dark:inset-ring-destructive-dark/20;
 }
 
 b-otp.ng-invalid.ng-touched input[b-otp-digit]:focus-visible,

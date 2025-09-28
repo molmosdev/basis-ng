@@ -27,10 +27,12 @@ b-input-group {
   /* Invalid state styles (group reflects error) */
   &:has(input[b-input].ng-invalid.ng-touched),
   &:has(input[b-input].ng-invalid.ng-dirty) {
-    @apply text-destructive bg-destructive/20 inset-ring-1 inset-ring-destructive dark:text-destructive-dark dark:bg-destructive-dark/20 dark:inset-ring-destructive-dark;
+    @apply text-destructive placeholder:text-destructive bg-destructive/20 inset-ring-1 inset-ring-destructive/20;
+    @apply dark:text-destructive-dark dark:placeholder:text-destructive-dark dark:bg-destructive-dark/20 dark:inset-ring-destructive-dark/20;
 
     button[b-button] {
-      @apply text-destructive bg-destructive inset-ring-1 inset-ring-destructive dark:text-destructive-dark dark:bg-destructive-dark dark:inset-ring-destructive-dark;
+      @apply text-destructive placeholder:text-destructive bg-destructive/20 inset-ring-1 inset-ring-destructive/20;
+      @apply dark:text-destructive-dark dark:placeholder:text-destructive-dark dark:bg-destructive-dark/20 dark:inset-ring-destructive-dark/20;
     }
 
     /* Icon strokes inside when error */

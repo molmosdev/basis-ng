@@ -1,6 +1,6 @@
 textarea[b-textarea] {
-  @apply box-border border transition-colors text-base font-sans rounded-lg bg-background border-secondary text-font min-w-1/2;
-  @apply dark:bg-background-dark dark:text-font-dark dark:border-secondary-dark;
+  @apply inset-ring-1 inset-ring-secondary transition-colors text-base font-sans bg-background text-font min-w-1/2;
+  @apply dark:bg-background-dark dark:text-font-dark dark:inset-ring-secondary-dark;
 
   &:focus-visible:not(:read-only) {
     @apply outline-2 outline-offset-4 outline-primary dark:outline-primary-dark;
@@ -12,7 +12,8 @@ textarea[b-textarea] {
 
   &.ng-invalid.ng-touched,
   &.ng-invalid.ng-dirty {
-    @apply text-destructive placeholder:text-destructive bg-destructive/20 border-destructive dark:text-destructive-dark dark:placeholder:text-destructive-dark dark:bg-destructive-dark/20 dark:border-destructive-dark;
+    @apply text-destructive placeholder:text-destructive bg-destructive/20 inset-ring-1 inset-ring-destructive/20;
+    @apply dark:text-destructive-dark dark:placeholder:text-destructive-dark dark:bg-destructive-dark/20 dark:inset-ring-destructive-dark/20;
     &:focus-visible {
       @apply outline-2 outline-offset-4 outline-destructive dark:outline-destructive-dark;
     }
