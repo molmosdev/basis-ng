@@ -1,7 +1,7 @@
 b-menu {
   @apply flex flex-col;
 
-  &.b-size-sm {
+  &.b-menu-size-sm {
     @apply text-sm rounded-size-sm box-border;
 
     &:not(:has(b-menu-group)) {
@@ -23,7 +23,7 @@ b-menu {
     }
   }
 
-  &.b-size-md {
+  &.b-menu-size-md {
     @apply text-base rounded-size-md;
 
     &:not(:has(b-menu-group)) {
@@ -45,7 +45,7 @@ b-menu {
     }
   }
 
-  &.b-size-lg {
+  &.b-menu-size-lg {
     @apply text-lg rounded-size-lg;
 
     &:not(:has(b-menu-group)) {

@@ -30,13 +30,13 @@ input[b-input] {
     @apply opacity-60 pointer-events-none;
   }
 
-  &.b-size-sm {
+  &.b-input-size-sm {
     @apply px-2 py-1 h-7 text-xs rounded-size-sm;
   }
-  &.b-size-md {
+  &.b-input-size-md {
     @apply px-3 py-2 h-9 text-base rounded-size-md;
   }
-  &.b-size-lg {
+  &.b-input-size-lg {
     @apply px-4 py-3 h-11 text-lg rounded-size-lg;
   }
 }

@@ -29,35 +29,35 @@ b-tooltip-content {
 }
 
 /* Variants */
-.b-variant-primary b-tooltip-content {
+.b-tooltip-variant-primary b-tooltip-content {
   @apply bg-primary text-primary-foreground border border-primary;
   @apply dark:bg-primary-dark dark:text-primary-foreground-dark dark:border-primary-dark;
 }
-.b-variant-secondary b-tooltip-content {
+.b-tooltip-variant-secondary b-tooltip-content {
   @apply bg-secondary text-secondary-foreground;
   @apply dark:bg-secondary-dark dark:text-secondary-foreground-dark;
 }
-.b-variant-ghost b-tooltip-content {
+.b-tooltip-variant-ghost b-tooltip-content {
   @apply bg-transparent text-primary hover:bg-primary/10 shadow-none;
   @apply dark:text-primary-dark dark:hover:bg-primary-dark/10;
 }
-.b-variant-outlined b-tooltip-content {
+.b-tooltip-variant-outlined b-tooltip-content {
   @apply bg-transparent text-primary inset-ring-1 inset-ring-secondary-foreground/30 hover:bg-primary/5;
   @apply dark:text-primary-dark dark:inset-ring-secondary-foreground-dark/30 dark:hover:bg-primary-dark/5;
 }
-.b-variant-destructive b-tooltip-content {
+.b-tooltip-variant-destructive b-tooltip-content {
   @apply bg-destructive text-destructive-foreground inset-ring-1 inset-ring-destructive hover:bg-destructive/90 hover:inset-ring-destructive/80;
   @apply dark:bg-destructive-dark dark:text-destructive-foreground-dark dark:inset-ring-destructive-dark dark:hover:bg-destructive-dark/90 dark:hover:inset-ring-destructive-dark/80;
 }
 
 /* Sizes */
-.b-size-sm b-tooltip-content {
+.b-tooltip-size-sm b-tooltip-content {
   @apply px-2 py-1 text-xs;
 }
-.b-size-md b-tooltip-content {
+.b-tooltip-size-md b-tooltip-content {
   @apply px-3 py-2 text-base;
 }
-.b-size-lg b-tooltip-content {
+.b-tooltip-size-lg b-tooltip-content {
   @apply px-4 py-3 text-lg;
 }
 

@@ -25,13 +25,13 @@ textarea[b-textarea] {
     @apply opacity-60 pointer-events-none;
   }
 
-  &.b-size-sm {
+  &.b-textarea-size-sm {
     @apply px-2 py-1 text-xs;
   }
-  &.b-size-md {
+  &.b-textarea-size-md {
     @apply px-3 py-2 text-base;
   }
-  &.b-size-lg {
+  &.b-textarea-size-lg {
     @apply px-4 py-3 text-lg;
   }
 }

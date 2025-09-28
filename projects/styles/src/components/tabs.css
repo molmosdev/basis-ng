@@ -19,7 +19,7 @@ b-tabs {
     @apply dark:outline-primary-dark;
   }
 
-  &.b-size-sm {
+  &.b-tabs-size-sm {
     @apply h-6 rounded-size-sm p-0.5 gap-0.5;
 
     b-tab {
@@ -27,7 +27,7 @@ b-tabs {
     }
   }
 
-  &.b-size-md {
+  &.b-tabs-size-md {
     @apply h-9 rounded-size-md p-1 gap-1;
 
     b-tab {
@@ -35,7 +35,7 @@ b-tabs {
     }
   }
 
-  &.b-size-lg {
+  &.b-tabs-size-lg {
     @apply h-12 rounded-size-lg p-1.5 gap-1.5;
 
     b-tab {

@@ -40,7 +40,7 @@ b-input-group {
   }
 
   /* Size variants (normalized to Tailwind scale, matching input sizes) */
-  &:has(.b-size-sm) {
+  &:has(.b-input-group-size-sm) {
     /* small */
     @apply py-1 h-7 text-xs rounded-size-sm;
 
@@ -52,7 +52,7 @@ b-input-group {
       @apply pr-2;
     }
   }
-  &:has(.b-size-md) {
+  &:has(.b-input-group-size-md) {
     /* medium */
     @apply py-2 h-9 text-base rounded-size-md;
 
@@ -72,7 +72,7 @@ b-input-group {
       }
     }
   }
-  &:has(.b-size-lg) {
+  &:has(.b-input-group-size-lg) {
     /* large */
     @apply py-3 h-11 text-lg rounded-size-lg;
 

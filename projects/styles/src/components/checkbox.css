@@ -1,12 +1,12 @@
 input[b-checkbox] {
   /* Sizes */
-  &.b-size-sm {
+  &.b-checkbox-size-sm {
     @apply w-4 h-4 rounded-sm;
   }
-  &.b-size-md {
+  &.b-checkbox-size-md {
     @apply w-5 h-5 rounded-md;
   }
-  &.b-size-lg {
+  &.b-checkbox-size-lg {
     @apply w-7 h-7 rounded-lg;
   }
 

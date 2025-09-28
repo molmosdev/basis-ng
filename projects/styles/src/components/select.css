@@ -16,7 +16,7 @@ b-select {
     }
   }
 
-  &.b-size-sm button[b-select-trigger] {
+  &.b-select-size-sm button[b-select-trigger] {
     @apply text-xs px-2 py-1 rounded-size-sm;
 
     svg {
@@ -24,14 +24,14 @@ b-select {
     }
   }
 
-  &.b-size-md button[b-select-trigger] {
+  &.b-select-size-md button[b-select-trigger] {
     @apply text-base px-3 py-1.5 rounded-size-md;
     svg {
       @apply size-5;
     }
   }
 
-  &.b-size-lg button[b-select-trigger] {
+  &.b-select-size-lg button[b-select-trigger] {
     @apply text-lg  px-4 py-2.5 rounded-size-lg;
 
     svg {
@@ -105,13 +105,13 @@ ul[b-select-content] {
   }
 }
 
-.b-size-sm ul[b-select-content] {
+.b-select-size-sm ul[b-select-content] {
   @apply text-xs p-0.5 gap-0.5 rounded-size-sm;
 }
-.b-size-md ul[b-select-content] {
+.b-select-size-md ul[b-select-content] {
   @apply text-base p-1 gap-1 rounded-size-md;
 }
-.b-size-lg ul[b-select-content] {
+.b-select-size-lg ul[b-select-content] {
   @apply text-lg p-1.5 gap-1.5 rounded-size-lg;
 }
 

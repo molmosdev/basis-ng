@@ -7,23 +7,23 @@ input[b-range]::-webkit-slider-thumb {
   @apply bg-primary dark:bg-primary-dark dark:inset-ring-secondary-dark;
 }
 
-input[b-range].b-size-sm {
+input[b-range].b-range-size-sm {
   @apply h-1;
 }
-input[b-range].b-size-sm::-webkit-slider-thumb {
+input[b-range].b-range-size-sm::-webkit-slider-thumb {
   @apply w-3 h-3;
 }
 
-input[b-range].b-size-md {
+input[b-range].b-range-size-md {
   @apply h-2;
 }
-input[b-range].b-size-md::-webkit-slider-thumb {
+input[b-range].b-range-size-md::-webkit-slider-thumb {
   @apply w-5 h-5;
 }
 
-input[b-range].b-size-lg {
+input[b-range].b-range-size-lg {
   @apply h-3;
 }
-input[b-range].b-size-lg::-webkit-slider-thumb {
+input[b-range].b-range-size-lg::-webkit-slider-thumb {
   @apply w-6 h-6;
 }

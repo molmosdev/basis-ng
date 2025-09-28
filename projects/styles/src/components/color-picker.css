@@ -20,7 +20,7 @@ input[b-color-picker] {
     }
   }
 
-  &.b-size-sm {
+  &.b-color-picker-size-sm {
     @apply h-7 rounded-size-sm;
 
     &::-webkit-color-swatch {
@@ -38,7 +38,7 @@ input[b-color-picker] {
     }
   }
 
-  &.b-size-md {
+  &.b-color-picker-size-md {
     @apply h-9 rounded-size-md;
 
     &::-webkit-color-swatch {
@@ -55,7 +55,7 @@ input[b-color-picker] {
     }
   }
 
-  &.b-size-lg {
+  &.b-color-picker-size-lg {
     @apply h-11 rounded-size-lg;
 
     &::-webkit-color-swatch {

@@ -2,35 +2,35 @@ button[b-button] {
   @apply font-medium transition-colors duration-150 flex items-center justify-center gap-x-2 disabled:opacity-50 disabled:cursor-not-allowed;
 
   /* Variants */
-  &.b-variant-primary {
+  &.b-button-variant-primary {
     @apply bg-primary text-primary-foreground hover:bg-primary/80;
     @apply dark:bg-primary-dark dark:text-primary-foreground-dark dark:hover:bg-primary-dark/80;
   }
-  &.b-variant-secondary {
+  &.b-button-variant-secondary {
     @apply bg-secondary text-secondary-foreground hover:bg-secondary/80;
     @apply dark:bg-secondary-dark dark:text-secondary-foreground-dark dark:hover:bg-secondary-dark/80;
   }
-  &.b-variant-ghost {
+  &.b-button-variant-ghost {
     @apply bg-transparent text-primary hover:bg-primary/10;
     @apply dark:text-primary-dark dark:hover:bg-primary-dark/10;
   }
-  &.b-variant-outlined {
+  &.b-button-variant-outlined {
     @apply bg-transparent text-primary inset-ring-1 inset-ring-secondary hover:bg-primary/5;
     @apply dark:text-primary-dark dark:inset-ring-secondary-dark dark:hover:bg-primary-dark/5;
   }
-  &.b-variant-destructive {
+  &.b-button-variant-destructive {
     @apply bg-destructive text-destructive-foreground inset-ring-1 inset-ring-destructive hover:bg-destructive/90 hover:inset-ring-destructive/80;
     @apply dark:bg-destructive-dark dark:text-destructive-foreground-dark dark:inset-ring-destructive-dark dark:hover:bg-destructive-dark/90 dark:hover:inset-ring-destructive-dark/80;
   }
 
   /* Sizes */
-  &.b-size-sm {
+  &.b-button-size-sm {
     @apply px-2 py-1 text-xs rounded-size-sm;
   }
-  &.b-size-md {
+  &.b-button-size-md {
     @apply px-4 py-2 text-sm rounded-size-md;
   }
-  &.b-size-lg {
+  &.b-button-size-lg {
     @apply px-6 py-3 text-base rounded-size-lg;
   }
 
@@ -40,22 +40,22 @@ button[b-button] {
     @apply outline-2 outline-offset-4 outline-primary;
     @apply dark:outline-primary-dark;
   }
-  &.b-variant-destructive.b-active,
-  &.b-variant-destructive:focus-visible {
+  &.b-button-variant-destructive.b-active,
+  &.b-button-variant-destructive:focus-visible {
     @apply outline-2 outline-offset-4 outline-destructive;
     @apply dark:outline-destructive-dark;
   }
 
   /* Squared (square button, useful for icons) */
-  &.b-squared {
+  &.b-button-squared {
     @apply aspect-square p-0 flex items-center justify-center;
-    &.b-size-sm {
+    &.b-button-size-sm {
       @apply size-6;
     }
-    &.b-size-md {
+    &.b-button-size-md {
       @apply size-9;
     }
-    &.b-size-lg {
+    &.b-button-size-lg {
       @apply size-12;
     }
   }
