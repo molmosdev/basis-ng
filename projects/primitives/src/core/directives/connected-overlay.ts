@@ -239,9 +239,9 @@ export class ConnectedOverlay {
   backdropClickEmitter = output<void>();
 
   /**
-   * Flag to indicate if this is the first load of the overlay.
+   * Flag to indicate if el overlay ya fue abierto al menos una vez.
    */
-  firstLoad = true;
+  private hasBeenOpened = false;
 
   /**
    * Constructor to initialize the directive and set up reactive effects.
@@ -277,9 +277,14 @@ export class ConnectedOverlay {
   handleOpen(): void {
     if (this.open()) {
       this.cdkConnectedOverlay.attachOverlay();
+      this.hasBeenOpened = true;
     } else {
       this.cdkConnectedOverlay.detachOverlay();
-      if (this.focusTriggerOnClose()) this.trigger().el.nativeElement.focus();
+
+      // Only focus the trigger if the overlay has been opened at least once
+      if (this.hasBeenOpened && this.focusTriggerOnClose()) {
+        this.trigger().el.nativeElement.focus();
+      }
     }
   }
 
