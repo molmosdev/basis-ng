@@ -1,5 +1,5 @@
 span[b-badge] {
-  @apply inline-flex justify-center items-center font-medium rounded-full transition-colors duration-150 box-border;
+  @apply inline-flex justify-center items-center rounded-full transition-colors duration-150 box-border;
 
   /* Variants */
   &.b-badge-variant-primary {
