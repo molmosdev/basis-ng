@@ -533,6 +533,56 @@ import { lucideRocket } from '@ng-icons/lucide';
           </ng-template>
         </div>
       </div>
+      <h2 class="font-semibold text-xl">Squared Menu Items</h2>
+      <code-block [code]="squaredUsage" />
+      <div
+        class="border border-gray-200 items-center dark:border-neutral-700 rounded-lg p-6 mb-6 bg-white dark:bg-neutral-900 documentation-playground flex flex-col md:flex-row justify-center gap-4">
+        <div class="flex flex-col items-center gap-2">
+          <button
+            b-button
+            [menuTriggerFor]="menuSquaredSm"
+            [menuTriggerPosition]="['bottom-left', 'top-left']">
+            Small Squared
+          </button>
+          <ng-template #menuSquaredSm>
+            <b-menu size="sm">
+              <button b-menu-item [squared]="true">A</button>
+              <button b-menu-item [squared]="true">B</button>
+              <button b-menu-item [squared]="true">C</button>
+            </b-menu>
+          </ng-template>
+        </div>
+        <div class="flex flex-col items-center gap-2">
+          <button
+            b-button
+            [menuTriggerFor]="menuSquaredMd"
+            [menuTriggerPosition]="['bottom-left', 'top-left']">
+            Medium Squared
+          </button>
+          <ng-template #menuSquaredMd>
+            <b-menu size="md">
+              <button b-menu-item [squared]="true">A</button>
+              <button b-menu-item [squared]="true">B</button>
+              <button b-menu-item [squared]="true">C</button>
+            </b-menu>
+          </ng-template>
+        </div>
+        <div class="flex flex-col items-center gap-2">
+          <button
+            b-button
+            [menuTriggerFor]="menuSquaredLg"
+            [menuTriggerPosition]="['bottom-left', 'top-left']">
+            Large Squared
+          </button>
+          <ng-template #menuSquaredLg>
+            <b-menu size="lg">
+              <button b-menu-item [squared]="true">A</button>
+              <button b-menu-item [squared]="true">B</button>
+              <button b-menu-item [squared]="true">C</button>
+            </b-menu>
+          </ng-template>
+        </div>
+      </div>
     </div>
     <app-steps-buttons
       [previous]="{
@@ -556,4 +606,30 @@ export class MenuDocumentation {
   nestedUsage = `<b-menu>\n  <b-menu-label>Main Menu</b-menu-label>\n  <button b-menu-item>Item 1</button>\n  <button b-menu-item [menuTriggerFor]=subMenu [submenu]=true>\n    <div style='display: flex; justify-content: space-between; width: 100%'>\n      Item 2\n    </div>\n  </button>\n  <ng-template #subMenu>\n    <b-menu>\n      <b-menu-label>Submenu</b-menu-label>\n      <b-menu-group>\n        <button b-menu-item>Subitem 1</button>\n        <button b-menu-item>Subitem 2</button>\n      </b-menu-group>\n      <b-menu-group>\n        <button b-menu-item>Subitem 3</button>\n        <button b-menu-item>Subitem 4</button>\n      </b-menu-group>\n    </b-menu>\n  </ng-template>\n</b-menu>`;
   buttonTriggerUsage = `<button\n  b-button\n  variant='outlined'\n  [menuTriggerFor]=menu\n  [menuTriggerPosition]='bottom-left'>\n  Open Menu\n</button>\n<ng-template #menu>\n  <b-menu>\n    <b-menu-label>Menu</b-menu-label>\n    <button b-menu-item>Item 1</button>\n    <button b-menu-item>Item 2</button>\n    <button b-menu-item [menuTriggerFor]=subMenu [submenu]=true>\n      <div style='display: flex; justify-content: space-between; width: 100%'>\n        Item 3\n      </div>\n    </button>\n    <ng-template #subMenu>\n      <b-menu>\n        <b-menu-label>Submenu</b-menu-label>\n        <b-menu-group>\n          <button b-menu-item>Subitem 1</button>\n          <button b-menu-item>Subitem 2</button>\n        </b-menu-group>\n      </b-menu>\n    </ng-template>\n  </b-menu>\n</ng-template>`;
   triggerPositionExamples = `<button\n  b-button\n  variant='outlined'\n  [menuTriggerFor]=menuTopLeft\n  [menuTriggerPosition]='top-left'>\n  Top Left\n</button>\n<ng-template #menuTopLeft>\n  <b-menu>\n    <b-menu-label>Top Left Menu</b-menu-label>\n    <button b-menu-item>Item 1</button>\n    <button b-menu-item>Item 2</button>\n  </b-menu>\n</ng-template>\n\n<button\n  b-button\n  variant='outlined'\n  [menuTriggerFor]=menuBottomCenter\n  [menuTriggerPosition]='bottom-center'>\n  Bottom Center\n</button>\n<ng-template #menuBottomCenter>\n  <b-menu>\n    <b-menu-label>Bottom Center Menu</b-menu-label>\n    <button b-menu-item>Item 1</button>\n    <button b-menu-item>Item 2</button>\n  </b-menu>\n</ng-template>\n\n<button\n  b-button\n  variant='outlined'\n  [menuTriggerFor]=menuRightTop\n  [menuTriggerPosition]='right-top'>\n  Right Top\n</button>\n<ng-template #menuRightTop>\n  <b-menu>\n    <b-menu-label>Right Top Menu</b-menu-label>\n    <b-menu-group>\n      <button b-menu-item>Item 1</button>\n      <button b-menu-item>Item 2</button>\n    </b-menu-group>\n  </b-menu>\n</ng-template>\n\n<button\n  b-button\n  variant='outlined'\n  [menuTriggerFor]=menuLeftCenter\n  [menuTriggerPosition]='left-center'>\n  Left Center\n</button>\n<ng-template #menuLeftCenter>\n  <b-menu>\n    <b-menu-label>Left Center Menu</b-menu-label>\n    <button b-menu-item>Item 1</button>\n    <button b-menu-item>Item 2</button>\n  </b-menu>\n</ng-template>`;
+  squaredUsage = `<button b-button [menuTriggerFor]=menuSquaredSm [menuTriggerPosition]="['bottom-left', 'top-left']">Small Squared</button>
+<ng-template #menuSquaredSm>
+  <b-menu size="sm">
+    <button b-menu-item [squared]="true">A</button>
+    <button b-menu-item [squared]="true">B</button>
+    <button b-menu-item [squared]="true">C</button>
+  </b-menu>
+</ng-template>
+
+<button b-button [menuTriggerFor]=menuSquaredMd [menuTriggerPosition]="['bottom-left', 'top-left']">Medium Squared</button>
+<ng-template #menuSquaredMd>
+  <b-menu size="md">
+    <button b-menu-item [squared]="true">A</button>
+    <button b-menu-item [squared]="true">B</button>
+    <button b-menu-item [squared]="true">C</button>
+  </b-menu>
+</ng-template>
+
+<button b-button [menuTriggerFor]=menuSquaredLg [menuTriggerPosition]="['bottom-left', 'top-left']">Large Squared</button>
+<ng-template #menuSquaredLg>
+  <b-menu size="lg">
+    <button b-menu-item [squared]="true">A</button>
+    <button b-menu-item [squared]="true">B</button>
+    <button b-menu-item [squared]="true">C</button>
+  </b-menu>
+</ng-template>`;
 }
