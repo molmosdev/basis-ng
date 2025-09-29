@@ -113,7 +113,7 @@ export class Tooltip implements AfterContentInit {
   handlePanelClasses(): void {
     this.overlay()!.cdkConnectedOverlay.panelClass = [
       `b-tooltip-size-${this.size()}`,
-      `b-variant-${this.variant()}`,
+      `b-tooltip-variant-${this.variant()}`,
     ];
   }
 }
