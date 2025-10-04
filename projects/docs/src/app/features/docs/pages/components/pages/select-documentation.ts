@@ -1,4 +1,4 @@
-import { Component, signal, computed } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { CodeBlock } from '../shared/components/code-block';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FormGroup, FormControl } from '@angular/forms';
@@ -383,7 +383,7 @@ import { lucideRocket } from '@ng-icons/lucide';
                 type="text"
                 placeholder="Filter options"
                 [(ngModel)]="filterText" />
-              @for (option of filteredOptions(); track option) {
+              @for (option of options(); track option.label) {
                 <li b-option [value]="option.value">{{ option.label }}</li>
               }
             </ul>
@@ -414,11 +414,6 @@ export class SelectDocumentation {
     { value: 'option3', label: 'Opción 3' },
   ]);
   filterText = '';
-  readonly filteredOptions = computed(() =>
-    this.options().filter(o =>
-      o.label.toLowerCase().includes(this.filterText.toLowerCase())
-    )
-  );
   displayFn = (value: string[]) => {
     return value
       ? this.options()
