@@ -121,3 +121,8 @@ export * from './core/pipes/translate.pipe';
 
 /* Position */
 export * from './shared/types/position.type';
+
+/* Popover */
+export * from './core/components/popover/popover';
+export * from './core/components/popover/shared/directives/popover-trigger';
+export * from './core/components/popover/shared/components/popover-content';
