@@ -85,11 +85,16 @@ b-menu {
   button[b-menu-item],
   button[b-menu-item-radio],
   button[b-menu-item-checkbox] {
-    @apply flex gap-2 cursor-pointer;
+    @apply flex items-center gap-2 cursor-pointer;
     @apply hover:bg-secondary/50;
     @apply dark:hover:bg-secondary-dark/50;
 
-    /* .squared ahora se define por size arriba */
+    &.destructive {
+      @apply bg-destructive/10 text-destructive;
+      @apply dark:bg-destructive-dark/10 dark:text-destructive-dark;
+      @apply hover:bg-destructive/20;
+      @apply dark:hover:bg-destructive-dark/20;
+    }
 
     &:focus-visible {
       @apply outline-2 outline-offset-4 outline-primary;

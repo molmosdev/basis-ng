@@ -19,6 +19,7 @@ import { Component, input } from '@angular/core';
   ],
   host: {
     '[class.squared]': 'squared()',
+    '[class.destructive]': 'destructive()',
   },
 })
 export class MenuItem {
@@ -26,4 +27,9 @@ export class MenuItem {
    * Input to set the squared state of the menu item.
    */
   readonly squared = input(false);
+
+  /**
+   * Input to set the destructive state of the menu item.
+   */
+  readonly destructive = input(false);
 }

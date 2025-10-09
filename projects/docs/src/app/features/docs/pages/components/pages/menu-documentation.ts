@@ -132,6 +132,16 @@ import { lucideRocket } from '@ng-icons/lucide';
                 <strong>false</strong> | true
               </td>
             </tr>
+            <tr>
+              <td
+                class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2 font-display-mono whitespace-nowrap">
+                destructive
+              </td>
+              <td
+                class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2 font-display-mono whitespace-nowrap">
+                <strong>false</strong> | true
+              </td>
+            </tr>
           </tbody>
         </table>
       </div>
@@ -583,6 +593,30 @@ import { lucideRocket } from '@ng-icons/lucide';
           </ng-template>
         </div>
       </div>
+      <h2 class="font-semibold text-xl">Destructive Menu Items</h2>
+      <code-block [code]="destructiveUsage" />
+      <div
+        class="border border-gray-200 items-center dark:border-neutral-700 rounded-lg p-6 mb-6 bg-white dark:bg-neutral-900 documentation-playground flex flex-col gap-4">
+        <button
+          b-button
+          [menuTriggerFor]="menuDestructive"
+          [menuTriggerPosition]="['bottom-left', 'top-left']">
+          Open Menu
+        </button>
+        <ng-template #menuDestructive>
+          <b-menu>
+            <b-menu-label>Actions</b-menu-label>
+            <b-menu-group>
+              <button b-menu-item>Edit</button>
+              <button b-menu-item>Duplicate</button>
+              <button b-menu-item>Archive</button>
+            </b-menu-group>
+            <b-menu-group>
+              <button b-menu-item [destructive]="true">Delete</button>
+            </b-menu-group>
+          </b-menu>
+        </ng-template>
+      </div>
     </div>
     <app-steps-buttons
       [previous]="{
@@ -630,6 +664,20 @@ export class MenuDocumentation {
     <button b-menu-item [squared]="true">A</button>
     <button b-menu-item [squared]="true">B</button>
     <button b-menu-item [squared]="true">C</button>
+  </b-menu>
+</ng-template>`;
+  destructiveUsage = `<button b-button [menuTriggerFor]=menuDestructive [menuTriggerPosition]="['bottom-left', 'top-left']">Open Menu</button>
+<ng-template #menuDestructive>
+  <b-menu>
+    <b-menu-label>Actions</b-menu-label>
+    <b-menu-group>
+      <button b-menu-item>Edit</button>
+      <button b-menu-item>Duplicate</button>
+      <button b-menu-item>Archive</button>
+    </b-menu-group>
+    <b-menu-group>
+      <button b-menu-item [destructive]="true">Delete</button>
+    </b-menu-group>
   </b-menu>
 </ng-template>`;
 }
