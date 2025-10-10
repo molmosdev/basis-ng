@@ -61,13 +61,15 @@ ul[b-select-content] {
   @apply list-none box-border m-0 relative bg-background shadow-xs inset-ring-1 inset-ring-secondary flex flex-col w-full overflow-y-auto;
   @apply dark:bg-background-dark dark:shadow-xs dark:inset-ring-secondary-dark;
   @apply outline-none;
+  max-height: 320px;
 
   .no-options-message {
     @apply py-1 px-2 text-sm;
   }
 
   input[b-input] {
-    @apply outline-none;
+    @apply outline-none sticky top-0 z-10 bg-background;
+    @apply dark:bg-background-dark;
   }
 
   &.b-select-content-entering-top {
