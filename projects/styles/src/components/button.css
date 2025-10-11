@@ -1,5 +1,5 @@
 button[b-button] {
-  @apply transition-colors duration-150 flex items-center justify-center gap-x-2 disabled:opacity-50 disabled:cursor-not-allowed;
+  @apply transition-colors duration-150 flex items-center justify-center gap-x-1.5 disabled:opacity-50 disabled:cursor-not-allowed;
 
   /* Variants */
   &.b-button-variant-primary {
@@ -15,8 +15,8 @@ button[b-button] {
     @apply dark:hover:bg-primary-dark/10;
   }
   &.b-button-variant-outlined {
-    @apply bg-transparent inset-ring-1 inset-ring-secondary hover:bg-primary/5;
-    @apply dark:inset-ring-secondary-dark dark:hover:bg-primary-dark/5;
+    @apply bg-transparent inset-ring-1 inset-ring-secondary hover:bg-primary/5 shadow-xs;
+    @apply dark:inset-ring-secondary-dark dark:hover:bg-primary-dark/5 shadow-xs;
   }
   &.b-button-variant-destructive {
     @apply bg-destructive text-destructive-foreground inset-ring-1 inset-ring-destructive hover:bg-destructive/90 hover:inset-ring-destructive/80;
