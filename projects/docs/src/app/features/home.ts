@@ -98,9 +98,11 @@ import { CardDescription, CardFooter, CardHeader, CardTitle } from 'primitives';
     </div>
   `,
   host: {
-    class: 'flex h-[calc(100dvh-5rem)] flex-col justify-center items-center gap-1 px-8 h-20',
+    class:
+      'pt-30 pb-8 sm:h-[calc(100dvh-5rem)] sm:p-0 flex flex-col justify-center items-center gap-1 px-8',
   },
 })
+
 /**
  * Small helper for the select's displayWith input used in the showcase.
  * Joins selected values into a comma-separated string.
