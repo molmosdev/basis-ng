@@ -42,80 +42,36 @@ import {
         without it.
       </span>
       <code-block [code]="stylesImport" />
-      <h2 class="font-semibold text-xl">Properties</h2>
-      <div
-        class="overflow-x-auto overflow-hidden rounded-lg border border-gray-200 dark:border-neutral-700 dark:bg-neutral-900 mb-6">
-        <table class="table-auto w-full text-left text-sm">
-          <thead class="bg-gray-50 dark:bg-zinc-800">
-            <tr>
-              <th
-                class="border-b border-gray-200 dark:border-neutral-700 px-4 py-2 font-semibold">
-                Property
-              </th>
-              <th
-                class="border-b border-gray-200 dark:border-neutral-700 px-4 py-2 font-semibold">
-                Type
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td
-                class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2 font-display-mono whitespace-nowrap">
-                size
-              </td>
-              <td
-                class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2 font-display-mono whitespace-nowrap">
-                <strong>'md'</strong> | 'sm' | 'lg'
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <h2 class="font-semibold text-xl">Events</h2>
-      <div
-        class="overflow-x-auto overflow-hidden rounded-lg border border-gray-200 dark:border-neutral-700 dark:bg-neutral-900 mb-6">
-        <table class="table-auto w-full text-left text-sm">
-          <thead class="bg-gray-50 dark:bg-zinc-800">
-            <tr>
-              <th
-                class="border-b border-gray-200 dark:border-neutral-700 px-4 py-2 font-semibold">
-                Event
-              </th>
-              <th
-                class="border-b border-gray-200 dark:border-neutral-700 px-4 py-2 font-semibold">
-                Type
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td
-                class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2 font-display-mono whitespace-nowrap">
-                valueChange
-              </td>
-              <td
-                class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2 font-display-mono whitespace-nowrap">
-                boolean
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
       <h2 class="font-semibold text-xl">Basic</h2>
       <code-block [code]="sizesUsage" />
       <div
-        class="border border-gray-200 dark:border-neutral-700 rounded-lg p-6 mb-6 bg-white dark:bg-neutral-900 documentation-playground flex flex-row items-center justify-center gap-8">
-        <input type="checkbox" b-switch size="sm" [(ngModel)]="ngModelValue" />
-        <input type="checkbox" b-switch size="md" [(ngModel)]="ngModelValue" />
-        <input type="checkbox" b-switch size="lg" [(ngModel)]="ngModelValue" />
+        class="border border-gray-200 dark:border-neutral-900 rounded-lg p-6 mb-6 flex flex-row items-center justify-center gap-8">
+        <input
+          type="checkbox"
+          b-switch
+          class="b-size-sm"
+          [(ngModel)]="ngModelValue" />
+        <input
+          type="checkbox"
+          b-switch
+          class="b-size-md"
+          [(ngModel)]="ngModelValue" />
+        <input
+          type="checkbox"
+          b-switch
+          class="b-size-lg"
+          [(ngModel)]="ngModelValue" />
       </div>
       <h2 class="font-semibold text-xl">Angular Forms with formControlName</h2>
       <code-block [code]="formControlUsage" />
       <form [formGroup]="form">
         <div
-          class="border border-gray-200 dark:border-neutral-700 rounded-lg p-6 mb-6 bg-white dark:bg-neutral-900 documentation-playground flex flex-row items-center justify-center gap-8">
-          <input type="checkbox" b-switch formControlName="switchControl" />
+          class="border border-gray-200 dark:border-neutral-900 rounded-lg p-6 mb-6 flex flex-row items-center justify-center gap-8">
+          <input
+            type="checkbox"
+            b-switch
+            class="b-size-md"
+            formControlName="switchControl" />
         </div>
       </form>
     </div>
@@ -132,7 +88,7 @@ import {
 export class SwitchDocumentation {
   angularImport = `import { SwitchComponent } from 'primitives'`;
   stylesImport = `@import '@basis-ng/styles/switch';`;
-  sizesUsage = `<input type="checkbox" b-switch size="sm" [(ngModel)]="ngModelValue" />\n<input type="checkbox" b-switch size="md" [(ngModel)]="ngModelValue" />\n<input type="checkbox" b-switch size="lg" [(ngModel)]="ngModelValue" />`;
+  sizesUsage = `<input type="checkbox" b-switch class="b-size-sm" [(ngModel)]="ngModelValue" />\n<input type="checkbox" b-switch class="b-size-md" [(ngModel)]="ngModelValue" />\n<input type="checkbox" b-switch class="b-size-lg" [(ngModel)]="ngModelValue" />`;
   formControlUsage = `<form [formGroup]="form">\n  <input type="checkbox" b-switch formControlName="switchControl" />\n</form>`;
   ngModelValue = false;
   form = new FormGroup({ switchControl: new FormControl(false) });

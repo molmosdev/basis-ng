@@ -1,9 +1,11 @@
 import { Component } from '@angular/core';
-import { Tree, TreeNode, Badge, Alert } from 'primitives';
+import { Badge, Alert } from 'primitives';
 import { provideIcons } from '@ng-icons/core';
 import { lucideRocket } from '@ng-icons/lucide';
 import { CodeBlock } from '../shared/components/code-block';
 import { StepsButtons } from '../../shared/components/steps-buttons';
+import { Tree } from '../../../../../../../../primitives/src/core/components/tree/tree';
+import { TreeNode } from '../../../../../../../../primitives/src/core/components/tree/tree-node';
 
 @Component({
   selector: 'article[app-tree-documentation]',
@@ -18,7 +20,7 @@ import { StepsButtons } from '../../shared/components/steps-buttons';
     </b-alert>
     <h1 class="font-bold text-2xl flex gap-2 items-start">
       Tree
-      <span b-badge variant="outlined" size="sm"> New </span>
+      <span b-badge class="b-variant-outlined b-size-sm"> New </span>
     </h1>
     <div class="flex flex-col gap-4">
       <span>
@@ -33,16 +35,16 @@ import { StepsButtons } from '../../shared/components/steps-buttons';
       <code-block [code]="stylesImport" />
       <h2 class="font-semibold text-xl">Properties</h2>
       <div
-        class="overflow-x-auto overflow-hidden rounded-lg border border-gray-200 dark:border-neutral-700 dark:bg-neutral-900 mb-6">
+        class="overflow-x-auto overflow-hidden rounded-lg border border-gray-200 dark:border-neutral-900 mb-6">
         <table class="table-auto w-full text-left text-sm">
-          <thead class="bg-gray-50 dark:bg-zinc-800">
+          <thead class="bg-gray-50 dark:bg-neutral-900">
             <tr>
               <th
-                class="border-b border-gray-200 dark:border-neutral-700 px-4 py-2 font-semibold">
+                class="border-b border-gray-200 dark:border-neutral-900 px-4 py-2 font-semibold">
                 Prop
               </th>
               <th
-                class="border-b border-gray-200 dark:border-neutral-700 px-4 py-2 font-semibold">
+                class="border-b border-gray-200 dark:border-neutral-900 px-4 py-2 font-semibold">
                 Type
               </th>
             </tr>
@@ -50,31 +52,31 @@ import { StepsButtons } from '../../shared/components/steps-buttons';
           <tbody>
             <tr>
               <td
-                class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2 font-display-mono whitespace-nowrap">
+                class="border-t border-gray-200 dark:border-neutral-900 px-4 py-2 font-display-mono whitespace-nowrap">
                 draggable
               </td>
               <td
-                class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2 font-display-mono whitespace-nowrap">
+                class="border-t border-gray-200 dark:border-neutral-900 px-4 py-2 font-display-mono whitespace-nowrap">
                 boolean <strong>false</strong>
               </td>
             </tr>
             <tr>
               <td
-                class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2 font-display-mono whitespace-nowrap">
+                class="border-t border-gray-200 dark:border-neutral-900 px-4 py-2 font-display-mono whitespace-nowrap">
                 extended
               </td>
               <td
-                class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2 font-display-mono whitespace-nowrap">
+                class="border-t border-gray-200 dark:border-neutral-900 px-4 py-2 font-display-mono whitespace-nowrap">
                 boolean <strong>false</strong>
               </td>
             </tr>
             <tr>
               <td
-                class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2 font-display-mono whitespace-nowrap">
+                class="border-t border-gray-200 dark:border-neutral-900 px-4 py-2 font-display-mono whitespace-nowrap">
                 closeRecursively
               </td>
               <td
-                class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2 font-display-mono whitespace-nowrap">
+                class="border-t border-gray-200 dark:border-neutral-900 px-4 py-2 font-display-mono whitespace-nowrap">
                 boolean <strong>false</strong>
               </td>
             </tr>
@@ -84,7 +86,7 @@ import { StepsButtons } from '../../shared/components/steps-buttons';
       <h2 class="font-semibold text-xl">Basic Example</h2>
       <code-block [code]="basicUsage" />
       <div
-        class="border border-gray-200 dark:border-neutral-700 rounded-lg p-6 mb-6 bg-white dark:bg-neutral-900 documentation-playground flex flex-col gap-4 items-center">
+        class="border border-gray-200 dark:border-neutral-900 rounded-lg p-6 mb-6 flex flex-col gap-4 items-center">
         <b-tree>
           <b-tree-node>Node 1</b-tree-node>
           <b-tree-node>Node 2</b-tree-node>
@@ -93,7 +95,7 @@ import { StepsButtons } from '../../shared/components/steps-buttons';
       <h2 class="font-semibold text-xl">With Nested Nodes</h2>
       <code-block [code]="nestedUsage" />
       <div
-        class="border border-gray-200 dark:border-neutral-700 rounded-lg p-6 mb-6 bg-white dark:bg-neutral-900 documentation-playground flex flex-col gap-4 items-center">
+        class="border border-gray-200 dark:border-neutral-900 rounded-lg p-6 mb-6 flex flex-col gap-4 items-center">
         <b-tree>
           <b-tree-node>
             Parent Node
@@ -107,7 +109,7 @@ import { StepsButtons } from '../../shared/components/steps-buttons';
       <h2 class="font-semibold text-xl">With Recursive Closing</h2>
       <code-block [code]="recursiveCloseUsage" />
       <div
-        class="border border-gray-200 dark:border-neutral-700 rounded-lg p-6 mb-6 bg-white dark:bg-neutral-900 documentation-playground flex flex-col gap-4 items-center">
+        class="border border-gray-200 dark:border-neutral-900 rounded-lg p-6 mb-6 flex flex-col gap-4 items-center">
         <b-tree [closeRecursively]="true">
           <b-tree-node>
             Parent Node
@@ -127,9 +129,18 @@ import { StepsButtons } from '../../shared/components/steps-buttons';
       <h2 class="font-semibold text-xl">With Drag-and-Drop</h2>
       <code-block [code]="dragDropUsage" />
       <div
-        class="border border-gray-200 dark:border-neutral-700 rounded-lg p-6 mb-6 bg-white dark:bg-neutral-900 documentation-playground flex flex-col gap-4 items-center">
+        class="border border-gray-200 dark:border-neutral-900 rounded-lg p-6 mb-6 flex flex-col gap-4 items-center">
         <b-tree [draggable]="true">
           <b-tree-node>Node 1</b-tree-node>
+          <b-tree-node>Node 2</b-tree-node>
+        </b-tree>
+      </div>
+      <h2 class="font-semibold text-xl">Active Node</h2>
+      <code-block [code]="activeNodeUsage" />
+      <div
+        class="border border-gray-200 dark:border-neutral-900 rounded-lg p-6 mb-6 flex flex-col gap-4 items-center">
+        <b-tree>
+          <b-tree-node class="b-active">Active node</b-tree-node>
           <b-tree-node>Node 2</b-tree-node>
         </b-tree>
       </div>
@@ -151,4 +162,5 @@ export class TreeDocumentation {
   nestedUsage = `<b-tree>\n  <b-tree-node>\n    Parent Node\n    <b-tree>\n      <b-tree-node>Child Node 1</b-tree-node>\n      <b-tree-node>Child Node 2</b-tree-node>\n    </b-tree>\n  </b-tree-node>\n</b-tree>`;
   recursiveCloseUsage = `<b-tree [closeRecursively]="true">\n  <b-tree-node>\n    Parent Node\n    <b-tree>\n      <b-tree-node>\n        Child Node 1\n        <b-tree>\n          <b-tree-node>Grandchild Node 1</b-tree-node>\n          <b-tree-node>Grandchild Node 2</b-tree-node>\n        </b-tree>\n      </b-tree-node>\n      <b-tree-node>Child Node 2</b-tree-node>\n    </b-tree>\n  </b-tree-node>\n</b-tree>`;
   dragDropUsage = `<b-tree [draggable]="true">\n  <b-tree-node>Node 1</b-tree-node>\n  <b-tree-node>Node 2</b-tree-node>\n</b-tree>`;
+  activeNodeUsage = `<b-tree>\n  <b-tree-node class='b-active'>Active node</b-tree-node>\n  <b-tree-node>Node 2</b-tree-node>\n</b-tree>`;
 }

@@ -12,7 +12,7 @@ import { Badge } from 'primitives';
       [next]="{ label: 'Alert', path: '/docs/components/alert' }" />
     <h1 class="font-bold text-2xl flex gap-2 items-start">
       Theming
-      <span b-badge variant="outlined" size="sm"> New </span>
+      <span b-badge class="b-variant-outlined b-size-sm"> New </span>
     </h1>
     <div class="flex flex-col gap-4">
       <p>

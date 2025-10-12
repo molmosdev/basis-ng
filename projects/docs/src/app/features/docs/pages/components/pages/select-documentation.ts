@@ -58,38 +58,29 @@ import { lucideRocket } from '@ng-icons/lucide';
       <code-block [code]="stylesImport" />
       <h2 class="font-semibold text-xl">Select properties</h2>
       <div
-        class="overflow-x-auto overflow-hidden rounded-lg border border-gray-200 dark:border-neutral-700 dark:bg-neutral-900 mb-6">
+        class="overflow-x-auto overflow-hidden rounded-lg border border-gray-200 dark:border-neutral-900 mb-6">
         <table class="table-auto w-full text-left text-sm">
-          <thead class="bg-gray-50 dark:bg-zinc-800">
+          <thead class="bg-gray-50 dark:bg-neutral-900">
             <tr>
               <th
-                class="border-b border-gray-200 dark:border-neutral-700 px-4 py-2 font-semibold">
+                class="border-b border-gray-200 dark:border-neutral-900 px-4 py-2 font-semibold">
                 Prop
               </th>
               <th
-                class="border-b border-gray-200 dark:border-neutral-700 px-4 py-2 font-semibold">
+                class="border-b border-gray-200 dark:border-neutral-900 px-4 py-2 font-semibold">
                 Type
               </th>
             </tr>
           </thead>
           <tbody>
+            <!-- size is visual-only now; use class="b-size-sm|md|lg" on the host -->
             <tr>
               <td
-                class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2 font-display-mono whitespace-nowrap">
-                size
-              </td>
-              <td
-                class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2 font-display-mono whitespace-nowrap">
-                <b class="font-bold">'md'</b> | 'sm' | 'lg'
-              </td>
-            </tr>
-            <tr>
-              <td
-                class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2 font-display-mono whitespace-nowrap">
+                class="border-t border-gray-200 dark:border-neutral-900 px-4 py-2 font-display-mono whitespace-nowrap">
                 displayWith
               </td>
               <td
-                class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2 font-display-mono whitespace-nowrap">
+                class="border-t border-gray-200 dark:border-neutral-900 px-4 py-2 font-display-mono whitespace-nowrap">
                 <b class="font-bold">required</b> | (value: string[]) => string
               </td>
             </tr>
@@ -98,16 +89,16 @@ import { lucideRocket } from '@ng-icons/lucide';
       </div>
       <h2 class="font-semibold text-xl">SelectValue properties</h2>
       <div
-        class="overflow-x-auto overflow-hidden rounded-lg border border-gray-200 dark:border-neutral-700 dark:bg-neutral-900 mb-6">
+        class="overflow-x-auto overflow-hidden rounded-lg border border-gray-200 dark:border-neutral-900 mb-6">
         <table class="table-auto w-full text-left text-sm">
-          <thead class="bg-gray-50 dark:bg-zinc-800">
+          <thead class="bg-gray-50 dark:bg-neutral-900">
             <tr>
               <th
-                class="border-b border-gray-200 dark:border-neutral-700 px-4 py-2 font-semibold">
+                class="border-b border-gray-200 dark:border-neutral-900 px-4 py-2 font-semibold">
                 Prop
               </th>
               <th
-                class="border-b border-gray-200 dark:border-neutral-700 px-4 py-2 font-semibold">
+                class="border-b border-gray-200 dark:border-neutral-900 px-4 py-2 font-semibold">
                 Type
               </th>
             </tr>
@@ -115,11 +106,11 @@ import { lucideRocket } from '@ng-icons/lucide';
           <tbody>
             <tr>
               <td
-                class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2 font-display-mono whitespace-nowrap">
+                class="border-t border-gray-200 dark:border-neutral-900 px-4 py-2 font-display-mono whitespace-nowrap">
                 placeholder
               </td>
               <td
-                class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2 font-display-mono whitespace-nowrap">
+                class="border-t border-gray-200 dark:border-neutral-900 px-4 py-2 font-display-mono whitespace-nowrap">
                 <b class="font-bold">'Select an option'</b> | string
               </td>
             </tr>
@@ -128,16 +119,16 @@ import { lucideRocket } from '@ng-icons/lucide';
       </div>
       <h2 class="font-semibold text-xl">SelectContent properties</h2>
       <div
-        class="overflow-x-auto overflow-hidden rounded-lg border border-gray-200 dark:border-neutral-700 dark:bg-neutral-900 mb-6">
+        class="overflow-x-auto overflow-hidden rounded-lg border border-gray-200 dark:border-neutral-900 mb-6">
         <table class="table-auto w-full text-left text-sm">
-          <thead class="bg-gray-50 dark:bg-zinc-800">
+          <thead class="bg-gray-50 dark:bg-neutral-900">
             <tr>
               <th
-                class="border-b border-gray-200 dark:border-neutral-700 px-4 py-2 font-semibold">
+                class="border-b border-gray-200 dark:border-neutral-900 px-4 py-2 font-semibold">
                 Prop
               </th>
               <th
-                class="border-b border-gray-200 dark:border-neutral-700 px-4 py-2 font-semibold">
+                class="border-b border-gray-200 dark:border-neutral-900 px-4 py-2 font-semibold">
                 Type
               </th>
             </tr>
@@ -145,11 +136,11 @@ import { lucideRocket } from '@ng-icons/lucide';
           <tbody>
             <tr>
               <td
-                class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2 font-display-mono whitespace-nowrap">
+                class="border-t border-gray-200 dark:border-neutral-900 px-4 py-2 font-display-mono whitespace-nowrap">
                 multiple
               </td>
               <td
-                class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2 font-display-mono whitespace-nowrap">
+                class="border-t border-gray-200 dark:border-neutral-900 px-4 py-2 font-display-mono whitespace-nowrap">
                 <b class="font-bold">false</b> | boolean
               </td>
             </tr>
@@ -159,13 +150,14 @@ import { lucideRocket } from '@ng-icons/lucide';
       <h2 class="font-semibold text-xl">Basic usage</h2>
       <code-block [code]="basicUsage" />
       <div
-        class="border border-gray-200 dark:border-neutral-700 rounded-lg p-6 mb-6 bg-white dark:bg-neutral-900 documentation-playground flex flex-col items-center justify-center gap-4">
+        class="border border-gray-200 dark:border-neutral-900 rounded-lg p-6 mb-6 flex flex-col items-center justify-center gap-4">
         <!-- Basic select example -->
-        <b-select
-          [(ngModel)]="selectedOptions"
-          size="md"
-          [displayWith]="displayFn">
-          <button b-select-trigger bOverlayOrigin #trigger="bOverlayOrigin">
+        <b-select [(ngModel)]="selectedOptions" [displayWith]="displayFn">
+          <button
+            b-select-trigger
+            bOverlayOrigin
+            #trigger="bOverlayOrigin"
+            class="b-size-md">
             <b-select-value placeholder="Select an option" />
           </button>
           <ng-template
@@ -177,7 +169,7 @@ import { lucideRocket } from '@ng-icons/lucide';
               'top-left',
               'top-right',
             ]">
-            <ul b-select-content [multiple]="false">
+            <ul b-select-content class="b-size-md" [multiple]="false">
               @for (option of options(); track option) {
                 <li b-option [value]="option.value">{{ option.label }}</li>
               }
@@ -188,12 +180,13 @@ import { lucideRocket } from '@ng-icons/lucide';
       <h2 class="font-semibold text-xl">Sizes</h2>
       <code-block [code]="sizesUsage" />
       <div
-        class="border border-gray-200 dark:border-neutral-700 rounded-lg p-6 mb-6 bg-white dark:bg-neutral-900 documentation-playground flex flex-row items-center justify-center gap-8">
-        <b-select
-          [(ngModel)]="selectedOptions"
-          size="sm"
-          [displayWith]="displayFn">
-          <button b-select-trigger bOverlayOrigin #trigger1="bOverlayOrigin">
+        class="border border-gray-200 dark:border-neutral-900 rounded-lg p-6 mb-6 flex flex-row items-center justify-center gap-8">
+        <b-select [(ngModel)]="selectedOptions" [displayWith]="displayFn">
+          <button
+            b-select-trigger
+            bOverlayOrigin
+            #trigger1="bOverlayOrigin"
+            class="b-size-sm">
             <b-select-value placeholder="Size sm" />
           </button>
           <ng-template
@@ -205,18 +198,19 @@ import { lucideRocket } from '@ng-icons/lucide';
               'top-left',
               'top-right',
             ]">
-            <ul b-select-content [multiple]="false">
+            <ul b-select-content class="b-size-sm" [multiple]="false">
               @for (option of options(); track option) {
                 <li b-option [value]="option.value">{{ option.label }}</li>
               }
             </ul>
           </ng-template>
         </b-select>
-        <b-select
-          [(ngModel)]="selectedOptions"
-          size="md"
-          [displayWith]="displayFn">
-          <button b-select-trigger bOverlayOrigin #trigger2="bOverlayOrigin">
+        <b-select [(ngModel)]="selectedOptions" [displayWith]="displayFn">
+          <button
+            b-select-trigger
+            bOverlayOrigin
+            #trigger2="bOverlayOrigin"
+            class="b-size-md">
             <b-select-value placeholder="Size md" />
           </button>
           <ng-template
@@ -228,18 +222,19 @@ import { lucideRocket } from '@ng-icons/lucide';
               'top-left',
               'top-right',
             ]">
-            <ul b-select-content [multiple]="false">
+            <ul b-select-content class="b-size-md" [multiple]="false">
               @for (option of options(); track option) {
                 <li b-option [value]="option.value">{{ option.label }}</li>
               }
             </ul>
           </ng-template>
         </b-select>
-        <b-select
-          [(ngModel)]="selectedOptions"
-          size="lg"
-          [displayWith]="displayFn">
-          <button b-select-trigger bOverlayOrigin #trigger3="bOverlayOrigin">
+        <b-select [(ngModel)]="selectedOptions" [displayWith]="displayFn">
+          <button
+            b-select-trigger
+            bOverlayOrigin
+            #trigger3="bOverlayOrigin"
+            class="b-size-lg">
             <b-select-value placeholder="Size lg" />
           </button>
           <ng-template
@@ -251,7 +246,7 @@ import { lucideRocket } from '@ng-icons/lucide';
               'top-left',
               'top-right',
             ]">
-            <ul b-select-content [multiple]="false">
+            <ul b-select-content class="b-size-lg" [multiple]="false">
               @for (option of options(); track option) {
                 <li b-option [value]="option.value">{{ option.label }}</li>
               }
@@ -262,7 +257,7 @@ import { lucideRocket } from '@ng-icons/lucide';
       <h2 class="font-semibold text-xl">Multiple selection</h2>
       <code-block [code]="multipleUsage" />
       <div
-        class="border border-gray-200 dark:border-neutral-700 rounded-lg p-6 mb-6 bg-white dark:bg-neutral-900 documentation-playground flex flex-col items-center justify-center gap-4">
+        class="border border-gray-200 dark:border-neutral-900 rounded-lg p-6 mb-6 flex flex-col items-center justify-center gap-4">
         <b-select [(ngModel)]="selectedMultiple" [displayWith]="displayFn">
           <button
             b-select-trigger
@@ -290,7 +285,7 @@ import { lucideRocket } from '@ng-icons/lucide';
       <h2 class="font-semibold text-xl">Reactive Forms</h2>
       <code-block [code]="reactiveFormsUsage" />
       <form
-        class="border border-gray-200 dark:border-neutral-700 rounded-lg p-6 mb-6 bg-white dark:bg-neutral-900 documentation-playground flex flex-col items-center justify-center gap-4"
+        class="border border-gray-200 dark:border-neutral-900 rounded-lg p-6 mb-6 flex flex-col items-center justify-center gap-4"
         [formGroup]="formGroup">
         <b-select formControlName="selectControl" [displayWith]="displayFn">
           <button
@@ -319,7 +314,7 @@ import { lucideRocket } from '@ng-icons/lucide';
       <h2 class="font-semibold text-xl">Disabled</h2>
       <code-block [code]="disabledOptionUsage" />
       <div
-        class="border border-gray-200 dark:border-neutral-700 rounded-lg p-6 mb-6 bg-white dark:bg-neutral-900 documentation-playground flex flex-col items-center justify-center gap-4">
+        class="border border-gray-200 dark:border-neutral-900 rounded-lg p-6 mb-6 flex flex-col items-center justify-center gap-4">
         <b-select [(ngModel)]="selectedOptions" [displayWith]="displayFn">
           <button
             b-select-trigger
@@ -357,7 +352,7 @@ import { lucideRocket } from '@ng-icons/lucide';
       <code-block [code]="withFilterImport" />
       <code-block [code]="filterUsage" />
       <div
-        class="border border-gray-200 dark:border-neutral-700 rounded-lg p-6 mb-6 bg-white dark:bg-neutral-900 documentation-playground flex flex-col items-center justify-center gap-4">
+        class="border border-gray-200 dark:border-neutral-900 rounded-lg p-6 mb-6 flex flex-col items-center justify-center gap-4">
         <b-select
           [(ngModel)]="selectedOptionsFiltered"
           [displayWith]="displayFn">
@@ -426,12 +421,12 @@ export class SelectDocumentation {
     selectControl: new FormControl(['option3']),
   });
 
-  basicUsage = `<b-select [(ngModel)]='selectedOptions' size='md' [displayWith]='displayFn'>
-  <button b-select-trigger bOverlayOrigin #trigger='bOverlayOrigin'>
+  basicUsage = `<b-select [(ngModel)]='selectedOptions' [displayWith]='displayFn'>
+  <button b-select-trigger bOverlayOrigin #trigger='bOverlayOrigin' class='b-size-md'>
     <b-select-value placeholder='Selecciona una opción' />
   </button>
   <ng-template bConnectedOverlay [trigger]='trigger' [positions]="['bottom-left', 'bottom-right', 'top-left', 'top-right']">
-    <ul b-select-content [multiple]='false'>
+    <ul b-select-content class='b-size-md' [multiple]='false'>
       @for (option of options(); track option) {
         <li b-option [value]='option.value'>{{ option.label }}</li>
       }
@@ -439,36 +434,36 @@ export class SelectDocumentation {
   </ng-template>
 </b-select>`;
 
-  sizesUsage = `<b-select [(ngModel)]='selectedOptions' size='sm' [displayWith]='displayFn'>
-  <button b-select-trigger bOverlayOrigin #trigger1='bOverlayOrigin'>
+  sizesUsage = `<b-select [(ngModel)]='selectedOptions' [displayWith]='displayFn'>
+  <button b-select-trigger bOverlayOrigin #trigger1='bOverlayOrigin' class='b-size-sm'>
     <b-select-value placeholder='Tamaño sm' />
   </button>
   <ng-template bConnectedOverlay [trigger]='trigger1' [positions]="['bottom-left', 'bottom-right', 'top-left', 'top-right']">
-    <ul b-select-content [multiple]='false'>
+    <ul b-select-content class='b-size-sm' [multiple]='false'>
       @for (option of options(); track option) {
         <li b-option [value]='option.value'>{{ option.label }}</li>
       }
     </ul>
   </ng-template>
 </b-select>
-<b-select [(ngModel)]='selectedOptions' size='md' [displayWith]='displayFn'>
-  <button b-select-trigger bOverlayOrigin #trigger2='bOverlayOrigin'>
+  <b-select [(ngModel)]='selectedOptions' [displayWith]='displayFn'>
+  <button b-select-trigger bOverlayOrigin #trigger2='bOverlayOrigin' class='b-size-md'>
     <b-select-value placeholder='Tamaño md' />
   </button>
   <ng-template bConnectedOverlay [trigger]='trigger2' [positions]="['bottom-left', 'bottom-right', 'top-left', 'top-right']">
-    <ul b-select-content [multiple]='false'>
+    <ul b-select-content class='b-size-md' [multiple]='false'>
       @for (option of options(); track option) {
         <li b-option [value]='option.value'>{{ option.label }}</li>
       }
     </ul>
   </ng-template>
 </b-select>
-<b-select [(ngModel)]='selectedOptions' size='lg' [displayWith]='displayFn'>
-  <button b-select-trigger bOverlayOrigin #trigger3='bOverlayOrigin'>
+<b-select [(ngModel)]='selectedOptions' [displayWith]='displayFn'>
+  <button b-select-trigger bOverlayOrigin #trigger3='bOverlayOrigin' class='b-size-lg'>
     <b-select-value placeholder='Tamaño lg' />
   </button>
   <ng-template bConnectedOverlay [trigger]='trigger3' [positions]="['bottom-left', 'bottom-right', 'top-left', 'top-right']">
-    <ul b-select-content [multiple]='false'>
+    <ul b-select-content class='b-size-lg' [multiple]='false'>
       @for (option of options(); track option) {
         <li b-option [value]='option.value'>{{ option.label }}</li>
       }

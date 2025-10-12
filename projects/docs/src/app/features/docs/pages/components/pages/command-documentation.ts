@@ -27,16 +27,16 @@ import { StepsButtons } from '../../shared/components/steps-buttons';
       <code-block [code]="stylesImport" />
       <h2 class="font-semibold text-xl">Properties</h2>
       <div
-        class="overflow-x-auto overflow-hidden rounded-lg border border-gray-200 dark:border-neutral-700 dark:bg-neutral-900 mb-6">
+        class="overflow-x-auto overflow-hidden rounded-lg border border-gray-200 dark:border-neutral-900 mb-6">
         <table class="table-auto w-full text-left text-sm">
-          <thead class="bg-gray-50 dark:bg-zinc-800">
+          <thead class="bg-gray-50 dark:bg-neutral-900">
             <tr>
               <th
-                class="border-b border-gray-200 dark:border-neutral-700 px-4 py-2 font-semibold">
+                class="border-b border-gray-200 dark:border-neutral-900 px-4 py-2 font-semibold">
                 Property
               </th>
               <th
-                class="border-b border-gray-200 dark:border-neutral-700 px-4 py-2 font-semibold">
+                class="border-b border-gray-200 dark:border-neutral-900 px-4 py-2 font-semibold">
                 Type
               </th>
             </tr>
@@ -44,11 +44,11 @@ import { StepsButtons } from '../../shared/components/steps-buttons';
           <tbody>
             <tr>
               <td
-                class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2 font-display-mono whitespace-nowrap">
+                class="border-t border-gray-200 dark:border-neutral-900 px-4 py-2 font-display-mono whitespace-nowrap">
                 maxHeight
               </td>
               <td
-                class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2 font-display-mono whitespace-nowrap">
+                class="border-t border-gray-200 dark:border-neutral-900 px-4 py-2 font-display-mono whitespace-nowrap">
                 string
               </td>
             </tr>
@@ -64,7 +64,7 @@ import { StepsButtons } from '../../shared/components/steps-buttons';
       </span>
       <code-block [code]="basicUsage" />
       <div
-        class="border border-gray-200 dark:border-neutral-700 rounded-lg p-6 mb-6 bg-white dark:bg-neutral-900 documentation-playground flex flex-col items-center justify-center gap-4">
+        class="border border-gray-200 dark:border-neutral-900 rounded-lg p-6 mb-6 flex flex-col items-center justify-center gap-4">
         <b-command [style.max-width.px]="350" [maxHeight]="'200px'">
           <ul b-command-options>
             <li b-option value="option1">Option 1</li>
@@ -79,7 +79,7 @@ import { StepsButtons } from '../../shared/components/steps-buttons';
       <h2 class="font-semibold text-xl">Options Example</h2>
       <code-block [code]="optionsExample" />
       <div
-        class="border border-gray-200 dark:border-neutral-700 rounded-lg p-6 mb-6 bg-white dark:bg-neutral-900 documentation-playground flex flex-col items-center justify-center gap-4">
+        class="border border-gray-200 dark:border-neutral-900 rounded-lg p-6 mb-6 flex flex-col items-center justify-center gap-4">
         <b-command [style.max-width.px]="350" [maxHeight]="'200px'">
           <ul b-command-options>
             <li b-option value="option1">Option 1</li>

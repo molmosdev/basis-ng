@@ -53,17 +53,6 @@ export const componentsRoutes: Routes = [
       title: 'Checkbox',
     },
   },
-  {
-    path: 'color-picker',
-    loadComponent: () =>
-      import('./pages/color-picker-documentation').then(
-        c => c.ColorPickerDocumentation
-      ),
-    title: 'Color Picker - Basis UI',
-    data: {
-      title: 'Color Picker',
-    },
-  },
   // {
   //   path: 'command',
   //   loadComponent: () =>

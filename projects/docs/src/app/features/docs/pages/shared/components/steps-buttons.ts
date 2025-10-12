@@ -16,9 +16,8 @@ interface StepButtonConfig {
     @if (previous()) {
       <button
         b-button
-        variant="secondary"
         [routerLink]="previous()?.path"
-        class="justify-start">
+        class="justify-start b-variant-secondary">
         <ng-icon
           name="lucideArrowLeft"
           size="14"
@@ -30,9 +29,8 @@ interface StepButtonConfig {
     @if (next()) {
       <button
         b-button
-        variant="secondary"
         [routerLink]="next()?.path"
-        class="justify-end">
+        class="justify-end b-variant-secondary">
         {{ next()?.label }}
         <ng-icon
           name="lucideArrowRight"

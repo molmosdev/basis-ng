@@ -9,7 +9,7 @@ import { HighlightAuto } from 'ngx-highlightjs';
   imports: [HighlightAuto, Button, NgIcon],
   template: `
     <pre
-      class="flex relative rounded-lg overflow-auto inset-ring-1 inset-ring-secondary dark:inset-ring-secondary-dark">
+      class="flex relative rounded-lg overflow-auto inset-ring-1 inset-ring-ring dark:inset-ring-ring-dark">
       @if (highlight()) {
         <code class="text-sm !bg-neutral-900 !dark:bg-neutral-900 p-2 min-w-full no-scrollbar" [highlightAuto]="code()"></code>
       } @else {
@@ -18,9 +18,7 @@ import { HighlightAuto } from 'ngx-highlightjs';
       <button
       b-button
       size="sm"
-      class="absolute top-2 right-2"
-      variant="ghost"
-      [squared]="true">
+      class="absolute top-2 right-2 b-squared b-variant-ghost">
         <ng-icon name="lucideCopy" size="14" color="currentColor" />
       </button>
     </pre>

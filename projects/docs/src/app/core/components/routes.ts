@@ -22,71 +22,74 @@ import { utilitiesRoutes } from '../../features/docs/pages/utilities/utilities.r
 @Component({
   selector: 'app-routes',
   imports: [Menu, MenuItemRadio, RouterLink, RouterLinkActive, Badge],
-  template: `
-    <b-menu [size]="isMobile() ? 'md' : 'sm'">
-      <span
-        class="opacity-70 mb-1 pl-1 font-display-mono"
-        [class]="!isMobile() ? 'text-sm' : 'text-md'">
-        Getting started
-      </span>
-      @for (route of documentationRoutes(); track route) {
-        @if (route.data) {
-          <button
-            b-menu-item-radio
-            [routerLink]="route.path"
-            [routerLinkActive]="['active']"
-            (click)="navigationEmitter.emit()">
-            {{ route.data['title'] }}
-            @if (route.data['badge']) {
-              <span b-badge variant="outlined" size="sm">
-                {{ route.data['badge'] }}
-              </span>
-            }
-          </button>
-        }
+  template: ` <b-menu class="b-size-md">
+    <span
+      class="opacity-70 mb-1 pl-1 font-display-mono"
+      [class]="!isMobile() ? 'text-sm' : 'text-md'">
+      Getting started
+    </span>
+
+    @for (route of documentationRoutes(); track route) {
+      @if (route.data) {
+        <button
+          b-menu-item-radio
+          [routerLink]="route.path"
+          [routerLinkActive]="['b-active']"
+          (click)="navigationEmitter.emit()">
+          {{ route.data['title'] }}
+          @if (route.data['badge']) {
+            <span b-badge class="b-variant-outlined b-size-sm">
+              {{ route.data['badge'] }}
+            </span>
+          }
+        </button>
       }
-      <span
-        class="opacity-70 mb-1 pl-1 font-display-mono mt-5"
-        [class]="!isMobile() ? 'text-sm' : 'text-md'">
-        Components
-      </span>
-      @for (route of componentsRoutes(); track route) {
-        @if (route.data) {
-          @let path = '/docs/components/' + route.path;
-          <button
-            b-menu-item-radio
-            [routerLink]="path"
-            [routerLinkActive]="['active']"
-            (click)="navigationEmitter.emit()">
-            {{ route.data['title'] }}
-            @if (route.data['badge']) {
-              <span b-badge variant="outlined" size="sm">{{
-                route.data['badge']
-              }}</span>
-            }
-          </button>
-        }
+    }
+
+    <span
+      class="opacity-70 mb-1 pl-1 font-display-mono mt-5"
+      [class]="!isMobile() ? 'text-sm' : 'text-md'">
+      Components
+    </span>
+
+    @for (route of componentsRoutes(); track route) {
+      @if (route.data) {
+        @let path = '/docs/components/' + route.path;
+        <button
+          b-menu-item-radio
+          [routerLink]="path"
+          [routerLinkActive]="['b-active']"
+          (click)="navigationEmitter.emit()">
+          {{ route.data['title'] }}
+          @if (route.data['badge']) {
+            <span b-badge class="b-variant-outlined b-size-sm">{{
+              route.data['badge']
+            }}</span>
+          }
+        </button>
       }
-      <span class="opacity-70 text-xs mb-1 pl-1 font-display-mono mt-5">
-        Utilities
-      </span>
-      @for (route of utilitiesRoutes(); track route) {
-        @if (route.data) {
-          @let path = '/docs/utilities/' + route.path;
-          <button
-            b-menu-item-radio
-            [routerLink]="path"
-            [routerLinkActive]="['active']"
-            (click)="navigationEmitter.emit()">
-            {{ route.data['title'] }}
-            @if (route.data['new']) {
-              <span b-badge variant="outlined" size="sm"> New </span>
-            }
-          </button>
-        }
+    }
+
+    <span class="opacity-70 text-xs mb-1 pl-1 font-display-mono mt-5">
+      Utilities
+    </span>
+
+    @for (route of utilitiesRoutes(); track route) {
+      @if (route.data) {
+        @let path = '/docs/utilities/' + route.path;
+        <button
+          b-menu-item-radio
+          [routerLink]="path"
+          [routerLinkActive]="['b-active']"
+          (click)="navigationEmitter.emit()">
+          {{ route.data['title'] }}
+          @if (route.data['new']) {
+            <span b-badge class="b-variant-outlined b-size-sm"> New </span>
+          }
+        </button>
       }
-    </b-menu>
-  `,
+    }
+  </b-menu>`,
   host: {
     class:
       'max-h-[calc(100vh-5rem)] overflow-y-scroll sticky top-20 scroll-0 no-scrollbar px-6.5',

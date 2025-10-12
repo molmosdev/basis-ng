@@ -16,8 +16,8 @@ import { StepsButtons } from '../../shared/components/steps-buttons';
 import { provideIcons } from '@ng-icons/core';
 import { lucideRocket } from '@ng-icons/lucide';
 import { Popover } from '../../../../../../../../primitives/src/core/components/popover/popover';
-import { PopoverTrigger } from '../../../../../../../../primitives/src/core/components/popover/shared/directives/popover-trigger';
-import { PopoverContent } from '../../../../../../../../primitives/src/core/components/popover/shared/components/popover-content';
+import { PopoverTrigger } from '../../../../../../../../primitives/src/core/components/popover/popover-trigger';
+import { PopoverContent } from '../../../../../../../../primitives/src/core/components/popover/popover-content';
 import { signal } from '@angular/core';
 
 @Component({
@@ -49,7 +49,7 @@ import { signal } from '@angular/core';
     </b-alert>
     <h1 class="font-bold text-2xl flex gap-2 items-start">
       Popover
-      <span b-badge variant="outlined" size="sm"> New </span>
+      <span b-badge class="b-variant-outlined b-size-sm"> New </span>
     </h1>
     <div class="flex flex-col gap-4">
       <span>
@@ -66,20 +66,20 @@ import { signal } from '@angular/core';
 
       <h2 class="font-semibold text-xl">Popover properties</h2>
       <div
-        class="overflow-x-auto overflow-hidden rounded-lg border border-gray-200 dark:border-neutral-700 dark:bg-neutral-900 mb-6">
+        class="overflow-x-auto overflow-hidden rounded-lg border border-gray-200 dark:border-neutral-900 mb-6">
         <table class="table-auto w-full text-left text-sm">
-          <thead class="bg-gray-50 dark:bg-zinc-800">
+          <thead class="bg-gray-50 dark:bg-neutral-900">
             <tr>
               <th
-                class="border-b border-gray-200 dark:border-neutral-700 px-4 py-2 font-semibold">
+                class="border-b border-gray-200 dark:border-neutral-900 px-4 py-2 font-semibold">
                 Prop
               </th>
               <th
-                class="border-b border-gray-200 dark:border-neutral-700 px-4 py-2 font-semibold">
+                class="border-b border-gray-200 dark:border-neutral-900 px-4 py-2 font-semibold">
                 Type
               </th>
               <th
-                class="border-b border-gray-200 dark:border-neutral-700 px-4 py-2 font-semibold">
+                class="border-b border-gray-200 dark:border-neutral-900 px-4 py-2 font-semibold">
                 Description
               </th>
             </tr>
@@ -87,141 +87,141 @@ import { signal } from '@angular/core';
           <tbody>
             <tr>
               <td
-                class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2 font-display-mono whitespace-nowrap">
+                class="border-t border-gray-200 dark:border-neutral-900 px-4 py-2 font-display-mono whitespace-nowrap">
                 open
               </td>
               <td
-                class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2 font-display-mono whitespace-nowrap">
+                class="border-t border-gray-200 dark:border-neutral-900 px-4 py-2 font-display-mono whitespace-nowrap">
                 <b class="font-bold">false</b> | boolean (model)
               </td>
               <td
-                class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2">
+                class="border-t border-gray-200 dark:border-neutral-900 px-4 py-2">
                 Two-way bindable signal to control popover state externally
               </td>
             </tr>
             <tr>
               <td
-                class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2 font-display-mono whitespace-nowrap">
+                class="border-t border-gray-200 dark:border-neutral-900 px-4 py-2 font-display-mono whitespace-nowrap">
                 closeOnOutsideClick
               </td>
               <td
-                class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2 font-display-mono whitespace-nowrap">
+                class="border-t border-gray-200 dark:border-neutral-900 px-4 py-2 font-display-mono whitespace-nowrap">
                 <b class="font-bold">true</b> | boolean
               </td>
               <td
-                class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2">
+                class="border-t border-gray-200 dark:border-neutral-900 px-4 py-2">
                 Close popover when clicking outside
               </td>
             </tr>
             <tr>
               <td
-                class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2 font-display-mono whitespace-nowrap">
+                class="border-t border-gray-200 dark:border-neutral-900 px-4 py-2 font-display-mono whitespace-nowrap">
                 hasBackdrop
               </td>
               <td
-                class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2 font-display-mono whitespace-nowrap">
+                class="border-t border-gray-200 dark:border-neutral-900 px-4 py-2 font-display-mono whitespace-nowrap">
                 <b class="font-bold">false</b> | boolean
               </td>
               <td
-                class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2">
+                class="border-t border-gray-200 dark:border-neutral-900 px-4 py-2">
                 Show a backdrop behind the popover
               </td>
             </tr>
             <tr>
               <td
-                class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2 font-display-mono whitespace-nowrap">
+                class="border-t border-gray-200 dark:border-neutral-900 px-4 py-2 font-display-mono whitespace-nowrap">
                 backdropClass
               </td>
               <td
-                class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2 font-display-mono whitespace-nowrap">
+                class="border-t border-gray-200 dark:border-neutral-900 px-4 py-2 font-display-mono whitespace-nowrap">
                 string | string[]
               </td>
               <td
-                class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2">
+                class="border-t border-gray-200 dark:border-neutral-900 px-4 py-2">
                 CSS classes for the backdrop
               </td>
             </tr>
             <tr>
               <td
-                class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2 font-display-mono whitespace-nowrap">
+                class="border-t border-gray-200 dark:border-neutral-900 px-4 py-2 font-display-mono whitespace-nowrap">
                 disableScroll
               </td>
               <td
-                class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2 font-display-mono whitespace-nowrap">
+                class="border-t border-gray-200 dark:border-neutral-900 px-4 py-2 font-display-mono whitespace-nowrap">
                 <b class="font-bold">false</b> | boolean
               </td>
               <td
-                class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2">
+                class="border-t border-gray-200 dark:border-neutral-900 px-4 py-2">
                 Disable page scroll when popover is open
               </td>
             </tr>
             <tr>
               <td
-                class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2 font-display-mono whitespace-nowrap">
+                class="border-t border-gray-200 dark:border-neutral-900 px-4 py-2 font-display-mono whitespace-nowrap">
                 trapFocus
               </td>
               <td
-                class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2 font-display-mono whitespace-nowrap">
+                class="border-t border-gray-200 dark:border-neutral-900 px-4 py-2 font-display-mono whitespace-nowrap">
                 <b class="font-bold">false</b> | boolean
               </td>
               <td
-                class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2">
+                class="border-t border-gray-200 dark:border-neutral-900 px-4 py-2">
                 Keep focus trapped inside popover (for modals)
               </td>
             </tr>
             <tr>
               <td
-                class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2 font-display-mono whitespace-nowrap">
+                class="border-t border-gray-200 dark:border-neutral-900 px-4 py-2 font-display-mono whitespace-nowrap">
                 restoreFocus
               </td>
               <td
-                class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2 font-display-mono whitespace-nowrap">
+                class="border-t border-gray-200 dark:border-neutral-900 px-4 py-2 font-display-mono whitespace-nowrap">
                 <b class="font-bold">false</b> | boolean
               </td>
               <td
-                class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2">
+                class="border-t border-gray-200 dark:border-neutral-900 px-4 py-2">
                 Restore focus to trigger when closing
               </td>
             </tr>
             <tr>
               <td
-                class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2 font-display-mono whitespace-nowrap">
+                class="border-t border-gray-200 dark:border-neutral-900 px-4 py-2 font-display-mono whitespace-nowrap">
                 autoFocus
               </td>
               <td
-                class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2 font-display-mono whitespace-nowrap">
+                class="border-t border-gray-200 dark:border-neutral-900 px-4 py-2 font-display-mono whitespace-nowrap">
                 <b class="font-bold">false</b> | boolean
               </td>
               <td
-                class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2">
+                class="border-t border-gray-200 dark:border-neutral-900 px-4 py-2">
                 Auto focus content when opening
               </td>
             </tr>
             <tr>
               <td
-                class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2 font-display-mono whitespace-nowrap">
+                class="border-t border-gray-200 dark:border-neutral-900 px-4 py-2 font-display-mono whitespace-nowrap">
                 closeOnScroll
               </td>
               <td
-                class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2 font-display-mono whitespace-nowrap">
+                class="border-t border-gray-200 dark:border-neutral-900 px-4 py-2 font-display-mono whitespace-nowrap">
                 <b class="font-bold">false</b> | boolean
               </td>
               <td
-                class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2">
+                class="border-t border-gray-200 dark:border-neutral-900 px-4 py-2">
                 Close popover when user scrolls
               </td>
             </tr>
             <tr>
               <td
-                class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2 font-display-mono whitespace-nowrap">
+                class="border-t border-gray-200 dark:border-neutral-900 px-4 py-2 font-display-mono whitespace-nowrap">
                 panelClass
               </td>
               <td
-                class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2 font-display-mono whitespace-nowrap">
+                class="border-t border-gray-200 dark:border-neutral-900 px-4 py-2 font-display-mono whitespace-nowrap">
                 string | string[]
               </td>
               <td
-                class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2">
+                class="border-t border-gray-200 dark:border-neutral-900 px-4 py-2">
                 CSS classes for the popover content panel
               </td>
             </tr>
@@ -231,20 +231,20 @@ import { signal } from '@angular/core';
 
       <h2 class="font-semibold text-xl">Popover outputs</h2>
       <div
-        class="overflow-x-auto overflow-hidden rounded-lg border border-gray-200 dark:border-neutral-700 dark:bg-neutral-900 mb-6">
+        class="overflow-x-auto overflow-hidden rounded-lg border border-gray-200 dark:border-neutral-900 mb-6">
         <table class="table-auto w-full text-left text-sm">
-          <thead class="bg-gray-50 dark:bg-zinc-800">
+          <thead class="bg-gray-50 dark:bg-neutral-900">
             <tr>
               <th
-                class="border-b border-gray-200 dark:border-neutral-700 px-4 py-2 font-semibold">
+                class="border-b border-gray-200 dark:border-neutral-900 px-4 py-2 font-semibold">
                 Output
               </th>
               <th
-                class="border-b border-gray-200 dark:border-neutral-700 px-4 py-2 font-semibold">
+                class="border-b border-gray-200 dark:border-neutral-900 px-4 py-2 font-semibold">
                 Type
               </th>
               <th
-                class="border-b border-gray-200 dark:border-neutral-700 px-4 py-2 font-semibold">
+                class="border-b border-gray-200 dark:border-neutral-900 px-4 py-2 font-semibold">
                 Description
               </th>
             </tr>
@@ -252,43 +252,43 @@ import { signal } from '@angular/core';
           <tbody>
             <tr>
               <td
-                class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2 font-display-mono whitespace-nowrap">
+                class="border-t border-gray-200 dark:border-neutral-900 px-4 py-2 font-display-mono whitespace-nowrap">
                 opened
               </td>
               <td
-                class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2 font-display-mono whitespace-nowrap">
+                class="border-t border-gray-200 dark:border-neutral-900 px-4 py-2 font-display-mono whitespace-nowrap">
                 void
               </td>
               <td
-                class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2">
+                class="border-t border-gray-200 dark:border-neutral-900 px-4 py-2">
                 Emits when popover opens
               </td>
             </tr>
             <tr>
               <td
-                class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2 font-display-mono whitespace-nowrap">
+                class="border-t border-gray-200 dark:border-neutral-900 px-4 py-2 font-display-mono whitespace-nowrap">
                 closed
               </td>
               <td
-                class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2 font-display-mono whitespace-nowrap">
+                class="border-t border-gray-200 dark:border-neutral-900 px-4 py-2 font-display-mono whitespace-nowrap">
                 void
               </td>
               <td
-                class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2">
+                class="border-t border-gray-200 dark:border-neutral-900 px-4 py-2">
                 Emits when popover closes
               </td>
             </tr>
             <tr>
               <td
-                class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2 font-display-mono whitespace-nowrap">
+                class="border-t border-gray-200 dark:border-neutral-900 px-4 py-2 font-display-mono whitespace-nowrap">
                 backdropClick
               </td>
               <td
-                class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2 font-display-mono whitespace-nowrap">
+                class="border-t border-gray-200 dark:border-neutral-900 px-4 py-2 font-display-mono whitespace-nowrap">
                 void
               </td>
               <td
-                class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2">
+                class="border-t border-gray-200 dark:border-neutral-900 px-4 py-2">
                 Emits when backdrop is clicked
               </td>
             </tr>
@@ -298,16 +298,16 @@ import { signal } from '@angular/core';
 
       <h2 class="font-semibold text-xl">PopoverTrigger properties</h2>
       <div
-        class="overflow-x-auto overflow-hidden rounded-lg border border-gray-200 dark:border-neutral-700 dark:bg-neutral-900 mb-6">
+        class="overflow-x-auto overflow-hidden rounded-lg border border-gray-200 dark:border-neutral-900 mb-6">
         <table class="table-auto w-full text-left text-sm">
-          <thead class="bg-gray-50 dark:bg-zinc-800">
+          <thead class="bg-gray-50 dark:bg-neutral-900">
             <tr>
               <th
-                class="border-b border-gray-200 dark:border-neutral-700 px-4 py-2 font-semibold">
+                class="border-b border-gray-200 dark:border-neutral-900 px-4 py-2 font-semibold">
                 Prop
               </th>
               <th
-                class="border-b border-gray-200 dark:border-neutral-700 px-4 py-2 font-semibold">
+                class="border-b border-gray-200 dark:border-neutral-900 px-4 py-2 font-semibold">
                 Type
               </th>
             </tr>
@@ -315,21 +315,21 @@ import { signal } from '@angular/core';
           <tbody>
             <tr>
               <td
-                class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2 font-display-mono whitespace-nowrap">
+                class="border-t border-gray-200 dark:border-neutral-900 px-4 py-2 font-display-mono whitespace-nowrap">
                 mode
               </td>
               <td
-                class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2 font-display-mono whitespace-nowrap">
+                class="border-t border-gray-200 dark:border-neutral-900 px-4 py-2 font-display-mono whitespace-nowrap">
                 <b class="font-bold">'click'</b> | 'hover'
               </td>
             </tr>
             <tr>
               <td
-                class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2 font-display-mono whitespace-nowrap">
+                class="border-t border-gray-200 dark:border-neutral-900 px-4 py-2 font-display-mono whitespace-nowrap">
                 disabled
               </td>
               <td
-                class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2 font-display-mono whitespace-nowrap">
+                class="border-t border-gray-200 dark:border-neutral-900 px-4 py-2 font-display-mono whitespace-nowrap">
                 <b class="font-bold">false</b> | boolean
               </td>
             </tr>
@@ -339,20 +339,20 @@ import { signal } from '@angular/core';
 
       <h2 class="font-semibold text-xl">PopoverContent properties</h2>
       <div
-        class="overflow-x-auto overflow-hidden rounded-lg border border-gray-200 dark:border-neutral-700 dark:bg-neutral-900 mb-6">
+        class="overflow-x-auto overflow-hidden rounded-lg border border-gray-200 dark:border-neutral-900 mb-6">
         <table class="table-auto w-full text-left text-sm">
-          <thead class="bg-gray-50 dark:bg-zinc-800">
+          <thead class="bg-gray-50 dark:bg-neutral-900">
             <tr>
               <th
-                class="border-b border-gray-200 dark:border-neutral-700 px-4 py-2 font-semibold">
+                class="border-b border-gray-200 dark:border-neutral-900 px-4 py-2 font-semibold">
                 Prop
               </th>
               <th
-                class="border-b border-gray-200 dark:border-neutral-700 px-4 py-2 font-semibold">
+                class="border-b border-gray-200 dark:border-neutral-900 px-4 py-2 font-semibold">
                 Type
               </th>
               <th
-                class="border-b border-gray-200 dark:border-neutral-700 px-4 py-2 font-semibold">
+                class="border-b border-gray-200 dark:border-neutral-900 px-4 py-2 font-semibold">
                 Description
               </th>
             </tr>
@@ -360,31 +360,31 @@ import { signal } from '@angular/core';
           <tbody>
             <tr>
               <td
-                class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2 font-display-mono whitespace-nowrap">
+                class="border-t border-gray-200 dark:border-neutral-900 px-4 py-2 font-display-mono whitespace-nowrap">
                 position
               </td>
               <td
-                class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2 font-display-mono whitespace-nowrap">
+                class="border-t border-gray-200 dark:border-neutral-900 px-4 py-2 font-display-mono whitespace-nowrap">
                 <b class="font-bold">required</b> | 'top' | 'bottom' | 'left' |
                 'right' | 'top left' | 'top right' | 'bottom left' | 'bottom
                 right'
               </td>
               <td
-                class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2">
+                class="border-t border-gray-200 dark:border-neutral-900 px-4 py-2">
                 Position relative to trigger
               </td>
             </tr>
             <tr>
               <td
-                class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2 font-display-mono whitespace-nowrap">
+                class="border-t border-gray-200 dark:border-neutral-900 px-4 py-2 font-display-mono whitespace-nowrap">
                 closeOnEscape
               </td>
               <td
-                class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2 font-display-mono whitespace-nowrap">
+                class="border-t border-gray-200 dark:border-neutral-900 px-4 py-2 font-display-mono whitespace-nowrap">
                 <b class="font-bold">true</b> | boolean
               </td>
               <td
-                class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2">
+                class="border-t border-gray-200 dark:border-neutral-900 px-4 py-2">
                 Close when Escape key is pressed
               </td>
             </tr>
@@ -395,7 +395,7 @@ import { signal } from '@angular/core';
       <h2 class="font-semibold text-xl">Basic (click)</h2>
       <code-block [code]="basicClickUsage" />
       <div
-        class="border border-gray-200 dark:border-neutral-700 rounded-lg p-6 mb-6 bg-white dark:bg-neutral-900 documentation-playground flex flex-col items-center justify-center gap-4">
+        class="border border-gray-200 dark:border-neutral-900 rounded-lg p-6 mb-6 flex flex-col items-center justify-center gap-4">
         <b-popover>
           <button b-button bPopoverTrigger>Open popover</button>
           <ng-template #popoverContent>
@@ -414,9 +414,13 @@ import { signal } from '@angular/core';
       <h2 class="font-semibold text-xl">Hover trigger</h2>
       <code-block [code]="hoverUsage" />
       <div
-        class="border border-gray-200 dark:border-neutral-700 rounded-lg p-6 mb-6 bg-white dark:bg-neutral-900 documentation-playground flex flex-col items-center justify-center gap-4">
+        class="border border-gray-200 dark:border-neutral-900 rounded-lg p-6 mb-6 flex flex-col items-center justify-center gap-4">
         <b-popover>
-          <button b-button variant="secondary" bPopoverTrigger mode="hover">
+          <button
+            b-button
+            class="b-variant-outlined"
+            bPopoverTrigger
+            mode="hover">
             Hover me
           </button>
           <ng-template #popoverContent>
@@ -430,9 +434,13 @@ import { signal } from '@angular/core';
       <h2 class="font-semibold text-xl">Positions</h2>
       <code-block [code]="positionsUsage" />
       <div
-        class="border border-gray-200 dark:border-neutral-700 rounded-lg p-6 mb-6 bg-white dark:bg-neutral-900 documentation-playground grid grid-cols-2 md:grid-cols-4 gap-4 place-items-center">
+        class="border border-gray-200 dark:border-neutral-900 rounded-lg p-6 mb-6 grid grid-cols-2 md:grid-cols-4 gap-4 place-items-center">
         <b-popover>
-          <button b-button variant="outlined" mode="hover" bPopoverTrigger>
+          <button
+            b-button
+            class="b-variant-outlined"
+            mode="hover"
+            bPopoverTrigger>
             Top
           </button>
           <ng-template #popoverContent>
@@ -442,7 +450,11 @@ import { signal } from '@angular/core';
           </ng-template>
         </b-popover>
         <b-popover>
-          <button b-button variant="outlined" mode="hover" bPopoverTrigger>
+          <button
+            b-button
+            class="b-variant-outlined"
+            mode="hover"
+            bPopoverTrigger>
             Bottom
           </button>
           <ng-template #popoverContent>
@@ -452,7 +464,11 @@ import { signal } from '@angular/core';
           </ng-template>
         </b-popover>
         <b-popover>
-          <button b-button variant="outlined" mode="hover" bPopoverTrigger>
+          <button
+            b-button
+            class="b-variant-outlined"
+            mode="hover"
+            bPopoverTrigger>
             Left
           </button>
           <ng-template #popoverContent>
@@ -462,7 +478,11 @@ import { signal } from '@angular/core';
           </ng-template>
         </b-popover>
         <b-popover>
-          <button b-button variant="outlined" mode="hover" bPopoverTrigger>
+          <button
+            b-button
+            class="b-variant-outlined"
+            mode="hover"
+            bPopoverTrigger>
             Right
           </button>
           <ng-template #popoverContent>
@@ -472,7 +492,11 @@ import { signal } from '@angular/core';
           </ng-template>
         </b-popover>
         <b-popover>
-          <button b-button variant="outlined" mode="hover" bPopoverTrigger>
+          <button
+            b-button
+            class="b-variant-outlined"
+            mode="hover"
+            bPopoverTrigger>
             Top left
           </button>
           <ng-template #popoverContent>
@@ -482,7 +506,11 @@ import { signal } from '@angular/core';
           </ng-template>
         </b-popover>
         <b-popover>
-          <button b-button variant="outlined" mode="hover" bPopoverTrigger>
+          <button
+            b-button
+            class="b-variant-outlined"
+            mode="hover"
+            bPopoverTrigger>
             Top right
           </button>
           <ng-template #popoverContent>
@@ -492,7 +520,11 @@ import { signal } from '@angular/core';
           </ng-template>
         </b-popover>
         <b-popover>
-          <button b-button variant="outlined" mode="hover" bPopoverTrigger>
+          <button
+            b-button
+            class="b-variant-outlined"
+            mode="hover"
+            bPopoverTrigger>
             Bottom left
           </button>
           <ng-template #popoverContent>
@@ -502,7 +534,11 @@ import { signal } from '@angular/core';
           </ng-template>
         </b-popover>
         <b-popover>
-          <button b-button variant="outlined" mode="hover" bPopoverTrigger>
+          <button
+            b-button
+            class="b-variant-outlined"
+            mode="hover"
+            bPopoverTrigger>
             Bottom right
           </button>
           <ng-template #popoverContent>
@@ -516,7 +552,7 @@ import { signal } from '@angular/core';
       <h2 class="font-semibold text-xl">Inside a Card</h2>
       <code-block [code]="cardUsage" />
       <div
-        class="border border-gray-200 dark:border-neutral-700 rounded-lg p-6 mb-6 bg-white dark:bg-neutral-900 documentation-playground flex flex-col items-center justify-center gap-4">
+        class="border border-gray-200 dark:border-neutral-900 rounded-lg p-6 mb-6 flex flex-col items-center justify-center gap-4">
         <b-card class="w-full max-w-[360px]">
           <b-card-header>
             <b-card-title>Profile</b-card-title>
@@ -524,7 +560,7 @@ import { signal } from '@angular/core';
           </b-card-header>
           <b-card-content>
             <b-popover>
-              <button b-button variant="outlined" bPopoverTrigger>
+              <button b-button class="b-variant-outlined" bPopoverTrigger>
                 Actions
               </button>
               <ng-template #popoverContent>
@@ -546,7 +582,7 @@ import { signal } from '@angular/core';
       <h2 class="font-semibold text-xl">Manual control with model signal</h2>
       <code-block [code]="noOutsideCloseUsage" />
       <div
-        class="border border-gray-200 dark:border-neutral-700 rounded-lg p-6 mb-6 bg-white dark:bg-neutral-900 documentation-playground flex flex-col items-center justify-center gap-4">
+        class="border border-gray-200 dark:border-neutral-900 rounded-lg p-6 mb-6 flex flex-col items-center justify-center gap-4">
         <b-popover [closeOnOutsideClick]="false">
           <button b-button bPopoverTrigger [(active)]="isManualPopoverOpen">
             Manual close
@@ -557,8 +593,7 @@ import { signal } from '@angular/core';
                 <span>Click outside won't close me.</span>
                 <button
                   b-button
-                  size="sm"
-                  variant="outlined"
+                  class="b-size-sm b-variant-outlined"
                   (click)="isManualPopoverOpen.set(false)">
                   Close with model signal
                 </button>
@@ -571,7 +606,7 @@ import { signal } from '@angular/core';
       <h2 class="font-semibold text-xl">Advanced content (Form)</h2>
       <code-block [code]="formUsage" />
       <div
-        class="border border-gray-200 dark:border-neutral-700 rounded-lg p-6 mb-6 bg-white dark:bg-neutral-900 documentation-playground flex flex-col items-center justify-center gap-4">
+        class="border border-gray-200 dark:border-neutral-900 rounded-lg p-6 mb-6 flex flex-col items-center justify-center gap-4">
         <b-popover>
           <button b-button bPopoverTrigger>Login form</button>
           <ng-template #popoverContent>
@@ -588,7 +623,7 @@ import { signal } from '@angular/core';
                   </div>
                 </b-card-content>
                 <b-card-footer>
-                  <button b-button size="sm">Submit</button>
+                  <button b-button class="b-size-sm">Submit</button>
                 </b-card-footer>
               </b-card>
             </b-popover-content>
@@ -599,7 +634,7 @@ import { signal } from '@angular/core';
       <h2 class="font-semibold text-xl">With Backdrop</h2>
       <code-block [code]="backdropUsage" />
       <div
-        class="border border-gray-200 dark:border-neutral-700 rounded-lg p-6 mb-6 bg-white dark:bg-neutral-900 documentation-playground flex flex-col items-center justify-center gap-4">
+        class="border border-gray-200 dark:border-neutral-900 rounded-lg p-6 mb-6 flex flex-col items-center justify-center gap-4">
         <b-popover [hasBackdrop]="true">
           <button b-button bPopoverTrigger>Open with backdrop</button>
           <ng-template #popoverContent>
@@ -623,7 +658,7 @@ import { signal } from '@angular/core';
       <h2 class="font-semibold text-xl">Focus Management</h2>
       <code-block [code]="focusUsage" />
       <div
-        class="border border-gray-200 dark:border-neutral-700 rounded-lg p-6 mb-6 bg-white dark:bg-neutral-900 documentation-playground flex flex-col items-center justify-center gap-4">
+        class="border border-gray-200 dark:border-neutral-900 rounded-lg p-6 mb-6 flex flex-col items-center justify-center gap-4">
         <b-popover
           [hasBackdrop]="true"
           [trapFocus]="true"
@@ -643,7 +678,7 @@ import { signal } from '@angular/core';
                   <div class="flex flex-col gap-2">
                     <input b-input placeholder="First field" />
                     <input b-input placeholder="Second field" />
-                    <button b-button size="sm">Submit</button>
+                    <button b-button class="b-size-sm">Submit</button>
                   </div>
                 </b-card-content>
               </b-card>
@@ -655,7 +690,7 @@ import { signal } from '@angular/core';
       <h2 class="font-semibold text-xl">With Events</h2>
       <code-block [code]="eventsUsage" />
       <div
-        class="border border-gray-200 dark:border-neutral-700 rounded-lg p-6 mb-6 bg-white dark:bg-neutral-900 documentation-playground flex flex-col items-center justify-center gap-4">
+        class="border border-gray-200 dark:border-neutral-900 rounded-lg p-6 mb-6 flex flex-col items-center justify-center gap-4">
         <div class="flex flex-col gap-2 items-center">
           <b-popover
             [hasBackdrop]="true"
@@ -692,9 +727,9 @@ import { signal } from '@angular/core';
       <h2 class="font-semibold text-xl">Custom Panel Classes</h2>
       <code-block [code]="panelClassUsage" />
       <div
-        class="border border-gray-200 dark:border-neutral-700 rounded-lg p-6 mb-6 bg-white dark:bg-neutral-900 documentation-playground flex flex-col items-center justify-center gap-4">
+        class="border border-gray-200 dark:border-neutral-900 rounded-lg p-6 mb-6 flex flex-col items-center justify-center gap-4">
         <b-popover [panelClass]="'shadow-2xl border-2 border-blue-500'">
-          <button b-button variant="outlined" bPopoverTrigger>
+          <button b-button class="b-variant-outlined" bPopoverTrigger>
             Custom styled
           </button>
           <ng-template #popoverContent>
@@ -760,7 +795,7 @@ export class PopoverDocumentation {
   </b-card-header>
   <b-card-content>
     <b-popover>
-      <button b-button variant="outlined" bPopoverTrigger>Actions</button>
+      <button b-button class="b-variant-outlined" bPopoverTrigger>Actions</button>
       <ng-template #popoverContent>
         <b-popover-content position="bottom">
           <div class="flex flex-col text-sm p-2 gap-1">
@@ -783,10 +818,9 @@ isManualPopoverOpen = signal(false);
     <b-popover-content position="bottom">
       <div class="p-2 flex flex-col gap-2 text-sm">
         <span>Click outside won't close me.</span>
-        <button 
-          b-button 
-          size="sm" 
-          variant="outlined"
+        <button
+          b-button
+          class="b-size-sm b-variant-outlined"
           (click)="isManualPopoverOpen.set(false)">
           Close with model signal
         </button>
@@ -810,7 +844,7 @@ isManualPopoverOpen = signal(false);
           </div>
         </b-card-content>
         <b-card-footer>
-          <button b-button size="sm">Submit</button>
+          <button b-button class="b-size-sm">Submit</button>
         </b-card-footer>
       </b-card>
     </b-popover-content>
@@ -849,7 +883,7 @@ isManualPopoverOpen = signal(false);
           <div class="flex flex-col gap-2">
             <input b-input placeholder="First field" />
             <input b-input placeholder="Second field" />
-            <button b-button size="sm">Submit</button>
+            <button b-button class="b-size-sm">Submit</button>
           </div>
         </b-card-content>
       </b-card>
@@ -874,7 +908,7 @@ isManualPopoverOpen = signal(false);
   </ng-template>
 </b-popover>`;
   panelClassUsage = `<b-popover [panelClass]="'shadow-2xl border-2 border-blue-500'">
-  <button b-button variant="outlined" bPopoverTrigger>Custom styled</button>
+  <button b-button class="b-variant-outlined" bPopoverTrigger>Custom styled</button>
   <ng-template #popoverContent>
     <b-popover-content position="bottom">
       <div class="p-4 bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded-lg">

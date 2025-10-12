@@ -34,8 +34,8 @@ import { StepsButtons } from '../../shared/components/steps-buttons';
   template: `
     <app-steps-buttons
       [previous]="{
-        label: 'Color Picker',
-        path: '/docs/components/color-picker',
+        label: 'Checkbox',
+        path: '/docs/components/checkbox',
       }"
       [next]="{ label: 'Drawer', path: '/docs/components/drawer' }" />
     <b-alert icon="lucideRocket" title="Components are in alpha">
@@ -44,7 +44,7 @@ import { StepsButtons } from '../../shared/components/steps-buttons';
     </b-alert>
     <h1 class="font-bold text-2xl flex gap-2 items-start">
       Dialog
-      <span b-badge variant="outlined" size="sm"> New </span>
+      <span b-badge class="b-variant-outlined b-size-sm"> New </span>
     </h1>
     <span>
       The <strong>Dialog</strong> directive allows you to register an
@@ -61,16 +61,16 @@ import { StepsButtons } from '../../shared/components/steps-buttons';
     <code-block [code]="stylesImport" />
     <h2 class="font-semibold text-xl">Properties</h2>
     <div
-      class="overflow-x-auto overflow-hidden rounded-lg border border-gray-200 dark:border-neutral-700 dark:bg-neutral-900 mb-6">
+      class="overflow-x-auto overflow-hidden rounded-lg border border-gray-200 dark:border-neutral-900 mb-6">
       <table class="table-auto w-full text-left text-sm">
-        <thead class="bg-gray-50 dark:bg-zinc-800">
+        <thead class="bg-gray-50 dark:bg-neutral-900">
           <tr>
             <th
-              class="border-b border-gray-200 dark:border-neutral-700 px-4 py-2 font-semibold">
+              class="border-b border-gray-200 dark:border-neutral-900 px-4 py-2 font-semibold">
               Property
             </th>
             <th
-              class="border-b border-gray-200 dark:border-neutral-700 px-4 py-2 font-semibold">
+              class="border-b border-gray-200 dark:border-neutral-900 px-4 py-2 font-semibold">
               Type
             </th>
           </tr>
@@ -78,51 +78,51 @@ import { StepsButtons } from '../../shared/components/steps-buttons';
         <tbody>
           <tr>
             <td
-              class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2 font-display-mono whitespace-nowrap">
+              class="border-t border-gray-200 dark:border-neutral-900 px-4 py-2 font-display-mono whitespace-nowrap">
               hasBackdrop
             </td>
             <td
-              class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2 font-display-mono whitespace-nowrap">
+              class="border-t border-gray-200 dark:border-neutral-900 px-4 py-2 font-display-mono whitespace-nowrap">
               <strong>true</strong> | false
             </td>
           </tr>
           <tr>
             <td
-              class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2 font-display-mono whitespace-nowrap">
+              class="border-t border-gray-200 dark:border-neutral-900 px-4 py-2 font-display-mono whitespace-nowrap">
               closeOnBackdropClick
             </td>
             <td
-              class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2 font-display-mono whitespace-nowrap">
+              class="border-t border-gray-200 dark:border-neutral-900 px-4 py-2 font-display-mono whitespace-nowrap">
               <strong>true</strong> | false
             </td>
           </tr>
           <tr>
             <td
-              class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2 font-display-mono whitespace-nowrap">
+              class="border-t border-gray-200 dark:border-neutral-900 px-4 py-2 font-display-mono whitespace-nowrap">
               closeOnEscapeKey
             </td>
             <td
-              class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2 font-display-mono whitespace-nowrap">
+              class="border-t border-gray-200 dark:border-neutral-900 px-4 py-2 font-display-mono whitespace-nowrap">
               <strong>true</strong> | false
             </td>
           </tr>
           <tr>
             <td
-              class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2 font-display-mono whitespace-nowrap">
+              class="border-t border-gray-200 dark:border-neutral-900 px-4 py-2 font-display-mono whitespace-nowrap">
               closeDelay
             </td>
             <td
-              class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2 font-display-mono whitespace-nowrap">
+              class="border-t border-gray-200 dark:border-neutral-900 px-4 py-2 font-display-mono whitespace-nowrap">
               <strong>150</strong> | number
             </td>
           </tr>
           <tr>
             <td
-              class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2 font-display-mono whitespace-nowrap">
+              class="border-t border-gray-200 dark:border-neutral-900 px-4 py-2 font-display-mono whitespace-nowrap">
               closed
             </td>
             <td
-              class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2 font-display-mono whitespace-nowrap">
+              class="border-t border-gray-200 dark:border-neutral-900 px-4 py-2 font-display-mono whitespace-nowrap">
               EventEmitter&lt;void&gt;
             </td>
           </tr>
@@ -132,7 +132,7 @@ import { StepsButtons } from '../../shared/components/steps-buttons';
     <h2 class="font-semibold text-xl">Basic Usage (Service)</h2>
     <code-block [code]="basicUsageService" />
     <div
-      class="border border-gray-200 dark:border-neutral-700 rounded-lg p-6 mb-6 bg-white dark:bg-neutral-900 documentation-playground flex flex-col items-center justify-center gap-4">
+      class="border border-gray-200 dark:border-neutral-900 rounded-lg p-6 mb-6 flex flex-col items-center justify-center gap-4">
       <button b-button (click)="openDialogManager()">
         Open Dialog (Service)
       </button>
@@ -154,7 +154,7 @@ import { StepsButtons } from '../../shared/components/steps-buttons';
     <h2 class="font-semibold text-xl">Basic Usage (Directive Reference)</h2>
     <code-block [code]="basicUsageDirective" />
     <div
-      class="border border-gray-200 dark:border-neutral-700 rounded-lg p-6 mb-6 bg-white dark:bg-neutral-900 documentation-playground flex flex-col items-center justify-center gap-4">
+      class="border border-gray-200 dark:border-neutral-900 rounded-lg p-6 mb-6 flex flex-col items-center justify-center gap-4">
       <button b-button (click)="dialogRef.open()">
         Open Dialog (Directive Ref)
       </button>
@@ -176,7 +176,7 @@ import { StepsButtons } from '../../shared/components/steps-buttons';
     <h2 class="font-semibold text-xl">Dialog without backdrop</h2>
     <code-block [code]="hasBackdropFalseExample" />
     <div
-      class="border border-gray-200 dark:border-neutral-700 rounded-lg p-6 mb-6 bg-white dark:bg-neutral-900 documentation-playground flex flex-col items-center justify-center gap-4">
+      class="border border-gray-200 dark:border-neutral-900 rounded-lg p-6 mb-6 flex flex-col items-center justify-center gap-4">
       <button b-button (click)="dialogNoBackdrop.open()">
         Open Dialog (No Backdrop)
       </button>
@@ -202,7 +202,7 @@ import { StepsButtons } from '../../shared/components/steps-buttons';
     </h2>
     <code-block [code]="noBackdropCloseExample" />
     <div
-      class="border border-gray-200 dark:border-neutral-700 rounded-lg p-6 mb-6 bg-white dark:bg-neutral-900 documentation-playground flex flex-col items-center justify-center gap-4">
+      class="border border-gray-200 dark:border-neutral-900 rounded-lg p-6 mb-6 flex flex-col items-center justify-center gap-4">
       <button b-button (click)="dialogNoBackdropClose.open()">
         Open Dialog (Backdrop can't close)
       </button>
@@ -231,7 +231,7 @@ import { StepsButtons } from '../../shared/components/steps-buttons';
     </h2>
     <code-block [code]="noEscapeCloseExample" />
     <div
-      class="border border-gray-200 dark:border-neutral-700 rounded-lg p-6 mb-6 bg-white dark:bg-neutral-900 documentation-playground flex flex-col items-center justify-center gap-4">
+      class="border border-gray-200 dark:border-neutral-900 rounded-lg p-6 mb-6 flex flex-col items-center justify-center gap-4">
       <button b-button (click)="dialogNoEscape.open()">
         Open Dialog (Escape can't close)
       </button>
@@ -254,8 +254,8 @@ import { StepsButtons } from '../../shared/components/steps-buttons';
     </ng-template>
     <app-steps-buttons
       [previous]="{
-        label: 'Color Picker',
-        path: '/docs/components/color-picker',
+        label: 'Checkbox',
+        path: '/docs/components/checkbox',
       }"
       [next]="{ label: 'Drawer', path: '/docs/components/drawer' }" />
   `,

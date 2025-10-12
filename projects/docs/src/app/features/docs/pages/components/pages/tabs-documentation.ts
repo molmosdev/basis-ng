@@ -37,7 +37,7 @@ import { CommonModule } from '@angular/common';
     </b-alert>
     <h1 class="font-bold text-2xl flex gap-2 items-start">
       Tabs
-      <span b-badge variant="outlined" size="sm"> New </span>
+      <span b-badge class="b-variant-outlined b-size-sm"> New </span>
     </h1>
     <div class="flex flex-col gap-4">
       <span>
@@ -50,36 +50,6 @@ import { CommonModule } from '@angular/common';
         without it.
       </span>
       <code-block [code]="stylesImport" />
-      <h2 class="font-semibold text-xl">Properties</h2>
-      <div
-        class="overflow-x-auto overflow-hidden rounded-lg border border-gray-200 dark:border-neutral-700 dark:bg-neutral-900 mb-6">
-        <table class="table-auto w-full text-left text-sm">
-          <thead class="bg-gray-50 dark:bg-zinc-800">
-            <tr>
-              <th
-                class="border-b border-gray-200 dark:border-neutral-700 px-4 py-2 font-semibold">
-                Prop
-              </th>
-              <th
-                class="border-b border-gray-200 dark:border-neutral-700 px-4 py-2 font-semibold">
-                Type
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td
-                class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2 font-display-mono whitespace-nowrap">
-                size
-              </td>
-              <td
-                class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2 font-display-mono whitespace-nowrap">
-                'sm' | <b class="font-bold">'md'</b> | 'lg'
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
       <h2 class="font-semibold text-xl">Keyboard Navigation</h2>
       <span>
         Use the arrow keys to navigate between tabs. The component supports
@@ -88,18 +58,18 @@ import { CommonModule } from '@angular/common';
       <h2 class="font-semibold text-xl">Sizes</h2>
       <code-block [code]="sizesUsage" />
       <div
-        class="border border-gray-200 dark:border-neutral-700 rounded-lg p-6 mb-6 bg-white dark:bg-neutral-900 documentation-playground flex flex-col gap-4 items-center">
-        <b-tabs [(ngModel)]="sizesTab" size="sm">
+        class="border border-gray-200 dark:border-neutral-900 rounded-lg p-6 mb-6 flex flex-col gap-4 items-center">
+        <b-tabs [(ngModel)]="sizesTab" class="b-size-sm">
           <b-tab value="tab1">Small</b-tab>
           <b-tab value="tab2">Small</b-tab>
           <b-tab value="tab3">Small</b-tab>
         </b-tabs>
-        <b-tabs [(ngModel)]="sizesTab" size="md">
+        <b-tabs [(ngModel)]="sizesTab" class="b-size-md">
           <b-tab value="tab1">Medium (default)</b-tab>
           <b-tab value="tab2">Medium (default)</b-tab>
           <b-tab value="tab3">Medium (default)</b-tab>
         </b-tabs>
-        <b-tabs [(ngModel)]="sizesTab" size="lg">
+        <b-tabs [(ngModel)]="sizesTab" class="b-size-lg">
           <b-tab value="tab1">Large</b-tab>
           <b-tab value="tab2">Large</b-tab>
           <b-tab value="tab3">Large</b-tab>
@@ -108,7 +78,7 @@ import { CommonModule } from '@angular/common';
       <h2 class="font-semibold text-xl">Basic Usage</h2>
       <code-block [code]="basicUsage" />
       <div
-        class="border border-gray-200 dark:border-neutral-700 rounded-lg p-6 mb-6 bg-white dark:bg-neutral-900 documentation-playground flex flex-col gap-4 items-center">
+        class="border border-gray-200 dark:border-neutral-900 rounded-lg p-6 mb-6 flex flex-col gap-4 items-center">
         <b-tabs [(ngModel)]="selectedTab">
           <b-tab value="tab1">Tab 1</b-tab>
           <b-tab value="tab2">Tab 2</b-tab>
@@ -128,7 +98,7 @@ import { CommonModule } from '@angular/common';
       <span>Use <code>ng-template</code> to lazily load tab content.</span>
       <code-block [code]="lazyLoadingUsage" />
       <div
-        class="border border-gray-200 dark:border-neutral-700 rounded-lg p-6 mb-6 bg-white dark:bg-neutral-900 documentation-playground flex flex-col gap-4 items-center">
+        class="border border-gray-200 dark:border-neutral-900 rounded-lg p-6 mb-6 flex flex-col gap-4 items-center">
         <b-tabs [(ngModel)]="lazySelectedTab">
           <b-tab value="tab1">Tab 1</b-tab>
           <b-tab value="tab2">Tab 2</b-tab>
@@ -157,7 +127,7 @@ import { CommonModule } from '@angular/common';
       <span>Use with Angular's Reactive Forms to manage tab state.</span>
       <code-block [code]="reactiveFormsUsage" />
       <div
-        class="border border-gray-200 dark:border-neutral-700 rounded-lg p-6 mb-6 bg-white dark:bg-neutral-900 documentation-playground flex flex-col gap-4 items-center">
+        class="border border-gray-200 dark:border-neutral-900 rounded-lg p-6 mb-6 flex flex-col gap-4 items-center">
         <form [formGroup]="tabsForm">
           <b-tabs formControlName="tabControl">
             <b-tab value="tab1">Tab 1</b-tab>
@@ -264,17 +234,17 @@ export class TabsDocumentation {
   tabsForm = new FormGroup({
     tabControl: new FormControl(['tab1']),
   });
-  sizesUsage = `<b-tabs [(ngModel)]='sizesTab' size="sm">
+  sizesUsage = `<b-tabs [(ngModel)]='sizesTab' class='b-size-sm'>
   <b-tab value='tab1'>Small</b-tab>
   <b-tab value='tab2'>Small</b-tab>
   <b-tab value='tab3'>Small</b-tab>
 </b-tabs>
-<b-tabs [(ngModel)]='sizesTab' size="md">
+<b-tabs [(ngModel)]='sizesTab' class='b-size-md'>
   <b-tab value='tab1'>Medium (default)</b-tab>
   <b-tab value='tab2'>Medium (default)</b-tab>
   <b-tab value='tab3'>Medium (default)</b-tab>
 </b-tabs>
-<b-tabs [(ngModel)]='sizesTab' size="lg">
+<b-tabs [(ngModel)]='sizesTab' class='b-size-lg'>
   <b-tab value='tab1'>Large</b-tab>
   <b-tab value='tab2'>Large</b-tab>
   <b-tab value='tab3'>Large</b-tab>

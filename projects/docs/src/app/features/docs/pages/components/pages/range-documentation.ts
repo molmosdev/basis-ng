@@ -38,41 +38,10 @@ import {
         without it.
       </span>
       <code-block [code]="stylesImport" />
-      <h2 class="font-semibold text-xl">Properties</h2>
-      <div
-        class="overflow-x-auto overflow-hidden rounded-lg border border-gray-200 dark:border-neutral-700 dark:bg-neutral-900 mb-6">
-        <table class="table-auto w-full text-left text-sm">
-          <thead class="bg-gray-50 dark:bg-zinc-800">
-            <tr>
-              <th
-                class="border-b border-gray-200 dark:border-neutral-700 px-4 py-2 font-semibold">
-                Prop
-              </th>
-              <th
-                class="border-b border-gray-200 dark:border-neutral-700 px-4 py-2 font-semibold">
-                Type
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td
-                class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2 font-display-mono whitespace-nowrap">
-                size
-              </td>
-              <td
-                class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2 font-display-mono whitespace-nowrap">
-                'sm' | <b class="font-bold">'md'</b> | 'lg'
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-
       <h2 class="font-semibold text-xl">Basic (ngModel)</h2>
       <code-block [code]="ngModelUsage" />
       <div
-        class="border border-gray-200 dark:border-neutral-700 rounded-lg p-6 mb-6 bg-white dark:bg-neutral-900 documentation-playground flex flex-col items-center justify-center gap-4">
+        class="border border-gray-200 dark:border-neutral-900 rounded-lg p-6 mb-6 flex flex-col items-center justify-center gap-4">
         <input type="range" b-range [(ngModel)]="ngModelValue" />
         <span>Value: {{ ngModelValue }}</span>
       </div>
@@ -80,7 +49,7 @@ import {
       <h2 class="font-semibold text-xl">Reactive Forms</h2>
       <code-block [code]="formControlUsage" />
       <form
-        class="border border-gray-200 dark:border-neutral-700 rounded-lg p-6 mb-6 bg-white dark:bg-neutral-900 documentation-playground flex flex-col items-center justify-center gap-4"
+        class="border border-gray-200 dark:border-neutral-900 rounded-lg p-6 mb-6 flex flex-col items-center justify-center gap-4"
         [formGroup]="form">
         <input type="range" b-range formControlName="rangeControl" />
         <span>Value: {{ form.get('rangeControl')?.value }}</span>
@@ -89,10 +58,10 @@ import {
       <h2 class="font-semibold text-xl">Range Sizes</h2>
       <code-block [code]="sizeUsage" />
       <div
-        class="border border-gray-200 gap-y-8 dark:border-neutral-700 rounded-lg p-6 mb-6 bg-white dark:bg-neutral-900 documentation-playground flex flex-col items-center justify-center gap-4">
-        <input b-range type="range" size="sm" />
-        <input b-range type="range" size="md" />
-        <input b-range type="range" size="lg" />
+        class="border border-gray-200 gap-y-8 dark:border-neutral-700 rounded-lg p-6 mb-6 flex flex-col items-center justify-center gap-4">
+        <input b-range type="range" class="b-size-sm" />
+        <input b-range type="range" class="b-size-md" />
+        <input b-range type="range" class="b-size-lg" />
       </div>
     </div>
     <app-steps-buttons
@@ -112,7 +81,7 @@ export class RangeDocumentation {
   formControlUsage = `<form [formGroup]="form">
   <input type="range" b-range formControlName="rangeControl" />
 </form>`;
-  sizeUsage = `<input b-range type="range" size="sm" />\n<input b-range type="range" size="md" />\n<input b-range type="range" size="lg" />`;
+  sizeUsage = `<input b-range type="range" class="b-size-sm" />\n<input b-range type="range" class="b-size-md" />\n<input b-range type="range" class="b-size-lg" />`;
   ngModelValue = 50;
   form = new FormGroup({
     rangeControl: new FormControl(25),

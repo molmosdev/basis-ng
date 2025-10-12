@@ -13,8 +13,7 @@ import { lucideTelescope } from '@ng-icons/lucide';
     @if (isMobile()) {
       <button
         b-button
-        variant="secondary"
-        class="fixed top-6 right-4 z-30"
+        class="fixed top-6 right-4 z-30 b-variant-secondary "
         (click)="drawerOpen.set(true)">
         <ng-icon
           name="lucideTelescope"

@@ -1,6 +1,11 @@
 import { Component } from '@angular/core';
 import { CodeBlock } from '../shared/components/code-block';
-import { Alert, Button, ButtonGroup, Spinner } from 'primitives';
+import {
+  Alert,
+  Button,
+  ButtonGroup,
+  Spinner,
+} from '../../../../../../../../primitives/src/public-api';
 import { StepsButtons } from '../../shared/components/steps-buttons';
 import { NgIcon, provideIcons } from '@ng-icons/core';
 import {
@@ -41,86 +46,36 @@ import {
         without it.
       </span>
       <code-block [code]="stylesImport" />
-      <h2 class="font-semibold text-xl">Properties</h2>
-      <div
-        class="overflow-x-auto overflow-hidden rounded-lg border border-gray-200 dark:border-neutral-700 dark:bg-neutral-900 mb-6">
-        <table class="table-auto w-full text-left text-sm">
-          <thead class="bg-gray-50 dark:bg-zinc-800">
-            <tr>
-              <th
-                class="border-b border-gray-200 dark:border-neutral-700 px-4 py-2 font-semibold">
-                Prop
-              </th>
-              <th
-                class="border-b border-gray-200 dark:border-neutral-700 px-4 py-2 font-semibold">
-                Type
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td
-                class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2 font-display-mono whitespace-nowrap">
-                variant
-              </td>
-              <td
-                class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2 font-display-mono whitespace-nowrap">
-                '<b class="font-bold">primary</b>' | 'secondary' | 'ghost' |
-                'outlined' | 'destructive'
-              </td>
-            </tr>
-            <tr>
-              <td
-                class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2 font-display-mono whitespace-nowrap">
-                size
-              </td>
-              <td
-                class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2 font-display-mono whitespace-nowrap">
-                'sm' | <b class="font-bold">'md'</b> | 'lg'
-              </td>
-            </tr>
-            <tr>
-              <td
-                class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2 font-display-mono whitespace-nowrap">
-                squared
-              </td>
-              <td
-                class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2 font-display-mono whitespace-nowrap">
-                <b class="font-bold">false</b>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <h2 class="font-semibold text-xl">Basic</h2>
+
+      <h2 class="font-semibold text-xl">Default</h2>
       <code-block [code]="basicUsage" />
       <div
-        class="border border-gray-200 dark:border-neutral-700 rounded-lg p-6 mb-6 bg-white dark:bg-neutral-900 documentation-playground flex flex-col items-center justify-center gap-4">
-        <button b-button variant="primary" size="md">This is a button</button>
+        class="border border-gray-200 dark:border-neutral-900 rounded-lg p-6 mb-6 flex flex-col items-center justify-center gap-4">
+        <button b-button>Click me</button>
       </div>
       <h2 class="font-semibold text-xl">Variants</h2>
       <code-block [code]="variantsUsage" />
       <div
-        class="border border-gray-200 dark:border-neutral-700 rounded-lg p-6 mb-6 bg-white dark:bg-neutral-900 documentation-playground flex flex-col items-center justify-center gap-4">
-        <button b-button variant="primary">Primary</button>
-        <button b-button variant="secondary">Secondary</button>
-        <button b-button variant="ghost">Ghost</button>
-        <button b-button variant="outlined">Outlined</button>
-        <button b-button variant="destructive">Destructive</button>
+        class="border border-gray-200 dark:border-neutral-900 rounded-lg p-6 mb-6 flex flex-col items-center justify-center gap-4">
+        <button b-button class="b-variant-primary">Primary</button>
+        <button b-button class="b-variant-secondary">Secondary</button>
+        <button b-button class="b-variant-ghost">Ghost</button>
+        <button b-button class="b-variant-outlined">Outlined</button>
+        <button b-button class="b-variant-destructive">Destructive</button>
       </div>
       <h2 class="font-semibold text-xl">Sizes</h2>
       <code-block [code]="sizesUsage" />
       <div
-        class="border border-gray-200 dark:border-neutral-700 rounded-lg p-6 mb-6 bg-white dark:bg-neutral-900 documentation-playground flex flex-col items-center justify-center gap-4">
-        <button b-button size="sm">Small</button>
-        <button b-button size="md">Medium (default)</button>
-        <button b-button size="lg">Large</button>
+        class="border border-gray-200 dark:border-neutral-900 rounded-lg p-6 mb-6 flex flex-col items-center justify-center gap-4">
+        <button b-button class="b-size-sm">Small</button>
+        <button b-button class="b-size-md">Medium</button>
+        <button b-button class="b-size-lg">Large</button>
       </div>
       <h2 class="font-semibold text-xl">Loading State</h2>
       <code-block [code]="loadingUsage" />
       <div
-        class="border border-gray-200 dark:border-neutral-700 rounded-lg p-6 mb-6 bg-white dark:bg-neutral-900 documentation-playground flex flex-col items-center justify-center gap-4">
-        <button b-button variant="ghost">
+        class="border border-gray-200 dark:border-neutral-900 rounded-lg p-6 mb-6 flex flex-col items-center justify-center gap-4">
+        <button b-button class="b-variant-ghost">
           <b-spinner size="sm" type="bars" />
           Saving
         </button>
@@ -128,77 +83,89 @@ import {
       <h2 class="font-semibold text-xl">Button Group</h2>
       <code-block [code]="buttonGroupUsage" />
       <div
-        class="border border-gray-200 dark:border-neutral-700 rounded-lg p-6 mb-6 bg-white dark:bg-neutral-900 documentation-playground flex flex-col items-center justify-center gap-4">
+        class="border border-gray-200 dark:border-neutral-900 rounded-lg p-6 mb-6 flex flex-col items-center justify-center gap-4">
         <b-button-group>
-          <button b-button variant="outlined">Outlined</button>
-          <button b-button variant="outlined">Outlined</button>
-          <button b-button variant="outlined">Outlined</button>
+          <button b-button class="b-variant-outlined">Outlined</button>
+          <button b-button class="b-variant-outlined">Outlined</button>
+          <button b-button class="b-variant-outlined">Outlined</button>
         </b-button-group>
       </div>
       <h3 class="font-semibold text-lg">All Primary</h3>
       <code-block [code]="allPrimaryUsage" />
       <div
-        class="border border-gray-200 dark:border-neutral-700 rounded-lg p-6 mb-6 bg-white dark:bg-neutral-900 documentation-playground flex flex-col items-center justify-center gap-4">
+        class="border border-gray-200 dark:border-neutral-900 rounded-lg p-6 mb-6 flex flex-col items-center justify-center gap-4">
         <b-button-group>
-          <button b-button variant="primary">Primary</button>
-          <button b-button variant="primary">Primary</button>
-          <button b-button variant="primary">Primary</button>
+          <button b-button class="b-variant-primary">Primary</button>
+          <button b-button class="b-variant-primary">Primary</button>
+          <button b-button class="b-variant-primary">Primary</button>
         </b-button-group>
       </div>
       <h3 class="font-semibold text-lg">Mixed Variants</h3>
       <code-block [code]="mixedVariantsUsage" />
       <div
-        class="border border-gray-200 dark:border-neutral-700 rounded-lg p-6 mb-6 bg-white dark:bg-neutral-900 documentation-playground flex flex-col items-center justify-center gap-4">
+        class="border border-gray-200 dark:border-neutral-900 rounded-lg p-6 mb-6 flex flex-col items-center justify-center gap-4">
         <b-button-group>
-          <button b-button variant="primary">Primary</button>
-          <button b-button variant="secondary">Secondary</button>
+          <button b-button class="b-variant-primary">Primary</button>
+          <button b-button class="b-variant-secondary">Secondary</button>
         </b-button-group>
         <b-button-group>
-          <button b-button variant="ghost">Ghost</button>
-          <button b-button variant="outlined">Outlined</button>
+          <button b-button class="b-variant-ghost">Ghost</button>
+          <button b-button class="b-variant-outlined">Outlined</button>
         </b-button-group>
       </div>
       <h3 class="font-semibold text-lg">Small</h3>
       <code-block [code]="outlinedSmallUsage" />
       <div
-        class="border border-gray-200 dark:border-neutral-700 rounded-lg p-6 mb-6 bg-white dark:bg-neutral-900 documentation-playground flex flex-col items-center justify-center gap-4">
+        class="border border-gray-200 dark:border-neutral-900 rounded-lg p-6 mb-6 flex flex-col items-center justify-center gap-4">
         <b-button-group>
-          <button b-button variant="outlined" size="sm">Outlined</button>
-          <button b-button variant="outlined" size="sm">Outlined</button>
-          <button b-button variant="outlined" size="sm">Outlined</button>
+          <button b-button class="b-variant-outlined b-size-sm">
+            Outlined
+          </button>
+          <button b-button class="b-variant-outlined b-size-sm">
+            Outlined
+          </button>
+          <button b-button class="b-variant-outlined b-size-sm">
+            Outlined
+          </button>
         </b-button-group>
       </div>
       <h3 class="font-semibold text-lg">Spaced Buttons</h3>
       <code-block [code]="spacedUsage" />
       <div
-        class="border border-gray-200 dark:border-neutral-700 rounded-lg p-6 mb-6 bg-white dark:bg-neutral-900 documentation-playground flex flex-col items-center justify-center gap-4">
+        class="border border-gray-200 dark:border-neutral-900 rounded-lg p-6 mb-6 flex flex-col items-center justify-center gap-4">
         <b-button-group [spaced]="true">
-          <button b-button variant="outlined">Outlined</button>
-          <button b-button variant="outlined">Outlined</button>
-          <button b-button variant="outlined">Outlined</button>
+          <button b-button class="b-variant-outlined">Outlined</button>
+          <button b-button class="b-variant-outlined">Outlined</button>
+          <button b-button class="b-variant-outlined">Outlined</button>
         </b-button-group>
       </div>
       <h3 class="font-semibold text-lg">Spaced and Small Buttons</h3>
       <code-block [code]="spacedSmallUsage" />
       <div
-        class="border border-gray-200 dark:border-neutral-700 rounded-lg p-6 mb-6 bg-white dark:bg-neutral-900 documentation-playground flex flex-col items-center justify-center gap-4">
+        class="border border-gray-200 dark:border-neutral-900 rounded-lg p-6 mb-6 flex flex-col items-center justify-center gap-4">
         <b-button-group [spaced]="true">
-          <button b-button variant="outlined" size="sm">Outlined</button>
-          <button b-button variant="outlined" size="sm">Outlined</button>
-          <button b-button variant="outlined" size="sm">Outlined</button>
+          <button b-button class="b-variant-outlined b-size-sm">
+            Outlined
+          </button>
+          <button b-button class="b-variant-outlined b-size-sm">
+            Outlined
+          </button>
+          <button b-button class="b-variant-outlined b-size-sm">
+            Outlined
+          </button>
         </b-button-group>
       </div>
       <h2 class="font-semibold text-xl">Squared Buttons</h2>
       <code-block [code]="squaredUsage" />
       <div
-        class="border border-gray-200 dark:border-neutral-700 rounded-lg p-6 mb-6 bg-white dark:bg-neutral-900 documentation-playground flex flex-col items-center justify-center gap-4">
-        <button b-button [squared]="true" size="sm">
+        class="border border-gray-200 dark:border-neutral-900 rounded-lg p-6 mb-6 flex flex-col items-center justify-center gap-4">
+        <button b-button class="b-squared b-size-sm">
           <ng-icon name="lucideZoomIn" size="14" color="currentColor" />
         </button>
-        <button b-button [squared]="true" size="md">
+        <button b-button class="b-squared b-size-md">
           <ng-icon name="lucideZoomOut" size="16" color="currentColor" />
         </button>
-        <button b-button [squared]="true" size="lg">
+        <button b-button class="b-squared b-size-lg">
           <ng-icon name="lucideSearch" size="28" color="currentColor" />
         </button>
       </div>
@@ -218,23 +185,15 @@ import {
 export class ButtonDocumentation {
   angularImport = `import { Button } from 'primitives'`;
   stylesImport = `@import '@basis-ng/styles/button';`;
-  basicUsage = `<button b-button variant="primary" size="md">This is a button</button>`;
-  variantsUsage = `<button b-button variant="primary">Primary</button>\n<button b-button variant="secondary">Secondary</button>\n<button b-button variant="ghost">Ghost</button>\n<button b-button variant="outlined">Outlined</button>\n<button b-button variant="destructive">Destructive</button>`;
-  sizesUsage = `<button b-button size="sm">Small</button>\n<button b-button size="md">Medium (default)</button>\n<button b-button size="lg">Large</button>`;
-  loadingUsage = `<button b-button variant="ghost">\n  <b-spinner size="sm" type="bars" />\n  Saving\n</button>`;
-  buttonGroupUsage = `<b-button-group>\n  <button b-button variant="outlined">Outlined</button>\n  <button b-button variant="outlined">Outlined</button>\n  <button b-button variant="outlined">Outlined</button>\n</b-button-group>`;
-  allPrimaryUsage = `<b-button-group>\n  <button b-button variant="primary">Primary</button>\n  <button b-button variant="primary">Primary</button>\n  <button b-button variant="primary">Primary</button>\n</b-button-group>`;
-  mixedVariantsUsage = `<b-button-group>\n  <button b-button variant="primary">Primary</button>\n  <button b-button variant="secondary">Secondary</button>\n</b-button-group>\n<b-button-group>\n  <button b-button variant="ghost">Ghost</button>\n  <button b-button variant="outlined">Outlined</button>\n</b-button-group>`;
-  outlinedSmallUsage = `<b-button-group>\n  <button b-button variant="outlined" size="sm">Outlined</button>\n  <button b-button variant="outlined" size="sm">Outlined</button>\n  <button b-button variant="outlined" size="sm">Outlined</button>\n</b-button-group>`;
-  spacedUsage = `<b-button-group [spaced]="true">\n  <button b-button variant="outlined">Outlined</button>\n  <button b-button variant="outlined">Outlined</button>\n  <button b-button variant="outlined">Outlined</button>\n</b-button-group>`;
-  spacedSmallUsage = `<b-button-group [spaced]="true">\n  <button b-button variant="outlined" size="sm">Outlined</button>\n  <button b-button variant="outlined" size="sm">Outlined</button>\n  <button b-button variant="outlined" size="sm">Outlined</button>\n</b-button-group>`;
-  squaredUsage = `<button b-button [squared]="true" size="sm">
-  <ng-icon name="lucideZoomIn" size="14" color="currentColor" />
-</button>
-<button b-button [squared]="true" size="md">
-  <ng-icon name="lucideZoomOut" size="16" color="currentColor" />
-</button>
-<button b-button [squared]="true" size="lg">
-  <ng-icon name="lucideSearch" size="28" color="currentColor" />
-</button>`;
+  basicUsage = `<button b-button>\n  Click me\n</button>`;
+  variantsUsage = `<button b-button class="b-variant-primary">Primary</button>\n<button b-button class="b-variant-secondary">Secondary</button>\n<button b-button class="b-variant-ghost">Ghost</button>\n<button b-button class="b-variant-outlined">Outlined</button>\n<button b-button class="b-variant-destructive">Destructive</button>`;
+  sizesUsage = `<button b-button class="b-size-sm">Small</button>\n<button b-button class="b-size-md">Medium</button>\n<button b-button class="b-size-lg">Large</button>`;
+  loadingUsage = `<button b-button class="b-variant-ghost">\n  <b-spinner size="sm" type="bars" />\n  Saving\n</button>`;
+  buttonGroupUsage = `<b-button-group>\n  <button b-button class="b-variant-outlined">Outlined</button>\n  <button b-button class="b-variant-outlined">Outlined</button>\n  <button b-button class="b-variant-outlined">Outlined</button>\n</b-button-group>`;
+  allPrimaryUsage = `<b-button-group>\n  <button b-button class="b-variant-primary">Primary</button>\n  <button b-button class="b-variant-primary">Primary</button>\n  <button b-button class="b-variant-primary">Primary</button>\n</b-button-group>`;
+  mixedVariantsUsage = `<b-button-group>\n  <button b-button class="b-variant-primary">Primary</button>\n  <button b-button class="b-variant-secondary">Secondary</button>\n</b-button-group>\n<b-button-group>\n  <button b-button class="b-variant-ghost">Ghost</button>\n  <button b-button class="b-variant-outlined">Outlined</button>\n</b-button-group>`;
+  outlinedSmallUsage = `<b-button-group>\n  <button b-button class="b-variant-outlined b-size-sm">Outlined</button>\n  <button b-button class="b-variant-outlined b-size-sm">Outlined</button>\n  <button b-button class="b-variant-outlined b-size-sm">Outlined</button>\n</b-button-group>`;
+  spacedUsage = `<b-button-group [spaced]="true">\n  <button b-button class="b-variant-outlined">Outlined</button>\n  <button b-button class="b-variant-outlined">Outlined</button>\n  <button b-button class="b-variant-outlined">Outlined</button>\n</b-button-group>`;
+  spacedSmallUsage = `<b-button-group [spaced]="true">\n  <button b-button class="b-variant-outlined b-size-sm">Outlined</button>\n  <button b-button class="b-variant-outlined b-size-sm">Outlined</button>\n  <button b-button class="b-variant-outlined b-size-sm">Outlined</button>\n</b-button-group>`;
+  squaredUsage = `<button b-button class="b-squared b-size-sm">\n  <ng-icon name="lucideZoomIn" size="14" color="currentColor" />\n</button>\n<button b-button class="b-squared b-size-md">\n  <ng-icon name="lucideZoomOut" size="16" color="currentColor" />\n</button>\n<button b-button class="b-squared b-size-lg">\n  <ng-icon name="lucideSearch" size="28" color="currentColor" />\n</button>`;
 }

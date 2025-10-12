@@ -25,8 +25,8 @@ import { StepsButtons } from '../../shared/components/steps-buttons';
     <app-steps-buttons
       [previous]="{ label: 'Card', path: '/docs/components/card' }"
       [next]="{
-        label: 'Color Picker',
-        path: '/docs/components/color-picker',
+        label: 'Dialog',
+        path: '/docs/components/dialog',
       }" />
     <b-alert icon="lucideRocket" title="Components are in alpha">
       Components are in alpha Try them out! We'd love to hear your feedback!
@@ -41,50 +41,10 @@ import { StepsButtons } from '../../shared/components/steps-buttons';
         without it.
       </span>
       <code-block [code]="stylesImport" />
-      <h2 class="font-semibold text-xl">Properties</h2>
-      <div
-        class="overflow-x-auto overflow-hidden rounded-lg border border-gray-200 dark:border-neutral-700 dark:bg-neutral-900 mb-6">
-        <table class="table-auto w-full text-left text-sm">
-          <thead class="bg-gray-50 dark:bg-zinc-800">
-            <tr>
-              <th
-                class="border-b border-gray-200 dark:border-neutral-700 px-4 py-2 font-semibold">
-                Prop
-              </th>
-              <th
-                class="border-b border-gray-200 dark:border-neutral-700 px-4 py-2 font-semibold">
-                Type
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td
-                class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2 font-display-mono whitespace-nowrap">
-                value
-              </td>
-              <td
-                class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2 font-display-mono whitespace-nowrap">
-                boolean
-              </td>
-            </tr>
-            <tr>
-              <td
-                class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2 font-display-mono whitespace-nowrap">
-                size
-              </td>
-              <td
-                class="border-t border-gray-200 dark:border-neutral-700 px-4 py-2 font-display-mono whitespace-nowrap">
-                <strong>'md'</strong> | 'sm' | 'lg'
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
       <h2 class="font-semibold text-xl">Basic</h2>
       <code-block [code]="basicUsage" />
       <div
-        class="border border-gray-200 dark:border-neutral-700 rounded-lg p-6 mb-6 bg-white dark:bg-neutral-900 documentation-playground flex flex-col items-center justify-center gap-4">
+        class="border border-gray-200 dark:border-neutral-900 rounded-lg p-6 mb-6 flex flex-col items-center justify-center gap-4">
         <input
           type="checkbox"
           b-checkbox
@@ -94,22 +54,22 @@ import { StepsButtons } from '../../shared/components/steps-buttons';
       <h2 class="font-semibold text-xl">Sizes</h2>
       <code-block [code]="sizesUsage" />
       <div
-        class="border border-gray-200 dark:border-neutral-700 rounded-lg p-6 mb-6 bg-white dark:bg-neutral-900 documentation-playground flex flex-col items-center justify-center gap-4">
-        <input type="checkbox" b-checkbox size="sm" />
-        <input type="checkbox" b-checkbox size="md" />
-        <input type="checkbox" b-checkbox size="lg" />
+        class="border border-gray-200 dark:border-neutral-900 rounded-lg p-6 mb-6 flex flex-col items-center justify-center gap-4">
+        <input type="checkbox" b-checkbox class="b-size-sm" />
+        <input type="checkbox" b-checkbox class="b-size-md" />
+        <input type="checkbox" b-checkbox class="b-size-lg" />
       </div>
       <h2 class="font-semibold text-xl">Angular Binding with ngModel</h2>
       <code-block [code]="ngModelUsage" />
       <div
-        class="border border-gray-200 dark:border-neutral-700 rounded-lg p-6 mb-6 bg-white dark:bg-neutral-900 documentation-playground flex flex-col items-center justify-center gap-4">
+        class="border border-gray-200 dark:border-neutral-900 rounded-lg p-6 mb-6 flex flex-col items-center justify-center gap-4">
         <input type="checkbox" b-checkbox [(ngModel)]="ngModelValue" />
       </div>
       <h2 class="font-semibold text-xl">Angular Forms with formControlName</h2>
       <code-block [code]="formControlUsage" />
       <form [formGroup]="form">
         <div
-          class="border border-gray-200 dark:border-neutral-700 rounded-lg p-6 mb-6 bg-white dark:bg-neutral-900 documentation-playground flex flex-col items-center justify-center gap-4">
+          class="border border-gray-200 dark:border-neutral-900 rounded-lg p-6 mb-6 flex flex-col items-center justify-center gap-4">
           <input type="checkbox" b-checkbox formControlName="checkboxControl" />
         </div>
       </form>
@@ -117,8 +77,8 @@ import { StepsButtons } from '../../shared/components/steps-buttons';
     <app-steps-buttons
       [previous]="{ label: 'Card', path: '/docs/components/card' }"
       [next]="{
-        label: 'Color Picker',
-        path: '/docs/components/color-picker',
+        label: 'Dialog',
+        path: '/docs/components/dialog',
       }" />
   `,
   providers: [provideIcons({ lucideRocket })],
@@ -131,7 +91,7 @@ export class CheckboxDocumentation {
   angularImport = `import { Checkbox } from 'primitives'`;
   stylesImport = `@import '@basis-ng/styles/checkbox';`;
   basicUsage = `<input type="checkbox" b-checkbox [value]="basicValue" (valueChange)="onValueChange($event)" />`;
-  sizesUsage = `<input type="checkbox" b-checkbox size="sm" />\n<input type="checkbox" b-checkbox size="md" />\n<input type="checkbox" b-checkbox size="lg" />`;
+  sizesUsage = `<input type="checkbox" b-checkbox class="b-size-sm" />\n<input type="checkbox" b-checkbox class="b-size-md" />\n<input type="checkbox" b-checkbox class="b-size-lg" />`;
   ngModelUsage = `<input type="checkbox" b-checkbox [(ngModel)]="ngModelValue" />`;
   formControlUsage = `<input type="checkbox" b-checkbox formControlName="checkboxControl" />`;
 
