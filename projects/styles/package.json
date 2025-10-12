@@ -1,6 +1,6 @@
 {
   "name": "@basis-ng/styles",
-  "version": "0.0.1-alpha.118",
+  "version": "0.0.1-alpha.119",
   "description": "CSS foundation for @basis-ng/primitives components",
   "main": "src/index.css",
   "exports": {
@@ -11,7 +11,6 @@
     "./button-group": "./src/components/button-group.css",
     "./button": "./src/components/button.css",
     "./checkbox": "./src/components/checkbox.css",
-    "./color-picker": "./src/components/color-picker.css",
     "./input-group": "./src/components/input-group.css",
     "./input": "./src/components/input.css",
     "./label": "./src/components/label.css",
@@ -26,7 +25,6 @@
     "./sheet": "./src/components/sheet.css",
     "./spinner": "./src/components/spinner.css",
     "./switch": "./src/components/switch.css",
-    "./table": "./src/components/table.css",
     "./tabs": "./src/components/tabs.css",
     "./textarea": "./src/components/textarea.css",
     "./tooltip": "./src/components/tooltip.css",

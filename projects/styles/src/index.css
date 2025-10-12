@@ -26,8 +26,9 @@
   --color-font: #0a0a0a;
   --color-primary: #0a0a0a;
   --color-primary-foreground: #fff;
-  --color-secondary: color-mix(in srgb, #fff, #0a0a0a 8%);
+  --color-secondary: #f5f5f5;
   --color-secondary-foreground: #0a0a0a;
+  --color-ring: #e0e0e0;
   --color-destructive: #e53935;
   --color-destructive-foreground: #fff;
   --color-success: #b7e4c7;
@@ -43,8 +44,9 @@
   --color-bg-dark: #0a0a0a;
   --color-primary-dark: #fff;
   --color-primary-foreground-dark: #0a0a0a;
-  --color-secondary-dark: color-mix(in srgb, #0a0a0a, #fff 8%);
+  --color-secondary-dark: #262626;
   --color-secondary-foreground-dark: #fff;
+  --color-ring-dark: #ffffff26;
   --color-destructive-dark: #ff6659;
   --color-destructive-foreground-dark: #0a0a0a;
   --color-success-dark: #22543d;
@@ -62,7 +64,6 @@
 @import './components/button-group.css';
 @import './components/button.css';
 @import './components/checkbox.css';
-@import './components/color-picker.css';
 @import './components/input-group.css';
 @import './components/input.css';
 @import './components/label.css';
@@ -77,7 +78,6 @@
 @import './components/sheet.css';
 @import './components/spinner.css';
 @import './components/switch.css';
-@import './components/table.css';
 @import './components/tabs.css';
 @import './components/textarea.css';
 @import './components/tooltip.css';
