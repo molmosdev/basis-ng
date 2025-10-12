@@ -20,6 +20,16 @@ module.exports = tseslint.config(
       prettier: prettierPlugin,
     },
     processor: angular.processInlineTemplates,
+    rules: {
+      'prettier/prettier': [
+        'error',
+        {
+          singleQuote: true,
+          printWidth: 100,
+          tabWidth: 2,
+        },
+      ],
+    },
   },
   {
     files: ["**/*.html"],
