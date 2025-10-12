@@ -91,10 +91,7 @@
         "lint": {
           "builder": "@angular-eslint/builder:lint",
           "options": {
-            "lintFilePatterns": [
-              "projects/docs/**/*.ts",
-              "projects/docs/**/*.html"
-            ],
+            "lintFilePatterns": ["projects/docs/**/*.ts", "projects/docs/**/*.html"],
             "eslintConfig": "projects/docs/eslint.config.js"
           }
         }
@@ -131,10 +128,7 @@
         "lint": {
           "builder": "@angular-eslint/builder:lint",
           "options": {
-            "lintFilePatterns": [
-              "projects/primitives/**/*.ts",
-              "projects/primitives/**/*.html"
-            ],
+            "lintFilePatterns": ["projects/primitives/**/*.ts", "projects/primitives/**/*.html"],
             "eslintConfig": "projects/primitives/eslint.config.js"
           }
         }
