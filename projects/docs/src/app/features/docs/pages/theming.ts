@@ -48,10 +48,17 @@ export class Theming {
   --color-font: #0a0a0a;
   --color-primary: #0a0a0a;
   --color-primary-foreground: #fff;
-  --color-secondary: color-mix(in srgb, #fff, #0a0a0a 8%);
+  --color-secondary: #f5f5f5;
   --color-secondary-foreground: #0a0a0a;
+  --color-ring: #e0e0e0;
   --color-destructive: #e53935;
   --color-destructive-foreground: #fff;
+  --color-success: #b7e4c7;
+  --color-success-foreground: #22543d;
+  --color-warning: #fff3cd;
+  --color-warning-foreground: #856404;
+  --color-info: #e0e0e0;
+  --color-info-foreground: #333;
 
   /* Dark theme colors */
   --color-background-dark: #0a0a0a;
@@ -59,9 +66,16 @@ export class Theming {
   --color-bg-dark: #0a0a0a;
   --color-primary-dark: #fff;
   --color-primary-foreground-dark: #0a0a0a;
-  --color-secondary-dark: color-mix(in srgb, #0a0a0a, #fff 8%);
+  --color-secondary-dark: #262626;
   --color-secondary-foreground-dark: #fff;
+  --color-ring-dark: #ffffff26;
   --color-destructive-dark: #ff6659;
   --color-destructive-foreground-dark: #0a0a0a;
+  --color-success-dark: #22543d;
+  --color-success-foreground-dark: #d1fae5;
+  --color-warning-dark: #856404;
+  --color-warning-foreground-dark: #ffe066;
+  --color-info-dark: #424242;
+  --color-info-foreground-dark: #e0e0e0;
 }`;
 }
