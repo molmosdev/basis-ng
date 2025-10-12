@@ -4,9 +4,9 @@ b-tree {
   b-tree-node {
     @apply flex flex-col box-border;
 
-    &.active section {
-      @apply bg-background;
-      @apply dark:bg-background-dark;
+    &.b-active section {
+      @apply bg-secondary text-secondary-foreground;
+      @apply dark:bg-secondary-dark dark:text-secondary-foreground-dark;
     }
 
     section {

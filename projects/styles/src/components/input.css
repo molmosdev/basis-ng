@@ -1,6 +1,12 @@
+/* Input styles — Base / Sizes / States */
 input[b-input] {
-  @apply inset-ring-1 inset-ring-secondary transition-colors text-base font-sans bg-background text-font min-w-1/2;
-  @apply dark:bg-background-dark dark:text-font-dark dark:inset-ring-secondary-dark;
+  /* Base */
+  @apply px-3 py-0 text-sm h-8 rounded-size-md;
+  @apply bg-secondary/10 text-secondary-foreground inset-ring-1 inset-ring-ring hover:bg-primary/5 shadow-xs;
+  @apply dark:bg-secondary-dark/40 dark:text-secondary-foreground-dark dark:inset-ring-ring-dark dark:hover:bg-primary-dark/5 shadow-xs;
+
+  /* Disabled */
+  @apply disabled:opacity-50 disabled:cursor-not-allowed;
 
   &:focus-visible:not(:read-only) {
     @apply outline-2 outline-offset-4 outline-primary;
@@ -30,13 +36,14 @@ input[b-input] {
     @apply opacity-60 pointer-events-none;
   }
 
-  &.b-input-size-sm {
-    @apply px-2 py-1 h-7 text-sm rounded-size-sm;
+  /* Sizes */
+  &.b-size-sm {
+    @apply px-2 py-0 text-xs h-6 rounded-size-sm;
   }
-  &.b-input-size-md {
-    @apply px-3 py-2 h-10 text-base rounded-size-md;
+  &.b-size-md {
+    @apply px-2.5 py-0 text-sm h-8 rounded-size-md;
   }
-  &.b-input-size-lg {
-    @apply px-4 py-3 h-13 text-lg rounded-size-lg;
+  &.b-size-lg {
+    @apply px-3 py-0 text-base h-10 rounded-size-lg;
   }
 }

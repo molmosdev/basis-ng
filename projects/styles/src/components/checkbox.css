@@ -1,20 +1,31 @@
 input[b-checkbox] {
+  /* Base styles */
+  @apply w-5 h-5 rounded-md;
+
   /* Sizes */
-  &.b-checkbox-size-sm {
+  &.b-size-sm {
     @apply w-4 h-4 rounded-sm;
   }
-  &.b-checkbox-size-md {
+  &.b-size-md {
     @apply w-5 h-5 rounded-md;
   }
-  &.b-checkbox-size-lg {
+  &.b-size-lg {
     @apply w-7 h-7 rounded-lg;
   }
 
   &:checked {
-    @apply accent-primary dark:accent-primary-dark;
+    @apply accent-primary;
+
+    @media (prefers-color-scheme: dark) {
+      @apply accent-primary-dark;
+    }
   }
 
   &:focus-visible {
-    @apply outline-2 outline-offset-4 outline-primary dark:outline-primary-dark;
+    @apply outline-2 outline-offset-4 outline-primary;
+
+    @media (prefers-color-scheme: dark) {
+      @apply outline-primary-dark;
+    }
   }
 }

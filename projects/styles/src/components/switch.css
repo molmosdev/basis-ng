@@ -9,19 +9,19 @@ input[b-switch] {
     @apply flex rounded-full shadow-md transition-transform duration-200 justify-center items-center bg-primary-foreground will-change-transform content-[''];
   }
 
-  &.b-switch-size-sm {
+  &.b-size-sm {
     @apply h-5 w-8;
     &::after {
       @apply h-3 w-3 m-1;
     }
   }
-  &.b-switch-size-md {
+  &.b-size-md {
     @apply h-6 w-10;
     &::after {
       @apply h-4 w-4 m-1;
     }
   }
-  &.b-switch-size-lg {
+  &.b-size-lg {
     @apply h-8 w-14;
     &::after {
       @apply h-6 w-6 m-1;
@@ -29,17 +29,17 @@ input[b-switch] {
   }
 
   &:checked {
-    &.b-switch-size-sm {
+    &.b-size-sm {
       &::after {
         @apply transform translate-x-[0.7rem];
       }
     }
-    &.b-switch-size-md {
+    &.b-size-md {
       &::after {
         @apply transform translate-x-[1rem];
       }
     }
-    &.b-switch-size-lg {
+    &.b-size-lg {
       &::after {
         @apply transform translate-x-[1.5rem];
       }

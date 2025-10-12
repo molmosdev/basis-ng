@@ -2,11 +2,15 @@ b-otp {
   display: flex;
   gap: 0.5rem;
   justify-content: center;
+
+  input[b-otp-digit] {
+    @apply w-8 h-8 py-0 text-sm rounded-size-md p-0;
+  }
 }
 
 input[b-otp-digit] {
-  @apply box-border text-center font-sans text-base transition-opacity bg-background text-font inset-ring-1 inset-ring-secondary;
-  @apply dark:bg-background-dark dark:text-font-dark dark:inset-ring-secondary-dark;
+  @apply box-border text-center font-sans text-base transition-opacity bg-background text-font inset-ring-1 inset-ring-ring;
+  @apply dark:bg-background-dark dark:text-font-dark dark:inset-ring-ring-dark;
 
   &:read-only:not(:disabled) {
     @apply border-0;
@@ -37,16 +41,16 @@ input[b-otp-digit] {
   &:disabled {
     @apply opacity-60 pointer-events-none;
   }
+}
 
-  &.b-otp-size-sm {
-    @apply w-7 h-7 text-sm rounded-size-sm p-0;
-  }
-  &.b-otp-size-md {
-    @apply w-9 h-9 text-base rounded-size-md p-0;
-  }
-  &.b-otp-size-lg {
-    @apply w-11 h-11 text-lg rounded-size-lg p-0;
-  }
+b-otp.b-size-sm input[b-otp-digit] {
+  @apply w-6 h-6 text-xs rounded-size-sm p-0;
+}
+b-otp.b-size-md input[b-otp-digit] {
+  @apply w-8 h-8 py-0 text-sm rounded-size-md p-0;
+}
+b-otp.b-size-lg input[b-otp-digit] {
+  @apply w-10 h-10 text-base rounded-size-lg p-0;
 }
 
 b-otp.ng-invalid.ng-touched input[b-otp-digit],

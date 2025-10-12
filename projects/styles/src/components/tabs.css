@@ -1,8 +1,15 @@
 b-tabs {
-  @apply flex bg-secondary outline-none inset-ring-1 inset-ring-primary/10;
-  @apply dark:bg-secondary-dark dark:inset-ring-primary-dark/10;
+  @apply flex items-center;
+  @apply bg-secondary/50 text-secondary-foreground;
+  @apply dark:bg-secondary-dark/50 dark:text-secondary-foreground-dark;
+
+  /* Base md by default */
+  @apply px-1 py-0 text-sm h-8 rounded-size-md gap-1.5;
 
   b-tab {
+    @apply flex items-center justify-center;
+    @apply px-2 py-0 text-xs h-6 rounded-size-sm gap-1;
+
     &[aria-selected='true'] {
       @apply bg-primary-foreground inset-ring-1 inset-ring-primary/10;
       @apply dark:bg-primary-foreground-dark dark:inset-ring-primary-dark/10;
@@ -19,27 +26,27 @@ b-tabs {
     @apply dark:outline-primary-dark;
   }
 
-  &.b-tabs-size-sm {
-    @apply h-7 rounded-size-sm p-0.5 gap-0.5;
+  &.b-size-sm {
+    @apply px-0.5 py-0 text-xs h-6 rounded-size-sm gap-0.5;
 
     b-tab {
-      @apply px-2 text-sm rounded-size-xs flex items-center justify-center;
+      @apply px-2 py-0 text-xs h-5 rounded-size-sm gap-1;
     }
   }
 
-  &.b-tabs-size-md {
-    @apply h-10 rounded-size-md p-1 gap-1;
+  &.b-size-md {
+    @apply px-1 py-0 text-sm h-8 rounded-size-md gap-1;
 
     b-tab {
-      @apply px-4 text-base rounded-size-sm flex items-center justify-center;
+      @apply px-2 py-0 text-xs h-6 rounded-size-sm gap-1;
     }
   }
 
-  &.b-tabs-size-lg {
-    @apply h-13 rounded-size-lg p-1.5 gap-1.5;
+  &.b-size-lg {
+    @apply px-1 py-0 text-base h-10 rounded-size-lg gap-1;
 
     b-tab {
-      @apply px-6 text-lg rounded-size-md flex items-center justify-center;
+      @apply px-3 py-0 text-sm h-8 rounded-size-md gap-1.5;
     }
   }
 }

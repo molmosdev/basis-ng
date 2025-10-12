@@ -1,7 +1,33 @@
 b-menu {
   @apply flex flex-col;
 
-  &.b-menu-size-sm {
+  /* Base */
+  @apply text-base rounded-size-md;
+
+  &:not(:has(b-menu-group)) {
+    @apply p-1 gap-1;
+  }
+
+  b-menu-group {
+    @apply p-1 gap-1;
+  }
+
+  b-menu-label {
+    @apply px-3 py-0 text-sm h-8 gap-1.5 flex items-center;
+  }
+
+  button[b-menu-item],
+  button[b-menu-item-radio],
+  button[b-menu-item-checkbox] {
+    @apply px-3 py-0 text-sm h-8 rounded-size-sm gap-1.5;
+
+    &.b-squared {
+      aspect-ratio: 1 / 1;
+      @apply w-10 min-w-10 h-10 min-h-10 !p-0 flex items-center justify-center text-center;
+    }
+  }
+
+  &.b-size-sm {
     @apply text-sm rounded-size-sm box-border;
 
     &:not(:has(b-menu-group)) {
@@ -13,22 +39,22 @@ b-menu {
     }
 
     b-menu-label {
-      @apply !py-0.5 !px-2;
+      @apply px-2 py-0 text-xs h-6 gap-1 flex items-center;
     }
 
     button[b-menu-item],
     button[b-menu-item-radio],
     button[b-menu-item-checkbox] {
-      @apply !py-1 !px-2 rounded-size-xs;
+      @apply px-2 py-0 text-xs h-6 rounded-size-xs gap-1;
 
-      &.squared {
+      &.b-squared {
         aspect-ratio: 1 / 1;
         @apply w-8 min-w-8 h-8 min-h-8 !p-0 flex items-center justify-center text-center;
       }
     }
   }
 
-  &.b-menu-size-md {
+  &.b-size-md {
     @apply text-base rounded-size-md;
 
     &:not(:has(b-menu-group)) {
@@ -40,22 +66,22 @@ b-menu {
     }
 
     b-menu-label {
-      @apply !py-1 !px-3;
+      @apply px-3 py-0 text-sm h-8 gap-1.5 flex items-center;
     }
 
     button[b-menu-item],
     button[b-menu-item-radio],
     button[b-menu-item-checkbox] {
-      @apply !py-1.5 !px-3 rounded-size-sm;
+      @apply px-3 py-0 text-sm h-8 rounded-size-sm gap-1.5;
 
-      &.squared {
+      &.b-squared {
         aspect-ratio: 1 / 1;
         @apply w-10 min-w-10 h-10 min-h-10 !p-0 flex items-center justify-center text-center;
       }
     }
   }
 
-  &.b-menu-size-lg {
+  &.b-size-lg {
     @apply text-lg rounded-size-lg;
 
     &:not(:has(b-menu-group)) {
@@ -67,15 +93,15 @@ b-menu {
     }
 
     b-menu-label {
-      @apply !py-1.5 !px-4;
+      @apply px-4 py-0 text-base h-10 gap-2 flex items-center;
     }
 
     button[b-menu-item],
     button[b-menu-item-radio],
     button[b-menu-item-checkbox] {
-      @apply !py-2 !px-4 rounded-size-md;
+      @apply px-4 py-0 text-base h-10 rounded-size-md gap-2;
 
-      &.squared {
+      &.b-squared {
         aspect-ratio: 1 / 1;
         @apply w-12 min-w-12 h-12 min-h-12 !p-0 flex items-center justify-center text-center;
       }
@@ -89,7 +115,7 @@ b-menu {
     @apply hover:bg-secondary/50;
     @apply dark:hover:bg-secondary-dark/50;
 
-    &.destructive {
+    &.b-destructive {
       @apply bg-destructive/10 text-destructive;
       @apply dark:bg-destructive-dark/10 dark:text-destructive-dark;
       @apply hover:bg-destructive/20;
@@ -102,7 +128,7 @@ b-menu {
     }
 
     &[aria-selected='true'],
-    &.active {
+    &.b-active {
       @apply bg-secondary text-secondary-foreground;
       @apply dark:bg-secondary-dark dark:text-secondary-foreground-dark;
     }
@@ -125,13 +151,9 @@ b-menu {
       @apply dark:border-secondary-dark;
     }
   }
-
-  b-menu-label {
-    @apply font-medium;
-  }
 }
 
 .cdk-overlay-container b-menu {
-  @apply inset-ring-1 inset-ring-secondary bg-background;
-  @apply dark:inset-ring-secondary-dark dark:bg-background-dark;
+  @apply inset-ring-1 inset-ring-ring bg-background shadow-xs;
+  @apply dark:inset-ring-ring-dark/60 dark:bg-background-dark;
 }

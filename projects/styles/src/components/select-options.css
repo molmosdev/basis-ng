@@ -1,5 +1,5 @@
 ul[b-select-options] {
-  @apply list-none p-1 box-border m-0 relative bg-background shadow-xs rounded-lg inset-ring-1 inset-ring-secondary flex flex-col gap-1 w-full overflow-y-auto;
+  @apply list-none p-1 box-border m-0 relative bg-background shadow-xs rounded-lg inset-ring-1 inset-ring-ring flex flex-col gap-1 w-full overflow-y-auto;
 
   .no-options-message {
     @apply py-1 px-2 text-sm;

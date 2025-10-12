@@ -1,36 +1,37 @@
 span[b-badge] {
-  @apply inline-flex justify-center items-center rounded-full transition-colors duration-150 box-border;
+  /* Base */
+  @apply inline-flex items-center gap-2 px-2 py-1 font-medium text-sm rounded-size-md;
+  @apply bg-primary text-primary-foreground dark:bg-primary-dark dark:text-primary-foreground-dark;
 
   /* Variants */
-  &.b-badge-variant-primary {
-    @apply bg-primary text-primary-foreground border border-primary;
-    @apply dark:bg-primary-dark dark:text-primary-foreground-dark dark:border-primary-dark;
+  &.b-variant-primary {
+    @apply bg-primary text-primary-foreground dark:bg-primary-dark dark:text-primary-foreground-dark;
   }
-  &.b-badge-variant-secondary {
-    @apply bg-secondary text-secondary-foreground;
-    @apply dark:bg-secondary-dark dark:text-secondary-foreground-dark;
+
+  &.b-variant-secondary {
+    @apply bg-secondary text-secondary-foreground dark:bg-secondary-dark dark:text-secondary-foreground-dark;
   }
-  &.b-badge-variant-ghost {
-    @apply bg-transparent hover:bg-primary/10;
-    @apply dark:hover:bg-primary-dark/10;
+
+  &.b-variant-ghost {
+    @apply bg-transparent text-secondary-foreground dark:text-secondary-foreground-dark;
   }
-  &.b-badge-variant-outlined {
-    @apply bg-transparent inset-ring-1 inset-ring-secondary-foreground/30 hover:bg-primary/5;
-    @apply dark:inset-ring-secondary-foreground-dark/30 dark:hover:bg-primary-dark/5;
+
+  &.b-variant-outlined {
+    @apply bg-transparent inset-ring-1 inset-ring-ring text-secondary-foreground dark:inset-ring-ring-dark dark:text-secondary-foreground-dark;
   }
-  &.b-badge-variant-destructive {
-    @apply bg-destructive text-destructive-foreground inset-ring-1 inset-ring-destructive hover:bg-destructive/90 hover:inset-ring-destructive/80;
-    @apply dark:bg-destructive-dark dark:text-destructive-foreground-dark dark:inset-ring-destructive-dark dark:hover:bg-destructive-dark/90 dark:hover:inset-ring-destructive-dark/80;
+
+  &.b-variant-destructive {
+    @apply bg-destructive text-destructive-foreground dark:bg-destructive-dark dark:text-destructive-foreground-dark;
   }
 
   /* Sizes */
-  &.b-badge-size-sm {
-    @apply px-1.5 py-0.5 text-xs;
+  &.b-size-sm {
+    @apply px-1.5 py-0.5 text-xs rounded-size-sm;
   }
-  &.b-badge-size-md {
-    @apply px-2.5 py-1 text-sm;
+  &.b-size-md {
+    @apply px-2 py-1 text-sm rounded-size-md;
   }
-  &.b-badge-size-lg {
-    @apply px-3.5 py-1.5 text-base;
+  &.b-size-lg {
+    @apply px-2.5 py-1 text-base rounded-size-lg;
   }
 }

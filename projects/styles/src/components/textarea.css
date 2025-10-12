@@ -1,6 +1,7 @@
 textarea[b-textarea] {
-  @apply inset-ring-1 inset-ring-secondary transition-colors text-base font-sans bg-background text-font min-w-1/2;
-  @apply dark:bg-background-dark dark:text-font-dark dark:inset-ring-secondary-dark;
+  @apply px-2.5 py-1 text-sm rounded-size-md;
+  @apply bg-secondary/10 text-secondary-foreground inset-ring-1 inset-ring-ring hover:bg-primary/5 shadow-xs;
+  @apply dark:bg-secondary-dark/40 dark:text-secondary-foreground-dark dark:inset-ring-ring-dark dark:hover:bg-primary-dark/5 shadow-xs;
 
   &:focus-visible:not(:read-only) {
     @apply outline-2 outline-offset-4 outline-primary dark:outline-primary-dark;
@@ -26,13 +27,13 @@ textarea[b-textarea] {
     @apply opacity-60 pointer-events-none;
   }
 
-  &.b-textarea-size-sm {
-    @apply px-2 py-1 text-sm;
+  &.b-size-sm {
+    @apply px-2 py-1 text-xs rounded-size-sm;
   }
-  &.b-textarea-size-md {
-    @apply px-3 py-2 text-base;
+  &.b-size-md {
+    @apply px-2.5 py-1 text-sm rounded-size-md;
   }
-  &.b-textarea-size-lg {
-    @apply px-4 py-3 text-lg;
+  &.b-size-lg {
+    @apply px-3 py-2 text-base rounded-size-lg;
   }
 }

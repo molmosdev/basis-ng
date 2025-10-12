@@ -1,11 +1,23 @@
 b-input-group {
-  /* Base container styles mirroring input.css approach */
-  @apply flex items-center overflow-hidden inset-ring-1 inset-ring-secondary bg-background text-font font-sans transition-colors;
-  @apply dark:inset-ring-secondary-dark dark:bg-background-dark dark:text-font-dark;
+  /* Base */
+  @apply flex overflow-hidden items-center;
+  @apply bg-secondary/10 text-secondary-foreground inset-ring-1 inset-ring-ring shadow-xs;
+  @apply dark:bg-secondary-dark/40 dark:text-secondary-foreground-dark dark:inset-ring-ring-dark;
+
+  /* Base md by default */
+  @apply px-2.5 py-0 text-sm h-8 rounded-size-md gap-1.5;
+
+  &:has(> button[b-button]:first-child) {
+    @apply !pl-1;
+  }
+
+  &:has(> button[b-button]:last-child) {
+    @apply !pr-1;
+  }
 
   /* Internal input adjustments when placed inside group */
   input[b-input] {
-    @apply !outline-0 p-0 inset-ring-0 !w-full !rounded-none bg-transparent;
+    @apply !outline-0 !px-0 inset-ring-0 !w-full !rounded-none bg-transparent hover:bg-transparent;
   }
 
   /* Focus state when any inner input is focused (and not readonly) */
@@ -42,55 +54,34 @@ b-input-group {
   }
 
   /* Size variants (normalized to Tailwind scale, matching input sizes) */
-  &:has(.b-input-size-sm) {
+  &:has(input[b-input].b-size-sm) {
     /* small */
-    @apply py-1 h-7 text-sm rounded-size-sm;
-
-    &:has(> :first-child:not(input[b-input])) {
-      @apply pl-2;
-    }
-
-    &:has(> :last-child:not(input[b-input])) {
-      @apply pr-2;
-    }
+    @apply px-2 py-0 text-xs h-6 rounded-size-sm gap-1;
   }
-  &:has(.b-input-size-md) {
+
+  &:has(input[b-input].b-size-md) {
     /* medium */
-    @apply py-2 h-10 text-base rounded-size-md;
+    @apply px-2.5 py-0 text-sm h-8 rounded-size-md gap-1.5;
 
-    &:has(> :first-child:not(input[b-input])) {
-      @apply pl-3;
-
-      &:has(> button[b-button]:first-child) {
-        @apply !pl-1.5;
-      }
+    &:has(> button[b-button]:first-child) {
+      @apply !pl-1;
     }
 
-    &:has(> :last-child:not(input[b-input])) {
-      @apply pr-3;
-
-      &:has(> button[b-button]:last-child) {
-        @apply !pr-1.5;
-      }
+    &:has(> button[b-button]:last-child) {
+      @apply !pr-1;
     }
   }
-  &:has(.b-input-size-lg) {
+
+  &:has(input[b-input].b-size-lg) {
     /* large */
-    @apply py-3 h-13 text-lg rounded-size-lg;
+    @apply px-3 py-0 text-base h-10 rounded-size-lg gap-2;
 
-    &:has(> :first-child:not(input[b-input])) {
-      @apply pl-4;
-
-      &:has(> button[b-button]:first-child) {
-        @apply !pl-1.5;
-      }
+    &:has(> button[b-button]:first-child) {
+      @apply !pl-1;
     }
-    &:has(> :last-child:not(input[b-input])) {
-      @apply pr-4;
 
-      &:has(> button[b-button]:last-child) {
-        @apply !pr-1.5;
-      }
+    &:has(> button[b-button]:last-child) {
+      @apply !pr-1;
     }
   }
 }
