@@ -1,7 +1,7 @@
 import { CdkMenuTrigger } from '@angular/cdk/menu';
 import { Directive, inject, input, OnInit } from '@angular/core';
 import { ConnectedPosition } from '@angular/cdk/overlay';
-import { Position } from '../../../../../shared/types/position.type';
+import { Position } from '../../../shared/types/position.type';
 
 @Directive({
   selector: '[menuTriggerFor]',

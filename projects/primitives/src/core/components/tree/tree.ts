@@ -12,12 +12,8 @@ import {
   OnInit,
   output,
 } from '@angular/core';
-import { TreeNode } from './shared/components/tree-node/tree-node';
+import { TreeNode } from './tree-node';
 
-/**
- * Represents a tree component that supports drag-and-drop functionality
- * and manages nested tree nodes.
- */
 @Component({
   selector: 'b-tree',
   template: `<ng-content />`,
@@ -34,50 +30,22 @@ import { TreeNode } from './shared/components/tree-node/tree-node';
   ],
 })
 export class Tree implements OnInit {
-  /**
-   * Determines whether the tree is draggable.
-   */
   readonly draggable = input(false);
-
-  /**
-   * Reference to the `CdkDropList` directive used for drag-and-drop.
-   */
   private tree = inject(CdkDropList);
-
-  /**
-   * Collection of nested `TreeNode` components.
-   */
   private readonly nestedNodes = contentChildren(TreeNode);
-
-  /**
-   * Determines whether to close nodes recursively.
-   */
   readonly closeRecursively = input(false);
-
-  /**
-   * Emits an event when a drop occurs in the tree.
-   */
   dropEmitter = output<CdkDragDrop<string[]>>();
 
-  /**
-   * Initializes the `Tree` component and sets up reactive effects.
-   */
   constructor() {
     effect(() => {
       this.handleTreeDisability();
     });
   }
 
-  /**
-   * Lifecycle hook that is called after the component is initialized.
-   */
   ngOnInit(): void {
     if (this.closeRecursively()) this.handleCloseRecursively();
   }
 
-  /**
-   * Updates the disabled state of the tree and its nested nodes.
-   */
   private handleTreeDisability(): void {
     const isDisabled = !this.draggable();
     this.tree.disabled = isDisabled;
@@ -87,9 +55,6 @@ export class Tree implements OnInit {
     });
   }
 
-  /**
-   * Sets up recursive closing behavior for nested nodes.
-   */
   handleCloseRecursively(): void {
     this.nestedNodes().forEach(node => {
       node.closeEmitter.subscribe(() => {
@@ -98,9 +63,6 @@ export class Tree implements OnInit {
     });
   }
 
-  /**
-   * Closes all nested nodes recursively.
-   */
   closeNestedNodes(): void {
     this.nestedNodes().forEach(node => {
       node.extended.set(false);

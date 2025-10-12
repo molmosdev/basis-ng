@@ -5,16 +5,9 @@ import {
   computed,
   contentChildren,
   inject,
-  input,
   OnInit,
 } from '@angular/core';
 import { Tab } from './tab';
-
-/**
- * Defines the available sizes for the button component.
- * @public
- */
-type TabsSize = 'sm' | 'md' | 'lg';
 
 @Component({
   selector: 'b-tabs',
@@ -22,9 +15,6 @@ type TabsSize = 'sm' | 'md' | 'lg';
   template: `<ng-content />`,
   hostDirectives: [CdkListbox],
   host: {
-    '[class.b-tabs-size-sm]': 'size() === "sm"',
-    '[class.b-tabs-size-md]': 'size() === "md"',
-    '[class.b-tabs-size-lg]': 'size() === "lg"',
     '(keydown.arrowLeft)': 'previousTab()',
     '(keydown.arrowUp)': 'previousTab()',
     '(keydown.arrowRight)': 'nextTab()',
@@ -32,31 +22,9 @@ type TabsSize = 'sm' | 'md' | 'lg';
   },
 })
 export class Tabs implements OnInit {
-  /**
-   * Reference to the injected CDK Listbox instance.
-   */
   cdkListbox = inject(CdkListbox);
-
-  /**
-   * The size of the tabs.
-   *
-   * @defaultValue 'md'
-   */
-  readonly size = input<TabsSize>('md');
-
-  /**
-   * Collection of child options within the listbox.
-   */
   readonly tabs = contentChildren(Tab);
-
-  /**
-   * Collection of cdk options within the listbox.
-   */
   readonly cdkOptions = computed(() => this.tabs().map(tab => tab.cdkOption));
-
-  /**
-   * Key manager for handling keyboard navigation and active descendant management.
-   */
   readonly listKeyManager = computed(() =>
     new ActiveDescendantKeyManager(this.cdkOptions())
       .withWrap()

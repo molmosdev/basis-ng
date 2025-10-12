@@ -1,9 +1,6 @@
 import { CdkMenuItemRadio } from '@angular/cdk/menu';
-import { Component, input } from '@angular/core';
+import { Component } from '@angular/core';
 
-/**
- * Represents a radio menu item.
- */
 @Component({
   selector: 'button[b-menu-item-radio]',
   template: `<ng-content />`,
@@ -18,13 +15,5 @@ import { Component, input } from '@angular/core';
       outputs: ['cdkMenuItemTriggered: triggered'],
     },
   ],
-  host: {
-    '[class.squared]': 'squared()',
-  },
 })
-export class MenuItemRadio {
-  /**
-   * Input to set the squared state of the menu item.
-   */
-  readonly squared = input(false);
-}
+export class MenuItemRadio {}

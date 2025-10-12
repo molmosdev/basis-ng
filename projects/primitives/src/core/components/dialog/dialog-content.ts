@@ -9,10 +9,6 @@ import { CdkPortalOutlet } from '@angular/cdk/portal';
 import { CdkDialogContainer, DialogRef } from '@angular/cdk/dialog';
 import { DialogConfig, DialogManager } from '../../services/dialog-manager';
 
-/** Dialog content container that renders projected portal content for a dialog instance.
- *
- * @remarks Extends CdkDialogContainer to integrate with Angular CDK dialog infrastructure.
- */
 @Component({
   selector: 'b-dialog-content',
   template: `<ng-template cdkPortalOutlet />`,
@@ -23,26 +19,18 @@ import { DialogConfig, DialogManager } from '../../services/dialog-manager';
   },
 })
 export class DialogContent extends CdkDialogContainer implements OnInit {
-  /** Reference to the active dialog instance used to control lifecycle and closing. */
   dialogRef = inject(DialogRef);
-
-  /** Service that orchestrates opening and closing of dialog instances. */
   dialogManager = inject(DialogManager);
-
-  /** Tracks whether the dialog is in its leaving (closing) animation state. */
   readonly leaving = signal(false);
 
-  /** Initializes the dialog content component by calling the superclass constructor. */
   constructor() {
     super();
   }
 
-  /** Initializes component logic and subscribes to dialog events. */
   ngOnInit(): void {
     this.handleDialogEvents();
   }
 
-  /** Handles all dialog behavioral event subscriptions based on provided configuration data. */
   handleDialogEvents(): void {
     const data = this._config?.data as DialogConfig | undefined;
 
@@ -54,10 +42,6 @@ export class DialogContent extends CdkDialogContainer implements OnInit {
     this.handleEscapeKeyClose(data);
   }
 
-  /** Subscribes to backdrop clicks to close the dialog when enabled in config.
-   *
-   * @param data - Dialog configuration containing close behavior flags.
-   */
   handleBackdropClose(data: DialogConfig): void {
     if (data.closeOnBackdropClick) {
       this.dialogRef.backdropClick.subscribe((): void => {
@@ -66,10 +50,6 @@ export class DialogContent extends CdkDialogContainer implements OnInit {
     }
   }
 
-  /** Subscribes to keydown events to close the dialog on Escape key when enabled.
-   *
-   * @param data - Dialog configuration containing close behavior flags.
-   */
   handleEscapeKeyClose(data: DialogConfig): void {
     if (data.closeOnEscapeKey) {
       this.dialogRef.keydownEvents.subscribe((event: KeyboardEvent): void => {

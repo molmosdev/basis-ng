@@ -1,8 +1,5 @@
 import { Component } from '@angular/core';
 
-/**
- * Represents a label for a menu.
- */
 @Component({
   selector: 'b-menu-label',
   template: `<ng-content />`,

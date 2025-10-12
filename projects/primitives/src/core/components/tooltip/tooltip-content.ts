@@ -1,5 +1,5 @@
-import { Component, computed, effect, inject } from '@angular/core';
-import { ConnectedOverlay } from '../../../../directives/connected-overlay';
+import { Component, computed, inject } from '@angular/core';
+import { ConnectedOverlay } from '../../directives/connected-overlay';
 
 @Component({
   selector: 'b-tooltip-content',
@@ -11,17 +11,6 @@ import { ConnectedOverlay } from '../../../../directives/connected-overlay';
   },
 })
 export class TooltipContent {
-  /**
-   * Reference to the ConnectedOverlay to determine the direction of the overlay.
-   */
   overlay = inject(ConnectedOverlay);
-
-  /**
-   * Computed signal representing the direction of the overlay.
-   */
   readonly direction = computed(() => this.overlay.direction());
-
-  constructor() {
-    effect(() => console.log(this.direction()));
-  }
 }

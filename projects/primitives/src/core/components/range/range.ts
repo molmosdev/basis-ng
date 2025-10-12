@@ -3,7 +3,6 @@ import {
   ElementRef,
   inject,
   model,
-  input,
   AfterViewInit,
 } from '@angular/core';
 
@@ -13,37 +12,16 @@ import {
   host: {
     '[attr.value]': 'value()',
     '(input)': 'onInput($event)',
-    '[class.b-range-size-sm]': 'size() === "sm"',
-    '[class.b-range-size-md]': 'size() === "md"',
-    '[class.b-range-size-lg]': 'size() === "lg"',
   },
 })
 export class Range implements AfterViewInit {
-  /**
-   * Current value of the range.
-   */
   readonly value = model<string>('0');
-
-  /**
-   * Size of the range slider (sm, md, lg)
-   */
-  readonly size = input<'sm' | 'md' | 'lg'>('md');
-
-  /**
-   * Reference to the range element.
-   */
   el = inject(ElementRef);
 
-  /**
-   * Initializes the range value after the view is initialized.
-   */
   ngAfterViewInit() {
     this.value.set(this.el.nativeElement.value);
   }
 
-  /**
-   * Handles the input event to update the value.
-   */
   onInput(event: Event) {
     this.value.set((event.target as HTMLInputElement).value);
   }

@@ -1,9 +1,5 @@
 import { Component, ElementRef, inject, output, signal } from '@angular/core';
 
-/**
- * Component representing the trigger button for the select dropdown.
- * Handles user interactions to open or close the select.
- */
 @Component({
   selector: 'button[b-select-trigger]',
   template: `<ng-content />
@@ -28,18 +24,7 @@ import { Component, ElementRef, inject, output, signal } from '@angular/core';
   },
 })
 export class SelectTrigger {
-  /**
-   * Reference to the host element of the trigger button.
-   */
   el = inject(ElementRef);
-
-  /**
-   * Event emitter for button click and keydown events.
-   */
   buttonClicked = output<void>();
-
-  /**
-   * Signal indicating whether the trigger is disabled.
-   */
   readonly disabled = signal(false);
 }

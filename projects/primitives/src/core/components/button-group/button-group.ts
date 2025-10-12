@@ -9,10 +9,5 @@ import { Component, input } from '@angular/core';
   },
 })
 export class ButtonGroup {
-  /**
-   * Whether the buttons should be spaced.
-   *
-   * @defaultValue false
-   */
   readonly spaced = input<boolean>(false);
 }

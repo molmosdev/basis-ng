@@ -25,25 +25,12 @@ import { lucideX } from '@ng-icons/lucide';
     }
   `,
   imports: [NgIcon],
-  host: {
-    '[class]': 'type()',
-  },
   providers: [provideIcons({ lucideX })],
 })
 export class Alert {
-  /** The type of the alert. */
-  readonly type = input<'success' | 'error' | 'warning' | 'info'>('info');
-
-  /** The title of the alert. */
   readonly title = input<string | null>(null);
-
-  /** The icon name for ng-icon. */
   readonly icon = input<string | null>(null);
-
-  /** Whether the alert is dismissible. */
   readonly dismissible = input(false);
-
-  /** Event emitted when the alert is dismissed. */
   readonly dismissed = output<void>();
 
   dismiss(): void {
