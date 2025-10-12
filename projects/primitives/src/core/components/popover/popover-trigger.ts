@@ -1,11 +1,4 @@
-import {
-  Directive,
-  effect,
-  ElementRef,
-  inject,
-  input,
-  model,
-} from '@angular/core';
+import { Directive, effect, ElementRef, inject, input, model } from '@angular/core';
 
 @Directive({
   selector: '[bPopoverTrigger]',

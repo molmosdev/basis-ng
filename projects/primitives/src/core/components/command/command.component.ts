@@ -18,7 +18,8 @@ import { Utils } from '../../../shared/services/utils';
 @Component({
   selector: 'b-command',
   imports: [Input, CdkTrapFocus],
-  template: `<input
+  template: `
+    <input
       type="text"
       b-input
       cdkTrapFocus
@@ -28,8 +29,10 @@ import { Utils } from '../../../shared/services/utils';
       (keydown.arrowUp)="commandOptions()?.previousOption()"
       (keydown.enter)="commandOptions()?.selectOption()"
       (blur)="isDesktop() && trappedInput.el.nativeElement.focus()"
-      (input)="onInput($event)" />
-    <ng-content />`,
+      (input)="onInput($event)"
+    />
+    <ng-content />
+  `,
   host: {
     '[style.maxHeight]': 'maxHeight()',
   },
@@ -40,9 +43,7 @@ export class CommandComponent implements OnDestroy {
   readonly value = computed(() => this.commandOptions()?.value());
   readonly options = computed(() => this.commandOptions()?.options());
   breakpointObserver = inject(BreakpointObserver);
-  readonly isDesktop = signal(
-    !this.breakpointObserver.isMatched(Breakpoints.Handset)
-  );
+  readonly isDesktop = signal(!this.breakpointObserver.isMatched(Breakpoints.Handset));
   el = inject(ElementRef);
   readonly inputValueChange = output<string>();
   readonly debounce = input(0);
@@ -53,11 +54,7 @@ export class CommandComponent implements OnDestroy {
     const value = (event.target as HTMLInputElement).value;
     const debounceMs = this.debounce();
     if (debounceMs && debounceMs > 0) {
-      this.utils.debounce(
-        this.debounceKey,
-        () => this.inputValueChange.emit(value),
-        debounceMs
-      );
+      this.utils.debounce(this.debounceKey, () => this.inputValueChange.emit(value), debounceMs);
     } else {
       this.inputValueChange.emit(value);
     }

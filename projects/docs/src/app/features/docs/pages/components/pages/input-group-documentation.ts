@@ -13,16 +13,7 @@ import { lucideEye, lucideEyeOff, lucideRocket } from '@ng-icons/lucide';
 
 @Component({
   selector: 'article[app-input-group-documentation]',
-  imports: [
-    CodeBlock,
-    InputGroup,
-    Input,
-    Button,
-    StepsButtons,
-    Badge,
-    Alert,
-    NgIcon,
-  ],
+  imports: [CodeBlock, InputGroup, Input, Button, StepsButtons, Badge, Alert, NgIcon],
   template: `
     <app-steps-buttons
       [previous]="{ label: 'Input', path: '/docs/components/input' }"
@@ -115,8 +106,7 @@ import { lucideEye, lucideEyeOff, lucideRocket } from '@ng-icons/lucide';
   `,
   providers: [provideIcons({ lucideRocket, lucideEyeOff, lucideEye })],
   host: {
-    class:
-      'mx-auto flex w-full max-w-3xl min-w-0 flex-1 flex-col gap-6 px-4 pb-6 sm:pb-20',
+    class: 'mx-auto flex w-full max-w-3xl min-w-0 flex-1 flex-col gap-6 px-4 pb-6 sm:pb-20',
   },
 })
 export class InputGroupDocumentation {

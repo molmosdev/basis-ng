@@ -1,12 +1,4 @@
-import {
-  Component,
-  contentChild,
-  forwardRef,
-  signal,
-  input,
-  OnInit,
-  effect,
-} from '@angular/core';
+import { Component, contentChild, forwardRef, signal, input, OnInit, effect } from '@angular/core';
 import { ConnectedOverlay } from '../../directives/connected-overlay';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { SelectTrigger } from './select-trigger';
@@ -15,7 +7,9 @@ import { SelectContent } from './select-content';
 
 @Component({
   selector: 'b-select',
-  template: `<ng-content />`,
+  template: `
+    <ng-content />
+  `,
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
@@ -52,9 +46,7 @@ export class Select implements ControlValueAccessor, OnInit {
   handleSelectContentWidth(): void {
     const selectContentEl = this.selectContent()?.el.nativeElement;
     if (selectContentEl) {
-      selectContentEl.style.minWidth = `${
-        this.selectTrigger()?.el.nativeElement.offsetWidth
-      }px`;
+      selectContentEl.style.minWidth = `${this.selectTrigger()?.el.nativeElement.offsetWidth}px`;
     }
   }
 
@@ -79,13 +71,13 @@ export class Select implements ControlValueAccessor, OnInit {
         return;
       }
 
-      this.value().forEach(val => {
+      this.value().forEach((val) => {
         this.selectContent()?.listBox?.selectValue(val);
 
         // Focus the selected option
         this.selectContent()
           ?.options()
-          .find(opt => opt.value === val)
+          .find((opt) => opt.value === val)
           ?.focus();
       });
     });
@@ -126,7 +118,7 @@ export class Select implements ControlValueAccessor, OnInit {
 
   private onTouched: () => void = () => undefined;
 
-  registerOnTouched(fn: any): void {
+  registerOnTouched(fn: () => void): void {
     this.onTouched = fn;
   }
 

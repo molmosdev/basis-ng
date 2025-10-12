@@ -15,8 +15,7 @@ import { StepsButtons } from './shared/components/steps-buttons';
     <app-steps-buttons [next]="{ label: 'Installation', path: '/docs/installation' }" />
   `,
   host: {
-    class:
-      'mx-auto flex w-full max-w-3xl min-w-0 flex-1 flex-col gap-6 px-4 pb-6 sm:pb-20',
+    class: 'mx-auto flex w-full max-w-3xl min-w-0 flex-1 flex-col gap-6 px-4 pb-6 sm:pb-20',
   },
 })
 export class Introduction {}

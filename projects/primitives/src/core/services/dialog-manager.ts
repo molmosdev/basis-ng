@@ -8,7 +8,7 @@ import { Utils } from '../../shared/services/utils';
  */
 export interface DialogData {
   /** Template reference rendered inside the dialog. */
-  template: TemplateRef<any>;
+  template: TemplateRef<unknown>;
   /** Configuration applied when opening the dialog. */
   config: DialogConfig;
 }
@@ -53,9 +53,7 @@ export class DialogManager {
    */
   registerDialog(id: string, data: DialogData): void {
     if (this.dialogs.has(id)) {
-      console.warn(
-        `[DialogManager] Dialog with id "${id}" is already registered. Overwriting.`
-      );
+      console.warn(`[DialogManager] Dialog with id "${id}" is already registered. Overwriting.`);
     }
     this.dialogs.set(id, data);
   }
@@ -79,7 +77,7 @@ export class DialogManager {
     const dialogData = this.dialogs.get(id);
     if (!dialogData) {
       throw new Error(
-        `[DialogManager] Dialog with id "${id}" not found. Ensure the bDialog directive is applied correctly.`
+        `[DialogManager] Dialog with id "${id}" not found. Ensure the bDialog directive is applied correctly.`,
       );
     }
     this.dialog.open(dialogData.template, {
@@ -101,13 +99,13 @@ export class DialogManager {
     const config = this.dialogs.get(id)?.config;
     if (!config) {
       console.warn(
-        `[DialogManager] Attempted to close dialog with id "${id}", but no open dialog with that id was found.`
+        `[DialogManager] Attempted to close dialog with id "${id}", but no open dialog with that id was found.`,
       );
       return;
     }
     const dialogRef = this.dialog.getDialogById(id);
     if (dialogRef) {
-      const container = dialogRef.containerInstance as any;
+      const container = dialogRef.containerInstance as DialogContent;
       if (container && container.leaving) {
         container.leaving.set(true);
       }
@@ -119,11 +117,11 @@ export class DialogManager {
             container.leaving.set(false);
           }
         },
-        config.closeDelay
+        config.closeDelay,
       );
     } else {
       console.warn(
-        `[DialogManager] Attempted to close dialog with id "${id}", but no open dialog with that id was found.`
+        `[DialogManager] Attempted to close dialog with id "${id}", but no open dialog with that id was found.`,
       );
     }
   }

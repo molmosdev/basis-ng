@@ -1,11 +1,4 @@
-import {
-  AfterViewInit,
-  Component,
-  computed,
-  ElementRef,
-  inject,
-  input,
-} from '@angular/core';
+import { AfterViewInit, Component, computed, ElementRef, inject, input } from '@angular/core';
 import { NgModel } from '@angular/forms';
 
 @Component({
@@ -47,10 +40,11 @@ export class Input implements AfterViewInit {
     }
   }
 
-  onBlur(event: any): void {
+  onBlur(event: FocusEvent): void {
     // If the input is of number type, format the value and emit the value change event.
     if (this.isNumberType()) {
-      const formattedValue = this.formatNumber(event.target.value);
+      const target = event.target as HTMLInputElement;
+      const formattedValue = this.formatNumber(target.value);
       this.setValue(formattedValue || '');
     }
   }

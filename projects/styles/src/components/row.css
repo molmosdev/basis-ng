@@ -11,11 +11,7 @@ b-row {
       background: color-mix(
         in srgb,
         var(--background, #ffffff) 50%,
-        color-mix(
-          in srgb,
-          var(--foreground, #798194) 5%,
-          var(--background, #ffffff)
-        )
+        color-mix(in srgb, var(--foreground, #798194) 5%, var(--background, #ffffff))
       );
       color: var(--primary-foreground, #ffffff);
       min-height: 30px;
@@ -40,11 +36,7 @@ b-row {
       &.clickable {
         cursor: pointer;
         &:not(.header) {
-          background: color-mix(
-            in srgb,
-            var(--foreground, #798194) 5%,
-            var(--background, #ffffff)
-          );
+          background: color-mix(in srgb, var(--foreground, #798194) 5%, var(--background, #ffffff));
         }
       }
     }

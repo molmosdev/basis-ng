@@ -111,7 +111,7 @@ export class MenuTriggerDirective implements OnInit {
 
     const pos = this.menuTriggerPosition();
     if (Array.isArray(pos)) {
-      this.trigger.menuPosition = pos.map(p => positionMap[p]);
+      this.trigger.menuPosition = pos.map((p) => positionMap[p]);
     } else {
       this.trigger.menuPosition = [positionMap[pos]];
     }

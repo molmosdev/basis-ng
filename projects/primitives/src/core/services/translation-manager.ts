@@ -73,14 +73,17 @@ export class TranslationManager {
    * @param key - Dot-separated key string.
    * @returns Value or undefined if not found.
    */
-  private resolveKey(obj: any, key: string): string | undefined {
+  private resolveKey(obj: Record<string, unknown>, key: string): string | undefined {
     if (!obj) return undefined;
     return key
       .split('.')
       .reduce(
-        (acc, part) => (acc && acc[part] !== undefined ? acc[part] : undefined),
-        obj
-      );
+        (acc: unknown, part: string) =>
+          acc && typeof acc === 'object' && acc !== null && part in acc
+            ? (acc as Record<string, unknown>)[part]
+            : undefined,
+        obj as unknown,
+      ) as string | undefined;
   }
 
   /**
@@ -89,7 +92,7 @@ export class TranslationManager {
    */
   loadLanguage(lang: string): void {
     this.http.get<Record<string, string>>(`/lang/${lang}.json`).subscribe({
-      next: translations => {
+      next: (translations) => {
         const dict = { ...this._dictionary() };
         dict[lang] = translations;
         this._dictionary.set(dict);

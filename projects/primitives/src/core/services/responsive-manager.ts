@@ -80,7 +80,7 @@ export class ResponsiveManager {
    * @param newBreakpoints - Partial breakpoint configuration to update
    */
   updateBreakpoints(newBreakpoints: Partial<DeviceBreakpoints>): void {
-    this.breakpoints.update(current => ({
+    this.breakpoints.update((current) => ({
       ...current,
       ...newBreakpoints,
     }));

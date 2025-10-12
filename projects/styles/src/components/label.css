@@ -1,11 +1,7 @@
 b-label {
   position: relative;
   display: flex;
-  --horizontal-padding: clamp(
-    1rem,
-    calc(0.75rem + var(--radius, 0.5rem) / 2),
-    1.5rem
-  );
+  --horizontal-padding: clamp(1rem, calc(0.75rem + var(--radius, 0.5rem) / 2), 1.5rem);
 
   label {
     color: var(--text-color);

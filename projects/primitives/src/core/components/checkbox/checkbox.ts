@@ -1,12 +1,4 @@
-import {
-  Component,
-  ElementRef,
-  inject,
-  model,
-  output,
-  AfterViewInit,
-  signal,
-} from '@angular/core';
+import { Component, ElementRef, inject, model, output, AfterViewInit, signal } from '@angular/core';
 
 @Component({
   selector: 'input[b-checkbox]',

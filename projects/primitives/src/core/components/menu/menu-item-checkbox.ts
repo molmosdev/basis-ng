@@ -3,7 +3,9 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'button[b-menu-item-checkbox]',
-  template: `<ng-content />`,
+  template: `
+    <ng-content />
+  `,
   hostDirectives: [
     {
       directive: CdkMenuItemCheckbox,

@@ -9,7 +9,8 @@ import { HighlightAuto } from 'ngx-highlightjs';
   imports: [HighlightAuto, Button, NgIcon],
   template: `
     <pre
-      class="flex relative rounded-lg overflow-auto inset-ring-1 inset-ring-ring dark:inset-ring-ring-dark">
+      class="flex relative rounded-lg overflow-auto inset-ring-1 inset-ring-ring dark:inset-ring-ring-dark"
+    >
       @if (highlight()) {
         <code class="text-sm !bg-neutral-900 !dark:bg-neutral-900 p-2 min-w-full no-scrollbar" [highlightAuto]="code()"></code>
       } @else {

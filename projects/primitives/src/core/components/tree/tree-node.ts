@@ -1,12 +1,5 @@
 import { CdkDrag, CdkDragHandle } from '@angular/cdk/drag-drop';
-import {
-  Component,
-  contentChild,
-  inject,
-  model,
-  OnInit,
-  output,
-} from '@angular/core';
+import { Component, contentChild, inject, model, OnInit, output } from '@angular/core';
 import { Tree } from './tree';
 import { NgIcon, provideIcons } from '@ng-icons/core';
 import { lucideGripVertical } from '@ng-icons/lucide';
@@ -14,13 +7,10 @@ import { lucideGripVertical } from '@ng-icons/lucide';
 @Component({
   selector: 'b-tree-node',
   imports: [CdkDragHandle, NgIcon],
-  template: `<section>
+  template: `
+    <section>
       @if (!node.disabled) {
-        <ng-icon
-          name="lucideGripVertical"
-          size="16"
-          color="currentColor"
-          cdkDragHandle />
+        <ng-icon name="lucideGripVertical" size="16" color="currentColor" cdkDragHandle />
       }
       <div
         class="projected-content"
@@ -28,7 +18,8 @@ import { lucideGripVertical } from '@ng-icons/lucide';
         (keydown.enter)="nestedTree() && handleExtension()"
         (keydown.space)="nestedTree() && handleExtension()"
         role="button"
-        tabindex="0">
+        tabindex="0"
+      >
         <ng-content />
       </div>
       @if (nestedTree()) {
@@ -41,7 +32,8 @@ import { lucideGripVertical } from '@ng-icons/lucide';
           stroke="currentColor"
           stroke-width="2"
           stroke-linecap="round"
-          stroke-linejoin="round">
+          stroke-linejoin="round"
+        >
           <path d="m6 9 6 6 6-6" />
         </svg>
       }
@@ -50,7 +42,8 @@ import { lucideGripVertical } from '@ng-icons/lucide';
       <div class="nested">
         <ng-content select="b-tree" />
       </div>
-    } `,
+    }
+  `,
   hostDirectives: [
     {
       directive: CdkDrag,

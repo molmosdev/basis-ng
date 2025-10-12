@@ -1,10 +1,4 @@
-import {
-  Component,
-  ElementRef,
-  inject,
-  model,
-  AfterViewInit,
-} from '@angular/core';
+import { Component, ElementRef, inject, model, AfterViewInit } from '@angular/core';
 
 @Component({
   selector: 'input[b-range]',

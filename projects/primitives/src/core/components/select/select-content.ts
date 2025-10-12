@@ -15,7 +15,9 @@ import { ConnectedOverlay } from '../../directives/connected-overlay';
 @Component({
   selector: 'ul[b-select-content]',
   imports: [],
-  template: `<ng-content />`,
+  template: `
+    <ng-content />
+  `,
   hostDirectives: [
     {
       directive: CdkListbox,
@@ -34,9 +36,7 @@ export class SelectContent implements OnInit {
   listBox = inject(CdkListbox);
   readonly options = contentChildren(CdkOption);
   readonly listKeyManager = computed(() =>
-    new ActiveDescendantKeyManager(this.options())
-      .withWrap()
-      .withVerticalOrientation()
+    new ActiveDescendantKeyManager(this.options()).withWrap().withVerticalOrientation(),
   );
   changeValueEmitter = output<string[]>();
   readonly multiple = model<boolean>(false);

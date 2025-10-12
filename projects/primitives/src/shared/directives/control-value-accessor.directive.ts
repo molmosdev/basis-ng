@@ -2,7 +2,7 @@ import { Directive, ElementRef, forwardRef, inject } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Directive({
-  selector: '[b-cva]',
+  selector: '[bCva]',
   standalone: true,
   providers: [
     {
@@ -21,12 +21,12 @@ export class ControlValueAccessorDirective implements ControlValueAccessor {
   /**
    * The callback function to call when the control's value changes in the UI.
    */
-  private onChange: any = () => undefined;
+  private onChange: (value: unknown) => void = () => undefined;
 
   /**
    * The callback function to call when the control is touched.
    */
-  private onTouched: any = () => undefined;
+  private onTouched: () => void = () => undefined;
 
   /**
    * The element reference.
@@ -37,15 +37,15 @@ export class ControlValueAccessorDirective implements ControlValueAccessor {
    * Writes a new value to the element.
    * @param value The new value.
    */
-  writeValue(value: any): void {
-    this.el.nativeElement.value = value;
+  writeValue(value: unknown): void {
+    this.el.nativeElement.value = value as string | number | null | undefined;
   }
 
   /**
    * Registers a callback function that should be called when the control's value changes in the UI.
    * @param fn The callback function.
    */
-  registerOnChange(fn: any): void {
+  registerOnChange(fn: (value: unknown) => void): void {
     this.onChange = fn;
   }
 
@@ -53,7 +53,7 @@ export class ControlValueAccessorDirective implements ControlValueAccessor {
    * Registers a callback function that should be called when the control is touched.
    * @param fn The callback function.
    */
-  registerOnTouched(fn: any): void {
+  registerOnTouched(fn: () => void): void {
     this.onTouched = fn;
   }
 
@@ -65,8 +65,8 @@ export class ControlValueAccessorDirective implements ControlValueAccessor {
     this.el.nativeElement.disabled = isDisabled;
   }
 
-  handleChange(value: any): void {
+  handleChange(value: unknown): void {
     this.onChange(value);
-    this.el.nativeElement.value = value;
+    this.el.nativeElement.value = value as string | number | null | undefined;
   }
 }

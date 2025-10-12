@@ -3,14 +3,13 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'button[b-menu-item]',
-  template: `<ng-content />`,
+  template: `
+    <ng-content />
+  `,
   hostDirectives: [
     {
       directive: CdkMenuItem,
-      inputs: [
-        'cdkMenuItemDisabled: disabled',
-        'cdkMenuitemTypeaheadLabel: typeaheadLabel',
-      ],
+      inputs: ['cdkMenuItemDisabled: disabled', 'cdkMenuitemTypeaheadLabel: typeaheadLabel'],
       outputs: ['cdkMenuItemTriggered: triggered'],
     },
   ],

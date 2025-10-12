@@ -10,8 +10,7 @@ export const docsRoutes: Routes = [
   },
   {
     path: 'introduction',
-    loadComponent: () =>
-      import('./pages/introduction').then(c => c.Introduction),
+    loadComponent: () => import('./pages/introduction').then((c) => c.Introduction),
     title: 'Introduction - Basis UI',
     data: {
       title: 'Introduction',
@@ -19,8 +18,7 @@ export const docsRoutes: Routes = [
   },
   {
     path: 'installation',
-    loadComponent: () =>
-      import('./pages/installation').then(c => c.Installation),
+    loadComponent: () => import('./pages/installation').then((c) => c.Installation),
     title: 'Installation - Basis UI',
     data: {
       title: 'Installation',
@@ -28,7 +26,7 @@ export const docsRoutes: Routes = [
   },
   {
     path: 'theming',
-    loadComponent: () => import('./pages/theming').then(c => c.Theming),
+    loadComponent: () => import('./pages/theming').then((c) => c.Theming),
     title: 'Theming - Basis UI',
     data: {
       title: 'Theming',

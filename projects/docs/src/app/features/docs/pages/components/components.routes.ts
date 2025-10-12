@@ -8,8 +8,7 @@ export const componentsRoutes: Routes = [
   },
   {
     path: 'alert',
-    loadComponent: () =>
-      import('./pages/alert-documentation').then(c => c.AlertDocumentation),
+    loadComponent: () => import('./pages/alert-documentation').then((c) => c.AlertDocumentation),
     title: 'Alert - Basis UI',
     data: {
       title: 'Alert',
@@ -17,8 +16,7 @@ export const componentsRoutes: Routes = [
   },
   {
     path: 'badge',
-    loadComponent: () =>
-      import('./pages/badge-documentation').then(c => c.BadgeDocumentation),
+    loadComponent: () => import('./pages/badge-documentation').then((c) => c.BadgeDocumentation),
     title: 'Badge - Basis UI',
     data: {
       title: 'Badge',
@@ -26,8 +24,7 @@ export const componentsRoutes: Routes = [
   },
   {
     path: 'button',
-    loadComponent: () =>
-      import('./pages/button-documentation').then(c => c.ButtonDocumentation),
+    loadComponent: () => import('./pages/button-documentation').then((c) => c.ButtonDocumentation),
     title: 'Button - Basis UI',
     data: {
       title: 'Button',
@@ -35,8 +32,7 @@ export const componentsRoutes: Routes = [
   },
   {
     path: 'card',
-    loadComponent: () =>
-      import('./pages/card-documentation').then(c => c.CardDocumentation),
+    loadComponent: () => import('./pages/card-documentation').then((c) => c.CardDocumentation),
     title: 'Card - Basis UI',
     data: {
       title: 'Card',
@@ -45,9 +41,7 @@ export const componentsRoutes: Routes = [
   {
     path: 'checkbox',
     loadComponent: () =>
-      import('./pages/checkbox-documentation').then(
-        c => c.CheckboxDocumentation
-      ),
+      import('./pages/checkbox-documentation').then((c) => c.CheckboxDocumentation),
     title: 'Checkbox - Basis UI',
     data: {
       title: 'Checkbox',
@@ -65,8 +59,7 @@ export const componentsRoutes: Routes = [
   // },
   {
     path: 'dialog',
-    loadComponent: () =>
-      import('./pages/dialog-documentation').then(c => c.DialogDocumentation),
+    loadComponent: () => import('./pages/dialog-documentation').then((c) => c.DialogDocumentation),
     title: 'Dialog - Basis UI',
     data: {
       title: 'Dialog',
@@ -74,8 +67,7 @@ export const componentsRoutes: Routes = [
   },
   {
     path: 'drawer',
-    loadComponent: () =>
-      import('./pages/drawer-documentation').then(c => c.DrawerDocumentation),
+    loadComponent: () => import('./pages/drawer-documentation').then((c) => c.DrawerDocumentation),
     title: 'Drawer - Basis UI',
     data: {
       title: 'Drawer',
@@ -83,8 +75,7 @@ export const componentsRoutes: Routes = [
   },
   {
     path: 'input',
-    loadComponent: () =>
-      import('./pages/input-documentation').then(c => c.InputDocumentation),
+    loadComponent: () => import('./pages/input-documentation').then((c) => c.InputDocumentation),
     title: 'Input - Basis UI',
     data: {
       title: 'Input',
@@ -93,9 +84,7 @@ export const componentsRoutes: Routes = [
   {
     path: 'input-group',
     loadComponent: () =>
-      import('./pages/input-group-documentation').then(
-        c => c.InputGroupDocumentation
-      ),
+      import('./pages/input-group-documentation').then((c) => c.InputGroupDocumentation),
     title: 'Input Group - Basis UI',
     data: {
       title: 'Input Group',
@@ -103,8 +92,7 @@ export const componentsRoutes: Routes = [
   },
   {
     path: 'menu',
-    loadComponent: () =>
-      import('./pages/menu-documentation').then(c => c.MenuDocumentation),
+    loadComponent: () => import('./pages/menu-documentation').then((c) => c.MenuDocumentation),
     title: 'Menu - Basis UI',
     data: {
       title: 'Menu',
@@ -112,8 +100,7 @@ export const componentsRoutes: Routes = [
   },
   {
     path: 'otp',
-    loadComponent: () =>
-      import('./pages/otp-documentation').then(c => c.OtpDocumentation),
+    loadComponent: () => import('./pages/otp-documentation').then((c) => c.OtpDocumentation),
     title: 'OTP - Basis UI',
     data: {
       title: 'OTP',
@@ -123,7 +110,7 @@ export const componentsRoutes: Routes = [
   {
     path: 'popover',
     loadComponent: () =>
-      import('./pages/popover-documentation').then(c => c.PopoverDocumentation),
+      import('./pages/popover-documentation').then((c) => c.PopoverDocumentation),
     title: 'Popover - Basis UI',
     data: {
       title: 'Popover',
@@ -132,8 +119,7 @@ export const componentsRoutes: Routes = [
   },
   {
     path: 'range',
-    loadComponent: () =>
-      import('./pages/range-documentation').then(c => c.RangeDocumentation),
+    loadComponent: () => import('./pages/range-documentation').then((c) => c.RangeDocumentation),
     title: 'Range - Basis UI',
     data: {
       title: 'Range',
@@ -141,8 +127,7 @@ export const componentsRoutes: Routes = [
   },
   {
     path: 'select',
-    loadComponent: () =>
-      import('./pages/select-documentation').then(c => c.SelectDocumentation),
+    loadComponent: () => import('./pages/select-documentation').then((c) => c.SelectDocumentation),
     title: 'Select - Basis UI',
     data: {
       title: 'Select',
@@ -151,8 +136,7 @@ export const componentsRoutes: Routes = [
   },
   {
     path: 'sheet',
-    loadComponent: () =>
-      import('./pages/sheet-documentation').then(c => c.SheetDocumentation),
+    loadComponent: () => import('./pages/sheet-documentation').then((c) => c.SheetDocumentation),
     title: 'Sheet - Basis UI',
     data: {
       title: 'Sheet',
@@ -161,7 +145,7 @@ export const componentsRoutes: Routes = [
   {
     path: 'spinner',
     loadComponent: () =>
-      import('./pages/spinner-documentation').then(c => c.SpinnerDocumentation),
+      import('./pages/spinner-documentation').then((c) => c.SpinnerDocumentation),
     title: 'Spinner - Basis UI',
     data: {
       title: 'Spinner',
@@ -169,8 +153,7 @@ export const componentsRoutes: Routes = [
   },
   {
     path: 'switch',
-    loadComponent: () =>
-      import('./pages/switch-documentation').then(c => c.SwitchDocumentation),
+    loadComponent: () => import('./pages/switch-documentation').then((c) => c.SwitchDocumentation),
     title: 'Switch - Basis UI',
     data: {
       title: 'Switch',
@@ -178,8 +161,7 @@ export const componentsRoutes: Routes = [
   },
   {
     path: 'tabs',
-    loadComponent: () =>
-      import('./pages/tabs-documentation').then(c => c.TabsDocumentation),
+    loadComponent: () => import('./pages/tabs-documentation').then((c) => c.TabsDocumentation),
     title: 'Tabs - Basis UI',
     data: {
       title: 'Tabs',
@@ -188,9 +170,7 @@ export const componentsRoutes: Routes = [
   {
     path: 'textarea',
     loadComponent: () =>
-      import('./pages/textarea-documentation').then(
-        c => c.TextareaDocumentation
-      ),
+      import('./pages/textarea-documentation').then((c) => c.TextareaDocumentation),
     title: 'Textarea - Basis UI',
     data: {
       title: 'Textarea',
@@ -199,7 +179,7 @@ export const componentsRoutes: Routes = [
   {
     path: 'tooltip',
     loadComponent: () =>
-      import('./pages/tooltip-documentation').then(c => c.TooltipDocumentation),
+      import('./pages/tooltip-documentation').then((c) => c.TooltipDocumentation),
     title: 'Tooltip - Basis UI',
     data: {
       title: 'Tooltip',
@@ -208,8 +188,7 @@ export const componentsRoutes: Routes = [
   },
   {
     path: 'tree',
-    loadComponent: () =>
-      import('./pages/tree-documentation').then(c => c.TreeDocumentation),
+    loadComponent: () => import('./pages/tree-documentation').then((c) => c.TreeDocumentation),
     title: 'Tree - Basis UI',
     data: {
       title: 'Tree',

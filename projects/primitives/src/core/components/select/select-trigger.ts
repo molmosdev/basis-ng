@@ -2,7 +2,8 @@ import { Component, ElementRef, inject, output, signal } from '@angular/core';
 
 @Component({
   selector: 'button[b-select-trigger]',
-  template: `<ng-content />
+  template: `
+    <ng-content />
     <svg
       xmlns="http://www.w3.org/2000/svg"
       width="16"
@@ -13,9 +14,11 @@ import { Component, ElementRef, inject, output, signal } from '@angular/core';
       stroke-width="2"
       stroke-linecap="round"
       stroke-linejoin="round"
-      class="lucide lucide-chevron-down-icon lucide-chevron-down">
+      class="lucide lucide-chevron-down-icon lucide-chevron-down"
+    >
       <path d="m6 9 6 6 6-6" />
-    </svg> `,
+    </svg>
+  `,
   host: {
     '(keydown.arrowUp)': 'buttonClicked.emit()',
     '(keydown.arrowDown)': 'buttonClicked.emit()',

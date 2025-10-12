@@ -39,7 +39,7 @@ export class Drawer {
       ? `translateY(${this.translateY()}%)`
       : this.isOpen()
         ? 'translateY(0%)'
-        : 'translateY(100%)'
+        : 'translateY(100%)',
   );
   private readonly el = inject(ElementRef);
 
@@ -83,7 +83,7 @@ export class Drawer {
     // If open, the initial position is 0%; if closed, it is 100%
     const newPos = Math.min(
       100,
-      Math.max(0, this.isOpen() ? 0 + deltaPercent : 100 + deltaPercent)
+      Math.max(0, this.isOpen() ? 0 + deltaPercent : 100 + deltaPercent),
     );
     this.translateY.set(newPos);
   }

@@ -3,58 +3,47 @@ import { Checkbox, Alert } from '@basis-ng/primitives';
 import { provideIcons } from '@ng-icons/core';
 import { lucideRocket } from '@ng-icons/lucide';
 import { CodeBlock } from '../shared/components/code-block';
-import {
-  FormsModule,
-  ReactiveFormsModule,
-  FormControl,
-  FormGroup,
-} from '@angular/forms';
+import { FormsModule, ReactiveFormsModule, FormControl, FormGroup } from '@angular/forms';
 import { StepsButtons } from '../../shared/components/steps-buttons';
 
 @Component({
   selector: 'article[app-checkbox-documentation]',
-  imports: [
-    CodeBlock,
-    Checkbox,
-    FormsModule,
-    ReactiveFormsModule,
-    StepsButtons,
-    Alert,
-  ],
+  imports: [CodeBlock, Checkbox, FormsModule, ReactiveFormsModule, StepsButtons, Alert],
   template: `
     <app-steps-buttons
       [previous]="{ label: 'Card', path: '/docs/components/card' }"
       [next]="{
         label: 'Dialog',
         path: '/docs/components/dialog',
-      }" />
+      }"
+    />
     <b-alert icon="lucideRocket" title="Components are in alpha">
-      Components are in alpha Try them out! We'd love to hear your feedback!
-      Expect breaking changes!
+      Components are in alpha Try them out! We'd love to hear your feedback! Expect breaking
+      changes!
     </b-alert>
     <h1 class="font-bold text-2xl">Checkbox</h1>
     <div class="flex flex-col gap-4">
-      <span> Checkbox is a custom toggle component. </span>
+      <span>Checkbox is a custom toggle component.</span>
       <code-block [code]="angularImport" />
-      <span>
-        Include this to apply predefined styles. The component is headless
-        without it.
-      </span>
+      <span>Include this to apply predefined styles. The component is headless without it.</span>
       <code-block [code]="stylesImport" />
       <h2 class="font-semibold text-xl">Basic</h2>
       <code-block [code]="basicUsage" />
       <div
-        class="border border-gray-200 dark:border-neutral-900 rounded-lg p-6 mb-6 flex flex-col items-center justify-center gap-4">
+        class="border border-gray-200 dark:border-neutral-900 rounded-lg p-6 mb-6 flex flex-col items-center justify-center gap-4"
+      >
         <input
           type="checkbox"
           b-checkbox
           [value]="basicValue"
-          (valueChange)="onValueChange($event)" />
+          (valueChange)="onValueChange($event)"
+        />
       </div>
       <h2 class="font-semibold text-xl">Sizes</h2>
       <code-block [code]="sizesUsage" />
       <div
-        class="border border-gray-200 dark:border-neutral-900 rounded-lg p-6 mb-6 flex flex-col items-center justify-center gap-4">
+        class="border border-gray-200 dark:border-neutral-900 rounded-lg p-6 mb-6 flex flex-col items-center justify-center gap-4"
+      >
         <input type="checkbox" b-checkbox class="b-size-sm" />
         <input type="checkbox" b-checkbox class="b-size-md" />
         <input type="checkbox" b-checkbox class="b-size-lg" />
@@ -62,14 +51,16 @@ import { StepsButtons } from '../../shared/components/steps-buttons';
       <h2 class="font-semibold text-xl">Angular Binding with ngModel</h2>
       <code-block [code]="ngModelUsage" />
       <div
-        class="border border-gray-200 dark:border-neutral-900 rounded-lg p-6 mb-6 flex flex-col items-center justify-center gap-4">
+        class="border border-gray-200 dark:border-neutral-900 rounded-lg p-6 mb-6 flex flex-col items-center justify-center gap-4"
+      >
         <input type="checkbox" b-checkbox [(ngModel)]="ngModelValue" />
       </div>
       <h2 class="font-semibold text-xl">Angular Forms with formControlName</h2>
       <code-block [code]="formControlUsage" />
       <form [formGroup]="form">
         <div
-          class="border border-gray-200 dark:border-neutral-900 rounded-lg p-6 mb-6 flex flex-col items-center justify-center gap-4">
+          class="border border-gray-200 dark:border-neutral-900 rounded-lg p-6 mb-6 flex flex-col items-center justify-center gap-4"
+        >
           <input type="checkbox" b-checkbox formControlName="checkboxControl" />
         </div>
       </form>
@@ -79,12 +70,12 @@ import { StepsButtons } from '../../shared/components/steps-buttons';
       [next]="{
         label: 'Dialog',
         path: '/docs/components/dialog',
-      }" />
+      }"
+    />
   `,
   providers: [provideIcons({ lucideRocket })],
   host: {
-    class:
-      'mx-auto flex w-full max-w-3xl min-w-0 flex-1 flex-col gap-6 px-4 pb-6 sm:pb-20',
+    class: 'mx-auto flex w-full max-w-3xl min-w-0 flex-1 flex-col gap-6 px-4 pb-6 sm:pb-20',
   },
 })
 export class CheckboxDocumentation {

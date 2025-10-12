@@ -3,7 +3,9 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'b-menu',
-  template: `<ng-content />`,
+  template: `
+    <ng-content />
+  `,
   hostDirectives: [CdkMenu],
 })
 export class Menu {}

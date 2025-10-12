@@ -9,26 +9,26 @@ import { Badge } from '@basis-ng/primitives';
   template: `
     <app-steps-buttons
       [previous]="{ label: 'Installation', path: '/docs/installation' }"
-      [next]="{ label: 'Alert', path: '/docs/components/alert' }" />
+      [next]="{ label: 'Alert', path: '/docs/components/alert' }"
+    />
     <h1 class="font-bold text-2xl flex gap-2 items-start">
       Theming
-      <span b-badge class="b-variant-outlined b-size-sm"> New </span>
+      <span b-badge class="b-variant-outlined b-size-sm">New</span>
     </h1>
     <div class="flex flex-col gap-4">
       <p>
-        Easily customize your application's look and feel using theme and
-        Tailwind tokens. Define your own fonts, radius, and color palettes for
-        both light and dark modes. Example:
+        Easily customize your application's look and feel using theme and Tailwind tokens. Define
+        your own fonts, radius, and color palettes for both light and dark modes. Example:
       </p>
       <code-block [code]="themingExample" />
     </div>
     <app-steps-buttons
       [previous]="{ label: 'Installation', path: '/docs/installation' }"
-      [next]="{ label: 'Alert', path: '/docs/components/alert' }" />
+      [next]="{ label: 'Alert', path: '/docs/components/alert' }"
+    />
   `,
   host: {
-    class:
-      'mx-auto flex w-full max-w-3xl min-w-0 flex-1 flex-col gap-6 px-4 pb-6 sm:pb-20',
+    class: 'mx-auto flex w-full max-w-3xl min-w-0 flex-1 flex-col gap-6 px-4 pb-6 sm:pb-20',
   },
 })
 export class Theming {

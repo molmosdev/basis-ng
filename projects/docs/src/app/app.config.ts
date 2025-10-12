@@ -1,12 +1,5 @@
-import {
-  ApplicationConfig,
-  provideZonelessChangeDetection,
-} from '@angular/core';
-import {
-  provideRouter,
-  withInMemoryScrolling,
-  withViewTransitions,
-} from '@angular/router';
+import { ApplicationConfig, provideZonelessChangeDetection } from '@angular/core';
+import { provideRouter, withInMemoryScrolling, withViewTransitions } from '@angular/router';
 import { routes } from './app.routes';
 import { provideHighlightOptions } from 'ngx-highlightjs';
 
@@ -19,7 +12,7 @@ export const appConfig: ApplicationConfig = {
       withInMemoryScrolling({
         scrollPositionRestoration: 'top',
         anchorScrolling: 'enabled',
-      })
+      }),
     ),
     provideHighlightOptions({
       coreLibraryLoader: () => import('highlight.js/lib/core'),

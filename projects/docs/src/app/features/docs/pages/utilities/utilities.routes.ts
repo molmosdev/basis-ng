@@ -4,9 +4,7 @@ export const utilitiesRoutes: Routes = [
   {
     path: 'translation',
     loadComponent: () =>
-      import('./pages/translation-documentation').then(
-        c => c.TranslationDocumentation
-      ),
+      import('./pages/translation-documentation').then((c) => c.TranslationDocumentation),
     title: 'Translation - Basis UI',
     data: {
       title: 'Translation',

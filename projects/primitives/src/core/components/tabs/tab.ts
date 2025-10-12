@@ -4,7 +4,9 @@ import { Component, inject } from '@angular/core';
 @Component({
   selector: 'b-tab',
   imports: [],
-  template: `<ng-content />`,
+  template: `
+    <ng-content />
+  `,
   hostDirectives: [
     {
       directive: CdkOption,

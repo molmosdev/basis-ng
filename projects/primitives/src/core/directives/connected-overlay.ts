@@ -181,14 +181,14 @@ export class ConnectedOverlay {
    * Computed list of `ConnectedPosition` objects based on the `positions` input.
    */
   readonly connectedPositions = computed<ConnectedPosition[]>(() =>
-    this.positions().map(position => this.positionsMap()[position])
+    this.positions().map((position) => this.positionsMap()[position]),
   );
 
   /**
    * Signal to track the currently active `ConnectionPositionPair`.
    */
   readonly connectedPositionPair = linkedSignal<ConnectionPositionPair>(
-    () => this.connectedPositions()[0]
+    () => this.connectedPositions()[0],
   );
 
   /**
@@ -213,7 +213,7 @@ export class ConnectedOverlay {
           position.originX === pair.originX &&
           position.originY === pair.originY &&
           position.overlayX === pair.overlayX &&
-          position.overlayY === pair.overlayY
+          position.overlayY === pair.overlayY,
       )?.[0]
       .split('-')[0];
   });

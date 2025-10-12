@@ -13,7 +13,9 @@ export type PopoverPosition =
 @Component({
   selector: 'b-popover-content',
   imports: [],
-  template: ` <ng-content /> `,
+  template: `
+    <ng-content />
+  `,
   styles: [
     `
       :host {

@@ -14,12 +14,9 @@ import { lucideTelescope } from '@ng-icons/lucide';
       <button
         b-button
         class="fixed top-6 right-4 z-30 b-variant-secondary "
-        (click)="drawerOpen.set(true)">
-        <ng-icon
-          name="lucideTelescope"
-          size="22"
-          color="currentColor"
-          cdkDragHandle />
+        (click)="drawerOpen.set(true)"
+      >
+        <ng-icon name="lucideTelescope" size="22" color="currentColor" cdkDragHandle />
         Explore
       </button>
       <b-drawer [(isOpen)]="drawerOpen" class="h-[60dvh]">
@@ -45,8 +42,6 @@ import { lucideTelescope } from '@ng-icons/lucide';
 })
 export class Documentation {
   responsiveManager = inject(ResponsiveManager);
-  readonly isMobile = computed(
-    () => this.responsiveManager.currentDevice() === 'mobile'
-  );
+  readonly isMobile = computed(() => this.responsiveManager.currentDevice() === 'mobile');
   readonly drawerOpen = signal(false);
 }

@@ -7,7 +7,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class Utils {
-  private debounceTimers = new Map<string, any>();
+  private debounceTimers = new Map<string, ReturnType<typeof setTimeout>>();
 
   /**
    * Executes a function after a delay, canceling any previous calls with the same key.
@@ -37,7 +37,7 @@ export class Utils {
    * @returns A string representing a UUID.
    */
   generateUUID(): string {
-    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, c => {
+    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, (c) => {
       const r = (Math.random() * 16) | 0; // Random integer between 0 and 15
       const v = c === 'x' ? r : (r & 0x3) | 0x8; // Version 4 UUID
       return v.toString(16);

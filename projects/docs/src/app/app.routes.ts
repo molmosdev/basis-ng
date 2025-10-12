@@ -9,13 +9,12 @@ export const routes: Routes = [
   },
   {
     path: 'home',
-    loadComponent: () => import('./features/home').then(c => c.Home),
+    loadComponent: () => import('./features/home').then((c) => c.Home),
     title: 'Basis UI',
   },
   {
     path: 'docs',
-    loadComponent: () =>
-      import('./features/docs/docs').then(c => c.Documentation),
+    loadComponent: () => import('./features/docs/docs').then((c) => c.Documentation),
     children: docsRoutes,
   },
   {

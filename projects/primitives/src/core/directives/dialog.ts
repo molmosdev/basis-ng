@@ -97,7 +97,7 @@ export class Dialog implements OnInit, OnDestroy {
   /**
    * Template reference representing the dialog content projected when opened.
    */
-  private readonly templateRef = inject(TemplateRef<any>);
+  private readonly templateRef = inject(TemplateRef<unknown>);
 
   /**
    * Lifecycle hook that registers the dialog with the dialog service.

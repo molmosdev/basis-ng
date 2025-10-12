@@ -8,7 +8,9 @@ import { Component, ElementRef, inject } from '@angular/core';
 @Component({
   selector: 'li[b-option]',
   imports: [],
-  template: `<ng-content />`,
+  template: `
+    <ng-content />
+  `,
   hostDirectives: [
     {
       directive: CdkOption,

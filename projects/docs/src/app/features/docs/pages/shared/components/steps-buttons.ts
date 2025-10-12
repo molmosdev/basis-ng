@@ -14,29 +14,15 @@ interface StepButtonConfig {
   imports: [Button, RouterLink, NgIcon],
   template: `
     @if (previous()) {
-      <button
-        b-button
-        [routerLink]="previous()?.path"
-        class="justify-start b-variant-secondary">
-        <ng-icon
-          name="lucideArrowLeft"
-          size="14"
-          color="currentColor"
-          class="-ml-0.5" />
+      <button b-button [routerLink]="previous()?.path" class="justify-start b-variant-secondary">
+        <ng-icon name="lucideArrowLeft" size="14" color="currentColor" class="-ml-0.5" />
         {{ previous()?.label }}
       </button>
     }
     @if (next()) {
-      <button
-        b-button
-        [routerLink]="next()?.path"
-        class="justify-end b-variant-secondary">
+      <button b-button [routerLink]="next()?.path" class="justify-end b-variant-secondary">
         {{ next()?.label }}
-        <ng-icon
-          name="lucideArrowRight"
-          size="14"
-          color="currentColor"
-          class="-mr-0.5" />
+        <ng-icon name="lucideArrowRight" size="14" color="currentColor" class="-mr-0.5" />
       </button>
     }
   `,

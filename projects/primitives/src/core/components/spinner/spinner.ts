@@ -10,7 +10,8 @@ import { lucideLoader, lucideLoaderCircle } from '@ng-icons/lucide';
     <ng-icon
       [name]="type() === 'bars' ? 'lucideLoader' : 'lucideLoaderCircle'"
       color="currentColor"
-      [size]="sizeInPx() + 'px'" />
+      [size]="sizeInPx() + 'px'"
+    />
   `,
   styles: [
     `

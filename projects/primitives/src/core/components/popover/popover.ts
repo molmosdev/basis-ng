@@ -30,7 +30,8 @@ import { Utils } from '../../../shared/services/utils';
         [animate.leave]="'b-popover-backdrop-leaving'"
         tabindex="-1"
         role="button"
-        aria-label="Close popover"></div>
+        aria-label="Close popover"
+      ></div>
     }
     @if (active()) {
       <ng-container *ngTemplateOutlet="contentTplRef()" />
@@ -81,14 +82,14 @@ export class Popover implements OnInit {
   readonly backdropClick = output<void>();
   readonly trigger = contentChild(PopoverTrigger);
   readonly content = contentChild(PopoverContent);
-  readonly contentTplRef = contentChild<TemplateRef<any>>('popoverContent');
+  readonly contentTplRef = contentChild<TemplateRef<unknown>>('popoverContent');
 
   ngOnInit(): void {
     this.setTriggerAnchorName();
   }
 
   constructor() {
-    effect(onCleanup => {
+    effect((onCleanup) => {
       if (this.active()) {
         this.setContentAnchorName();
         this.applyPanelClass();
@@ -155,17 +156,11 @@ export class Popover implements OnInit {
   }
 
   setContentAnchorName(): void {
-    this.content()?.el.nativeElement.style.setProperty(
-      '--anchor-name',
-      this.anchorName()
-    );
+    this.content()?.el.nativeElement.style.setProperty('--anchor-name', this.anchorName());
   }
 
   setTriggerAnchorName(): void {
-    this.trigger()?.el.nativeElement.style.setProperty(
-      'anchor-name',
-      this.anchorName()
-    );
+    this.trigger()?.el.nativeElement.style.setProperty('anchor-name', this.anchorName());
   }
 
   applyPanelClass(): void {
@@ -174,9 +169,9 @@ export class Popover implements OnInit {
 
     const classes = this.panelClass();
     if (typeof classes === 'string') {
-      classes.split(' ').forEach(cls => cls && contentEl.classList.add(cls));
+      classes.split(' ').forEach((cls) => cls && contentEl.classList.add(cls));
     } else if (Array.isArray(classes)) {
-      classes.forEach(cls => cls && contentEl.classList.add(cls));
+      classes.forEach((cls) => cls && contentEl.classList.add(cls));
     }
   }
 

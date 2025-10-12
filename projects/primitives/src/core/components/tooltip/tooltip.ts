@@ -5,7 +5,9 @@ import { TooltipContent } from './tooltip-content';
 
 @Component({
   selector: 'b-tooltip',
-  template: `<ng-content />`,
+  template: `
+    <ng-content />
+  `,
 })
 export class Tooltip implements AfterContentInit {
   readonly overlay = contentChild(ConnectedOverlay);

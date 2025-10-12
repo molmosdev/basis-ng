@@ -1,17 +1,13 @@
-import {
-  Component,
-  inject,
-  OnInit,
-  signal,
-  ViewEncapsulation,
-} from '@angular/core';
+import { Component, inject, OnInit, signal, ViewEncapsulation } from '@angular/core';
 import { CdkPortalOutlet } from '@angular/cdk/portal';
 import { CdkDialogContainer, DialogRef } from '@angular/cdk/dialog';
 import { DialogConfig, DialogManager } from '../../services/dialog-manager';
 
 @Component({
   selector: 'b-dialog-content',
-  template: `<ng-template cdkPortalOutlet />`,
+  template: `
+    <ng-template cdkPortalOutlet />
+  `,
   encapsulation: ViewEncapsulation.None,
   imports: [CdkPortalOutlet],
   host: {

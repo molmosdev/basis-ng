@@ -1,11 +1,4 @@
-import {
-  AfterViewInit,
-  Component,
-  ElementRef,
-  inject,
-  output,
-  signal,
-} from '@angular/core';
+import { AfterViewInit, Component, ElementRef, inject, output, signal } from '@angular/core';
 
 @Component({
   selector: 'input[b-switch]',

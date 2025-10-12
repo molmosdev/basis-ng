@@ -1,22 +1,12 @@
-import {
-  CdkDragDrop,
-  CdkDropList,
-  CdkDropListGroup,
-} from '@angular/cdk/drag-drop';
-import {
-  Component,
-  contentChildren,
-  effect,
-  inject,
-  input,
-  OnInit,
-  output,
-} from '@angular/core';
+import { CdkDragDrop, CdkDropList, CdkDropListGroup } from '@angular/cdk/drag-drop';
+import { Component, contentChildren, effect, inject, input, OnInit, output } from '@angular/core';
 import { TreeNode } from './tree-node';
 
 @Component({
   selector: 'b-tree',
-  template: `<ng-content />`,
+  template: `
+    <ng-content />
+  `,
   host: {
     '(cdkDropListDropped)': 'dropEmitter.emit($event)',
   },
@@ -50,13 +40,13 @@ export class Tree implements OnInit {
     const isDisabled = !this.draggable();
     this.tree.disabled = isDisabled;
 
-    this.nestedNodes().forEach(node => {
+    this.nestedNodes().forEach((node) => {
       node.handleNodeDisability(isDisabled);
     });
   }
 
   handleCloseRecursively(): void {
-    this.nestedNodes().forEach(node => {
+    this.nestedNodes().forEach((node) => {
       node.closeEmitter.subscribe(() => {
         this.closeNestedNodes();
       });
@@ -64,7 +54,7 @@ export class Tree implements OnInit {
   }
 
   closeNestedNodes(): void {
-    this.nestedNodes().forEach(node => {
+    this.nestedNodes().forEach((node) => {
       node.extended.set(false);
       node.nestedTree()?.closeNestedNodes();
     });

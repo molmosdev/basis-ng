@@ -1,10 +1,4 @@
-import {
-  Injectable,
-  Renderer2,
-  RendererFactory2,
-  inject,
-  PLATFORM_ID,
-} from '@angular/core';
+import { Injectable, Renderer2, RendererFactory2, inject, PLATFORM_ID } from '@angular/core';
 import { signal } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 

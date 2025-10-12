@@ -11,32 +11,29 @@ import { StepsButtons } from '../../shared/components/steps-buttons';
   template: `
     <app-steps-buttons
       [previous]="{ label: 'Combobox', path: '/docs/components/combobox' }"
-      [next]="{ label: 'Dialog', path: '/docs/components/dialog' }" />
+      [next]="{ label: 'Dialog', path: '/docs/components/dialog' }"
+    />
     <b-alert icon="lucideRocket" title="Components are in alpha">
-      Components are in alpha Try them out! We'd love to hear your feedback!
-      Expect breaking changes!
+      Components are in alpha Try them out! We'd love to hear your feedback! Expect breaking
+      changes!
     </b-alert>
     <h1 class="font-bold text-2xl">Command</h1>
     <div class="flex flex-col gap-4">
       <span>Command is a custom command palette component.</span>
       <code-block [code]="angularImport" />
-      <span
-        >Include this to apply predefined styles. The component is headless
-        without it.</span
-      >
+      <span>Include this to apply predefined styles. The component is headless without it.</span>
       <code-block [code]="stylesImport" />
       <h2 class="font-semibold text-xl">Properties</h2>
       <div
-        class="overflow-x-auto overflow-hidden rounded-lg border border-gray-200 dark:border-neutral-900 mb-6">
+        class="overflow-x-auto overflow-hidden rounded-lg border border-gray-200 dark:border-neutral-900 mb-6"
+      >
         <table class="table-auto w-full text-left text-sm">
           <thead class="bg-gray-50 dark:bg-neutral-900">
             <tr>
-              <th
-                class="border-b border-gray-200 dark:border-neutral-900 px-4 py-2 font-semibold">
+              <th class="border-b border-gray-200 dark:border-neutral-900 px-4 py-2 font-semibold">
                 Property
               </th>
-              <th
-                class="border-b border-gray-200 dark:border-neutral-900 px-4 py-2 font-semibold">
+              <th class="border-b border-gray-200 dark:border-neutral-900 px-4 py-2 font-semibold">
                 Type
               </th>
             </tr>
@@ -44,11 +41,13 @@ import { StepsButtons } from '../../shared/components/steps-buttons';
           <tbody>
             <tr>
               <td
-                class="border-t border-gray-200 dark:border-neutral-900 px-4 py-2 font-display-mono whitespace-nowrap">
+                class="border-t border-gray-200 dark:border-neutral-900 px-4 py-2 font-display-mono whitespace-nowrap"
+              >
                 maxHeight
               </td>
               <td
-                class="border-t border-gray-200 dark:border-neutral-900 px-4 py-2 font-display-mono whitespace-nowrap">
+                class="border-t border-gray-200 dark:border-neutral-900 px-4 py-2 font-display-mono whitespace-nowrap"
+              >
                 string
               </td>
             </tr>
@@ -57,14 +56,19 @@ import { StepsButtons } from '../../shared/components/steps-buttons';
       </div>
       <h2 class="font-semibold text-xl">Basic Usage</h2>
       <span>
-        Use <strong>Arrow Up</strong> and <strong>Arrow Down</strong> keys to
-        navigate between options, and press <strong>Enter</strong> to select an
-        option. The input remains focused, making it ideal for building CDK
-        components or autocomplete dropdowns.
+        Use
+        <strong>Arrow Up</strong>
+        and
+        <strong>Arrow Down</strong>
+        keys to navigate between options, and press
+        <strong>Enter</strong>
+        to select an option. The input remains focused, making it ideal for building CDK components
+        or autocomplete dropdowns.
       </span>
       <code-block [code]="basicUsage" />
       <div
-        class="border border-gray-200 dark:border-neutral-900 rounded-lg p-6 mb-6 flex flex-col items-center justify-center gap-4">
+        class="border border-gray-200 dark:border-neutral-900 rounded-lg p-6 mb-6 flex flex-col items-center justify-center gap-4"
+      >
         <b-command [style.max-width.px]="350" [maxHeight]="'200px'">
           <ul b-command-options>
             <li b-option value="option1">Option 1</li>
@@ -79,7 +83,8 @@ import { StepsButtons } from '../../shared/components/steps-buttons';
       <h2 class="font-semibold text-xl">Options Example</h2>
       <code-block [code]="optionsExample" />
       <div
-        class="border border-gray-200 dark:border-neutral-900 rounded-lg p-6 mb-6 flex flex-col items-center justify-center gap-4">
+        class="border border-gray-200 dark:border-neutral-900 rounded-lg p-6 mb-6 flex flex-col items-center justify-center gap-4"
+      >
         <b-command [style.max-width.px]="350" [maxHeight]="'200px'">
           <ul b-command-options>
             <li b-option value="option1">Option 1</li>
@@ -92,12 +97,12 @@ import { StepsButtons } from '../../shared/components/steps-buttons';
     </div>
     <app-steps-buttons
       [previous]="{ label: 'Combobox', path: '/docs/components/combobox' }"
-      [next]="{ label: 'Dialog', path: '/docs/components/dialog' }" />
+      [next]="{ label: 'Dialog', path: '/docs/components/dialog' }"
+    />
   `,
   providers: [provideIcons({ lucideRocket })],
   host: {
-    class:
-      'mx-auto flex w-full max-w-3xl min-w-0 flex-1 flex-col gap-6 px-4 pb-6 sm:pb-20',
+    class: 'mx-auto flex w-full max-w-3xl min-w-0 flex-1 flex-col gap-6 px-4 pb-6 sm:pb-20',
   },
 })
 export class CommandDocumentation {
@@ -106,7 +111,7 @@ export class CommandDocumentation {
   basicUsage = `<b-command [style.max-width.px]='350' [maxHeight]='200px'>\n  <ul b-command-options>\n    <li b-option value='option1'>Option 1</li>\n    <li b-option value='option2'>Option 2</li>\n    <li b-option value='option3'>Option 3</li>\n    <li b-option value='option4'>Option 4</li>\n    <li b-option value='option5'>Option 5</li>\n    <li b-option value='option6'>Option 6</li>\n  </ul>\n</b-command>`;
   optionsExample = `<b-command [style.max-width.px]='350' [maxHeight]='200px'>\n  <ul b-command-options>\n    <li b-option value='option1'>Option 1</li>\n    <li b-option value='option2'>Option 2</li>\n    <li b-option value='option3'>Option 3</li>\n  </ul>\n</b-command>`;
 
-  onOptionSelected(event: any) {
+  onOptionSelected(event: CustomEvent) {
     const option = event?.detail ?? event;
     console.log('Selected option:', option);
   }

@@ -12,7 +12,9 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
   selector: 'b-otp',
-  template: `<ng-content />`,
+  template: `
+    <ng-content />
+  `,
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
@@ -103,7 +105,7 @@ export class Otp implements AfterContentInit, ControlValueAccessor {
 
   private resetValues() {
     this.values = Array(this.length()).fill('');
-    this.digitInputs().forEach(input => {
+    this.digitInputs().forEach((input) => {
       input.el.nativeElement.value = '';
     });
   }
@@ -138,7 +140,7 @@ export class Otp implements AfterContentInit, ControlValueAccessor {
 
   setDisabledState(isDisabled: boolean): void {
     this.disabled.set(isDisabled);
-    this.digitInputs().forEach(input => {
+    this.digitInputs().forEach((input) => {
       input.el.nativeElement.disabled = isDisabled;
     });
   }

@@ -14,7 +14,8 @@ import { CommonModule } from '@angular/common';
   selector: 'b-sheet',
   standalone: true,
   imports: [CommonModule],
-  template: `<button class="close-button" (click)="isOpen.set(false)">
+  template: `
+    <button class="close-button" (click)="isOpen.set(false)">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="20"
@@ -25,12 +26,14 @@ import { CommonModule } from '@angular/common';
         stroke-width="0.094rem"
         stroke-linecap="round"
         stroke-linejoin="round"
-        class="lucide lucide-x">
+        class="lucide lucide-x"
+      >
         <path d="M18 6 6 18" />
         <path d="m6 6 12 12" />
       </svg>
     </button>
-    <ng-content /> `,
+    <ng-content />
+  `,
   host: {
     '[class.left]': 'side() === "left"',
     '[class.right]': 'side() === "right"',

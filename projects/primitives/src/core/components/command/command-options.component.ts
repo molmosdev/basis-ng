@@ -14,12 +14,14 @@ import {
 @Component({
   selector: 'ul[b-command-options]',
   imports: [],
-  template: `<ng-content />
+  template: `
+    <ng-content />
     @if (options().length === 0) {
       <div class="no-options-message">
         {{ noOptionsMessage() }}
       </div>
-    }`,
+    }
+  `,
   hostDirectives: [
     {
       directive: CdkListbox,
@@ -37,9 +39,7 @@ import {
 export class CommandOptionsComponent implements OnInit {
   readonly options = contentChildren(CdkOption);
   readonly listKeyManager = computed(() =>
-    new ActiveDescendantKeyManager(this.options())
-      .withWrap()
-      .withVerticalOrientation()
+    new ActiveDescendantKeyManager(this.options()).withWrap().withVerticalOrientation(),
   );
   readonly value = signal<string[]>([]);
   readonly highlightedOption = signal('1');
@@ -53,9 +53,7 @@ export class CommandOptionsComponent implements OnInit {
   }
 
   selectOption(value?: string[]): void {
-    const selectValue = value
-      ? value
-      : (this.listKeyManager().activeItem?.value ?? []);
+    const selectValue = value ? value : (this.listKeyManager().activeItem?.value ?? []);
     //  If the selectValue is an empty array or contains only an empty string, clear the selection
     if (selectValue.length === 1 && selectValue[0] === '') {
       this.value.set([]);
@@ -81,7 +79,7 @@ export class CommandOptionsComponent implements OnInit {
   }
 
   updateHighlightedOption(): void {
-    this.options().forEach(option => {
+    this.options().forEach((option) => {
       if (option.value === this.highlightedOption()) {
         option.element.classList.add('cdk-option-highlighted');
       } else {

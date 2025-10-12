@@ -3,12 +3,7 @@ import { Badge, Alert, Tabs, Tab } from '@basis-ng/primitives';
 import { provideIcons } from '@ng-icons/core';
 import { lucideRocket } from '@ng-icons/lucide';
 import { CodeBlock } from '../shared/components/code-block';
-import {
-  FormsModule,
-  ReactiveFormsModule,
-  FormGroup,
-  FormControl,
-} from '@angular/forms';
+import { FormsModule, ReactiveFormsModule, FormGroup, FormControl } from '@angular/forms';
 import { NgTemplateOutlet } from '@angular/common';
 import { StepsButtons } from '../../shared/components/steps-buttons';
 import { CommonModule } from '@angular/common';
@@ -30,35 +25,33 @@ import { CommonModule } from '@angular/common';
   template: `
     <app-steps-buttons
       [previous]="{ label: 'Switch', path: '/docs/components/switch' }"
-      [next]="{ label: 'Textarea', path: '/docs/components/textarea' }" />
+      [next]="{ label: 'Textarea', path: '/docs/components/textarea' }"
+    />
     <b-alert icon="lucideRocket" title="Components are in alpha">
-      Components are in alpha Try them out! We'd love to hear your feedback!
-      Expect breaking changes!
+      Components are in alpha Try them out! We'd love to hear your feedback! Expect breaking
+      changes!
     </b-alert>
     <h1 class="font-bold text-2xl flex gap-2 items-start">
       Tabs
-      <span b-badge class="b-variant-outlined b-size-sm"> New </span>
+      <span b-badge class="b-variant-outlined b-size-sm">New</span>
     </h1>
     <div class="flex flex-col gap-4">
       <span>
-        The Tabs component provides a way to organize content into multiple
-        views that can be switched between.
+        The Tabs component provides a way to organize content into multiple views that can be
+        switched between.
       </span>
       <code-block [code]="angularImport" />
-      <span>
-        Include this to apply predefined styles. The component is headless
-        without it.
-      </span>
+      <span>Include this to apply predefined styles. The component is headless without it.</span>
       <code-block [code]="stylesImport" />
       <h2 class="font-semibold text-xl">Keyboard Navigation</h2>
       <span>
-        Use the arrow keys to navigate between tabs. The component supports
-        horizontal navigation.
+        Use the arrow keys to navigate between tabs. The component supports horizontal navigation.
       </span>
       <h2 class="font-semibold text-xl">Sizes</h2>
       <code-block [code]="sizesUsage" />
       <div
-        class="border border-gray-200 dark:border-neutral-900 rounded-lg p-6 mb-6 flex flex-col gap-4 items-center">
+        class="border border-gray-200 dark:border-neutral-900 rounded-lg p-6 mb-6 flex flex-col gap-4 items-center"
+      >
         <b-tabs [(ngModel)]="sizesTab" class="b-size-sm">
           <b-tab value="tab1">Small</b-tab>
           <b-tab value="tab2">Small</b-tab>
@@ -78,7 +71,8 @@ import { CommonModule } from '@angular/common';
       <h2 class="font-semibold text-xl">Basic Usage</h2>
       <code-block [code]="basicUsage" />
       <div
-        class="border border-gray-200 dark:border-neutral-900 rounded-lg p-6 mb-6 flex flex-col gap-4 items-center">
+        class="border border-gray-200 dark:border-neutral-900 rounded-lg p-6 mb-6 flex flex-col gap-4 items-center"
+      >
         <b-tabs [(ngModel)]="selectedTab">
           <b-tab value="tab1">Tab 1</b-tab>
           <b-tab value="tab2">Tab 2</b-tab>
@@ -95,10 +89,15 @@ import { CommonModule } from '@angular/common';
         }
       </div>
       <h2 class="font-semibold text-xl">Lazy Loading Usage</h2>
-      <span>Use <code>ng-template</code> to lazily load tab content.</span>
+      <span>
+        Use
+        <code>ng-template</code>
+        to lazily load tab content.
+      </span>
       <code-block [code]="lazyLoadingUsage" />
       <div
-        class="border border-gray-200 dark:border-neutral-900 rounded-lg p-6 mb-6 flex flex-col gap-4 items-center">
+        class="border border-gray-200 dark:border-neutral-900 rounded-lg p-6 mb-6 flex flex-col gap-4 items-center"
+      >
         <b-tabs [(ngModel)]="lazySelectedTab">
           <b-tab value="tab1">Tab 1</b-tab>
           <b-tab value="tab2">Tab 2</b-tab>
@@ -127,7 +126,8 @@ import { CommonModule } from '@angular/common';
       <span>Use with Angular's Reactive Forms to manage tab state.</span>
       <code-block [code]="reactiveFormsUsage" />
       <div
-        class="border border-gray-200 dark:border-neutral-900 rounded-lg p-6 mb-6 flex flex-col gap-4 items-center">
+        class="border border-gray-200 dark:border-neutral-900 rounded-lg p-6 mb-6 flex flex-col gap-4 items-center"
+      >
         <form [formGroup]="tabsForm">
           <b-tabs formControlName="tabControl">
             <b-tab value="tab1">Tab 1</b-tab>
@@ -135,31 +135,25 @@ import { CommonModule } from '@angular/common';
             <b-tab value="tab3">Tab 3</b-tab>
           </b-tabs>
         </form>
-        @if (
-          tabsForm.value.tabControl && tabsForm.value.tabControl[0] === 'tab1'
-        ) {
+        @if (tabsForm.value.tabControl && tabsForm.value.tabControl[0] === 'tab1') {
           <p>Tab 1 content</p>
         }
-        @if (
-          tabsForm.value.tabControl && tabsForm.value.tabControl[0] === 'tab2'
-        ) {
+        @if (tabsForm.value.tabControl && tabsForm.value.tabControl[0] === 'tab2') {
           <p>Tab 2 content</p>
         }
-        @if (
-          tabsForm.value.tabControl && tabsForm.value.tabControl[0] === 'tab3'
-        ) {
+        @if (tabsForm.value.tabControl && tabsForm.value.tabControl[0] === 'tab3') {
           <p>Tab 3 content</p>
         }
       </div>
     </div>
     <app-steps-buttons
       [previous]="{ label: 'Switch', path: '/docs/components/switch' }"
-      [next]="{ label: 'Textarea', path: '/docs/components/textarea' }" />
+      [next]="{ label: 'Textarea', path: '/docs/components/textarea' }"
+    />
   `,
   providers: [provideIcons({ lucideRocket })],
   host: {
-    class:
-      'mx-auto flex w-full max-w-3xl min-w-0 flex-1 flex-col gap-6 px-4 pb-6 sm:pb-20',
+    class: 'mx-auto flex w-full max-w-3xl min-w-0 flex-1 flex-col gap-6 px-4 pb-6 sm:pb-20',
   },
 })
 export class TabsDocumentation {
