@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { CodeBlock } from '../shared/components/code-block';
-import { Spinner, Button, Alert } from 'primitives';
+import { Spinner, Button, Alert } from '@basis-ng/primitives';
 import { StepsButtons } from '../../shared/components/steps-buttons';
 import { provideIcons } from '@ng-icons/core';
 import { lucideRocket } from '@ng-icons/lucide';
@@ -110,7 +110,7 @@ import { lucideRocket } from '@ng-icons/lucide';
   },
 })
 export class SpinnerDocumentation {
-  angularImport = `import { Spinner } from 'primitives'`;
+  angularImport = `import { Spinner } from '@basis-ng/primitives' `;
   stylesImport = `@import '@basis-ng/styles/spinner';`;
   basicUsage = `<b-spinner size="sm" />\n<b-spinner size="md" />\n<b-spinner size="lg" />`;
   barsUsage = `<b-spinner type="bars" size="md" />`;

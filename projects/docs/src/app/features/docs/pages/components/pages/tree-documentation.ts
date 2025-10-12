@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Badge, Alert } from 'primitives';
+import { Badge, Alert } from '@basis-ng/primitives';
 import { provideIcons } from '@ng-icons/core';
 import { lucideRocket } from '@ng-icons/lucide';
 import { CodeBlock } from '../shared/components/code-block';
@@ -156,7 +156,7 @@ import { TreeNode } from '../../../../../../../../primitives/src/core/components
   },
 })
 export class TreeDocumentation {
-  angularImport = `import { Tree, TreeNode } from 'primitives'`;
+  angularImport = `import { Tree, TreeNode } from '@basis-ng/primitives' `;
   stylesImport = `@import '@basis-ng/styles/tree';`;
   basicUsage = `<b-tree>\n  <b-tree-node>Node 1</b-tree-node>\n  <b-tree-node>Node 2</b-tree-node>\n</b-tree>`;
   nestedUsage = `<b-tree>\n  <b-tree-node>\n    Parent Node\n    <b-tree>\n      <b-tree-node>Child Node 1</b-tree-node>\n      <b-tree-node>Child Node 2</b-tree-node>\n    </b-tree>\n  </b-tree-node>\n</b-tree>`;

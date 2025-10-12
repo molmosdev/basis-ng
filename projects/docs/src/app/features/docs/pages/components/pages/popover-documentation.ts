@@ -11,7 +11,7 @@ import {
   Input,
   Alert,
   Badge,
-} from 'primitives';
+} from '@basis-ng/primitives';
 import { StepsButtons } from '../../shared/components/steps-buttons';
 import { provideIcons } from '@ng-icons/core';
 import { lucideRocket } from '@ng-icons/lucide';
@@ -758,7 +758,7 @@ export class PopoverDocumentation {
   lastEvent: string | null = null;
   readonly isManualPopoverOpen = signal(false);
 
-  angularImport = `import { Popover, PopoverTrigger, PopoverContent } from 'primitives';`;
+  angularImport = `import { Popover, PopoverTrigger, PopoverContent } from '@basis-ng/primitives' ;`;
   stylesImport = `@import '@basis-ng/styles/index.css';`;
   basicClickUsage = `<b-popover>
   <button b-button bPopoverTrigger>Open popover</button>

@@ -11,7 +11,7 @@ import {
   Input,
   Badge,
   Alert,
-} from 'primitives';
+} from '@basis-ng/primitives';
 import { provideIcons } from '@ng-icons/core';
 import { lucideRocket } from '@ng-icons/lucide';
 import { StepsButtons } from '../../shared/components/steps-buttons';
@@ -141,7 +141,7 @@ import { StepsButtons } from '../../shared/components/steps-buttons';
   },
 })
 export class CardDocumentation {
-  angularImport = `import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from 'primitives'`;
+  angularImport = `import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from '@basis-ng/primitives' `;
   stylesImport = `@import '@basis-ng/styles/card';`;
   inputsCardUsage = `<b-card class="w-full max-w-[350px]">
   <b-card-header>

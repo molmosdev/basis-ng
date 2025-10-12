@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { CodeBlock } from '../shared/components/code-block';
-import { Button, Badge, Alert } from 'primitives';
+import { Button, Badge, Alert } from '@basis-ng/primitives';
 import { StepsButtons } from '../../shared/components/steps-buttons';
 import { NgIcon, provideIcons } from '@ng-icons/core';
 import { lucideInfo } from '@ng-icons/lucide';
@@ -494,7 +494,7 @@ import { OverlayOrigin } from '../../../../../../../../primitives/src/core/direc
   },
 })
 export class TooltipDocumentation {
-  angularImport = `import { Tooltip, TooltipContent, TooltipTrigger } from 'primitives';`;
+  angularImport = `import { Tooltip, TooltipContent, TooltipTrigger } from '@basis-ng/primitives' ;`;
   stylesImport = `@import '@basis-ng/styles/index.css';`;
   basicUsage = `<b-tooltip>
   <span bTooltipTrigger>Hover me</span>

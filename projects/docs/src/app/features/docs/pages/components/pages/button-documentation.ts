@@ -183,7 +183,7 @@ import {
   },
 })
 export class ButtonDocumentation {
-  angularImport = `import { Button } from 'primitives'`;
+  angularImport = `import { Button } from '@basis-ng/primitives' `;
   stylesImport = `@import '@basis-ng/styles/button';`;
   basicUsage = `<button b-button>\n  Click me\n</button>`;
   variantsUsage = `<button b-button class="b-variant-primary">Primary</button>\n<button b-button class="b-variant-secondary">Secondary</button>\n<button b-button class="b-variant-ghost">Ghost</button>\n<button b-button class="b-variant-outlined">Outlined</button>\n<button b-button class="b-variant-destructive">Destructive</button>`;

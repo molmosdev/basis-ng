@@ -1,5 +1,5 @@
 import { Component, input } from '@angular/core';
-import { Button } from 'primitives';
+import { Button } from '@basis-ng/primitives';
 import { provideIcons, NgIcon } from '@ng-icons/core';
 import { lucideCopy } from '@ng-icons/lucide';
 import { HighlightAuto } from 'ngx-highlightjs';

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { CodeBlock } from '../shared/components/code-block';
-import { CommandComponent, Alert } from 'primitives';
+import { CommandComponent, Alert } from '@basis-ng/primitives';
 import { provideIcons } from '@ng-icons/core';
 import { lucideRocket } from '@ng-icons/lucide';
 import { StepsButtons } from '../../shared/components/steps-buttons';
@@ -101,7 +101,7 @@ import { StepsButtons } from '../../shared/components/steps-buttons';
   },
 })
 export class CommandDocumentation {
-  angularImport = `import { CommandComponent } from 'primitives'`;
+  angularImport = `import { CommandComponent } from '@basis-ng/primitives' `;
   stylesImport = `@import '@basis-ng/styles/command';`;
   basicUsage = `<b-command [style.max-width.px]='350' [maxHeight]='200px'>\n  <ul b-command-options>\n    <li b-option value='option1'>Option 1</li>\n    <li b-option value='option2'>Option 2</li>\n    <li b-option value='option3'>Option 3</li>\n    <li b-option value='option4'>Option 4</li>\n    <li b-option value='option5'>Option 5</li>\n    <li b-option value='option6'>Option 6</li>\n  </ul>\n</b-command>`;
   optionsExample = `<b-command [style.max-width.px]='350' [maxHeight]='200px'>\n  <ul b-command-options>\n    <li b-option value='option1'>Option 1</li>\n    <li b-option value='option2'>Option 2</li>\n    <li b-option value='option3'>Option 3</li>\n  </ul>\n</b-command>`;

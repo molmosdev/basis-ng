@@ -1,6 +1,6 @@
 import { Component, signal } from '@angular/core';
 import { CodeBlock } from '../shared/components/code-block';
-import { Sheet, Button, Alert } from 'primitives';
+import { Sheet, Button, Alert } from '@basis-ng/primitives';
 import { StepsButtons } from '../../shared/components/steps-buttons';
 import { provideIcons } from '@ng-icons/core';
 import { lucideRocket } from '@ng-icons/lucide';
@@ -150,7 +150,7 @@ import { lucideRocket } from '@ng-icons/lucide';
   },
 })
 export class SheetDocumentation {
-  angularImport = `import { Sheet } from 'primitives'`;
+  angularImport = `import { Sheet } from '@basis-ng/primitives' `;
   stylesImport = `@import '@basis-ng/styles/sheet';`;
   basicUsage = `<button b-button (click)="openLeftSheet()">Open Left Sheet</button>\n<button b-button (click)="openRightSheet()">Open Right Sheet</button>\n\n<b-sheet\n  [(isOpen)]="isLeftOpen"\n  [side]="'left'">\n  <div style="display: flex; justify-content: center; align-items: center; height: 100%;">\n    This is the left sheet.\n  </div>\n</b-sheet>\n\n<b-sheet\n  [(isOpen)]="isRightOpen"\n  [side]="'right'">\n  <div style="display: flex; justify-content: center; align-items: center; height: 100%;">\n    This is the right sheet.\n  </div>\n</b-sheet>`;
   customWidthUsage = `<button b-button (click)="openCustomWidthSheet()">Open Custom Width Sheet</button>\n\n<b-sheet\n  [(isOpen)]="isCustomWidthOpen"\n  style="width: 500px;"\n  [side]="'right'">\n  <div style="display: flex; justify-content: center; align-items: center; height: 100%;">\n    This is a custom width sheet.\n  </div>\n</b-sheet>\n\n<!-- With Tailwind predefined styles -->\n<b-sheet\n  [(isOpen)]="isCustomWidthOpen"\n  class="!w-[500px]"\n  [side]="'right'">\n  <div style="display: flex; justify-content: center; align-items: center; height: 100%;">\n    This is a custom width sheet.\n  </div>\n</b-sheet>`;

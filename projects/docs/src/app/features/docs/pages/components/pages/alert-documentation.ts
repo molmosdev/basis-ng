@@ -7,7 +7,7 @@ import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-} from 'primitives';
+} from '@basis-ng/primitives';
 import { CodeBlock } from '../shared/components/code-block';
 import { StepsButtons } from '../../shared/components/steps-buttons';
 import { NgIcon, provideIcons } from '@ng-icons/core';
@@ -226,7 +226,7 @@ import {
   },
 })
 export class AlertDocumentation {
-  angularImport = `import { Alert } from 'primitives'`;
+  angularImport = `import { Alert } from '@basis-ng/primitives' `;
   stylesImport = `@import '@basis-ng/styles/alert';`;
   basicUsage = `<b-alert title="Info Alert" icon="Info">\n  This is a basic informational alert.\n</b-alert>`;
   typesUsage = `<b-alert class="b-type-success" title="Success" icon="CircleCheck">\n  This is a success alert.\n</b-alert>\n<b-alert class="b-type-error" title="Error" icon="CircleX">\n  This is an error alert.\n</b-alert>\n<b-alert class="b-type-warning" title="Warning" icon="OctagonAlert">\n  This is a warning alert.\n</b-alert>\n<b-alert class="b-type-info" title="Info" icon="Info">\n  This is an informational alert.\n</b-alert>`;

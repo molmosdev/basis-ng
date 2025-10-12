@@ -14,7 +14,12 @@ import {
   RouterLink,
   RouterLinkActive,
 } from '@angular/router';
-import { Badge, Menu, MenuItemRadio, ResponsiveManager } from 'primitives';
+import {
+  Badge,
+  Menu,
+  MenuItemRadio,
+  ResponsiveManager,
+} from '@basis-ng/primitives';
 import { docsRoutes } from '../../features/docs/docs.routes';
 import { componentsRoutes } from '../../features/docs/pages/components/components.routes';
 import { utilitiesRoutes } from '../../features/docs/pages/utilities/utilities.routes';

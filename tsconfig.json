@@ -7,8 +7,11 @@
     "strict": true,
     "noImplicitOverride": true,
     "noPropertyAccessFromIndexSignature": true,
+    "baseUrl": "./",
     "paths": {
-      "primitives": ["./dist/primitives"]
+      "primitives": ["dist/primitives"],
+      "@basis-ng/primitives": ["projects/primitives/src/public-api.ts"],
+      "@basis-ng/styles": ["projects/styles/src/index.css"]
     },
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,

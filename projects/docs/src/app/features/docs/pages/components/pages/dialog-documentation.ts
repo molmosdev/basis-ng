@@ -10,7 +10,7 @@ import {
   Button,
   Badge,
   Alert,
-} from 'primitives';
+} from '@basis-ng/primitives';
 import { provideIcons } from '@ng-icons/core';
 import { lucideRocket } from '@ng-icons/lucide';
 import { CodeBlock } from '../shared/components/code-block';
@@ -266,7 +266,7 @@ import { StepsButtons } from '../../shared/components/steps-buttons';
   },
 })
 export class DialogDocumentation {
-  angularImport = `import { Dialog, DialogManager } from 'primitives'`;
+  angularImport = `import { Dialog, DialogManager } from '@basis-ng/primitives' `;
   stylesImport = `@import '@basis-ng/styles/dialog';`;
   basicUsageService = `<button b-button (click)="openDialogManager()">Open Dialog (Service)</button>\n<ng-template bDialog="exampleDialog">\n  <b-card>\n    <b-card-header>\n      <b-card-title>Dialog</b-card-title>\n      <b-card-description>\n        This is a dialog component. You can use it to display important information to the user.\n      </b-card-description>\n    </b-card-header>\n    <b-card-footer>\n      <button b-button (click)="closeDialogManager()">Close</button>\n    </b-card-footer>\n  </b-card>\n</ng-template>`;
   basicUsageDirective = `<button b-button (click)="dialogRef.open()">Open Dialog (Directive Ref)</button>\n<ng-template bDialog="exampleDialog2" #dialogRef="bDialog">\n  <b-card>\n    <b-card-header>\n      <b-card-title>Dialog</b-card-title>\n      <b-card-description>\n        This is a dialog component. You can use it to display important information to the user.\n      </b-card-description>\n    </b-card-header>\n    <b-card-footer>\n      <button b-button (click)="dialogRef.close()">Close</button>\n    </b-card-footer>\n  </b-card>\n</ng-template>`;

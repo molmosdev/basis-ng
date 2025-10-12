@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { CodeBlock } from '../shared/components/code-block';
-import { Alert, Range } from 'primitives';
+import { Alert, Range } from '@basis-ng/primitives';
 import { StepsButtons } from '../../shared/components/steps-buttons';
 import { provideIcons } from '@ng-icons/core';
 import { lucideRocket } from '@ng-icons/lucide';
@@ -75,7 +75,7 @@ import {
   },
 })
 export class RangeDocumentation {
-  angularImport = `import { Range } from 'primitives'`;
+  angularImport = `import { Range } from '@basis-ng/primitives' `;
   stylesImport = `@import '@basis-ng/styles/range';`;
   ngModelUsage = `<input type="range" b-range [(ngModel)]="ngModelValue" />`;
   formControlUsage = `<form [formGroup]="form">

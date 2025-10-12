@@ -120,7 +120,7 @@ import { lucideEye, lucideEyeOff, lucideRocket } from '@ng-icons/lucide';
   },
 })
 export class InputGroupDocumentation {
-  angularImport = `import { InputGroup, Input } from 'primitives'`;
+  angularImport = `import { InputGroup, Input } from '@basis-ng/primitives' `;
   stylesImport = `@import '@basis-ng/styles/input-group';`;
   sizesUsage = `<b-input-group>\n  <span>@</span>\n  <input b-input class="b-size-sm" type="text" placeholder="username (sm)" />\n</b-input-group>\n<b-input-group>\n  <input b-input class="b-size-md" type="text" placeholder="Amount (md)" />\n  <span>USD</span>\n</b-input-group>\n<b-input-group>\n  <button b-button class="b-variant-secondary b-size-md">Search</button>\n  <input b-input class="b-size-lg" type="text" placeholder="Search... (lg)" />\n</b-input-group>`;
   prependTextUsage = `<b-input-group>\n  <span>@</span>\n  <input b-input type="text" placeholder="username" />\n</b-input-group>`;

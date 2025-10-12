@@ -1,6 +1,6 @@
 import { Component, signal } from '@angular/core';
 import { CodeBlock } from '../shared/components/code-block';
-import { Button, Drawer, Alert } from 'primitives';
+import { Button, Drawer, Alert } from '@basis-ng/primitives';
 import { provideIcons } from '@ng-icons/core';
 import { lucideRocket } from '@ng-icons/lucide';
 import { StepsButtons } from '../../shared/components/steps-buttons';
@@ -149,7 +149,7 @@ import { StepsButtons } from '../../shared/components/steps-buttons';
   },
 })
 export class DrawerDocumentation {
-  angularImport = `import { Drawer } from 'primitives'`;
+  angularImport = `import { Drawer } from '@basis-ng/primitives' `;
   stylesImport = `@import '@basis-ng/styles/drawer';`;
   basicUsage = `<button b-button (click)="isOpen = true">Open Drawer</button>
 <b-drawer [(isOpen)]="isOpen">

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { Button, PopoverTrigger } from 'primitives';
+import { Button, PopoverTrigger } from '@basis-ng/primitives';
 
 @Component({
   selector: 'app-home',

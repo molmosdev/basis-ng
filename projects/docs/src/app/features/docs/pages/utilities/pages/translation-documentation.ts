@@ -151,7 +151,7 @@ import { StepsButtons } from '../../shared/components/steps-buttons';
   },
 })
 export class TranslationDocumentation {
-  angularImport = `import { TranslationManager } from 'primitives';`;
+  angularImport = `import { TranslationManager } from '@basis-ng/primitives' ;`;
   dictionaryExample = `{
   "home": {
     "title": "Welcome Home",
@@ -169,7 +169,7 @@ ngOnInit() {
   const text = this.translation.translate('home.title'); // Returns translated string
 }`;
   signalsUsage = `this.translation.language(); // Current language code`;
-  pipeImport = `import { TranslatePipe } from 'primitives';`;
+  pipeImport = `import { TranslatePipe } from '@basis-ng/primitives' ;`;
   pipeUsage = `{{ 'home.title' | translate }}`;
   switchLanguage = `this.translation.setLanguage('fr'); // Loads French dictionary`;
   customDictionary = `this.translation.setDictionary({

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Checkbox, Alert } from 'primitives';
+import { Checkbox, Alert } from '@basis-ng/primitives';
 import { provideIcons } from '@ng-icons/core';
 import { lucideRocket } from '@ng-icons/lucide';
 import { CodeBlock } from '../shared/components/code-block';
@@ -88,7 +88,7 @@ import { StepsButtons } from '../../shared/components/steps-buttons';
   },
 })
 export class CheckboxDocumentation {
-  angularImport = `import { Checkbox } from 'primitives'`;
+  angularImport = `import { Checkbox } from '@basis-ng/primitives' `;
   stylesImport = `@import '@basis-ng/styles/checkbox';`;
   basicUsage = `<input type="checkbox" b-checkbox [value]="basicValue" (valueChange)="onValueChange($event)" />`;
   sizesUsage = `<input type="checkbox" b-checkbox class="b-size-sm" />\n<input type="checkbox" b-checkbox class="b-size-md" />\n<input type="checkbox" b-checkbox class="b-size-lg" />`;
