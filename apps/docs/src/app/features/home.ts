@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import {
+  Badge,
   Button,
+  ButtonGroup,
   Card,
   CardContent,
   CardDescription,
@@ -9,7 +11,16 @@ import {
   CardHeader,
   CardTitle,
   Input,
+  InputGroup,
 } from '@basis-ng/primitives';
+import { NgIcon, provideIcons } from '@ng-icons/core';
+import {
+  lucideArrowLeft,
+  lucideArrowRight,
+  lucideLoader,
+  lucideLoader2,
+  lucideSearch,
+} from '@ng-icons/lucide';
 
 @Component({
   selector: 'app-home',
@@ -24,6 +35,10 @@ import {
     Input,
     CardHeader,
     CardFooter,
+    InputGroup,
+    NgIcon,
+    Badge,
+    ButtonGroup,
   ],
   template: `
     <h1 class="font-medium text-4xl md:text-5xl xl:text-6xl text-center">
@@ -37,7 +52,7 @@ import {
       <div class="text-center">
       <button b-button routerLink="/docs" class="mt-6">Get started</button>
     </div>
-    <div class="grid grid-cols-1 gap-4 mt-10">
+    <div class="flex flex-col md:flex-row items-start gap-4 mt-10">
       <b-card>
         <b-card-header>
           <b-card-title>
@@ -56,12 +71,12 @@ import {
             <label for="card" class="text-sm">Card Number</label>
             <input type="text" b-input placeholder="1234 1234 1234 1234" id="card" />
           </div>
-          <div class="grid grid-cols-2 gap-4 mt-4">
-            <div class="flex-1 flex flex-col gap-1">
+          <div class="flex gap-4 mt-4">
+            <div class=" flex flex-col gap-1">
               <label for="expiry" class="text-sm">Expiry Date</label>
               <input type="text" b-input placeholder="MM/YY" id="expiry" />
             </div>
-            <div class="flex-1 flex flex-col gap-1">
+            <div class="flex flex-col gap-1">
               <label for="cvc" class="text-sm">CVC</label>
               <input type="text" b-input placeholder="CVC" id="cvc" />
             </div>
@@ -72,8 +87,46 @@ import {
           <button b-button class="w-full">Pay Now</button>
         </b-card-footer>
       </b-card>
+      <div class="flex flex-col gap-4">
+        <b-input-group>
+          <ng-icon name="lucideSearch" size=16 />
+          <input b-input placeholder="Search..." />
+        </b-input-group>
+        <div class="flex gap-2">
+          <span b-badge class="b-variant-secondary b-size-sm">
+            <ng-icon name="lucideLoader2" size=12 class="animate-spin" />
+            Updating
+          </span>
+          <span b-badge class="b-variant-outlined b-size-sm">
+            <ng-icon name="lucideLoader" size=12 class="animate-spin" />
+            Syncing
+          </span>
+        </div>
+        <b-input-group>
+          <span>https://</span>
+          <input b-input placeholder="basis.ng" />
+        </b-input-group>
+      </div>
+      <div class="flex gap-4">
+        <b-button-group>
+          <button b-button class="b-variant-outlined">1</button>
+          <button b-button class="b-variant-outlined">2</button>
+          <button b-button class="b-variant-outlined">3</button>
+        </b-button-group>
+        <b-button-group>
+          <button b-button class="b-variant-outlined b-squared">
+            <ng-icon name="lucideArrowLeft" size=18 />
+          </button>
+          <button b-button class="b-variant-outlined b-squared">
+            <ng-icon name="lucideArrowRight" size=18 />
+          </button>
+        </b-button-group>
+      </div>
     </div>
   `,
+  providers: [
+    provideIcons({ lucideSearch, lucideLoader, lucideLoader2, lucideArrowRight, lucideArrowLeft }),
+  ],
   host: {
     class:
       'pt-30 pb-8 sm:h-[calc(100dvh-5rem)] sm:p-0 flex flex-col justify-center items-center gap-1 px-8',
@@ -86,4 +139,5 @@ import {
  */
 export class Home {
   displayWith = (values: string[]) => (values || []).join(', ');
+  showPassword = false;
 }
