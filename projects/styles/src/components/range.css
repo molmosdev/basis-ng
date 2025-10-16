@@ -1,0 +1,29 @@
+input[b-range] {
+  @apply appearance-none w-full bg-secondary dark:bg-secondary-dark rounded-full cursor-pointer m-0 outline-none;
+}
+
+input[b-range]::-webkit-slider-thumb {
+  @apply appearance-none rounded-full cursor-pointer transition-colors inset-ring-1 inset-ring-ring border-0;
+  @apply bg-primary dark:bg-primary-dark dark:inset-ring-ring-dark;
+}
+
+input[b-range] {
+  @apply h-2;
+}
+input[b-range]::-webkit-slider-thumb {
+  @apply w-5 h-5;
+}
+
+input[b-range].b-size-sm {
+  @apply h-1;
+}
+input[b-range].b-size-sm::-webkit-slider-thumb {
+  @apply w-3 h-3;
+}
+
+input[b-range].b-size-lg {
+  @apply h-3;
+}
+input[b-range].b-size-lg::-webkit-slider-thumb {
+  @apply w-6 h-6;
+}

@@ -1,0 +1,24 @@
+b-card {
+  @apply flex flex-col gap-4 p-6 bg-background inset-ring-1 inset-ring-ring rounded-size-lg;
+  @apply dark:bg-background-dark dark:inset-ring-ring-dark;
+
+  b-card-header {
+    @apply flex flex-col gap-1;
+
+    b-card-title {
+      @apply text-base font-semibold opacity-100;
+    }
+
+    b-card-description {
+      @apply text-sm opacity-70;
+    }
+  }
+
+  b-card-content {
+    @apply flex flex-col gap-2;
+  }
+
+  b-card-footer {
+    @apply flex justify-end gap-2;
+  }
+}

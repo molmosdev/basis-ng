@@ -8,7 +8,9 @@ import { Component, ElementRef, inject } from '@angular/core';
 @Component({
   selector: 'li[b-option]',
   imports: [],
-  template: `<ng-content />`,
+  template: `
+    <ng-content />
+  `,
   hostDirectives: [
     {
       directive: CdkOption,
@@ -16,7 +18,7 @@ import { Component, ElementRef, inject } from '@angular/core';
     },
   ],
 })
-export class OptionComponent {
+export class Option {
   /**
    * The `ElementRef` of the option.
    * This provides direct access to the DOM element of the option.

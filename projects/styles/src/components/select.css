@@ -1,0 +1,211 @@
+b-select {
+  @apply flex gap-1;
+
+  button[b-select-trigger] {
+    /* Base */
+    @apply transition-colors duration-150 flex items-center justify-center gap-x-1.5 disabled:opacity-50 disabled:cursor-not-allowed;
+
+    /* Default spacing/typography applied when no explicit size is present */
+    @apply px-3 py-0 text-sm h-8 rounded-size-md gap-2;
+
+    /* Default visual */
+    @apply bg-secondary/10 text-secondary-foreground inset-ring-1 inset-ring-ring hover:bg-primary/5 shadow-xs;
+    @apply dark:bg-secondary-dark/40 dark:text-secondary-foreground-dark dark:inset-ring-ring-dark dark:hover:bg-primary-dark/5 shadow-xs;
+
+    svg {
+      @apply -mx-1;
+      @apply size-5;
+    }
+
+    &.b-size-sm {
+      @apply px-2 py-0 text-xs h-6 rounded-size-sm gap-1.5;
+
+      svg {
+        @apply size-4;
+      }
+    }
+
+    &.b-size-md {
+      @apply px-3 py-0 text-sm h-8 rounded-size-md gap-2;
+      svg {
+        @apply size-5;
+      }
+    }
+
+    &.b-size-lg {
+      @apply px-4 py-0 text-base h-10 rounded-size-lg gap-2.5;
+
+      svg {
+        @apply size-6;
+      }
+    }
+  }
+
+  &.ng-invalid.ng-touched,
+  &.ng-invalid.ng-dirty {
+    button[b-select-trigger] {
+      @apply text-destructive inset-ring-destructive/20 bg-destructive/10 hover:bg-destructive/20;
+      @apply dark:text-destructive-dark dark:inset-ring-destructive-dark/20 dark:bg-destructive-dark/10 dark:hover:bg-destructive-dark/20;
+
+      b-select-value {
+        @apply text-destructive;
+        @apply dark:text-destructive-dark;
+      }
+
+      &:focus-visible {
+        @apply outline-destructive;
+        @apply dark:outline-destructive-dark;
+      }
+    }
+  }
+}
+
+ul[b-select-content] {
+  @apply list-none box-border m-0 relative flex flex-col w-full overflow-y-auto;
+  @apply bg-background text-secondary-foreground inset-ring-1 inset-ring-ring shadow-xs;
+  @apply dark:bg-background-dark dark:text-secondary-foreground-dark dark:inset-ring-ring-dark shadow-xs;
+
+  @apply outline-none;
+  max-height: 320px;
+
+  @apply text-base rounded-size-md p-1 gap-1;
+
+  .no-options-message {
+    @apply py-1 px-2 text-sm;
+  }
+
+  input[b-input] {
+    @apply outline-none sticky top-0 z-10 bg-background;
+    @apply dark:bg-background-dark;
+  }
+
+  &.b-size-sm {
+    @apply text-sm rounded-size-sm p-0.5 gap-0.5;
+  }
+  &.b-size-md {
+    @apply text-base rounded-size-md p-1 gap-1;
+  }
+  &.b-size-lg {
+    @apply text-lg rounded-size-lg p-1.5 gap-1.5;
+  }
+
+  &.b-select-content-entering-top {
+    animation: overlay-entering-top 0.1s ease forwards;
+  }
+
+  &.b-select-content-leaving-top {
+    animation: overlay-leaving-top 0.1s ease forwards;
+  }
+
+  &.b-select-content-entering-bottom {
+    animation: overlay-entering-down 0.1s ease forwards;
+  }
+
+  &.b-select-content-leaving-bottom {
+    animation: overlay-leaving-down 0.1s ease forwards;
+  }
+
+  &.b-select-content-entering-left {
+    animation: overlay-entering-left 0.1s ease forwards;
+  }
+
+  &.b-select-content-leaving-left {
+    animation: overlay-leaving-left 0.1s ease forwards;
+  }
+
+  &.b-select-content-entering-right {
+    animation: overlay-entering-right 0.1s ease forwards;
+  }
+
+  &.b-select-content-leaving-right {
+    animation: overlay-leaving-right 0.1s ease forwards;
+  }
+}
+
+@keyframes overlay-entering-top {
+  from {
+    opacity: 0;
+    transform: translateY(5px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes overlay-leaving-top {
+  from {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(5px) scale(0.95);
+  }
+}
+
+@keyframes overlay-entering-down {
+  from {
+    opacity: 0;
+    transform: translateY(-5px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes overlay-leaving-down {
+  from {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-5px) scale(0.95);
+  }
+}
+
+@keyframes overlay-entering-left {
+  from {
+    opacity: 0;
+    transform: translateX(5px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+
+@keyframes overlay-leaving-left {
+  from {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(5px) scale(0.95);
+  }
+}
+
+@keyframes overlay-entering-right {
+  from {
+    opacity: 0;
+    transform: translateX(-5px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+
+@keyframes overlay-leaving-right {
+  from {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(-5px) scale(0.95);
+  }
+}

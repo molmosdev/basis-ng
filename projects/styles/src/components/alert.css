@@ -1,0 +1,58 @@
+/* Alert styles — Base / Types / Sizes / Close */
+
+/* Use the same selector the primitive exposes: `b-alert` */
+
+b-alert {
+  @apply flex items-start gap-4 p-4 rounded-size-md w-full box-border max-w-full font-sans;
+
+  .icon {
+    @apply flex-shrink-0 self-start;
+  }
+
+  .content {
+    @apply flex-1 flex flex-col gap-1;
+
+    .title {
+      @apply font-semibold;
+    }
+
+    .body {
+      @apply text-sm;
+    }
+  }
+
+  /* Default: info */
+  @apply bg-info/20 text-info-foreground dark:bg-info-dark/20 dark:text-info-foreground-dark;
+
+  /* Types (match primitive's `type` input): use `b-type-` prefix to avoid classname collisions */
+  &.b-type-success {
+    @apply bg-success/20 inset-ring-1 text-success-foreground dark:bg-success-dark/20 dark:text-success-foreground-dark inset-ring-success/90 dark:inset-ring-success-dark/30;
+  }
+
+  &.b-type-error {
+    @apply bg-destructive/20 inset-ring-1 text-destructive dark:bg-destructive-dark/20 dark:text-destructive-dark inset-ring-destructive/30 dark:inset-ring-destructive-dark/30;
+  }
+
+  &.b-type-warning {
+    @apply bg-warning/20 inset-ring-1 text-warning-foreground dark:bg-warning-dark/20 dark:text-warning-foreground-dark inset-ring-warning/90 dark:inset-ring-warning-dark/30;
+  }
+
+  &.b-type-info {
+    @apply bg-info/20 inset-ring-1 text-info-foreground dark:bg-info-dark/20 dark:text-info-foreground-dark inset-ring-info/90 dark:inset-ring-info-dark/30;
+  }
+
+  /* Sizes */
+  &.b-size-sm {
+    @apply p-2 text-sm;
+  }
+  &.b-size-md {
+    @apply p-4 text-base;
+  }
+  &.b-size-lg {
+    @apply p-6 text-lg;
+  }
+
+  .close-btn {
+    @apply ml-auto bg-transparent border-0 cursor-pointer p-1 rounded;
+  }
+}

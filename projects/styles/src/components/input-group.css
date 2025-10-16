@@ -1,0 +1,87 @@
+b-input-group {
+  /* Base */
+  @apply flex overflow-hidden items-center;
+  @apply bg-secondary/10 text-secondary-foreground inset-ring-1 inset-ring-ring shadow-xs;
+  @apply dark:bg-secondary-dark/40 dark:text-secondary-foreground-dark dark:inset-ring-ring-dark;
+
+  /* Base md by default */
+  @apply px-2.5 py-0 text-sm h-8 rounded-size-md gap-1.5;
+
+  &:has(> button[b-button]:first-child) {
+    @apply !pl-1;
+  }
+
+  &:has(> button[b-button]:last-child) {
+    @apply !pr-1;
+  }
+
+  /* Internal input adjustments when placed inside group */
+  input[b-input] {
+    @apply !outline-0 !px-0 inset-ring-0 !w-full !rounded-none bg-transparent hover:bg-transparent;
+  }
+
+  /* Focus state when any inner input is focused (and not readonly) */
+  &:has(input[b-input]:focus-visible:not(:read-only)) {
+    @apply outline-2 outline-offset-2 outline-primary dark:outline-primary-dark;
+
+    /* Override outline color if invalid while focused */
+    &:has(.ng-invalid.ng-touched),
+    &:has(.ng-invalid.ng-dirty) {
+      @apply outline-destructive dark:outline-destructive-dark;
+    }
+  }
+
+  /* Disabled inner input visual tweak */
+  input[b-input]:disabled {
+    @apply opacity-60 pointer-events-none;
+  }
+
+  /* Invalid state styles (group reflects error) */
+  &:has(input[b-input].ng-invalid.ng-touched),
+  &:has(input[b-input].ng-invalid.ng-dirty) {
+    @apply text-destructive placeholder:text-destructive bg-destructive/20 inset-ring-1 inset-ring-destructive/20;
+    @apply dark:text-destructive-dark dark:placeholder:text-destructive-dark dark:bg-destructive-dark/20 dark:inset-ring-destructive-dark/20;
+
+    button[b-button] {
+      @apply text-destructive placeholder:text-destructive bg-destructive/20 inset-ring-1 inset-ring-destructive/20;
+      @apply dark:text-destructive-dark dark:placeholder:text-destructive-dark dark:bg-destructive-dark/20 dark:inset-ring-destructive-dark/20;
+    }
+
+    /* Icon strokes inside when error */
+    i svg {
+      stroke: var(--color-destructive-foreground, currentColor);
+    }
+  }
+
+  /* Size variants (normalized to Tailwind scale, matching input sizes) */
+  &:has(input[b-input].b-size-sm) {
+    /* small */
+    @apply px-2 py-0 text-xs h-6 rounded-size-sm gap-1;
+  }
+
+  &:has(input[b-input].b-size-md) {
+    /* medium */
+    @apply px-2.5 py-0 text-sm h-8 rounded-size-md gap-1.5;
+
+    &:has(> button[b-button]:first-child) {
+      @apply !pl-1;
+    }
+
+    &:has(> button[b-button]:last-child) {
+      @apply !pr-1;
+    }
+  }
+
+  &:has(input[b-input].b-size-lg) {
+    /* large */
+    @apply px-3 py-0 text-base h-10 rounded-size-lg gap-2;
+
+    &:has(> button[b-button]:first-child) {
+      @apply !pl-1;
+    }
+
+    &:has(> button[b-button]:last-child) {
+      @apply !pr-1;
+    }
+  }
+}

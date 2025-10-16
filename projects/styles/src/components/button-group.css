@@ -1,0 +1,16 @@
+b-button-group {
+  @apply flex;
+
+  &:not(.spaced) {
+    button:not(:last-child) {
+      @apply rounded-tr-none rounded-br-none -mr-[1px];
+    }
+    button:not(:first-child) {
+      @apply rounded-tl-none rounded-bl-none;
+    }
+  }
+
+  &.spaced {
+    @apply gap-2;
+  }
+}

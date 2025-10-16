@@ -1,0 +1,31 @@
+input[b-checkbox] {
+  /* Base styles */
+  @apply w-5 h-5 rounded-md;
+
+  /* Sizes */
+  &.b-size-sm {
+    @apply w-4 h-4 rounded-sm;
+  }
+  &.b-size-md {
+    @apply w-5 h-5 rounded-md;
+  }
+  &.b-size-lg {
+    @apply w-7 h-7 rounded-lg;
+  }
+
+  &:checked {
+    @apply accent-primary;
+
+    @media (prefers-color-scheme: dark) {
+      @apply accent-primary-dark;
+    }
+  }
+
+  &:focus-visible {
+    @apply outline-2 outline-offset-4 outline-primary;
+
+    @media (prefers-color-scheme: dark) {
+      @apply outline-primary-dark;
+    }
+  }
+}

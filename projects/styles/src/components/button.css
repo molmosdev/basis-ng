@@ -1,0 +1,73 @@
+/* Button styles — grouped sections: Base / Variants / Sizes / States / Squared */
+button[b-button] {
+  /* Base */
+  @apply transition-colors duration-150 flex items-center justify-center gap-x-1.5 disabled:opacity-50 disabled:cursor-not-allowed;
+
+  /* Default spacing/typography applied when no explicit size is present */
+  @apply px-3 py-0 text-sm h-8 rounded-size-md;
+
+  /* Default visual (primary) applied when no explicit variant is present */
+  @apply bg-primary text-primary-foreground hover:bg-primary/80;
+  @apply dark:bg-primary-dark dark:text-primary-foreground-dark dark:hover:bg-primary-dark/80;
+
+  /* Variants */
+  &.b-variant-primary {
+    @apply bg-primary text-primary-foreground hover:bg-primary/80;
+    @apply dark:bg-primary-dark dark:text-primary-foreground-dark dark:hover:bg-primary-dark/80;
+  }
+  &.b-variant-secondary {
+    @apply bg-secondary text-secondary-foreground hover:bg-secondary/80;
+    @apply dark:bg-secondary-dark dark:text-secondary-foreground-dark dark:hover:bg-secondary-dark/80;
+  }
+  &.b-variant-ghost {
+    /* Ghost is transparent with a subtle hover; text uses secondary foreground */
+    @apply bg-transparent text-secondary-foreground hover:bg-secondary;
+    @apply dark:text-secondary-foreground-dark dark:hover:bg-secondary-dark;
+  }
+  &.b-variant-outlined {
+    /* Outlined keeps a transparent background and an inset ring */
+    @apply bg-secondary/10 text-secondary-foreground inset-ring inset-ring-ring hover:bg-primary/5 shadow-xs;
+    @apply dark:bg-secondary-dark/40 dark:text-secondary-foreground-dark dark:inset-ring-ring-dark dark:hover:bg-primary-dark/5 shadow-xs;
+  }
+  &.b-variant-destructive {
+    @apply bg-destructive text-destructive-foreground inset-ring-1 inset-ring-destructive hover:bg-destructive/90 hover:inset-ring-destructive/80;
+    @apply dark:bg-destructive-dark dark:text-destructive-foreground-dark dark:inset-ring-destructive-dark dark:hover:bg-destructive-dark/90 dark:hover:inset-ring-destructive-dark/80;
+  }
+
+  /* Sizes */
+  &.b-size-sm {
+    @apply px-2 py-0 text-xs h-6 rounded-size-sm gap-1;
+  }
+  &.b-size-md {
+    @apply px-3 py-0 text-sm h-8 rounded-size-md gap-1.5;
+  }
+  &.b-size-lg {
+    @apply px-4 py-0 text-base h-10 rounded-size-lg gap-2;
+  }
+
+  /* States */
+  &.b-active,
+  &:focus-visible {
+    @apply outline-2 outline-offset-4 outline-primary;
+    @apply dark:outline-primary-dark;
+  }
+  &.b-variant-destructive.b-active,
+  &.b-variant-destructive:focus-visible {
+    @apply outline-2 outline-offset-4 outline-destructive;
+    @apply dark:outline-destructive-dark;
+  }
+
+  /* Squared */
+  &.b-squared {
+    @apply aspect-square p-0 flex items-center justify-center;
+  }
+  &.b-squared.b-size-sm {
+    @apply size-6;
+  }
+  &.b-squared.b-size-md {
+    @apply size-9;
+  }
+  &.b-squared.b-size-lg {
+    @apply size-12;
+  }
+}

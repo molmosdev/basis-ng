@@ -1,0 +1,21 @@
+b-drawer {
+  @apply fixed bottom-0 left-0 right-0 bg-background dark:bg-background-dark rounded-t-lg border border-secondary dark:border-secondary-dark border-b-0 flex flex-col z-[1001] will-change-transform shadow-2xl touch-none select-none pt-10 box-border overflow-hidden h-1/2;
+  transition: transform 0.5s cubic-bezier(0.32, 0.72, 0, 1);
+  transform: translateY(100%);
+
+  &.dragging {
+    transition: none;
+  }
+
+  .drag-section {
+    @apply w-full h-10 flex items-center justify-center cursor-grab touch-none absolute top-0;
+
+    .drag-indicator {
+      @apply w-1/5 h-1 bg-secondary dark:bg-secondary-dark rounded;
+    }
+  }
+}
+
+html:has(b-drawer.open) {
+  overflow: hidden;
+}

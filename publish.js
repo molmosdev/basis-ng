@@ -13,12 +13,7 @@ if (!project) {
   process.exit(1);
 }
 
-const packageJsonPath = path.join(
-  __dirname,
-  'projects',
-  project,
-  'package.json'
-);
+const packageJsonPath = path.join(__dirname, 'projects', project, 'package.json');
 const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, 'utf8'));
 
 // Bump version
@@ -45,7 +40,7 @@ if (project === 'primitives') {
         process.exit(1);
       }
       console.log(`✅ Published ${project} v${newVersion}\n${stdout}`);
-    }
+    },
   );
 } else if (project === 'styles') {
   // Publish directly from projects/styles
@@ -58,6 +53,6 @@ if (project === 'primitives') {
         process.exit(1);
       }
       console.log(`✅ Published ${project} v${newVersion}\n${stdout}`);
-    }
+    },
   );
 }

@@ -1,0 +1,56 @@
+ul[b-select-options] {
+  @apply list-none p-1 box-border m-0 relative bg-background shadow-xs rounded-lg inset-ring-1 inset-ring-ring flex flex-col gap-1 w-full overflow-y-auto;
+
+  .no-options-message {
+    @apply py-1 px-2 text-sm;
+  }
+
+  /* Overlay Animations */
+  opacity: 0;
+
+  &.b-overlay-bottom,
+  &.b-overlay-top,
+  &.b-overlay-left,
+  &.b-overlay-right {
+    transition:
+      transform 150ms ease-in-out,
+      opacity 150ms ease-in-out;
+    opacity: 1;
+  }
+
+  &.b-overlay-bottom {
+    transform: translateY(5px);
+
+    &.b-overlay-leave {
+      transform: translateY(0);
+      opacity: 0;
+    }
+  }
+
+  &.b-overlay-top {
+    transform: translateY(-5px);
+
+    &.b-overlay-leave {
+      transform: translateY(0);
+      opacity: 0;
+    }
+  }
+
+  &.b-overlay-left {
+    transform: translateX(-5px);
+
+    &.b-overlay-leave {
+      transform: translateX(0);
+      opacity: 0;
+    }
+  }
+
+  &.b-overlay-right {
+    transform: translateX(5px);
+
+    &.b-overlay-leave {
+      transform: translateX(0);
+      opacity: 0;
+    }
+  }
+}

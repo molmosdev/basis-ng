@@ -1,0 +1,39 @@
+textarea[b-textarea] {
+  @apply px-2.5 py-1 text-sm rounded-size-md;
+  @apply bg-secondary/10 text-secondary-foreground inset-ring-1 inset-ring-ring hover:bg-primary/5 shadow-xs;
+  @apply dark:bg-secondary-dark/40 dark:text-secondary-foreground-dark dark:inset-ring-ring-dark dark:hover:bg-primary-dark/5 shadow-xs;
+
+  &:focus-visible:not(:read-only) {
+    @apply outline-2 outline-offset-4 outline-primary dark:outline-primary-dark;
+  }
+
+  &::placeholder {
+    @apply opacity-50 dark:opacity-70 dark:text-font-dark;
+  }
+
+  &.ng-invalid.ng-touched,
+  &.ng-invalid.ng-dirty {
+    @apply text-destructive placeholder:text-destructive bg-destructive/20 inset-ring-1 inset-ring-destructive/20;
+    @apply dark:text-destructive-dark dark:placeholder:text-destructive-dark dark:bg-destructive-dark/20 dark:inset-ring-destructive-dark/20;
+    &:focus-visible {
+      @apply outline-2 outline-offset-4 outline-destructive dark:outline-destructive-dark;
+    }
+    &::placeholder {
+      @apply text-destructive dark:text-destructive-foreground;
+    }
+  }
+
+  &:disabled {
+    @apply opacity-60 pointer-events-none;
+  }
+
+  &.b-size-sm {
+    @apply px-2 py-1 text-xs rounded-size-sm;
+  }
+  &.b-size-md {
+    @apply px-2.5 py-1 text-sm rounded-size-md;
+  }
+  &.b-size-lg {
+    @apply px-3 py-2 text-base rounded-size-lg;
+  }
+}

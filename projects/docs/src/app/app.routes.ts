@@ -1,5 +1,5 @@
 import { Routes } from '@angular/router';
-import { documentationRoutes } from './features/documentation/documentation.routes';
+import { docsRoutes } from './features/docs/docs.routes';
 
 export const routes: Routes = [
   {
@@ -9,14 +9,13 @@ export const routes: Routes = [
   },
   {
     path: 'home',
-    loadComponent: () => import('./features/home/home.component'),
+    loadComponent: () => import('./features/home').then((c) => c.Home),
     title: 'Basis UI',
   },
   {
-    path: 'documentation',
-    loadComponent: () =>
-      import('./features/documentation/documentation.component'),
-    children: documentationRoutes,
+    path: 'docs',
+    loadComponent: () => import('./features/docs/docs').then((c) => c.Documentation),
+    children: docsRoutes,
   },
   {
     path: '**',

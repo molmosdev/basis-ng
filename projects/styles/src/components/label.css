@@ -1,0 +1,70 @@
+b-label {
+  position: relative;
+  display: flex;
+  --horizontal-padding: clamp(1rem, calc(0.75rem + var(--radius, 0.5rem) / 2), 1.5rem);
+
+  label {
+    color: var(--text-color);
+  }
+
+  &:not(.is-switch):not(.is-checkbox) {
+    width: 100%;
+
+    label {
+      position: absolute;
+      z-index: 1;
+      top: 50%;
+      left: var(--horizontal-padding);
+      transform: translateY(-50%);
+      pointer-events: none;
+      transition:
+        top 0.2s,
+        font-size 0.2s,
+        transform 0.2s;
+    }
+
+    &.up {
+      label {
+        top: 0.45rem;
+        font-size: 0.7rem;
+        transform: translateY(0);
+      }
+
+      input,
+      select {
+        --vertical-padding: calc(0.9rem - 2px);
+        padding-top: calc(var(--vertical-padding) + 0.5rem);
+        padding-bottom: calc(var(--vertical-padding) - 0.5rem);
+      }
+
+      textarea {
+        padding-top: 1.5rem;
+        box-sizing: border-box;
+      }
+    }
+
+    &.is-textarea {
+      label {
+        top: 0.8rem;
+        transform: none;
+      }
+
+      &.up {
+        label {
+          top: 0.45rem;
+          font-size: 0.7rem;
+        }
+      }
+    }
+  }
+
+  &.is-switch,
+  &.is-checkbox {
+    gap: 0.5rem;
+    align-items: center;
+
+    label {
+      cursor: pointer;
+    }
+  }
+}
