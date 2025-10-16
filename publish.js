@@ -4,16 +4,16 @@ const path = require('path');
 const semver = require('semver');
 const execSync = require('child_process').execSync;
 
-const project = process.argv[2]; // "primitives" o "styles"
+const lib = process.argv[2]; // "primitives" o "styles"
 const releaseType = process.argv[3] || 'patch';
 const preId = process.argv[4];
 
-if (!project) {
-  console.error('❌ Specify a project: primitives or styles');
+if (!lib) {
+  console.error('❌ Specify a lib: primitives or styles');
   process.exit(1);
 }
 
-const packageJsonPath = path.join(__dirname, 'projects', project, 'package.json');
+const packageJsonPath = path.join(__dirname, 'libs', lib, 'package.json');
 const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, 'utf8'));
 
 // Bump version
@@ -25,13 +25,13 @@ const newVersion =
 packageJson.version = newVersion;
 fs.writeFileSync(packageJsonPath, JSON.stringify(packageJson, null, 2), 'utf8');
 
-console.log(`📦 Publishing ${project} v${newVersion}...`);
+console.log(`📦 Publishing ${lib} v${newVersion}...`);
 
-if (project === 'primitives') {
-  // Build Angular project
-  execSync(`ng build ${project}`, { stdio: 'inherit' });
+if (lib === 'primitives') {
+  // Build Angular library
+  execSync(`ng build ${lib}`, { stdio: 'inherit' });
   // Publish from dist/primitives
-  const distPath = path.join(__dirname, 'dist', project);
+  const distPath = path.join(__dirname, 'dist', lib);
   exec(
     `cd ${distPath} && npm publish --access public ${releaseType === 'prerelease' ? '--tag next' : ''}`,
     (err, stdout, stderr) => {
@@ -39,12 +39,12 @@ if (project === 'primitives') {
         console.error(`❌ npm publish failed: ${stderr}`);
         process.exit(1);
       }
-      console.log(`✅ Published ${project} v${newVersion}\n${stdout}`);
+      console.log(`✅ Published ${lib} v${newVersion}\n${stdout}`);
     },
   );
-} else if (project === 'styles') {
-  // Publish directly from projects/styles
-  const stylesPath = path.join(__dirname, 'projects', project);
+} else if (lib === 'styles') {
+  // Publish directly from libs/styles
+  const stylesPath = path.join(__dirname, 'libs', lib);
   exec(
     `cd ${stylesPath} && npm publish --access public ${releaseType === 'prerelease' ? '--tag next' : ''}`,
     (err, stdout, stderr) => {
@@ -52,7 +52,7 @@ if (project === 'primitives') {
         console.error(`❌ npm publish failed: ${stderr}`);
         process.exit(1);
       }
-      console.log(`✅ Published ${project} v${newVersion}\n${stdout}`);
+      console.log(`✅ Published ${lib} v${newVersion}\n${stdout}`);
     },
   );
 }

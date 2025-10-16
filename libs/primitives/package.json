@@ -1,0 +1,23 @@
+{
+  "name": "@basis-ng/primitives",
+  "version": "0.0.1-alpha.104",
+  "description": "basis-ng components, animations, directives and services for Angular",
+  "peerDependencies": {
+    "@angular/common": "^20.2.0",
+    "@angular/core": "^20.2.0"
+  },
+  "dependencies": {
+    "tslib": "^2.3.0"
+  },
+  "sideEffects": false,
+  "author": "molmos",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/molmosdev/basis-ng.git",
+    "directory": "projects/primitives"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

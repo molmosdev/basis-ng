@@ -1,7 +1,18 @@
 {
-  "editor.formatOnSave": false,
+  "eslint.useFlatConfig": true,
+  "eslint.validate": ["typescript", "html"],
   "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": "always"
+    "source.organizeImports": "explicit"
   },
-  "eslint.validate": ["typescript", "html"]
+  "editor.bracketPairColorization.enabled": true,
+  "editor.formatOnSave": true,
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[scss]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
 }

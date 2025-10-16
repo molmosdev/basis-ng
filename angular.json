@@ -1,40 +1,81 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "version": 1,
-  "newProjectRoot": "projects",
+  "newProjectRoot": "libs",
   "projects": {
+    "primitives": {
+      "projectType": "library",
+      "root": "libs/primitives",
+      "sourceRoot": "libs/primitives/src",
+      "prefix": "b",
+      "architect": {
+        "build": {
+          "builder": "@angular/build:ng-packagr",
+          "configurations": {
+            "production": {
+              "tsConfig": "libs/primitives/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "libs/primitives/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": ["libs/primitives/**/*.ts", "libs/primitives/**/*.html"],
+            "eslintConfig": "libs/primitives/eslint.config.mjs"
+          }
+        }
+      }
+    },
     "docs": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
           "inlineTemplate": true,
           "inlineStyle": true,
-          "skipTests": true,
-          "flat": true
+          "skipTests": true
+        },
+        "@schematics/angular:class": {
+          "skipTests": true
+        },
+        "@schematics/angular:directive": {
+          "skipTests": true
+        },
+        "@schematics/angular:guard": {
+          "skipTests": true
+        },
+        "@schematics/angular:interceptor": {
+          "skipTests": true
+        },
+        "@schematics/angular:pipe": {
+          "skipTests": true
+        },
+        "@schematics/angular:resolver": {
+          "skipTests": true
+        },
+        "@schematics/angular:service": {
+          "skipTests": true
         }
       },
-      "root": "projects/docs",
-      "sourceRoot": "projects/docs/src",
+      "root": "apps/docs",
+      "sourceRoot": "apps/docs/src",
       "prefix": "app",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:application",
+          "builder": "@angular/build:application",
           "options": {
-            "outputPath": "dist/docs",
-            "index": "projects/docs/src/index.html",
-            "browser": "projects/docs/src/main.ts",
-            "polyfills": [],
-            "tsConfig": "projects/docs/tsconfig.app.json",
+            "browser": "apps/docs/src/main.ts",
+            "tsConfig": "apps/docs/tsconfig.app.json",
             "assets": [
               {
                 "glob": "**/*",
-                "input": "projects/docs/public"
+                "input": "apps/docs/public"
               }
             ],
-            "styles": [
-              "projects/docs/src/styles.css"
-            ],
-            "scripts": []
+            "styles": ["apps/docs/src/styles.css"]
           },
           "configurations": {
             "production": {
@@ -61,7 +102,7 @@
           "defaultConfiguration": "production"
         },
         "serve": {
-          "builder": "@angular-devkit/build-angular:dev-server",
+          "builder": "@angular/build:dev-server",
           "configurations": {
             "production": {
               "buildTarget": "docs:build:production"
@@ -73,85 +114,19 @@
           "defaultConfiguration": "development"
         },
         "extract-i18n": {
-          "builder": "@angular-devkit/build-angular:extract-i18n"
-        },
-        "test": {
-          "builder": "@angular-devkit/build-angular:karma",
-          "options": {
-            "polyfills": [],
-            "tsConfig": "projects/docs/tsconfig.spec.json",
-            "assets": [
-              {
-                "glob": "**/*",
-                "input": "projects/docs/public"
-              }
-            ],
-            "styles": [
-              "projects/docs/src/styles.css"
-            ],
-            "scripts": []
-          }
+          "builder": "@angular/build:extract-i18n"
         },
         "lint": {
           "builder": "@angular-eslint/builder:lint",
           "options": {
-            "lintFilePatterns": [
-              "projects/docs/**/*.ts",
-              "projects/docs/**/*.html"
-            ],
-            "eslintConfig": "projects/docs/eslint.config.js"
-          }
-        }
-      }
-    },
-    "primitives": {
-      "projectType": "library",
-      "root": "projects/primitives",
-      "sourceRoot": "projects/primitives/src",
-      "prefix": "b",
-      "architect": {
-        "build": {
-          "builder": "@angular-devkit/build-angular:ng-packagr",
-          "options": {
-            "project": "projects/primitives/ng-package.json"
-          },
-          "configurations": {
-            "production": {
-              "tsConfig": "projects/primitives/tsconfig.lib.prod.json"
-            },
-            "development": {
-              "tsConfig": "projects/primitives/tsconfig.lib.json"
-            }
-          },
-          "defaultConfiguration": "production"
-        },
-        "test": {
-          "builder": "@angular-devkit/build-angular:karma",
-          "options": {
-            "tsConfig": "projects/primitives/tsconfig.spec.json",
-            "polyfills": [
-              "zone.js",
-              "zone.js/testing"
-            ]
-          }
-        },
-        "lint": {
-          "builder": "@angular-eslint/builder:lint",
-          "options": {
-            "lintFilePatterns": [
-              "projects/primitives/**/*.ts",
-              "projects/primitives/**/*.html"
-            ],
-            "eslintConfig": "projects/primitives/eslint.config.js"
+            "lintFilePatterns": ["apps/docs/**/*.ts", "apps/docs/**/*.html"],
+            "eslintConfig": "libs/primitives/eslint.config.mjs"
           }
         }
       }
     }
   },
   "cli": {
-    "schematicCollections": [
-      "angular-eslint"
-    ],
-    "analytics": false
+    "schematicCollections": ["angular-eslint"]
   }
 }
