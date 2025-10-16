@@ -33,7 +33,6 @@ import {
     CardTitle,
     CardContent,
     Input,
-    CardHeader,
     CardFooter,
     InputGroup,
     NgIcon,
@@ -44,23 +43,19 @@ import {
     <h1 class="font-medium text-4xl md:text-5xl xl:text-6xl text-center">
       A minimal UI toolkit for Angular
     </h1>
-    <span
-      class="font-display-mono md:max-w-2/3 lg:max-w-1/2 xl:max-w-3/6 text-center">
-      Headless by design. Style it your way or use our pre-defined Tailwind styles for each component, 
-      with easy customization via <code>@theme</code>. Build fast, accessible, and design-system-friendly apps — without the bloat.
+    <span class="font-display-mono md:max-w-2/3 lg:max-w-1/2 xl:max-w-3/6 text-center">
+      Headless by design. Style it your way or use our pre-defined Tailwind styles for each
+      component, with easy customization via <code>&#64;theme</code>. Build fast, accessible, and
+      design-system-friendly apps — without the bloat.
     </span>
-      <div class="text-center">
+    <div class="text-center">
       <button b-button routerLink="/docs" class="mt-6">Get started</button>
     </div>
     <div class="flex flex-col md:flex-row items-start gap-4 mt-10">
       <b-card>
         <b-card-header>
-          <b-card-title>
-            Payment Method
-          </b-card-title>
-          <b-card-description>
-            All transactions are secure and encrypted
-          </b-card-description>
+          <b-card-title> Payment Method </b-card-title>
+          <b-card-description> All transactions are secure and encrypted </b-card-description>
         </b-card-header>
         <b-card-content>
           <div class="flex gap-1 flex-col">
@@ -89,16 +84,16 @@ import {
       </b-card>
       <div class="flex flex-col gap-4">
         <b-input-group>
-          <ng-icon name="lucideSearch" size=16 />
+          <ng-icon name="lucideSearch" size="16" />
           <input b-input placeholder="Search..." />
         </b-input-group>
         <div class="flex gap-2">
           <span b-badge class="b-variant-secondary b-size-sm">
-            <ng-icon name="lucideLoader2" size=12 class="animate-spin" />
+            <ng-icon name="lucideLoader2" size="12" class="animate-spin" />
             Updating
           </span>
           <span b-badge class="b-variant-outlined b-size-sm">
-            <ng-icon name="lucideLoader" size=12 class="animate-spin" />
+            <ng-icon name="lucideLoader" size="12" class="animate-spin" />
             Syncing
           </span>
         </div>
@@ -115,10 +110,10 @@ import {
         </b-button-group>
         <b-button-group>
           <button b-button class="b-variant-outlined b-squared">
-            <ng-icon name="lucideArrowLeft" size=18 />
+            <ng-icon name="lucideArrowLeft" size="18" />
           </button>
           <button b-button class="b-variant-outlined b-squared">
-            <ng-icon name="lucideArrowRight" size=18 />
+            <ng-icon name="lucideArrowRight" size="18" />
           </button>
         </b-button-group>
       </div>
@@ -132,11 +127,6 @@ import {
       'pt-30 pb-8 sm:h-[calc(100dvh-5rem)] sm:p-0 flex flex-col justify-center items-center gap-1 px-8',
   },
 })
-
-/**
- * Small helper for the select's displayWith input used in the showcase.
- * Joins selected values into a comma-separated string.
- */
 export class Home {
   displayWith = (values: string[]) => (values || []).join(', ');
   showPassword = false;
