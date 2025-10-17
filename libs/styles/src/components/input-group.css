@@ -84,4 +84,9 @@ b-input-group {
       @apply !pr-1;
     }
   }
+
+  /* Prevent icons from shrinking inside the group */
+  > ng-icon {
+    @apply flex-shrink-0;
+  }
 }
