@@ -17,9 +17,11 @@ import { NgIcon, provideIcons } from '@ng-icons/core';
 import {
   lucideArrowLeft,
   lucideArrowRight,
+  lucideAudioLines,
   lucideInfo,
   lucideLoader,
   lucideLoader2,
+  lucidePlus,
   lucideSearch,
 } from '@ng-icons/lucide';
 
@@ -53,7 +55,7 @@ import {
       <button b-button routerLink="/docs" class="mt-6">Get started</button>
     </div>
     <div
-      class="grid items-start grid-cols-1 lg:grid-cols-2 xl:grid-cols-4 gap-4 mt-8 w-full max-w-400 px-8"
+      class="grid items-start grid-cols-1 lg:grid-cols-3 xl:grid-cols-4 gap-4 mt-8 w-full max-w-400 px-8"
     >
       <b-card>
         <b-card-header>
@@ -103,8 +105,23 @@ import {
         <b-input-group>
           <span>https://</span>
           <input b-input placeholder="basis.ng" />
-          <ng-icon name="lucideInfo" size="12" />
+          <button b-button class="b-variant-ghost b-size-sm b-squared">
+            <ng-icon name="lucideInfo" size="12" />
+          </button>
         </b-input-group>
+        <div class="flex gap-2">
+          <button b-button class="b-variant-outlined b-squared">
+            <ng-icon name="lucidePlus" size="18" />
+          </button>
+          <b-input-group class="flex-1">
+            <input b-input placeholder="Send a message..." />
+            <button b-button class="b-variant-ghost b-size-sm b-squared">
+              <ng-icon name="lucideAudioLines" size="12" />
+            </button>
+          </b-input-group>
+        </div>
+        <span class="text-sm font-medium">Volume</span>
+        <input type="range" b-range min="0" max="100" value="50" />
       </div>
       <div class="flex gap-4">
         <b-button-group>
@@ -131,6 +148,8 @@ import {
       lucideArrowRight,
       lucideArrowLeft,
       lucideInfo,
+      lucidePlus,
+      lucideAudioLines,
     }),
   ],
   host: {
