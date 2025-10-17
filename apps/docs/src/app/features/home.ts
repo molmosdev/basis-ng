@@ -55,7 +55,7 @@ import {
       <button b-button routerLink="/docs" class="mt-6">Get started</button>
     </div>
     <div
-      class="grid items-start grid-cols-1 lg:grid-cols-3 xl:grid-cols-4 gap-4 mt-8 w-full max-w-400 px-8"
+      class="grid items-start grid-cols-1 lg:grid-cols-3 xl:grid-cols-4 gap-4 mt-8 w-full max-w-400"
     >
       <b-card>
         <b-card-header>
@@ -154,7 +154,7 @@ import {
   ],
   host: {
     class:
-      'pt-30 pb-8 sm:h-[calc(100dvh-5rem)] sm:p-0 flex flex-col justify-center items-center gap-1 px-8',
+      'pt-30 pb-8 sm:h-[calc(100dvh-5rem)] flex flex-col justify-center items-center gap-1 px-8',
   },
 })
 export class Home {
