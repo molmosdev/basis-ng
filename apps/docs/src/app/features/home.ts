@@ -51,7 +51,9 @@ import {
     <div class="text-center">
       <button b-button routerLink="/docs" class="mt-6">Get started</button>
     </div>
-    <div class="flex flex-col md:flex-row items-start gap-4 mt-10">
+    <div
+      class="grid items-start grid-cols-1 lg:grid-cols-2 xl:grid-cols-4 gap-4 mt-8 w-full max-w-400 px-8"
+    >
       <b-card>
         <b-card-header>
           <b-card-title> Payment Method </b-card-title>
@@ -67,11 +69,11 @@ import {
             <input type="text" b-input placeholder="1234 1234 1234 1234" id="card" />
           </div>
           <div class="flex gap-4 mt-4">
-            <div class=" flex flex-col gap-1">
+            <div class="flex flex-col gap-1 flex-1 min-w-0">
               <label for="expiry" class="text-sm">Expiry Date</label>
               <input type="text" b-input placeholder="MM/YY" id="expiry" />
             </div>
-            <div class="flex flex-col gap-1">
+            <div class="flex flex-col gap-1 flex-1 min-w-0">
               <label for="cvc" class="text-sm">CVC</label>
               <input type="text" b-input placeholder="CVC" id="cvc" />
             </div>
