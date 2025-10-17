@@ -17,7 +17,7 @@ b-input-group {
 
   /* Internal input adjustments when placed inside group */
   input[b-input] {
-    @apply !outline-0 !px-0 inset-ring-0 !w-full !rounded-none bg-transparent hover:bg-transparent shadow-xs;
+    @apply !outline-0 !px-0 inset-ring-0 !w-full !rounded-none bg-transparent hover:bg-transparent shadow-none;
   }
 
   /* Focus state when any inner input is focused (and not readonly) */
