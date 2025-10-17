@@ -93,6 +93,8 @@ export class Select implements ControlValueAccessor, OnInit {
    */
   handleOverlayAttached(): void {
     this.overlay()?.attachEmitter.subscribe(() => {
+      this.selectTrigger()?.triggered.set(true);
+
       if (this.value().length === 0) {
         this.selectContent()?.el.nativeElement.focus();
         return;
@@ -116,6 +118,7 @@ export class Select implements ControlValueAccessor, OnInit {
   handleOverlayDetached(): void {
     this.overlay()?.detachEmitter.subscribe(() => {
       this.overlay()?.closeOverlay();
+      this.selectTrigger()?.triggered.set(false);
     });
   }
 
