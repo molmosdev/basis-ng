@@ -17,6 +17,7 @@ import { NgIcon, provideIcons } from '@ng-icons/core';
 import {
   lucideArrowLeft,
   lucideArrowRight,
+  lucideInfo,
   lucideLoader,
   lucideLoader2,
   lucideSearch,
@@ -102,6 +103,7 @@ import {
         <b-input-group>
           <span>https://</span>
           <input b-input placeholder="basis.ng" />
+          <ng-icon name="lucideInfo" size="12" />
         </b-input-group>
       </div>
       <div class="flex gap-4">
@@ -122,7 +124,14 @@ import {
     </div>
   `,
   providers: [
-    provideIcons({ lucideSearch, lucideLoader, lucideLoader2, lucideArrowRight, lucideArrowLeft }),
+    provideIcons({
+      lucideSearch,
+      lucideLoader,
+      lucideLoader2,
+      lucideArrowRight,
+      lucideArrowLeft,
+      lucideInfo,
+    }),
   ],
   host: {
     class:
