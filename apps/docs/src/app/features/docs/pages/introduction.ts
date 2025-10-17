@@ -7,10 +7,9 @@ import { StepsButtons } from './shared/components/steps-buttons';
   template: `
     <h1 class="font-bold text-2xl">Introduction</h1>
     <span class="flex flex-col gap-4">
-      Basis is an Angular component library designed for speed, 
-      flexibility, and design consistency. Use primitives library for 
-      headless, logic-driven components, and styles library for 
-      ready-to-use Tailwind-based styles, fully configurable with @theme.
+      Basis is an Angular component library designed for speed, flexibility, and design consistency.
+      Use primitives library for headless, logic-driven components, and styles library for
+      ready-to-use Tailwind-based styles, fully configurable with &#64;theme.
     </span>
     <app-steps-buttons [next]="{ label: 'Installation', path: '/docs/installation' }" />
   `,
