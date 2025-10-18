@@ -5,7 +5,7 @@ b-textarea-group {
   @apply dark:bg-secondary-dark/40 dark:text-secondary-foreground-dark dark:inset-ring-ring-dark;
 
   /* Base md by default */
-  @apply p-2.5 text-sm gap-1 rounded-md;
+  @apply p-2.5 text-sm gap-2 rounded-size-md;
 
   /* Internal textarea adjustments when placed inside group */
   textarea[b-textarea] {
@@ -13,7 +13,7 @@ b-textarea-group {
   }
 
   button[b-button] {
-    @apply rounded-sm;
+    @apply rounded-size-sm;
   }
 
   /* Focus state when any inner textarea is focused (and not readonly) */
