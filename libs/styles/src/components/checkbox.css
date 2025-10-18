@@ -1,31 +1,66 @@
-input[b-checkbox] {
-  /* Base styles */
-  @apply w-5 h-5 rounded-md;
+button[b-checkbox] {
+  /* Base */
+  @apply inline-flex items-center justify-center align-middle select-none text-secondary-foreground bg-background inset-ring-1 inset-ring-ring shadow-xs;
+  @apply dark:bg-background-dark dark:text-secondary-foreground-dark dark:inset-ring-ring-dark;
+  @apply size-5 rounded-size-sm;
 
-  /* Sizes */
-  &.b-size-sm {
-    @apply w-4 h-4 rounded-sm;
-  }
-  &.b-size-md {
-    @apply w-5 h-5 rounded-md;
-  }
-  &.b-size-lg {
-    @apply w-7 h-7 rounded-lg;
+  &:not([data-disabled]) {
+    @apply cursor-pointer hover:bg-secondary/20;
+    @apply dark:hover:bg-secondary-dark/30;
   }
 
-  &:checked {
-    @apply accent-primary;
+  &[data-disabled] {
+    @apply opacity-50 cursor-not-allowed;
+  }
 
-    @media (prefers-color-scheme: dark) {
-      @apply accent-primary-dark;
-    }
+  &[data-state='checked'] {
+    @apply bg-primary text-primary-foreground inset-ring-primary;
+    @apply dark:bg-primary-dark dark:text-primary-foreground-dark dark:inset-ring-primary-dark;
+  }
+
+  &[data-state='checked']:not([data-disabled]) {
+    @apply hover:bg-primary/80;
+    @apply dark:hover:bg-primary-dark/80;
   }
 
   &:focus-visible {
     @apply outline-2 outline-offset-4 outline-primary;
+    @apply dark:outline-primary-dark;
+  }
 
-    @media (prefers-color-scheme: dark) {
-      @apply outline-primary-dark;
-    }
+  /* Sizes */
+  &.b-size-sm {
+    @apply size-4 rounded-size-xs;
+  }
+  &.b-size-lg {
+    @apply size-6 rounded-size-md;
+  }
+
+  .b-checkbox-indicator {
+    @apply pointer-events-none flex items-center justify-center text-current;
+  }
+
+  &.b-size-sm .b-checkbox-indicator svg {
+    @apply h-2.5 w-2.5;
+  }
+
+  &.b-size-md .b-checkbox-indicator svg {
+    @apply h-3 w-3;
+  }
+
+  &.b-size-lg .b-checkbox-indicator svg {
+    @apply h-3.5 w-3.5;
+  }
+
+  &[data-state='unchecked'] .b-checkbox-indicator {
+    @apply opacity-0 scale-75;
+  }
+
+  &[data-state='checked'] .b-checkbox-indicator {
+    @apply opacity-100 scale-100;
+  }
+
+  svg {
+    @apply block;
   }
 }

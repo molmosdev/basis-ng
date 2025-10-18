@@ -32,28 +32,16 @@ import { CodeBlock } from '../shared/components/code-block';
       <div
         class="border border-gray-200 dark:border-neutral-900 rounded-lg p-6 mb-6 flex flex-col items-center justify-center gap-4"
       >
-        <input
-          type="checkbox"
-          b-checkbox
-          [value]="basicValue"
-          (valueChange)="onValueChange($event)"
-        />
+        <button b-checkbox [(ngModel)]="basicValue" (valueChange)="onValueChange($event)"></button>
       </div>
       <h2 class="font-semibold text-xl">Sizes</h2>
       <code-block [code]="sizesUsage" />
       <div
         class="border border-gray-200 dark:border-neutral-900 rounded-lg p-6 mb-6 flex flex-col items-center justify-center gap-4"
       >
-        <input type="checkbox" b-checkbox class="b-size-sm" />
-        <input type="checkbox" b-checkbox class="b-size-md" />
-        <input type="checkbox" b-checkbox class="b-size-lg" />
-      </div>
-      <h2 class="font-semibold text-xl">Angular Binding with ngModel</h2>
-      <code-block [code]="ngModelUsage" />
-      <div
-        class="border border-gray-200 dark:border-neutral-900 rounded-lg p-6 mb-6 flex flex-col items-center justify-center gap-4"
-      >
-        <input type="checkbox" b-checkbox [(ngModel)]="ngModelValue" />
+        <button b-checkbox class="b-size-sm"></button>
+        <button b-checkbox class="b-size-md"></button>
+        <button b-checkbox class="b-size-lg"></button>
       </div>
       <h2 class="font-semibold text-xl">Angular Forms with formControlName</h2>
       <code-block [code]="formControlUsage" />
@@ -61,7 +49,7 @@ import { CodeBlock } from '../shared/components/code-block';
         <div
           class="border border-gray-200 dark:border-neutral-900 rounded-lg p-6 mb-6 flex flex-col items-center justify-center gap-4"
         >
-          <input type="checkbox" b-checkbox formControlName="checkboxControl" />
+          <button b-checkbox formControlName="checkboxControl"></button>
         </div>
       </form>
     </div>
@@ -81,13 +69,11 @@ import { CodeBlock } from '../shared/components/code-block';
 export class CheckboxDocumentation {
   angularImport = `import { Checkbox } from '@basis-ng/primitives' `;
   stylesImport = `@import '@basis-ng/styles/checkbox';`;
-  basicUsage = `<input type="checkbox" b-checkbox [value]="basicValue" (valueChange)="onValueChange($event)" />`;
-  sizesUsage = `<input type="checkbox" b-checkbox class="b-size-sm" />\n<input type="checkbox" b-checkbox class="b-size-md" />\n<input type="checkbox" b-checkbox class="b-size-lg" />`;
-  ngModelUsage = `<input type="checkbox" b-checkbox [(ngModel)]="ngModelValue" />`;
-  formControlUsage = `<input type="checkbox" b-checkbox formControlName="checkboxControl" />`;
+  basicUsage = `<button b-checkbox [(ngModel)]="basicValue" (valueChange)="onValueChange($event)"></button>`;
+  sizesUsage = `<button b-checkbox class="b-size-sm"></button>\n<button b-checkbox class="b-size-md"></button>\n<button b-checkbox class="b-size-lg"></button>`;
+  formControlUsage = `<button b-checkbox formControlName="checkboxControl"></button>`;
 
   basicValue = false;
-  ngModelValue = false;
   form = new FormGroup({
     checkboxControl: new FormControl(false),
   });
