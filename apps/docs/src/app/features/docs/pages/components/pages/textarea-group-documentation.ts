@@ -37,11 +37,11 @@ import { CodeBlock } from '../shared/components/code-block';
         class="border border-gray-200 dark:border-neutral-900 rounded-lg p-6 mb-6 flex flex-col items-center justify-center gap-4"
       >
         <b-textarea-group>
-          <label class="text-sm">Notes (sm)</label>
+          <label>Notes (sm)</label>
           <textarea b-textarea class="b-size-sm" rows="3" placeholder="Short note..."></textarea>
         </b-textarea-group>
         <b-textarea-group>
-          <label class="text-sm">Description (md)</label>
+          <label>Description (md)</label>
           <textarea
             b-textarea
             class="b-size-md"
@@ -50,7 +50,7 @@ import { CodeBlock } from '../shared/components/code-block';
           ></textarea>
         </b-textarea-group>
         <b-textarea-group>
-          <label class="text-sm">Message (lg)</label>
+          <label>Message (lg)</label>
           <textarea b-textarea class="b-size-lg" rows="6" placeholder="Full message..."></textarea>
         </b-textarea-group>
       </div>
@@ -61,7 +61,7 @@ import { CodeBlock } from '../shared/components/code-block';
         class="border border-gray-200 dark:border-neutral-900 rounded-lg p-6 mb-6 flex flex-col items-center justify-center gap-4"
       >
         <b-textarea-group class="w-full">
-          <label class="text-sm">Comment</label>
+          <label>Comment</label>
           <textarea
             b-textarea
             class="b-size-md"
@@ -84,7 +84,7 @@ import { CodeBlock } from '../shared/components/code-block';
         class="border border-gray-200 dark:border-neutral-900 rounded-lg p-6 mb-6 flex flex-col items-center justify-center gap-4"
       >
         <b-textarea-group class="w-full">
-          <label class="text-sm">Phone description</label>
+          <label>Phone description</label>
           <textarea b-textarea rows="3" placeholder="What happened?" class="b-size-md"></textarea>
           <div class="flex items-center justify-end gap-2">
             <button b-button class="b-variant-primary b-size-sm">Verify</button>
