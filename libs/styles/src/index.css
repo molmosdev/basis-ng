@@ -80,6 +80,7 @@
 @import './components/switch.css';
 @import './components/tabs.css';
 @import './components/textarea.css';
+@import './components/textarea-group.css';
 @import './components/tooltip.css';
 @import './components/tree.css';
 @import './components/dialog.css';

@@ -1,6 +1,6 @@
 {
   "name": "@basis-ng/styles",
-  "version": "0.0.1-alpha.126",
+  "version": "0.0.1-alpha.127",
   "description": "CSS foundation for @basis-ng/primitives components",
   "main": "src/index.css",
   "exports": {
@@ -12,6 +12,7 @@
     "./button": "./src/components/button.css",
     "./checkbox": "./src/components/checkbox.css",
     "./input-group": "./src/components/input-group.css",
+    "./textarea-group": "./src/components/textarea-group.css",
     "./input": "./src/components/input.css",
     "./label": "./src/components/label.css",
     "./menu": "./src/components/menu.css",
