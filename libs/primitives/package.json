@@ -1,6 +1,6 @@
 {
   "name": "@basis-ng/primitives",
-  "version": "0.0.1-alpha.106",
+  "version": "0.0.1-alpha.107",
   "description": "basis-ng components, animations, directives and services for Angular",
   "peerDependencies": {
     "@angular/common": "^20.2.0",
