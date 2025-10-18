@@ -42,6 +42,7 @@ export * from './components/spinner/spinner';
 export * from './components/switch/switch';
 export * from './components/tabs/tab';
 export * from './components/tabs/tabs';
+export * from './components/textarea-group/textarea-group';
 export * from './components/textarea/textarea';
 export * from './components/tooltip/tooltip';
 export * from './components/tooltip/tooltip-content';
