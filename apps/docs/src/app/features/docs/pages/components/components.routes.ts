@@ -91,6 +91,15 @@ export const componentsRoutes: Routes = [
     },
   },
   {
+    path: 'textarea-group',
+    loadComponent: () =>
+      import('./pages/textarea-group-documentation').then((c) => c.TextareaGroupDocumentation),
+    title: 'Textarea Group - Basis UI',
+    data: {
+      title: 'Textarea Group',
+    },
+  },
+  {
     path: 'menu',
     loadComponent: () => import('./pages/menu-documentation').then((c) => c.MenuDocumentation),
     title: 'Menu - Basis UI',
