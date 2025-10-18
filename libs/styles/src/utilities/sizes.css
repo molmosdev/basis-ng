@@ -1,0 +1,7 @@
+@utility b-rounded-full {
+  border-radius: 9999px !important;
+}
+
+@utility b-rounded-none {
+  border-radius: 0 !important;
+}
