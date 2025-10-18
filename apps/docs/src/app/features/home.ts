@@ -131,14 +131,12 @@ import {
         <span class="text-sm font-medium">Volume</span>
         <input type="range" b-range min="0" max="100" value="50" />
         <b-textarea-group>
-          <div>
-            <button b-button class="b-variant-outlined">
-              <ng-icon name="lucideAtSign" size="16" />
-              Add context
-            </button>
-          </div>
+          <button b-button class="b-variant-outlined">
+            <ng-icon name="lucideAtSign" size="16" />
+            Add context
+          </button>
           <textarea b-textarea placeholder="Ask, search or marke anything..."></textarea>
-          <div class="flex justify-between items-center">
+          <div class="flex w-full justify-between items-center">
             <div class="flex">
               <button b-button class="b-variant-ghost b-squared">
                 <ng-icon name="lucidePaperclip" size="16" />
@@ -149,7 +147,7 @@ import {
                 All sources
               </button>
             </div>
-            <button b-button class="b-squared">
+            <button b-button class="b-squared b-rounded-full">
               <ng-icon name="lucideArrowUp" size="16" />
             </button>
           </div>

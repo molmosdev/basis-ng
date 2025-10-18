@@ -1,7 +1,9 @@
 textarea[b-textarea] {
-  @apply px-2.5 py-1 text-sm rounded-size-md;
   @apply bg-secondary/10 text-secondary-foreground inset-ring-1 inset-ring-ring hover:bg-primary/5 shadow-xs;
   @apply dark:bg-secondary-dark/40 dark:text-secondary-foreground-dark dark:inset-ring-ring-dark dark:hover:bg-primary-dark/5 shadow-xs;
+
+  /* Base md by default */
+  @apply px-2.5 py-1.5 text-sm rounded-size-md;
 
   &:focus-visible:not(:read-only) {
     @apply outline-2 outline-offset-4 outline-primary dark:outline-primary-dark;
@@ -28,11 +30,9 @@ textarea[b-textarea] {
   }
 
   &.b-size-sm {
-    @apply px-2 py-1 text-xs rounded-size-sm;
+    @apply px-1.5 py-1 text-xs rounded-size-sm;
   }
-  &.b-size-md {
-    @apply px-2.5 py-1 text-sm rounded-size-md;
-  }
+
   &.b-size-lg {
     @apply px-3 py-2 text-base rounded-size-lg;
   }
