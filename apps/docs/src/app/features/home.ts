@@ -55,7 +55,7 @@ import {
       <button b-button routerLink="/docs" class="mt-6">Get started</button>
     </div>
     <div
-      class="grid items-start grid-cols-1 lg:grid-cols-3 xl:grid-cols-4 gap-4 mt-8 w-full max-w-400"
+      class="grid items-start grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 mt-8 w-full max-w-400"
     >
       <b-card>
         <b-card-header>
