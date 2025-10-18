@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { Alert, TextareaComponent } from '@basis-ng/primitives';
+import { Alert, Textarea } from '@basis-ng/primitives';
 import { provideIcons } from '@ng-icons/core';
 import { lucideRocket } from '@ng-icons/lucide';
 import { StepsButtons } from '../../shared/components/steps-buttons';
@@ -8,7 +8,7 @@ import { CodeBlock } from '../shared/components/code-block';
 
 @Component({
   selector: 'article[app-textarea-documentation]',
-  imports: [CodeBlock, TextareaComponent, FormsModule, ReactiveFormsModule, StepsButtons, Alert],
+  imports: [CodeBlock, Textarea, FormsModule, ReactiveFormsModule, StepsButtons, Alert],
   template: `
     <app-steps-buttons
       [previous]="{ label: 'Tabs', path: '/docs/components/tabs' }"

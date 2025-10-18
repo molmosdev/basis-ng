@@ -1,19 +1,13 @@
 import { Component } from '@angular/core';
+import { Alert, Badge, Button, Textarea, TextareaGroup } from '@basis-ng/primitives';
 import { provideIcons } from '@ng-icons/core';
 import { lucideRocket } from '@ng-icons/lucide';
-import {
-  Alert,
-  Badge,
-  Button,
-  TextareaComponent,
-  TextareaGroup,
-} from '../../../../../../../../../libs/primitives/src/public-api';
 import { StepsButtons } from '../../shared/components/steps-buttons';
 import { CodeBlock } from '../shared/components/code-block';
 
 @Component({
   selector: 'article[app-textarea-group-documentation]',
-  imports: [CodeBlock, TextareaComponent, TextareaGroup, Button, StepsButtons, Badge, Alert],
+  imports: [CodeBlock, Textarea, TextareaGroup, Button, StepsButtons, Badge, Alert],
   template: `
     <app-steps-buttons
       [previous]="{ label: 'Textarea', path: '/docs/components/textarea' }"
