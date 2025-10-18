@@ -7,4 +7,4 @@ import { Component } from '@angular/core';
   selector: 'textarea[b-textarea]',
   template: ``,
 })
-export class TextareaComponent {}
+export class Textarea {}
