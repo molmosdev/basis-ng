@@ -12,15 +12,21 @@ import {
   CardTitle,
   Input,
   InputGroup,
+  Textarea,
+  TextareaGroup,
 } from '@basis-ng/primitives';
 import { NgIcon, provideIcons } from '@ng-icons/core';
 import {
   lucideArrowLeft,
   lucideArrowRight,
+  lucideArrowUp,
+  lucideAtSign,
   lucideAudioLines,
+  lucideGlobe,
   lucideInfo,
   lucideLoader,
   lucideLoader2,
+  lucidePaperclip,
   lucidePlus,
   lucideSearch,
 } from '@ng-icons/lucide';
@@ -41,6 +47,8 @@ import {
     NgIcon,
     Badge,
     ButtonGroup,
+    Textarea,
+    TextareaGroup,
   ],
   template: `
     <h1 class="font-medium text-4xl md:text-5xl xl:text-6xl text-center">
@@ -122,6 +130,30 @@ import {
         </div>
         <span class="text-sm font-medium">Volume</span>
         <input type="range" b-range min="0" max="100" value="50" />
+        <b-textarea-group>
+          <div>
+            <button b-button class="b-variant-outlined">
+              <ng-icon name="lucideAtSign" size="16" />
+              Add context
+            </button>
+          </div>
+          <textarea b-textarea placeholder="Ask, search or marke anything..."></textarea>
+          <div class="flex justify-between items-center">
+            <div class="flex">
+              <button b-button class="b-variant-ghost b-squared">
+                <ng-icon name="lucidePaperclip" size="16" />
+              </button>
+              <button b-button class="b-variant-ghost">Auto</button>
+              <button b-button class="b-variant-ghost">
+                <ng-icon name="lucideGlobe" size="16" />
+                All sources
+              </button>
+            </div>
+            <button b-button class="b-squared">
+              <ng-icon name="lucideArrowUp" size="16" />
+            </button>
+          </div>
+        </b-textarea-group>
       </div>
       <div class="flex gap-4">
         <b-button-group>
@@ -142,6 +174,7 @@ import {
   `,
   providers: [
     provideIcons({
+      lucideAtSign,
       lucideSearch,
       lucideLoader,
       lucideLoader2,
@@ -150,6 +183,9 @@ import {
       lucideInfo,
       lucidePlus,
       lucideAudioLines,
+      lucidePaperclip,
+      lucideArrowUp,
+      lucideGlobe,
     }),
   ],
   host: {
