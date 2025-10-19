@@ -117,16 +117,6 @@ export const componentsRoutes: Routes = [
     },
   },
   {
-    path: 'popover',
-    loadComponent: () =>
-      import('./pages/popover-documentation').then((c) => c.PopoverDocumentation),
-    title: 'Popover - Basis UI',
-    data: {
-      title: 'Popover',
-      badge: 'New',
-    },
-  },
-  {
     path: 'range',
     loadComponent: () => import('./pages/range-documentation').then((c) => c.RangeDocumentation),
     title: 'Range - Basis UI',
