@@ -186,6 +186,15 @@ export const componentsRoutes: Routes = [
     },
   },
   {
+    path: 'popover',
+    loadComponent: () =>
+      import('./pages/popover-documentation').then((c) => c.PopoverDocumentation),
+    title: 'Popover - Basis UI',
+    data: {
+      title: 'Popover',
+    },
+  },
+  {
     path: 'tree',
     loadComponent: () => import('./pages/tree-documentation').then((c) => c.TreeDocumentation),
     title: 'Tree - Basis UI',
