@@ -99,11 +99,11 @@ export class Overlay {
    */
   readonly focusTriggerOnClose = model(true);
 
-  /** Scroll handling mode applied to the overlay.
+  /** Scroll strategy for the overlay.
 
    * @defaultValue 'reposition'
    */
-  scroll = model<'close' | 'reposition' | 'block'>('reposition');
+  scrollStrategy = model<'close' | 'reposition' | 'block'>('reposition');
 
   /**
    * Computed array of CDK ConnectedPosition values derived from `positions`.
@@ -185,6 +185,7 @@ export class Overlay {
    * Close the overlay if a click occurs outside and `closeOnClickOutside` is enabled.
    */
   closeIfClickedOutside(): void {
+    console.log('clicked outside');
     if (this.closeOnClickOutside()) {
       this.trigger()?.active?.set(false);
     }
@@ -205,7 +206,7 @@ export class Overlay {
    * Apply the selected scroll strategy to the CDK connected overlay.
    */
   setScrollStrategy(): void {
-    switch (this.scroll()) {
+    switch (this.scrollStrategy()) {
       case 'close':
         this.cdkConnectedOverlay.scrollStrategy = this.scrollStrategyOptions.close();
         break;
