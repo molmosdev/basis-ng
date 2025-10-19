@@ -1,13 +1,5 @@
 import { Component } from '@angular/core';
-import {
-  Alert,
-  Button,
-  ConnectedOverlay,
-  OverlayOrigin,
-  Tooltip,
-  TooltipContent,
-  TooltipTrigger,
-} from '@basis-ng/primitives';
+import { Alert, Button, Tooltip, TooltipContent, TooltipTrigger } from '@basis-ng/primitives';
 import { NgIcon, provideIcons } from '@ng-icons/core';
 import {
   lucideCircleCheck,
@@ -28,8 +20,6 @@ import { CodeBlock } from '../shared/components/code-block';
     Tooltip,
     TooltipTrigger,
     TooltipContent,
-    ConnectedOverlay,
-    OverlayOrigin,
     Button,
     NgIcon,
     Alert,
@@ -89,31 +79,24 @@ import { CodeBlock } from '../shared/components/code-block';
               >
                 <span class="group cursor-pointer inline-flex items-center">
                   string | null
-                  <b-tooltip>
-                    <button
-                      b-button
-                      class="ml-1 flex items-center justify-center b-squared b-variant-ghost b-size-sm"
-                      tabindex="0"
-                      aria-label="Show Position[] values"
-                      bTooltipTrigger
-                      bOverlayOrigin
-                      #tooltipInfo="bOverlayOrigin"
-                      type="button"
-                    >
-                      <ng-icon name="lucideInfo" size="14" color="currentColor" />
-                    </button>
-                    <ng-template
-                      bConnectedOverlay
-                      [trigger]="tooltipInfo"
-                      [focusTriggerOnClose]="false"
-                    >
-                      <b-tooltip-content class="b-size-sm b-variant-secondary">
-                        The icon should be provided using the provideIcons method from ng-icons.
-                        <br />
-                        {{ iconProvideExample }}
-                      </b-tooltip-content>
-                    </ng-template>
-                  </b-tooltip>
+                  <button
+                    b-button
+                    class="ml-1 flex items-center justify-center b-squared b-variant-ghost b-size-sm"
+                    tabindex="0"
+                    aria-label="Show Position[] values"
+                    bTooltipTrigger
+                    #tooltipInfo="bTooltipTrigger"
+                    type="button"
+                  >
+                    <ng-icon name="lucideInfo" size="14" color="currentColor" />
+                  </button>
+                  <ng-template bTooltip [trigger]="tooltipInfo" [focusTriggerOnClose]="false">
+                    <b-tooltip-content class="b-size-sm b-variant-secondary">
+                      The icon should be provided using the provideIcons method from ng-icons.
+                      <br />
+                      {{ iconProvideExample }}
+                    </b-tooltip-content>
+                  </ng-template>
                 </span>
               </td>
             </tr>
