@@ -1,45 +1,21 @@
-import { AfterContentInit, Component, contentChild } from '@angular/core';
-import { ConnectedOverlay } from '../../directives/connected-overlay';
-import { TooltipContent } from './tooltip-content';
-import { TooltipTrigger } from './tooltip-trigger';
+import { Directive, OnInit } from '@angular/core';
+import { Overlay } from '../../directives/overlay-v2/overlay';
 
 /**
- * Lightweight tooltip that connects a trigger to overlay content.
+ * Tooltip directive that configures an overlay for displaying tooltip content.
  */
-@Component({
-  selector: 'b-tooltip',
-  template: ` <ng-content /> `,
+@Directive({
+  selector: '[bTooltip]',
 })
-export class Tooltip implements AfterContentInit {
-  /**
-   * Connected overlay instance used to open/close the tooltip.
-   */
-  readonly overlay = contentChild(ConnectedOverlay);
-
-  /**
-   * ContentChild that emits activation events.
-   */
-  readonly tooltipTrigger = contentChild(TooltipTrigger);
-
-  /**
-   * Tooltip content element.
-   */
-  readonly tooltipContent = contentChild(TooltipContent);
-
-  ngAfterContentInit(): void {
-    this.handleTooltipEvents();
+export class Tooltip extends Overlay implements OnInit {
+  ngOnInit() {
+    this.setCloseOnTypeEscapeToFalse();
   }
 
   /**
-   * Handles tooltip activation events.
+   * Sets the closeOnTypeEscape property to false for tooltips.
    */
-  private handleTooltipEvents(): void {
-    this.tooltipTrigger()?.activeEmitter.subscribe(() => {
-      this.overlay()?.openOverlay();
-    });
-
-    this.tooltipTrigger()?.inactiveEmitter.subscribe(() => {
-      this.overlay()?.closeOverlay();
-    });
+  private setCloseOnTypeEscapeToFalse(): void {
+    this.closeOnTypeEscape.set(false);
   }
 }

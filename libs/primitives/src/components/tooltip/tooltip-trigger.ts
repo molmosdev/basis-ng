@@ -1,25 +1,20 @@
-import { Directive, output } from '@angular/core';
+import { Directive } from '@angular/core';
+import { OverlayTrigger } from '../../directives/overlay-v2/overlay-trigger';
 
 /**
  * Trigger directive that emits activation events for tooltips.
+ *
+ * This directive now extends `OverlayOrigin` so it exposes the same
+ * `trigger` and `el` properties expected by `ConnectedOverlay`.
  */
 @Directive({
   selector: '[bTooltipTrigger]',
   host: {
-    '(mouseover)': 'activeEmitter.emit()',
-    '(focus)': 'activeEmitter.emit()',
-    '(mouseout)': 'inactiveEmitter.emit()',
-    '(blur)': 'inactiveEmitter.emit()',
+    '(mouseover)': 'active.set(true)',
+    '(focus)': 'active.set(true)',
+    '(mouseout)': 'active.set(false)',
+    '(blur)': 'active.set(false)',
   },
+  exportAs: 'bTooltipTrigger',
 })
-export class TooltipTrigger {
-  /**
-   * Emitted when the trigger becomes active (hover/focus).
-   */
-  activeEmitter = output<void>();
-
-  /**
-   * Emitted when the trigger becomes inactive (mouseout/blur).
-   */
-  inactiveEmitter = output<void>();
-}
+export class TooltipTrigger extends OverlayTrigger {}
