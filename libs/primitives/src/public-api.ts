@@ -52,6 +52,8 @@ export * from './components/tree/tree-node';
 export * from './directives/connected-overlay';
 export * from './directives/dialog';
 export * from './directives/overlay-origin';
+export * from './directives/overlay-v2/overlay';
+export * from './directives/overlay-v2/overlay-trigger';
 export * from './pipes/translate.pipe';
 export * from './services/dialog-manager';
 export * from './services/responsive-manager';
