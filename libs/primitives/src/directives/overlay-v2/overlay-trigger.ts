@@ -1,13 +1,13 @@
 import { CdkOverlayOrigin } from '@angular/cdk/overlay';
-import { Directive, signal } from '@angular/core';
+import { Directive, ElementRef, inject, signal } from '@angular/core';
 
 /**
  * Directive that marks an element as an overlay trigger and toggles its active state on click.
  */
 @Directive({
   selector: '[bOverlayTrigger]',
-  exportAs: 'bOverlayTrigger',
   hostDirectives: [CdkOverlayOrigin],
+  exportAs: 'bOverlayTrigger',
 })
 export class OverlayTrigger extends CdkOverlayOrigin {
   /**
@@ -16,4 +16,10 @@ export class OverlayTrigger extends CdkOverlayOrigin {
    * @defaultValue false
    */
   active = signal(false);
+
+  /**
+   * Reference to the `ElementRef` of the host element.
+   * This is used to access the native DOM element.
+   */
+  el = inject(ElementRef);
 }

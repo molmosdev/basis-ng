@@ -29,7 +29,6 @@ import { OverlayTrigger } from './overlay-trigger';
         'cdkConnectedOverlayMinWidth: minWidth',
         'cdkConnectedOverlayOffsetX: offsetX',
         'cdkConnectedOverlayOffsetY: offsetY',
-        'cdkConnectedOverlayOpen: open',
         'cdkConnectedOverlayOrigin: trigger',
         'cdkConnectedOverlayPanelClass: panelClass',
         'cdkConnectedOverlayPositionStrategy: positionStrategy',
@@ -72,10 +71,8 @@ export class Overlay {
 
   /**
    * Whether the overlay is open.
-   *
-   * @defaultValue false
    */
-  open = input<boolean>(false);
+  open = computed(() => this.trigger()?.active() || false);
 
   /** Preferred overlay positions in priority order.
 
@@ -87,13 +84,20 @@ export class Overlay {
 
    * @defaultValue true
    */
-  closeOnClickOutside = model<boolean>(true);
+  closeOnClickOutside = model(true);
 
   /** Whether pressing Escape closes the overlay.
 
    * @defaultValue true
    */
-  closeOnTypeEscape = model<boolean>(true);
+  closeOnTypeEscape = model(true);
+
+  /**
+   * Whether to focus the trigger element when the overlay closes.
+   *
+   * @defaultValue true
+   */
+  readonly focusTriggerOnClose = model(true);
 
   /** Scroll handling mode applied to the overlay.
 
@@ -130,11 +134,35 @@ export class Overlay {
       .split('-')[0];
   });
 
+  /**
+   * Flag to indicate if el overlay ya fue abierto al menos una vez.
+   */
+  private hasBeenOpened = false;
+
   constructor() {
     effect(() => {
+      this.handleAttach();
       this.setScrollStrategy();
       this.setPositions();
     });
+  }
+
+  /**
+   * Attach or detach the overlay based on the `open` signal.
+   * Also manages focus on the trigger element when closing.
+   */
+  handleAttach(): void {
+    if (this.open()) {
+      this.cdkConnectedOverlay.attachOverlay();
+      this.hasBeenOpened = true;
+    } else {
+      this.cdkConnectedOverlay.detachOverlay();
+
+      // Only focus the trigger if the overlay has been opened at least once
+      if (this.hasBeenOpened && this.focusTriggerOnClose()) {
+        this.trigger()?.el.nativeElement.focus();
+      }
+    }
   }
 
   /**
