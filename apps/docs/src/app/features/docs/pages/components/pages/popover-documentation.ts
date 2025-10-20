@@ -1,12 +1,34 @@
 import { Component } from '@angular/core';
-import { Popover, PopoverContent, PopoverTrigger } from '@basis-ng/primitives';
+import {
+  Button,
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+  Popover,
+  PopoverTrigger,
+} from '@basis-ng/primitives';
 import { StepsButtons } from '../../shared/components/steps-buttons';
 import { CodeBlock } from '../shared/components/code-block';
 
 @Component({
   selector: 'article[app-popover-documentation]',
   standalone: true,
-  imports: [CodeBlock, StepsButtons, Popover, PopoverContent, PopoverTrigger],
+  imports: [
+    CodeBlock,
+    StepsButtons,
+    Button,
+    Popover,
+    PopoverTrigger,
+    Card,
+    CardHeader,
+    CardTitle,
+    CardContent,
+    CardFooter,
+    CardDescription,
+  ],
   template: `
     <app-steps-buttons
       [previous]="{ label: 'Tooltip', path: '/docs/components/tooltip' }"
@@ -26,14 +48,24 @@ import { CodeBlock } from '../shared/components/code-block';
       <div
         class="border border-gray-200 dark:border-neutral-900 rounded-lg p-6 mb-6 flex flex-col items-center justify-center gap-4"
       >
-        <button bPopoverTrigger #triggerBasic="bPopoverTrigger" class="b-button">
+        <button b-button bPopoverTrigger #triggerBasic="bPopoverTrigger" class="b-button">
           Open popover
         </button>
         <ng-template bPopover [trigger]="triggerBasic">
-          <b-popover-content>
-            This is a popover. It supports multiple lines of text and flexible sizing. Lorem ipsum
-            dolor sit amet, consectetur adipiscing elit. Integer nec odio.
-          </b-popover-content>
+          <b-card class="w-full max-w-[320px]">
+            <b-card-header>
+              <b-card-title>Popover Card</b-card-title>
+              <b-card-description>A small card inside a popover</b-card-description>
+            </b-card-header>
+            <b-card-content>
+              This popover contains a card component — popover content is now fully dynamic. You can
+              put any component or markup here.
+            </b-card-content>
+            <b-card-footer>
+              <button b-button class="b-variant-outlined">Close</button>
+              <button b-button>Action</button>
+            </b-card-footer>
+          </b-card>
         </ng-template>
       </div>
     </div>
@@ -47,12 +79,10 @@ import { CodeBlock } from '../shared/components/code-block';
   },
 })
 export class PopoverDocumentation {
-  angularImport = `import { Popover, PopoverContent, PopoverTrigger } from '@basis-ng/primitives';`;
+  angularImport = `import { Popover, PopoverTrigger } from '@basis-ng/primitives';`;
   stylesImport = `@import '@basis-ng/styles/index.css';`;
-  basicUsage = `<button bPopoverTrigger #trigger="bPopoverTrigger">Open popover</button>
+  basicUsage = `<button b-button bPopoverTrigger #trigger="bPopoverTrigger">Open popover</button>
 <ng-template bPopover [trigger]="trigger">
-  <b-popover-content>
-    Multi-line popover content goes here. It will wrap and grow vertically as needed.
-  </b-popover-content>
+  <div class="b-popover-content">Multi-line popover content goes here. It will wrap and grow vertically as needed.</div>
 </ng-template>`;
 }

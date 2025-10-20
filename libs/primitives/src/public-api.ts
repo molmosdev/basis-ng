@@ -29,7 +29,6 @@ export * from './components/menu/menu-trigger';
 export * from './components/option/option.component';
 export * from './components/otp/otp';
 export * from './components/popover/popover';
-export * from './components/popover/popover-content';
 export * from './components/popover/popover-trigger';
 export * from './components/range/range';
 export * from './components/select/select';

@@ -1,8 +1,0 @@
-b-popover-content {
-  @apply whitespace-normal rounded-lg shadow flex items-start justify-center gap-1.5 bg-background text-sm font-sans px-3 py-2  max-w-xs sm:max-w-lg;
-  @apply dark:bg-background-dark;
-
-  /* Use the same look as tooltip secondary by default */
-  @apply bg-secondary text-secondary-foreground;
-  @apply dark:bg-secondary-dark dark:text-secondary-foreground-dark;
-}

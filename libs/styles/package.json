@@ -17,7 +17,6 @@
     "./label": "./src/components/label.css",
     "./menu": "./src/components/menu.css",
     "./option": "./src/components/option.css",
-    "./popover": "./src/components/popover.css",
     "./range": "./src/components/range.css",
     "./row-item": "./src/components/row-item.css",
     "./row": "./src/components/row.css",
