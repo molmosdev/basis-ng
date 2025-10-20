@@ -192,6 +192,7 @@ export const componentsRoutes: Routes = [
     title: 'Popover - Basis UI',
     data: {
       title: 'Popover',
+      badge: 'New',
     },
   },
   {
