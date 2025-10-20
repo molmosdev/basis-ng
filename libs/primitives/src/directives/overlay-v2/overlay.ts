@@ -72,7 +72,7 @@ export class Overlay {
   /**
    * Whether the overlay is open.
    */
-  open = linkedSignal(() => this.trigger()?.active() || false);
+  open = computed(() => this.trigger()?.active() || false);
 
   /** Preferred overlay positions in priority order.
 

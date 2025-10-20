@@ -1,5 +1,5 @@
 import { CdkOverlayOrigin } from '@angular/cdk/overlay';
-import { Directive, ElementRef, inject, signal } from '@angular/core';
+import { Directive, ElementRef, inject, model } from '@angular/core';
 
 /**
  * Directive that marks an element as an overlay trigger and toggles its active state on click.
@@ -11,11 +11,11 @@ import { Directive, ElementRef, inject, signal } from '@angular/core';
 })
 export class OverlayTrigger extends CdkOverlayOrigin {
   /**
-   * Signal that holds whether the overlay trigger is active.
+   * Model that indicates whether the trigger is active.
    *
    * @defaultValue false
    */
-  active = signal(false);
+  active = model(false);
 
   /**
    * Reference to the `ElementRef` of the host element.

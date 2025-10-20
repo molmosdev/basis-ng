@@ -1,4 +1,4 @@
-import { Directive, OnInit } from '@angular/core';
+import { Directive } from '@angular/core';
 import { Overlay } from '../../directives/overlay-v2/overlay';
 
 /**
@@ -9,15 +9,4 @@ import { Overlay } from '../../directives/overlay-v2/overlay';
 @Directive({
   selector: '[bPopover]',
 })
-export class Popover extends Overlay implements OnInit {
-  ngOnInit(): void {
-    this.setScrollStrategyToClose();
-  }
-
-  /**
-   * Sets the scroll strategy to close the popover when scrolling occurs.
-   */
-  private setScrollStrategyToClose(): void {
-    this.scrollStrategy.set('close');
-  }
-}
+export class Popover extends Overlay {}
