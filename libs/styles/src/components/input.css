@@ -1,8 +1,8 @@
 /* Input styles — Base / Sizes / States */
 input[b-input] {
   /* Base */
-  @apply bg-primary/5 text-secondary-foreground inset-ring-1 inset-ring-primary/20 shadow-xs;
-  @apply dark:bg-primary-dark/5 dark:text-secondary-foreground-dark dark:inset-ring-primary-dark/30;
+  @apply bg-primary/5 text-secondary-foreground inset-ring-1 inset-ring-primary/10 shadow-xs;
+  @apply dark:bg-primary-dark/5 dark:text-secondary-foreground-dark dark:inset-ring-primary-dark/10;
 
   /* Base md by default */
   @apply px-2.5 py-0 text-sm h-8 rounded-size-md;
