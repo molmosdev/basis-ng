@@ -1,5 +1,4 @@
 import { AfterViewInit, Component, computed, ElementRef, inject, input } from '@angular/core';
-import { NgModel } from '@angular/forms';
 
 /**
  * Enhanced native input with optional numeric formatting and integrations.
@@ -9,6 +8,7 @@ import { NgModel } from '@angular/forms';
   template: ``,
   host: {
     '[type]': 'type()',
+    '[attr.data-invalid]': 'invalid() ? "" : null',
     '(input)': 'onInput($event)',
     '(blur)': 'onBlur($event)',
   },
@@ -31,6 +31,11 @@ export class Input implements AfterViewInit {
   readonly numberType = input<'integer' | 'decimal'>('integer');
 
   /**
+   * Whether the input is in an invalid state.
+   */
+  readonly invalid = input<boolean>(false);
+
+  /**
    * Computed signal indicating if the current type is numeric.
    */
   readonly isNumberType = computed(() => this.type() === 'number');
@@ -40,13 +45,8 @@ export class Input implements AfterViewInit {
    */
   readonly el = inject<ElementRef<HTMLInputElement>>(ElementRef);
 
-  /**
-   * Optional NgModel integration for template-driven forms.
-   */
-  private ngModel = inject(NgModel, { optional: true });
-
   ngAfterViewInit(): void {
-    const value = this.el.nativeElement.value || this.ngModel?.model;
+    const value = this.el.nativeElement.value;
     if (this.isNumberType()) {
       const formattedValue = this.formatNumber(value) || '';
       this.setValue(formattedValue);

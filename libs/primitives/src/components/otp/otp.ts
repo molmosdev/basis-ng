@@ -4,6 +4,7 @@ import {
   computed,
   contentChildren,
   ElementRef,
+  input,
   model,
   output,
 } from '@angular/core';
@@ -14,6 +15,9 @@ import {
 @Component({
   selector: 'b-otp',
   template: ` <ng-content /> `,
+  host: {
+    '[attr.data-invalid]': 'invalid() ? "" : null',
+  },
 })
 export class Otp implements AfterContentInit {
   /**
@@ -30,6 +34,11 @@ export class Otp implements AfterContentInit {
    * Emitted when the OTP value changes.
    */
   readonly valueChange = output<string>();
+
+  /**
+   * Whether the OTP is in an invalid state.
+   */
+  readonly invalid = input<boolean>(false);
 
   /**
    * Query list of digit input directives.
