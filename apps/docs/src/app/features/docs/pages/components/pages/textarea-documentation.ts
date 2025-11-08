@@ -1,14 +1,13 @@
 import { Component } from '@angular/core';
-import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { Alert, Textarea } from '@basis-ng/primitives';
 import { provideIcons } from '@ng-icons/core';
 import { lucideRocket } from '@ng-icons/lucide';
+import { Alert, Textarea } from '../../../../../../../../../libs/primitives/src/public-api';
 import { StepsButtons } from '../../shared/components/steps-buttons';
 import { CodeBlock } from '../shared/components/code-block';
 
 @Component({
   selector: 'article[app-textarea-documentation]',
-  imports: [CodeBlock, Textarea, FormsModule, ReactiveFormsModule, StepsButtons, Alert],
+  imports: [CodeBlock, Textarea, StepsButtons, Alert],
   template: `
     <app-steps-buttons
       [previous]="{ label: 'Tabs', path: '/docs/components/tabs' }"
@@ -40,18 +39,6 @@ import { CodeBlock } from '../shared/components/code-block';
         <textarea b-textarea class="b-size-md" placeholder="Medium"></textarea>
         <textarea b-textarea class="b-size-lg" placeholder="Large"></textarea>
       </div>
-      <h2 class="font-semibold text-xl">Invalid Textarea</h2>
-      <code-block [code]="invalidUsage" />
-      <form
-        class="border border-gray-200 dark:border-neutral-900 rounded-lg p-6 mb-6 flex flex-col items-center justify-center gap-4"
-        [formGroup]="form"
-      >
-        <textarea
-          b-textarea
-          placeholder="Invalid textarea"
-          formControlName="invalidControl"
-        ></textarea>
-      </form>
     </div>
     <app-steps-buttons
       [previous]="{ label: 'Tabs', path: '/docs/components/tabs' }"
@@ -64,16 +51,8 @@ import { CodeBlock } from '../shared/components/code-block';
   },
 })
 export class TextareaDocumentation {
-  angularImport = `import { TextareaComponent } from '@basis-ng/primitives' `;
+  angularImport = `import { Textarea } from '@basis-ng/primitives' `;
   stylesImport = `@import '@basis-ng/styles/textarea';`;
   basicUsage = `<textarea b-textarea placeholder="Enter text"></textarea>`;
   sizeUsage = `<textarea b-textarea class="b-size-sm" placeholder="Small"></textarea>\n<textarea b-textarea class="b-size-md" placeholder="Medium"></textarea>\n<textarea b-textarea class="b-size-lg" placeholder="Large"></textarea>`;
-  invalidUsage = `<form [formGroup]="form">
-  <textarea b-textarea placeholder="Invalid textarea" formControlName="invalidControl"></textarea>
-</form>`;
-  form = new FormGroup({
-    invalidControl: new FormControl('', {
-      validators: () => ({ invalid: true }),
-    }),
-  });
 }

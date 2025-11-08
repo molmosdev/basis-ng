@@ -1,26 +1,14 @@
-import { CommonModule, NgTemplateOutlet } from '@angular/common';
+import { NgTemplateOutlet } from '@angular/common';
 import { Component } from '@angular/core';
-import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { Alert, Badge, Tab, Tabs } from '@basis-ng/primitives';
 import { provideIcons } from '@ng-icons/core';
 import { lucideRocket } from '@ng-icons/lucide';
+import { Alert, Badge, Tab, Tabs } from '../../../../../../../../../libs/primitives/src/public-api';
 import { StepsButtons } from '../../shared/components/steps-buttons';
 import { CodeBlock } from '../shared/components/code-block';
 
 @Component({
   selector: 'article[app-tabs-documentation]',
-  imports: [
-    CommonModule,
-    Tabs,
-    Tab,
-    CodeBlock,
-    FormsModule,
-    ReactiveFormsModule,
-    NgTemplateOutlet,
-    StepsButtons,
-    Badge,
-    Alert,
-  ],
+  imports: [Tabs, Tab, CodeBlock, NgTemplateOutlet, StepsButtons, Badge, Alert],
   template: `
     <app-steps-buttons
       [previous]="{ label: 'Switch', path: '/docs/components/switch' }"
@@ -37,31 +25,109 @@ import { CodeBlock } from '../shared/components/code-block';
     <div class="flex flex-col gap-4">
       <span>
         The Tabs component provides a way to organize content into multiple views that can be
-        switched between.
+        switched between. Built with signals for reactive state management and keyboard navigation
+        support.
       </span>
       <code-block [code]="angularImport" />
       <span>Include this to apply predefined styles. The component is headless without it.</span>
       <code-block [code]="stylesImport" />
+      <h2 class="font-semibold text-xl">Tabs properties</h2>
+      <div
+        class="overflow-x-auto overflow-hidden rounded-lg border border-gray-200 dark:border-neutral-900 mb-6"
+      >
+        <table class="table-auto w-full text-left text-sm">
+          <thead class="bg-gray-50 dark:bg-neutral-900">
+            <tr>
+              <th class="border-b border-gray-200 dark:border-neutral-900 px-4 py-2 font-semibold">
+                Prop
+              </th>
+              <th class="border-b border-gray-200 dark:border-neutral-900 px-4 py-2 font-semibold">
+                Type
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td
+                class="border-t border-gray-200 dark:border-neutral-900 px-4 py-2 font-display-mono whitespace-nowrap"
+              >
+                value
+              </td>
+              <td
+                class="border-t border-gray-200 dark:border-neutral-900 px-4 py-2 font-display-mono whitespace-nowrap"
+              >
+                <b class="font-bold">[]</b>
+                | ModelSignal&lt;string[]&gt;
+              </td>
+            </tr>
+            <tr>
+              <td
+                class="border-t border-gray-200 dark:border-neutral-900 px-4 py-2 font-display-mono whitespace-nowrap"
+              >
+                valueChange
+              </td>
+              <td
+                class="border-t border-gray-200 dark:border-neutral-900 px-4 py-2 font-display-mono whitespace-nowrap"
+              >
+                OutputEmitterRef&lt;string[]&gt;
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <h2 class="font-semibold text-xl">Tab properties</h2>
+      <div
+        class="overflow-x-auto overflow-hidden rounded-lg border border-gray-200 dark:border-neutral-900 mb-6"
+      >
+        <table class="table-auto w-full text-left text-sm">
+          <thead class="bg-gray-50 dark:bg-neutral-900">
+            <tr>
+              <th class="border-b border-gray-200 dark:border-neutral-900 px-4 py-2 font-semibold">
+                Prop
+              </th>
+              <th class="border-b border-gray-200 dark:border-neutral-900 px-4 py-2 font-semibold">
+                Type
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td
+                class="border-t border-gray-200 dark:border-neutral-900 px-4 py-2 font-display-mono whitespace-nowrap"
+              >
+                value
+              </td>
+              <td
+                class="border-t border-gray-200 dark:border-neutral-900 px-4 py-2 font-display-mono whitespace-nowrap"
+              >
+                <b class="font-bold">required</b>
+                | InputSignal&lt;string&gt;
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
       <h2 class="font-semibold text-xl">Keyboard Navigation</h2>
       <span>
-        Use the arrow keys to navigate between tabs. The component supports horizontal navigation.
+        Use the arrow keys to navigate between tabs. Press Arrow Left to move to previous tab, Arrow
+        Right to move to next tab.
       </span>
       <h2 class="font-semibold text-xl">Sizes</h2>
       <code-block [code]="sizesUsage" />
       <div
         class="border border-gray-200 dark:border-neutral-900 rounded-lg p-6 mb-6 flex flex-col gap-4 items-center"
       >
-        <b-tabs [(ngModel)]="sizesTab" class="b-size-sm">
+        <b-tabs [(value)]="sizesTab" class="b-size-sm">
           <b-tab value="tab1">Small</b-tab>
           <b-tab value="tab2">Small</b-tab>
           <b-tab value="tab3">Small</b-tab>
         </b-tabs>
-        <b-tabs [(ngModel)]="sizesTab" class="b-size-md">
+        <b-tabs [(value)]="sizesTab" class="b-size-md">
           <b-tab value="tab1">Medium (default)</b-tab>
           <b-tab value="tab2">Medium (default)</b-tab>
           <b-tab value="tab3">Medium (default)</b-tab>
         </b-tabs>
-        <b-tabs [(ngModel)]="sizesTab" class="b-size-lg">
+        <b-tabs [(value)]="sizesTab" class="b-size-lg">
           <b-tab value="tab1">Large</b-tab>
           <b-tab value="tab2">Large</b-tab>
           <b-tab value="tab3">Large</b-tab>
@@ -72,7 +138,7 @@ import { CodeBlock } from '../shared/components/code-block';
       <div
         class="border border-gray-200 dark:border-neutral-900 rounded-lg p-6 mb-6 flex flex-col gap-4 items-center"
       >
-        <b-tabs [(ngModel)]="selectedTab">
+        <b-tabs [(value)]="selectedTab">
           <b-tab value="tab1">Tab 1</b-tab>
           <b-tab value="tab2">Tab 2</b-tab>
           <b-tab value="tab3">Tab 3</b-tab>
@@ -97,7 +163,7 @@ import { CodeBlock } from '../shared/components/code-block';
       <div
         class="border border-gray-200 dark:border-neutral-900 rounded-lg p-6 mb-6 flex flex-col gap-4 items-center"
       >
-        <b-tabs [(ngModel)]="lazySelectedTab">
+        <b-tabs [(value)]="lazySelectedTab">
           <b-tab value="tab1">Tab 1</b-tab>
           <b-tab value="tab2">Tab 2</b-tab>
           <b-tab value="tab3">Tab 3</b-tab>
@@ -121,29 +187,6 @@ import { CodeBlock } from '../shared/components/code-block';
           <p>Lazy-loaded content for Tab 3</p>
         </ng-template>
       </div>
-      <h2 class="font-semibold text-xl">Reactive Forms Usage</h2>
-      <span>Use with Angular's Reactive Forms to manage tab state.</span>
-      <code-block [code]="reactiveFormsUsage" />
-      <div
-        class="border border-gray-200 dark:border-neutral-900 rounded-lg p-6 mb-6 flex flex-col gap-4 items-center"
-      >
-        <form [formGroup]="tabsForm">
-          <b-tabs formControlName="tabControl">
-            <b-tab value="tab1">Tab 1</b-tab>
-            <b-tab value="tab2">Tab 2</b-tab>
-            <b-tab value="tab3">Tab 3</b-tab>
-          </b-tabs>
-        </form>
-        @if (tabsForm.value.tabControl && tabsForm.value.tabControl[0] === 'tab1') {
-          <p>Tab 1 content</p>
-        }
-        @if (tabsForm.value.tabControl && tabsForm.value.tabControl[0] === 'tab2') {
-          <p>Tab 2 content</p>
-        }
-        @if (tabsForm.value.tabControl && tabsForm.value.tabControl[0] === 'tab3') {
-          <p>Tab 3 content</p>
-        }
-      </div>
     </div>
     <app-steps-buttons
       [previous]="{ label: 'Switch', path: '/docs/components/switch' }"
@@ -158,7 +201,7 @@ import { CodeBlock } from '../shared/components/code-block';
 export class TabsDocumentation {
   angularImport = `import { Tabs, Tab } from '@basis-ng/primitives' `;
   stylesImport = `@import '@basis-ng/styles/tabs';`;
-  basicUsage = `<b-tabs [(ngModel)]='selectedTab'>
+  basicUsage = `<b-tabs [(value)]='selectedTab'>
   <b-tab value='tab1'>Tab 1</b-tab>
   <b-tab value='tab2'>Tab 2</b-tab>
   <b-tab value='tab3'>Tab 3</b-tab>
@@ -178,7 +221,7 @@ export class TabsDocumentation {
   selectedTab = ['tab2'];
   lazySelectedTab = ['tab1'];
   sizesTab = ['tab1'];
-  lazyLoadingUsage = `<b-tabs [(ngModel)]='lazySelectedTab'>
+  lazyLoadingUsage = `<b-tabs [(value)]='lazySelectedTab'>
   <b-tab value='tab1'>Tab 1</b-tab>
   <b-tab value='tab2'>Tab 2</b-tab>
   <b-tab value='tab3'>Tab 3</b-tab>
@@ -205,39 +248,17 @@ export class TabsDocumentation {
 <ng-template #tab3Content>
   <p>Lazy-loaded content for Tab 3</p>
 </ng-template>`;
-  reactiveFormsUsage = `<form [formGroup]='tabsForm'>
-  <b-tabs formControlName='tabControl'>
-    <b-tab value='tab1'>Tab 1</b-tab>
-    <b-tab value='tab2'>Tab 2</b-tab>
-    <b-tab value='tab3'>Tab 3</b-tab>
-  </b-tabs>
-</form>
-
-@switch (tabsForm.value.tabControl[0]) {
-  @case ('tab1') {
-    <p>Tab 1 content</p>
-  }
-  @case ('tab2') {
-    <p>Tab 2 content</p>
-  }
-  @case ('tab3') {
-    <p>Tab 3 content</p>
-  }
-}`;
-  tabsForm = new FormGroup({
-    tabControl: new FormControl(['tab1']),
-  });
-  sizesUsage = `<b-tabs [(ngModel)]='sizesTab' class='b-size-sm'>
+  sizesUsage = `<b-tabs [(value)]='sizesTab' class='b-size-sm'>
   <b-tab value='tab1'>Small</b-tab>
   <b-tab value='tab2'>Small</b-tab>
   <b-tab value='tab3'>Small</b-tab>
 </b-tabs>
-<b-tabs [(ngModel)]='sizesTab' class='b-size-md'>
+<b-tabs [(value)]='sizesTab' class='b-size-md'>
   <b-tab value='tab1'>Medium (default)</b-tab>
   <b-tab value='tab2'>Medium (default)</b-tab>
   <b-tab value='tab3'>Medium (default)</b-tab>
 </b-tabs>
-<b-tabs [(ngModel)]='sizesTab' class='b-size-lg'>
+<b-tabs [(value)]='sizesTab' class='b-size-lg'>
   <b-tab value='tab1'>Large</b-tab>
   <b-tab value='tab2'>Large</b-tab>
   <b-tab value='tab3'>Large</b-tab>

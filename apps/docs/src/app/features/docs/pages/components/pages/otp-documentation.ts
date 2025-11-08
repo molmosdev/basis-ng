@@ -1,23 +1,18 @@
 import { Component } from '@angular/core';
-import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { Alert, Badge, Otp, OtpDigitDirective } from '@basis-ng/primitives';
 import { provideIcons } from '@ng-icons/core';
 import { lucideRocket } from '@ng-icons/lucide';
+import {
+  Alert,
+  Badge,
+  Otp,
+  OtpDigitDirective,
+} from '../../../../../../../../../libs/primitives/src/public-api';
 import { StepsButtons } from '../../shared/components/steps-buttons';
 import { CodeBlock } from '../shared/components/code-block';
 
 @Component({
   selector: 'article[app-otp-documentation]',
-  imports: [
-    CodeBlock,
-    Otp,
-    OtpDigitDirective,
-    StepsButtons,
-    FormsModule,
-    ReactiveFormsModule,
-    Badge,
-    Alert,
-  ],
+  imports: [CodeBlock, Otp, OtpDigitDirective, StepsButtons, Badge, Alert],
   template: `
     <app-steps-buttons
       [previous]="{ label: 'Menu', path: '/docs/components/menu' }"
@@ -39,7 +34,7 @@ import { CodeBlock } from '../shared/components/code-block';
       <code-block [code]="angularImport" />
       <span>Include this to apply predefined styles. The component is headless without it.</span>
       <code-block [code]="stylesImport" />
-      <h2 class="font-semibold text-xl">Properties</h2>
+      <h2 class="font-semibold text-xl">OTP properties</h2>
       <div
         class="overflow-x-auto overflow-hidden rounded-lg border border-gray-200 dark:border-neutral-900 mb-6"
       >
@@ -47,7 +42,7 @@ import { CodeBlock } from '../shared/components/code-block';
           <thead class="bg-gray-50 dark:bg-neutral-900">
             <tr>
               <th class="border-b border-gray-200 dark:border-neutral-900 px-4 py-2 font-semibold">
-                Property
+                Prop
               </th>
               <th class="border-b border-gray-200 dark:border-neutral-900 px-4 py-2 font-semibold">
                 Type
@@ -59,14 +54,59 @@ import { CodeBlock } from '../shared/components/code-block';
               <td
                 class="border-t border-gray-200 dark:border-neutral-900 px-4 py-2 font-display-mono whitespace-nowrap"
               >
+                value
+              </td>
+              <td
+                class="border-t border-gray-200 dark:border-neutral-900 px-4 py-2 font-display-mono whitespace-nowrap"
+              >
+                <b class="font-bold">''</b>
+                | ModelSignal&lt;string&gt;
+              </td>
+            </tr>
+            <tr>
+              <td
+                class="border-t border-gray-200 dark:border-neutral-900 px-4 py-2 font-display-mono whitespace-nowrap"
+              >
+                valueChange
+              </td>
+              <td
+                class="border-t border-gray-200 dark:border-neutral-900 px-4 py-2 font-display-mono whitespace-nowrap"
+              >
+                OutputEmitterRef&lt;string&gt;
+              </td>
+            </tr>
+            <tr>
+              <td
+                class="border-t border-gray-200 dark:border-neutral-900 px-4 py-2 font-display-mono whitespace-nowrap"
+              >
                 disabled
               </td>
               <td
                 class="border-t border-gray-200 dark:border-neutral-900 px-4 py-2 font-display-mono whitespace-nowrap"
               >
-                <strong>boolean</strong>
+                <b class="font-bold">false</b>
+                | boolean
               </td>
             </tr>
+          </tbody>
+        </table>
+      </div>
+      <h2 class="font-semibold text-xl">OTP Digit directive</h2>
+      <div
+        class="overflow-x-auto overflow-hidden rounded-lg border border-gray-200 dark:border-neutral-900 mb-6"
+      >
+        <table class="table-auto w-full text-left text-sm">
+          <thead class="bg-gray-50 dark:bg-neutral-900">
+            <tr>
+              <th class="border-b border-gray-200 dark:border-neutral-900 px-4 py-2 font-semibold">
+                Prop
+              </th>
+              <th class="border-b border-gray-200 dark:border-neutral-900 px-4 py-2 font-semibold">
+                Type
+              </th>
+            </tr>
+          </thead>
+          <tbody>
             <tr>
               <td
                 class="border-t border-gray-200 dark:border-neutral-900 px-4 py-2 font-display-mono whitespace-nowrap"
@@ -83,11 +123,11 @@ import { CodeBlock } from '../shared/components/code-block';
         </table>
       </div>
       <h2 class="font-semibold text-xl">Basic usage</h2>
-      <code-block [code]="ngModelUsage" />
+      <code-block [code]="basicUsage" />
       <div
         class="border border-gray-200 dark:border-neutral-900 rounded-lg p-6 mb-6 flex flex-col gap-4 items-center"
       >
-        <b-otp [(ngModel)]="otpValue">
+        <b-otp [(value)]="otpValue">
           <input b-otp-digit />
           <input b-otp-digit />
           <input b-otp-digit />
@@ -140,22 +180,6 @@ import { CodeBlock } from '../shared/components/code-block';
           <input b-otp-digit />
         </b-otp>
       </div>
-      <h2 class="font-semibold text-xl">Invalid</h2>
-      <code-block [code]="invalidUsage" />
-      <form [formGroup]="form">
-        <div
-          class="border border-gray-200 dark:border-neutral-900 rounded-lg p-6 mb-6 flex flex-col gap-4 items-center"
-        >
-          <b-otp formControlName="invalidControl">
-            <input b-otp-digit />
-            <input b-otp-digit />
-            <input b-otp-digit />
-            <input b-otp-digit />
-            <input b-otp-digit />
-            <input b-otp-digit />
-          </b-otp>
-        </div>
-      </form>
     </div>
     <app-steps-buttons
       [previous]="{ label: 'Menu', path: '/docs/components/menu' }"
@@ -170,15 +194,9 @@ import { CodeBlock } from '../shared/components/code-block';
 export class OtpDocumentation {
   angularImport = `import { Otp, OtpDigitDirective } from '@basis-ng/primitives' `;
   stylesImport = `@import '@basis-ng/styles/components/otp.css';`;
-  ngModelUsage = `<b-otp [(ngModel)]='otpValue'>\n  <input b-otp-digit />\n  <input b-otp-digit />\n  <input b-otp-digit />\n  <input b-otp-digit />\n  <input b-otp-digit />\n  <input b-otp-digit />\n</b-otp>`;
+  basicUsage = `<b-otp [(value)]='otpValue'>\n  <input b-otp-digit />\n  <input b-otp-digit />\n  <input b-otp-digit />\n  <input b-otp-digit />\n  <input b-otp-digit />\n  <input b-otp-digit />\n</b-otp>`;
   sizeUsage = `<b-otp class='b-size-sm'>\n  <input b-otp-digit />\n  <input b-otp-digit />\n  <input b-otp-digit />\n  <input b-otp-digit />\n  <input b-otp-digit />\n  <input b-otp-digit />\n</b-otp>\n\n<b-otp class='b-size-md'>\n  <input b-otp-digit />\n  <input b-otp-digit />\n  <input b-otp-digit />\n  <input b-otp-digit />\n  <input b-otp-digit />\n  <input b-otp-digit />\n</b-otp>\n\n<b-otp class='b-size-lg'>\n  <input b-otp-digit />\n  <input b-otp-digit />\n  <input b-otp-digit />\n  <input b-otp-digit />\n  <input b-otp-digit />\n  <input b-otp-digit />\n</b-otp>`;
   disabledUsage = `<b-otp [disabled]='true'>\n  <input b-otp-digit />\n  <input b-otp-digit />\n  <input b-otp-digit />\n  <input b-otp-digit />\n  <input b-otp-digit />\n  <input b-otp-digit />\n</b-otp>`;
-  invalidUsage = `<form [formGroup]='form'>\n  <b-otp formControlName='invalidControl'>\n    <input b-otp-digit />\n    <input b-otp-digit />\n    <input b-otp-digit />\n    <input b-otp-digit />\n    <input b-otp-digit />\n    <input b-otp-digit />\n  </b-otp>\n</form>`;
 
   otpValue = '';
-  form = new FormGroup({
-    invalidControl: new FormControl('', {
-      validators: () => ({ invalid: true }),
-    }),
-  });
 }
