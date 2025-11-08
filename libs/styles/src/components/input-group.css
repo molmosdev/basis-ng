@@ -8,16 +8,16 @@ b-input-group {
   @apply px-2.5 py-0 text-sm h-8 rounded-size-md gap-1.5;
 
   &:has(> button[b-button]:first-child) {
-    @apply !pl-1;
+    @apply pl-1!;
   }
 
   &:has(> button[b-button]:last-child) {
-    @apply !pr-1;
+    @apply pr-1!;
   }
 
   /* Internal input adjustments when placed inside group */
   input[b-input] {
-    @apply !outline-0 !px-0 inset-ring-0 !w-full !rounded-none bg-transparent hover:bg-transparent shadow-none;
+    @apply outline-0! px-0! inset-ring-0 w-full! rounded-none! bg-transparent hover:bg-transparent shadow-none;
   }
 
   /* Focus state when any inner input is focused (and not readonly) */
@@ -25,8 +25,7 @@ b-input-group {
     @apply outline-2 outline-offset-2 outline-primary dark:outline-primary-dark;
 
     /* Override outline color if invalid while focused */
-    &:has(.ng-invalid.ng-touched),
-    &:has(.ng-invalid.ng-dirty) {
+    &:has(input[b-input][data-invalid]) {
       @apply outline-destructive dark:outline-destructive-dark;
     }
   }
@@ -37,8 +36,7 @@ b-input-group {
   }
 
   /* Invalid state styles (group reflects error) */
-  &:has(input[b-input].ng-invalid.ng-touched),
-  &:has(input[b-input].ng-invalid.ng-dirty) {
+  &:has(input[b-input][data-invalid]) {
     @apply text-destructive placeholder:text-destructive bg-destructive/20 inset-ring-1 inset-ring-destructive/20;
     @apply dark:text-destructive-dark dark:placeholder:text-destructive-dark dark:bg-destructive-dark/20 dark:inset-ring-destructive-dark/20;
 
@@ -64,11 +62,11 @@ b-input-group {
     @apply px-2.5 py-0 text-sm h-8 rounded-size-md gap-1.5;
 
     &:has(> button[b-button]:first-child) {
-      @apply !pl-1;
+      @apply pl-1!;
     }
 
     &:has(> button[b-button]:last-child) {
-      @apply !pr-1;
+      @apply pr-1!;
     }
   }
 
@@ -77,16 +75,16 @@ b-input-group {
     @apply px-3 py-0 text-base h-10 rounded-size-lg gap-2;
 
     &:has(> button[b-button]:first-child) {
-      @apply !pl-1;
+      @apply pl-1!;
     }
 
     &:has(> button[b-button]:last-child) {
-      @apply !pr-1;
+      @apply pr-1!;
     }
   }
 
   /* Prevent icons from shrinking inside the group */
   > ng-icon {
-    @apply flex-shrink-0;
+    @apply shrink-0;
   }
 }

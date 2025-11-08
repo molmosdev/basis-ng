@@ -41,8 +41,7 @@ b-select {
     }
   }
 
-  &.ng-invalid.ng-touched,
-  &.ng-invalid.ng-dirty {
+  &[data-invalid] {
     button[b-select-trigger] {
       @apply text-destructive inset-ring-destructive/20 bg-destructive/10 hover:bg-destructive/20;
       @apply dark:text-destructive-dark dark:inset-ring-destructive-dark/20 dark:bg-destructive-dark/10 dark:hover:bg-destructive-dark/20;

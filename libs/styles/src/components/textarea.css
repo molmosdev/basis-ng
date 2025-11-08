@@ -13,8 +13,7 @@ textarea[b-textarea] {
     @apply opacity-50 dark:opacity-70 dark:text-font-dark;
   }
 
-  &.ng-invalid.ng-touched,
-  &.ng-invalid.ng-dirty {
+  &[data-invalid] {
     @apply text-destructive placeholder:text-destructive bg-destructive/20 inset-ring-1 inset-ring-destructive/20;
     @apply dark:text-destructive-dark dark:placeholder:text-destructive-dark dark:bg-destructive-dark/20 dark:inset-ring-destructive-dark/20;
     &:focus-visible {
