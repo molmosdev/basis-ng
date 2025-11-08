@@ -74,6 +74,19 @@ import { CodeBlock } from '../shared/components/code-block';
               <td
                 class="border-t border-gray-200 dark:border-neutral-900 px-4 py-2 font-display-mono whitespace-nowrap"
               >
+                invalid
+              </td>
+              <td
+                class="border-t border-gray-200 dark:border-neutral-900 px-4 py-2 font-display-mono whitespace-nowrap"
+              >
+                <b class="font-bold">false</b>
+                | boolean
+              </td>
+            </tr>
+            <tr>
+              <td
+                class="border-t border-gray-200 dark:border-neutral-900 px-4 py-2 font-display-mono whitespace-nowrap"
+              >
                 disabled
               </td>
               <td
@@ -175,6 +188,20 @@ import { CodeBlock } from '../shared/components/code-block';
           <input b-otp-digit />
         </b-otp>
       </div>
+      <h2 class="font-semibold text-xl">Invalid State</h2>
+      <code-block [code]="invalidUsage" />
+      <div
+        class="border border-gray-200 dark:border-neutral-900 rounded-lg p-6 mb-6 flex flex-col gap-4 items-center"
+      >
+        <b-otp [invalid]="true">
+          <input b-otp-digit />
+          <input b-otp-digit />
+          <input b-otp-digit />
+          <input b-otp-digit />
+          <input b-otp-digit />
+          <input b-otp-digit />
+        </b-otp>
+      </div>
     </div>
     <app-steps-buttons
       [previous]="{ label: 'Menu', path: '/docs/components/menu' }"
@@ -192,6 +219,8 @@ export class OtpDocumentation {
   basicUsage = `<b-otp [(value)]='otpValue'>\n  <input b-otp-digit />\n  <input b-otp-digit />\n  <input b-otp-digit />\n  <input b-otp-digit />\n  <input b-otp-digit />\n  <input b-otp-digit />\n</b-otp>`;
   sizeUsage = `<b-otp class='b-size-sm'>\n  <input b-otp-digit />\n  <input b-otp-digit />\n  <input b-otp-digit />\n  <input b-otp-digit />\n  <input b-otp-digit />\n  <input b-otp-digit />\n</b-otp>\n\n<b-otp class='b-size-md'>\n  <input b-otp-digit />\n  <input b-otp-digit />\n  <input b-otp-digit />\n  <input b-otp-digit />\n  <input b-otp-digit />\n  <input b-otp-digit />\n</b-otp>\n\n<b-otp class='b-size-lg'>\n  <input b-otp-digit />\n  <input b-otp-digit />\n  <input b-otp-digit />\n  <input b-otp-digit />\n  <input b-otp-digit />\n  <input b-otp-digit />\n</b-otp>`;
   disabledUsage = `<b-otp [disabled]='true'>\n  <input b-otp-digit />\n  <input b-otp-digit />\n  <input b-otp-digit />\n  <input b-otp-digit />\n  <input b-otp-digit />\n  <input b-otp-digit />\n</b-otp>`;
+
+  invalidUsage = `<b-otp [invalid]='true'>\n  <input b-otp-digit />\n  <input b-otp-digit />\n  <input b-otp-digit />\n  <input b-otp-digit />\n  <input b-otp-digit />\n  <input b-otp-digit />\n</b-otp>`;
 
   otpValue = '';
 }

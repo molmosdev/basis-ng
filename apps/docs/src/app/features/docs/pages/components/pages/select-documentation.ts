@@ -94,6 +94,19 @@ import { CodeBlock } from '../shared/components/code-block';
                 | (value: string[]) => string
               </td>
             </tr>
+            <tr>
+              <td
+                class="border-t border-gray-200 dark:border-neutral-900 px-4 py-2 font-display-mono whitespace-nowrap"
+              >
+                invalid
+              </td>
+              <td
+                class="border-t border-gray-200 dark:border-neutral-900 px-4 py-2 font-display-mono whitespace-nowrap"
+              >
+                <b class="font-bold">false</b>
+                | boolean
+              </td>
+            </tr>
           </tbody>
         </table>
       </div>
@@ -282,6 +295,33 @@ import { CodeBlock } from '../shared/components/code-block';
           </ng-template>
         </b-select>
       </div>
+      <h2 class="font-semibold text-xl">Invalid State</h2>
+      <code-block [code]="invalidUsage" />
+      <div
+        class="border border-gray-200 dark:border-neutral-900 rounded-lg p-6 mb-6 flex flex-col items-center justify-center gap-4"
+      >
+        <b-select [invalid]="true" [(value)]="selectedOptions" [displayWith]="displayFn">
+          <button
+            b-select-trigger
+            bOverlayOrigin
+            #triggerInvalid="bOverlayOrigin"
+            class="b-size-md"
+          >
+            <b-select-value placeholder="Invalid select" />
+          </button>
+          <ng-template
+            bConnectedOverlay
+            [trigger]="triggerInvalid"
+            [positions]="['bottom-left', 'bottom-right', 'top-left', 'top-right']"
+          >
+            <ul b-select-content class="b-size-md" [multiple]="false">
+              @for (option of options(); track option) {
+                <li b-option [value]="option.value">{{ option.label }}</li>
+              }
+            </ul>
+          </ng-template>
+        </b-select>
+      </div>
       <h2 class="font-semibold text-xl">Filter with input</h2>
       <span>
         If you want to implement a
@@ -428,6 +468,19 @@ export class SelectDocumentation {
       <li b-option [value]='option1'>Opción 1</li>
       <li b-option [value]='option2' [disabled]='true'>Opción 2 (Deshabilitada)</li>
       <li b-option [value]='option3'>Opción 3</li>
+    </ul>
+  </ng-template>
+</b-select>`;
+
+  invalidUsage = `<b-select [invalid]='true' [(value)]='selectedOptions' [displayWith]='displayFn'>
+  <button b-select-trigger bOverlayOrigin #triggerInvalid='bOverlayOrigin' class='b-size-md'>
+    <b-select-value placeholder='Invalid select' />
+  </button>
+  <ng-template bConnectedOverlay [trigger]='triggerInvalid' [positions]="['bottom-left', 'bottom-right', 'top-left', 'top-right']">
+    <ul b-select-content class='b-size-md' [multiple]='false'>
+      @for (option of options(); track option) {
+        <li b-option [value]='option.value'>{{ option.label }}</li>
+      }
     </ul>
   </ng-template>
 </b-select>`;

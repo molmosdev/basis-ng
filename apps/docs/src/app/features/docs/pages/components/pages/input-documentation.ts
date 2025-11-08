@@ -59,6 +59,19 @@ import { CodeBlock } from '../shared/components/code-block';
               <td
                 class="border-t border-gray-200 dark:border-neutral-900 px-4 py-2 font-display-mono whitespace-nowrap"
               >
+                invalid
+              </td>
+              <td
+                class="border-t border-gray-200 dark:border-neutral-900 px-4 py-2 font-display-mono whitespace-nowrap"
+              >
+                <b class="font-bold">false</b>
+                | boolean
+              </td>
+            </tr>
+            <tr>
+              <td
+                class="border-t border-gray-200 dark:border-neutral-900 px-4 py-2 font-display-mono whitespace-nowrap"
+              >
                 decimals
               </td>
               <td
@@ -134,6 +147,13 @@ import { CodeBlock } from '../shared/components/code-block';
       >
         <input b-input type="text" placeholder="Disabled input" [disabled]="true" />
       </div>
+      <h2 class="font-semibold text-xl">Invalid Input</h2>
+      <code-block [code]="invalidUsage" />
+      <div
+        class="border border-gray-200 dark:border-neutral-900 rounded-lg p-6 mb-6 flex flex-col items-center justify-center gap-4"
+      >
+        <input b-input type="text" placeholder="Invalid input" [invalid]="true" />
+      </div>
     </div>
     <app-steps-buttons
       [previous]="{ label: 'Drawer', path: '/docs/components/drawer' }"
@@ -159,4 +179,5 @@ export class InputDocumentation {
 <input b-input class="b-size-md" type="text" placeholder="Size md" />
 <input b-input class="b-size-lg" type="text" placeholder="Size lg" />`;
   disabledUsage = `<input b-input type="text" placeholder="Disabled input" [disabled]="true" />`;
+  invalidUsage = `<input b-input type="text" placeholder="Invalid input" [invalid]="true" />`;
 }
