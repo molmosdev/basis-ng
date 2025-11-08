@@ -86,10 +86,23 @@ export class Drawer {
    */
   @HostListener('document:click', ['$event'])
   closeOnOutsideClick(event: Event) {
-    if (this.isOpen() && !this.el.nativeElement.contains(event.target)) {
-      this.isOpen.set(false);
-      this.closeSheet.emit();
+    if (!this.isOpen()) return;
+
+    const target = event.target as HTMLElement;
+
+    // Check if click is inside the drawer
+    if (this.el.nativeElement.contains(target)) {
+      return;
     }
+
+    // Check if click is inside a CDK overlay (select dropdown, dialogs, etc.)
+    if (target.closest('.cdk-overlay-container')) {
+      return;
+    }
+
+    // Close the drawer
+    this.isOpen.set(false);
+    this.closeSheet.emit();
   }
 
   /**
