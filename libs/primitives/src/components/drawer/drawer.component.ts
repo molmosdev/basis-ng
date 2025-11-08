@@ -3,12 +3,12 @@ import {
   Component,
   computed,
   ElementRef,
+  HostListener,
   inject,
   input,
   model,
   output,
   signal,
-  viewChild,
 } from '@angular/core';
 
 /**
@@ -19,19 +19,17 @@ import {
   standalone: true,
   imports: [CommonModule],
   template: `
-    @if (isOpen()) {
-      <div class="backdrop" (click)="closeDrawer()"></div>
-    }
-    <div class="drawer-content" #drawerContent [style.transform]="transform()">
-      <div class="drag-section" (pointerdown)="startDrag($event)">
-        <div class="drag-indicator"></div>
-      </div>
+    <div class="drag-section" (pointerdown)="startDrag($event)">
+      <div class="drag-indicator"></div>
+    </div>
+    <div class="drawer-content" (click)="$event.stopPropagation()">
       <ng-content />
     </div>
   `,
   host: {
     '[class.dragging]': 'isDragging()',
     '[class.open]': 'isOpen()',
+    '[style.transform]': 'transform()',
   },
 })
 export class Drawer {
@@ -82,16 +80,16 @@ export class Drawer {
   private readonly el = inject(ElementRef);
 
   /**
-   * Reference to the drawer content element.
+   * Close the drawer when clicking outside of it.
+   * The stopPropagation in the drawer-content prevents clicks inside from closing it.
+   * @param event - Click event.
    */
-  readonly drawerContent = viewChild<ElementRef>('drawerContent');
-
-  /**
-   * Close the drawer.
-   */
-  closeDrawer(): void {
-    this.isOpen.set(false);
-    this.closeSheet.emit();
+  @HostListener('document:click', ['$event'])
+  closeOnOutsideClick(event: Event) {
+    if (this.isOpen() && !this.el.nativeElement.contains(event.target)) {
+      this.isOpen.set(false);
+      this.closeSheet.emit();
+    }
   }
 
   /**
@@ -128,10 +126,7 @@ export class Drawer {
    */
   updateDrag(clientY: number): void {
     const deltaPx = clientY - this.startY();
-    const drawerElement = this.drawerContent()?.nativeElement;
-    if (!drawerElement) return;
-
-    const sheetHeight = drawerElement.offsetHeight;
+    const sheetHeight = this.el.nativeElement.offsetHeight;
     // Convert the pixel delta to a percentage relative to the sheet height
     const deltaPercent = (deltaPx / sheetHeight) * 100;
     // If open, the initial position is 0%; if closed, it is 100%
@@ -140,9 +135,7 @@ export class Drawer {
       Math.max(0, this.isOpen() ? 0 + deltaPercent : 100 + deltaPercent),
     );
     this.translateY.set(newPos);
-  }
-
-  /**
+  } /**
    * Snap the drawer to open or closed based on threshold.
    */
   snapToOpenOrClose(): void {
