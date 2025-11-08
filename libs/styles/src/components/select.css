@@ -1,9 +1,9 @@
 b-select {
-  @apply flex gap-1;
+  @apply flex gap-1 w-full;
 
   button[b-select-trigger] {
     /* Base */
-    @apply transition-colors duration-150 flex items-center justify-center gap-x-1.5 disabled:opacity-50 disabled:cursor-not-allowed;
+    @apply w-full transition-colors duration-150 flex items-center justify-between gap-x-1.5 disabled:opacity-50 disabled:cursor-not-allowed;
 
     /* Default spacing/typography applied when no explicit size is present */
     @apply px-3 py-0 text-sm h-8 rounded-size-md gap-2;
