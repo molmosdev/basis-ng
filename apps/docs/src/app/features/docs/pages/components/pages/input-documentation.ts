@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Alert, Input } from '@basis-ng/primitives';
 import { provideIcons } from '@ng-icons/core';
 import { lucideRocket } from '@ng-icons/lucide';
@@ -8,7 +7,7 @@ import { CodeBlock } from '../shared/components/code-block';
 
 @Component({
   selector: 'article[app-input-documentation]',
-  imports: [Input, CodeBlock, FormsModule, ReactiveFormsModule, StepsButtons, Alert],
+  imports: [Input, CodeBlock, StepsButtons, Alert],
   template: `
     <app-steps-buttons
       [previous]="{ label: 'Drawer', path: '/docs/components/drawer' }"
@@ -86,24 +85,18 @@ import { CodeBlock } from '../shared/components/code-block';
         </table>
       </div>
       <h2 class="font-semibold text-xl">Basic</h2>
-      <code-block [code]="ngModelUsage" />
+      <code-block [code]="basicUsage" />
       <div
         class="border border-gray-200 dark:border-neutral-900 rounded-lg p-6 mb-6 flex flex-col items-center justify-center gap-4"
       >
-        <input b-input type="text" placeholder="Enter text" [(ngModel)]="ngModelValue" />
+        <input b-input type="text" placeholder="Enter text" />
       </div>
       <h2 class="font-semibold text-xl">Number Input (Integer)</h2>
       <code-block [code]="numberIntegerUsage" />
       <div
         class="border border-gray-200 dark:border-neutral-900 rounded-lg p-6 mb-6 flex flex-col items-center justify-center gap-4"
       >
-        <input
-          b-input
-          type="number"
-          numberType="integer"
-          placeholder="Enter an integer"
-          [(ngModel)]="integerValue"
-        />
+        <input b-input type="number" numberType="integer" placeholder="Enter an integer" />
       </div>
       <h2 class="font-semibold text-xl">Number Input (Decimal)</h2>
       <code-block [code]="numberDecimalUsage" />
@@ -116,7 +109,6 @@ import { CodeBlock } from '../shared/components/code-block';
           numberType="decimal"
           [decimals]="2"
           placeholder="Enter a decimal number"
-          [(ngModel)]="decimalValue"
         />
       </div>
       <h2 class="font-semibold text-xl">Input Sizes</h2>
@@ -128,20 +120,12 @@ import { CodeBlock } from '../shared/components/code-block';
         <input b-input class="b-size-md" type="text" placeholder="Size md" />
         <input b-input class="b-size-lg" type="text" placeholder="Size lg" />
       </div>
-      <h2 class="font-semibold text-xl">Reactive Forms</h2>
-      <code-block [code]="formControlUsage" />
-      <form
-        class="border border-gray-200 dark:border-neutral-900 rounded-lg p-6 mb-6 flex flex-col items-center justify-center gap-4"
-        [formGroup]="form"
-      >
-        <input b-input type="text" placeholder="Enter text" formControlName="inputControl" />
-      </form>
       <h2 class="font-semibold text-xl">Password Input</h2>
       <code-block [code]="passwordUsage" />
       <div
         class="border border-gray-200 dark:border-neutral-900 rounded-lg p-6 mb-6 flex flex-col items-center justify-center gap-4"
       >
-        <input b-input type="password" placeholder="Enter password" [(ngModel)]="passwordValue" />
+        <input b-input type="password" placeholder="Enter password" />
       </div>
       <h2 class="font-semibold text-xl">Disabled Input</h2>
       <code-block [code]="disabledUsage" />
@@ -150,14 +134,6 @@ import { CodeBlock } from '../shared/components/code-block';
       >
         <input b-input type="text" placeholder="Disabled input" [disabled]="true" />
       </div>
-      <h2 class="font-semibold text-xl">Invalid Input</h2>
-      <code-block [code]="invalidUsage" />
-      <form
-        class="border border-gray-200 dark:border-neutral-900 rounded-lg p-6 mb-6 flex flex-col items-center justify-center gap-4"
-        [formGroup]="form"
-      >
-        <input b-input type="text" placeholder="Invalid input" formControlName="invalidControl" />
-      </form>
     </div>
     <app-steps-buttons
       [previous]="{ label: 'Drawer', path: '/docs/components/drawer' }"
@@ -175,33 +151,12 @@ import { CodeBlock } from '../shared/components/code-block';
 export class InputDocumentation {
   angularImport = `import { Input } from '@basis-ng/primitives' `;
   stylesImport = `@import '@basis-ng/styles/input';`;
-  ngModelUsage = `<input b-input type="text" placeholder="Enter text" [(ngModel)]="ngModelValue" />`;
-  formControlUsage = `<form [formGroup]="form">
-  <input b-input type="text" placeholder="Enter text" formControlName="inputControl" />
-</form>`;
-  passwordUsage = `<input b-input type="password" placeholder="Enter password" [(ngModel)]="passwordValue" />`;
-  withInputUsage = `<b-label>
-  <label>Input Label</label>
-  <input b-input type="text" />
-</b-label>`;
-  numberIntegerUsage = `<input b-input type="number" numberType="integer" placeholder="Enter an integer" [(ngModel)]="integerValue" />`;
-  numberDecimalUsage = `<input b-input type="number" numberType="decimal" [decimals]="2" placeholder="Enter a decimal number" [(ngModel)]="decimalValue" />`;
+  basicUsage = `<input b-input type="text" placeholder="Enter text" />`;
+  passwordUsage = `<input b-input type="password" placeholder="Enter password" />`;
+  numberIntegerUsage = `<input b-input type="number" numberType="integer" placeholder="Enter an integer" />`;
+  numberDecimalUsage = `<input b-input type="number" numberType="decimal" [decimals]="2" placeholder="Enter a decimal number" />`;
   sizeUsage = `<input b-input class="b-size-sm" type="text" placeholder="Size sm" />
 <input b-input class="b-size-md" type="text" placeholder="Size md" />
 <input b-input class="b-size-lg" type="text" placeholder="Size lg" />`;
   disabledUsage = `<input b-input type="text" placeholder="Disabled input" [disabled]="true" />`;
-  invalidUsage = `<form [formGroup]="form">
-  <input b-input type="text" placeholder="Invalid input" formControlName="invalidControl" />
-</form>`;
-
-  ngModelValue = 'Hello World!';
-  passwordValue = 'kñl23jkjf2i';
-  integerValue = 42;
-  decimalValue = 3.14;
-  form = new FormGroup({
-    inputControl: new FormControl('Hello World from FormControl!'),
-    invalidControl: new FormControl('', {
-      validators: () => ({ invalid: true }),
-    }),
-  });
 }
