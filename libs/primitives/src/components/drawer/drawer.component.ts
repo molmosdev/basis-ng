@@ -8,6 +8,7 @@ import {
   model,
   output,
   signal,
+  viewChild,
 } from '@angular/core';
 
 /**
@@ -21,7 +22,7 @@ import {
     @if (isOpen()) {
       <div class="backdrop" (click)="closeDrawer()"></div>
     }
-    <div class="drawer-content">
+    <div class="drawer-content" #drawerContent [style.transform]="transform()">
       <div class="drag-section" (pointerdown)="startDrag($event)">
         <div class="drag-indicator"></div>
       </div>
@@ -81,6 +82,11 @@ export class Drawer {
   private readonly el = inject(ElementRef);
 
   /**
+   * Reference to the drawer content element.
+   */
+  readonly drawerContent = viewChild<ElementRef>('drawerContent');
+
+  /**
    * Close the drawer.
    */
   closeDrawer(): void {
@@ -122,7 +128,10 @@ export class Drawer {
    */
   updateDrag(clientY: number): void {
     const deltaPx = clientY - this.startY();
-    const sheetHeight = this.el.nativeElement.offsetHeight;
+    const drawerElement = this.drawerContent()?.nativeElement;
+    if (!drawerElement) return;
+
+    const sheetHeight = drawerElement.offsetHeight;
     // Convert the pixel delta to a percentage relative to the sheet height
     const deltaPercent = (deltaPx / sheetHeight) * 100;
     // If open, the initial position is 0%; if closed, it is 100%
