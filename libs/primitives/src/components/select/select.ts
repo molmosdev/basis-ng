@@ -1,99 +1,103 @@
-import { Component, contentChild, effect, forwardRef, input, OnInit, signal } from '@angular/core';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  contentChild,
+  effect,
+  input,
+  model,
+  OnInit,
+} from '@angular/core';
 import { ConnectedOverlay } from '../../directives/connected-overlay';
 import { SelectContent } from './select-content';
 import { SelectTrigger } from './select-trigger';
 import { SelectValue } from './select-value';
 
 /**
- * Select component that wires trigger, content and value together and implements ControlValueAccessor.
+ * Select component that wires trigger, content and value together using signals.
  */
 @Component({
   selector: 'b-select',
-  template: ` <ng-content /> `,
-  providers: [
-    {
-      provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => Select),
-      multi: true,
-    },
-  ],
+  template: ` <ng-content />`,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class Select implements ControlValueAccessor, OnInit {
+export class Select implements OnInit {
   /** Connected overlay instance used to show the dropdown. */
   readonly overlay = contentChild(ConnectedOverlay);
 
   /** Trigger that toggles the select overlay. */
-  readonly selectTrigger = contentChild<SelectTrigger>(SelectTrigger);
+  readonly selectTrigger = contentChild(SelectTrigger);
 
   /** Visual value display component. */
-  readonly selectValue = contentChild<SelectValue>(SelectValue);
+  readonly selectValue = contentChild(SelectValue);
 
   /** Content pane that contains options. */
-  readonly selectContent = contentChild<SelectContent>(SelectContent);
+  readonly selectContent = contentChild(SelectContent);
 
   /** Function to display the selected value(s). */
   readonly displayWith = input.required<(value: string[]) => string>();
 
   /** Current value array for the select. */
-  readonly value = signal<string[]>([]);
+  readonly value = model<string[]>([]);
 
   constructor() {
-    effect(() => {
-      this.handleValueChanges();
-      this.handleSelectContentWidth();
-    });
+    effect(() => this.updateDisplayedValue());
+    effect(() => this.handleContentValueChanges());
+  }
+
+  ngOnInit(): void {
+    this.setupTriggerEvents();
+    this.setupOverlayEvents();
   }
 
   /**
-   * Subscribe to content value changes and update the form value.
+   * Update the displayed value when value or displayWith changes.
    */
-  handleValueChanges(): void {
-    this.selectContent()?.changeValueEmitter.subscribe((value: string[]) => {
-      this.onChange(value);
-      if (!this.selectContent()?.listBox.multiple) {
+  private updateDisplayedValue(): void {
+    const currentValue = this.value();
+    const displayFn = this.displayWith();
+    this.selectValue()?.content.set(displayFn(currentValue));
+  }
+
+  /**
+   * Subscribe to content value changes (content is recreated each time overlay opens).
+   */
+  private handleContentValueChanges(): void {
+    const content = this.selectContent();
+    if (!content) return;
+
+    content.changeValueEmitter.subscribe((value: string[]) => {
+      this.value.set(value);
+      if (!content.listBox.multiple) {
         this.overlay()?.closeOverlay();
       }
-      this.onTouched();
     });
   }
 
   /**
-   * Ensure the select content width matches the trigger width when opened.
+   * Wire trigger click to toggle overlay (trigger persists across lifecycle).
    */
-  handleSelectContentWidth(): void {
-    const selectContentEl = this.selectContent()?.el.nativeElement;
-    if (selectContentEl) {
-      selectContentEl.style.minWidth = `${this.selectTrigger()?.el.nativeElement.offsetWidth}px`;
-    }
-  }
-
-  /**
-   * Initialize event wiring for trigger and overlay events.
-   */
-  ngOnInit(): void {
-    this.handleTriggerClicks();
-    this.handleOverlayAttached();
-    this.handleOverlayDetached();
-    this.handleOverlayOutsideClick();
-    this.handleOverlayBackdropClick();
-  }
-
-  /**
-   * Wire trigger click to toggle overlay.
-   */
-  handleTriggerClicks(): void {
-    this.selectTrigger()!.buttonClicked.subscribe(() => {
+  private setupTriggerEvents(): void {
+    this.selectTrigger()?.buttonClicked.subscribe(() => {
       this.overlay()?.toggleOverlay();
     });
   }
 
   /**
-   * Focus selected option when overlay attaches.
+   * Wire overlay events (overlay persists across lifecycle).
    */
-  handleOverlayAttached(): void {
-    this.overlay()?.attachEmitter.subscribe(() => {
+  private setupOverlayEvents(): void {
+    const overlay = this.overlay();
+    if (!overlay) return;
+
+    overlay.attachEmitter.subscribe(() => {
       this.selectTrigger()?.triggered.set(true);
+
+      // Update select content width after DOM is rendered
+      const selectContentEl = this.selectContent()?.el.nativeElement;
+      const triggerEl = this.selectTrigger()?.el.nativeElement;
+      if (selectContentEl && triggerEl) {
+        selectContentEl.style.minWidth = `${triggerEl.offsetWidth}px`;
+      }
 
       if (this.value().length === 0) {
         this.selectContent()?.el.nativeElement.focus();
@@ -102,91 +106,40 @@ export class Select implements ControlValueAccessor, OnInit {
 
       this.value().forEach((val) => {
         this.selectContent()?.listBox?.selectValue(val);
-
-        // Focus the selected option
         this.selectContent()
           ?.options()
           .find((opt) => opt.value === val)
           ?.focus();
       });
     });
-  }
 
-  /**
-   * Close overlay when detached.
-   */
-  handleOverlayDetached(): void {
-    this.overlay()?.detachEmitter.subscribe(() => {
-      this.overlay()?.closeOverlay();
+    overlay.detachEmitter.subscribe(() => {
+      overlay.closeOverlay();
       this.selectTrigger()?.triggered.set(false);
     });
-  }
 
-  /**
-   * Close overlay when an outside click occurs.
-   */
-  handleOverlayOutsideClick(): void {
-    this.overlay()?.outsideClickEmitter.subscribe(() => {
-      this.overlay()?.closeOverlay();
+    overlay.outsideClickEmitter.subscribe(() => {
+      overlay.closeOverlay();
     });
-  }
 
-  /**
-   * Close overlay when backdrop is clicked.
-   */
-  handleOverlayBackdropClick(): void {
-    this.overlay()?.backdropClickEmitter.subscribe(() => {
-      this.overlay()?.closeOverlay();
+    overlay.backdropClickEmitter.subscribe(() => {
+      overlay.closeOverlay();
     });
-  }
-
-  // Control value accessor methods
-
-  /**
-   * Write a new value to the element.
-   * @param value - New value array to set.
-   */
-  writeValue(value: string[]): void {
-    this.setValue(value);
-  }
-
-  private onChange: (value: string[]) => void = () => undefined;
-
-  /**
-   * Register a callback to be fired when the value changes.
-   * @param fn - Callback that receives the new value.
-   */
-  registerOnChange(fn: (value: string[]) => void): void {
-    this.onChange = (val: string[]) => {
-      fn(val);
-      this.setValue(val);
-    };
-  }
-
-  private onTouched: () => void = () => undefined;
-
-  /**
-   * Register a callback to be fired when the control is touched.
-   * @param fn - Touch callback.
-   */
-  registerOnTouched(fn: () => void): void {
-    this.onTouched = fn;
   }
 
   /**
    * Toggle disabled state on the select trigger.
    * @param isDisabled - Whether the control is disabled.
    */
-  setDisabledState?(isDisabled: boolean): void {
+  setDisabledState(isDisabled: boolean): void {
     this.selectTrigger()?.disabled.set(isDisabled);
   }
 
   /**
-   * Update the current value and displayed content.
+   * Update the current value.
    * @param value - New value array to apply.
    */
   setValue(value: string[]): void {
     this.value.set(value);
-    this.selectValue()?.content.set(this.displayWith()(value));
   }
 }

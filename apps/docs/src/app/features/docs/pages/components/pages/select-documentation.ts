@@ -1,5 +1,6 @@
 import { Component, signal } from '@angular/core';
-import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { provideIcons } from '@ng-icons/core';
+import { lucideRocket } from '@ng-icons/lucide';
 import {
   Alert,
   ConnectedOverlay,
@@ -11,9 +12,7 @@ import {
   SelectFilter,
   SelectTrigger,
   SelectValue,
-} from '@basis-ng/primitives';
-import { provideIcons } from '@ng-icons/core';
-import { lucideRocket } from '@ng-icons/lucide';
+} from '../../../../../../../../../libs/primitives/src/public-api';
 import { StepsButtons } from '../../shared/components/steps-buttons';
 import { CodeBlock } from '../shared/components/code-block';
 
@@ -21,8 +20,6 @@ import { CodeBlock } from '../shared/components/code-block';
   selector: 'article[app-select-documentation]',
   imports: [
     CodeBlock,
-    FormsModule,
-    ReactiveFormsModule,
     Select,
     SelectTrigger,
     SelectValue,
@@ -71,7 +68,19 @@ import { CodeBlock } from '../shared/components/code-block';
             </tr>
           </thead>
           <tbody>
-            <!-- size is visual-only now; use class="b-size-sm|md|lg" on the host -->
+            <tr>
+              <td
+                class="border-t border-gray-200 dark:border-neutral-900 px-4 py-2 font-display-mono whitespace-nowrap"
+              >
+                value
+              </td>
+              <td
+                class="border-t border-gray-200 dark:border-neutral-900 px-4 py-2 font-display-mono whitespace-nowrap"
+              >
+                <b class="font-bold">[]</b>
+                | ModelSignal&lt;string[]&gt;
+              </td>
+            </tr>
             <tr>
               <td
                 class="border-t border-gray-200 dark:border-neutral-900 px-4 py-2 font-display-mono whitespace-nowrap"
@@ -158,7 +167,7 @@ import { CodeBlock } from '../shared/components/code-block';
         class="border border-gray-200 dark:border-neutral-900 rounded-lg p-6 mb-6 flex flex-col items-center justify-center gap-4"
       >
         <!-- Basic select example -->
-        <b-select [(ngModel)]="selectedOptions" [displayWith]="displayFn">
+        <b-select [(value)]="selectedOptions" [displayWith]="displayFn">
           <button b-select-trigger bOverlayOrigin #trigger="bOverlayOrigin" class="b-size-md">
             <b-select-value placeholder="Select an option" />
           </button>
@@ -180,7 +189,7 @@ import { CodeBlock } from '../shared/components/code-block';
       <div
         class="border border-gray-200 dark:border-neutral-900 rounded-lg p-6 mb-6 flex flex-row items-center justify-center gap-8"
       >
-        <b-select [(ngModel)]="selectedOptions" [displayWith]="displayFn">
+        <b-select [(value)]="selectedOptions" [displayWith]="displayFn">
           <button b-select-trigger bOverlayOrigin #trigger1="bOverlayOrigin" class="b-size-sm">
             <b-select-value placeholder="Size sm" />
           </button>
@@ -196,7 +205,7 @@ import { CodeBlock } from '../shared/components/code-block';
             </ul>
           </ng-template>
         </b-select>
-        <b-select [(ngModel)]="selectedOptions" [displayWith]="displayFn">
+        <b-select [(value)]="selectedOptions" [displayWith]="displayFn">
           <button b-select-trigger bOverlayOrigin #trigger2="bOverlayOrigin" class="b-size-md">
             <b-select-value placeholder="Size md" />
           </button>
@@ -212,7 +221,7 @@ import { CodeBlock } from '../shared/components/code-block';
             </ul>
           </ng-template>
         </b-select>
-        <b-select [(ngModel)]="selectedOptions" [displayWith]="displayFn">
+        <b-select [(value)]="selectedOptions" [displayWith]="displayFn">
           <button b-select-trigger bOverlayOrigin #trigger3="bOverlayOrigin" class="b-size-lg">
             <b-select-value placeholder="Size lg" />
           </button>
@@ -234,7 +243,7 @@ import { CodeBlock } from '../shared/components/code-block';
       <div
         class="border border-gray-200 dark:border-neutral-900 rounded-lg p-6 mb-6 flex flex-col items-center justify-center gap-4"
       >
-        <b-select [(ngModel)]="selectedMultiple" [displayWith]="displayFn">
+        <b-select [(value)]="selectedMultiple" [displayWith]="displayFn">
           <button b-select-trigger bOverlayOrigin #triggerMulti="bOverlayOrigin">
             <b-select-value placeholder="Select options" />
           </button>
@@ -251,35 +260,12 @@ import { CodeBlock } from '../shared/components/code-block';
           </ng-template>
         </b-select>
       </div>
-      <h2 class="font-semibold text-xl">Reactive Forms</h2>
-      <code-block [code]="reactiveFormsUsage" />
-      <form
-        class="border border-gray-200 dark:border-neutral-900 rounded-lg p-6 mb-6 flex flex-col items-center justify-center gap-4"
-        [formGroup]="formGroup"
-      >
-        <b-select formControlName="selectControl" [displayWith]="displayFn">
-          <button b-select-trigger bOverlayOrigin #triggerReactive="bOverlayOrigin">
-            <b-select-value placeholder="Select an option" />
-          </button>
-          <ng-template
-            bConnectedOverlay
-            [trigger]="triggerReactive"
-            [positions]="['bottom-left', 'bottom-right', 'top-left', 'top-right']"
-          >
-            <ul b-select-content [multiple]="false">
-              @for (option of options(); track option) {
-                <li b-option [value]="option.value">{{ option.label }}</li>
-              }
-            </ul>
-          </ng-template>
-        </b-select>
-      </form>
       <h2 class="font-semibold text-xl">Disabled</h2>
       <code-block [code]="disabledOptionUsage" />
       <div
         class="border border-gray-200 dark:border-neutral-900 rounded-lg p-6 mb-6 flex flex-col items-center justify-center gap-4"
       >
-        <b-select [(ngModel)]="selectedOptions" [displayWith]="displayFn">
+        <b-select [(value)]="selectedOptions" [displayWith]="displayFn">
           <button b-select-trigger bOverlayOrigin #triggerDisabled="bOverlayOrigin">
             <b-select-value placeholder="Select an option" />
           </button>
@@ -313,7 +299,7 @@ import { CodeBlock } from '../shared/components/code-block';
       <div
         class="border border-gray-200 dark:border-neutral-900 rounded-lg p-6 mb-6 flex flex-col items-center justify-center gap-4"
       >
-        <b-select [(ngModel)]="selectedOptionsFiltered" [displayWith]="displayFn">
+        <b-select [(value)]="selectedOptionsFiltered" [displayWith]="displayFn">
           <button b-select-trigger bOverlayOrigin #triggerFilter="bOverlayOrigin">
             <b-select-value placeholder="Select (filter)" />
           </button>
@@ -328,7 +314,7 @@ import { CodeBlock } from '../shared/components/code-block';
                 bSelectFilter
                 type="text"
                 placeholder="Filter options"
-                [(ngModel)]="filterText"
+                [(value)]="filterText"
               />
               @for (option of options(); track option.label) {
                 <li b-option [value]="option.value">{{ option.label }}</li>
@@ -369,11 +355,8 @@ export class SelectDocumentation {
           .join(', ')
       : '';
   };
-  formGroup = new FormGroup({
-    selectControl: new FormControl(['option3']),
-  });
 
-  basicUsage = `<b-select [(ngModel)]='selectedOptions' [displayWith]='displayFn'>
+  basicUsage = `<b-select [(value)]='selectedOptions' [displayWith]='displayFn'>
   <button b-select-trigger bOverlayOrigin #trigger='bOverlayOrigin' class='b-size-md'>
     <b-select-value placeholder='Selecciona una opción' />
   </button>
@@ -386,7 +369,7 @@ export class SelectDocumentation {
   </ng-template>
 </b-select>`;
 
-  sizesUsage = `<b-select [(ngModel)]='selectedOptions' [displayWith]='displayFn'>
+  sizesUsage = `<b-select [(value)]='selectedOptions' [displayWith]='displayFn'>
   <button b-select-trigger bOverlayOrigin #trigger1='bOverlayOrigin' class='b-size-sm'>
     <b-select-value placeholder='Tamaño sm' />
   </button>
@@ -398,7 +381,7 @@ export class SelectDocumentation {
     </ul>
   </ng-template>
 </b-select>
-  <b-select [(ngModel)]='selectedOptions' [displayWith]='displayFn'>
+  <b-select [(value)]='selectedOptions' [displayWith]='displayFn'>
   <button b-select-trigger bOverlayOrigin #trigger2='bOverlayOrigin' class='b-size-md'>
     <b-select-value placeholder='Tamaño md' />
   </button>
@@ -410,7 +393,7 @@ export class SelectDocumentation {
     </ul>
   </ng-template>
 </b-select>
-<b-select [(ngModel)]='selectedOptions' [displayWith]='displayFn'>
+<b-select [(value)]='selectedOptions' [displayWith]='displayFn'>
   <button b-select-trigger bOverlayOrigin #trigger3='bOverlayOrigin' class='b-size-lg'>
     <b-select-value placeholder='Tamaño lg' />
   </button>
@@ -423,7 +406,7 @@ export class SelectDocumentation {
   </ng-template>
 </b-select>`;
 
-  multipleUsage = `<b-select [(ngModel)]='selectedMultiple' [displayWith]='displayFn'>
+  multipleUsage = `<b-select [(value)]='selectedMultiple' [displayWith]='displayFn'>
   <button b-select-trigger bOverlayOrigin #triggerMulti='bOverlayOrigin'>
     <b-select-value placeholder='Selecciona opciones' />
   </button>
@@ -436,22 +419,7 @@ export class SelectDocumentation {
   </ng-template>
 </b-select>`;
 
-  reactiveFormsUsage = `<form [formGroup]='formGroup'>
-  <b-select formControlName='selectControl' [displayWith]='displayFn'>
-    <button b-select-trigger bOverlayOrigin #triggerReactive='bOverlayOrigin'>
-      <b-select-value placeholder='Selecciona una opción' />
-    </button>
-    <ng-template bConnectedOverlay [trigger]='triggerReactive' [positions]="['bottom-left', 'bottom-right', 'top-left', 'top-right']">
-      <ul b-select-content [multiple]='false'>
-        @for (option of options(); track option) {
-          <li b-option [value]='option.value'>{{ option.label }}</li>
-        }
-      </ul>
-    </ng-template>
-  </b-select>
-</form>`;
-
-  disabledOptionUsage = `<b-select [(ngModel)]='selectedOptions' [displayWith]='displayFn'>
+  disabledOptionUsage = `<b-select [(value)]='selectedOptions' [displayWith]='displayFn'>
   <button b-select-trigger bOverlayOrigin #triggerDisabled='bOverlayOrigin'>
     <b-select-value placeholder='Selecciona una opción' />
   </button>
@@ -466,13 +434,13 @@ export class SelectDocumentation {
 
   withFilterImport = `import { SelectFilter } from '@basis-ng/primitives' ;`;
 
-  filterUsage = `<b-select [(ngModel)]='selectedOptionsFiltered' [displayWith]='displayFn'>
+  filterUsage = `<b-select [(value)]='selectedOptionsFiltered' [displayWith]='displayFn'>
   <button b-select-trigger bOverlayOrigin #triggerFilter='bOverlayOrigin'>
     <b-select-value placeholder='Select (filter)' />
   </button>
   <ng-template bConnectedOverlay [trigger]='triggerFilter' [positions]="['bottom-left','bottom-right','top-left','top-right']">
     <ul b-select-content [multiple]='false'>
-      <input b-input bSelectFilter type='text' placeholder='Filter options' [(ngModel)]='filterText' />
+      <input b-input bSelectFilter type='text' placeholder='Filter options' [(value)]='filterText' />
       @for (option of filteredOptions(); track option) {
         <li b-option [value]='option.value'>{{ option.label }}</li>
       }
