@@ -115,7 +115,7 @@ import { CodeBlock } from '../shared/components/code-block';
         class="border border-gray-200 dark:border-neutral-900 rounded-lg p-6 mb-6 flex flex-col items-center justify-center gap-4"
       >
         <button b-button (click)="customHeightDrawerOpen.set(true)">Open Drawer</button>
-        <b-drawer [(isOpen)]="customHeightDrawerOpen" class="!h-4/5">
+        <b-drawer [(isOpen)]="customHeightDrawerOpen" class="h-4/5!">
           <div style="display: flex; justify-content: center; align-items: center; height: 100%;">
             This is a taller drawer.
           </div>
@@ -162,7 +162,7 @@ export class DrawerDocumentation {
 
 <!-- With Tailwind predefined styles -->
 <button b-button (click)="isOpen = true">Open Drawer</button>
-<b-drawer [(isOpen)]="isOpen" class="!h-4/5">
+<b-drawer [(isOpen)]="isOpen" class="h-4/5!">
   <div style="display: flex; justify-content: center; align-items: center; height: 100%;">
     This is a taller drawer.
   </div>
