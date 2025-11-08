@@ -1,6 +1,4 @@
-import { ActiveDescendantKeyManager } from '@angular/cdk/a11y';
-import { CdkListbox } from '@angular/cdk/listbox';
-import { Component, computed, contentChildren, inject, OnInit } from '@angular/core';
+import { Component, computed, contentChildren, effect, model, output } from '@angular/core';
 import { Tab } from './tab';
 
 /**
@@ -10,19 +8,22 @@ import { Tab } from './tab';
   selector: 'b-tabs',
   imports: [],
   template: ` <ng-content /> `,
-  hostDirectives: [CdkListbox],
   host: {
+    '[attr.role]': '"tablist"',
     '(keydown.arrowLeft)': 'previousTab()',
-    '(keydown.arrowUp)': 'previousTab()',
     '(keydown.arrowRight)': 'nextTab()',
-    '(keydown.arrowDown)': 'nextTab()',
   },
 })
-export class Tabs implements OnInit {
+export class Tabs {
   /**
-   * Injected CDK listbox used for accessibility behavior.
+   * Current selected tab value(s).
    */
-  cdkListbox = inject(CdkListbox);
+  readonly value = model<string[]>([]);
+
+  /**
+   * Output emitted when the tab selection changes.
+   */
+  readonly valueChange = output<string[]>();
 
   /**
    * Query list of Tab child components.
@@ -30,36 +31,52 @@ export class Tabs implements OnInit {
   readonly tabs = contentChildren(Tab);
 
   /**
-   * Computed array of underlying CDK options for navigation.
+   * Computed index of currently active tab.
    */
-  readonly cdkOptions = computed(() => this.tabs().map((tab) => tab.cdkOption));
+  readonly activeIndex = computed(() => {
+    const currentValue = this.value()[0];
+    return this.tabs().findIndex((tab) => tab.value() === currentValue);
+  });
 
-  /**
-   * Keyboard manager that handles arrow navigation between tabs.
-   */
-  readonly listKeyManager = computed(() =>
-    new ActiveDescendantKeyManager(this.cdkOptions()).withWrap().withHorizontalOrientation('ltr'),
-  );
+  constructor() {
+    // Sync tab selection with child tabs
+    effect(() => {
+      const selectedValues = this.value();
+      this.tabs().forEach((tab) => {
+        tab.setSelected(selectedValues.includes(tab.value()));
+      });
+    });
+  }
 
   /**
    * Move highlight to the previous tab.
    */
   previousTab() {
-    this.listKeyManager().setPreviousItemActive();
+    const currentIndex = this.activeIndex();
+    const tabs = this.tabs();
+    if (tabs.length === 0) return;
+
+    const newIndex = currentIndex <= 0 ? tabs.length - 1 : currentIndex - 1;
+    this.selectTab(tabs[newIndex].value());
   }
 
   /**
    * Move highlight to the next tab.
    */
   nextTab() {
-    this.listKeyManager().setNextItemActive();
+    const currentIndex = this.activeIndex();
+    const tabs = this.tabs();
+    if (tabs.length === 0) return;
+
+    const newIndex = currentIndex >= tabs.length - 1 ? 0 : currentIndex + 1;
+    this.selectTab(tabs[newIndex].value());
   }
 
   /**
-   * Initialize CDK listbox behaviors on component init.
+   * Select a tab by its value.
    */
-  ngOnInit(): void {
-    this.cdkListbox.useActiveDescendant = true;
-    this.cdkListbox.orientation = 'horizontal';
+  selectTab(tabValue: string) {
+    this.value.set([tabValue]);
+    this.valueChange.emit([tabValue]);
   }
 }

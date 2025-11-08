@@ -4,11 +4,9 @@ import {
   computed,
   contentChildren,
   ElementRef,
-  forwardRef,
   model,
   output,
 } from '@angular/core';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 /**
  * OTP (One-Time Password) input component that manages multiple digit inputs.
@@ -16,24 +14,22 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 @Component({
   selector: 'b-otp',
   template: ` <ng-content /> `,
-  providers: [
-    {
-      provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => Otp),
-      multi: true,
-    },
-  ],
 })
-export class Otp implements AfterContentInit, ControlValueAccessor {
+export class Otp implements AfterContentInit {
   /**
    * Number of digit inputs.
    */
   readonly length = computed(() => this.digitInputs().length);
 
   /**
+   * Current OTP value.
+   */
+  readonly value = model<string>('');
+
+  /**
    * Emitted when the OTP value changes.
    */
-  readonly otpChange = output<string>();
+  readonly valueChange = output<string>();
 
   /**
    * Query list of digit input directives.
@@ -46,16 +42,6 @@ export class Otp implements AfterContentInit, ControlValueAccessor {
    * Whether the OTP inputs are disabled.
    */
   readonly disabled = model(false);
-
-  /**
-   * Callback invoked when the OTP value changes.
-   */
-  private onChange: (value: string) => void = () => undefined;
-
-  /**
-   * Callback invoked when the control is touched.
-   */
-  private onTouched: () => void = () => undefined;
 
   ngAfterContentInit(): void {
     this.digitInputs().forEach((input, idx) => {
@@ -139,9 +125,8 @@ export class Otp implements AfterContentInit, ControlValueAccessor {
    */
   private emitValue() {
     const otp = this.values.join('');
-    this.otpChange.emit(otp);
-    this.onChange(otp);
-    this.onTouched();
+    this.value.set(otp);
+    this.valueChange.emit(otp);
   }
 
   /**
@@ -152,46 +137,6 @@ export class Otp implements AfterContentInit, ControlValueAccessor {
     this.digitInputs().forEach((input) => {
       input.el.nativeElement.value = '';
     });
-  }
-
-  // ControlValueAccessor implementation
-
-  /**
-   * Write a value to the OTP inputs.
-   * @param value - New OTP string to display.
-   */
-  writeValue(value: string): void {
-    this.values = Array(this.length()).fill('');
-    if (value) {
-      value
-        .slice(0, this.length())
-        .split('')
-        .forEach((c, i) => {
-          this.values[i] = c;
-          const input = this.digitInputs()[i];
-          if (input) {
-            input.el.nativeElement.value = c;
-          }
-        });
-    } else {
-      this.resetValues();
-    }
-  }
-
-  /**
-   * Register callback invoked when the OTP value changes.
-   * @param fn - Callback receiving the OTP string.
-   */
-  registerOnChange(fn: (value: string) => void): void {
-    this.onChange = fn;
-  }
-
-  /**
-   * Register callback invoked when the control is touched.
-   * @param fn - Touched callback.
-   */
-  registerOnTouched(fn: () => void): void {
-    this.onTouched = fn;
   }
 
   /**

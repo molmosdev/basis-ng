@@ -23,14 +23,14 @@ export class SwitchComponent implements AfterViewInit {
   readonly value = signal<boolean>(false);
 
   /**
+   * Output emitted when the switch value changes.
+   */
+  readonly valueChange = output<boolean>();
+
+  /**
    * Host input element.
    */
   el = inject(ElementRef);
-
-  /**
-   * Emitted when the value changes.
-   */
-  valueChange = output<boolean>();
 
   ngAfterViewInit(): void {
     this.value.set(this.el.nativeElement.checked);

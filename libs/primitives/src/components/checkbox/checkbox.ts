@@ -3,13 +3,11 @@ import {
   ChangeDetectionStrategy,
   Component,
   computed,
-  forwardRef,
   input,
   model,
   output,
   signal,
 } from '@angular/core';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 /**
  * Custom checkbox control synced with the host input element.
@@ -18,7 +16,7 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
   selector: 'button[b-checkbox]',
   template: `
     <span class="b-checkbox-indicator" aria-hidden="true">
-      @if (checked()) {
+      @if (value()) {
         <svg
           width="9"
           height="9"
@@ -38,8 +36,8 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
   host: {
     type: '"button"',
     '[attr.role]': '"checkbox"',
-    '[attr.aria-checked]': 'checked()',
-    '[attr.data-state]': 'checked() ? "checked" : "unchecked"',
+    '[attr.aria-checked]': 'value()',
+    '[attr.data-state]': 'value() ? "checked" : "unchecked"',
     '[attr.aria-disabled]': 'isDisabled()',
     '[disabled]': 'isDisabled()',
     '[attr.data-disabled]': 'isDisabled() ? "" : null',
@@ -48,30 +46,17 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
     '[class.b-size-lg]': 'size() === "lg"',
     '(click)': 'onToggle()',
     '(keydown.space)': 'suppressSpace($event)',
-    '(blur)': 'markTouched()',
   },
-  providers: [
-    {
-      provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => Checkbox),
-      multi: true,
-    },
-  ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class Checkbox implements ControlValueAccessor {
+export class Checkbox {
   /**
-   * Internal checked state for the checkbox.
+   * Current value of the checkbox.
    */
-  private readonly internalValue = signal(false);
+  readonly value = model<boolean>(false);
 
   /**
-   * Public checked state exposed to the template bindings.
-   */
-  readonly checked = computed(() => this.internalValue());
-
-  /**
-   * Public two-way binding output emitted on user interaction.
+   * Emitted when the value changes.
    */
   readonly valueChange = output<boolean>();
 
@@ -96,16 +81,6 @@ export class Checkbox implements ControlValueAccessor {
   readonly isDisabled = computed(() => this.disabledBinding() || this.disabledFromControl());
 
   /**
-   * Internal change handler for the checkbox.
-   */
-  private onChange: (value: boolean) => void = () => undefined;
-
-  /**
-   * Internal touched handler for the checkbox.
-   */
-  private onTouched: () => void = () => undefined;
-
-  /**
    * Toggle the checkbox when the user clicks on it.
    */
   onToggle(): void {
@@ -113,9 +88,9 @@ export class Checkbox implements ControlValueAccessor {
       return;
     }
 
-    const next = !this.checked();
-    this.setChecked(next, true);
-    this.markTouched();
+    const newValue = !this.value();
+    this.value.set(newValue);
+    this.valueChange.emit(newValue);
   }
 
   /**
@@ -128,59 +103,10 @@ export class Checkbox implements ControlValueAccessor {
   }
 
   /**
-   * Mark the control as touched.
-   */
-  markTouched(): void {
-    this.onTouched();
-  }
-
-  /**
-   * Write the value to the internal form control.
-   * @param value - New value to write.
-   */
-  writeValue(value: boolean | null): void {
-    this.internalValue.set(!!value);
-  }
-
-  /**
-   * Register a change handler for the checkbox.
-   * @param fn - Change callback.
-   */
-  registerOnChange(fn: (value: boolean) => void): void {
-    this.onChange = fn;
-  }
-
-  /**
-   * Register a touched handler for the checkbox.
-   * @param fn - Touched callback.
-   */
-  registerOnTouched(fn: () => void): void {
-    this.onTouched = fn;
-  }
-
-  /**
    * Toggle disabled state on the checkbox.
    * @param isDisabled - Whether the control is disabled.
    */
   setDisabledState(isDisabled: boolean): void {
     this.disabledFromControl.set(isDisabled);
-  }
-
-  /**
-   * Set the checked state internally and emit change events if needed.
-   * @param value - New checked value.
-   * @param emitChange - Whether to emit change events.
-   */
-  private setChecked(value: boolean, emitChange: boolean): void {
-    const normalized = !!value;
-
-    if (this.internalValue() !== normalized) {
-      this.internalValue.set(normalized);
-    }
-
-    if (emitChange) {
-      this.onChange(normalized);
-      this.valueChange.emit(normalized);
-    }
   }
 }

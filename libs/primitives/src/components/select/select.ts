@@ -6,6 +6,7 @@ import {
   input,
   model,
   OnInit,
+  output,
 } from '@angular/core';
 import { ConnectedOverlay } from '../../directives/connected-overlay';
 import { SelectContent } from './select-content';
@@ -39,6 +40,9 @@ export class Select implements OnInit {
   /** Current value array for the select. */
   readonly value = model<string[]>([]);
 
+  /** Emitted when the value changes. */
+  readonly valueChange = output<string[]>();
+
   constructor() {
     effect(() => this.updateDisplayedValue());
     effect(() => this.handleContentValueChanges());
@@ -67,6 +71,7 @@ export class Select implements OnInit {
 
     content.changeValueEmitter.subscribe((value: string[]) => {
       this.value.set(value);
+      this.valueChange.emit(value);
       if (!content.listBox.multiple) {
         this.overlay()?.closeOverlay();
       }
@@ -141,5 +146,6 @@ export class Select implements OnInit {
    */
   setValue(value: string[]): void {
     this.value.set(value);
+    this.valueChange.emit(value);
   }
 }
