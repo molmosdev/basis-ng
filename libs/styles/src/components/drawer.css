@@ -1,13 +1,13 @@
 b-drawer {
-  @apply fixed inset-0 z-[1001] pointer-events-none;
+  @apply fixed inset-0 pointer-events-none;
 
   .backdrop {
-    @apply fixed inset-0 bg-black/50 pointer-events-auto;
+    @apply fixed inset-0 bg-black/50 pointer-events-auto z-[999];
     animation: fadeIn 0.3s ease-out;
   }
 
   .drawer-content {
-    @apply fixed bottom-0 left-0 right-0 bg-background dark:bg-background-dark rounded-t-lg border border-secondary dark:border-secondary-dark border-b-0 flex flex-col will-change-transform shadow-2xl touch-none select-none pt-10 box-border overflow-hidden h-1/2 pointer-events-auto;
+    @apply fixed bottom-0 left-0 right-0 bg-background dark:bg-background-dark rounded-t-lg border border-secondary dark:border-secondary-dark border-b-0 flex flex-col will-change-transform shadow-2xl touch-none select-none pt-10 box-border overflow-hidden h-1/2 pointer-events-auto z-[999];
     transition: transform 0.5s cubic-bezier(0.32, 0.72, 0, 1);
     transform: translateY(100%);
   }
