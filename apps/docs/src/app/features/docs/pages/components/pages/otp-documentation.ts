@@ -1,12 +1,7 @@
 import { Component } from '@angular/core';
+import { Alert, Badge, Otp, OtpDigitDirective } from '@basis-ng/primitives';
 import { provideIcons } from '@ng-icons/core';
 import { lucideRocket } from '@ng-icons/lucide';
-import {
-  Alert,
-  Badge,
-  Otp,
-  OtpDigitDirective,
-} from '../../../../../../../../../libs/primitives/src/public-api';
 import { StepsButtons } from '../../shared/components/steps-buttons';
 import { CodeBlock } from '../shared/components/code-block';
 

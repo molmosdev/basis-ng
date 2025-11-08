@@ -1,8 +1,8 @@
 import { NgTemplateOutlet } from '@angular/common';
 import { Component } from '@angular/core';
+import { Alert, Badge, Tab, Tabs } from '@basis-ng/primitives';
 import { provideIcons } from '@ng-icons/core';
 import { lucideRocket } from '@ng-icons/lucide';
-import { Alert, Badge, Tab, Tabs } from '../../../../../../../../../libs/primitives/src/public-api';
 import { StepsButtons } from '../../shared/components/steps-buttons';
 import { CodeBlock } from '../shared/components/code-block';
 

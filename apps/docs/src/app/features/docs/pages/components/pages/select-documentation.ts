@@ -1,6 +1,4 @@
 import { Component, signal } from '@angular/core';
-import { provideIcons } from '@ng-icons/core';
-import { lucideRocket } from '@ng-icons/lucide';
 import {
   Alert,
   ConnectedOverlay,
@@ -12,7 +10,9 @@ import {
   SelectFilter,
   SelectTrigger,
   SelectValue,
-} from '../../../../../../../../../libs/primitives/src/public-api';
+} from '@basis-ng/primitives';
+import { provideIcons } from '@ng-icons/core';
+import { lucideRocket } from '@ng-icons/lucide';
 import { StepsButtons } from '../../shared/components/steps-buttons';
 import { CodeBlock } from '../shared/components/code-block';
 
