@@ -3,7 +3,6 @@ import {
   Component,
   computed,
   ElementRef,
-  HostListener,
   inject,
   input,
   model,
@@ -19,14 +18,18 @@ import {
   standalone: true,
   imports: [CommonModule],
   template: `
-    <div class="drag-section" (pointerdown)="startDrag($event)">
-      <div class="drag-indicator"></div>
+    @if (isOpen()) {
+      <div class="backdrop" (click)="closeDrawer()"></div>
+    }
+    <div class="drawer-content">
+      <div class="drag-section" (pointerdown)="startDrag($event)">
+        <div class="drag-indicator"></div>
+      </div>
+      <ng-content />
     </div>
-    <ng-content />
   `,
   host: {
     '[class.dragging]': 'isDragging()',
-    '[style.transform]': 'transform()',
     '[class.open]': 'isOpen()',
   },
 })
@@ -78,22 +81,18 @@ export class Drawer {
   private readonly el = inject(ElementRef);
 
   /**
-   * Close the drawer when clicking outside of it.
-   * @param event - Click event.
+   * Close the drawer.
    */
-  @HostListener('document:click', ['$event'])
-  closeOnOutsideClick(event: Event) {
-    if (this.isOpen() && !this.el.nativeElement.contains(event.target)) {
-      this.isOpen.set(false);
-      this.closeSheet.emit();
-    }
+  closeDrawer(): void {
+    this.isOpen.set(false);
+    this.closeSheet.emit();
   }
 
   /**
    * Begin tracking pointer movement for drag-to-dismiss.
    * @param event - Pointer down event.
    */
-  startDrag(event: PointerEvent) {
+  startDrag(event: PointerEvent): void {
     this.isDragging.set(true);
     this.startY.set(event.clientY);
     // Initialize translateY based on the current state:
@@ -121,7 +120,7 @@ export class Drawer {
    * Update drawer position during drag.
    * @param clientY - Current pointer Y position.
    */
-  updateDrag(clientY: number) {
+  updateDrag(clientY: number): void {
     const deltaPx = clientY - this.startY();
     const sheetHeight = this.el.nativeElement.offsetHeight;
     // Convert the pixel delta to a percentage relative to the sheet height
@@ -137,7 +136,7 @@ export class Drawer {
   /**
    * Snap the drawer to open or closed based on threshold.
    */
-  snapToOpenOrClose() {
+  snapToOpenOrClose(): void {
     if (this.translateY() > this.closeThreshold()) {
       this.isOpen.set(false);
     } else {
