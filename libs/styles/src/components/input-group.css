@@ -20,6 +20,16 @@ b-input-group {
     @apply outline-0! px-0! inset-ring-0 w-full! rounded-none! bg-transparent hover:bg-transparent shadow-none;
   }
 
+  /* Internal button adjustments when placed inside group */
+  button[b-button] {
+    @apply inset-ring-0 shadow-none rounded-size-sm;
+  }
+
+  /* Squared buttons should match the input group height */
+  button[b-button].b-squared {
+    @apply h-full! w-auto! aspect-square;
+  }
+
   /* Focus state when any inner input is focused (and not readonly) */
   &:has(input[b-input]:focus-visible:not(:read-only)) {
     @apply outline-2 outline-offset-2 outline-primary dark:outline-primary-dark;
@@ -86,5 +96,42 @@ b-input-group {
   /* Prevent icons from shrinking inside the group */
   > ng-icon {
     @apply shrink-0;
+  }
+
+  /* Rounded full - extra horizontal padding */
+  &.b-rounded-full {
+    @apply px-4;
+
+    &:has(> button[b-button]:first-child) {
+      @apply pl-2!;
+    }
+
+    &:has(> button[b-button]:last-child) {
+      @apply pr-2!;
+    }
+  }
+
+  &:has(input[b-input].b-size-sm).b-rounded-full {
+    @apply px-3;
+
+    &:has(> button[b-button]:first-child) {
+      @apply pl-1.5!;
+    }
+
+    &:has(> button[b-button]:last-child) {
+      @apply pr-1.5!;
+    }
+  }
+
+  &:has(input[b-input].b-size-lg).b-rounded-full {
+    @apply px-5;
+
+    &:has(> button[b-button]:first-child) {
+      @apply pl-2.5!;
+    }
+
+    &:has(> button[b-button]:last-child) {
+      @apply pr-2.5!;
+    }
   }
 }

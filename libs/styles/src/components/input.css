@@ -45,4 +45,17 @@ input[b-input] {
   &.b-size-lg {
     @apply px-3 py-0 text-base h-10 rounded-size-lg;
   }
+
+  /* Rounded full - extra horizontal padding */
+  &.b-rounded-full {
+    @apply px-4;
+  }
+
+  &.b-size-sm.b-rounded-full {
+    @apply px-3;
+  }
+
+  &.b-size-lg.b-rounded-full {
+    @apply px-5;
+  }
 }

@@ -68,4 +68,15 @@ button[b-button] {
   &.b-squared.b-size-lg {
     @apply size-12;
   }
+
+  /* Rounded full - extra horizontal padding */
+  &.b-rounded-full:not(.b-squared) {
+    @apply px-4;
+  }
+  &.b-size-sm.b-rounded-full:not(.b-squared) {
+    @apply px-3;
+  }
+  &.b-size-lg.b-rounded-full:not(.b-squared) {
+    @apply px-5;
+  }
 }
