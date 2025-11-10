@@ -103,11 +103,11 @@ b-input-group {
     @apply px-4;
 
     &:has(> button[b-button]:first-child) {
-      @apply pl-2!;
+      @apply pl-1!;
     }
 
     &:has(> button[b-button]:last-child) {
-      @apply pr-2!;
+      @apply pr-1!;
     }
   }
 
@@ -115,11 +115,11 @@ b-input-group {
     @apply px-3;
 
     &:has(> button[b-button]:first-child) {
-      @apply pl-1.5!;
+      @apply pl-1!;
     }
 
     &:has(> button[b-button]:last-child) {
-      @apply pr-1.5!;
+      @apply pr-1!;
     }
   }
 
@@ -127,11 +127,11 @@ b-input-group {
     @apply px-5;
 
     &:has(> button[b-button]:first-child) {
-      @apply pl-2.5!;
+      @apply pl-1!;
     }
 
     &:has(> button[b-button]:last-child) {
-      @apply pr-2.5!;
+      @apply pr-1!;
     }
   }
 }
