@@ -1,52 +1,88 @@
 b-tabs {
+  /* Base container */
   @apply flex items-center;
   @apply bg-primary/5 text-secondary-foreground inset-ring-1 inset-ring-primary/10 shadow-xs;
   @apply dark:bg-primary-dark/5 dark:text-secondary-foreground-dark dark:inset-ring-primary-dark/10;
 
   /* Base md by default */
-  @apply px-1 py-0 text-sm h-8 rounded-size-md gap-1.5;
+  @apply px-1 py-1 text-sm h-auto rounded-size-md gap-1;
 
+  /* Individual tab styling */
   b-tab {
-    @apply flex items-center justify-center cursor-pointer;
-    @apply px-2 py-0 text-xs h-6 rounded-size-sm gap-1;
+    @apply flex items-center justify-center cursor-pointer transition-colors duration-150;
+    @apply px-2.5 py-0 text-sm h-8 rounded-size-sm gap-1.5;
 
+    /* Selected state */
     &[aria-selected='true'] {
-      @apply bg-primary text-primary-foreground hover:bg-primary/80;
-      @apply dark:bg-primary-dark dark:text-primary-foreground-dark dark:hover:bg-primary-dark/80;
+      @apply bg-primary text-primary-foreground;
+      @apply dark:bg-primary-dark dark:text-primary-foreground-dark;
     }
 
+    /* Hover state (not selected) */
     &:hover:not([aria-selected='true']) {
-      @apply bg-transparent text-primary hover:bg-primary/10;
-      @apply dark:text-primary-dark dark:hover:bg-primary-dark/20;
+      @apply bg-primary/10;
+      @apply dark:bg-primary-dark/20;
     }
 
+    /* Focus state */
     &:focus-visible {
       @apply outline-2 outline-offset-2 outline-primary;
       @apply dark:outline-primary-dark;
     }
-  }
 
-  &.b-size-sm {
-    @apply px-0.5 py-0 text-xs h-6 rounded-size-sm gap-0.5;
-
-    b-tab {
-      @apply px-2 py-0 text-xs h-5 rounded-size-sm gap-1;
+    /* Disabled state */
+    &[aria-disabled='true'] {
+      @apply opacity-50 cursor-not-allowed pointer-events-none;
     }
   }
 
-  &.b-size-md {
-    @apply px-1 py-0 text-sm h-8 rounded-size-md gap-1;
+  /* Size variants */
+  &.b-size-sm {
+    @apply px-0.5 py-0.5 text-xs rounded-size-sm gap-0.5;
 
     b-tab {
       @apply px-2 py-0 text-xs h-6 rounded-size-sm gap-1;
     }
   }
 
-  &.b-size-lg {
-    @apply px-1 py-0 text-base h-10 rounded-size-lg gap-1;
+  &.b-size-md {
+    @apply px-1 py-1 text-sm rounded-size-md gap-1;
 
     b-tab {
-      @apply px-3 py-0 text-sm h-8 rounded-size-md gap-1.5;
+      @apply px-2.5 py-0 text-sm h-8 rounded-size-sm gap-1.5;
+    }
+  }
+
+  &.b-size-lg {
+    @apply px-1 py-1 text-base rounded-size-lg gap-1;
+
+    b-tab {
+      @apply px-3 py-0 text-base h-10 rounded-size-md gap-2;
+    }
+  }
+
+  /* Rounded full - extra horizontal padding */
+  &.b-rounded-full {
+    @apply px-1;
+
+    b-tab {
+      @apply px-4 rounded-size-md;
+    }
+  }
+
+  &.b-size-sm.b-rounded-full {
+    @apply px-1;
+
+    b-tab {
+      @apply px-3 rounded-size-sm;
+    }
+  }
+
+  &.b-size-lg.b-rounded-full {
+    @apply px-1;
+
+    b-tab {
+      @apply px-5 rounded-size-lg;
     }
   }
 }
