@@ -63,10 +63,10 @@ button[b-button] {
     @apply size-6;
   }
   &.b-squared.b-size-md {
-    @apply size-9;
+    @apply size-8;
   }
   &.b-squared.b-size-lg {
-    @apply size-12;
+    @apply size-10;
   }
 
   /* Rounded full - extra horizontal padding */
