@@ -1,4 +1,3 @@
-import { CommonModule } from '@angular/common';
 import {
   Component,
   computed,
@@ -17,7 +16,7 @@ import {
 @Component({
   selector: 'b-drawer',
   standalone: true,
-  imports: [CommonModule],
+  imports: [],
   template: `
     <div class="drag-section" (pointerdown)="startDrag($event)">
       <div class="drag-indicator"></div>
