@@ -1,3 +1,4 @@
+import { ClipboardModule } from '@angular/cdk/clipboard';
 import { Component, input } from '@angular/core';
 import { Button } from '@basis-ng/primitives';
 import { NgIcon, provideIcons } from '@ng-icons/core';
@@ -6,7 +7,7 @@ import { HighlightAuto } from 'ngx-highlightjs';
 
 @Component({
   selector: 'code-block',
-  imports: [HighlightAuto, Button, NgIcon],
+  imports: [HighlightAuto, Button, NgIcon, ClipboardModule],
   template: `
     <pre
       class="flex relative rounded-lg overflow-auto inset-ring-1 inset-ring-ring dark:inset-ring-ring-dark"
@@ -19,7 +20,8 @@ import { HighlightAuto } from 'ngx-highlightjs';
       <button
       b-button
       size="sm"
-      class="absolute top-2 right-2 b-squared b-variant-ghost">
+      class="absolute top-2 right-2 b-squared b-variant-ghost"
+      [cdkCopyToClipboard]="code()">
         <ng-icon name="lucideCopy" size="14" color="currentColor" />
       </button>
     </pre>
