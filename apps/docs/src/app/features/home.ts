@@ -64,9 +64,10 @@ import {
       </span>
     </h1>
     <span class="font-display-mono md:max-w-2/3 lg:max-w-1/2 xl:max-w-3/6 text-center">
-      Headless by design. Style it your way or use our pre-defined Tailwind styles for each
-      component, with easy customization via <code>&#64;theme</code>. Build fast, accessible, and
-      design-system-friendly apps — without the bloat.
+      Headless by design. Now updated for Angular 21 — built with Signals and Signal Forms for
+      simpler, more-performant state and form handling. Style it your way or use our pre-defined
+      Tailwind styles for each component, with easy customization via <code>&#64;theme</code>. Build
+      fast, accessible, and design-system-friendly apps — without the bloat.
     </span>
     <div class="text-center">
       <button b-button routerLink="/docs" class="mt-6">Get started</button>
