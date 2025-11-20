@@ -17,7 +17,7 @@ import { FormValueControl } from '@angular/forms/signals';
   selector: 'b-otp',
   template: ` <ng-content /> `,
   host: {
-    '[attr.data-invalid]': 'invalid() ? "" : null',
+    '[attr.data-invalid]': 'invalid() && dirty() ? "" : null',
   },
 })
 export class Otp implements AfterContentInit, FormValueControl<string> {
@@ -37,15 +37,23 @@ export class Otp implements AfterContentInit, FormValueControl<string> {
   readonly valueChange = output<string>();
 
   /**
-   * Whether the OTP is in an invalid state.
+   * Whether the OTP input is invalid.
    */
-  readonly invalid = input<boolean>(false);
+  invalid = input<boolean>(false);
+
+  /**
+   * Whether the OTP input has been modified.
+   */
+  dirty = input<boolean>(false);
 
   /**
    * Query list of digit input directives.
    */
   readonly digitInputs = contentChildren(OtpDigitDirective);
 
+  /**
+   * Internal storage for digit values.
+   */
   private values: string[] = [];
 
   /**
@@ -53,6 +61,9 @@ export class Otp implements AfterContentInit, FormValueControl<string> {
    */
   readonly disabled = model(false);
 
+  /**
+   * Lifecycle hook invoked after content initialization.
+   */
   ngAfterContentInit(): void {
     this.digitInputs().forEach((input, idx) => {
       const el = input.el.nativeElement;
