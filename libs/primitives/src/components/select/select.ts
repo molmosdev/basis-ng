@@ -8,6 +8,7 @@ import {
   OnInit,
   output,
 } from '@angular/core';
+import { FormValueControl } from '@angular/forms/signals';
 import { ConnectedOverlay } from '../../directives/connected-overlay';
 import { SelectContent } from './select-content';
 import { SelectTrigger } from './select-trigger';
@@ -24,7 +25,7 @@ import { SelectValue } from './select-value';
     '[attr.data-invalid]': 'invalid() ? "" : null',
   },
 })
-export class Select implements OnInit {
+export class Select implements OnInit, FormValueControl<string[]> {
   /** Connected overlay instance used to show the dropdown. */
   readonly overlay = contentChild(ConnectedOverlay);
 

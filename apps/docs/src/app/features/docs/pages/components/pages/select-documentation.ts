@@ -1,4 +1,7 @@
 import { Component, signal } from '@angular/core';
+import { Field, form } from '@angular/forms/signals';
+import { provideIcons } from '@ng-icons/core';
+import { lucideRocket } from '@ng-icons/lucide';
 import {
   Alert,
   ConnectedOverlay,
@@ -10,9 +13,7 @@ import {
   SelectFilter,
   SelectTrigger,
   SelectValue,
-} from '@basis-ng/primitives';
-import { provideIcons } from '@ng-icons/core';
-import { lucideRocket } from '@ng-icons/lucide';
+} from '../../../../../../../../../libs/primitives/src/public-api';
 import { StepsButtons } from '../../shared/components/steps-buttons';
 import { CodeBlock } from '../shared/components/code-block';
 
@@ -31,6 +32,7 @@ import { CodeBlock } from '../shared/components/code-block';
     StepsButtons,
     Alert,
     Input,
+    Field,
   ],
   template: `
     <app-steps-buttons
@@ -187,6 +189,30 @@ import { CodeBlock } from '../shared/components/code-block';
           <ng-template
             bConnectedOverlay
             [trigger]="trigger"
+            [positions]="['bottom-left', 'bottom-right', 'top-left', 'top-right']"
+          >
+            <ul b-select-content class="b-size-md" [multiple]="false">
+              @for (option of options(); track option) {
+                <li b-option [value]="option.value">{{ option.label }}</li>
+              }
+            </ul>
+          </ng-template>
+        </b-select>
+      </div>
+      <h2 class="font-semibold text-xl">Signal forms usage</h2>
+      <code-block [code]="signalFormsUsage" />
+      <div
+        class="border border-gray-200 dark:border-neutral-900 rounded-lg p-6 mb-6 flex flex-col items-center justify-center gap-4"
+      >
+        <!-- Signal forms select example -->
+        {{ form.selected().value().length > 0 ? form.selected().value() : 'No selection' }}
+        <b-select [field]="form.selected" [displayWith]="displayFn">
+          <button b-select-trigger bOverlayOrigin #triggerForm="bOverlayOrigin" class="b-size-md">
+            <b-select-value placeholder="Select an option" />
+          </button>
+          <ng-template
+            bConnectedOverlay
+            [trigger]="triggerForm"
             [positions]="['bottom-left', 'bottom-right', 'top-left', 'top-right']"
           >
             <ul b-select-content class="b-size-md" [multiple]="false">
@@ -396,7 +422,24 @@ export class SelectDocumentation {
       : '';
   };
 
+  form = form(signal({ selected: [] as string[] }));
+
   basicUsage = `<b-select [(value)]='selectedOptions' [displayWith]='displayFn'>
+  <button b-select-trigger bOverlayOrigin #trigger='bOverlayOrigin' class='b-size-md'>
+    <b-select-value placeholder='Selecciona una opción' />
+  </button>
+  <ng-template bConnectedOverlay [trigger]='trigger' [positions]="['bottom-left', 'bottom-right', 'top-left', 'top-right']">
+    <ul b-select-content class='b-size-md' [multiple]='false'>
+      @for (option of options(); track option) {
+        <li b-option [value]='option.value'>{{ option.label }}</li>
+      }
+    </ul>
+  </ng-template>
+</b-select>`;
+
+  signalFormsUsage = `{{form.selected().value().length > 1 ? form.selected().value() : 'No selection' }}
+
+  <b-select [field]='form.selected' [displayWith]='displayFn'>
   <button b-select-trigger bOverlayOrigin #trigger='bOverlayOrigin' class='b-size-md'>
     <b-select-value placeholder='Selecciona una opción' />
   </button>
