@@ -52,7 +52,16 @@ import {
   ],
   template: `
     <h1 class="font-medium text-4xl md:text-5xl xl:text-6xl text-center">
-      A minimal UI toolkit for Angular
+      A minimal UI toolkit for
+      <span class="relative">
+        Angular
+        <!-- tag position absolute pon background  -->
+        <span
+          class="absolute top-0 -right-5 rotate-5 text-sm  md:text-lg xl:text-xl bg-gradient-to-r from-[#f1216f] to-[#ac26fb] py-0.5 px-2 rounded-md"
+        >
+          v21
+        </span>
+      </span>
     </h1>
     <span class="font-display-mono md:max-w-2/3 lg:max-w-1/2 xl:max-w-3/6 text-center">
       Headless by design. Style it your way or use our pre-defined Tailwind styles for each
