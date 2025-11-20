@@ -8,6 +8,7 @@ import {
   output,
   signal,
 } from '@angular/core';
+import { FormValueControl } from '@angular/forms/signals';
 
 /**
  * Custom checkbox control synced with the host input element.
@@ -49,7 +50,7 @@ import {
   },
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class Checkbox {
+export class Checkbox implements FormValueControl<boolean> {
   /**
    * Current value of the checkbox.
    */
@@ -108,5 +109,14 @@ export class Checkbox {
    */
   setDisabledState(isDisabled: boolean): void {
     this.disabledFromControl.set(isDisabled);
+  }
+
+  /**
+   * Update the current value (FormValueControl API).
+   * @param value - New boolean value to apply.
+   */
+  setValue(value: boolean): void {
+    this.value.set(value);
+    this.valueChange.emit(value);
   }
 }
