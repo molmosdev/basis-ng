@@ -1,4 +1,3 @@
-import { CommonModule } from '@angular/common';
 import {
   Component,
   computed,
@@ -16,7 +15,7 @@ import {
 @Component({
   selector: 'b-sheet',
   standalone: true,
-  imports: [CommonModule],
+  imports: [],
   template: `
     <button class="close-button" (click)="isOpen.set(false)">
       <svg
