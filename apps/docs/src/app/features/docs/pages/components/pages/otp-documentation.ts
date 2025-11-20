@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
+import { Field, form } from '@angular/forms/signals';
 import { Alert, Badge, Otp, OtpDigitDirective } from '@basis-ng/primitives';
 import { provideIcons } from '@ng-icons/core';
 import { lucideRocket } from '@ng-icons/lucide';
@@ -7,7 +8,7 @@ import { CodeBlock } from '../shared/components/code-block';
 
 @Component({
   selector: 'article[app-otp-documentation]',
-  imports: [CodeBlock, Otp, OtpDigitDirective, StepsButtons, Badge, Alert],
+  imports: [CodeBlock, Otp, OtpDigitDirective, StepsButtons, Badge, Alert, Field],
   template: `
     <app-steps-buttons
       [previous]="{ label: 'Menu', path: '/docs/components/menu' }"
@@ -144,6 +145,22 @@ import { CodeBlock } from '../shared/components/code-block';
           <input b-otp-digit />
         </b-otp>
       </div>
+      <h2 class="font-semibold text-xl">Signal forms usage</h2>
+      <code-block [code]="signalFormsUsage" />
+      <div
+        class="border border-gray-200 dark:border-neutral-900 rounded-lg p-6 mb-6 flex flex-col gap-4 items-center"
+      >
+        <!-- Signal forms OTP example -->
+        {{ form.otp().value() }}
+        <b-otp [field]="form.otp">
+          <input b-otp-digit />
+          <input b-otp-digit />
+          <input b-otp-digit />
+          <input b-otp-digit />
+          <input b-otp-digit />
+          <input b-otp-digit />
+        </b-otp>
+      </div>
       <h2 class="font-semibold text-xl">Sizes</h2>
       <code-block [code]="sizeUsage" />
       <div
@@ -223,4 +240,8 @@ export class OtpDocumentation {
   invalidUsage = `<b-otp [invalid]='true'>\n  <input b-otp-digit />\n  <input b-otp-digit />\n  <input b-otp-digit />\n  <input b-otp-digit />\n  <input b-otp-digit />\n  <input b-otp-digit />\n</b-otp>`;
 
   otpValue = '';
+
+  signalFormsUsage = `{{ form.otp().value() }}\n\n<b-otp [field]='form.otp'>\n  <input b-otp-digit />\n  <input b-otp-digit />\n  <input b-otp-digit />\n  <input b-otp-digit />\n  <input b-otp-digit />\n  <input b-otp-digit />\n</b-otp>`;
+
+  form = form(signal({ otp: '' }));
 }

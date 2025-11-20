@@ -8,6 +8,7 @@ import {
   model,
   output,
 } from '@angular/core';
+import { FormValueControl } from '@angular/forms/signals';
 
 /**
  * OTP (One-Time Password) input component that manages multiple digit inputs.
@@ -19,7 +20,7 @@ import {
     '[attr.data-invalid]': 'invalid() ? "" : null',
   },
 })
-export class Otp implements AfterContentInit {
+export class Otp implements AfterContentInit, FormValueControl<string> {
   /**
    * Number of digit inputs.
    */
@@ -156,6 +157,22 @@ export class Otp implements AfterContentInit {
     this.disabled.set(isDisabled);
     this.digitInputs().forEach((input) => {
       input.el.nativeElement.disabled = isDisabled;
+    });
+  }
+
+  /**
+   * Update the current OTP value (FormValueControl API).
+   * @param value - New otp string to apply.
+   */
+  setValue(value: string): void {
+    this.value.set(value);
+    this.valueChange.emit(value);
+    // Update individual digit inputs to reflect new value
+    const chars = value.split('');
+    this.digitInputs().forEach((inputRef, idx) => {
+      const char = chars[idx] ?? '';
+      inputRef.el.nativeElement.value = char;
+      this.values[idx] = char;
     });
   }
 }
