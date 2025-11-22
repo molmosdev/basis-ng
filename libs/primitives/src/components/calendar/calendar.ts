@@ -9,10 +9,6 @@ import { FormValueControl } from '@angular/forms/signals';
 @Component({
   selector: 'b-calendar',
   imports: [Grid, GridRow, GridCell, GridCellWidget],
-  host: {
-    class: 'b-calendar',
-    role: 'application',
-  },
   template: `
     <header class="b-calendar-header">
       <button type="button" class="b-calendar-nav" (click)="prevMonth()">‹</button>

@@ -3,6 +3,7 @@ import { Component, computed, signal } from '@angular/core';
 import { Field, form } from '@angular/forms/signals';
 import {
   Button,
+  Calendar,
   Card,
   CardContent,
   CardHeader,
@@ -10,7 +11,6 @@ import {
   Popover,
   PopoverTrigger,
 } from '@basis-ng/primitives';
-import { Calendar } from '../../../../../../../../../libs/primitives/src/components/calendar/calendar';
 import { StepsButtons } from '../../shared/components/steps-buttons';
 import { CodeBlock } from '../shared/components/code-block';
 

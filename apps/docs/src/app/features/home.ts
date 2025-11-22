@@ -1,9 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import {
+  Alert,
   Badge,
   Button,
   ButtonGroup,
+  Calendar,
   Card,
   CardContent,
   CardDescription,
@@ -37,10 +39,12 @@ import {
     Button,
     RouterLink,
     Card,
+    Alert,
     CardHeader,
     CardDescription,
     CardTitle,
     CardContent,
+    Calendar,
     Input,
     CardFooter,
     InputGroup,
@@ -57,7 +61,7 @@ import {
         Angular
         <!-- tag position absolute pon background  -->
         <span
-          class="absolute top-0 -right-5 rotate-5 text-sm  md:text-lg xl:text-xl bg-gradient-to-r from-[#f1216f] to-[#ac26fb] py-0.5 px-2 rounded-md"
+          class="absolute top-0 text-font-dark -right-5 rotate-5 text-sm  md:text-lg xl:text-xl bg-linear-to-r from-[#f1216f] to-[#ac26fb] py-0.5 px-2 rounded-md"
         >
           v21
         </span>
@@ -163,20 +167,32 @@ import {
           </div>
         </b-textarea-group>
       </div>
-      <div class="flex gap-4">
-        <b-button-group>
-          <button b-button class="b-variant-outlined">1</button>
-          <button b-button class="b-variant-outlined">2</button>
-          <button b-button class="b-variant-outlined">3</button>
-        </b-button-group>
-        <b-button-group>
-          <button b-button class="b-variant-outlined b-squared">
-            <ng-icon name="lucideArrowLeft" size="18" />
-          </button>
-          <button b-button class="b-variant-outlined b-squared">
-            <ng-icon name="lucideArrowRight" size="18" />
-          </button>
-        </b-button-group>
+      <div class="flex gap-4 flex-col">
+        <div class="flex gap-4">
+          <b-button-group>
+            <button b-button class="b-variant-outlined">1</button>
+            <button b-button class="b-variant-outlined">2</button>
+            <button b-button class="b-variant-outlined">3</button>
+          </b-button-group>
+          <b-button-group>
+            <button b-button class="b-variant-outlined b-squared">
+              <ng-icon name="lucideArrowLeft" size="18" />
+            </button>
+            <button b-button class="b-variant-outlined b-squared">
+              <ng-icon name="lucideArrowRight" size="18" />
+            </button>
+          </b-button-group>
+        </div>
+        <b-card>
+          <b-card-content>
+            <b-calendar [(value)]="selectedHomeDate"></b-calendar>
+          </b-card-content>
+          <b-card-footer>
+            <b-alert title="Tip: Try the keyboard" icon="lucideInfo">
+              Use arrow keys to navigate days and Enter to select — try the usability!
+            </b-alert>
+          </b-card-footer>
+        </b-card>
       </div>
     </div>
   `,
@@ -204,4 +220,5 @@ import {
 export class Home {
   displayWith = (values: string[]) => (values || []).join(', ');
   showPassword = false;
+  selectedHomeDate = signal<Date | null>(null);
 }

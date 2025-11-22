@@ -1,6 +1,6 @@
 /* Calendar component styles - simple, utility-first classes matching project conventions */
 b-calendar {
-  @apply w-full max-w-60 flex flex-col gap-1;
+  @apply w-full min-w-60 flex flex-col gap-1;
 
   header.b-calendar-header {
     @apply flex gap-0.5 w-full justify-between;
@@ -27,7 +27,7 @@ b-calendar {
     @apply w-full table table-fixed border-collapse;
 
     .b-calendar-weekday {
-      @apply text-xs text-center mb-1;
+      @apply text-xs text-center h-6;
     }
 
     .b-calendar-cell {
