@@ -35,7 +35,7 @@ import { CodeBlock } from '../shared/components/code-block';
   template: `
     <app-steps-buttons
       [previous]="{ label: 'Button', path: '/docs/components/button' }"
-      [next]="{ label: 'Checkbox', path: '/docs/components/checkbox' }"
+      [next]="{ label: 'Calendar', path: '/docs/components/calendar' }"
     />
     <b-alert icon="lucideRocket" title="Components are in alpha">
       Components are in alpha Try them out! We'd love to hear your feedback! Expect breaking
@@ -128,7 +128,7 @@ import { CodeBlock } from '../shared/components/code-block';
     </div>
     <app-steps-buttons
       [previous]="{ label: 'Button', path: '/docs/components/button' }"
-      [next]="{ label: 'Checkbox', path: '/docs/components/checkbox' }"
+      [next]="{ label: 'Calendar', path: '/docs/components/calendar' }"
     />
   `,
   providers: [provideIcons({ lucideRocket })],

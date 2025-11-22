@@ -11,7 +11,7 @@ import { CodeBlock } from '../shared/components/code-block';
   imports: [CodeBlock, Checkbox, StepsButtons, Alert, Field],
   template: `
     <app-steps-buttons
-      [previous]="{ label: 'Card', path: '/docs/components/card' }"
+      [previous]="{ label: 'Calendar', path: '/docs/components/calendar' }"
       [next]="{
         label: 'Dialog',
         path: '/docs/components/dialog',
@@ -98,7 +98,7 @@ import { CodeBlock } from '../shared/components/code-block';
       </div>
     </div>
     <app-steps-buttons
-      [previous]="{ label: 'Card', path: '/docs/components/card' }"
+      [previous]="{ label: 'Calendar', path: '/docs/components/calendar' }"
       [next]="{
         label: 'Dialog',
         path: '/docs/components/dialog',
