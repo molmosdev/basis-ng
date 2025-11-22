@@ -1,12 +1,35 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, computed, signal } from '@angular/core';
+import { Field, form } from '@angular/forms/signals';
+import {
+  Button,
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+  Popover,
+  PopoverTrigger,
+} from '@basis-ng/primitives';
 import { Calendar } from '../../../../../../../../../libs/primitives/src/components/calendar/calendar';
 import { StepsButtons } from '../../shared/components/steps-buttons';
 import { CodeBlock } from '../shared/components/code-block';
 
 @Component({
   selector: 'article[app-calendar-documentation]',
-  imports: [CommonModule, CodeBlock, Calendar, StepsButtons],
+  imports: [
+    CommonModule,
+    CodeBlock,
+    Calendar,
+    StepsButtons,
+    Button,
+    Popover,
+    PopoverTrigger,
+    Card,
+    CardHeader,
+    CardTitle,
+    CardContent,
+    Field,
+  ],
   template: `
     <app-steps-buttons
       [previous]="{ label: 'Card', path: '/docs/components/card' }"
@@ -24,15 +47,74 @@ import { CodeBlock } from '../shared/components/code-block';
       <div
         class="border border-gray-200 dark:border-neutral-900 rounded-lg p-6 mb-6 flex flex-col items-center justify-center gap-4"
       >
-        <b-calendar (dateSelected)="onDate($event)"></b-calendar>
-        <div *ngIf="selected" class="text-sm text-muted">Selected: {{ selected }}</div>
+        <b-calendar [(value)]="selectedDate"></b-calendar>
+        <span class="text-sm text-muted">Selected: {{ displaySelected() }}</span>
       </div>
 
-      <h2 class="font-semibold text-xl">Notes</h2>
-      <span
-        >Current component is minimal: supports month navigation and single-date selection. Keyboard
-        accessibility and range selection can be added.</span
+      <h2 class="font-semibold text-xl">Emitter example</h2>
+      <span>Use the <code>dateSelected</code> emitter when you need an imperative handler.</span>
+      <code-block [code]="emitterUsage" />
+      <div
+        class="border border-gray-200 dark:border-neutral-900 rounded-lg p-6 mb-6 flex flex-col items-center"
       >
+        <b-calendar (dateSelected)="showAlert($event)"></b-calendar>
+      </div>
+
+      <h2 class="font-semibold text-xl">Customization</h2>
+      <span>Customize weekday labels, month labels and the first day of week.</span>
+      <code-block [code]="customUsage" />
+      <div
+        class="border border-gray-200 dark:border-neutral-900 rounded-lg p-6 mb-6 flex flex-col items-center gap-2"
+      >
+        <b-calendar
+          [(value)]="selectedDateCustom"
+          [weekdays]="['Do', 'Lu', 'Ma', 'Mi', 'Ju', 'Vi', 'Sa']"
+          [months]="[
+            'Ene',
+            'Feb',
+            'Mar',
+            'Abr',
+            'May',
+            'Jun',
+            'Jul',
+            'Ago',
+            'Sep',
+            'Oct',
+            'Nov',
+            'Dic',
+          ]"
+          [weekStart]="0"
+        />
+        <span class="text-sm text-muted"> Selected: {{ displaySelectedCustom() }}</span>
+      </div>
+
+      <h2 class="font-semibold text-xl">Signal Forms</h2>
+      <code-block [code]="signalFormsUsage" />
+      <div
+        class="border border-gray-200 dark:border-neutral-900 rounded-lg p-6 mb-6 flex flex-col items-center"
+      >
+        <b-calendar [field]="form.selected"></b-calendar>
+        Selected: {{ form.selected().value() ? form.selected().value()!.toDateString() : 'none' }}
+      </div>
+      <h2 class="font-semibold text-xl">Popover demo</h2>
+      <code-block [code]="popoverUsage" />
+      <div
+        class="border border-gray-200 dark:border-neutral-900 rounded-lg p-6 mb-6 flex flex-col items-center justify-center gap-4"
+      >
+        <button b-button bPopoverTrigger #triggerCal="bPopoverTrigger" class="b-button">
+          Open calendar in popover
+        </button>
+        <ng-template bPopover [trigger]="triggerCal">
+          <b-card class="w-full max-w-[320px]">
+            <b-card-header>
+              <b-card-title>Pick a date</b-card-title>
+            </b-card-header>
+            <b-card-content>
+              <b-calendar [(value)]="selectedDate"></b-calendar>
+            </b-card-content>
+          </b-card>
+        </ng-template>
+      </div>
     </div>
     <app-steps-buttons
       [previous]="{ label: 'Card', path: '/docs/components/card' }"
@@ -46,32 +128,50 @@ import { CodeBlock } from '../shared/components/code-block';
 export class CalendarDocumentation {
   angularImport = `import { Calendar } from '@basis-ng/primitives' `;
   stylesImport = `@import '@basis-ng/styles/calendar';`;
-  basicUsage = `<b-calendar (dateSelected)="onDate($event)"></b-calendar>`;
+  basicUsage = `<b-calendar [(value)]="selectedDate" />
+{{ selectedDate() ? selectedDate()!.toDateString() : 'none' }}`;
 
-  selected = '';
+  customUsage = `<b-calendar
+  [(value)]="selectedDateCustom"
+  [weekdays]="['Do','Lu','Ma','Mi','Ju','Vi','Sa']"
+  [months]="['Ene','Feb','Mar','Abr','May','Jun','Jul','Ago','Sep','Oct','Nov','Dic']"
+  [weekStart]="0"/>
+{{ selectedDateCustom() ? selectedDateCustom()!.toDateString() : 'none' }}`;
 
-  onDate(event: Event | Date | unknown) {
-    // Normalize event payload that may come as a DOM Event or a Date
-    let date: Date | null = null;
-    if (event instanceof Date) {
-      date = event;
-    } else if (event instanceof Event) {
-      const ev = event as Event & { target?: unknown };
-      const tgt = ev.target;
-      interface HasValue {
-        value?: string;
-      }
-      const tv = tgt as HasValue | undefined;
-      if (tv && typeof tv.value === 'string') {
-        const parsed = new Date(tv.value);
-        if (!isNaN(parsed.getTime())) date = parsed;
-      }
-    }
+  popoverUsage = `<button b-button bPopoverTrigger #triggerCal="bPopoverTrigger">Open calendar</button>
+<ng-template bPopover [trigger]="triggerCal">
+  <b-card class="w-full max-w-[320px]">
+    <b-card-header>
+      <b-card-title>Pick a date</b-card-title>
+    </b-card-header>
+    <b-card-content>
+      <b-calendar [(value)]="selectedDate"></b-calendar>
+    </b-card-content>
+  </b-card>
+</ng-template>`;
 
-    if (date) {
-      this.selected = date.toDateString();
-    } else {
-      this.selected = String(event ?? '');
-    }
+  signalFormsUsage = `<b-calendar [field]="form.selected"/>
+{{ form.selected().value() ? form.selected().value()!.toDateString() : 'none' }}`;
+
+  form = form(signal({ selected: null as Date | null }));
+  selectedDate = signal<Date | null>(null);
+  selectedDateCustom = signal<Date | null>(null);
+
+  displaySelected = computed(() =>
+    this.selectedDate() ? this.selectedDate()!.toDateString() : 'none',
+  );
+  displaySelectedCustom = computed(() =>
+    this.selectedDateCustom() ? this.selectedDateCustom()!.toDateString() : 'none',
+  );
+
+  twoWayUsage = `<b-calendar [(value)]="selectedDate" />
+<div>{{ selectedDate() ? selectedDate()!.toDateString() : 'none' }}</div>`;
+
+  emitterUsage = `<b-calendar (dateSelected)="showAlert($event)" />`;
+
+  showAlert(date: unknown) {
+    // simple example: use alert for demo purposess($eve
+
+    alert('Date selected: ' + (date instanceof Date ? date.toDateString() : String(date)));
   }
 }
