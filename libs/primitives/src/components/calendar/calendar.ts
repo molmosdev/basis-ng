@@ -1,6 +1,8 @@
 import { Grid, GridCell, GridCellWidget, GridRow } from '@angular/aria/grid';
 import { Component, computed, input, model, output, signal, viewChildren } from '@angular/core';
 import { FormValueControl } from '@angular/forms/signals';
+import { NgIcon, provideIcons } from '@ng-icons/core';
+import { lucideChevronLeft, lucideChevronRight } from '@ng-icons/lucide';
 
 /**
  * A minimal calendar component that displays a month grid and emits selected dates.
@@ -8,10 +10,12 @@ import { FormValueControl } from '@angular/forms/signals';
  */
 @Component({
   selector: 'b-calendar',
-  imports: [Grid, GridRow, GridCell, GridCellWidget],
+  imports: [Grid, GridRow, GridCell, GridCellWidget, NgIcon],
   template: `
     <header class="b-calendar-header">
-      <button type="button" class="b-calendar-nav" (click)="prevMonth()">‹</button>
+      <button type="button" class="b-calendar-nav" (click)="prevMonth()">
+        <ng-icon name="lucideChevronLeft" size="20" />
+      </button>
       <button
         type="button"
         class="b-calendar-title"
@@ -26,7 +30,9 @@ import { FormValueControl } from '@angular/forms/signals';
           {{ yearsGrid()[0] }} - {{ yearsGrid()[yearsGrid().length - 1] }}
         }
       </button>
-      <button type="button" class="b-calendar-nav" (click)="nextMonth()">›</button>
+      <button type="button" class="b-calendar-nav" (click)="nextMonth()">
+        <ng-icon name="lucideChevronRight" size="20" />
+      </button>
     </header>
 
     @switch (viewMode()) {
@@ -115,6 +121,7 @@ import { FormValueControl } from '@angular/forms/signals';
       }
     }
   `,
+  providers: [provideIcons({ lucideChevronLeft, lucideChevronRight })],
 })
 export class Calendar implements FormValueControl<Date | null> {
   readonly today = new Date();

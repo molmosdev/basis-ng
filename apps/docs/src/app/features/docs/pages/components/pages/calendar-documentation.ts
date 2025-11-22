@@ -47,7 +47,7 @@ import { CodeBlock } from '../shared/components/code-block';
       <div
         class="border border-gray-200 dark:border-neutral-900 rounded-lg p-6 mb-6 flex flex-col items-center justify-center gap-4"
       >
-        <b-calendar [(value)]="selectedDate"></b-calendar>
+        <b-calendar [(value)]="selectedDate" class="w-60!" />
         <span class="text-sm text-muted">Selected: {{ displaySelected() }}</span>
       </div>
 
@@ -57,7 +57,7 @@ import { CodeBlock } from '../shared/components/code-block';
       <div
         class="border border-gray-200 dark:border-neutral-900 rounded-lg p-6 mb-6 flex flex-col items-center"
       >
-        <b-calendar (dateSelected)="showAlert($event)"></b-calendar>
+        <b-calendar (dateSelected)="showAlert($event)" class="w-60!" />
       </div>
 
       <h2 class="font-semibold text-xl">Customization</h2>
@@ -84,6 +84,7 @@ import { CodeBlock } from '../shared/components/code-block';
             'Dic',
           ]"
           [weekStart]="0"
+          class="w-60!"
         />
         <span class="text-sm text-muted"> Selected: {{ displaySelectedCustom() }}</span>
       </div>
@@ -93,7 +94,7 @@ import { CodeBlock } from '../shared/components/code-block';
       <div
         class="border border-gray-200 dark:border-neutral-900 rounded-lg p-6 mb-6 flex flex-col items-center"
       >
-        <b-calendar [field]="form.selected"></b-calendar>
+        <b-calendar [field]="form.selected" class="w-60!" />
         Selected: {{ form.selected().value() ? form.selected().value()!.toDateString() : 'none' }}
       </div>
       <h2 class="font-semibold text-xl">Popover demo</h2>
@@ -110,7 +111,7 @@ import { CodeBlock } from '../shared/components/code-block';
               <b-card-title>Pick a date</b-card-title>
             </b-card-header>
             <b-card-content>
-              <b-calendar [(value)]="selectedDate"></b-calendar>
+              <b-calendar [(value)]="selectedDate" class="w-60!" />
             </b-card-content>
           </b-card>
         </ng-template>
@@ -128,14 +129,15 @@ import { CodeBlock } from '../shared/components/code-block';
 export class CalendarDocumentation {
   angularImport = `import { Calendar } from '@basis-ng/primitives' `;
   stylesImport = `@import '@basis-ng/styles/calendar';`;
-  basicUsage = `<b-calendar [(value)]="selectedDate" />
+  basicUsage = `<b-calendar [(value)]="selectedDate" class="w-60!" />
 {{ selectedDate() ? selectedDate()!.toDateString() : 'none' }}`;
 
   customUsage = `<b-calendar
   [(value)]="selectedDateCustom"
   [weekdays]="['Do','Lu','Ma','Mi','Ju','Vi','Sa']"
   [months]="['Ene','Feb','Mar','Abr','May','Jun','Jul','Ago','Sep','Oct','Nov','Dic']"
-  [weekStart]="0"/>
+  [weekStart]="0"
+  class="w-60!" />
 {{ selectedDateCustom() ? selectedDateCustom()!.toDateString() : 'none' }}`;
 
   popoverUsage = `<button b-button bPopoverTrigger #triggerCal="bPopoverTrigger">Open calendar</button>
@@ -145,12 +147,12 @@ export class CalendarDocumentation {
       <b-card-title>Pick a date</b-card-title>
     </b-card-header>
     <b-card-content>
-      <b-calendar [(value)]="selectedDate"></b-calendar>
+      <b-calendar [(value)]="selectedDate" class="w-60!" />
     </b-card-content>
   </b-card>
 </ng-template>`;
 
-  signalFormsUsage = `<b-calendar [field]="form.selected"/>
+  signalFormsUsage = `<b-calendar [field]="form.selected" class="w-60!"/>
 {{ form.selected().value() ? form.selected().value()!.toDateString() : 'none' }}`;
 
   form = form(signal({ selected: null as Date | null }));
