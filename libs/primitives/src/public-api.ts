@@ -6,6 +6,7 @@ export * from './components/alert/alert';
 export * from './components/badge/badge';
 export * from './components/button-group/button-group';
 export * from './components/button/button';
+export * from './components/calendar/calendar';
 export * from './components/card/card';
 export * from './components/card/card-content';
 export * from './components/card/card-description';

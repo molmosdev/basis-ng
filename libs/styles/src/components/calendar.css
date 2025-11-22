@@ -1,0 +1,70 @@
+/* Calendar component styles - simple, utility-first classes matching project conventions */
+b-calendar {
+  @apply w-full max-w-[15rem];
+
+  header.b-calendar-header {
+    @apply flex items-center justify-between mb-2;
+  }
+
+  .b-calendar-title {
+    @apply font-medium text-sm;
+  }
+
+  .b-calendar-nav {
+    @apply inline-flex items-center justify-center w-8 h-8 rounded-size-sm bg-transparent hover:bg-primary/5;
+  }
+
+  .b-calendar-title {
+    @apply px-3 py-1 rounded-size-sm text-sm font-medium cursor-pointer text-secondary-foreground bg-transparent;
+  }
+
+  .b-calendar-title:hover {
+    @apply bg-primary/5;
+  }
+
+  .b-calendar-title:focus {
+    @apply outline-none ring-2 ring-primary/10;
+  }
+
+  .b-calendar-weekdays {
+    @apply grid grid-cols-7 gap-1 text-xs text-secondary-foreground mb-1;
+  }
+
+  .b-calendar-weekday {
+    @apply text-center;
+  }
+
+  .b-calendar-grid {
+    @apply grid grid-cols-7 gap-1;
+  }
+
+  /* Month and year grid variants (3 columns for better fit) */
+  .b-calendar-grid--months,
+  .b-calendar-grid--years {
+    @apply grid grid-cols-3 gap-2;
+  }
+
+  .b-calendar-grid--months .b-calendar-cell,
+  .b-calendar-grid--years .b-calendar-cell {
+    @apply px-2 py-2 text-sm h-10 rounded-size-sm;
+  }
+
+  .b-calendar-cell {
+    @apply aspect-square w-full flex items-center justify-center rounded-size-sm bg-transparent hover:bg-primary/5;
+  }
+
+  .b-calendar-cell.b-active {
+    @apply bg-primary text-primary-foreground;
+    @apply dark:bg-primary-dark dark:text-primary-foreground-dark;
+  }
+
+  .b-calendar-cell[data-outside] {
+    @apply text-secondary-foreground opacity-70;
+  }
+
+  /* If an outside cell is active, ensure it uses the active foreground for legibility */
+  .b-calendar-cell.b-active[data-outside] {
+    @apply text-primary-foreground;
+    @apply dark:text-primary-foreground-dark;
+  }
+}

@@ -39,6 +39,15 @@ export const componentsRoutes: Routes = [
     },
   },
   {
+    path: 'calendar',
+    loadComponent: () =>
+      import('./pages/calendar-documentation').then((c) => c.CalendarDocumentation),
+    title: 'Calendar - Basis UI',
+    data: {
+      title: 'Calendar',
+    },
+  },
+  {
     path: 'checkbox',
     loadComponent: () =>
       import('./pages/checkbox-documentation').then((c) => c.CheckboxDocumentation),
