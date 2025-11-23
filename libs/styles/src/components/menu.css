@@ -19,11 +19,14 @@ b-menu {
   button[b-menu-item],
   button[b-menu-item-radio],
   button[b-menu-item-checkbox] {
-    @apply px-3 py-0 text-sm h-8 rounded-size-sm gap-1.5;
+    @apply px-3 py-0 text-sm h-8 rounded-size-md gap-1.5;
 
+    /* Use same squared sizing approach as buttons: aspect-square + size utilities */
     &.b-squared {
-      aspect-ratio: 1 / 1;
-      @apply w-10 min-w-10 h-10 min-h-10 p-0! flex items-center justify-center text-center;
+      @apply aspect-square p-0 flex items-center justify-center;
+      /* default (no explicit size) should match button default (md -> size-8) */
+      @apply size-8;
+      text-align: center;
     }
   }
 
@@ -46,10 +49,9 @@ b-menu {
     button[b-menu-item-radio],
     button[b-menu-item-checkbox] {
       @apply px-2 py-0 text-xs h-6 rounded-size-xs gap-1;
-
       &.b-squared {
-        aspect-ratio: 1 / 1;
-        @apply w-8 min-w-8 h-8 min-h-8 p-0! flex items-center justify-center text-center;
+        @apply aspect-square p-0 flex items-center justify-center;
+        @apply size-6;
       }
     }
   }
@@ -73,10 +75,9 @@ b-menu {
     button[b-menu-item-radio],
     button[b-menu-item-checkbox] {
       @apply px-3 py-0 text-sm h-8 rounded-size-sm gap-1.5;
-
       &.b-squared {
-        aspect-ratio: 1 / 1;
-        @apply w-10 min-w-10 h-10 min-h-10 p-0! flex items-center justify-center text-center;
+        @apply aspect-square p-0 flex items-center justify-center;
+        @apply size-8;
       }
     }
   }
@@ -100,10 +101,9 @@ b-menu {
     button[b-menu-item-radio],
     button[b-menu-item-checkbox] {
       @apply px-4 py-0 text-base h-10 rounded-size-md gap-2;
-
       &.b-squared {
-        aspect-ratio: 1 / 1;
-        @apply w-12 min-w-12 h-12 min-h-12 p-0! flex items-center justify-center text-center;
+        @apply aspect-square p-0 flex items-center justify-center;
+        @apply size-10;
       }
     }
   }

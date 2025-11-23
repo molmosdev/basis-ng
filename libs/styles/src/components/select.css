@@ -17,6 +17,12 @@ b-select {
       @apply size-5;
     }
 
+    /* Match button focus outline for accessibility/consistency */
+    &:focus-visible {
+      @apply outline-2 outline-offset-4 outline-primary;
+      @apply dark:outline-primary-dark;
+    }
+
     &.b-size-sm {
       @apply px-2 py-0 text-xs h-6 rounded-size-sm gap-1.5;
 
