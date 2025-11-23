@@ -1,6 +1,6 @@
 textarea[b-textarea] {
-  @apply bg-secondary/10 text-secondary-foreground inset-ring-1 inset-ring-ring hover:bg-primary/5 shadow-xs;
-  @apply dark:bg-secondary-dark/40 dark:text-secondary-foreground-dark dark:inset-ring-ring-dark dark:hover:bg-primary-dark/5 shadow-xs;
+  @apply bg-secondary/10 text-secondary-foreground inset-ring-1 inset-ring-ring hover:bg-secondary/10 shadow-xs;
+  @apply dark:bg-secondary-dark/40 dark:text-secondary-foreground-dark dark:inset-ring-ring-dark dark:hover:bg-secondary-dark/10 shadow-xs;
 
   /* Base md by default */
   @apply px-2.5 py-1.5 text-sm rounded-size-md;

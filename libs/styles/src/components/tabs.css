@@ -1,8 +1,8 @@
 b-tabs {
   /* Base container */
   @apply flex items-center;
-  @apply bg-primary/5 text-secondary-foreground inset-ring-1 inset-ring-primary/10 shadow-xs;
-  @apply dark:bg-primary-dark/5 dark:text-secondary-foreground-dark dark:inset-ring-primary-dark/10;
+  @apply bg-secondary/10 text-secondary-foreground inset-ring-1 inset-ring-ring shadow-xs;
+  @apply dark:bg-secondary-dark/40 dark:text-secondary-foreground-dark dark:inset-ring-ring-dark shadow-xs;
 
   /* Base md by default */
   @apply px-1 py-1 text-sm h-auto rounded-size-md gap-1;

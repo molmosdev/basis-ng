@@ -1,8 +1,8 @@
 /* Input styles — Base / Sizes / States */
 input[b-input] {
   /* Base */
-  @apply bg-primary/5 text-secondary-foreground inset-ring-1 inset-ring-primary/10 shadow-xs;
-  @apply dark:bg-primary-dark/5 dark:text-secondary-foreground-dark dark:inset-ring-primary-dark/10;
+  @apply bg-secondary/10 text-secondary-foreground inset-ring-1 inset-ring-ring shadow-xs;
+  @apply dark:bg-secondary-dark/40 dark:text-secondary-foreground-dark dark:inset-ring-ring-dark shadow-xs;
 
   /* Base md by default */
   @apply px-2.5 py-0 text-sm h-8 rounded-size-md;
@@ -11,6 +11,7 @@ input[b-input] {
   @apply disabled:opacity-50 disabled:cursor-not-allowed;
 
   &:focus-visible:not(:read-only) {
+    /* Keep primary outline on focus to maintain emphasis */
     @apply outline-2 outline-offset-4 outline-primary;
     @apply dark:outline-primary-dark;
   }
