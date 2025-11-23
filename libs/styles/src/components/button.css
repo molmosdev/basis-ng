@@ -44,10 +44,16 @@ button[b-button] {
   }
 
   /* States */
-  &.b-active,
+  &.b-active {
+    @apply outline-2 outline-offset-4 outline-primary;
+    @apply dark:outline-primary-dark;
+  }
+
+  /* Focus-visible should show the outline instantly (no transition), matching input behavior */
   &:focus-visible {
     @apply outline-2 outline-offset-4 outline-primary;
     @apply dark:outline-primary-dark;
+    @apply transition-none;
   }
   &.b-variant-destructive.b-active,
   &.b-variant-destructive:focus-visible {

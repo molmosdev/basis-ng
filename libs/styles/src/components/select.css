@@ -21,6 +21,7 @@ b-select {
     &:focus-visible {
       @apply outline-2 outline-offset-4 outline-primary;
       @apply dark:outline-primary-dark;
+      @apply transition-none;
     }
 
     &.b-size-sm {
