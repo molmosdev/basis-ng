@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Geist+Mono:wght@100..900&family=Geist:wght@100..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Geist+Mono:wght@100..900&display=swap');
-@import '/home/molmos/Projects/angular-cli/basis-ng/libs/styles/src/index.css';
+@import '@basis-ng/styles';
 @import 'highlight.js/styles/github-dark.css';
 @import 'tailwindcss';
 
