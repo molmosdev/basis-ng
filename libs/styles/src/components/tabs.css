@@ -2,7 +2,7 @@ b-tabs {
   /* Base container */
   @apply flex items-center;
   /* Container background only - no inset ring or shadow here; outlined effect is for selected tabs */
-  @apply bg-secondary text-secondary-foreground;
+  @apply bg-secondary/50 text-secondary-foreground;
   @apply dark:bg-secondary-dark/30 dark:text-secondary-foreground-dark;
 
   /* Base md by default */
