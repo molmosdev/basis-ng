@@ -21,6 +21,8 @@ b-select {
     b-select-value {
       /* allow shrinking in flex containers and truncate overflow */
       @apply flex-1 min-w-0 truncate;
+      /* left align the value text */
+      @apply text-left;
 
       /* Fallback explicit properties for environments without the utility */
       overflow: hidden;
