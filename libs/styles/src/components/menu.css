@@ -23,7 +23,7 @@ b-menu {
 
     &.b-squared {
       aspect-ratio: 1 / 1;
-      @apply w-10 min-w-10 h-10 min-h-10 !p-0 flex items-center justify-center text-center;
+      @apply w-10 min-w-10 h-10 min-h-10 p-0! flex items-center justify-center text-center;
     }
   }
 
@@ -49,7 +49,7 @@ b-menu {
 
       &.b-squared {
         aspect-ratio: 1 / 1;
-        @apply w-8 min-w-8 h-8 min-h-8 !p-0 flex items-center justify-center text-center;
+        @apply w-8 min-w-8 h-8 min-h-8 p-0! flex items-center justify-center text-center;
       }
     }
   }
@@ -76,7 +76,7 @@ b-menu {
 
       &.b-squared {
         aspect-ratio: 1 / 1;
-        @apply w-10 min-w-10 h-10 min-h-10 !p-0 flex items-center justify-center text-center;
+        @apply w-10 min-w-10 h-10 min-h-10 p-0! flex items-center justify-center text-center;
       }
     }
   }
@@ -103,7 +103,7 @@ b-menu {
 
       &.b-squared {
         aspect-ratio: 1 / 1;
-        @apply w-12 min-w-12 h-12 min-h-12 !p-0 flex items-center justify-center text-center;
+        @apply w-12 min-w-12 h-12 min-h-12 p-0! flex items-center justify-center text-center;
       }
     }
   }
@@ -142,12 +142,12 @@ b-menu {
     @apply flex flex-col;
 
     &:not(:first-child) {
-      @apply border-t-1 border-secondary;
+      @apply border-t border-secondary;
       @apply dark:border-secondary-dark;
     }
 
     &:not(:last-child) {
-      @apply border-b-1 border-secondary;
+      @apply border-b border-secondary;
       @apply dark:border-secondary-dark;
     }
   }

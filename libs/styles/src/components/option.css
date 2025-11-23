@@ -27,11 +27,11 @@ li[b-option] {
 }
 
 .b-size-sm li[b-option] {
-  @apply px-2 py-0 text-xs h-6 rounded-size-xs gap-1;
+  @apply px-2 py-0 text-xs min-h-6 rounded-size-xs gap-1;
 }
 .b-size-md li[b-option] {
-  @apply px-3 py-0 text-sm h-8 rounded-size-sm gap-1.5;
+  @apply px-3 py-0 text-sm min-h-8 rounded-size-sm gap-1.5;
 }
 .b-size-lg li[b-option] {
-  @apply px-4 py-0 text-base h-10 rounded-size-md gap-2;
+  @apply px-4 py-0 text-base min-h-10 rounded-size-md gap-2;
 }
