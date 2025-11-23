@@ -1,8 +1,9 @@
 b-tabs {
   /* Base container */
   @apply flex items-center;
-  @apply bg-secondary/10 text-secondary-foreground inset-ring-1 inset-ring-ring shadow-xs;
-  @apply dark:bg-secondary-dark/40 dark:text-secondary-foreground-dark dark:inset-ring-ring-dark shadow-xs;
+  /* Container background only - no inset ring or shadow here; outlined effect is for selected tabs */
+  @apply bg-secondary text-secondary-foreground;
+  @apply dark:bg-secondary-dark/30 dark:text-secondary-foreground-dark;
 
   /* Base md by default */
   /* align container height with buttons/inputs */
@@ -16,9 +17,9 @@ b-tabs {
 
     /* Selected state */
     &[aria-selected='true'] {
-      /* Use the button 'outlined' variant look */
-      @apply bg-secondary/10 text-secondary-foreground inset-ring-1 inset-ring-ring shadow-xs;
-      @apply dark:bg-secondary-dark/40 dark:text-secondary-foreground-dark dark:inset-ring-ring-dark shadow-xs;
+      /* Highlight selected tab by using the background surface color so it stands out from the secondary container */
+      @apply bg-background text-secondary-foreground inset-ring-1 inset-ring-ring shadow-xs;
+      @apply dark:bg-background-dark/50 dark:text-secondary-foreground-dark dark:inset-ring-ring-dark shadow-xs;
     }
 
     /* Hover state (not selected) */
