@@ -16,8 +16,8 @@ button[b-button] {
     @apply dark:bg-primary-dark dark:text-primary-foreground-dark dark:hover:bg-primary-dark/80;
   }
   &.b-variant-secondary {
-    @apply bg-primary/10 text-primary hover:bg-primary/20;
-    @apply dark:bg-primary-dark/20 dark:text-primary-dark dark:hover:bg-primary-dark/30;
+    @apply bg-secondary/10 text-secondary-foreground hover:bg-secondary/20;
+    @apply dark:bg-secondary-dark/20 dark:text-secondary-foreground-dark dark:hover:bg-secondary-dark/30;
   }
   &.b-variant-ghost {
     @apply bg-transparent text-primary hover:bg-primary/10;
