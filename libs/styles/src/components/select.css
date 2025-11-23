@@ -17,6 +17,17 @@ b-select {
       @apply size-5;
     }
 
+    /* Ensure the selected value doesn't wrap and shows ellipsis when too long */
+    b-select-value {
+      /* allow shrinking in flex containers and truncate overflow */
+      @apply flex-1 min-w-0 truncate;
+
+      /* Fallback explicit properties for environments without the utility */
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
     /* Match button focus outline for accessibility/consistency */
     &:focus-visible {
       @apply outline-2 outline-offset-4 outline-primary;
