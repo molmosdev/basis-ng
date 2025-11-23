@@ -1,27 +1,33 @@
 span[b-badge] {
   /* Base */
   @apply inline-flex items-center gap-2 px-2 py-1 font-medium text-sm rounded-size-md;
-  @apply bg-primary text-primary-foreground dark:bg-primary-dark dark:text-primary-foreground-dark;
+  @apply bg-primary text-primary-foreground;
+  @apply dark:bg-primary-dark dark:text-primary-foreground-dark;
 
   /* Variants */
   &.b-variant-primary {
-    @apply bg-primary text-primary-foreground dark:bg-primary-dark dark:text-primary-foreground-dark;
+    @apply bg-primary text-primary-foreground;
+    @apply dark:bg-primary-dark dark:text-primary-foreground-dark;
   }
 
   &.b-variant-secondary {
-    @apply bg-secondary text-secondary-foreground dark:bg-secondary-dark dark:text-secondary-foreground-dark;
+    @apply bg-secondary text-secondary-foreground;
+    @apply dark:bg-secondary-dark dark:text-secondary-foreground-dark;
   }
 
   &.b-variant-ghost {
-    @apply bg-transparent text-secondary-foreground dark:text-secondary-foreground-dark;
+    @apply bg-transparent text-secondary-dark;
+    @apply dark:text-secondary;
   }
 
   &.b-variant-outlined {
-    @apply bg-transparent inset-ring-1 inset-ring-ring text-secondary-foreground dark:inset-ring-ring-dark dark:text-secondary-foreground-dark;
+    @apply bg-secondary/10 text-secondary-foreground inset-ring-1 inset-ring-ring shadow-xs;
+    @apply dark:bg-secondary-dark/40 dark:text-secondary-foreground-dark dark:inset-ring-ring-dark shadow-xs;
   }
 
   &.b-variant-destructive {
-    @apply bg-destructive text-destructive-foreground dark:bg-destructive-dark dark:text-destructive-foreground-dark;
+    @apply bg-destructive text-destructive-foreground inset-ring-1 inset-ring-destructive;
+    @apply dark:bg-destructive-dark dark:text-destructive-foreground-dark dark:inset-ring-destructive-dark;
   }
 
   /* Sizes */

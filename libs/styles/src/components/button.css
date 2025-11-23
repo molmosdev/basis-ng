@@ -16,16 +16,16 @@ button[b-button] {
     @apply dark:bg-primary-dark dark:text-primary-foreground-dark dark:hover:bg-primary-dark/80;
   }
   &.b-variant-secondary {
-    @apply bg-secondary/10 text-secondary-foreground hover:bg-secondary/20;
-    @apply dark:bg-secondary-dark/20 dark:text-secondary-foreground-dark dark:hover:bg-secondary-dark/30;
+    @apply bg-secondary text-secondary-foreground hover:bg-secondary/50;
+    @apply dark:bg-secondary-dark dark:text-secondary-foreground-dark dark:hover:bg-secondary-dark/50;
   }
   &.b-variant-ghost {
-    @apply bg-transparent text-primary hover:bg-primary/10;
-    @apply dark:text-primary-dark dark:hover:bg-primary-dark/20;
+    @apply bg-transparent text-secondary-dark hover:bg-secondary;
+    @apply dark:text-secondary dark:hover:bg-secondary-dark;
   }
   &.b-variant-outlined {
-    @apply bg-transparent text-primary border border-primary/20 hover:bg-primary/5 shadow-xs;
-    @apply dark:bg-transparent dark:text-primary-dark dark:border-primary-dark/30 dark:hover:bg-primary-dark/10 shadow-xs;
+    @apply bg-secondary/10 text-secondary-foreground inset-ring-1 inset-ring-ring shadow-xs;
+    @apply dark:bg-secondary-dark/40 dark:text-secondary-foreground-dark dark:inset-ring-ring-dark shadow-xs;
   }
   &.b-variant-destructive {
     @apply bg-destructive text-destructive-foreground inset-ring-1 inset-ring-destructive hover:bg-destructive/90 hover:inset-ring-destructive/80;
