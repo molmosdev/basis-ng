@@ -7,6 +7,7 @@ import { Directive, ElementRef, inject, OnInit } from '@angular/core';
   selector: '[bSelectFilter]',
   host: {
     '(blur)': 'el.nativeElement.focus()',
+    '(keydown.space)': '$event.stopPropagation()',
   },
 })
 export class SelectFilter implements OnInit {
