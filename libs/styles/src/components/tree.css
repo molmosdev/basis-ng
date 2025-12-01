@@ -1,50 +1,50 @@
 b-tree {
   @apply flex flex-col w-full min-h-4 gap-0.5;
+}
 
-  b-tree-node {
-    @apply flex flex-col box-border;
+b-tree-node {
+  @apply flex flex-col box-border;
 
-    &.b-active section {
-      @apply bg-secondary text-secondary-foreground;
-      @apply dark:bg-secondary-dark dark:text-secondary-foreground-dark;
+  &.b-active section {
+    @apply bg-secondary text-secondary-foreground;
+    @apply dark:bg-secondary-dark dark:text-secondary-foreground-dark;
+  }
+
+  section {
+    @apply px-3 rounded-size-md flex justify-between items-center h-9 box-border gap-3 select-none;
+
+    ng-icon {
+      @apply cursor-move;
     }
 
-    section {
-      @apply px-3 rounded-size-md flex justify-between items-center h-9 box-border gap-3 select-none;
+    &:hover {
+      @apply bg-secondary/50;
+      @apply dark:bg-secondary-dark/50;
+    }
 
-      ng-icon {
-        @apply cursor-move;
-      }
+    .projected-content {
+      @apply flex items-center flex-1 gap-3 py-2 cursor-pointer;
+    }
+  }
 
-      &:hover {
-        @apply bg-secondary/50;
-        @apply dark:bg-secondary-dark/50;
-      }
+  b-tree {
+    @apply pl-4 box-border;
+  }
+
+  &.cdk-drag-preview {
+    @apply h-full w-full overflow-hidden shadow-none;
+
+    & > section {
+      @apply px-3 rounded-size-md flex justify-between items-center h-9 box-border gap-3 select-none bg-background;
+      @apply dark:bg-background-dark;
 
       .projected-content {
         @apply flex items-center flex-1 gap-3 py-2 cursor-pointer;
       }
     }
+  }
 
-    b-tree {
-      @apply pl-4 box-border;
-    }
-
-    &.cdk-drag-preview {
-      @apply h-full w-full overflow-hidden shadow-none;
-
-      & > section {
-        @apply px-3 rounded-size-md flex justify-between items-center h-9 box-border gap-3 select-none bg-background;
-        @apply dark:bg-background-dark;
-
-        .projected-content {
-          @apply flex items-center flex-1 gap-3 py-2 cursor-pointer;
-        }
-      }
-    }
-
-    &.cdk-drag-placeholder {
-      @apply opacity-0;
-    }
+  &.cdk-drag-placeholder {
+    @apply opacity-0;
   }
 }
