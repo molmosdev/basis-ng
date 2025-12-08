@@ -94,7 +94,7 @@ ul[b-select-content] {
   }
 
   input[b-input] {
-    @apply outline-none sticky top-0 z-10 bg-background;
+    @apply outline-none sticky top-0 z-10 bg-background min-h-8;
     @apply dark:bg-background-dark;
   }
 

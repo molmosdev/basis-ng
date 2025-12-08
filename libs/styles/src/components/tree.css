@@ -11,7 +11,7 @@ b-tree-node {
   }
 
   section {
-    @apply px-3 rounded-size-md flex justify-between items-center h-9 box-border gap-3 select-none;
+    @apply px-3 rounded-size-md flex justify-between items-center h-8 box-border gap-1.5 text-sm select-none;
 
     ng-icon {
       @apply cursor-move;
@@ -35,7 +35,7 @@ b-tree-node {
     @apply h-full w-full overflow-hidden shadow-none;
 
     & > section {
-      @apply px-3 rounded-size-md flex justify-between items-center h-9 box-border gap-3 select-none bg-background;
+      @apply px-3 rounded-size-md flex justify-between items-center h-8 box-border gap-1.5 text-sm select-none bg-background;
       @apply dark:bg-background-dark;
 
       .projected-content {
@@ -47,4 +47,14 @@ b-tree-node {
   &.cdk-drag-placeholder {
     @apply opacity-0;
   }
+}
+
+.b-size-sm b-tree b-tree-node section {
+  @apply px-2 rounded-size-sm h-6 gap-1.5 text-xs;
+}
+.b-size-md b-tree b-tree-node section {
+  @apply px-3 rounded-size-md h-8 gap-1.5 text-sm;
+}
+.b-size-lg b-tree b-tree-node section {
+  @apply px-4 rounded-size-lg h-10 gap-2 text-base;
 }
