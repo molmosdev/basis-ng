@@ -49,6 +49,10 @@ b-tree-node {
   }
 }
 
+b-tree.cdk-drop-list-dragging {
+  @apply pointer-events-none;
+}
+
 .b-size-sm b-tree b-tree-node section {
   @apply px-2 rounded-size-sm h-6 gap-1.5 text-xs;
 }
