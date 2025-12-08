@@ -84,6 +84,19 @@ import { CodeBlock } from '../shared/components/code-block';
                 <strong>false</strong>
               </td>
             </tr>
+            <tr>
+              <td
+                class="border-t border-gray-200 dark:border-neutral-900 px-4 py-2 font-display-mono whitespace-nowrap"
+              >
+                defaultExpanded
+              </td>
+              <td
+                class="border-t border-gray-200 dark:border-neutral-900 px-4 py-2 font-display-mono whitespace-nowrap"
+              >
+                boolean
+                <strong>false</strong>
+              </td>
+            </tr>
           </tbody>
         </table>
       </div>
@@ -153,6 +166,27 @@ import { CodeBlock } from '../shared/components/code-block';
           <b-tree-node>Node 2</b-tree-node>
         </b-tree>
       </div>
+      <h2 class="font-semibold text-xl">Default Expanded</h2>
+      <code-block [code]="defaultExpandedUsage" />
+      <div
+        class="border border-gray-200 dark:border-neutral-900 rounded-lg p-6 mb-6 flex flex-col gap-4 items-center"
+      >
+        <b-tree [defaultExpanded]="true">
+          <b-tree-node>
+            Parent Node
+            <b-tree>
+              <b-tree-node>
+                Child Node 1
+                <b-tree>
+                  <b-tree-node>Grandchild Node 1</b-tree-node>
+                  <b-tree-node>Grandchild Node 2</b-tree-node>
+                </b-tree>
+              </b-tree-node>
+              <b-tree-node>Child Node 2</b-tree-node>
+            </b-tree>
+          </b-tree-node>
+        </b-tree>
+      </div>
     </div>
     <app-steps-buttons
       [previous]="{ label: 'Tooltip', path: '/docs/components/tooltip' }"
@@ -172,4 +206,5 @@ export class TreeDocumentation {
   recursiveCloseUsage = `<b-tree [closeRecursively]="true">\n  <b-tree-node>\n    Parent Node\n    <b-tree>\n      <b-tree-node>\n        Child Node 1\n        <b-tree>\n          <b-tree-node>Grandchild Node 1</b-tree-node>\n          <b-tree-node>Grandchild Node 2</b-tree-node>\n        </b-tree>\n      </b-tree-node>\n      <b-tree-node>Child Node 2</b-tree-node>\n    </b-tree>\n  </b-tree-node>\n</b-tree>`;
   dragDropUsage = `<b-tree [draggable]="true">\n  <b-tree-node>Node 1</b-tree-node>\n  <b-tree-node>Node 2</b-tree-node>\n</b-tree>`;
   activeNodeUsage = `<b-tree>\n  <b-tree-node class='b-active'>Active node</b-tree-node>\n  <b-tree-node>Node 2</b-tree-node>\n</b-tree>`;
+  defaultExpandedUsage = `<b-tree [defaultExpanded]="true">\n  <b-tree-node>\n    Parent Node\n    <b-tree>\n      <b-tree-node>\n        Child Node 1\n        <b-tree>\n          <b-tree-node>Grandchild Node 1</b-tree-node>\n          <b-tree-node>Grandchild Node 2</b-tree-node>\n        </b-tree>\n      </b-tree-node>\n      <b-tree-node>Child Node 2</b-tree-node>\n    </b-tree>\n  </b-tree-node>\n</b-tree>`;
 }

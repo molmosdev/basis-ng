@@ -1,5 +1,14 @@
 import { CdkDragDrop, CdkDropList, CdkDropListGroup } from '@angular/cdk/drag-drop';
-import { Component, contentChildren, effect, inject, input, OnInit, output } from '@angular/core';
+import {
+  Component,
+  computed,
+  contentChildren,
+  effect,
+  inject,
+  input,
+  OnInit,
+  output,
+} from '@angular/core';
 import { TreeNode } from './tree-node';
 
 /**
@@ -29,7 +38,7 @@ export class Tree implements OnInit {
   /**
    * Injected CDK drop list instance for this tree.
    */
-  private tree = inject(CdkDropList);
+  private readonly tree = inject(CdkDropList);
 
   /**
    * Nested TreeNode children.
@@ -42,36 +51,51 @@ export class Tree implements OnInit {
   readonly closeRecursively = input(false);
 
   /**
+   * Whether nodes should be expanded by default on initialization.
+   */
+  readonly defaultExpanded = input(false);
+
+  /**
+   * Computed signal indicating if the tree is disabled (inverse of draggable).
+   */
+  private readonly isTreeDisabled = computed(() => !this.draggable());
+
+  /**
    * Emitted when a drag-drop operation finishes.
    */
-  dropEmitter = output<CdkDragDrop<string[]>>();
+  readonly dropEmitter = output<CdkDragDrop<string[]>>();
 
   constructor() {
+    // Reactively update tree and nodes disability - needs to react to draggable changes
     effect(() => {
-      this.handleTreeDisability();
+      const disabled = this.isTreeDisabled();
+      this.tree.disabled = disabled;
+
+      this.nestedNodes().forEach((node) => {
+        node.handleNodeDisability(disabled);
+      });
+    });
+
+    // Reactively expand nodes - needs to react to defaultExpanded changes
+    effect(() => {
+      const shouldExpand = this.defaultExpanded();
+      this.nestedNodes().forEach((node) => {
+        node.setInitialExpansion(shouldExpand);
+      });
     });
   }
 
   ngOnInit(): void {
-    if (this.closeRecursively()) this.handleCloseRecursively();
-  }
-
-  /**
-   * Watch draggable state and apply it to CDK drop list and nested nodes.
-   */
-  private handleTreeDisability(): void {
-    const isDisabled = !this.draggable();
-    this.tree.disabled = isDisabled;
-
-    this.nestedNodes().forEach((node) => {
-      node.handleNodeDisability(isDisabled);
-    });
+    // Setup recursive close only once based on initial input value
+    if (this.closeRecursively()) {
+      this.setupRecursiveClose();
+    }
   }
 
   /**
    * Subscribe to nested node close events and close children recursively.
    */
-  handleCloseRecursively(): void {
+  private setupRecursiveClose(): void {
     this.nestedNodes().forEach((node) => {
       node.closeEmitter.subscribe(() => {
         this.closeNestedNodes();
@@ -86,6 +110,16 @@ export class Tree implements OnInit {
     this.nestedNodes().forEach((node) => {
       node.extended.set(false);
       node.nestedTree()?.closeNestedNodes();
+    });
+  }
+
+  /**
+   * Set expansion state for all nodes recursively.
+   * @param expanded - Whether nodes should be expanded.
+   */
+  setNodesExpansion(expanded: boolean): void {
+    this.nestedNodes().forEach((node) => {
+      node.setInitialExpansion(expanded);
     });
   }
 }

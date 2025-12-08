@@ -1,5 +1,14 @@
 import { CdkDrag, CdkDragHandle } from '@angular/cdk/drag-drop';
-import { Component, contentChild, inject, model, OnInit, output } from '@angular/core';
+import {
+  Component,
+  computed,
+  contentChild,
+  effect,
+  inject,
+  model,
+  OnInit,
+  output,
+} from '@angular/core';
 import { NgIcon, provideIcons } from '@ng-icons/core';
 import { lucideGripVertical } from '@ng-icons/lucide';
 import { Tree } from './tree';
@@ -12,20 +21,20 @@ import { Tree } from './tree';
   imports: [CdkDragHandle, NgIcon],
   template: `
     <section>
-      @if (!node.disabled) {
+      @if (!isNodeDisabled()) {
         <ng-icon name="lucideGripVertical" size="16" color="currentColor" cdkDragHandle />
       }
       <div
         class="projected-content"
-        (click)="nestedTree() && handleExtension()"
-        (keydown.enter)="nestedTree() && handleExtension()"
-        (keydown.space)="nestedTree() && handleExtension()"
+        (click)="hasNestedTree() && toggleExtension()"
+        (keydown.enter)="hasNestedTree() && toggleExtension()"
+        (keydown.space)="hasNestedTree() && toggleExtension()"
         role="button"
         tabindex="0"
       >
         <ng-content />
       </div>
-      @if (nestedTree()) {
+      @if (hasNestedTree()) {
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="20"
@@ -41,7 +50,7 @@ import { Tree } from './tree';
         </svg>
       }
     </section>
-    @if (nestedTree() && extended()) {
+    @if (hasNestedTree() && extended()) {
       <div class="nested">
         <ng-content select="b-tree" />
       </div>
@@ -68,7 +77,7 @@ export class TreeNode implements OnInit {
   /**
    * Injected CDK drag instance for this node.
    */
-  protected node = inject(CdkDrag);
+  protected readonly node = inject(CdkDrag);
 
   /**
    * Child nested tree, if present.
@@ -76,11 +85,31 @@ export class TreeNode implements OnInit {
   readonly nestedTree = contentChild(Tree);
 
   /**
+   * Computed signal indicating if this node has a nested tree.
+   */
+  protected readonly hasNestedTree = computed(() => !!this.nestedTree());
+
+  /**
+   * Computed signal for node disabled state.
+   */
+  protected readonly isNodeDisabled = computed(() => this.node.disabled);
+
+  /**
    * Emitted when a nested tree is closed.
    */
-  closeEmitter = output<void>();
+  readonly closeEmitter = output<void>();
+
+  constructor() {
+    // Emit close event when collapsing - this needs to be reactive
+    effect(() => {
+      if (!this.extended() && this.nestedTree()) {
+        this.closeEmitter.emit();
+      }
+    });
+  }
 
   ngOnInit(): void {
+    // Static configuration - only needs to run once
     this.node.lockAxis = 'y';
   }
 
@@ -93,14 +122,21 @@ export class TreeNode implements OnInit {
   }
 
   /**
-   * Toggle the node expansion and emit close events when collapsed.
+   * Set initial expansion state for the node.
+   * @param expanded - Whether the node should be initially expanded.
    */
-  handleExtension(): void {
-    const isExtended = this.extended();
-    this.extended.set(!isExtended);
-
-    if (isExtended && this.nestedTree()) {
-      this.closeEmitter.emit();
+  setInitialExpansion(expanded: boolean): void {
+    if (this.hasNestedTree()) {
+      this.extended.set(expanded);
+      // Propagate to nested tree if it exists
+      this.nestedTree()?.setNodesExpansion(expanded);
     }
+  }
+
+  /**
+   * Toggle the node expansion.
+   */
+  toggleExtension(): void {
+    this.extended.update((current) => !current);
   }
 }
