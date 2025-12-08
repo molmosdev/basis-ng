@@ -100,10 +100,17 @@ export class TreeNode implements OnInit {
   private _dragOnlyWhenCollapsed = false;
 
   /**
+   * Track if any parent node is expanded (disables drag when dragOnlyWhenCollapsed is active).
+   */
+  private _hasExpandedParent = false;
+
+  /**
    * Computed to determine if drag handle should be hidden.
    */
   protected readonly shouldHideDragHandle = computed(() => {
-    return this._dragOnlyWhenCollapsed && this.hasNestedTree() && this.expanded();
+    if (!this._dragOnlyWhenCollapsed) return false;
+    // Hide if this node is expanded and has nested tree, or if any parent is expanded
+    return (this.hasNestedTree() && this.expanded()) || this._hasExpandedParent;
   });
 
   /**
@@ -112,7 +119,7 @@ export class TreeNode implements OnInit {
   readonly closeEmitter = output<void>();
 
   constructor() {
-    // Track expanded state changes for close events
+    // Track expanded state changes for close events and drag state
     let previousExpanded = this.expanded();
 
     effect(() => {
@@ -124,8 +131,8 @@ export class TreeNode implements OnInit {
       }
 
       // Update drag state when dragOnlyWhenCollapsed is active
-      if (this._dragOnlyWhenCollapsed && this.hasNestedTree()) {
-        this.node.disabled = currentExpanded;
+      if (this._dragOnlyWhenCollapsed) {
+        this.updateDragState(currentExpanded, previousExpanded);
       }
 
       previousExpanded = currentExpanded;
@@ -135,6 +142,37 @@ export class TreeNode implements OnInit {
   ngOnInit(): void {
     // Static configuration - only needs to run once
     this.node.lockAxis = 'y';
+  }
+
+  /**
+   * Update drag state based on expanded state and parent state.
+   */
+  private updateDragState(isExpanded: boolean, wasExpanded: boolean): void {
+    if (this.hasNestedTree()) {
+      this.handleNodeWithChildren(isExpanded, wasExpanded);
+    } else {
+      this.handleLeafNode();
+    }
+  }
+
+  /**
+   * Handle drag state for nodes with children.
+   */
+  private handleNodeWithChildren(isExpanded: boolean, wasExpanded: boolean): void {
+    if (isExpanded) {
+      this.node.disabled = true;
+      this.nestedTree()?.disableDirectChildren();
+    } else if (wasExpanded) {
+      this.node.disabled = false;
+      this.nestedTree()?.enableDirectChildren();
+    }
+  }
+
+  /**
+   * Handle drag state for leaf nodes (no children).
+   */
+  private handleLeafNode(): void {
+    this.node.disabled = this._hasExpandedParent;
   }
 
   /**
@@ -154,6 +192,22 @@ export class TreeNode implements OnInit {
     // Apply immediately if node has nested tree and is expanded
     if (enabled && this.hasNestedTree() && this.expanded()) {
       this.node.disabled = true;
+      this.nestedTree()?.disableDirectChildren();
+    }
+  }
+
+  /**
+   * Set whether this node has an expanded parent.
+   * @param hasExpandedParent - Whether the direct parent is expanded.
+   */
+  setHasExpandedParent(hasExpandedParent: boolean): void {
+    this._hasExpandedParent = hasExpandedParent;
+
+    if (!this._dragOnlyWhenCollapsed) return;
+
+    // Update drag state based on parent state
+    if (!this.hasNestedTree() || !this.expanded()) {
+      this.node.disabled = hasExpandedParent;
     }
   }
 

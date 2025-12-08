@@ -112,4 +112,22 @@ export class Tree implements OnInit {
       node.nestedTree()?.closeNestedNodes();
     });
   }
+
+  /**
+   * Disable drag for all direct children nodes.
+   */
+  disableDirectChildren(): void {
+    this.nestedNodes().forEach((node) => {
+      node.setHasExpandedParent(true);
+    });
+  }
+
+  /**
+   * Enable drag for all direct children nodes.
+   */
+  enableDirectChildren(): void {
+    this.nestedNodes().forEach((node) => {
+      node.setHasExpandedParent(false);
+    });
+  }
 }
