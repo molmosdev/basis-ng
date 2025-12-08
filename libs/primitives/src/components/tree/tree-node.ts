@@ -5,6 +5,7 @@ import {
   contentChild,
   effect,
   inject,
+  input,
   model,
   OnInit,
   output,
@@ -75,6 +76,11 @@ export class TreeNode implements OnInit {
   readonly expanded = model(false);
 
   /**
+   * Whether drag-and-drop is only enabled when this node is collapsed.
+   */
+  readonly dragOnlyWhenCollapsed = input(false);
+
+  /**
    * Injected CDK drag instance for this node.
    */
   protected readonly node = inject(CdkDrag);
@@ -112,6 +118,13 @@ export class TreeNode implements OnInit {
       }
 
       previousExpanded = currentExpanded;
+    });
+
+    // Control drag based on expanded state and dragOnlyWhenCollapsed
+    effect(() => {
+      if (this.dragOnlyWhenCollapsed() && this.hasNestedTree()) {
+        this.node.disabled = this.expanded();
+      }
     });
   }
 

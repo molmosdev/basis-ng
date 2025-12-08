@@ -84,6 +84,19 @@ import { CodeBlock } from '../shared/components/code-block';
                 <strong>false</strong>
               </td>
             </tr>
+            <tr>
+              <td
+                class="border-t border-gray-200 dark:border-neutral-900 px-4 py-2 font-display-mono whitespace-nowrap"
+              >
+                dragOnlyWhenCollapsed
+              </td>
+              <td
+                class="border-t border-gray-200 dark:border-neutral-900 px-4 py-2 font-display-mono whitespace-nowrap"
+              >
+                boolean
+                <strong>false</strong>
+              </td>
+            </tr>
           </tbody>
         </table>
       </div>
@@ -174,6 +187,22 @@ import { CodeBlock } from '../shared/components/code-block';
           </b-tree-node>
         </b-tree>
       </div>
+      <h2 class="font-semibold text-xl">Drag Only When Collapsed</h2>
+      <code-block [code]="dragOnlyCollapsedUsage" />
+      <div
+        class="border border-gray-200 dark:border-neutral-900 rounded-lg p-6 mb-6 flex flex-col gap-4 items-center"
+      >
+        <b-tree [draggable]="true" [dragOnlyWhenCollapsed]="true">
+          <b-tree-node>
+            Node 1 (try dragging when expanded/collapsed)
+            <b-tree>
+              <b-tree-node>Child Node 1</b-tree-node>
+              <b-tree-node>Child Node 2</b-tree-node>
+            </b-tree>
+          </b-tree-node>
+          <b-tree-node>Node 2</b-tree-node>
+        </b-tree>
+      </div>
     </div>
     <app-steps-buttons
       [previous]="{ label: 'Tooltip', path: '/docs/components/tooltip' }"
@@ -194,4 +223,5 @@ export class TreeDocumentation {
   dragDropUsage = `<b-tree [draggable]="true">\n  <b-tree-node>Node 1</b-tree-node>\n  <b-tree-node>Node 2</b-tree-node>\n</b-tree>`;
   activeNodeUsage = `<b-tree>\n  <b-tree-node class='b-active'>Active node</b-tree-node>\n  <b-tree-node>Node 2</b-tree-node>\n</b-tree>`;
   expandedUsage = `<b-tree>\n  <b-tree-node [expanded]="true">\n    Parent Node (expanded by default)\n    <b-tree>\n      <b-tree-node>Child Node 1</b-tree-node>\n      <b-tree-node [expanded]="true">\n        Child Node 2 (expanded)\n        <b-tree>\n          <b-tree-node>Grandchild Node 1</b-tree-node>\n          <b-tree-node>Grandchild Node 2</b-tree-node>\n        </b-tree>\n      </b-tree-node>\n    </b-tree>\n  </b-tree-node>\n</b-tree>`;
+  dragOnlyCollapsedUsage = `<b-tree [draggable]="true" [dragOnlyWhenCollapsed]="true">\n  <b-tree-node>\n    Node 1 (try dragging when expanded/collapsed)\n    <b-tree>\n      <b-tree-node>Child Node 1</b-tree-node>\n      <b-tree-node>Child Node 2</b-tree-node>\n    </b-tree>\n  </b-tree-node>\n  <b-tree-node>Node 2</b-tree-node>\n</b-tree>`;
 }

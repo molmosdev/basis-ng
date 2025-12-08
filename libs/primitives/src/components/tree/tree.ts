@@ -51,6 +51,11 @@ export class Tree implements OnInit {
   readonly closeRecursively = input(false);
 
   /**
+   * Whether drag-and-drop is only enabled when nodes are collapsed.
+   */
+  readonly dragOnlyWhenCollapsed = input(false);
+
+  /**
    * Computed signal indicating if the tree is disabled (inverse of draggable).
    */
   private readonly isTreeDisabled = computed(() => !this.draggable());
