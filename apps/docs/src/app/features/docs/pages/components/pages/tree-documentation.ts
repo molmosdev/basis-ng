@@ -29,7 +29,7 @@ import { CodeBlock } from '../shared/components/code-block';
       <code-block [code]="angularImport" />
       <span>Include this to apply predefined styles. The component is headless without it.</span>
       <code-block [code]="stylesImport" />
-      <h2 class="font-semibold text-xl">Properties</h2>
+      <h2 class="font-semibold text-xl">Tree Properties</h2>
       <div
         class="overflow-x-auto overflow-hidden rounded-lg border border-gray-200 dark:border-neutral-900 mb-6"
       >
@@ -62,19 +62,6 @@ import { CodeBlock } from '../shared/components/code-block';
               <td
                 class="border-t border-gray-200 dark:border-neutral-900 px-4 py-2 font-display-mono whitespace-nowrap"
               >
-                expanded
-              </td>
-              <td
-                class="border-t border-gray-200 dark:border-neutral-900 px-4 py-2 font-display-mono whitespace-nowrap"
-              >
-                boolean
-                <strong>false</strong>
-              </td>
-            </tr>
-            <tr>
-              <td
-                class="border-t border-gray-200 dark:border-neutral-900 px-4 py-2 font-display-mono whitespace-nowrap"
-              >
                 closeRecursively
               </td>
               <td
@@ -89,6 +76,38 @@ import { CodeBlock } from '../shared/components/code-block';
                 class="border-t border-gray-200 dark:border-neutral-900 px-4 py-2 font-display-mono whitespace-nowrap"
               >
                 dragOnlyWhenCollapsed
+              </td>
+              <td
+                class="border-t border-gray-200 dark:border-neutral-900 px-4 py-2 font-display-mono whitespace-nowrap"
+              >
+                boolean
+                <strong>false</strong>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <h2 class="font-semibold text-xl">TreeNode Properties</h2>
+      <div
+        class="overflow-x-auto overflow-hidden rounded-lg border border-gray-200 dark:border-neutral-900 mb-6"
+      >
+        <table class="table-auto w-full text-left text-sm">
+          <thead class="bg-gray-50 dark:bg-neutral-900">
+            <tr>
+              <th class="border-b border-gray-200 dark:border-neutral-900 px-4 py-2 font-semibold">
+                Prop
+              </th>
+              <th class="border-b border-gray-200 dark:border-neutral-900 px-4 py-2 font-semibold">
+                Type
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td
+                class="border-t border-gray-200 dark:border-neutral-900 px-4 py-2 font-display-mono whitespace-nowrap"
+              >
+                expanded
               </td>
               <td
                 class="border-t border-gray-200 dark:border-neutral-900 px-4 py-2 font-display-mono whitespace-nowrap"
@@ -188,19 +207,29 @@ import { CodeBlock } from '../shared/components/code-block';
         </b-tree>
       </div>
       <h2 class="font-semibold text-xl">Drag Only When Collapsed</h2>
+      <p class="text-sm text-gray-600 dark:text-gray-400">
+        When <code class="font-display-mono">dragOnlyWhenCollapsed</code> is enabled, nodes can only
+        be dragged when they are collapsed. The drag handle is automatically hidden when a node is
+        expanded.
+      </p>
       <code-block [code]="dragOnlyCollapsedUsage" />
       <div
         class="border border-gray-200 dark:border-neutral-900 rounded-lg p-6 mb-6 flex flex-col gap-4 items-center"
       >
         <b-tree [draggable]="true" [dragOnlyWhenCollapsed]="true">
           <b-tree-node>
-            Node 1 (try dragging when expanded/collapsed)
+            Node 1 (expand to see drag handle disappear)
             <b-tree>
               <b-tree-node>Child Node 1</b-tree-node>
               <b-tree-node>Child Node 2</b-tree-node>
             </b-tree>
           </b-tree-node>
-          <b-tree-node>Node 2</b-tree-node>
+          <b-tree-node>
+            Node 2 (collapse to enable dragging)
+            <b-tree>
+              <b-tree-node>Child Node 3</b-tree-node>
+            </b-tree>
+          </b-tree-node>
         </b-tree>
       </div>
     </div>
@@ -223,5 +252,5 @@ export class TreeDocumentation {
   dragDropUsage = `<b-tree [draggable]="true">\n  <b-tree-node>Node 1</b-tree-node>\n  <b-tree-node>Node 2</b-tree-node>\n</b-tree>`;
   activeNodeUsage = `<b-tree>\n  <b-tree-node class='b-active'>Active node</b-tree-node>\n  <b-tree-node>Node 2</b-tree-node>\n</b-tree>`;
   expandedUsage = `<b-tree>\n  <b-tree-node [expanded]="true">\n    Parent Node (expanded by default)\n    <b-tree>\n      <b-tree-node>Child Node 1</b-tree-node>\n      <b-tree-node [expanded]="true">\n        Child Node 2 (expanded)\n        <b-tree>\n          <b-tree-node>Grandchild Node 1</b-tree-node>\n          <b-tree-node>Grandchild Node 2</b-tree-node>\n        </b-tree>\n      </b-tree-node>\n    </b-tree>\n  </b-tree-node>\n</b-tree>`;
-  dragOnlyCollapsedUsage = `<b-tree [draggable]="true" [dragOnlyWhenCollapsed]="true">\n  <b-tree-node>\n    Node 1 (try dragging when expanded/collapsed)\n    <b-tree>\n      <b-tree-node>Child Node 1</b-tree-node>\n      <b-tree-node>Child Node 2</b-tree-node>\n    </b-tree>\n  </b-tree-node>\n  <b-tree-node>Node 2</b-tree-node>\n</b-tree>`;
+  dragOnlyCollapsedUsage = `<b-tree [draggable]="true" [dragOnlyWhenCollapsed]="true">\n  <b-tree-node>\n    Node 1 (expand to see drag handle disappear)\n    <b-tree>\n      <b-tree-node>Child Node 1</b-tree-node>\n      <b-tree-node>Child Node 2</b-tree-node>\n    </b-tree>\n  </b-tree-node>\n  <b-tree-node>\n    Node 2 (collapse to enable dragging)\n    <b-tree>\n      <b-tree-node>Child Node 3</b-tree-node>\n    </b-tree>\n  </b-tree-node>\n</b-tree>`;
 }

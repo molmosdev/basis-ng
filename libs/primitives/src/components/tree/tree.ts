@@ -75,6 +75,14 @@ export class Tree implements OnInit {
         node.handleNodeDisability(disabled);
       });
     });
+
+    // Propagate dragOnlyWhenCollapsed to nodes
+    effect(() => {
+      const dragOnlyCollapsed = this.dragOnlyWhenCollapsed();
+      this.nestedNodes().forEach((node) => {
+        node.setDragOnlyWhenCollapsed(dragOnlyCollapsed);
+      });
+    });
   }
 
   ngOnInit(): void {

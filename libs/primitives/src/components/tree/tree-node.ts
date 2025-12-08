@@ -5,7 +5,6 @@ import {
   contentChild,
   effect,
   inject,
-  input,
   model,
   OnInit,
   output,
@@ -22,7 +21,7 @@ import { Tree } from './tree';
   imports: [CdkDragHandle, NgIcon],
   template: `
     <section>
-      @if (!isNodeDisabled()) {
+      @if (!isNodeDisabled() && !shouldHideDragHandle()) {
         <ng-icon name="lucideGripVertical" size="16" color="currentColor" cdkDragHandle />
       }
       <div
@@ -76,11 +75,6 @@ export class TreeNode implements OnInit {
   readonly expanded = model(false);
 
   /**
-   * Whether drag-and-drop is only enabled when this node is collapsed.
-   */
-  readonly dragOnlyWhenCollapsed = input(false);
-
-  /**
    * Injected CDK drag instance for this node.
    */
   protected readonly node = inject(CdkDrag);
@@ -101,6 +95,18 @@ export class TreeNode implements OnInit {
   protected readonly isNodeDisabled = computed(() => this.node.disabled);
 
   /**
+   * Internal state for dragOnlyWhenCollapsed from parent Tree.
+   */
+  private _dragOnlyWhenCollapsed = false;
+
+  /**
+   * Computed to determine if drag handle should be hidden.
+   */
+  protected readonly shouldHideDragHandle = computed(() => {
+    return this._dragOnlyWhenCollapsed && this.hasNestedTree() && this.expanded();
+  });
+
+  /**
    * Emitted when a nested tree is closed.
    */
   readonly closeEmitter = output<void>();
@@ -117,14 +123,12 @@ export class TreeNode implements OnInit {
         this.closeEmitter.emit();
       }
 
-      previousExpanded = currentExpanded;
-    });
-
-    // Control drag based on expanded state and dragOnlyWhenCollapsed
-    effect(() => {
-      if (this.dragOnlyWhenCollapsed() && this.hasNestedTree()) {
-        this.node.disabled = this.expanded();
+      // Update drag state when dragOnlyWhenCollapsed is active
+      if (this._dragOnlyWhenCollapsed && this.hasNestedTree()) {
+        this.node.disabled = currentExpanded;
       }
+
+      previousExpanded = currentExpanded;
     });
   }
 
@@ -139,6 +143,18 @@ export class TreeNode implements OnInit {
    */
   handleNodeDisability(disabled: boolean): void {
     this.node.disabled = disabled;
+  }
+
+  /**
+   * Set drag only when collapsed mode from parent Tree.
+   * @param enabled - Whether drag should only work when collapsed.
+   */
+  setDragOnlyWhenCollapsed(enabled: boolean): void {
+    this._dragOnlyWhenCollapsed = enabled;
+    // Apply immediately if node has nested tree and is expanded
+    if (enabled && this.hasNestedTree() && this.expanded()) {
+      this.node.disabled = true;
+    }
   }
 
   /**
