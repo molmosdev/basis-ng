@@ -1,6 +1,6 @@
 {
   "name": "@basis-ng/styles",
-  "version": "0.0.1-alpha.176",
+  "version": "0.0.1-alpha.181",
   "description": "CSS foundation for @basis-ng/primitives components",
   "main": "src/index.css",
   "exports": {
