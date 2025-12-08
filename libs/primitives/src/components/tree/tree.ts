@@ -51,11 +51,6 @@ export class Tree implements OnInit {
   readonly closeRecursively = input(false);
 
   /**
-   * Whether nodes should be expanded by default on initialization.
-   */
-  readonly defaultExpanded = input(false);
-
-  /**
    * Computed signal indicating if the tree is disabled (inverse of draggable).
    */
   private readonly isTreeDisabled = computed(() => !this.draggable());
@@ -73,14 +68,6 @@ export class Tree implements OnInit {
 
       this.nestedNodes().forEach((node) => {
         node.handleNodeDisability(disabled);
-      });
-    });
-
-    // Reactively expand nodes - needs to react to defaultExpanded changes
-    effect(() => {
-      const shouldExpand = this.defaultExpanded();
-      this.nestedNodes().forEach((node) => {
-        node.setInitialExpansion(shouldExpand);
       });
     });
   }
@@ -108,18 +95,8 @@ export class Tree implements OnInit {
    */
   closeNestedNodes(): void {
     this.nestedNodes().forEach((node) => {
-      node.extended.set(false);
+      node.expanded.set(false);
       node.nestedTree()?.closeNestedNodes();
-    });
-  }
-
-  /**
-   * Set expansion state for all nodes recursively.
-   * @param expanded - Whether nodes should be expanded.
-   */
-  setNodesExpansion(expanded: boolean): void {
-    this.nestedNodes().forEach((node) => {
-      node.setInitialExpansion(expanded);
     });
   }
 }

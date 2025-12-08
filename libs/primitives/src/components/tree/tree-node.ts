@@ -50,7 +50,7 @@ import { Tree } from './tree';
         </svg>
       }
     </section>
-    @if (hasNestedTree() && extended()) {
+    @if (hasNestedTree() && expanded()) {
       <div class="nested">
         <ng-content select="b-tree" />
       </div>
@@ -72,7 +72,7 @@ export class TreeNode implements OnInit {
   /**
    * Whether this node is expanded to show nested content.
    */
-  readonly extended = model(false);
+  readonly expanded = model(false);
 
   /**
    * Injected CDK drag instance for this node.
@@ -100,11 +100,18 @@ export class TreeNode implements OnInit {
   readonly closeEmitter = output<void>();
 
   constructor() {
-    // Emit close event when collapsing - this needs to be reactive
+    // Track expanded state changes for close events
+    let previousExpanded = this.expanded();
+
     effect(() => {
-      if (!this.extended() && this.nestedTree()) {
+      const currentExpanded = this.expanded();
+
+      // Emit close event when collapsing
+      if (previousExpanded && !currentExpanded && this.nestedTree()) {
         this.closeEmitter.emit();
       }
+
+      previousExpanded = currentExpanded;
     });
   }
 
@@ -122,21 +129,9 @@ export class TreeNode implements OnInit {
   }
 
   /**
-   * Set initial expansion state for the node.
-   * @param expanded - Whether the node should be initially expanded.
-   */
-  setInitialExpansion(expanded: boolean): void {
-    if (this.hasNestedTree()) {
-      this.extended.set(expanded);
-      // Propagate to nested tree if it exists
-      this.nestedTree()?.setNodesExpansion(expanded);
-    }
-  }
-
-  /**
    * Toggle the node expansion.
    */
   toggleExtension(): void {
-    this.extended.update((current) => !current);
+    this.expanded.update((current) => !current);
   }
 }
