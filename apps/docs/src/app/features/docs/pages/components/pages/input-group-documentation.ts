@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, signal } from '@angular/core';
+import { form, FormField, required } from '@angular/forms/signals';
 import { Alert, Badge, Button, Input, InputGroup } from '@basis-ng/primitives';
 import { NgIcon, provideIcons } from '@ng-icons/core';
 import { lucideEye, lucideEyeOff, lucideRocket } from '@ng-icons/lucide';
@@ -7,7 +8,7 @@ import { CodeBlock } from '../shared/components/code-block';
 
 @Component({
   selector: 'article[app-input-group-documentation]',
-  imports: [CodeBlock, InputGroup, Input, Button, StepsButtons, Badge, Alert, NgIcon],
+  imports: [CodeBlock, InputGroup, Input, Button, StepsButtons, Badge, Alert, NgIcon, FormField],
   template: `
     <app-steps-buttons
       [previous]="{ label: 'Input', path: '/docs/components/input' }"
@@ -126,6 +127,21 @@ import { CodeBlock } from '../shared/components/code-block';
           </button>
         </b-input-group>
       </div>
+      <h2 class="font-semibold text-xl">Invalid</h2>
+      <code-block [code]="invalidUsage" />
+      <div
+        class="border border-gray-200 dark:border-neutral-900 rounded-lg p-6 mb-6 flex flex-col items-center justify-center gap-4"
+      >
+        <b-input-group>
+          <span>&#64;</span>
+          <input
+            b-input
+            [formField]="invalidForm.inputField"
+            type="text"
+            placeholder="Invalid input"
+          />
+        </b-input-group>
+      </div>
     </div>
     <app-steps-buttons
       [previous]="{ label: 'Input', path: '/docs/components/input' }"
@@ -137,7 +153,7 @@ import { CodeBlock } from '../shared/components/code-block';
     class: 'mx-auto flex w-full max-w-3xl min-w-0 flex-1 flex-col gap-6 px-4 pb-6 sm:pb-20',
   },
 })
-export class InputGroupDocumentation {
+export class InputGroupDocumentation implements OnInit {
   angularImport = `import { InputGroup, Input } from '@basis-ng/primitives' `;
   stylesImport = `@import '@basis-ng/styles/input-group';`;
   sizesUsage = `<b-input-group>\n  <span>@</span>\n  <input b-input class="b-size-sm" type="text" placeholder="username (sm)" />\n</b-input-group>\n<b-input-group>\n  <input b-input class="b-size-md" type="text" placeholder="Amount (md)" />\n  <span>USD</span>\n</b-input-group>\n<b-input-group>\n  <button b-button class="b-variant-secondary b-size-md">Search</button>\n  <input b-input class="b-size-lg" type="text" placeholder="Search... (lg)" />\n</b-input-group>`;
@@ -148,4 +164,12 @@ export class InputGroupDocumentation {
   combinedUsage = `<b-input-group>\n  <span>+52</span>\n  <input b-input type="number" placeholder="Phone" />\n  <button b-button class="b-variant-primary b-size-sm">Verify</button>\n</b-input-group>`;
   showPassword = false;
   passwordToggleUsage = `<b-input-group>\n  <input\n    b-input\n    [type]="showPassword ? 'text' : 'password'"\n    placeholder="Password"\n    type="password"/>\n  <button\n    b-button\n    class="b-variant-ghost b-size-sm b-squared"\n    type="button"\n    (click)="showPassword = !showPassword"\n    [attr.aria-label]="showPassword ? 'Hide password' : 'Show password'">\n    <!-- <i b-icon [icon]="showPassword ? 'EyeOff' : 'Eye'" [size]="15"></i> -->\n  </button>\n</b-input-group>`;
+  invalidUsage = `<b-input-group>\n  <span>@</span>\n  <input b-input [formField]="invalidForm.inputField" type="text" placeholder="Invalid input" />\n</b-input-group>`;
+  invalidForm = form(signal({ inputField: '' }), (schemaPath) => {
+    required(schemaPath.inputField);
+  });
+
+  ngOnInit(): void {
+    this.invalidForm.inputField().markAsTouched();
+  }
 }

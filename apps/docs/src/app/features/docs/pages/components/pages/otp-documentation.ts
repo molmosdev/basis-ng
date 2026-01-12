@@ -1,5 +1,5 @@
-import { Component, signal } from '@angular/core';
-import { Field, form } from '@angular/forms/signals';
+import { Component, OnInit, signal } from '@angular/core';
+import { FormField, form, required } from '@angular/forms/signals';
 import { Alert, Badge, Otp, OtpDigitDirective } from '@basis-ng/primitives';
 import { provideIcons } from '@ng-icons/core';
 import { lucideRocket } from '@ng-icons/lucide';
@@ -8,7 +8,7 @@ import { CodeBlock } from '../shared/components/code-block';
 
 @Component({
   selector: 'article[app-otp-documentation]',
-  imports: [CodeBlock, Otp, OtpDigitDirective, StepsButtons, Badge, Alert, Field],
+  imports: [CodeBlock, Otp, OtpDigitDirective, StepsButtons, Badge, Alert, FormField],
   template: `
     <app-steps-buttons
       [previous]="{ label: 'Menu', path: '/docs/components/menu' }"
@@ -69,19 +69,6 @@ import { CodeBlock } from '../shared/components/code-block';
                 class="border-t border-gray-200 dark:border-neutral-900 px-4 py-2 font-display-mono whitespace-nowrap"
               >
                 OutputEmitterRef&lt;string&gt;
-              </td>
-            </tr>
-            <tr>
-              <td
-                class="border-t border-gray-200 dark:border-neutral-900 px-4 py-2 font-display-mono whitespace-nowrap"
-              >
-                invalid
-              </td>
-              <td
-                class="border-t border-gray-200 dark:border-neutral-900 px-4 py-2 font-display-mono whitespace-nowrap"
-              >
-                <b class="font-bold">false</b>
-                | boolean
               </td>
             </tr>
             <tr>
@@ -152,7 +139,7 @@ import { CodeBlock } from '../shared/components/code-block';
       >
         <!-- Signal forms OTP example -->
         {{ form.otp().value() }}
-        <b-otp [field]="form.otp">
+        <b-otp [formField]="form.otp">
           <input b-otp-digit />
           <input b-otp-digit />
           <input b-otp-digit />
@@ -210,7 +197,7 @@ import { CodeBlock } from '../shared/components/code-block';
       <div
         class="border border-gray-200 dark:border-neutral-900 rounded-lg p-6 mb-6 flex flex-col gap-4 items-center"
       >
-        <b-otp [invalid]="true">
+        <b-otp [formField]="invalidForm.otp">
           <input b-otp-digit />
           <input b-otp-digit />
           <input b-otp-digit />
@@ -230,18 +217,26 @@ import { CodeBlock } from '../shared/components/code-block';
     class: 'mx-auto flex w-full max-w-3xl min-w-0 flex-1 flex-col gap-6 px-4 pb-6 sm:pb-20',
   },
 })
-export class OtpDocumentation {
+export class OtpDocumentation implements OnInit {
   angularImport = `import { Otp, OtpDigitDirective } from '@basis-ng/primitives' `;
   stylesImport = `@import '@basis-ng/styles/components/otp.css';`;
   basicUsage = `<b-otp [(value)]='otpValue'>\n  <input b-otp-digit />\n  <input b-otp-digit />\n  <input b-otp-digit />\n  <input b-otp-digit />\n  <input b-otp-digit />\n  <input b-otp-digit />\n</b-otp>`;
   sizeUsage = `<b-otp class='b-size-sm'>\n  <input b-otp-digit />\n  <input b-otp-digit />\n  <input b-otp-digit />\n  <input b-otp-digit />\n  <input b-otp-digit />\n  <input b-otp-digit />\n</b-otp>\n\n<b-otp class='b-size-md'>\n  <input b-otp-digit />\n  <input b-otp-digit />\n  <input b-otp-digit />\n  <input b-otp-digit />\n  <input b-otp-digit />\n  <input b-otp-digit />\n</b-otp>\n\n<b-otp class='b-size-lg'>\n  <input b-otp-digit />\n  <input b-otp-digit />\n  <input b-otp-digit />\n  <input b-otp-digit />\n  <input b-otp-digit />\n  <input b-otp-digit />\n</b-otp>`;
   disabledUsage = `<b-otp [disabled]='true'>\n  <input b-otp-digit />\n  <input b-otp-digit />\n  <input b-otp-digit />\n  <input b-otp-digit />\n  <input b-otp-digit />\n  <input b-otp-digit />\n</b-otp>`;
 
-  invalidUsage = `<b-otp [invalid]='true'>\n  <input b-otp-digit />\n  <input b-otp-digit />\n  <input b-otp-digit />\n  <input b-otp-digit />\n  <input b-otp-digit />\n  <input b-otp-digit />\n</b-otp>`;
+  invalidUsage = `<b-otp [formField]='invalidForm.otp'>\n  <input b-otp-digit />\n  <input b-otp-digit />\n  <input b-otp-digit />\n  <input b-otp-digit />\n  <input b-otp-digit />\n  <input b-otp-digit />\n</b-otp>`;
 
   otpValue = '';
 
-  signalFormsUsage = `{{ form.otp().value() }}\n\n<b-otp [field]='form.otp'>\n  <input b-otp-digit />\n  <input b-otp-digit />\n  <input b-otp-digit />\n  <input b-otp-digit />\n  <input b-otp-digit />\n  <input b-otp-digit />\n</b-otp>`;
+  signalFormsUsage = `{{ form.otp().value() }}\n\n<b-otp [formField]='form.otp'>\n  <input b-otp-digit />\n  <input b-otp-digit />\n  <input b-otp-digit />\n  <input b-otp-digit />\n  <input b-otp-digit />\n  <input b-otp-digit />\n</b-otp>`;
 
   form = form(signal({ otp: '' }));
+
+  invalidForm = form(signal({ otp: '' }), (schemaPath) => {
+    required(schemaPath.otp);
+  });
+
+  ngOnInit(): void {
+    this.invalidForm.otp().markAsTouched();
+  }
 }

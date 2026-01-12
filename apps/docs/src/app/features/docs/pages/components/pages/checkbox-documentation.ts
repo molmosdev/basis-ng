@@ -1,5 +1,5 @@
 import { Component, signal } from '@angular/core';
-import { Field, form } from '@angular/forms/signals';
+import { form, FormField } from '@angular/forms/signals';
 import { Alert, Checkbox } from '@basis-ng/primitives';
 import { provideIcons } from '@ng-icons/core';
 import { lucideRocket } from '@ng-icons/lucide';
@@ -8,7 +8,7 @@ import { CodeBlock } from '../shared/components/code-block';
 
 @Component({
   selector: 'article[app-checkbox-documentation]',
-  imports: [CodeBlock, Checkbox, StepsButtons, Alert, Field],
+  imports: [CodeBlock, Checkbox, StepsButtons, Alert, FormField],
   template: `
     <app-steps-buttons
       [previous]="{ label: 'Calendar', path: '/docs/components/calendar' }"
@@ -85,7 +85,7 @@ import { CodeBlock } from '../shared/components/code-block';
       >
         <!-- Signal forms checkbox example -->
         {{ form.checked().value() ? 'Checked' : 'Unchecked' }}
-        <button b-checkbox [field]="form.checked"></button>
+        <button b-checkbox [formField]="form.checked"></button>
       </div>
       <h2 class="font-semibold text-xl">Sizes</h2>
       <code-block [code]="sizesUsage" />
@@ -118,7 +118,7 @@ export class CheckboxDocumentation {
 
   checkboxValue = false;
 
-  signalFormsUsage = `{{ form.checked().value() ? 'Checked' : 'Unchecked' }}\n\n<button b-checkbox [field]='form.checked'></button>`;
+  signalFormsUsage = `{{ form.checked().value() ? 'Checked' : 'Unchecked' }}\n\n<button b-checkbox [formField]='form.checked'></button>`;
 
   form = form(signal({ checked: false }));
 }

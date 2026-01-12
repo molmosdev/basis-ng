@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, signal } from '@angular/core';
+import { form, FormField, required } from '@angular/forms/signals';
 import { Alert, Input } from '@basis-ng/primitives';
 import { provideIcons } from '@ng-icons/core';
 import { lucideRocket } from '@ng-icons/lucide';
@@ -7,7 +8,7 @@ import { CodeBlock } from '../shared/components/code-block';
 
 @Component({
   selector: 'article[app-input-documentation]',
-  imports: [Input, CodeBlock, StepsButtons, Alert],
+  imports: [Input, CodeBlock, StepsButtons, Alert, FormField],
   template: `
     <app-steps-buttons
       [previous]="{ label: 'Drawer', path: '/docs/components/drawer' }"
@@ -53,19 +54,6 @@ import { CodeBlock } from '../shared/components/code-block';
               >
                 <b class="font-bold">'text'</b>
                 | 'number' | 'password' | 'email'
-              </td>
-            </tr>
-            <tr>
-              <td
-                class="border-t border-gray-200 dark:border-neutral-900 px-4 py-2 font-display-mono whitespace-nowrap"
-              >
-                invalid
-              </td>
-              <td
-                class="border-t border-gray-200 dark:border-neutral-900 px-4 py-2 font-display-mono whitespace-nowrap"
-              >
-                <b class="font-bold">false</b>
-                | boolean
               </td>
             </tr>
             <tr>
@@ -152,7 +140,12 @@ import { CodeBlock } from '../shared/components/code-block';
       <div
         class="border border-gray-200 dark:border-neutral-900 rounded-lg p-6 mb-6 flex flex-col items-center justify-center gap-4"
       >
-        <input b-input type="text" placeholder="Invalid input" [invalid]="true" />
+        <input
+          b-input
+          [formField]="invalidForm.inputField"
+          type="text"
+          placeholder="Invalid input"
+        />
       </div>
     </div>
     <app-steps-buttons
@@ -168,7 +161,7 @@ import { CodeBlock } from '../shared/components/code-block';
     class: 'mx-auto flex w-full max-w-3xl min-w-0 flex-1 flex-col gap-6 px-4 pb-6 sm:pb-20',
   },
 })
-export class InputDocumentation {
+export class InputDocumentation implements OnInit {
   angularImport = `import { Input } from '@basis-ng/primitives' `;
   stylesImport = `@import '@basis-ng/styles/input';`;
   basicUsage = `<input b-input type="text" placeholder="Enter text" />`;
@@ -179,5 +172,17 @@ export class InputDocumentation {
 <input b-input class="b-size-md" type="text" placeholder="Size md" />
 <input b-input class="b-size-lg" type="text" placeholder="Size lg" />`;
   disabledUsage = `<input b-input type="text" placeholder="Disabled input" [disabled]="true" />`;
-  invalidUsage = `<input b-input type="text" placeholder="Invalid input" [invalid]="true" />`;
+  invalidUsage = `<input b-input type="text" placeholder="Invalid input" />`;
+  invalidForm = form(
+    signal({
+      inputField: '',
+    }),
+    (schemaPath) => {
+      required(schemaPath.inputField);
+    },
+  );
+
+  ngOnInit(): void {
+    this.invalidForm.inputField().markAsTouched();
+  }
 }

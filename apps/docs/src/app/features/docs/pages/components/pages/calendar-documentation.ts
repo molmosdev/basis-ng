@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, computed, signal } from '@angular/core';
-import { Field, form } from '@angular/forms/signals';
+import { FormField, form } from '@angular/forms/signals';
 import {
   Button,
   Calendar,
@@ -28,7 +28,7 @@ import { CodeBlock } from '../shared/components/code-block';
     CardHeader,
     CardTitle,
     CardContent,
-    Field,
+    FormField,
   ],
   template: `
     <app-steps-buttons
@@ -94,7 +94,7 @@ import { CodeBlock } from '../shared/components/code-block';
       <div
         class="border border-gray-200 dark:border-neutral-900 rounded-lg p-6 mb-6 flex flex-col items-center"
       >
-        <b-calendar [field]="form.selected" class="w-60!" />
+        <b-calendar [formField]="form.selected" class="w-60!" />
         Selected: {{ form.selected().value() ? form.selected().value()!.toDateString() : 'none' }}
       </div>
       <h2 class="font-semibold text-xl">Popover demo</h2>
@@ -152,7 +152,7 @@ export class CalendarDocumentation {
   </b-card>
 </ng-template>`;
 
-  signalFormsUsage = `<b-calendar [field]="form.selected" class="w-60!"/>
+  signalFormsUsage = `<b-calendar [formField]="form.selected" class="w-60!"/>
 {{ form.selected().value() ? form.selected().value()!.toDateString() : 'none' }}`;
 
   form = form(signal({ selected: null as Date | null }));

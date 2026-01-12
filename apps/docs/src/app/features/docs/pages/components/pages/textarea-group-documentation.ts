@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, signal } from '@angular/core';
+import { form, FormField, required } from '@angular/forms/signals';
 import { Alert, Badge, Button, Textarea, TextareaGroup } from '@basis-ng/primitives';
 import { provideIcons } from '@ng-icons/core';
 import { lucideRocket } from '@ng-icons/lucide';
@@ -7,7 +8,7 @@ import { CodeBlock } from '../shared/components/code-block';
 
 @Component({
   selector: 'article[app-textarea-group-documentation]',
-  imports: [CodeBlock, Textarea, TextareaGroup, Button, StepsButtons, Badge, Alert],
+  imports: [CodeBlock, Textarea, TextareaGroup, Button, StepsButtons, Badge, Alert, FormField],
   template: `
     <app-steps-buttons
       [previous]="{ label: 'Textarea', path: '/docs/components/textarea' }"
@@ -36,11 +37,11 @@ import { CodeBlock } from '../shared/components/code-block';
       <div
         class="border border-gray-200 dark:border-neutral-900 rounded-lg p-6 mb-6 flex flex-col items-center justify-center gap-4"
       >
-        <b-textarea-group>
+        <b-textarea-group class="w-full">
           <label>Notes (sm)</label>
           <textarea b-textarea class="b-size-sm" rows="3" placeholder="Short note..."></textarea>
         </b-textarea-group>
-        <b-textarea-group>
+        <b-textarea-group class="w-full">
           <label>Description (md)</label>
           <textarea
             b-textarea
@@ -49,7 +50,7 @@ import { CodeBlock } from '../shared/components/code-block';
             placeholder="Longer description..."
           ></textarea>
         </b-textarea-group>
-        <b-textarea-group>
+        <b-textarea-group class="w-full">
           <label>Message (lg)</label>
           <textarea b-textarea class="b-size-lg" rows="6" placeholder="Full message..."></textarea>
         </b-textarea-group>
@@ -91,6 +92,23 @@ import { CodeBlock } from '../shared/components/code-block';
           </div>
         </b-textarea-group>
       </div>
+      <h2 class="font-semibold text-xl">Invalid</h2>
+      <code-block [code]="invalidUsage" />
+      <div
+        class="border border-gray-200 dark:border-neutral-900 rounded-lg p-6 mb-6 flex flex-col items-center justify-center gap-4"
+      >
+        <b-textarea-group class="w-full">
+          <label>Comment</label>
+          <textarea
+            b-textarea
+            [formField]="invalidForm.inputField"
+            class="b-size-md"
+            rows="4"
+            placeholder="Invalid textarea"
+          ></textarea>
+          <button b-button class="b-variant-primary b-size-sm">Post</button>
+        </b-textarea-group>
+      </div>
     </div>
     <app-steps-buttons
       [previous]="{ label: 'Textarea', path: '/docs/components/textarea' }"
@@ -102,10 +120,19 @@ import { CodeBlock } from '../shared/components/code-block';
     class: 'mx-auto flex w-full max-w-3xl min-w-0 flex-1 flex-col gap-6 px-4 pb-6 sm:pb-20',
   },
 })
-export class TextareaGroupDocumentation {
+export class TextareaGroupDocumentation implements OnInit {
   angularImport = `import { TextareaGroup, TextareaComponent } from '@basis-ng/primitives' `;
   stylesImport = `@import '@basis-ng/styles/textarea-group';`;
-  sizesUsage = `<b-textarea-group>\n  <label>Notes (sm)</label>\n  <textarea b-textarea class="b-size-sm" rows="3" placeholder="Short note..."></textarea>\n</b-textarea-group>\n<b-textarea-group>\n  <label>Description (md)</label>\n  <textarea b-textarea class="b-size-md" rows="4" placeholder="Longer description..."></textarea>\n</b-textarea-group>\n<b-textarea-group>\n  <label>Message (lg)</label>\n  <textarea b-textarea class="b-size-lg" rows="6" placeholder="Full message..."></textarea>\n</b-textarea-group>`;
-  helpUsage = `<b-textarea-group>\n  <label>Comment</label>\n  <textarea b-textarea class="b-size-md" rows="4" placeholder="Write your comment..."></textarea>\n  <div class="flex items-center justify-between gap-3">\n    <span class="text-xs text-muted">Max 500 characters</span>\n    <div class="flex gap-2">\n      <button b-button class="b-variant-ghost b-size-sm">Cancel</button>\n      <button b-button class="b-variant-primary b-size-sm">Post</button>\n    </div>\n  </div>\n</b-textarea-group>`;
-  combinedUsage = `<b-textarea-group>\n  <label>Phone description</label>\n  <textarea b-textarea rows="3" placeholder="What happened?"></textarea>\n  <div class="flex items-center justify-end gap-2">\n    <button b-button class="b-variant-primary b-size-sm">Verify</button>\n  </div>\n</b-textarea-group>`;
+  sizesUsage = `<b-textarea-group class="w-full">\n  <label>Notes (sm)</label>\n  <textarea b-textarea class="b-size-sm" rows="3" placeholder="Short note..."></textarea>\n</b-textarea-group>\n<b-textarea-group class="w-full">\n  <label>Description (md)</label>\n  <textarea b-textarea class="b-size-md" rows="4" placeholder="Longer description..."></textarea>\n</b-textarea-group>\n<b-textarea-group class="w-full">\n  <label>Message (lg)</label>\n  <textarea b-textarea class="b-size-lg" rows="6" placeholder="Full message..."></textarea>\n</b-textarea-group>`;
+  helpUsage = `<b-textarea-group class="w-full">\n  <label>Comment</label>\n  <textarea b-textarea class="b-size-md" rows="4" placeholder="Write your comment..."></textarea>\n  <div class="flex items-center justify-between gap-3">\n    <span class="text-xs text-muted">Max 500 characters</span>\n    <div class="flex gap-2">\n      <button b-button class="b-variant-ghost b-size-sm">Cancel</button>\n      <button b-button class="b-variant-primary b-size-sm">Post</button>\n    </div>\n  </div>\n</b-textarea-group>`;
+  combinedUsage = `<b-textarea-group class="w-full">\n  <label>Phone description</label>\n  <textarea b-textarea rows="3" placeholder="What happened?"></textarea>\n  <div class="flex items-center justify-end gap-2">\n    <button b-button class="b-variant-primary b-size-sm">Verify</button>\n  </div>\n</b-textarea-group>`;
+  invalidUsage = `<b-textarea-group class="w-full">\n  <label>Comment</label>\n  <textarea b-textarea [formField]="invalidForm.inputField" class="b-size-md" rows="4" placeholder="Invalid textarea"></textarea>\n  <button b-button class="b-variant-primary b-size-sm">Post</button>\n</b-textarea-group>`;
+
+  invalidForm = form(signal({ inputField: '' }), (schemaPath) => {
+    required(schemaPath.inputField);
+  });
+
+  ngOnInit(): void {
+    this.invalidForm.inputField().markAsTouched();
+  }
 }

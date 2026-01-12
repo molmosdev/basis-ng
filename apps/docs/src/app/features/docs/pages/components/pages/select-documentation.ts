@@ -1,5 +1,5 @@
-import { Component, signal } from '@angular/core';
-import { Field, form } from '@angular/forms/signals';
+import { Component, OnInit, signal } from '@angular/core';
+import { form, FormField, required } from '@angular/forms/signals';
 import {
   Alert,
   ConnectedOverlay,
@@ -32,7 +32,7 @@ import { CodeBlock } from '../shared/components/code-block';
     StepsButtons,
     Alert,
     Input,
-    Field,
+    FormField,
   ],
   template: `
     <app-steps-buttons
@@ -94,19 +94,6 @@ import { CodeBlock } from '../shared/components/code-block';
               >
                 <b class="font-bold">required</b>
                 | (value: string[]) => string
-              </td>
-            </tr>
-            <tr>
-              <td
-                class="border-t border-gray-200 dark:border-neutral-900 px-4 py-2 font-display-mono whitespace-nowrap"
-              >
-                invalid
-              </td>
-              <td
-                class="border-t border-gray-200 dark:border-neutral-900 px-4 py-2 font-display-mono whitespace-nowrap"
-              >
-                <b class="font-bold">false</b>
-                | boolean
               </td>
             </tr>
           </tbody>
@@ -206,7 +193,7 @@ import { CodeBlock } from '../shared/components/code-block';
       >
         <!-- Signal forms select example -->
         {{ form.selected().value().length > 0 ? form.selected().value() : 'No selection' }}
-        <b-select [field]="form.selected" [displayWith]="displayFn">
+        <b-select [formField]="form.selected" [displayWith]="displayFn">
           <button b-select-trigger bOverlayOrigin #triggerForm="bOverlayOrigin" class="b-size-md">
             <b-select-value placeholder="Select an option" />
           </button>
@@ -326,7 +313,7 @@ import { CodeBlock } from '../shared/components/code-block';
       <div
         class="border border-gray-200 dark:border-neutral-900 rounded-lg p-6 mb-6 flex flex-col items-center justify-center gap-4"
       >
-        <b-select [invalid]="true" [(value)]="selectedOptions" [displayWith]="displayFn">
+        <b-select [formField]="invalidForm.selected" [displayWith]="displayFn">
           <button
             b-select-trigger
             bOverlayOrigin
@@ -400,7 +387,7 @@ import { CodeBlock } from '../shared/components/code-block';
     class: 'mx-auto flex w-full max-w-3xl min-w-0 flex-1 flex-col gap-6 px-4 pb-6 sm:pb-20',
   },
 })
-export class SelectDocumentation {
+export class SelectDocumentation implements OnInit {
   angularImport = `import { Select, SelectTrigger, SelectValue, SelectContent, Option, ConnectedOverlay, OverlayOrigin } from '@basis-ng/primitives' ;`;
   stylesImport = `@import '@basis-ng/styles/select';`;
 
@@ -439,7 +426,7 @@ export class SelectDocumentation {
 
   signalFormsUsage = `{{form.selected().value().length > 1 ? form.selected().value() : 'No selection' }}
 
-  <b-select [field]='form.selected' [displayWith]='displayFn'>
+  <b-select [formField]='form.selected' [displayWith]='displayFn'>
   <button b-select-trigger bOverlayOrigin #trigger='bOverlayOrigin' class='b-size-md'>
     <b-select-value placeholder='Selecciona una opción' />
   </button>
@@ -515,18 +502,15 @@ export class SelectDocumentation {
   </ng-template>
 </b-select>`;
 
-  invalidUsage = `<b-select [invalid]='true' [(value)]='selectedOptions' [displayWith]='displayFn'>
-  <button b-select-trigger bOverlayOrigin #triggerInvalid='bOverlayOrigin' class='b-size-md'>
-    <b-select-value placeholder='Invalid select' />
-  </button>
-  <ng-template bConnectedOverlay [trigger]='triggerInvalid' [positions]="['bottom-left', 'bottom-right', 'top-left', 'top-right']">
-    <ul b-select-content class='b-size-md' [multiple]='false'>
-      @for (option of options(); track option) {
-        <li b-option [value]='option.value'>{{ option.label }}</li>
-      }
-    </ul>
-  </ng-template>
-</b-select>`;
+  invalidUsage = `<b-select [formField]='invalidForm.selected' [displayWith]='displayFn'>\n  <button b-select-trigger bOverlayOrigin #triggerInvalid='bOverlayOrigin' class='b-size-md'>\n    <b-select-value placeholder='Invalid select' />\n  </button>\n  <ng-template bConnectedOverlay [trigger]='triggerInvalid' [positions]="['bottom-left', 'bottom-right', 'top-left', 'top-right']">\n    <ul b-select-content class='b-size-md' [multiple]='false'>\n      @for (option of options(); track option) {\n        <li b-option [value]='option.value'>{{ option.label }}</li>\n      }\n    </ul>\n  </ng-template>\n</b-select>`;
+
+  invalidForm = form(signal({ selected: '' }), (schemaPath) => {
+    required(schemaPath.selected);
+  });
+
+  ngOnInit(): void {
+    this.invalidForm.selected().markAsTouched();
+  }
 
   withFilterImport = `import { SelectFilter } from '@basis-ng/primitives' ;`;
 
