@@ -53,17 +53,12 @@ b-otp.b-size-lg input[b-otp-digit] {
   @apply w-10 h-10 text-base rounded-size-lg p-0;
 }
 
-b-otp[data-invalid] input[b-otp-digit] {
+b-otp.ng-invalid.ng-touched input[b-otp-digit] {
   @apply text-destructive placeholder:text-destructive bg-destructive/20 inset-ring-1 inset-ring-destructive/20;
   @apply dark:text-destructive-dark dark:placeholder:text-destructive-dark dark:bg-destructive-dark/20 dark:inset-ring-destructive-dark/20;
 }
 
-b-otp[data-invalid] input[b-otp-digit]:focus-visible {
+b-otp.ng-invalid.ng-touched input[b-otp-digit]:focus-visible {
   @apply outline-2 outline-offset-2 outline-destructive;
   @apply dark:outline-destructive-dark;
-}
-
-b-otp[data-invalid] input[b-otp-digit]::placeholder {
-  @apply text-destructive;
-  @apply dark:text-destructive-foreground;
 }

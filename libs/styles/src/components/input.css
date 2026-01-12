@@ -21,16 +21,12 @@ input[b-input] {
     @apply dark:opacity-70 dark:text-font-dark;
   }
 
-  &[data-invalid] {
+  &.ng-invalid.ng-touched {
     @apply text-destructive placeholder:text-destructive bg-destructive/20 inset-ring-1 inset-ring-destructive/20;
     @apply dark:text-destructive-dark dark:placeholder:text-destructive-dark dark:bg-destructive-dark/20 dark:inset-ring-destructive-dark/20;
     &:focus-visible {
       @apply outline-2 outline-offset-4 outline-destructive;
       @apply dark:outline-destructive-dark;
-    }
-    &::placeholder {
-      @apply text-destructive;
-      @apply dark:text-destructive-foreground;
     }
   }
 

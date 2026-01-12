@@ -9,7 +9,7 @@ b-textarea-group {
 
   /* Internal textarea adjustments when placed inside group */
   textarea[b-textarea] {
-    @apply outline-0! p-0! inset-ring-0 w-full! rounded-none! bg-transparent hover:bg-transparent shadow-none resize-none no-scrollbar;
+    @apply outline-0! p-0! inset-ring-0! w-full! rounded-none! bg-transparent! hover:bg-transparent! shadow-none resize-none no-scrollbar;
   }
 
   button[b-button] {
@@ -21,7 +21,7 @@ b-textarea-group {
     @apply outline-2 outline-offset-2 outline-primary dark:outline-primary-dark;
 
     /* Override outline color if invalid while focused */
-    &:has(textarea[b-textarea][data-invalid]) {
+    &:has(textarea[b-textarea].ng-invalid.ng-touched) {
       @apply outline-destructive dark:outline-destructive-dark;
     }
   }
@@ -32,7 +32,7 @@ b-textarea-group {
   }
 
   /* Invalid state styles (group reflects error) */
-  &:has(textarea[b-textarea][data-invalid]) {
+  &:has(textarea[b-textarea].ng-invalid.ng-touched) {
     @apply text-destructive placeholder:text-destructive bg-destructive/20 inset-ring-1 inset-ring-destructive/20;
     @apply dark:text-destructive-dark dark:placeholder:text-destructive-dark dark:bg-destructive-dark/20 dark:inset-ring-destructive-dark/20;
 
