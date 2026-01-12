@@ -8,7 +8,6 @@ import { AfterViewInit, Component, computed, ElementRef, inject, input } from '@
   template: ``,
   host: {
     '[type]': 'type()',
-    '[attr.data-invalid]': 'invalid() ? "" : null',
     '(input)': 'onInput($event)',
     '(blur)': 'onBlur($event)',
   },
@@ -29,11 +28,6 @@ export class Input implements AfterViewInit {
    * Whether number formatting uses integer or decimal logic.
    */
   readonly numberType = input<'integer' | 'decimal'>('integer');
-
-  /**
-   * Whether the input is in an invalid state.
-   */
-  readonly invalid = input<boolean>(false);
 
   /**
    * Computed signal indicating if the current type is numeric.

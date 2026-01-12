@@ -16,9 +16,6 @@ import { FormValueControl } from '@angular/forms/signals';
 @Component({
   selector: 'b-otp',
   template: ` <ng-content /> `,
-  host: {
-    '[attr.data-invalid]': 'invalid() && dirty() ? "" : null',
-  },
 })
 export class Otp implements AfterContentInit, FormValueControl<string> {
   /**
@@ -35,11 +32,6 @@ export class Otp implements AfterContentInit, FormValueControl<string> {
    * Emitted when the OTP value changes.
    */
   readonly valueChange = output<string>();
-
-  /**
-   * Whether the OTP input is invalid.
-   */
-  invalid = input<boolean>(false);
 
   /**
    * Whether the OTP input has been modified.

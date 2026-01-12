@@ -21,9 +21,6 @@ import { SelectValue } from './select-value';
   selector: 'b-select',
   template: ` <ng-content />`,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  host: {
-    '[attr.data-invalid]': 'invalid() ? "" : null',
-  },
 })
 export class Select implements OnInit, FormValueControl<string[]> {
   /** Connected overlay instance used to show the dropdown. */
@@ -40,9 +37,6 @@ export class Select implements OnInit, FormValueControl<string[]> {
 
   /** Function to display the selected value(s). */
   readonly displayWith = input.required<(value: string[]) => string>();
-
-  /** Whether the select is in an invalid state. */
-  readonly invalid = input<boolean>(false);
 
   /** Current value array for the select. */
   readonly value = model<string[]>([]);

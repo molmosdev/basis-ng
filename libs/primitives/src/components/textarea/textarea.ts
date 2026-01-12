@@ -1,4 +1,4 @@
-import { Component, input } from '@angular/core';
+import { Component } from '@angular/core';
 
 /**
  * A styled textarea component.
@@ -6,13 +6,5 @@ import { Component, input } from '@angular/core';
 @Component({
   selector: 'textarea[b-textarea]',
   template: ``,
-  host: {
-    '[attr.data-invalid]': 'invalid() ? "" : null',
-  },
 })
-export class Textarea {
-  /**
-   * Whether the textarea is in an invalid state.
-   */
-  readonly invalid = input<boolean>(false);
-}
+export class Textarea {}
