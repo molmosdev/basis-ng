@@ -4,7 +4,7 @@ const path = require('path');
 const semver = require('semver');
 const execSync = require('child_process').execSync;
 
-const lib = process.argv[2]; // "primitives" o "styles"
+const lib = process.argv[2];
 const releaseType = process.argv[3] || 'patch';
 const preId = process.argv[4];
 
@@ -16,7 +16,6 @@ if (!lib) {
 const packageJsonPath = path.join(__dirname, 'libs', lib, 'package.json');
 const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, 'utf8'));
 
-// Bump version
 const newVersion =
   releaseType === 'prerelease'
     ? semver.inc(packageJson.version, 'prerelease', preId || 'alpha')
@@ -28,10 +27,24 @@ fs.writeFileSync(packageJsonPath, JSON.stringify(packageJson, null, 2), 'utf8');
 console.log(`📦 Publishing ${lib} v${newVersion}...`);
 
 if (lib === 'primitives') {
-  // Build Angular library
+  // 1. Build Angular library
   execSync(`ng build ${lib}`, { stdio: 'inherit' });
-  // Publish from dist/primitives
+
   const distPath = path.join(__dirname, 'dist', lib);
+  // Buscamos el .npmrc donde me has indicado
+  const srcNpmrc = path.join(__dirname, 'libs', lib, '.npmrc');
+  const distNpmrc = path.join(distPath, '.npmrc');
+
+  // 2. COPIAR EL .NPMRC AL DIST
+  if (fs.existsSync(srcNpmrc)) {
+    fs.copyFileSync(srcNpmrc, distNpmrc);
+    console.log('✅ Token .npmrc copiado desde libs/primitives a la carpeta dist.');
+  } else {
+    console.error(`❌ ERROR: No se encuentra el archivo .npmrc en ${srcNpmrc}`);
+    process.exit(1);
+  }
+
+  // 3. Publish desde dist/primitives
   exec(
     `cd ${distPath} && npm publish --access public ${releaseType === 'prerelease' ? '--tag next' : ''}`,
     (err, stdout, stderr) => {
@@ -43,7 +56,6 @@ if (lib === 'primitives') {
     },
   );
 } else if (lib === 'styles') {
-  // Publish directly from libs/styles
   const stylesPath = path.join(__dirname, 'libs', lib);
   exec(
     `cd ${stylesPath} && npm publish --access public ${releaseType === 'prerelease' ? '--tag next' : ''}`,
