@@ -13,7 +13,7 @@ b-tree-node {
   section {
     @apply px-3 rounded-size-md flex justify-between items-center h-8 box-border gap-1.5 text-sm select-none;
 
-    ng-icon {
+    ng-icon[cdkdraghandle] {
       @apply cursor-move;
     }
 
