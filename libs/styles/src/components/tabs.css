@@ -36,7 +36,7 @@ b-tabs {
 
     /* Disabled state */
     &[aria-disabled='true'] {
-      @apply opacity-50 cursor-not-allowed pointer-events-none;
+      @apply opacity-60 pointer-events-none;
     }
   }
 

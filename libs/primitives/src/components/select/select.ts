@@ -1,4 +1,5 @@
 import {
+  booleanAttribute,
   ChangeDetectionStrategy,
   Component,
   contentChild,
@@ -38,6 +39,9 @@ export class Select implements OnInit, FormValueControl<string[]> {
   /** Function to display the selected value(s). */
   readonly displayWith = input.required<(value: string[]) => string>();
 
+  /** Whether the select is disabled. Automatically bound by Signal Forms. */
+  readonly disabled = input(false, { transform: booleanAttribute });
+
   /** Current value array for the select. */
   readonly value = model<string[]>([]);
 
@@ -47,6 +51,7 @@ export class Select implements OnInit, FormValueControl<string[]> {
   constructor() {
     effect(() => this.updateDisplayedValue());
     effect(() => this.handleContentValueChanges());
+    effect(() => this.selectTrigger()?.disabled.set(this.disabled()));
   }
 
   ngOnInit(): void {
@@ -131,14 +136,6 @@ export class Select implements OnInit, FormValueControl<string[]> {
     overlay.backdropClickEmitter.subscribe(() => {
       overlay.closeOverlay();
     });
-  }
-
-  /**
-   * Toggle disabled state on the select trigger.
-   * @param isDisabled - Whether the control is disabled.
-   */
-  setDisabledState(isDisabled: boolean): void {
-    this.selectTrigger()?.disabled.set(isDisabled);
   }
 
   /**

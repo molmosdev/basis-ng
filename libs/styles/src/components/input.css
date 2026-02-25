@@ -8,7 +8,9 @@ input[b-input] {
   @apply px-2.5 py-0 text-sm h-8 rounded-size-md;
 
   /* Disabled */
-  @apply disabled:opacity-50 disabled:cursor-not-allowed;
+  &:disabled {
+    @apply opacity-60 pointer-events-none;
+  }
 
   &:focus-visible:not(:read-only) {
     /* Keep primary outline on focus to maintain emphasis */
@@ -28,10 +30,6 @@ input[b-input] {
       @apply outline-2 outline-offset-4 outline-destructive;
       @apply dark:outline-destructive-dark;
     }
-  }
-
-  &:disabled {
-    @apply opacity-60 pointer-events-none;
   }
 
   /* Sizes */

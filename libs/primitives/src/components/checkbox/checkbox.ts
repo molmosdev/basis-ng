@@ -2,11 +2,9 @@ import {
   booleanAttribute,
   ChangeDetectionStrategy,
   Component,
-  computed,
   input,
   model,
   output,
-  signal,
 } from '@angular/core';
 import { FormValueControl } from '@angular/forms/signals';
 
@@ -39,9 +37,9 @@ import { FormValueControl } from '@angular/forms/signals';
     '[attr.role]': '"checkbox"',
     '[attr.aria-checked]': 'value()',
     '[attr.data-state]': 'value() ? "checked" : "unchecked"',
-    '[attr.aria-disabled]': 'isDisabled()',
-    '[disabled]': 'isDisabled()',
-    '[attr.data-disabled]': 'isDisabled() ? "" : null',
+    '[attr.aria-disabled]': 'disabled()',
+    '[disabled]': 'disabled()',
+    '[attr.data-disabled]': 'disabled() ? "" : null',
     '[class.b-size-sm]': 'size() === "sm"',
     '[class.b-size-md]': 'size() === "md"',
     '[class.b-size-lg]': 'size() === "lg"',
@@ -67,25 +65,15 @@ export class Checkbox implements FormValueControl<boolean> {
   readonly size = model<'sm' | 'md' | 'lg'>('md');
 
   /**
-   * Disabled flag coming from template bindings.
+   * Whether the checkbox is disabled. Automatically bound by Signal Forms.
    */
-  readonly disabledBinding = input(false, { transform: booleanAttribute });
-
-  /**
-   * Disabled flag controlled by Angular forms APIs.
-   */
-  private readonly disabledFromControl = signal(false);
-
-  /**
-   * Combined disabled state exposed to the template bindings.
-   */
-  readonly isDisabled = computed(() => this.disabledBinding() || this.disabledFromControl());
+  readonly disabled = input(false, { transform: booleanAttribute });
 
   /**
    * Toggle the checkbox when the user clicks on it.
    */
   onToggle(): void {
-    if (this.isDisabled()) {
+    if (this.disabled()) {
       return;
     }
 
@@ -98,17 +86,9 @@ export class Checkbox implements FormValueControl<boolean> {
    * Prevent the page from scrolling when pressing the space key.
    */
   suppressSpace(event: Event): void {
-    if (!this.isDisabled()) {
+    if (!this.disabled()) {
       event.preventDefault();
     }
-  }
-
-  /**
-   * Toggle disabled state on the checkbox.
-   * @param isDisabled - Whether the control is disabled.
-   */
-  setDisabledState(isDisabled: boolean): void {
-    this.disabledFromControl.set(isDisabled);
   }
 
   /**
