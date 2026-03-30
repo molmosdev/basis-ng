@@ -46,10 +46,11 @@ if (lib === 'primitives') {
 
   // 3. Publish desde dist/primitives
   exec(
-    `cd ${distPath} && npm publish --access public ${releaseType === 'prerelease' ? '--tag next' : ''}`,
+    `npm publish --access public ${releaseType === 'prerelease' ? '--tag next' : ''}`,
+    { cwd: distPath },
     (err, stdout, stderr) => {
       if (err) {
-        console.error(`❌ npm publish failed: ${stderr}`);
+        console.error(`❌ npm publish failed: ${stderr || err.message}`);
         process.exit(1);
       }
       console.log(`✅ Published ${lib} v${newVersion}\n${stdout}`);
@@ -58,10 +59,11 @@ if (lib === 'primitives') {
 } else if (lib === 'styles') {
   const stylesPath = path.join(__dirname, 'libs', lib);
   exec(
-    `cd ${stylesPath} && npm publish --access public ${releaseType === 'prerelease' ? '--tag next' : ''}`,
+    `npm publish --access public ${releaseType === 'prerelease' ? '--tag next' : ''}`,
+    { cwd: stylesPath },
     (err, stdout, stderr) => {
       if (err) {
-        console.error(`❌ npm publish failed: ${stderr}`);
+        console.error(`❌ npm publish failed: ${stderr || err.message}`);
         process.exit(1);
       }
       console.log(`✅ Published ${lib} v${newVersion}\n${stdout}`);
