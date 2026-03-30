@@ -1,6 +1,5 @@
-import { NgTemplateOutlet } from '@angular/common';
-import { Component } from '@angular/core';
-import { Alert, Badge, Tab, Tabs } from '@basis-ng/primitives';
+import { Component, signal } from '@angular/core';
+import { Tabs, Tab, Alert } from '@basis-ng/primitives';
 import { provideIcons } from '@ng-icons/core';
 import { lucideRocket } from '@ng-icons/lucide';
 import { StepsButtons } from '../../shared/components/steps-buttons';
@@ -8,7 +7,8 @@ import { CodeBlock } from '../shared/components/code-block';
 
 @Component({
   selector: 'article[app-tabs-documentation]',
-  imports: [Tabs, Tab, CodeBlock, NgTemplateOutlet, StepsButtons, Badge, Alert],
+  standalone: true,
+  imports: [CodeBlock, Tabs, Tab, StepsButtons, Alert],
   template: `
     <app-steps-buttons
       [previous]="{ label: 'Switch', path: '/docs/components/switch' }"
@@ -18,188 +18,97 @@ import { CodeBlock } from '../shared/components/code-block';
       Components are in alpha Try them out! We'd love to hear your feedback! Expect breaking
       changes!
     </b-alert>
-    <h1 class="font-bold text-2xl flex gap-2 items-start">
-      Tabs
-      <span b-badge class="b-variant-outlined b-size-sm">New</span>
-    </h1>
+    <h1 class="font-bold text-2xl">Tabs</h1>
     <div class="flex flex-col gap-4">
-      <span>
-        The Tabs component provides a way to organize content into multiple views that can be
-        switched between. Built with signals for reactive state management and keyboard navigation
-        support.
-      </span>
+      <span>A collection of related content sections, only one of which is visible at a time.</span>
       <code-block [code]="angularImport" />
       <span>Include this to apply predefined styles. The component is headless without it.</span>
       <code-block [code]="stylesImport" />
-      <h2 class="font-semibold text-xl">Tabs properties</h2>
-      <div
-        class="overflow-x-auto overflow-hidden rounded-lg border border-gray-200 dark:border-neutral-900 mb-6"
-      >
-        <table class="table-auto w-full text-left text-sm">
-          <thead class="bg-gray-50 dark:bg-neutral-900">
-            <tr>
-              <th class="border-b border-gray-200 dark:border-neutral-900 px-4 py-2 font-semibold">
-                Prop
-              </th>
-              <th class="border-b border-gray-200 dark:border-neutral-900 px-4 py-2 font-semibold">
-                Type
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td
-                class="border-t border-gray-200 dark:border-neutral-900 px-4 py-2 font-display-mono whitespace-nowrap"
-              >
-                value
-              </td>
-              <td
-                class="border-t border-gray-200 dark:border-neutral-900 px-4 py-2 font-display-mono whitespace-nowrap"
-              >
-                <b class="font-bold">[]</b>
-                | ModelSignal&lt;string[]&gt;
-              </td>
-            </tr>
-            <tr>
-              <td
-                class="border-t border-gray-200 dark:border-neutral-900 px-4 py-2 font-display-mono whitespace-nowrap"
-              >
-                valueChange
-              </td>
-              <td
-                class="border-t border-gray-200 dark:border-neutral-900 px-4 py-2 font-display-mono whitespace-nowrap"
-              >
-                OutputEmitterRef&lt;string[]&gt;
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <h2 class="font-semibold text-xl">Tab properties</h2>
-      <div
-        class="overflow-x-auto overflow-hidden rounded-lg border border-gray-200 dark:border-neutral-900 mb-6"
-      >
-        <table class="table-auto w-full text-left text-sm">
-          <thead class="bg-gray-50 dark:bg-neutral-900">
-            <tr>
-              <th class="border-b border-gray-200 dark:border-neutral-900 px-4 py-2 font-semibold">
-                Prop
-              </th>
-              <th class="border-b border-gray-200 dark:border-neutral-900 px-4 py-2 font-semibold">
-                Type
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td
-                class="border-t border-gray-200 dark:border-neutral-900 px-4 py-2 font-display-mono whitespace-nowrap"
-              >
-                value
-              </td>
-              <td
-                class="border-t border-gray-200 dark:border-neutral-900 px-4 py-2 font-display-mono whitespace-nowrap"
-              >
-                <b class="font-bold">required</b>
-                | InputSignal&lt;string&gt;
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <h2 class="font-semibold text-xl">Keyboard Navigation</h2>
-      <span>
-        Use the arrow keys to navigate between tabs. Press Arrow Left to move to previous tab, Arrow
-        Right to move to next tab.
-      </span>
-      <h2 class="font-semibold text-xl">Sizes</h2>
-      <code-block [code]="sizesUsage" />
-      <div
-        class="border border-gray-200 dark:border-neutral-900 rounded-lg p-6 mb-6 flex flex-col gap-4 items-center"
-      >
-        <b-tabs [(value)]="sizesTab" class="b-size-sm">
-          <b-tab value="tab1">Small</b-tab>
-          <b-tab value="tab2">Small</b-tab>
-          <b-tab value="tab3">Small</b-tab>
-        </b-tabs>
-        <b-tabs [(value)]="sizesTab" class="b-size-md">
-          <b-tab value="tab1">Medium (default)</b-tab>
-          <b-tab value="tab2">Medium (default)</b-tab>
-          <b-tab value="tab3">Medium (default)</b-tab>
-        </b-tabs>
-        <b-tabs [(value)]="sizesTab" class="b-size-lg">
-          <b-tab value="tab1">Large</b-tab>
-          <b-tab value="tab2">Large</b-tab>
-          <b-tab value="tab3">Large</b-tab>
-        </b-tabs>
-      </div>
-      <h2 class="font-semibold text-xl">Rounded Full Pill Variant</h2>
-      <span>
-        Add the <code>b-rounded-full</code> class to the tabs container to render them with
-        pill-shaped rounded corners. This is useful for inner navigation bars.
-      </span>
-      <code-block [code]="roundedUsage" />
-      <div
-        class="border border-gray-200 dark:border-neutral-900 rounded-lg p-6 mb-6 flex flex-col gap-4 items-center"
-      >
-        <b-tabs [(value)]="roundedTab" class="b-rounded-full">
-          <b-tab value="tab1">Experience</b-tab>
-          <b-tab value="tab2">Education</b-tab>
-        </b-tabs>
-      </div>
+
       <h2 class="font-semibold text-xl">Basic Usage</h2>
       <code-block [code]="basicUsage" />
       <div
-        class="border border-gray-200 dark:border-neutral-900 rounded-lg p-6 mb-6 flex flex-col gap-4 items-center"
+        class="border border-gray-200 dark:border-neutral-900 rounded-lg p-8 mb-6 flex justify-center bg-surface"
       >
         <b-tabs [(value)]="selectedTab">
-          <b-tab value="tab1">Tab 1</b-tab>
-          <b-tab value="tab2">Tab 2</b-tab>
-          <b-tab value="tab3">Tab 3</b-tab>
+          <button b-tab value="tab1">Tab 1</button>
+          <button b-tab value="tab2">Tab 2</button>
+          <button b-tab value="tab3">Tab 3</button>
         </b-tabs>
-        @if (selectedTab[0] === 'tab1') {
-          <p>Tab 1 content</p>
-        }
-        @if (selectedTab[0] === 'tab2') {
-          <p>Tab 2 content</p>
-        }
-        @if (selectedTab[0] === 'tab3') {
-          <p>Tab 3 content</p>
-        }
       </div>
-      <h2 class="font-semibold text-xl">Lazy Loading Usage</h2>
-      <span>
-        Use
-        <code>ng-template</code>
-        to lazily load tab content.
-      </span>
-      <code-block [code]="lazyLoadingUsage" />
+
+      <h2 class="font-semibold text-xl">Rounded Full (Pill)</h2>
+      <p class="text-sm text-neutral-500 font-medium">
+        Use the <code>b-rounded-full</code> class for a pill-shaped design, perfect for navigation
+        actions.
+      </p>
+      <code-block [code]="roundedUsage" />
       <div
-        class="border border-gray-200 dark:border-neutral-900 rounded-lg p-6 mb-6 flex flex-col gap-4 items-center"
+        class="border border-gray-200 dark:border-neutral-900 rounded-lg p-8 mb-6 flex justify-center bg-surface"
       >
-        <b-tabs [(value)]="lazySelectedTab">
-          <b-tab value="tab1">Tab 1</b-tab>
-          <b-tab value="tab2">Tab 2</b-tab>
-          <b-tab value="tab3">Tab 3</b-tab>
+        <b-tabs [(value)]="roundedTab" class="b-rounded-full">
+          <button b-tab value="tab1">Experience</button>
+          <button b-tab value="tab2">Education</button>
         </b-tabs>
-        @if (lazySelectedTab[0] === 'tab1') {
-          <ng-container *ngTemplateOutlet="tab1Content" />
-        }
-        @if (lazySelectedTab[0] === 'tab2') {
-          <ng-container *ngTemplateOutlet="tab2Content" />
-        }
-        @if (lazySelectedTab[0] === 'tab3') {
-          <ng-container *ngTemplateOutlet="tab3Content" />
-        }
-        <ng-template #tab1Content>
-          <p>Lazy-loaded content for Tab 1</p>
-        </ng-template>
-        <ng-template #tab2Content>
-          <p>Lazy-loaded content for Tab 2</p>
-        </ng-template>
-        <ng-template #tab3Content>
-          <p>Lazy-loaded content for Tab 3</p>
-        </ng-template>
+      </div>
+
+      <h2 class="font-semibold text-xl">Sizes</h2>
+      <code-block [code]="sizesUsage" />
+      <div
+        class="border border-gray-200 dark:border-neutral-900 rounded-lg p-8 mb-6 flex flex-col gap-6 items-center bg-surface"
+      >
+        <b-tabs [(value)]="sizesTab" class="b-size-sm">
+          <button b-tab value="tab1">Small</button>
+          <button b-tab value="tab2">Small</button>
+          <button b-tab value="tab3">Small</button>
+        </b-tabs>
+        <b-tabs [(value)]="sizesTab" class="b-size-md">
+          <button b-tab value="tab1">Medium (default)</button>
+          <button b-tab value="tab2">Medium (default)</button>
+          <button b-tab value="tab3">Medium (default)</button>
+        </b-tabs>
+        <b-tabs [(value)]="sizesTab" class="b-size-lg">
+          <button b-tab value="tab1">Large</button>
+          <button b-tab value="tab2">Large</button>
+          <button b-tab value="tab3">Large</button>
+        </b-tabs>
+      </div>
+
+      <h2 class="font-semibold text-xl">Lazy Loading Content</h2>
+      <code-block [code]="lazyLoadingUsage" />
+      <div class="border border-gray-200 dark:border-neutral-900 rounded-lg p-8 mb-6 bg-surface">
+        <b-tabs [(value)]="lazySelectedTab">
+          <button b-tab value="tab1">Tab 1</button>
+          <button b-tab value="tab2">Tab 2</button>
+          <button b-tab value="tab3">Tab 3</button>
+        </b-tabs>
+
+        <div
+          class="mt-8 p-6 border border-gray-200 dark:border-neutral-900 rounded-lg bg-neutral-50 dark:bg-neutral-900/50 min-h-32"
+        >
+          @if (lazySelectedTab()[0] === 'tab1') {
+            <div class="animate-in fade-in slide-in-from-top-2 duration-300">
+              <h3 class="font-bold mb-2">Content for Tab 1</h3>
+              <p class="text-sm text-neutral-500">
+                This content is only rendered when Tab 1 is active.
+              </p>
+            </div>
+          } @else if (lazySelectedTab()[0] === 'tab2') {
+            <div class="animate-in fade-in slide-in-from-top-2 duration-300">
+              <h3 class="font-bold mb-2">Content for Tab 2</h3>
+              <p class="text-sm text-neutral-500">
+                This content is only rendered when Tab 2 is active.
+              </p>
+            </div>
+          } @else {
+            <div class="animate-in fade-in slide-in-from-top-2 duration-300">
+              <h3 class="font-bold mb-2">Content for Tab 3</h3>
+              <p class="text-sm text-neutral-500">
+                This content is only rendered when Tab 3 is active.
+              </p>
+            </div>
+          }
+        </div>
       </div>
     </div>
     <app-steps-buttons
@@ -213,73 +122,44 @@ import { CodeBlock } from '../shared/components/code-block';
   },
 })
 export class TabsDocumentation {
+  selectedTab = signal(['tab1']);
+  lazySelectedTab = signal(['tab1']);
+  sizesTab = signal(['tab1']);
+  roundedTab = signal(['tab1']);
+
   angularImport = `import { Tabs, Tab } from '@basis-ng/primitives' `;
   stylesImport = `@import '@basis-ng/styles/tabs';`;
+
   basicUsage = `<b-tabs [(value)]='selectedTab'>
-  <b-tab value='tab1'>Tab 1</b-tab>
-  <b-tab value='tab2'>Tab 2</b-tab>
-  <b-tab value='tab3'>Tab 3</b-tab>
-</b-tabs>
-
-@switch (selectedTab[0]) {
-  @case ('tab1') {
-    <p>Tab 1 content</p>
-  }
-  @case ('tab2') {
-    <p>Tab 2 content</p>
-  }
-  @case ('tab3') {
-    <p>Tab 3 content</p>
-  }
-}`;
-  selectedTab = ['tab2'];
-  lazySelectedTab = ['tab1'];
-  sizesTab = ['tab1'];
-  roundedTab = ['tab1'];
-  roundedUsage = `<b-tabs [(value)]='activeTab' class='b-rounded-full'>
-  <b-tab value='tab1'>Experience</b-tab>
-  <b-tab value='tab2'>Education</b-tab>
+  <button b-tab value='tab1'>Tab 1</button>
+  <button b-tab value='tab2'>Tab 2</button>
+  <button b-tab value='tab3'>Tab 3</button>
 </b-tabs>`;
+
+  roundedUsage = `<b-tabs [(value)]='activeTab' class='b-rounded-full'>
+  <button b-tab value='tab1'>Experience</button>
+  <button b-tab value='tab2'>Education</button>
+</b-tabs>`;
+
   lazyLoadingUsage = `<b-tabs [(value)]='lazySelectedTab'>
-  <b-tab value='tab1'>Tab 1</b-tab>
-  <b-tab value='tab2'>Tab 2</b-tab>
-  <b-tab value='tab3'>Tab 3</b-tab>
+  <button b-tab value='tab1'>Tab 1</button>
+  <button b-tab value='tab2'>Tab 2</button>
+  <button b-tab value='tab3'>Tab 3</button>
 </b-tabs>
 
-@switch (lazySelectedTab[0]) {
-  @case ('tab1') {
-    <ng-container *ngTemplateOutlet='tab1Content'></ng-container>
-  }
-  @case ('tab2') {
-    <ng-container *ngTemplateOutlet='tab2Content'></ng-container>
-  }
-  @case ('tab3') {
-    <ng-container *ngTemplateOutlet='tab3Content'></ng-container>
-  }
-}
+@if (lazySelectedTab()[0] === 'tab1') {
+  <div>Tab 1 Content</div>
+} ...`;
 
-<ng-template #tab1Content>
-  <p>Lazy-loaded content for Tab 1</p>
-</ng-template>
-<ng-template #tab2Content>
-  <p>Lazy-loaded content for Tab 2</p>
-</ng-template>
-<ng-template #tab3Content>
-  <p>Lazy-loaded content for Tab 3</p>
-</ng-template>`;
   sizesUsage = `<b-tabs [(value)]='sizesTab' class='b-size-sm'>
-  <b-tab value='tab1'>Small</b-tab>
-  <b-tab value='tab2'>Small</b-tab>
-  <b-tab value='tab3'>Small</b-tab>
+  <button b-tab value='tab1'>Small</button>
 </b-tabs>
+
 <b-tabs [(value)]='sizesTab' class='b-size-md'>
-  <b-tab value='tab1'>Medium (default)</b-tab>
-  <b-tab value='tab2'>Medium (default)</b-tab>
-  <b-tab value='tab3'>Medium (default)</b-tab>
+  <button b-tab value='tab1'>Medium (default)</button>
 </b-tabs>
+
 <b-tabs [(value)]='sizesTab' class='b-size-lg'>
-  <b-tab value='tab1'>Large</b-tab>
-  <b-tab value='tab2'>Large</b-tab>
-  <b-tab value='tab3'>Large</b-tab>
+  <button b-tab value='tab1'>Large</button>
 </b-tabs>`;
 }

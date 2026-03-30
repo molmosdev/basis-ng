@@ -7,7 +7,7 @@ import { Tab as AriaTab } from '@angular/aria/tabs';
  * A single tab within a tabs list.
  */
 @Component({
-  selector: 'b-tab',
+  selector: 'button[b-tab], [b-tab]',
   imports: [],
   hostDirectives: [
     {

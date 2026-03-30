@@ -20,7 +20,7 @@ b-tabs {
     /* Hover state (not selected) */
     &:hover:not([aria-selected='true']) {
       @apply bg-secondary/50 text-neutral-700 border-ring/80;
-      @apply dark:bg-white/[0.03] dark:text-neutral-200 dark:border-white/10;
+      @apply dark:bg-white/3 dark:text-neutral-200 dark:border-white/10;
     }
 
     /* Selected state */
