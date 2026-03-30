@@ -1,37 +1,38 @@
 b-tabs {
   /* Base container */
-  @apply flex items-center;
-  /* Container background only - no inset ring or shadow here; outlined effect is for selected tabs */
-  @apply bg-secondary/50 text-secondary-foreground;
-  @apply dark:bg-secondary-dark/30 dark:text-secondary-foreground-dark;
+  @apply inline-flex items-center transition-all duration-300;
 
-  /* Base md by default */
-  /* align container height with buttons/inputs */
-  @apply px-1 py-0 text-sm h-8 rounded-size-md gap-1;
+  /* Default Size: md */
+  @apply gap-1.5;
 
   /* Individual tab styling */
   b-tab {
-    @apply flex items-center justify-center cursor-pointer transition-colors duration-150;
-    /* inner tabs slightly smaller than the container (one size down) */
-    @apply px-2.5 py-0 text-sm h-6 rounded-size-sm gap-1.5;
+    /* Base Tab Settings */
+    @apply flex items-center justify-center gap-2 cursor-pointer select-none outline-none font-medium border transition-colors duration-200 ease-out;
 
-    /* Selected state */
-    &[aria-selected='true'] {
-      /* Highlight selected tab by using the background surface color so it stands out from the secondary container */
-      @apply bg-background text-secondary-foreground inset-ring-1 inset-ring-ring shadow-xs;
-      @apply dark:bg-background-dark/50 dark:text-secondary-foreground-dark dark:inset-ring-ring-dark shadow-xs;
-    }
+    /* Default size md */
+    @apply px-3.5 py-1 text-[14px] h-8 rounded-size-sm;
+
+    /* Default (Unselected) State */
+    @apply bg-transparent text-neutral-500 border-ring/80;
+    @apply dark:text-neutral-400 dark:border-white/10;
 
     /* Hover state (not selected) */
     &:hover:not([aria-selected='true']) {
-      @apply bg-secondary/10;
-      @apply dark:bg-secondary-dark/40;
+      @apply bg-secondary/50 text-neutral-700 border-ring/80;
+      @apply dark:bg-white/[0.03] dark:text-neutral-200 dark:border-white/10;
+    }
+
+    /* Selected state */
+    &[aria-selected='true'] {
+      @apply bg-secondary text-font border-ring shadow-[0_1px_2px_rgba(0,0,0,0.05)];
+      @apply dark:bg-white/10 dark:text-font-dark dark:border-white/10;
     }
 
     /* Focus state */
-    &:focus-visible {
-      @apply outline-2 outline-offset-2 outline-primary;
-      @apply dark:outline-primary-dark;
+    &.cdk-keyboard-focused {
+      @apply ring-2 ring-primary ring-offset-1;
+      @apply dark:ring-primary-dark dark:ring-offset-background-dark;
     }
 
     /* Disabled state */
@@ -42,53 +43,42 @@ b-tabs {
 
   /* Size variants */
   &.b-size-sm {
-    @apply px-0.5 py-0 text-xs h-6 rounded-size-sm gap-0.5;
-
-    /* Make inner tabs slightly smaller in the small variant to avoid overflow */
+    @apply gap-1;
     b-tab {
-      @apply px-1.5 py-0 text-xs h-5 rounded-size-sm gap-1;
-      box-sizing: border-box;
+      @apply px-2.5 py-0.5 text-xs h-7 gap-1.5 rounded-size-sm;
     }
   }
 
   &.b-size-md {
-    @apply px-1 py-0 text-sm h-8 rounded-size-md gap-1;
-
+    @apply gap-1.5;
     b-tab {
-      @apply px-2.5 py-0 text-sm h-6 rounded-size-sm gap-1.5;
+      @apply px-3.5 py-1 text-[14px] h-8 gap-2 rounded-size-sm;
     }
   }
 
   &.b-size-lg {
-    @apply px-1 py-0 text-base h-10 rounded-size-lg gap-1;
-
+    @apply gap-2;
     b-tab {
-      @apply px-3 py-0 text-base h-8 rounded-size-md gap-2;
+      @apply px-4 py-1.5 text-[15px] h-10 gap-2.5 rounded-size-md;
     }
   }
 
-  /* Rounded full - extra horizontal padding */
+  /* Rounded full variant */
   &.b-rounded-full {
-    @apply px-1;
-
     b-tab {
-      @apply px-4 rounded-size-md;
+      @apply rounded-full;
     }
-  }
 
-  &.b-size-sm.b-rounded-full {
-    @apply px-1;
-
-    b-tab {
-      @apply px-3 rounded-size-sm;
+    &.b-size-sm b-tab {
+      @apply px-3.5;
     }
-  }
 
-  &.b-size-lg.b-rounded-full {
-    @apply px-1;
+    &.b-size-md b-tab {
+      @apply px-4;
+    }
 
-    b-tab {
-      @apply px-5 rounded-size-lg;
+    &.b-size-lg b-tab {
+      @apply px-6;
     }
   }
 }

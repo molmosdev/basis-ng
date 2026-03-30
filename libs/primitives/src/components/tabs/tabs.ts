@@ -1,5 +1,6 @@
-import { Component, computed, contentChildren, effect, model, output } from '@angular/core';
+import { Component, contentChildren, effect, inject, model, output } from '@angular/core';
 import { Tab } from './tab';
+import { Tabs as AriaTabs, TabList } from '@angular/aria/tabs';
 
 /**
  * Tabs container that manages keyboard navigation and active tab state.
@@ -7,11 +8,20 @@ import { Tab } from './tab';
 @Component({
   selector: 'b-tabs',
   imports: [],
+  hostDirectives: [
+    {
+      directive: AriaTabs,
+    },
+    {
+      directive: TabList,
+      inputs: ['selectionMode', 'selectedTab'],
+      outputs: ['selectedTabChange'],
+    },
+  ],
   template: ` <ng-content /> `,
   host: {
-    '[attr.role]': '"tablist"',
-    '(keydown.arrowLeft)': 'previousTab()',
-    '(keydown.arrowRight)': 'nextTab()',
+    selectionMode: 'follow',
+    '(selectedTabChange)': 'onSelectionChange($event)',
   },
 })
 export class Tabs {
@@ -30,46 +40,34 @@ export class Tabs {
    */
   readonly tabs = contentChildren(Tab);
 
-  /**
-   * Computed index of currently active tab.
-   */
-  readonly activeIndex = computed(() => {
-    const currentValue = this.value()[0];
-    return this.tabs().findIndex((tab) => tab.value() === currentValue);
-  });
+  private tabList = inject(TabList);
 
   constructor() {
-    // Sync tab selection with child tabs
+    // Sync external model selection changes back to the underlying aria TabList
     effect(() => {
       const selectedValues = this.value();
-      this.tabs().forEach((tab) => {
-        tab.setSelected(selectedValues.includes(tab.value()));
-      });
+      if (selectedValues.length > 0) {
+        this.tabList.selectedTab.set(selectedValues[0]);
+      } else {
+        this.tabList.selectedTab.set(undefined);
+      }
     });
   }
 
-  /**
-   * Move highlight to the previous tab.
-   */
-  previousTab() {
-    const currentIndex = this.activeIndex();
-    const tabs = this.tabs();
-    if (tabs.length === 0) return;
+  onSelectionChange(selectedValue: string | undefined) {
+    if (selectedValue !== undefined) {
+      if (this.value()[0] !== selectedValue) {
+        this.value.set([selectedValue]);
+        this.valueChange.emit([selectedValue]);
 
-    const newIndex = currentIndex <= 0 ? tabs.length - 1 : currentIndex - 1;
-    this.selectTab(tabs[newIndex].value());
-  }
-
-  /**
-   * Move highlight to the next tab.
-   */
-  nextTab() {
-    const currentIndex = this.activeIndex();
-    const tabs = this.tabs();
-    if (tabs.length === 0) return;
-
-    const newIndex = currentIndex >= tabs.length - 1 ? 0 : currentIndex + 1;
-    this.selectTab(tabs[newIndex].value());
+        // If a tab is selected via keyboard logic in "follow" mode, trigger an actual click
+        // so that potential bindings like [routerLink] embedded in the tabs still activate naturally.
+        const tab = this.tabs().find((t) => t.value() === selectedValue);
+        if (tab?.el.nativeElement) {
+          tab.el.nativeElement.click();
+        }
+      }
+    }
   }
 
   /**

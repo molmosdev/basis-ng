@@ -133,6 +133,20 @@ import { CodeBlock } from '../shared/components/code-block';
           <b-tab value="tab3">Large</b-tab>
         </b-tabs>
       </div>
+      <h2 class="font-semibold text-xl">Rounded Full Pill Variant</h2>
+      <span>
+        Add the <code>b-rounded-full</code> class to the tabs container to render them with
+        pill-shaped rounded corners. This is useful for inner navigation bars.
+      </span>
+      <code-block [code]="roundedUsage" />
+      <div
+        class="border border-gray-200 dark:border-neutral-900 rounded-lg p-6 mb-6 flex flex-col gap-4 items-center"
+      >
+        <b-tabs [(value)]="roundedTab" class="b-rounded-full">
+          <b-tab value="tab1">Experience</b-tab>
+          <b-tab value="tab2">Education</b-tab>
+        </b-tabs>
+      </div>
       <h2 class="font-semibold text-xl">Basic Usage</h2>
       <code-block [code]="basicUsage" />
       <div
@@ -221,6 +235,11 @@ export class TabsDocumentation {
   selectedTab = ['tab2'];
   lazySelectedTab = ['tab1'];
   sizesTab = ['tab1'];
+  roundedTab = ['tab1'];
+  roundedUsage = `<b-tabs [(value)]='activeTab' class='b-rounded-full'>
+  <b-tab value='tab1'>Experience</b-tab>
+  <b-tab value='tab2'>Education</b-tab>
+</b-tabs>`;
   lazyLoadingUsage = `<b-tabs [(value)]='lazySelectedTab'>
   <b-tab value='tab1'>Tab 1</b-tab>
   <b-tab value='tab2'>Tab 2</b-tab>
