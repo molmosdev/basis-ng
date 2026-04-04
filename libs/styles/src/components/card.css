@@ -1,6 +1,6 @@
 b-card {
-  @apply flex flex-col gap-4 p-6 bg-background inset-ring-1 inset-ring-ring rounded-size-lg;
-  @apply dark:bg-background-dark dark:inset-ring-ring-dark;
+  @apply flex flex-col gap-4 p-6 bg-surface inset-ring-1 inset-ring-ring rounded-size-lg;
+  @apply dark:bg-surface-dark dark:inset-ring-ring-dark;
 
   b-card-header {
     @apply flex flex-col gap-1;

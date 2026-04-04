@@ -45,6 +45,7 @@ export class Theming {
 
   /* Light theme colors */
   --color-background: #fff;
+  --color-surface: #ffffff;
   --color-font: #0a0a0a;
   --color-primary: #0a0a0a;
   --color-primary-foreground: #fff;
@@ -62,6 +63,7 @@ export class Theming {
 
   /* Dark theme colors */
   --color-background-dark: #0a0a0a;
+  --color-surface-dark: #171717;
   --color-font-dark: #fff;
   --color-bg-dark: #0a0a0a;
   --color-primary-dark: #fff;

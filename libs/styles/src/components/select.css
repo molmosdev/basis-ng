@@ -81,8 +81,8 @@ b-select {
 
 ul[b-select-content] {
   @apply list-none box-border m-0 relative flex flex-col w-full overflow-y-auto;
-  @apply bg-background text-secondary-foreground inset-ring-1 inset-ring-ring shadow-xs;
-  @apply dark:bg-background-dark dark:text-secondary-foreground-dark dark:inset-ring-ring-dark shadow-xs;
+  @apply bg-surface text-secondary-foreground inset-ring-1 inset-ring-ring shadow-xs;
+  @apply dark:bg-surface-dark dark:text-secondary-foreground-dark dark:inset-ring-ring-dark shadow-xs;
 
   @apply outline-none;
   max-height: 320px;
@@ -94,8 +94,8 @@ ul[b-select-content] {
   }
 
   input[b-input] {
-    @apply outline-none sticky top-0 z-10 bg-background min-h-8;
-    @apply dark:bg-background-dark;
+    @apply outline-none sticky top-0 z-10 bg-surface min-h-8;
+    @apply dark:bg-surface-dark;
   }
 
   &.b-size-sm {

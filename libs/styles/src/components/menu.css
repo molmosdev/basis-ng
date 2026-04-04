@@ -149,6 +149,6 @@ b-menu {
 
 /* Overlay Styles (Popups) */
 .cdk-overlay-container b-menu {
-  @apply inset-ring-1 inset-ring-ring bg-background shadow-xs;
-  @apply dark:inset-ring-ring-dark/60 dark:bg-background-dark;
+  @apply inset-ring-1 inset-ring-ring bg-surface shadow-xs;
+  @apply dark:inset-ring-ring-dark/60 dark:bg-surface-dark;
 }
