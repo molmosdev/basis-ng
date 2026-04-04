@@ -1,5 +1,5 @@
 b-drawer {
-  @apply fixed z-999 flex box-border overflow-hidden rounded-2xl bg-surface text-font shadow-lg inset-ring-1 inset-ring-ring will-change-transform opacity-0 pointer-events-none dark:bg-surface-dark dark:text-font-dark dark:inset-ring-ring-dark;
+  @apply fixed z-999 flex box-border overflow-hidden rounded-2xl border border-ring bg-surface text-font shadow-lg will-change-transform opacity-0 pointer-events-none dark:border-ring-dark dark:bg-surface-dark dark:text-font-dark;
   transition:
     transform 0.5s cubic-bezier(0.32, 0.72, 0, 1),
     opacity 0.2s ease;
