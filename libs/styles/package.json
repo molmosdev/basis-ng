@@ -1,6 +1,6 @@
 {
   "name": "@basis-ng/styles",
-  "version": "0.0.1-alpha.192",
+  "version": "0.0.1-alpha.193",
   "description": "CSS foundation for @basis-ng/primitives components",
   "main": "src/index.css",
   "exports": {
@@ -23,7 +23,6 @@
     "./search": "./src/components/search.component.css",
     "./select": "./src/components/select.css",
     "./select-option": "./src/components/select-option.css",
-    "./sheet": "./src/components/sheet.css",
     "./spinner": "./src/components/spinner.css",
     "./switch": "./src/components/switch.css",
     "./tabs": "./src/components/tabs.css",

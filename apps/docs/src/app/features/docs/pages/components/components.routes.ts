@@ -143,14 +143,6 @@ export const componentsRoutes: Routes = [
     },
   },
   {
-    path: 'sheet',
-    loadComponent: () => import('./pages/sheet-documentation').then((c) => c.SheetDocumentation),
-    title: 'Sheet - Basis UI',
-    data: {
-      title: 'Sheet',
-    },
-  },
-  {
     path: 'spinner',
     loadComponent: () =>
       import('./pages/spinner-documentation').then((c) => c.SpinnerDocumentation),

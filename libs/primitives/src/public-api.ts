@@ -37,7 +37,6 @@ export * from './components/select/select-content';
 export * from './components/select/select-filter';
 export * from './components/select/select-trigger';
 export * from './components/select/select-value';
-export * from './components/sheet/sheet';
 export * from './components/spinner/spinner';
 export * from './components/switch/switch';
 export * from './components/tabs/tab';

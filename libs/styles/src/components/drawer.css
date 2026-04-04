@@ -1,34 +1,117 @@
 b-drawer {
-  @apply fixed bottom-0 left-0 right-0 mx-auto bg-background dark:bg-background-dark rounded-t-lg border border-secondary dark:border-secondary-dark border-b-0 flex flex-col z-[999] will-change-transform shadow-2xl touch-none select-none pt-10 box-border overflow-hidden h-1/2;
-  transition: transform 0.5s cubic-bezier(0.32, 0.72, 0, 1);
-  transform: translateY(100%);
+  @apply fixed z-999 flex box-border overflow-hidden rounded-2xl bg-background text-font shadow-lg inset-ring-1 inset-ring-ring will-change-transform opacity-0 pointer-events-none dark:bg-background-dark dark:text-font-dark dark:inset-ring-ring-dark;
+  transition:
+    transform 0.5s cubic-bezier(0.32, 0.72, 0, 1),
+    opacity 0.2s ease;
+
+  &.open,
+  &.dragging {
+    @apply opacity-100 pointer-events-auto;
+  }
+
+  &.bottom,
+  &.top {
+    @apply left-2 right-2 mx-auto max-h-[calc(100dvh-1rem)] min-h-0 h-1/2;
+  }
+
+  &.bottom {
+    @apply bottom-2;
+    transform: translateY(100%);
+  }
+
+  &.top {
+    @apply top-2;
+    transform: translateY(-100%);
+  }
+
+  &.left,
+  &.right {
+    @apply top-2 bottom-2 max-w-[calc(100vw-1rem)] w-[320px];
+  }
+
+  &.left {
+    @apply left-2;
+    transform: translateX(-100%);
+  }
+
+  &.right {
+    @apply right-2;
+    transform: translateX(100%);
+  }
 
   &.dragging {
     transition: none;
   }
 
   .drag-section {
-    @apply w-full h-10 flex items-center justify-center cursor-grab touch-none absolute top-0;
+    @apply absolute z-10 flex items-center justify-center touch-none;
 
     .drag-indicator {
-      @apply w-1/5 h-1 bg-secondary dark:bg-secondary-dark rounded;
+      @apply rounded-full bg-ring dark:bg-ring-dark;
     }
   }
 
   .drawer-content {
-    @apply flex-1 overflow-auto;
+    @apply flex-1 overflow-auto min-h-0;
+  }
+
+  &.bottom {
+    .drag-section {
+      @apply top-0 left-0 right-0 h-10 cursor-ns-resize;
+    }
+
+    .drag-indicator {
+      @apply h-1 w-1/5;
+    }
+
+    .drawer-content {
+      @apply pt-10;
+    }
+  }
+
+  &.top {
+    .drag-section {
+      @apply bottom-0 left-0 right-0 h-10 cursor-ns-resize;
+    }
+
+    .drag-indicator {
+      @apply h-1 w-1/5;
+    }
+
+    .drawer-content {
+      @apply pb-10;
+    }
+  }
+
+  &.left {
+    .drag-section {
+      @apply top-0 right-0 bottom-0 w-5 cursor-ew-resize;
+    }
+
+    .drag-indicator {
+      @apply h-1/5 w-1;
+    }
+
+    .drawer-content {
+      @apply pr-5;
+    }
+  }
+
+  &.right {
+    .drag-section {
+      @apply top-0 bottom-0 left-0 w-5 cursor-ew-resize;
+    }
+
+    .drag-indicator {
+      @apply h-1/5 w-1;
+    }
+
+    .drawer-content {
+      @apply pl-5;
+    }
   }
 }
 
 html:has(b-drawer.open) {
   overflow: hidden;
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
 }
