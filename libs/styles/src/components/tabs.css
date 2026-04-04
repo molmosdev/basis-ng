@@ -6,7 +6,7 @@ b-tabs {
   @apply gap-1.5;
 
   /* Individual tab styling */
-  b-tab {
+  [b-tab] {
     /* Base Tab Settings */
     @apply flex items-center justify-center gap-2 cursor-pointer select-none outline-none font-medium border transition-colors duration-200 ease-out;
 
@@ -44,40 +44,40 @@ b-tabs {
   /* Size variants */
   &.b-size-sm {
     @apply gap-1;
-    b-tab {
+    [b-tab] {
       @apply px-2.5 py-0.5 text-xs h-7 gap-1.5 rounded-size-sm;
     }
   }
 
   &.b-size-md {
     @apply gap-1.5;
-    b-tab {
+    [b-tab] {
       @apply px-3.5 py-1 text-[14px] h-8 gap-2 rounded-size-sm;
     }
   }
 
   &.b-size-lg {
     @apply gap-2;
-    b-tab {
+    [b-tab] {
       @apply px-4 py-1.5 text-[15px] h-10 gap-2.5 rounded-size-md;
     }
   }
 
   /* Rounded full variant */
   &.b-rounded-full {
-    b-tab {
+    [b-tab] {
       @apply rounded-full;
     }
 
-    &.b-size-sm b-tab {
+    &.b-size-sm [b-tab] {
       @apply px-3.5;
     }
 
-    &.b-size-md b-tab {
+    &.b-size-md [b-tab] {
       @apply px-4;
     }
 
-    &.b-size-lg b-tab {
+    &.b-size-lg [b-tab] {
       @apply px-6;
     }
   }
