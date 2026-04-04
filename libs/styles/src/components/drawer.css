@@ -34,8 +34,10 @@ b-drawer {
       @apply h-1 w-1/5;
     }
 
-    .drawer-content {
-      @apply pt-10;
+    &.draggable {
+      .drawer-content {
+        @apply pt-10;
+      }
     }
   }
 
@@ -52,8 +54,10 @@ b-drawer {
       @apply h-1 w-1/5;
     }
 
-    .drawer-content {
-      @apply pb-10;
+    &.draggable {
+      .drawer-content {
+        @apply pb-10;
+      }
     }
   }
 
@@ -70,8 +74,10 @@ b-drawer {
       @apply h-1/5 w-1;
     }
 
-    .drawer-content {
-      @apply pr-5;
+    &.draggable {
+      .drawer-content {
+        @apply pr-5;
+      }
     }
   }
 
@@ -88,8 +94,10 @@ b-drawer {
       @apply h-1/5 w-1;
     }
 
-    .drawer-content {
-      @apply pl-5;
+    &.draggable {
+      .drawer-content {
+        @apply pl-5;
+      }
     }
   }
 

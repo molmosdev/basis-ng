@@ -32,6 +32,7 @@ import { Direction } from '../../types/direction.type';
   `,
   host: {
     '[class.bottom]': 'side() === "bottom"',
+    '[class.draggable]': 'draggable()',
     '[class.dragging]': 'isDragging()',
     '[class.left]': 'side() === "left"',
     '[class.open]': 'isOpen()',
