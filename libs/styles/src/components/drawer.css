@@ -10,7 +10,7 @@ b-drawer {
   }
 
   .drag-section {
-    @apply absolute z-10 flex items-center justify-center touch-none;
+    @apply absolute z-10 flex items-center justify-center touch-none bg-surface dark:bg-surface-dark;
 
     .drag-indicator {
       @apply rounded-full bg-ring dark:bg-ring-dark;
