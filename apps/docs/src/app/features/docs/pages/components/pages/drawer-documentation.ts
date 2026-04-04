@@ -10,7 +10,7 @@ import { CodeBlock } from '../shared/components/code-block';
   imports: [CodeBlock, Drawer, Button, StepsButtons, Alert],
   template: `
     <app-steps-buttons
-      [previous]="{ label: 'Dialog', path: '/docs/components/dialog' }"
+      [previous]="{ label: 'Backdrop', path: '/docs/components/backdrop' }"
       [next]="{ label: 'Input', path: '/docs/components/input' }"
     />
     <b-alert icon="lucideRocket" title="Components are in alpha">
@@ -130,6 +130,12 @@ import { CodeBlock } from '../shared/components/code-block';
         example, a right drawer renders the handle on its left edge. When
         <strong>draggable</strong> is false, the handle is hidden and drag-to-close is disabled.
       </span>
+      <h2 class="font-semibold text-xl">Sizing</h2>
+      <span>
+        Use CSS variables on <strong>b-drawer</strong> to customize the panel size.
+        <strong>--b-drawer-height</strong> affects top and bottom drawers, and
+        <strong>--b-drawer-width</strong> affects left and right drawers.
+      </span>
       <h2 class="font-semibold text-xl">Basic Usage</h2>
       <code-block [code]="basicUsage" />
       <div
@@ -148,7 +154,7 @@ import { CodeBlock } from '../shared/components/code-block';
         class="border border-gray-200 dark:border-neutral-900 rounded-lg p-6 mb-6 flex flex-col items-center justify-center gap-4"
       >
         <button b-button (click)="topDrawerOpen.set(true)">Open Top Drawer</button>
-        <b-drawer [(isOpen)]="topDrawerOpen" [side]="'top'" class="h-[40dvh]">
+        <b-drawer [(isOpen)]="topDrawerOpen" [side]="'top'" style="--b-drawer-height: 40dvh">
           <div class="flex h-full items-center justify-center p-6 text-center">
             This drawer opens from the top and places the drag handle at the bottom edge.
           </div>
@@ -184,10 +190,10 @@ import { CodeBlock } from '../shared/components/code-block';
           [(isOpen)]="customDrawerOpen"
           [side]="'right'"
           [closeThreshold]="45"
-          class="w-[500px]!"
+          style="--b-drawer-width: 500px"
         >
           <div class="flex h-full items-center justify-center p-6 text-center">
-            Width and height can still be customized with utility classes or inline styles.
+            Width and height can be customized with drawer CSS variables.
           </div>
         </b-drawer>
       </div>
@@ -206,7 +212,7 @@ import { CodeBlock } from '../shared/components/code-block';
       </div>
     </div>
     <app-steps-buttons
-      [previous]="{ label: 'Dialog', path: '/docs/components/dialog' }"
+      [previous]="{ label: 'Backdrop', path: '/docs/components/backdrop' }"
       [next]="{ label: 'Input', path: '/docs/components/input' }"
     />
   `,
@@ -225,7 +231,7 @@ export class DrawerDocumentation {
   </div>
 </b-drawer>`;
   topUsage = `<button b-button (click)="isOpen = true">Open Top Drawer</button>
-<b-drawer [(isOpen)]="isOpen" [side]="'top'" class="h-[40dvh]">
+<b-drawer [(isOpen)]="isOpen" [side]="'top'" style="--b-drawer-height: 40dvh">
   <div class="flex h-full items-center justify-center p-6 text-center">
     This drawer opens from the top.
   </div>
@@ -249,7 +255,7 @@ export class DrawerDocumentation {
   [(isOpen)]="isOpen"
   [side]="'right'"
   [closeThreshold]="45"
-  class="w-[500px]!"
+  style="--b-drawer-width: 500px"
 >
   <div class="flex h-full items-center justify-center p-6 text-center">
     This drawer uses a custom width and close threshold.

@@ -25,6 +25,7 @@ import { Direction } from '../../types/direction.type';
         <div class="drag-indicator"></div>
       </div>
     }
+
     <div class="drawer-content" (click)="$event.stopPropagation()">
       <ng-content />
     </div>
@@ -108,17 +109,15 @@ export class Drawer {
 
     const target = event.target as HTMLElement;
 
-    // Check if click is inside the drawer
     if (this.el.nativeElement.contains(target)) {
       return;
     }
 
-    // Check if click is inside a CDK overlay (select dropdown, dialogs, etc.)
     if (target.closest('.cdk-overlay-container')) {
       return;
     }
 
-    this.close();
+    this.requestClose();
   }
 
   /**
@@ -178,7 +177,7 @@ export class Drawer {
    */
   snapToOpenOrClose(): void {
     if (this.dragProgress() > this.closeThreshold()) {
-      this.close();
+      this.requestClose();
     } else {
       this.isOpen.set(true);
     }
@@ -187,7 +186,7 @@ export class Drawer {
   /**
    * Closes the drawer and emits the close event.
    */
-  private close(): void {
+  requestClose(): void {
     this.isOpen.set(false);
     this.closeSheet.emit();
   }

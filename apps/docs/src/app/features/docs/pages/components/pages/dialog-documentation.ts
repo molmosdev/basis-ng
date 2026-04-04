@@ -37,7 +37,7 @@ import { CodeBlock } from '../shared/components/code-block';
         label: 'Checkbox',
         path: '/docs/components/checkbox',
       }"
-      [next]="{ label: 'Drawer', path: '/docs/components/drawer' }"
+      [next]="{ label: 'Backdrop', path: '/docs/components/backdrop' }"
     />
     <b-alert icon="lucideRocket" title="Components are in alpha">
       Components are in alpha Try them out! We'd love to hear your feedback! Expect breaking

@@ -15,6 +15,16 @@ export const componentsRoutes: Routes = [
     },
   },
   {
+    path: 'backdrop',
+    loadComponent: () =>
+      import('./pages/backdrop-documentation').then((c) => c.BackdropDocumentation),
+    title: 'Backdrop - Basis UI',
+    data: {
+      title: 'Backdrop',
+      badge: 'New',
+    },
+  },
+  {
     path: 'badge',
     loadComponent: () => import('./pages/badge-documentation').then((c) => c.BadgeDocumentation),
     title: 'Badge - Basis UI',
@@ -80,6 +90,7 @@ export const componentsRoutes: Routes = [
     title: 'Drawer - Basis UI',
     data: {
       title: 'Drawer',
+      badge: 'Updated',
     },
   },
   {
@@ -140,6 +151,16 @@ export const componentsRoutes: Routes = [
     data: {
       title: 'Select',
       badge: 'Updated',
+    },
+  },
+  {
+    path: 'skeleton',
+    loadComponent: () =>
+      import('./pages/skeleton-documentation').then((c) => c.SkeletonDocumentation),
+    title: 'Skeleton - Basis UI',
+    data: {
+      title: 'Skeleton',
+      badge: 'New',
     },
   },
   {

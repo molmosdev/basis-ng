@@ -16,7 +16,7 @@ import { utilitiesRoutes } from '../../features/docs/pages/utilities/utilities.r
   selector: 'app-routes',
   imports: [Menu, MenuItemRadio, RouterLink, RouterLinkActive, Badge],
   template: `
-    <b-menu class="b-size-md">
+    <b-menu class="b-size-md w-full">
       <span
         class="opacity-70 mb-1 pl-1 font-display-mono"
         [class]="!isMobile() ? 'text-sm' : 'text-md'"
@@ -28,9 +28,13 @@ import { utilitiesRoutes } from '../../features/docs/pages/utilities/utilities.r
         @if (route.data) {
           <button
             b-menu-item-radio
-            [routerLink]="route.path"
+            [routerLink]="isMobile() ? null : route.path"
             [routerLinkActive]="['b-active']"
-            (click)="navigationEmitter.emit()"
+            (click)="
+              isMobile()
+                ? handleRouteClick($event, documentationPath(route.path))
+                : navigationEmitter.emit()
+            "
           >
             {{ route.data['title'] }}
             @if (route.data['badge']) {
@@ -54,9 +58,9 @@ import { utilitiesRoutes } from '../../features/docs/pages/utilities/utilities.r
           @let path = '/docs/components/' + route.path;
           <button
             b-menu-item-radio
-            [routerLink]="path"
+            [routerLink]="isMobile() ? null : path"
             [routerLinkActive]="['b-active']"
-            (click)="navigationEmitter.emit()"
+            (click)="isMobile() ? handleRouteClick($event, path) : navigationEmitter.emit()"
           >
             {{ route.data['title'] }}
             @if (route.data['badge']) {
@@ -73,9 +77,9 @@ import { utilitiesRoutes } from '../../features/docs/pages/utilities/utilities.r
           @let path = '/docs/utilities/' + route.path;
           <button
             b-menu-item-radio
-            [routerLink]="path"
+            [routerLink]="isMobile() ? null : path"
             [routerLinkActive]="['b-active']"
-            (click)="navigationEmitter.emit()"
+            (click)="isMobile() ? handleRouteClick($event, path) : navigationEmitter.emit()"
           >
             {{ route.data['title'] }}
             @if (route.data['new']) {
@@ -87,11 +91,15 @@ import { utilitiesRoutes } from '../../features/docs/pages/utilities/utilities.r
     </b-menu>
   `,
   host: {
-    class: 'max-h-[calc(100vh-5rem)] overflow-y-scroll sticky top-20 scroll-0 no-scrollbar px-6.5',
-    '[class]': 'isMobile() ? "pb-6.5" : "pb-4"',
+    class: 'block box-border min-w-0 no-scrollbar',
+    '[class]':
+      'isMobile() ? "h-full w-full overflow-y-auto px-4 pb-6 pt-3" : "sticky top-20 w-[280px] shrink-0 self-start max-h-[calc(100vh-5rem)] overflow-y-auto px-6.5 pb-4"',
   },
 })
 export class Routes implements OnInit {
+  private readonly mobileRouteTransitionDelay = 300;
+  private pendingMobileNavigationTimeout: number | null = null;
+
   responsiveManager = inject(ResponsiveManager);
   readonly isMobile = computed(() => this.responsiveManager.currentDevice() === 'mobile');
   navigationEmitter = output<void>();
@@ -129,5 +137,42 @@ export class Routes implements OnInit {
         this.path.set(event.urlAfterRedirects);
       }
     });
+  }
+
+  handleRouteClick(event: MouseEvent, targetPath: string) {
+    this.clearPendingMobileNavigation();
+
+    event.preventDefault();
+
+    const normalizedPath = this.normalizePath(targetPath);
+
+    if (this.router.url === normalizedPath) {
+      this.navigationEmitter.emit();
+      return;
+    }
+
+    this.navigationEmitter.emit();
+
+    this.pendingMobileNavigationTimeout = window.setTimeout(() => {
+      this.pendingMobileNavigationTimeout = null;
+      void this.router.navigateByUrl(normalizedPath);
+    }, this.mobileRouteTransitionDelay);
+  }
+
+  documentationPath(path: string | undefined) {
+    return this.normalizePath(`/docs/${path || ''}`);
+  }
+
+  private normalizePath(path: string) {
+    return path.replace(/\/+/g, '/');
+  }
+
+  private clearPendingMobileNavigation() {
+    if (this.pendingMobileNavigationTimeout === null) {
+      return;
+    }
+
+    window.clearTimeout(this.pendingMobileNavigationTimeout);
+    this.pendingMobileNavigationTimeout = null;
   }
 }

@@ -51,6 +51,7 @@
 }
 
 @import './components/alert.css';
+@import './components/backdrop.css';
 @import './components/badge.css';
 @import './components/drawer.css';
 @import './components/button-group.css';
@@ -64,6 +65,7 @@
 @import './components/row-item.css';
 @import './components/row.css';
 @import './components/select.css';
+@import './components/skeleton.css';
 @import './components/command.css';
 @import './components/command-options.css';
 @import './components/option.css';

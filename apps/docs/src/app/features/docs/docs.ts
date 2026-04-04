@@ -4,11 +4,12 @@ import { RouterOutlet } from '@angular/router';
 import { Button, Drawer, ResponsiveManager } from '@basis-ng/primitives';
 import { NgIcon, provideIcons } from '@ng-icons/core';
 import { lucideTelescope } from '@ng-icons/lucide';
+import { Backdrop } from '../../../../../../libs/primitives/src/public-api';
 import { Routes } from '../../core/components/routes';
 
 @Component({
   selector: 'app-documentation',
-  imports: [Routes, RouterOutlet, NgTemplateOutlet, Drawer, Button, NgIcon],
+  imports: [Routes, RouterOutlet, NgTemplateOutlet, Backdrop, Drawer, Button, NgIcon],
   template: `
     @if (isMobile()) {
       <button
@@ -19,9 +20,11 @@ import { Routes } from '../../core/components/routes';
         <ng-icon name="lucideTelescope" size="22" color="currentColor" cdkDragHandle />
         Explore
       </button>
-      <b-drawer [(isOpen)]="drawerOpen" class="h-[60dvh]">
-        <ng-container *ngTemplateOutlet="menu" />
-      </b-drawer>
+      <b-backdrop [(isOpen)]="drawerOpen" [maxOpacity]="0.18">
+        <b-drawer [(isOpen)]="drawerOpen" style="--b-drawer-height: 60dvh">
+          <ng-container *ngTemplateOutlet="menu" />
+        </b-drawer>
+      </b-backdrop>
     } @else {
       <ng-container *ngTemplateOutlet="menu" />
     }

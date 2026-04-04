@@ -10,7 +10,7 @@ import { CodeBlock } from '../shared/components/code-block';
   imports: [CodeBlock, Spinner, Button, StepsButtons, Alert],
   template: `
     <app-steps-buttons
-      [previous]="{ label: 'Select', path: '/docs/components/select' }"
+      [previous]="{ label: 'Skeleton', path: '/docs/components/skeleton' }"
       [next]="{ label: 'Switch', path: '/docs/components/switch' }"
     />
     <b-alert icon="lucideRocket" title="Components are in alpha">
@@ -111,7 +111,7 @@ import { CodeBlock } from '../shared/components/code-block';
       </div>
     </div>
     <app-steps-buttons
-      [previous]="{ label: 'Select', path: '/docs/components/select' }"
+      [previous]="{ label: 'Skeleton', path: '/docs/components/skeleton' }"
       [next]="{ label: 'Switch', path: '/docs/components/switch' }"
     />
   `,

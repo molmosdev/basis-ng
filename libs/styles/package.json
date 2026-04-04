@@ -1,11 +1,12 @@
 {
   "name": "@basis-ng/styles",
-  "version": "0.0.1-alpha.195",
+  "version": "0.0.1-alpha.197",
   "description": "CSS foundation for @basis-ng/primitives components",
   "main": "src/index.css",
   "exports": {
     ".": "./src/index.css",
     "./alert": "./src/components/alert.css",
+    "./backdrop": "./src/components/backdrop.css",
     "./badge": "./src/components/badge.css",
     "./drawer": "./src/components/drawer.css",
     "./button-group": "./src/components/button-group.css",
@@ -23,6 +24,7 @@
     "./search": "./src/components/search.component.css",
     "./select": "./src/components/select.css",
     "./select-option": "./src/components/select-option.css",
+    "./skeleton": "./src/components/skeleton.css",
     "./spinner": "./src/components/spinner.css",
     "./switch": "./src/components/switch.css",
     "./tabs": "./src/components/tabs.css",
