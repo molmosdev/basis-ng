@@ -1,10 +1,5 @@
 import { Component, signal } from '@angular/core';
-import {
-  Alert,
-  Backdrop,
-  Button,
-  Drawer,
-} from '../../../../../../../../../libs/primitives/src/public-api';
+import { Alert, Backdrop, Button, Drawer } from '@basis-ng/primitives';
 import { provideIcons } from '@ng-icons/core';
 import { lucideRocket } from '@ng-icons/lucide';
 import { StepsButtons } from '../../shared/components/steps-buttons';

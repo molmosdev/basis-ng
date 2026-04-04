@@ -7,7 +7,7 @@ import {
   CardHeader,
   CardTitle,
   Skeleton,
-} from '../../../../../../../../../libs/primitives/src/public-api';
+} from '@basis-ng/primitives';
 import { provideIcons } from '@ng-icons/core';
 import { lucideRocket } from '@ng-icons/lucide';
 import { StepsButtons } from '../../shared/components/steps-buttons';
