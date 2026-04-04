@@ -1,0 +1,46 @@
+basis-ng is an Angular UI library composed of two main packages:
+- @basis-ng/primitives: standalone Angular components, directives, pipes, and services
+- @basis-ng/styles: optional style layer for those primitives
+
+Quick usage rules:
+- Install both packages when you want styled components: npm install @basis-ng/primitives @basis-ng/styles
+- Components are standalone and imported directly into Angular component imports arrays
+- Most component selectors use the b- prefix, for example b-drawer, button[b-button], b-alert
+- Components are intentionally headless without the matching style import
+- Global styles can be imported with @import '@basis-ng/styles';
+- Component styles can be imported individually, for example @import '@basis-ng/styles/drawer';
+- Prefer the component documentation pages from the docs site as the canonical usage examples
+
+Public references:
+- LLM-focused reference: https://basis.ng/ai-reference.md
+- Component documentation lives under https://basis.ng/docs/components/*
+
+Important patterns:
+- Use Angular signals for local state in examples
+- Use input()/output()/model() APIs instead of decorator-based inputs and outputs
+- Use native Angular control flow (@if, @for, @switch)
+- When in doubt, prefer examples already present in the docs app over inventing new APIs
+
+Documented component routes currently include:
+- https://basis.ng/docs/components/alert
+- https://basis.ng/docs/components/badge
+- https://basis.ng/docs/components/button
+- https://basis.ng/docs/components/card
+- https://basis.ng/docs/components/calendar
+- https://basis.ng/docs/components/checkbox
+- https://basis.ng/docs/components/dialog
+- https://basis.ng/docs/components/drawer
+- https://basis.ng/docs/components/input
+- https://basis.ng/docs/components/input-group
+- https://basis.ng/docs/components/menu
+- https://basis.ng/docs/components/otp
+- https://basis.ng/docs/components/range
+- https://basis.ng/docs/components/select
+- https://basis.ng/docs/components/spinner
+- https://basis.ng/docs/components/switch
+- https://basis.ng/docs/components/tabs
+- https://basis.ng/docs/components/textarea
+- https://basis.ng/docs/components/textarea-group
+- https://basis.ng/docs/components/tooltip
+- https://basis.ng/docs/components/popover
+- https://basis.ng/docs/components/tree

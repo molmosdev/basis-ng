@@ -45,3 +45,13 @@ You are an expert in TypeScript, Angular, and scalable web application developme
 - Design services around a single responsibility
 - Use the `providedIn: 'root'` option for singleton services
 - Use the `inject()` function instead of constructor injection
+
+## basis-ng Usage
+
+- When suggesting or writing usage for basis-ng, prefer exported APIs from `libs/primitives/src/public-api.ts`
+- Treat `@basis-ng/primitives` as the behavior package and `@basis-ng/styles` as the style package
+- Assume components are standalone and should be imported directly into Angular `imports`
+- Mention the relevant style import when showing component usage unless the consumer already imports `@basis-ng/styles` globally
+- Prefer the docs app examples under `apps/docs/src/app/features/docs/pages/components/pages` over inventing new APIs
+- For component discovery and installation guidance, consult `apps/docs/public/ai-reference.md` and `apps/docs/public/llms.txt`
+- Do not reference the removed `Sheet` component; use `Drawer` for side and bottom/top panel patterns
