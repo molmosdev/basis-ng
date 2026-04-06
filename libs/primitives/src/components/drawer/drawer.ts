@@ -2,11 +2,13 @@ import {
   booleanAttribute,
   Component,
   computed,
+  effect,
   ElementRef,
   HostListener,
   inject,
   input,
   model,
+  OnDestroy,
   output,
   signal,
 } from '@angular/core';
@@ -41,7 +43,7 @@ import { Direction } from '../../types/direction.type';
     '[style.transform]': 'transform()',
   },
 })
-export class Drawer {
+export class Drawer implements OnDestroy {
   /**
    * Model indicating whether the drawer is open.
    */
@@ -56,6 +58,13 @@ export class Drawer {
    * Whether the drawer can be dragged closed.
    */
   readonly draggable = input(true, { transform: booleanAttribute });
+
+  /**
+   * Whether clicking outside closes the drawer.
+   * When false, a full-viewport blocking overlay is mounted at body level
+   * so outside clicks (and pointer events) cannot reach other elements.
+   */
+  readonly closable = input(true, { transform: booleanAttribute });
 
   /**
    * Emitted when the sheet is closed.
@@ -100,6 +109,26 @@ export class Drawer {
   private readonly el = inject<ElementRef<HTMLElement>>(ElementRef);
 
   /**
+   * Body-level blocking overlay used when closable=false to prevent
+   * pointer events from reaching elements behind the open drawer.
+   */
+  private blockingOverlay: HTMLDivElement | null = null;
+
+  constructor() {
+    effect(() => {
+      if (this.isOpen() && !this.closable()) {
+        this.mountBlockingOverlay();
+      } else {
+        this.removeBlockingOverlay();
+      }
+    });
+  }
+
+  ngOnDestroy(): void {
+    this.removeBlockingOverlay();
+  }
+
+  /**
    * Close the drawer when clicking outside of it.
    * The stopPropagation in the drawer-content prevents clicks inside from closing it.
    * @param event - Click event.
@@ -107,6 +136,7 @@ export class Drawer {
   @HostListener('document:click', ['$event'])
   closeOnOutsideClick(event: Event) {
     if (!this.isOpen()) return;
+    if (!this.closable()) return;
 
     const target = event.target as HTMLElement;
 
@@ -228,5 +258,34 @@ export class Drawer {
    */
   private getCloseDirection(): number {
     return this.side() === 'top' || this.side() === 'left' ? -1 : 1;
+  }
+
+  /**
+   * Mounts a transparent full-viewport div at body level that captures all
+   * pointer events, preventing them from reaching elements behind the drawer.
+   */
+  private mountBlockingOverlay(): void {
+    if (this.blockingOverlay) return;
+
+    const div = document.createElement('div');
+    div.style.cssText = 'position:fixed;inset:0;z-index:998;';
+    div.addEventListener('pointerdown', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+    });
+    div.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+    });
+    document.body.appendChild(div);
+    this.blockingOverlay = div;
+  }
+
+  /**
+   * Removes the blocking overlay from the DOM if present.
+   */
+  private removeBlockingOverlay(): void {
+    this.blockingOverlay?.remove();
+    this.blockingOverlay = null;
   }
 }

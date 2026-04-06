@@ -90,6 +90,18 @@ import { CodeBlock } from '../shared/components/code-block';
                 <strong>boolean</strong>
               </td>
             </tr>
+            <tr>
+              <td
+                class="border-t border-gray-200 dark:border-neutral-900 px-4 py-2 font-display-mono whitespace-nowrap"
+              >
+                closable
+              </td>
+              <td
+                class="border-t border-gray-200 dark:border-neutral-900 px-4 py-2 font-display-mono whitespace-nowrap"
+              >
+                <strong>boolean</strong>
+              </td>
+            </tr>
           </tbody>
         </table>
       </div>
@@ -210,6 +222,26 @@ import { CodeBlock } from '../shared/components/code-block';
           </div>
         </b-drawer>
       </div>
+      <h2 class="font-semibold text-xl">Non-Closable</h2>
+      <span>
+        When <strong>closable</strong> is false, clicking outside the drawer is fully blocked —
+        pointer events do not reach elements behind it and the drawer stays open. Use an explicit
+        close action inside the content to dismiss it.
+      </span>
+      <code-block [code]="nonClosableUsage" />
+      <div
+        class="border border-gray-200 dark:border-neutral-900 rounded-lg p-6 mb-6 flex flex-col items-center justify-center gap-4"
+      >
+        <button b-button (click)="nonClosableDrawerOpen.set(true)">Open Non-Closable Drawer</button>
+        <b-drawer [(isOpen)]="nonClosableDrawerOpen" [closable]="false" [draggable]="false">
+          <div class="flex h-full flex-col items-center justify-center gap-4 p-6 text-center">
+            <span>Clicking outside does nothing. Use the button below to close.</span>
+            <button b-button class="b-variant-secondary" (click)="nonClosableDrawerOpen.set(false)">
+              Close
+            </button>
+          </div>
+        </b-drawer>
+      </div>
     </div>
     <app-steps-buttons
       [previous]="{ label: 'Backdrop', path: '/docs/components/backdrop' }"
@@ -267,10 +299,18 @@ export class DrawerDocumentation {
     This drawer does not render the drag handle and cannot be dragged.
   </div>
 </b-drawer>`;
+  nonClosableUsage = `<button b-button (click)="isOpen = true">Open Non-Closable Drawer</button>
+<b-drawer [(isOpen)]="isOpen" [closable]="false" [draggable]="false">
+  <div class="flex h-full flex-col items-center justify-center gap-4 p-6 text-center">
+    <span>Clicking outside does nothing.</span>
+    <button b-button (click)="isOpen = false">Close</button>
+  </div>
+</b-drawer>`;
   readonly bottomDrawerOpen = signal(false);
   readonly topDrawerOpen = signal(false);
   readonly leftDrawerOpen = signal(false);
   readonly rightDrawerOpen = signal(false);
   readonly customDrawerOpen = signal(false);
   readonly lockedDrawerOpen = signal(false);
+  readonly nonClosableDrawerOpen = signal(false);
 }
