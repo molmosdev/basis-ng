@@ -1,5 +1,5 @@
 b-drawer {
-  @apply fixed z-999 flex box-border overflow-hidden rounded-2xl border border-ring bg-surface text-font shadow-lg will-change-transform opacity-0 pointer-events-none dark:border-ring-dark dark:bg-surface-dark dark:text-font-dark;
+  @apply fixed z-999 flex box-border overflow-hidden border border-ring bg-surface text-font shadow-lg will-change-transform opacity-0 pointer-events-none dark:border-ring-dark dark:bg-surface-dark dark:text-font-dark;
   transition:
     transform 0.5s cubic-bezier(0.32, 0.72, 0, 1),
     opacity 0.2s ease;
@@ -22,8 +22,8 @@ b-drawer {
   }
 
   &.bottom {
-    @apply left-2 right-2 bottom-2 mx-auto min-h-0;
-    max-height: var(--b-drawer-max-height, calc(100dvh - 1rem));
+    @apply left-0 right-0 bottom-0 mx-auto min-h-0 rounded-t-2xl;
+    max-height: var(--b-drawer-max-height, 100dvh);
     height: var(--b-drawer-height, 50%);
 
     .drag-section {
@@ -42,8 +42,8 @@ b-drawer {
   }
 
   &.top {
-    @apply left-2 right-2 top-2 mx-auto min-h-0;
-    max-height: var(--b-drawer-max-height, calc(100dvh - 1rem));
+    @apply left-0 right-0 top-0 mx-auto min-h-0 rounded-b-2xl;
+    max-height: var(--b-drawer-max-height, 100dvh);
     height: var(--b-drawer-height, 50%);
 
     .drag-section {
@@ -62,8 +62,8 @@ b-drawer {
   }
 
   &.left {
-    @apply top-2 bottom-2 left-2;
-    max-width: var(--b-drawer-max-width, calc(100vw - 1rem));
+    @apply top-0 bottom-0 left-0 rounded-r-2xl;
+    max-width: var(--b-drawer-max-width, 100vw);
     width: var(--b-drawer-width, 320px);
 
     .drag-section {
@@ -82,8 +82,8 @@ b-drawer {
   }
 
   &.right {
-    @apply top-2 bottom-2 right-2;
-    max-width: var(--b-drawer-max-width, calc(100vw - 1rem));
+    @apply top-0 bottom-0 right-0 rounded-l-2xl;
+    max-width: var(--b-drawer-max-width, 100vw);
     width: var(--b-drawer-width, 320px);
 
     .drag-section {
